@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react'
 
-import { Greetings } from './index'
+import { MainWrapper } from './index'
 
-test('Greetings should renders', () => {
-  const { getByText, getByAltText } = render(<Greetings />)
+test('MainWrapper should renders', () => {
+  const { getByText, getByAltText } = render(<MainWrapper />)
 
   expect(
     getByText('An Electron boilerplate including TypeScript, React, Jest and ESLint.')
