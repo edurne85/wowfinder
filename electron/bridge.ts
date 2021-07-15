@@ -22,3 +22,14 @@ export const api = {
 }
 
 contextBridge.exposeInMainWorld('Main', api)
+
+export const files = {
+  slurp: (fpath: string) => {
+    return ipcRenderer.sendSync('files:slurp', fpath);
+  },
+  getFiles: (dpath: string, filterKey: string = 'any') => {
+    return ipcRenderer.sendSync('files:getFiles', dpath, filterKey);
+  },
+};
+
+contextBridge.exposeInMainWorld('Files', files);
