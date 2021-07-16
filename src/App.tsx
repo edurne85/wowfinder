@@ -1,15 +1,14 @@
 import { GlobalStyle } from './styles/GlobalStyle';
 
-// import { MainWrapper } from './components/MainWrapper';
 import { RewardsTable } from './components/RewardsTable';
 
 import Adventure from './@types/Adventure';
 import Faction from './@types/Faction';
 import Character from './@types/Character';
 
-const factions = Faction.import('./data/Factions');
-const chars = Character.import('./data/Characters');
-const adventures = Adventure.import('./data/Adventures');
+const factions = Faction.import();
+const chars = Character.import();
+const adventures = Adventure.import();
 
 export function App() {
   return (

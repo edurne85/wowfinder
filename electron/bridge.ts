@@ -24,11 +24,23 @@ export const api = {
 contextBridge.exposeInMainWorld('Main', api)
 
 export const files = {
-  slurp: (fpath: string) => {
+  slurp: (fpath: string): string => {
     return ipcRenderer.sendSync('files:slurp', fpath);
   },
-  getFiles: (dpath: string, filterKey: string = 'any') => {
+  getFiles: (dpath: string, filterKey: string = 'any'): string[] => {
     return ipcRenderer.sendSync('files:getFiles', dpath, filterKey);
+  },
+  prepareDir: (target: string): void => {
+    ipcRenderer.sendSync('files:prepareDir', target)
+  },
+  dump: (rpath: string, data: string): string => {
+    return ipcRenderer.sendSync('files:dump', rpath, data);
+  },
+  del: (fpath: string): void => {
+    return ipcRenderer.sendSync('files:del', fpath);
+  },
+  isFile: (fpath: string): boolean => {
+    return ipcRenderer.sendSync('files:isFile', fpath);
   },
 };
 

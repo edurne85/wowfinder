@@ -2,18 +2,18 @@ import type {Reward, Rewards } from '../../@types/Rewards';
 import Character from '../../@types/Character';
 import Faction from '../../@types/Faction';
 
-function RewardRow(char: string, factionLabels: string[], data: Reward) {
+function RewardRow(char: string, active: boolean, factionLabels: string[], data: Reward) {
     const cells = [
         <th>{char}</th>,
         ...(factionLabels.map(k => <td>{data[k] || ''}</td>)),
     ];
-    return <tr>{cells}</tr>;
+    return <tr className={active ? '' : 'inactive'}>{cells}</tr>;
 }
 
 export function RewardsTable({chars, factions, data}: {chars: {[key:string]: Character}, factions: Faction[], data: Rewards}) {
     const factionLabels = factions.map(f => f.label);
     return (
-        <table>
+        <table className="rewards-table">
             <thead>
                 <tr>
                     <th></th>
@@ -21,7 +21,7 @@ export function RewardsTable({chars, factions, data}: {chars: {[key:string]: Cha
                 </tr>
             </thead>
             <tbody>
-                {Object.keys(chars).map(k => RewardRow(chars[k].fullName, factionLabels, data[k] || {}))}
+                {Object.keys(chars).map(k => RewardRow(chars[k].fullName, chars[k].active, factionLabels, data[k] || {}))}
             </tbody>
         </table>
     )

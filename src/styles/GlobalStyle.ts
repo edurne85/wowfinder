@@ -12,4 +12,24 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     color: #E1E1E6;
   }
+  .rewards-table th {
+    font-weight: normal;
+    padding: 0.25em 0.5em;
+  }
+  .rewards-table tbody th {
+    text-align: left;
+  }
+  .rewards-table tbody td {
+    text-align: right;
+    font-family: Courier, mono;
+  }
+  .rewards-table tbody tr:hover {
+    background-color: #324;
+  }
+  .rewards-table tbody tr.inactive {
+    color: #A8A8AB;
+  }
+  .rewards-table tbody tr.inactive:hover {
+    background-color: #213;
+  }
 `

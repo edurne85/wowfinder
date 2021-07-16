@@ -12,7 +12,7 @@ const filters: {[key:string]: fileFilter} = {
 };
 
 
-const prepareDir = (target: string) => {
+const prepareDir = (target: string): void => {
     const dname = path.dirname(target);
     try {
         fs.mkdirSync(dname, { recursive: true });
@@ -23,48 +23,28 @@ const prepareDir = (target: string) => {
     }
 };
 
-const dump = (rpath: string, data: string): string => {
-    const target = outputPrefix + rpath;
-    prepareDir(target);
-    fs.writeFileSync(target, data);
-    return target;
-};
-
-const slurp = (fpath: string) => fs.readFileSync(fpath).toString();
-
-const del = (fpath: string) => fs.unlinkSync(fpath);
-
 const isFile = (fpath: string) => fs.statSync(fpath).isFile();
-
-const getFiles = (dpath: string, filterKey: string = 'any') => {
-    const filter = filters[filterKey] || filters.any;
-    return fs.readdirSync(dpath).filter(filter).map((f) => path.resolve(dpath, f)).filter(isFile);
-}
 
 export default function registerListeners() {
     ipcMain.on('files:prepareDir', (event, target: string) => {
-        event.returnValue = prepareDir(target);
+        prepareDir(target);
     });
-    /* ipcMain.on('files:dump', (event, ...args) => {
-        event.returnValue = files.dump(...args);
-    }); */
+    ipcMain.on('files:dump', (event, rpath: string, data: string) => {
+        const target = outputPrefix + rpath;
+        prepareDir(target);
+        fs.writeFileSync(target, data);
+        event.returnValue =  target;
+    });
     ipcMain.on('files:slurp', (event, fpath: string) => {
-        event.returnValue = slurp(fpath);
+        event.returnValue = fs.readFileSync(fpath).toString();
     });
-    /* ipcMain.on('files:del', (event, ...args) => {
-        event.returnValue = files.del(...args);
-    }); */
+    ipcMain.on('files:del', (event, fpath: string) => {
+        event.returnValue = fs.unlinkSync(fpath);
+    });
     ipcMain.on('files:getFiles', (event, dpath: string, filterKey:string = 'any') => {
-        event.returnValue = getFiles(dpath, filterKey);
+        event.returnValue = fs.readdirSync(dpath)
+            .filter(filters[filterKey] || filters.any)
+            .map((f) => path.resolve(dpath, f))
+            .filter(isFile);
     });
-}
-
-export {
-    outputPrefix,
-    filters,
-    prepareDir,
-    dump,
-    slurp,
-    del,
-    getFiles,
 };
