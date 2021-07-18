@@ -1,4 +1,3 @@
-import { Stats } from 'original-fs';
 import { StatKey, StatSet } from './Stats';
 
 enum Skill {
