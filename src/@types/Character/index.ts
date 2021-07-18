@@ -1,19 +1,23 @@
 import JSON5 from 'json5';
+import Stats from './Stats';
 
 interface CharConstructData {
     key: string,
     fullName: string,
     active?: boolean,
+    stats: Stats,
 }
 
 export default class Character {
     private key: string;
     private _fullName: string;
     private _active: boolean;
-    constructor({key, fullName, active = true}: CharConstructData) {
+    private _stats: Stats;
+    constructor({key, fullName, active = true, stats}: CharConstructData) {
         this.key = key;
         this._fullName = fullName;
         this._active = active;
+        this._stats = stats;
     }
 
     get fullName() { return this._fullName; }
@@ -33,7 +37,7 @@ export default class Character {
             try {
                 const raw = Character._import(window.Files.slurp(file))
                 if (byKey[raw.key]) {
-                    console.warn(`Duplicate faction key ${raw.key} found.`);
+                    console.warn(`Duplicate character key ${raw.key} found.`);
                 }
                 byKey[raw.key] = raw;
             } catch (e) {

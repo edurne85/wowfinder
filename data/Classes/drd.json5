@@ -1,0 +1,11 @@
+{
+    key: 'drd',
+    hd: 8,
+    bab: 0.75,
+    skl: 4,
+    skills: [],
+    fort: true,
+    will: true,
+    div: 1,
+    list: 'druid',
+}
