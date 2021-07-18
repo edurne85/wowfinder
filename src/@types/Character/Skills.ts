@@ -168,7 +168,7 @@ const Skills: {[key in Skill]: SkillSpec} = {
     ride: mkSkill(Skill.ride, StatKey.DEX),
     senseMotive: mkSkill(Skill.senseMotive, StatKey.WIS),
     sleight: mkSkill(Skill.sleight, StatKey.DEX, null, true),
-    stealth: mkSkill(Skill.stealth, StatKey.DEX),
+    stealth: mkSkill(Skill.stealth, StatKey.DEX, null, false, -4),
 };
 
 export default Skills;
