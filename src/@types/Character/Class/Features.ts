@@ -34,6 +34,11 @@ export enum ClassFeature {
     deityAura = 'deityAura',
     channel = 'channel',
     domains = 'domains',
+    // Cleric - WowFinder specific
+    attonementMelee = 'attonementMelee',
+    attonementRanged = 'attonementRanged',
+    attonementSpell = 'attonementSpell',
+    spiritShield = 'spiritShield',
     // Druid
     natureBond = 'natureBond',
     natureSense = 'natureSense',
