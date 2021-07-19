@@ -23,9 +23,9 @@ const prepareDir = (target: string): void => {
     }
 };
 
-const isFile = (fpath: string) => fs.statSync(fpath).isFile();
+const isFile = (fpath: string): boolean => fs.statSync(fpath).isFile();
 
-export default function registerListeners() {
+export default function registerListeners(): void {
     ipcMain.on('files:prepareDir', (event, target: string) => {
         prepareDir(target);
     });

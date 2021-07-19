@@ -1,30 +1,35 @@
 import JSON5 from 'json5';
 import Stats from './Stats';
+import { jClone } from '../../utils';
+
+interface CharPersonalDetails {
+    fullName: string,
+}
 
 interface CharConstructData {
     key: string,
-    fullName: string,
+    personal: CharPersonalDetails,
     active?: boolean,
     stats: Stats,
 }
 
 export default class Character {
     private key: string;
-    private _fullName: string;
+    private _personal: CharPersonalDetails;
     private _active: boolean;
     private _stats: Stats;
-    constructor({key, fullName, active = true, stats}: CharConstructData) {
+    constructor({key, personal, active = true, stats}: CharConstructData) {
         this.key = key;
-        this._fullName = fullName;
+        this._personal = jClone(personal) as CharPersonalDetails;
         this._active = active;
         this._stats = stats;
     }
 
-    get fullName() { return this._fullName; }
+    get fullName(): string { return this._personal.fullName; }
     
-    get active() { return this._active; }
+    get active(): boolean { return this._active; }
     
-    toString() { return this._fullName; }
+    toString(): string { return this._personal.fullName; }
 
     private static _import(json: string): Character {
         const obj = JSON5.parse(json) || {};

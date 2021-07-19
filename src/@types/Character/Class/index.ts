@@ -1,4 +1,5 @@
 import JSON5 from 'json5';
+import { Skill } from '../Skills';
 import { StatSet, statMod } from '../Stats';
 import { ClassFeature } from './Features';
 
@@ -14,6 +15,7 @@ interface ClassBuilder {
     div: number,
     esp: number,
     features: {level: number, feature: string}[],
+    skills: string[],
 }
 
 interface ClassBonuses {
@@ -30,11 +32,19 @@ interface ClassBonuses {
         esp: number,
     },
     skillRanks: number,
+    classSkills: Set<Skill>,
     features: {[key in ClassFeature]?: number},
 }
 
-const hdAvg = (hd: number): number => (hd+1) / 2;
-const hdFirst = (hd: number): number => hd - hdAvg(hd);
+const helpers = {
+    hdAvg: (hd: number): number => (hd+1) / 2,
+    hdFirst: (hd: number): number => hd - helpers.hdAvg(hd),
+    validSkills: new Set(Object.values(Skill)),
+    mapFeatures: (f: {level: number, feature: string}) => ({
+        level: f.level,
+        feature: ClassFeature[f.feature as keyof typeof ClassFeature]
+    }),
+};
 
 export default class Class {
     private key: string;
@@ -48,6 +58,7 @@ export default class Class {
     private div: number;
     private esp: number;
     private features: {level: number, feature: ClassFeature}[];
+    private skills: Set<Skill>;
 
     constructor({
         key,
@@ -61,6 +72,7 @@ export default class Class {
         div = 0,
         esp = 0,
         features = [],
+        skills = [],
     }: ClassBuilder) {
         this.key = key;
         this.hd = hd;
@@ -72,7 +84,12 @@ export default class Class {
         this.arc = arc || 0;
         this.div = div || 0;
         this.esp = esp || 0;
-        this.features = features.map(f => ({level: f.level, feature: ClassFeature[f.feature as keyof typeof ClassFeature]}));
+        this.features = features.map(helpers.mapFeatures);
+        this.skills = new Set(
+            skills
+                .filter(s => helpers.validSkills.has(s as Skill))
+                .map(v => Skill[v as Skill])
+        );
     }
 
     static multiclass(classLevels: {cls: Class, level: number}[], stats: StatSet): ClassBonuses {
@@ -96,12 +113,13 @@ export default class Class {
             },
             skillRanks: 0,
             features: {},
+            classSkills: new Set<Skill>(),
         };
         if (classLevels.length > 0) {
-            result.hp += hdFirst(classLevels[0].cls.hd);
+            result.hp += helpers.hdFirst(classLevels[0].cls.hd);
         }
         for (const {cls, level} of classLevels) {
-            result.hp += (hdAvg(cls.hd) + statMod(stats.CON)) * level;
+            result.hp += (helpers.hdAvg(cls.hd) + statMod(stats.CON)) * level;
             result.bab += cls.bab * level;
             result.saves.fort += (cls.fort ? 1/2 : 1/3) * level;
             goodSaves.fort ||= cls.fort;
@@ -117,7 +135,8 @@ export default class Class {
                 result.features[f.feature] ||= 0;
                 result.features[f.feature]! += 1;
             }
-        }
+            cls.skills.forEach((value: Skill) => result.classSkills.add(value));
+       }
         if (goodSaves.fort) {
             result.saves.fort += 2;
         }
@@ -142,6 +161,7 @@ export default class Class {
         const obj = JSON5.parse(json) || {};
         return new Class({...obj});
     }
+
     static import  (dir: string = 'data/Classes'): {[key:string]: Class} {
         const byKey: {[key:string]: Class} = {};
         for (const file of window.Files.getFiles(dir, 'json5')) {

@@ -12,13 +12,13 @@ export default class Faction {
         Object.freeze(this);
     }
 
-    get key() { return this._key; }
+    get key(): number { return this._key; }
     
-    get label() { return this._label; }
+    get label(): string { return this._label; }
     
-    get name() { return this._name; }
+    get name(): string { return this._name; }
     
-    toString() { return this.name; }
+    toString(): string { return this.name; }
 
     private static _import (json: string): Faction {
         const obj = JSON5.parse(json) || {};

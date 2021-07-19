@@ -25,6 +25,7 @@ enum Skill {
     arcane = 'arcane',
     dungeons = 'dungeons',
     engineering = 'engineering',
+    geography = 'geography',
     history = 'history',
     nature = 'nature',
     nobility = 'nobility',
@@ -44,9 +45,9 @@ enum Skill {
     enchanting = 'enchanting',
     fishing = 'fishing',
     herbalism = 'herbalism',
+    lumbering = 'lumbering',
     mining = 'mining',
     skinning = 'skinning',
-    woodcutting = 'woodcutting',
     ride = 'ride',
     senseMotive = 'senseMotive',
     sleight = 'sleight',
@@ -86,11 +87,12 @@ class SkillSpec {
         this._sizeModFactor = sizeModFactor;
         Object.freeze(this);
     }
-    get primary () { return this._primary; }
-    get secondary () { return this._secondary; }
-    get trainedOnly () { return this._trainedOnly; }
-    get acp() { return this._primary == StatKey.STR || this._primary == StatKey.DEX ? 1 : 0; }
-    get sizeModFactor() { return this._sizeModFactor; }
+
+    get primary (): StatKey { return this._primary; }
+    get secondary (): StatKey | null { return this._secondary; }
+    get trainedOnly (): boolean { return this._trainedOnly; }
+    get acp(): number { return this._primary === StatKey.STR || this._primary === StatKey.DEX ? 1 : 0; }
+    get sizeModFactor(): number { return this._sizeModFactor; }
     
     total({stats, ranks = {}, byClass = [], acp = 0, size = 0}: SkillTotalBuilder): number|null {
         const isClass = byClass.includes(this._key);
@@ -115,7 +117,7 @@ function mkSkill(
     secondary: StatKey|null = null,
     trainedOnly = false,
     sizeModFactor = 0
-) {
+): SkillSpec {
     return new SkillSpec({key, primary, secondary,  trainedOnly, sizeModFactor});
 }
 const Skills: {[key in Skill]: SkillSpec} = {
@@ -143,6 +145,7 @@ const Skills: {[key in Skill]: SkillSpec} = {
     arcane: mkSkill(Skill.arcane, StatKey.INT, StatKey.WIS, true),
     dungeons: mkSkill(Skill.dungeons, StatKey.INT, StatKey.WIS, true),
     engineering: mkSkill(Skill.engineering, StatKey.INT, StatKey.WIS, true),
+    geography: mkSkill(Skill.geography, StatKey.INT, StatKey.WIS, true),
     history: mkSkill(Skill.history, StatKey.INT, StatKey.WIS, true),
     nature: mkSkill(Skill.nature, StatKey.INT, StatKey.WIS, true),
     nobility: mkSkill(Skill.nobility, StatKey.INT, StatKey.WIS, true),
@@ -162,9 +165,9 @@ const Skills: {[key in Skill]: SkillSpec} = {
     enchanting: mkSkill(Skill.enchanting, StatKey.WIS, StatKey.INT, true),
     fishing: mkSkill(Skill.fishing, StatKey.WIS, StatKey.INT, true),
     herbalism: mkSkill(Skill.herbalism, StatKey.WIS, StatKey.INT, true),
+    lumbering: mkSkill(Skill.lumbering, StatKey.WIS, StatKey.INT, true),
     mining: mkSkill(Skill.mining, StatKey.WIS, StatKey.INT, true),
     skinning: mkSkill(Skill.skinning, StatKey.WIS, StatKey.INT, true),
-    woodcutting: mkSkill(Skill.woodcutting, StatKey.WIS, StatKey.INT, true),
     ride: mkSkill(Skill.ride, StatKey.DEX),
     senseMotive: mkSkill(Skill.senseMotive, StatKey.WIS),
     sleight: mkSkill(Skill.sleight, StatKey.DEX, null, true),

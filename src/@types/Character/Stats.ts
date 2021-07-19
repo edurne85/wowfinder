@@ -71,9 +71,11 @@ export default class Stats {
         this.misc = misc;
         this.temp = temp;
     }
+
     get totals(): StatSet {
         return addStatSets(this.base, this.racial, this.enhance, this.gear, this.misc, this.temp);
     }
+
     get totalMods(): StatSet {
         const totals = this.totals;
         return {
@@ -91,4 +93,6 @@ export {
     StatKey,
     StatSet,
     statMod,
+    baseDefault,
+    zeroDefault,
 }

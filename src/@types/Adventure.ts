@@ -33,19 +33,19 @@ export default class Adventure {
         this._rewards = rewards;
     }
 
-    get title() { return this._title; }
-    get date() { return this._date; }
-    get rewards() { return this._rewards; }
+    get title(): string { return this._title; }
+    get date(): string { return this._date; }
+    get rewards(): Rewards { return this._rewards; }
 
     // String representation suitable for sorting (by date, then title)
-    toString() { return `[${this._date}] ${this._title}`; }
+    toString(): string { return `[${this._date}] ${this._title}`; }
 
     private static _import (json: string): Adventure {
         const obj = JSON5.parse(json) || {};
         return new Adventure({...obj});
     }
 
-    static import(dir: string = 'data/Adventures') {
+    static import(dir: string = 'data/Adventures'): readonly Adventure[] {
         const adventures: Adventure[] = [];
         for (const file of window.Files.getFiles(dir, 'json5')) {
             try {

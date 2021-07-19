@@ -33,7 +33,7 @@ export enum ClassFeature {
     // Cleric
     deityAura = 'deityAura',
     channel = 'channel',
-    domain = 'domain',
+    domains = 'domains',
     // Druid
     natureBond = 'natureBond',
     natureSense = 'natureSense',
