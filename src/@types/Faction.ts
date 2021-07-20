@@ -1,5 +1,44 @@
 import JSON5 from 'json5';
 
+enum Reputation {
+    hated = 'hated',
+    hostile = 'hostile',
+    unfriendly = 'undfriendly',
+    neutral = 'neutral',
+    friendly = 'friendly',
+    honored = 'honored',
+    revered = 'revered',
+    exalted = 'exalted',
+};
+
+type Rep = Reputation;
+
+const initialHatedScore = -42000;
+
+const threshholds: {[key in Rep]: number} = {
+    hated: -42000,
+    hostile: -6000,
+    undfriendly: -3000,
+    neutral: 0,
+    friendly: 3000,
+    honored: 9000,
+    revered: 21000,
+    exalted: 42000,
+};
+
+const sortedDown = ([...Object.keys(threshholds)] as Rep[])
+    .sort((a: Rep, b: Rep): number => threshholds[b] - threshholds[a]);
+const lastRep = sortedDown[sortedDown.length - 1];
+
+function reputationByScore(score: number): Rep {
+    for (const k of sortedDown) {
+        if (score >= threshholds[k]) {
+            return k;
+        }
+    }
+    return lastRep;
+}
+
 export default class Faction {
     private _key: number;
     private _label: string;
@@ -50,4 +89,10 @@ export default class Faction {
         [byKey, byLabel, res].map(Object.freeze);
         return res;
     }
+}
+
+export {
+    Reputation,
+    reputationByScore,
+    initialHatedScore,
 }
