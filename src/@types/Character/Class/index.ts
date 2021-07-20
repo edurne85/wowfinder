@@ -14,6 +14,7 @@ interface ClassBuilder {
     arc: number,
     div: number,
     esp: number,
+    wealth: number,
     features: {level: number, feature: string}[],
     skills: string[],
 }
@@ -57,6 +58,7 @@ export default class Class {
     private arc: number;
     private div: number;
     private esp: number;
+    private wealth: number;
     private features: {level: number, feature: ClassFeature}[];
     private skills: Set<Skill>;
 
@@ -71,6 +73,7 @@ export default class Class {
         arc = 0,
         div = 0,
         esp = 0,
+        wealth = 0,
         features = [],
         skills = [],
     }: ClassBuilder) {
@@ -84,6 +87,7 @@ export default class Class {
         this.arc = arc || 0;
         this.div = div || 0;
         this.esp = esp || 0;
+        this.wealth = wealth || 0;
         this.features = features.map(helpers.mapFeatures);
         this.skills = new Set(
             skills

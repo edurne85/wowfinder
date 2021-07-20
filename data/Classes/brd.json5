@@ -8,6 +8,7 @@
     will: true,
     esp: 0.67,
     list: 'bard',
+    wealth: 10500,
     skills: [
         'acrobatics',
         'athletics',

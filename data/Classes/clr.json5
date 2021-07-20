@@ -8,6 +8,7 @@
     will: true,
     div: 1,
     list: 'cleric',
+    wealth: 14000,
     skills: [
         'appraise',
         'inscription',

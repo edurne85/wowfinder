@@ -3,8 +3,8 @@
     hd: 12,
     bab: 1,
     skl: 4,
-    skills: [],
     fort: true,
+    wealth: 10500,
     skills: [
         'acrobatics',
         'athletics',

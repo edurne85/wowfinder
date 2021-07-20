@@ -8,6 +8,7 @@
     will: true,
     div: 1,
     list: 'druid',
+    wealth: 7000,
     skills: [
         'athletics',
         'acrobatics',
