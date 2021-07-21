@@ -10,7 +10,7 @@
     "make": "electron-forge make",
     "release": "electron-forge publish",
     "lint": "eslint . --ext js,ts",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "keywords": [],
   "license": "MIT",
