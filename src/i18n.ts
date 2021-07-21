@@ -1,5 +1,5 @@
-import i18n, { Resource } from "i18next";
-import { initReactI18next } from "react-i18next";
+import i18n, { Resource } from 'i18next';
+import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 const resources: Resource = {};
@@ -8,8 +8,8 @@ const translationsPath = 'assets/translations';
 function baseName(path: string): string {
     path = path.replace(/\\/g, '/');
     let base: string = path.substring(path.lastIndexOf('/') + 1); 
-    if(base.lastIndexOf(".") !== -1)       
-        base = base.substring(0, base.lastIndexOf("."));
+    if(base.lastIndexOf('.') !== -1)       
+        base = base.substring(0, base.lastIndexOf('.'));
     return base;
 }
 

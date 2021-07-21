@@ -26,6 +26,7 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "quotes": ["error", "single"],
     "react/prop-types": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
@@ -36,6 +37,14 @@
     "semi": "off",
     "@typescript-eslint/semi": ["error"],
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": ["error"]
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      {
+        "ignoreTypeReferences": true
+      }
+    ]
+  
   }
 }

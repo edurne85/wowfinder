@@ -1,5 +1,4 @@
 import JSON5 from 'json5';
-import { Stats } from 'original-fs';
 import Language from '../../Language';
 import Alignment from '../Alignment';
 import Size from '../Size';

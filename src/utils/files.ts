@@ -34,13 +34,13 @@ const slurp = (fpath: string): string =>  fs.readFileSync(fpath).toString();
 
 const del = (fpath: string): void => fs.unlinkSync(fpath);
 
+const isFile = (fpath: string): boolean => fs.statSync(fpath).isFile();
+
 const getFiles = (dpath: string, filterKey = 'any'): string[] =>
     fs.readdirSync(dpath)
         .filter(filters[filterKey] || filters.any)
         .map((f) => path.resolve(dpath, f))
         .filter(isFile);
-
-const isFile = (fpath: string): boolean => fs.statSync(fpath).isFile();
 
 export default function registerListeners(): void {
     ipcMain.on('files:prepareDir', (event, target: string) => {
