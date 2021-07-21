@@ -23,6 +23,23 @@ const prepareDir = (target: string): void => {
     }
 };
 
+const dump = (rpath: string, data: string): string => {
+    const target = outputPrefix + rpath;
+    prepareDir(target);
+    fs.writeFileSync(target, data);
+    return target;
+}
+
+const slurp = (fpath: string): string =>  fs.readFileSync(fpath).toString();
+
+const del = (fpath: string): void => fs.unlinkSync(fpath);
+
+const getFiles = (dpath: string, filterKey: string = 'any'): string[] =>
+    fs.readdirSync(dpath)
+        .filter(filters[filterKey] || filters.any)
+        .map((f) => path.resolve(dpath, f))
+        .filter(isFile);
+
 const isFile = (fpath: string): boolean => fs.statSync(fpath).isFile();
 
 export default function registerListeners(): void {
@@ -30,21 +47,24 @@ export default function registerListeners(): void {
         prepareDir(target);
     });
     ipcMain.on('files:dump', (event, rpath: string, data: string) => {
-        const target = outputPrefix + rpath;
-        prepareDir(target);
-        fs.writeFileSync(target, data);
-        event.returnValue =  target;
+        event.returnValue =  dump(rpath, data);
     });
     ipcMain.on('files:slurp', (event, fpath: string) => {
-        event.returnValue = fs.readFileSync(fpath).toString();
+        event.returnValue = slurp(fpath);
     });
     ipcMain.on('files:del', (event, fpath: string) => {
-        event.returnValue = fs.unlinkSync(fpath);
+        del(fpath);
     });
     ipcMain.on('files:getFiles', (event, dpath: string, filterKey:string = 'any') => {
-        event.returnValue = fs.readdirSync(dpath)
-            .filter(filters[filterKey] || filters.any)
-            .map((f) => path.resolve(dpath, f))
-            .filter(isFile);
+        event.returnValue = getFiles(dpath, filterKey);
     });
 };
+
+export {
+    prepareDir,
+    dump,
+    slurp,
+    del,
+    getFiles,
+    filters,
+}
