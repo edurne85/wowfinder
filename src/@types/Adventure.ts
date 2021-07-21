@@ -22,6 +22,8 @@ function combineRewards(rewards: Rewards[]): Rewards {
     return Object.freeze(result);
 }
 
+type Adventures = readonly Adventure[];
+
 export default class Adventure {
     private _title: string;
     private _date: string;
@@ -45,7 +47,7 @@ export default class Adventure {
         return new Adventure({...obj});
     }
 
-    static import(dir = 'data/Adventures'): readonly Adventure[] {
+    private static _importForced(dir: string): Adventures {
         const adventures: Adventure[] = [];
         for (const file of window.Files.getFiles(dir, 'json5')) {
             try {
@@ -57,7 +59,13 @@ export default class Adventure {
         return Object.freeze(adventures.sort());
     }
 
-    static combined(adventures: readonly Adventure[]): Rewards {
+    private static _imported: Adventures | null = null;
+
+    static import(dir = 'data/Adventures'): Adventures {
+        return (this._imported ||= this._importForced(dir));
+    }
+
+    static combined(adventures: Adventures): Rewards {
         return combineRewards(adventures.map((a) => a._rewards));
     }
 }

@@ -39,6 +39,8 @@ function reputationByScore(score: number): Rep {
     return lastRep;
 }
 
+type Factions = {byKey: {[key:number]: Faction}, byLabel: {[label:string]: Faction}};
+
 export default class Faction {
     private _key: number;
     private _label: string;
@@ -68,7 +70,7 @@ export default class Faction {
         });
     }
     
-    static import (dir = 'data/Factions'): {byKey: {[key:number]: Faction}, byLabel: {[label:string]: Faction}} {
+    private static _importForced (dir = 'data/Factions'): Factions {
         const byKey: {[key:number]: Faction} = {};
         const byLabel: {[label:string]: Faction} = {};
         for (const file of window.Files.getFiles(dir, 'json5')) {
@@ -88,6 +90,12 @@ export default class Faction {
         const res = {byKey, byLabel};
         [byKey, byLabel, res].map(Object.freeze);
         return res;
+    }
+
+    private static _imported: Factions | null = null;
+
+    static import(dir = 'data/Characters'): Factions {
+        return (this._imported ||= this._importForced(dir));
     }
 }
 

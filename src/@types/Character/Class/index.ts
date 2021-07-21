@@ -47,6 +47,8 @@ const helpers = {
     }),
 };
 
+type Classes = {[key:string]: Class};
+
 export default class Class {
     private key: string;
     private hd: number;
@@ -165,7 +167,7 @@ export default class Class {
         return new Class({...obj});
     }
 
-    static import  (dir = 'data/Classes'): {[key:string]: Class} {
+    private static _importForced  (dir: string): Classes {
         const byKey: {[key:string]: Class} = {};
         for (const file of window.Files.getFiles(dir, 'json5')) {
             try {
@@ -179,5 +181,11 @@ export default class Class {
             }
         }
         return Object.freeze(byKey);
+    }
+
+    private static _imported: Classes | null = null;
+
+    static import(dir = 'data/Classes'): Classes {
+        return (this._imported ||= this._importForced(dir));
     }
 }
