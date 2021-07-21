@@ -1,7 +1,6 @@
 import JSON5 from 'json5';
 import Stats, { StatSet, zeroDefault } from './Stats';
 import CharPersonalDetails, { personalDefaults } from './Personal';
-import Race from './Race';
 
 interface CharConstructData {
     key: string,
