@@ -104,6 +104,7 @@ export enum ClassFeature {
 export const barbarian = {
     trapSense: (eLevel: number): number => Math.floor(eLevel / 3),
     damageReduction: (eLevel: number): number => Math.floor((eLevel - 4) / 3),
+    fastMovement: (): number => 10,
 };
 export const bard = {
     inspireCourage: function(eLevel: number): number {
