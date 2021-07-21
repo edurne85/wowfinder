@@ -7,4 +7,4 @@ function jClone(obj: jsonAble): jsonAble {
 export {
     jsonAble,
     jClone,
-}
+};

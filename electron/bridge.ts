@@ -1,4 +1,4 @@
-import { contextBridge, ipcRenderer } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron';
 
 export const api = {
   /**
@@ -10,18 +10,18 @@ export const api = {
    */
 
   sendMessage: (message: string) => { 
-    ipcRenderer.send('message', message)
+    ipcRenderer.send('message', message);
   },
 
   /**
    * Provide an easier way to listen to events
    */
   on: (channel: string, callback: Function) => {
-    ipcRenderer.on(channel, (_, data) => callback(data))
-  }
-}
+    ipcRenderer.on(channel, (_, data) => callback(data));
+  },
+};
 
-contextBridge.exposeInMainWorld('Main', api)
+contextBridge.exposeInMainWorld('Main', api);
 
 export const files = {
   slurp: (fpath: string): string => {
@@ -31,7 +31,7 @@ export const files = {
     return ipcRenderer.sendSync('files:getFiles', dpath, filterKey);
   },
   prepareDir: (target: string): void => {
-    ipcRenderer.sendSync('files:prepareDir', target)
+    ipcRenderer.sendSync('files:prepareDir', target);
   },
   dump: (rpath: string, data: string): string => {
     return ipcRenderer.sendSync('files:dump', rpath, data);

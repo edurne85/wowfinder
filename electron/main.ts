@@ -1,10 +1,10 @@
-import { app, BrowserWindow, ipcMain } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron';
 import registerFilesListeners from '../src/utils/files';
 
-let mainWindow: BrowserWindow | null
+let mainWindow: BrowserWindow | null;
 
-declare const MAIN_WINDOW_WEBPACK_ENTRY: string
-declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string
+declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
+declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
 // const assetsPath =
 //   process.env.NODE_ENV === 'production'
@@ -22,13 +22,13 @@ function createWindow (): void {
       contextIsolation: true,
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
     }
-  })
+  });
 
-  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)
+  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
   mainWindow.on('closed', () => {
-    mainWindow = null
-  })
+    mainWindow = null;
+  });
 }
 
 async function registerListeners (): Promise<void> {
@@ -36,24 +36,24 @@ async function registerListeners (): Promise<void> {
    * This comes from bridge integration, check bridge.ts
    */
   ipcMain.on('message', (_, message) => {
-    console.log(message)
-  })
+    console.log(message);
+  });
   registerFilesListeners();
 }
 
 app.on('ready', createWindow)
   .whenReady()
   .then(registerListeners)
-  .catch(e => console.error(e))
+  .catch(e => console.error(e));
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
-})
+});
 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow()
+    createWindow();
   }
-})
+});

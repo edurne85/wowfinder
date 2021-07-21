@@ -28,7 +28,7 @@ const dump = (rpath: string, data: string): string => {
     prepareDir(target);
     fs.writeFileSync(target, data);
     return target;
-}
+};
 
 const slurp = (fpath: string): string =>  fs.readFileSync(fpath).toString();
 
@@ -67,4 +67,4 @@ export {
     del,
     getFiles,
     filters,
-}
+};

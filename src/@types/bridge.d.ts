@@ -1,4 +1,4 @@
-import { api, files } from '../../electron/bridge'
+import { api, files } from '../../electron/bridge';
 
 declare global {
   // eslint-disable-next-line

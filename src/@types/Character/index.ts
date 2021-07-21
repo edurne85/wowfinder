@@ -1,10 +1,6 @@
 import JSON5 from 'json5';
 import Stats from './Stats';
-import { jClone } from '../../utils';
-
-interface CharPersonalDetails {
-    fullName: string,
-}
+import CharPersonalDetails, { personalDefaults } from './Personal';
 
 interface CharConstructData {
     key: string,
@@ -20,7 +16,7 @@ export default class Character {
     private _stats: Stats;
     constructor({key, personal, active = true, stats}: CharConstructData) {
         this.key = key;
-        this._personal = jClone(personal) as CharPersonalDetails;
+        this._personal = Object.assign({}, personalDefaults, personal);
         this._active = active;
         this._stats = stats;
     }
@@ -40,7 +36,7 @@ export default class Character {
         const byKey: {[key:string]: Character} = {};
         for (const file of window.Files.getFiles(dir, 'json5')) {
             try {
-                const raw = Character._import(window.Files.slurp(file))
+                const raw = Character._import(window.Files.slurp(file));
                 if (byKey[raw.key]) {
                     console.warn(`Duplicate character key ${raw.key} found.`);
                 }

@@ -21,7 +21,7 @@ function addStatSets(...args: StatSet[]): StatSet {
         INT: sum(...args.map(s => s.INT)),
         WIS: sum(...args.map(s => s.WIS)),
         CHA: sum(...args.map(s => s.CHA)),
-    }
+    };
 };
 
 const baseDefault: StatSet = {
@@ -85,7 +85,7 @@ export default class Stats {
             INT: statMod(totals.INT),
             WIS: statMod(totals.WIS),
             CHA: statMod(totals.CHA),
-        }
+        };
     }
 }
 
@@ -95,4 +95,4 @@ export {
     statMod,
     baseDefault,
     zeroDefault,
-}
+};

@@ -101,7 +101,7 @@ export default class Class {
             fort: false,
             refl: false,
             will: false,
-        }
+        };
         const result: ClassBonuses = {
             hp: 0,
             bab: 0,
@@ -170,7 +170,7 @@ export default class Class {
         const byKey: {[key:string]: Class} = {};
         for (const file of window.Files.getFiles(dir, 'json5')) {
             try {
-                const raw = Class._import(window.Files.slurp(file))
+                const raw = Class._import(window.Files.slurp(file));
                 if (byKey[raw.key]) {
                     console.warn(`Duplicate class key ${raw.key} found.`);
                 }

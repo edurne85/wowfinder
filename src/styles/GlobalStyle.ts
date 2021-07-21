@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -32,4 +32,4 @@ export const GlobalStyle = createGlobalStyle`
   .rewards-table tbody tr.inactive:hover {
     background-color: #213;
   }
-`
+`;

@@ -73,7 +73,7 @@ export default class Faction {
         const byLabel: {[label:string]: Faction} = {};
         for (const file of window.Files.getFiles(dir, 'json5')) {
             try {
-                const raw = Faction._import(window.Files.slurp(file))
+                const raw = Faction._import(window.Files.slurp(file));
                 if (byKey[raw.key]) {
                     console.warn(`Duplicate faction key ${raw.key} found.`);
                 }
@@ -95,4 +95,4 @@ export {
     Reputation,
     reputationByScore,
     initialHatedScore,
-}
+};
