@@ -174,8 +174,11 @@ const Skills: {[key in Skill]: SkillSpec} = {
     stealth: mkSkill(Skill.stealth, StatKey.DEX, null, false, -4),
 };
 
+type SkillSet = {[key in Skill]?: number};
+
 export default Skills;
 export {
     Skill,
+    SkillSet,
     classTrainedBonus,
 };
