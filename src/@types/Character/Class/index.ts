@@ -136,8 +136,7 @@ export default class Class {
             result.efl.esp += cls.esp * level;
             result.skillRanks += (cls.skl + statMod(stats.INT)) * level;
             for (const f of cls.features.filter(f => f.level <= level)) {
-                result.features[f.feature] ||= 0;
-                result.features[f.feature]! += 1;
+                result.features[f.feature] = (result.features[f.feature] || 0) + 1;
             }
             cls.skills.forEach((value: Skill) => result.classSkills.add(value));
        }
@@ -166,7 +165,7 @@ export default class Class {
         return new Class({...obj});
     }
 
-    static import  (dir: string = 'data/Classes'): {[key:string]: Class} {
+    static import  (dir = 'data/Classes'): {[key:string]: Class} {
         const byKey: {[key:string]: Class} = {};
         for (const file of window.Files.getFiles(dir, 'json5')) {
             try {

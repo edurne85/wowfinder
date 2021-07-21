@@ -52,7 +52,7 @@ enum Skill {
     senseMotive = 'senseMotive',
     sleight = 'sleight',
     stealth = 'stealth',
-};
+}
 
 const classTrainedBonus = 3;
 
@@ -62,7 +62,7 @@ interface SkillSpecBuilder {
     secondary: StatKey | null;
     trainedOnly: boolean;
     sizeModFactor: number;
-};
+}
 
 interface SkillTotalBuilder {
     stats: StatSet;
@@ -70,7 +70,7 @@ interface SkillTotalBuilder {
     byClass: Skill[];
     acp: number;
     size: number;
-};
+}
 
 class SkillSpec {
     private _key: Skill;

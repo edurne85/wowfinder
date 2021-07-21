@@ -9,7 +9,7 @@ interface RaceBuilder {
     additionalLangs: Language[];
     traits: RacialTrait[];
     commonAligns: Alignment[];
-};
+}
 
 export default class Race {
     private key: string;
@@ -41,7 +41,7 @@ export default class Race {
         return new Race({...obj});
     }
 
-    static import  (dir: string = 'data/Races'): {[key:string]: Race} {
+    static import  (dir = 'data/Races'): {[key:string]: Race} {
         const byKey: {[key:string]: Race} = {};
         for (const file of window.Files.getFiles(dir, 'json5')) {
             try {
@@ -56,4 +56,4 @@ export default class Race {
         }
         return Object.freeze(byKey);
     }
-};
+}

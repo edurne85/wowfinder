@@ -8,7 +8,7 @@ enum Alignment {
     CG = 'CG',
     CN = 'CN',
     CE = 'CE',
-};
+}
 
 export default Alignment;
 

@@ -13,7 +13,7 @@ enum GearSlot {
     legs = 'legs', // Pair
     feet = 'feet', // Pair
     ring = 'ring', // Each
-};
+}
 
 type Shape = {slot: GearSlot, qtty: number}[];
 
@@ -31,7 +31,7 @@ function compactShape(shape: Shape): Shape {
     return result;
 }
 
-const upperLimbs = (pairs: number = 1, fingersPerHand: number = 5): Shape => [
+const upperLimbs = (pairs = 1, fingersPerHand = 5): Shape => [
     { slot: GearSlot.shoulders, qtty: pairs },
     { slot: GearSlot.hands, qtty: pairs },
     { slot: GearSlot.wrists, qtty: pairs },
@@ -40,12 +40,12 @@ const upperLimbs = (pairs: number = 1, fingersPerHand: number = 5): Shape => [
     { slot: GearSlot.ring, qtty: 2 * pairs * fingersPerHand },
 ];
 
-const lowerLimbs = (pairs: number = 1): Shape => [
+const lowerLimbs = (pairs = 1): Shape => [
     { slot: GearSlot.legs, qtty: pairs },
     { slot: GearSlot.feet, qtty: pairs },
 ];
 
-const heads = (count: number = 1, earsPerHead: number = 2): Shape => [
+const heads = (count = 1, earsPerHead = 2): Shape => [
     { slot: GearSlot.head, qtty: count },
     { slot: GearSlot.ear, qtty: count * earsPerHead },
 ];

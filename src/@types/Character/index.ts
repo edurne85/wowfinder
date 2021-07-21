@@ -32,7 +32,7 @@ export default class Character {
         return new Character({...obj});
     }
 
-    static import (dir: string = 'data/Characters'): {[key:string]: Character} {
+    static import (dir = 'data/Characters'): {[key:string]: Character} {
         const byKey: {[key:string]: Character} = {};
         for (const file of window.Files.getFiles(dir, 'json5')) {
             try {

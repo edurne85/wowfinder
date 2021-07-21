@@ -34,7 +34,7 @@ const slurp = (fpath: string): string =>  fs.readFileSync(fpath).toString();
 
 const del = (fpath: string): void => fs.unlinkSync(fpath);
 
-const getFiles = (dpath: string, filterKey: string = 'any'): string[] =>
+const getFiles = (dpath: string, filterKey = 'any'): string[] =>
     fs.readdirSync(dpath)
         .filter(filters[filterKey] || filters.any)
         .map((f) => path.resolve(dpath, f))
@@ -55,10 +55,10 @@ export default function registerListeners(): void {
     ipcMain.on('files:del', (event, fpath: string) => {
         del(fpath);
     });
-    ipcMain.on('files:getFiles', (event, dpath: string, filterKey:string = 'any') => {
+    ipcMain.on('files:getFiles', (event, dpath: string, filterKey = 'any') => {
         event.returnValue = getFiles(dpath, filterKey);
     });
-};
+}
 
 export {
     prepareDir,

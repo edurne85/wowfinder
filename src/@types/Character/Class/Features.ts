@@ -99,7 +99,7 @@ export enum ClassFeature {
     // Barbarian + Monk
     fastMovement = 'fastMovement',
     // TODO (WiP)
-};
+}
 
 export const barbarian = {
     trapSense: (eLevel: number): number => Math.floor(eLevel / 3),

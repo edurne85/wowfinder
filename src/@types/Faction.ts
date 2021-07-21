@@ -9,7 +9,7 @@ enum Reputation {
     honored = 'honored',
     revered = 'revered',
     exalted = 'exalted',
-};
+}
 
 type Rep = Reputation;
 
@@ -68,7 +68,7 @@ export default class Faction {
         });
     }
     
-    static import (dir: string = 'data/Factions'): {byKey: {[key:number]: Faction}, byLabel: {[label:string]: Faction}} {
+    static import (dir = 'data/Factions'): {byKey: {[key:number]: Faction}, byLabel: {[label:string]: Faction}} {
         const byKey: {[key:number]: Faction} = {};
         const byLabel: {[label:string]: Faction} = {};
         for (const file of window.Files.getFiles(dir, 'json5')) {

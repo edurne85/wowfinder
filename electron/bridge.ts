@@ -9,14 +9,14 @@ export const api = {
    * The function below can accessed using `window.Main.sayHello`
    */
 
-  sendMessage: (message: string) => { 
+  sendMessage: (message: string): void => { 
     ipcRenderer.send('message', message);
   },
 
   /**
    * Provide an easier way to listen to events
    */
-  on: (channel: string, callback: Function) => {
+  on: (channel: string, callback: (...args: unknown[]) => void): void => {
     ipcRenderer.on(channel, (_, data) => callback(data));
   },
 };
@@ -27,7 +27,7 @@ export const files = {
   slurp: (fpath: string): string => {
     return ipcRenderer.sendSync('files:slurp', fpath);
   },
-  getFiles: (dpath: string, filterKey: string = 'any'): string[] => {
+  getFiles: (dpath: string, filterKey = 'any'): string[] => {
     return ipcRenderer.sendSync('files:getFiles', dpath, filterKey);
   },
   prepareDir: (target: string): void => {

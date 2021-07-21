@@ -45,7 +45,7 @@ export default class Adventure {
         return new Adventure({...obj});
     }
 
-    static import(dir: string = 'data/Adventures'): readonly Adventure[] {
+    static import(dir = 'data/Adventures'): readonly Adventure[] {
         const adventures: Adventure[] = [];
         for (const file of window.Files.getFiles(dir, 'json5')) {
             try {

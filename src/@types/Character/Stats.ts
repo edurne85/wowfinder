@@ -22,7 +22,7 @@ function addStatSets(...args: StatSet[]): StatSet {
         WIS: sum(...args.map(s => s.WIS)),
         CHA: sum(...args.map(s => s.CHA)),
     };
-};
+}
 
 const baseDefault: StatSet = {
     STR: 10,
