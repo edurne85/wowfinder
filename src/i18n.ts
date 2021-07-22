@@ -13,11 +13,9 @@ function baseName(path: string): string {
     return base;
 }
 
-console.warn('getFiles()', window.Files.getFiles(translationsPath));
 for (const file of window.Files.getFiles(translationsPath, 'json')) {
     const lang = baseName(file);
     try {
-        console.log(`Loading language: ${lang}`);
         resources[lang] = {
             translation: JSON.parse(window.Files.slurp(file)),
         };
@@ -25,7 +23,6 @@ for (const file of window.Files.getFiles(translationsPath, 'json')) {
         console.error(e);
     }
 }
-console.warn(resources);
 
 i18n
     .use(LanguageDetector)
