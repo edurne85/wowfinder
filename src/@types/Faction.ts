@@ -70,17 +70,17 @@ export default class Faction {
         });
     }
     
-    private static _importForced (dir = 'data/Factions'): Factions {
+    private static _importForced (dir: string): Factions {
         const byKey: {[key:number]: Faction} = {};
         const byLabel: {[label:string]: Faction} = {};
         for (const file of window.Files.getFiles(dir, 'json5')) {
             try {
                 const raw = Faction._import(window.Files.slurp(file));
                 if (byKey[raw.key]) {
-                    console.warn(`Duplicate faction key ${raw.key} found.`);
+                    console.warn(`Duplicate faction key ${raw.key} found.`, {byKey, raw, file});
                 }
                 if (byLabel[raw.label]) {
-                    console.warn (`Duplicate faction label ${raw.label} found.`);
+                    console.warn (`Duplicate faction label ${raw.label} found.`, {byLabel, raw, file});
                 }
                 byKey[raw.key] = byLabel[raw.label] = raw;
             } catch (e) {
@@ -94,7 +94,7 @@ export default class Faction {
 
     private static _imported: Factions | null = null;
 
-    static import(dir = 'data/Characters'): Factions {
+    static import(dir = 'data/Factions'): Factions {
         return (this._imported ||= this._importForced(dir));
     }
 }

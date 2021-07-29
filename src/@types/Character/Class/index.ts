@@ -48,9 +48,10 @@ const helpers = {
 };
 
 type Classes = {[key:string]: Class};
+type ClassLevels = { cls: Class, level: number }[];
 
 export default class Class {
-    private key: string;
+    private _key: string;
     private hd: number;
     private bab: number;
     private fort: boolean;
@@ -79,7 +80,7 @@ export default class Class {
         features = [],
         skills = [],
     }: ClassBuilder) {
-        this.key = key;
+        this._key = key;
         this.hd = hd;
         this.bab = bab;
         this.fort = !!fort;
@@ -98,7 +99,9 @@ export default class Class {
         );
     }
 
-    static multiclass(classLevels: {cls: Class, level: number}[], stats: StatSet): ClassBonuses {
+    get key(): string { return this._key; }
+
+    static multiclass(classLevels: ClassLevels, stats: StatSet): ClassBonuses {
         const goodSaves = {
             fort: false,
             refl: false,
@@ -172,10 +175,10 @@ export default class Class {
         for (const file of window.Files.getFiles(dir, 'json5')) {
             try {
                 const raw = Class._import(window.Files.slurp(file));
-                if (byKey[raw.key]) {
+                if (byKey[raw._key]) {
                     console.warn(`Duplicate class key ${raw.key} found.`);
                 }
-                byKey[raw.key] = raw;
+                byKey[raw._key] = raw;
             } catch (e) {
                 console.error(e);
             }
@@ -189,3 +192,8 @@ export default class Class {
         return (this._imported ||= this._importForced(dir));
     }
 }
+export {
+    ClassLevels,
+    ClassFeature,
+    ClassBonuses,
+};
