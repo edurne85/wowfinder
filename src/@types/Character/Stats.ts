@@ -1,3 +1,5 @@
+import { sum } from '../../utils';
+
 enum StatKey {
     STR = 'STR',
     DEX = 'DEX',
@@ -7,11 +9,25 @@ enum StatKey {
     CHA = 'CHA',
 }
 
+enum StatGroup {
+    physical = 'physical',
+    mental = 'mental',
+}
+
+type StatPhysical = StatKey.STR | StatKey.DEX | StatKey.CON;
+
+type StatMental = StatKey.INT | StatKey.WIS | StatKey.CHA;
+
+function inGroup(stat: StatKey, group: StatGroup): boolean {
+    return (stat as StatPhysical && group === StatGroup.physical)
+        || (stat as StatMental && group === StatGroup.mental);
+}
+
 const statMod = (value: number): number =>  Math.floor(value / 2 - 5);
 
 type StatSet = {[key in StatKey]: number};
 
-const sum = (...args: number[]): number => args.reduce((acc, curr) => acc + curr);
+type PartialStatSet = {[key in StatKey]?: number};
 
 function addStatSets(...args: StatSet[]): StatSet {
     return {
@@ -91,7 +107,12 @@ export default class Stats {
 
 export {
     StatKey,
+    StatGroup,
+    StatPhysical,
+    StatMental,
+    inGroup,
     StatSet,
+    PartialStatSet,
     statMod,
     baseDefault,
     zeroDefault,
