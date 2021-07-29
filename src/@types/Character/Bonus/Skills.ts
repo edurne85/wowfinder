@@ -17,10 +17,21 @@ export default class SkillsBonus {
 
     static get zero(): SkillsBonus { return new SkillsBonus({}); }
 
-    static combine(...args: SkillsBonus[]): SkillsBonus {
+    static sum(...args: SkillsBonus[]): SkillsBonus {
         const result: SkillSet = {};
         for (const skill of Object.keys(Skill)) {
             const value = sum(...args.map(s => (s._values[skill as Skill] || 0)));
+            if (value) {
+                result[skill as Skill] = value;
+            }
+        }
+        return new SkillsBonus(result);
+    }
+
+    static max(...args: SkillsBonus[]): SkillsBonus {
+        const result: SkillSet = {};
+        for (const skill of Object.keys(Skill)) {
+            const value = Math.max(...args.map(s => (s._values[skill as Skill] || 0)));
             if (value) {
                 result[skill as Skill] = value;
             }

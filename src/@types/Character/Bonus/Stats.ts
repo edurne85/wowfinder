@@ -1,11 +1,11 @@
 import { sum } from '../../../utils';
-import { StatKey, StatSet, zeroDefault } from '../Stats';
+import { PartialStatSet, StatKey, StatSet, zeroDefault } from '../Stats';
 
 export default class StatsBonus {
     private _values: StatSet;
 
-    constructor(values: StatSet) {
-        this._values = {...values};
+    constructor(values: PartialStatSet) {
+        this._values = Object.assign({}, zeroDefault, values);
         for (const stat of Object.keys(StatKey)) {
             Object.defineProperty(this, stat, {
                 enumerable: true,
@@ -17,11 +17,20 @@ export default class StatsBonus {
 
     static get zero(): StatsBonus { return new StatsBonus(zeroDefault); }
 
-    static combine(...args: StatsBonus[]): StatsBonus {
+    static sum(...args: StatsBonus[]): StatsBonus {
         const result = this.zero;
         for (const stat of Object.keys(StatKey)) {
             result._values[stat as StatKey] =
                 sum(...args.map(s => s._values[stat as StatKey]));
+        }
+        return result;
+    }
+
+    static max(...args: StatsBonus[]): StatsBonus {
+        const result = this.zero;
+        for (const stat of Object.keys(StatKey)) {
+            result._values[stat as StatKey] =
+                Math.max(...args.map(s => s._values[stat as StatKey]));
         }
         return result;
     }
