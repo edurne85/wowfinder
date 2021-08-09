@@ -30,6 +30,18 @@ defineTrait({key: 'advanced', rp: 4, qualityGroup: QualityGroup.stat, processor:
     }
 }});
 
+defineTrait({key: 'humanHeritage', rp: 0, qualityGroup: QualityGroup.stat, processor: (spec) => {
+    if (spec.bonus as StatKey)  {
+        return makeRacialBonus({
+            stats: new StatsBonus({
+                [spec.bonus as StatKey]: 2,
+            }),
+        });
+    } else {
+        throw complain('bonus must be StatKey', spec);
+    }
+}});
+
 // TODO ability score racial qualities
 
 defineTrait({key: 'advSTR', rp: 4, processor: (): Bonus => {

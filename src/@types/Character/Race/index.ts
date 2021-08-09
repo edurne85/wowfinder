@@ -2,18 +2,14 @@ import JSON5 from 'json5';
 import Language from '../../Language';
 import Alignment from '../Alignment';
 import Size from '../Size';
-import { SkillSet } from '../Skills';
-import { StatSet } from '../Stats';
-import { RacialTrait } from './Traits';
+import { RaceTraitInstance } from './Trait';
 
 interface RaceBuilder {
     key: string;
-    size: Size;
-    statMods: StatSet;
-    skillMods: SkillSet;
+    size: number;
     initialLangs: Language[];
     additionalLangs: Language[];
-    traits: RacialTrait[];
+    traits: RaceTraitInstance[];
     commonAligns: Alignment[];
 }
 
@@ -22,25 +18,19 @@ type Races = {[key:string]: Race};
 export default class Race {
     private key: string;
     private _size: Size;
-    private _stats: StatSet;
-    private _skills: SkillSet;
     private _initial: Language[];
     private _additional: Language[];
-    private _traits: RacialTrait[];
+    private _traits: RaceTraitInstance[];
 
     constructor({
         key,
         size,
-        statMods,
-        skillMods,
         initialLangs,
         additionalLangs,
         traits,
     }: RaceBuilder) {
         this.key = key;
-        this._size = size;
-        Object.freeze(this._stats = statMods);
-        Object.freeze(this._skills = skillMods);
+        this._size = (size in Size) ? size as Size : Size.medium;
         Object.freeze(this._initial = [...initialLangs]);
         Object.freeze(this._additional = [...additionalLangs]);
         Object.freeze(this._traits = [...traits]);
@@ -49,15 +39,11 @@ export default class Race {
 
     get size(): Size { return this._size; }
 
-    get statMods(): StatSet { return this._stats; }
-
-    get skillMods(): SkillSet { return this._skills; }
-    
     get initialLanguages(): Language[] { return [...this._initial]; }
 
     get additionalLanguages(): Language[] { return [...this._additional]; }
 
-    get traits(): RacialTrait[] { return [...this._traits]; }
+    get traits(): RaceTraitInstance[] { return [...this._traits]; }
 
     private static _import(json: string): Race {
         const obj = JSON5.parse(json) || {};
