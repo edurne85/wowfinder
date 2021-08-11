@@ -184,5 +184,34 @@
         "honored": "honored",
         "revered": "revered",
         "exalted": "exalted"
+    },
+    "ui": {
+        "charsheet": {
+            "h": {
+                "hitpoints": {
+                    "h": "Hit Points",
+                    "curr": "Current",
+                    "total": "Total",
+                    "base": "Base",
+                    "misc": "Misc",
+                    "temp": "Temp"
+                },
+                "speed": "Speed",
+                "armor": "Defense Scores",
+                "saves": "Saving Throws",
+                "resist": "Resistances",
+                "attack": "Attack Scores",
+                "classes": "Classes and Levels"
+            },
+            "abbr": {
+                "total": "Total",
+                "mod": "Mod",
+                "base": "Base",
+                "enhance": "Enh",
+                "gear": "Gear",
+                "misc": "Misc",
+                "temp": "Temp"
+            }
+        }
     }
 }

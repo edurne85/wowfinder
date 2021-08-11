@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { screenZoom } from '../components/helpers/mixins';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -10,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    color: #E1E1E6;
+    ${screenZoom(1.6, 1225)}
   }
   .rewards-table th {
     font-weight: normal;
