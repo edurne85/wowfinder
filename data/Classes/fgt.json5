@@ -1,0 +1,20 @@
+{
+    key: 'fgt',
+    hd: 10,
+    bab: 1,
+    skl: 4,
+    fort: true,
+    wealth: 10500,
+    skills: [
+        'athletics',
+        'blacksmithing',
+        'handleAnimal',
+        'intimidate',
+        'dungeons',
+        'engineering',
+        'mining',
+        'ride',
+    ],
+    features: [
+    ],
+}
