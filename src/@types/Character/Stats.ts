@@ -9,6 +9,15 @@ enum StatKey {
     CHA = 'CHA',
 }
 
+const StatKeys: StatKey[] = [
+    StatKey.STR,
+    StatKey.DEX,
+    StatKey.CON,
+    StatKey.INT,
+    StatKey.WIS,
+    StatKey.CHA,
+];
+
 enum StatGroup {
     physical = 'physical',
     mental = 'mental',
@@ -65,12 +74,12 @@ type StatBlock = {
     temp: StatSet,
 };
 export default class Stats {
-    private base: StatSet;
-    private racial: StatSet;
-    private enhance: StatSet;
-    private gear: StatSet;
-    private misc: StatSet;
-    private temp: StatSet;
+    private _base: StatSet;
+    private _racial: StatSet;
+    private _enhance: StatSet;
+    private _gear: StatSet;
+    private _misc: StatSet;
+    private _temp: StatSet;
 
     constructor({
         base = baseDefault,
@@ -80,16 +89,16 @@ export default class Stats {
         misc = zeroDefault,
         temp = zeroDefault,
     }: StatBlock) {
-        this.base = base;
-        this.racial = racial;
-        this.enhance = enhance;
-        this.gear = gear;
-        this.misc = misc;
-        this.temp = temp;
+        this._base = base;
+        this._racial = racial;
+        this._enhance = enhance;
+        this._gear = gear;
+        this._misc = misc;
+        this._temp = temp;
     }
 
     get totals(): StatSet {
-        return addStatSets(this.base, this.racial, this.enhance, this.gear, this.misc, this.temp);
+        return addStatSets(this._base, this._racial, this._enhance, this._gear, this._misc, this._temp);
     }
 
     get totalMods(): StatSet {
@@ -103,10 +112,23 @@ export default class Stats {
             CHA: statMod(totals.CHA),
         };
     }
+
+    get base(): StatSet { return Object.assign({}, this._base); }
+
+    get racial(): StatSet { return Object.assign({}, this._racial); }
+
+    get enhance(): StatSet { return Object.assign({}, this._enhance); }
+
+    get gear(): StatSet { return Object.assign({}, this._gear); }
+
+    get misc(): StatSet { return Object.assign({}, this._misc); }
+
+    get temp(): StatSet { return Object.assign({}, this._temp); }
 }
 
 export {
     StatKey,
+    StatKeys,
     StatGroup,
     StatPhysical,
     StatMental,

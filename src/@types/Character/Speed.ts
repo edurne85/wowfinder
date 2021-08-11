@@ -1,4 +1,4 @@
-import { convertSpeed, LengthUnit, Speed, SpeedUnit, TimeUnit } from "../Units";
+import { convertSpeed, LengthUnit, Speed, SpeedUnit, TimeUnit } from '../Units';
 
 enum FlyManeuverability {
     clumsy = 'clumsy',
@@ -80,7 +80,7 @@ class Speeds {
         return {
             speed: wrap(this._fly),
             maneuverability: this._maneuverablity,
-        }
+        };
     }
 
     get swim(): Speed { return wrap(this._swim); }
@@ -96,4 +96,4 @@ export {
     Speeds,
     FlyManeuverability,
     flyManeuverabilityBonus,
-}
+};

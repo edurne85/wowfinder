@@ -1,6 +1,6 @@
-import { converter, Scalar } from "./base";
-import { convertLength, Length, LengthUnit } from "./Length";
-import { convertTime, Time, TimeUnit } from "./Time";
+import { converter, Scalar } from './base';
+import { convertLength, Length, LengthUnit } from './Length';
+import { convertTime, Time, TimeUnit } from './Time';
 
 interface SpeedUnitBuilder {
     length: LengthUnit;
@@ -32,10 +32,10 @@ const convertSpeed: converter<SpeedUnit> = (magnitude, to) => {
             time: timeFactor.unit,
         })
     });
-}
+};
 
 export {
     SpeedUnit,
     Speed,
     convertSpeed,
-}
+};
