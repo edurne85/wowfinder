@@ -1,4 +1,4 @@
-import { converter, makeConverter, scalar } from './base';
+import { converter, makeConverter, Scalar } from './base';
 
 enum MassUnit {
     lb = 'lb',
@@ -16,7 +16,7 @@ const convertMass: converter<MassUnit> = makeConverter({
     [MassUnit.oz]: kgInLb / 16, // 16 oz = 1 lb
 });
 
-type Mass = scalar<MassUnit>;
+class Mass extends Scalar<MassUnit>{}
 
 export {
     MassUnit,

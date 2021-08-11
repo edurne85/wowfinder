@@ -1,4 +1,4 @@
-import { converter, makeConverter, scalar } from './base';
+import { converter, makeConverter, Scalar } from './base';
 
 enum LengthUnit {
     yard = 'yard',
@@ -20,7 +20,30 @@ const convertLength: converter<LengthUnit> = makeConverter({
     [LengthUnit.cm]: 1 / 100, // 100 cm = 1 m
 });
 
-type Length = scalar<LengthUnit>;
+class Length extends Scalar<LengthUnit> {
+    constructor({value, unit}: {value: number, unit: LengthUnit}) {
+        super({value, unit});
+    }
+    
+    get feetInches(): string {
+        if (this.value === 0) {
+            return '0';
+        }
+        const inFeet = convertLength(this, LengthUnit.foot);
+        const feet = Math.floor(inFeet.value);
+        const inchesOnly = convertLength(
+            new Length({
+                value: inFeet.value - feet,
+                unit: LengthUnit.foot,
+            }),
+            LengthUnit.inch,
+        );
+        const inches = Math.round(inchesOnly.value);
+        const strFeet = feet !== 0 ? `${feet}'` : '';
+        const strInches = inches !== 0 ? ` ${inches}"`: '';
+        return `${strFeet}${strInches}`;
+    }
+}
 
 export {
     LengthUnit,
