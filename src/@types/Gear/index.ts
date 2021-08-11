@@ -1,13 +1,7 @@
-import { buildShape, Shape } from './Slot';
+import Gear from './base';
+import Weapon from './Weapon';
 
-interface GearBuilder {
-    shape: string[],
-}
-
-export default class Gear {
-    private _shape: Shape;
-
-    constructor({shape}: GearBuilder) {
-        this._shape = buildShape(shape);
-    }
-}
+export {
+    Gear,
+    Weapon,
+};
