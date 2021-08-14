@@ -32,28 +32,30 @@ const HitPoints: React.FC<HitPointProps> = ({bonuses, misc, current}) => {
     const total = base + misc;
     const curr = (typeof(current) === 'undefined' ? total : current);
     return(<StyledTable id="tblHp">
-        <tr>
-            <th>{t('ui.charsheet.h.hitpoints.curr')}</th>
-            <th></th>
-            <th>{t('ui.charsheet.h.hitpoints.total')}</th>
-            <th></th>
-            <th>{t('ui.charsheet.h.hitpoints.base')}</th>
-            <th></th>
-            <th>{t('ui.charsheet.h.hitpoints.misc')}</th>
-            <th></th>
-            <th>{t('ui.charsheet.h.hitpoints.temp')}</th>
-        </tr>
-        <tr>
-            <td><input id="txtHpCurrent" defaultValue={curr} /></td>
-            <td className="separator">/</td>
-            <td><input id="txtHpTotal" defaultValue={total} /></td>
-            <td className="separator">=</td>
-            <td><input id="txtHpBase" defaultValue={base} /></td>
-            <td className="separator">+</td>
-            <td><input id="txtHpMisc" defaultValue={misc} /></td>
-            <td className="separator">+</td>
-            <td><input id="txtHpTemp" /></td>
-        </tr>
+        <tbody>
+            <tr>
+                <th>{t('ui.charsheet.h.hitpoints.curr')}</th>
+                <th></th>
+                <th>{t('ui.charsheet.h.hitpoints.total')}</th>
+                <th></th>
+                <th>{t('ui.charsheet.h.hitpoints.base')}</th>
+                <th></th>
+                <th>{t('ui.charsheet.h.hitpoints.misc')}</th>
+                <th></th>
+                <th>{t('ui.charsheet.h.hitpoints.temp')}</th>
+            </tr>
+            <tr>
+                <td><input id="txtHpCurrent" defaultValue={curr} /></td>
+                <td className="separator">/</td>
+                <td><input id="txtHpTotal" defaultValue={total} /></td>
+                <td className="separator">=</td>
+                <td><input id="txtHpBase" defaultValue={base} /></td>
+                <td className="separator">+</td>
+                <td><input id="txtHpMisc" defaultValue={misc} /></td>
+                <td className="separator">+</td>
+                <td><input id="txtHpTemp" /></td>
+            </tr>
+        </tbody>
     </StyledTable>);
 };
 
