@@ -36,12 +36,13 @@ interface SpeedBuilder {
     swim?: SpeedValue;
     burrow?: SpeedValue;
     climb?: SpeedValue;
+    misc?: SpeedValue;
     encumberance?: boolean;
     maneuverability?: FlyManeuverability;
 }
 
 const asFeet: (value: SpeedValue) => number = (value) =>
-    value as number || convertSpeed(value as Speed, defaultSpeedUnit).value;
+    value === 0 ? 0 : value as number || convertSpeed(value as Speed, defaultSpeedUnit).value;
 
 const encumbered: (value: number) => number = (value) => value - (value >= 30 ? 10 : 5);
 
@@ -53,6 +54,7 @@ class Speeds {
     private _swim: number;
     private _burrow: number;
     private _climb: number;
+    private _misc: number;
     private _encumberance: boolean;
     private _maneuverablity: FlyManeuverability;
 
@@ -62,6 +64,7 @@ class Speeds {
         swim = 0,
         burrow = 0,
         climb = 0,
+        misc = 0,
         encumberance = true,
         maneuverability = FlyManeuverability.average,
     }: SpeedBuilder) {
@@ -70,6 +73,7 @@ class Speeds {
         this._swim = asFeet(swim);
         this._burrow = asFeet(burrow);
         this._climb = asFeet(climb);
+        this._misc = asFeet(misc);
         this._encumberance = encumberance;
         this._maneuverablity = maneuverability;
     }
@@ -88,6 +92,8 @@ class Speeds {
     get burrow(): Speed { return wrap(this._burrow); }
 
     get climb(): Speed { return wrap(this._climb); }
+
+    get misc(): Speed { return wrap(this._misc); }
 
     get encumbered(): Speed  { return wrap(this._encumberance ? encumbered(this._base) : this._base); }
 }

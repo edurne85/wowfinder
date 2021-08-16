@@ -3,6 +3,7 @@ import Stats, { StatSet, zeroDefault } from './Stats';
 import CharPersonalDetails, { personalDefaults } from './Personal';
 import Race from './Race';
 import Class, { ClassBonuses, ClassLevels } from './Class';
+import { Speeds } from './Speeds';
 
 interface CharacterBuilder {
     key: string,
@@ -76,7 +77,7 @@ export default class Character {
 
     get stats(): Stats { return this._stats; }
 
-    // get race(): Race { return this._race; }
+    get race(): Race | null { return this._race || null; }
 
     get classes(): ClassLevels {
         // defensive copy:
@@ -84,6 +85,13 @@ export default class Character {
     }
 
     get miscHP(): number { return this._miscHP; }
+
+    get speed(): Speeds {
+        // TODO Implement
+        return new Speeds({
+            base: 30,
+        });
+    }
 
     get classBonuses(): ClassBonuses {
         return Class.multiclass(this._classes, this._stats.totals);
