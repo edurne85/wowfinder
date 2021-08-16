@@ -13,6 +13,9 @@
         "src": "Sorcerer",
         "wzd": "Wizard"
     },
+    "races": {
+        "human": "Human (SW)"
+    },
     "classFeatures": {
         "rage": "Rage",
         "ragePower": "Rage power",
