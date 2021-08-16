@@ -4,6 +4,8 @@ import CharPersonalDetails, { personalDefaults } from './Personal';
 import Race from './Race';
 import Class, { ClassBonuses, ClassLevels } from './Class';
 import { Speeds } from './Speeds';
+import { ArmorValues, FullArmorValues } from './ArmorValues';
+import Size from './Size';
 
 interface CharacterBuilder {
     key: string,
@@ -13,6 +15,7 @@ interface CharacterBuilder {
     active?: boolean,
     miscHP?: number,
     baseStats: StatSet,
+    armor?: ArmorValues,
 }
 
 type Characters = {[key:string]: Character};
@@ -28,6 +31,7 @@ export default class Character {
     private _race?: Race; // TODO Make non-optional once we have base definitions for all races
     private _classes: ClassLevels;
     private _miscHP: number;
+    private _armor: ArmorValues;
 
     constructor({
         key,
@@ -37,6 +41,7 @@ export default class Character {
         race,
         classes = [],
         miscHP = 0,
+        armor = new ArmorValues({}),
     }: CharacterBuilder) {
         this.key = key;
         this._personal = Object.assign({}, personalDefaults, personal);
@@ -65,6 +70,7 @@ export default class Character {
             temp: zeroDefault,
         });
         this._miscHP = miscHP;
+        this._armor = new ArmorValues(armor);
     }
 
     get fullName(): string { return this._personal.fullName; }
@@ -90,6 +96,14 @@ export default class Character {
         // TODO Implement
         return new Speeds({
             base: 30,
+        });
+    }
+
+    get armor(): FullArmorValues {
+        return FullArmorValues.fromBaseValues({
+            base: this._armor,
+            stats: this._stats,
+            size: this._race?.size || Size.medium,
         });
     }
 
