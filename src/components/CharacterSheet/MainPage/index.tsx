@@ -19,13 +19,13 @@ const LogoImg = styled.img`
 
 const Logo: React.FC<{src: string}> = ({src}) => (<LogoImg src={src} width={481} height={178} alt='' />);
 
-export function MainPage({char}: {char: Character}) {
+export function MainPage({char, xp}: {char: Character, xp: number}) {
     const { t } = useTranslation();
     const bonuses = char.classBonuses;
     return (<Page key="Main" id="Main">
         <div />
         {/* <Logo src='static/charsheet-logo.png' /> */ }
-        <PersonalBlock char={char} />
+        <PersonalBlock char={char} xp={xp} />
         <Columns columns={[
             {
                 key: 'MainLeft',
