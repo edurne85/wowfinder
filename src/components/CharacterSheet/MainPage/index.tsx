@@ -7,6 +7,7 @@ import Columns from '../../helpers/Columns';
 import { StatBlock } from './StatBlock';
 import Header from '../../helpers/Header';
 import { HitPoints } from "./HitPoints";
+import { Speed } from "./Speed";
 
 const LogoImg = styled.img`
     display: inline-block;
@@ -33,9 +34,8 @@ export function MainPage({char}: {char: Character}) {
                     <Header>{t('ui.charsheet.h.hitpoints.h')}</Header>
                     { /* TODO: extra (misc) HP */}
                     <HitPoints bonuses={bonuses} misc={char.miscHP} />
-                    {/* TODO HP */}
-                    <Header>{t('ui.charsheet.h.speed')}</Header>
-                    <div></div>
+                    <Header>{t('ui.charsheet.h.speed.h')}</Header>
+                    <Speed speeds={char.speed} />
                     {/* TODO Speed */}
                     <Header>{t('ui.charsheet.h.armor')}</Header>
                     <div></div>

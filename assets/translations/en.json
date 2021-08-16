@@ -196,7 +196,17 @@
                     "misc": "Misc",
                     "temp": "Temp"
                 },
-                "speed": "Speed",
+                "speed": {
+                    "h": "Speed",
+                    "base": "Base",
+                    "load": "Enc.",
+                    "fly": "Fly",
+                    "maneuverability": "Maneuverability",
+                    "swim": "Swim",
+                    "climb": "Climb",
+                    "burrow": "Burrow",
+                    "misc": "Misc"
+                },
                 "armor": "Defense Scores",
                 "saves": "Saving Throws",
                 "resist": "Resistances",
