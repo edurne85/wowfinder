@@ -25,12 +25,12 @@ export const GlobalStyle = createGlobalStyle`
     font-family: Courier, mono;
   }
   .rewards-table tbody tr:hover {
-    background-color: #324;
+    background-color: #ff9;
   }
   .rewards-table tbody tr.inactive {
     color: #A8A8AB;
   }
   .rewards-table tbody tr.inactive:hover {
-    background-color: #213;
+    background-color: #ccc;
   }
 `;
