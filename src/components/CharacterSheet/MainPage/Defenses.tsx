@@ -31,7 +31,7 @@ const StyledTable = styled.table`
 `;
 
 function TdInput({id, value}: {id: string, value: number|string}) {
-    return (<td><input id={id} readOnly={true} value={value} /></td>);
+    return (<td><input id={id} readOnly={true} value={value || ''} /></td>);
 }
 
 function ThInput({id, value}: {id: string, value: number|string}) {

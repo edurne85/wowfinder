@@ -63,12 +63,21 @@ function InputCell({id, speed, targetUnit}: {id: string, speed: SpeedValue, targ
         <span className="suffix">{targetUnit.suffix}</span>
     </td>);
 }
-function SpeedCells({name, speed}: {name: string, speed: SpeedValue}) {
+function EmptySpeed() {
     return (<>
-        <InputCell id={`txtSpeed${name}Feet`} speed={speed} targetUnit={targetUnits.feet} />
-        <InputCell id={`txtSpeed${name}Meters`} speed={speed} targetUnit={targetUnits.meters} />
-        <InputCell id={`txtSpeed${name}Squares`} speed={speed} targetUnit={targetUnits.squares} />
+        <td></td>
+        <td></td>
+        <td></td>
     </>);
+}
+function SpeedCells({name, speed}: {name: string, speed: SpeedValue}) {
+    return speed.value === 0
+        ? <EmptySpeed />
+        :(<>
+            <InputCell id={`txtSpeed${name}Feet`} speed={speed} targetUnit={targetUnits.feet} />
+            <InputCell id={`txtSpeed${name}Meters`} speed={speed} targetUnit={targetUnits.meters} />
+            <InputCell id={`txtSpeed${name}Squares`} speed={speed} targetUnit={targetUnits.squares} />
+        </>);
 }
 
 export function Speed ({speeds}: {speeds: Speeds}) {
