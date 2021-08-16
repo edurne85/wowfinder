@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import Race from "../../../../@types/Character/Race";
 import { CharXpProps } from "../../base";
+import PersonalEntryNumber, { PersonalEntryBigNumber } from "./PersonalEntryNumber";
 import { PersonalEntryText, PersonalEntryTextCentered } from "./PersonalEntryText";
 
 const Personal = styled.div`
@@ -44,21 +45,21 @@ const PersonalBlock: React.FC<CharXpProps> = ({char, xp}) => {
                 id='Player'
                 label={label('player')}
                 width={45} />
-            <PersonalEntryText
+            <PersonalEntryNumber
                 id='TotalLevel'
                 label={label('tLevel')}
                 width={12}
-                value={tlevel.toString()} />
-            <PersonalEntryText
+                value={tlevel} />
+            <PersonalEntryBigNumber
                 id='Experience'
                 label={label('xp')}
                 width={17}
-                value={xp.toString()} />
-            <PersonalEntryText
+                value={xp} />
+            <PersonalEntryBigNumber
                 id='NextLevel'
                 label={label('nLevel')}
                 width={17}
-                value={next.toString()} />
+                value={next} />
             <PersonalEntryText
                 id='Faith'
                 label={label('faith')}
