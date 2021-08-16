@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { CharProps } from "../../base";
 import { PersonalEntryText, PersonalEntryTextCentered } from "./PersonalEntryText";
@@ -12,80 +13,82 @@ const Personal = styled.div`
 
 const PersonalBlock: React.FC<CharProps> = ({char}) => {
     // TODO: insert values as they become available
+    const { t } = useTranslation();
+    const label = (key: string): string => t(`ui.charsheet.h.personal.${key}`);
     return (
         <Personal>
             <PersonalEntryText
                 id='CharacterName'
-                label='Nombre del personaje'
+                label={label('charName')}
                 width={45}
                 value={char.fullName}/>
             <PersonalEntryText
                 id='Alignment'
-                label='Alineamiento'
+                label={label('align')}
                 width={22}
                 value={char.personal.align} />
             <PersonalEntryText
                 id='Player'
-                label='Jugador'
+                label={label('player')}
                 width={45} />
             <PersonalEntryText
                 id='TotalLevel'
-                label='Nivel total'
+                label={label('tLevel')}
                 width={12} />
             <PersonalEntryText
                 id='Experience'
-                label='Experiencia'
+                label={label('xp')}
                 width={17} />
             <PersonalEntryText
                 id='NextLevel'
-                label='Siguiente nivel'
+                label={label('nLevel')}
                 width={17} />
             <PersonalEntryText
                 id='Faith'
-                label='Fe / Deidad'
+                label={label('faith')}
                 width={30}
                 value={char.personal.faith} />
             <PersonalEntryText
                 id='Origin'
-                label='Origen'
+                label={label('origin')}
                 width={30}
                 value={char.personal.origin} />
             <PersonalEntryText
                 id='Race'
-                label='Raza'
+                label={label('race')}
                 width={22} />
             <PersonalEntryText
                 id='Size'
-                label='Tamaño'
+                label={label('size')}
                 width={16} />
             <PersonalEntryText
                 id='Gender'
-                label='Género'
+                label={label('gender')}
                 width={10}
                 value={char.personal.gender} />
             <PersonalEntryTextCentered
                 id='Age'
-                label='Edad'
+                label={label('age')}
                 width={8}
                 value={`${char.personal.age.asFullYears}`} />
             <PersonalEntryTextCentered
                 id='Height'
-                label='Altura'
+                label={label('height')}
                 width={11}
                 value={`${char.personal.height.feetInches}`} />
             <PersonalEntryTextCentered
                 id='Weight'
-                label='Peso'
+                label={label('weight')}
                 width={11}
                 value={`${char.personal.weight}`} />
             <PersonalEntryText
                 id='Hair'
-                label='Pelo'
+                label={label('hair')}
                 width={10}
                 value={char.personal.hair} />
             <PersonalEntryText
                 id='Eyes'
-                label='Ojos'
+                label={label('eyes')}
                 width={10}
                 value={char.personal.eyes} />
         </Personal>
