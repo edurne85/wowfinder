@@ -17,7 +17,19 @@ interface ArmorValuesBuilder {
     tempE?: number;
 }
 
-type FullArmorValuesBuilder = ArmorValuesBuilder & { dex?: number, size?: number };
+type FullArmorValuesBuilder = ArmorValuesBuilder & {
+    str?: number,
+    dex?: number,
+    bab?: number,
+    size?: number,
+};
+
+type FullFromBaseBuilder = {
+    base: ArmorValues,
+    stats: Stats,
+    bab: number,
+    size: Size,
+};
 
 class ArmorValues {
     private _armor: number;
@@ -74,15 +86,21 @@ class ArmorValues {
 
     get miscE(): number { return this._miscE; }
 
+    get miscAll(): number { return this.misc + this.miscP + this.miscE; }
+
     get temp(): number { return this._temp; }
 
     get tempP(): number { return this._tempP; }
 
     get tempE(): number { return this._tempE; }
+
+    get tempAll(): number { return this.temp + this.tempP + this.tempE; }
 }
 
 class FullArmorValues extends ArmorValues {
+    private _str: number;
     private _dex: number;
+    private _bab: number;
     private _size: number;
 
     constructor({
@@ -97,15 +115,19 @@ class FullArmorValues extends ArmorValues {
         temp = 0,
         tempP = 0,
         tempE = 0,
+        str = 0,
         dex = 0,
+        bab = 0,
         size = 0,
     }: FullArmorValuesBuilder) {
         super({armor, shield, dodge, nat, defl, misc, miscP, miscE, temp, tempP, tempE});
+        this._str = str;
         this._dex = dex;
+        this._bab = bab;
         this._size = size;
     }
 
-    static fromBaseValues({base, stats, size}: {base: ArmorValues, stats: Stats, size: Size}): FullArmorValues {
+    static fromBaseValues({base, stats, bab, size}: FullFromBaseBuilder): FullArmorValues {
         const {
             armor,
             shield,
@@ -119,6 +141,7 @@ class FullArmorValues extends ArmorValues {
             tempP,
             tempE,
         } = base;
+        const mods = stats.totalMods;
         return new FullArmorValues({
             armor,
             shield,
@@ -131,12 +154,18 @@ class FullArmorValues extends ArmorValues {
             temp,
             tempP,
             tempE,
-            dex: stats.totalMods.DEX,
+            str: mods.STR,
+            dex: mods.DEX,
+            bab,
             size: sizeCombatMod(size),
         });
     }
 
+    get str(): number { return this._str; }
+
     get dex(): number { return this._dex; }
+
+    get bab(): number { return this._bab; }
 
     get size(): number { return this._size; }
 
@@ -181,6 +210,18 @@ class FullArmorValues extends ArmorValues {
             this.dodge + this.defl + this.dex + this.size +
             this.misc + this.miscP + this.miscE +
             this.temp + this.tempP + this.tempE;
+    }
+
+    get cmd(): number {
+        return 10 + this.bab + this.str + this.dex +
+            this.size + this.dodge + this.defl +
+            this.misc + this.miscE +
+            this.temp + this.tempE;
+    }
+
+    get cmdFlatFooted(): number { // TODO Review!
+        return 10 + this.bab + this.str + this.size +
+            this.misc + this.temp;
     }
 }
 

@@ -207,11 +207,35 @@
                     "burrow": "Burrow",
                     "misc": "Misc"
                 },
-                "armor": "Defense Scores",
-                "saves": "Saving Throws",
-                "resist": "Resistances",
-                "attack": "Attack Scores",
-                "classes": "Classes and Levels"
+                "armor": {
+                    "h":  "Defense Scores",
+                    "total": "Total",
+                    "armor": "Armor",
+                    "shield": "Shield",
+                    "size": "Size",
+                    "dodge": "Dodge",
+                    "nat": "Nat",
+                    "defl": "Defl",
+                    "misc": "Misc",
+                    "temp": "Temp",
+                    "AC": "AC",
+                    "touch": "T",
+                    "flatf": "FF",
+                    "cmd": "CMD"
+                },
+                "saves": {
+                    "h": "Saving Throws"
+                },
+                "resist": {
+                    "h": "Resistances"
+                },
+                "attack": {
+                    "h":  "Attack Scores",
+                    "bab": "BaB"
+                },
+                "classes": {
+                    "h": "Classes and Levels"
+                }
             },
             "abbr": {
                 "total": "Total",

@@ -103,11 +103,13 @@ export default class Character {
         return FullArmorValues.fromBaseValues({
             base: this._armor,
             stats: this._stats,
+            bab: this.classBonuses.bab,
             size: this._race?.size || Size.medium,
         });
     }
 
     get classBonuses(): ClassBonuses {
+        // TODO Implement caching!
         return Class.multiclass(this._classes, this._stats.totals);
     }
 

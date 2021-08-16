@@ -8,6 +8,7 @@ import { StatBlock } from './StatBlock';
 import Header from '../../helpers/Header';
 import { HitPoints } from "./HitPoints";
 import { Speed } from "./Speed";
+import { Defenses } from "./Defenses";
 
 const LogoImg = styled.img`
     display: inline-block;
@@ -36,17 +37,15 @@ export function MainPage({char}: {char: Character}) {
                     <HitPoints bonuses={bonuses} misc={char.miscHP} />
                     <Header>{t('ui.charsheet.h.speed.h')}</Header>
                     <Speed speeds={char.speed} />
-                    {/* TODO Speed */}
-                    <Header>{t('ui.charsheet.h.armor')}</Header>
-                    <div></div>
-                    {/* TODO Armor */}
-                    <Header>{t('ui.charsheet.h.saves')}</Header>
+                    <Header>{t('ui.charsheet.h.armor.h')}</Header>
+                    <Defenses char={char} />
+                    <Header>{t('ui.charsheet.h.saves.h')}</Header>
                     <div></div>
                     {/* TODO Saves */}
-                    <Header>{t('ui.charsheet.h.resist')}</Header>
+                    <Header>{t('ui.charsheet.h.resist.h')}</Header>
                     <div></div>
                     {/* TODO Resist */}
-                    <Header>{t('ui.charsheet.h.attack')}</Header>
+                    <Header>{t('ui.charsheet.h.attack.h')}</Header>
                     <div></div>
                     {/* TODO Attack */}
                 </>),
@@ -55,7 +54,7 @@ export function MainPage({char}: {char: Character}) {
                 key: 'MainRight',
                 id: 'MainRight',
                 children: (<>
-                    <Header>{t('ui.charsheet.h.classes')}</Header>
+                    <Header>{t('ui.charsheet.h.classes.h')}</Header>
                     <div></div>
                     {/* TODO Classes */}
                 </>),
