@@ -20,7 +20,7 @@ interface RaceBuilder {
 type Races = {[key:string]: Race};
 
 export default class Race {
-    private key: string;
+    private _key: string;
     private _size: Size;
     private _stats: StatSet;
     private _skills: SkillSet;
@@ -39,7 +39,7 @@ export default class Race {
         initialLangs,
         additionalLangs,
     }: RaceBuilder) {
-        this.key = key;
+        this._key = key;
         this._size = size;
         Object.freeze(this._stats = statMods);
         Object.freeze(this._skills = skillMods);
@@ -49,6 +49,8 @@ export default class Race {
         Object.freeze(this._additional = [...additionalLangs]);
         Object.freeze(this);
     }
+
+    get key(): string { return this._key; }
 
     get size(): Size { return this._size; }
 
