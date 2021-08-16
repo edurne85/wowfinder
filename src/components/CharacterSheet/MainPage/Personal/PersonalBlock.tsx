@@ -1,6 +1,8 @@
+import { TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { CharProps } from "../../base";
+import Race from "../../../../@types/Character/Race";
+import { CharXpProps } from "../../base";
 import { PersonalEntryText, PersonalEntryTextCentered } from "./PersonalEntryText";
 
 const Personal = styled.div`
@@ -11,10 +13,21 @@ const Personal = styled.div`
     margin: 10mm 0;
 `;
 
-const PersonalBlock: React.FC<CharProps> = ({char}) => {
+function raceName(race: Race | null, t: TFunction) {
+    if (!race)
+        return '';
+    const baseName = race.key.split('.', 2)[0];
+    return t(`races.${baseName}`);
+}
+
+const PersonalBlock: React.FC<CharXpProps> = ({char, xp}) => {
     // TODO: insert values as they become available
     const { t } = useTranslation();
     const label = (key: string): string => t(`ui.charsheet.h.personal.${key}`);
+    const tlevel = Math.floor(
+        (1 + Math.sqrt(1 + 4*xp / 1000)) / 2
+    );
+    const next = tlevel * (tlevel + 1) * 1000;
     return (
         <Personal>
             <PersonalEntryText
@@ -34,15 +47,18 @@ const PersonalBlock: React.FC<CharProps> = ({char}) => {
             <PersonalEntryText
                 id='TotalLevel'
                 label={label('tLevel')}
-                width={12} />
+                width={12}
+                value={tlevel.toString()} />
             <PersonalEntryText
                 id='Experience'
                 label={label('xp')}
-                width={17} />
+                width={17}
+                value={xp.toString()} />
             <PersonalEntryText
                 id='NextLevel'
                 label={label('nLevel')}
-                width={17} />
+                width={17}
+                value={next.toString()} />
             <PersonalEntryText
                 id='Faith'
                 label={label('faith')}
@@ -56,7 +72,8 @@ const PersonalBlock: React.FC<CharProps> = ({char}) => {
             <PersonalEntryText
                 id='Race'
                 label={label('race')}
-                width={22} />
+                width={22}
+                value={raceName(char.race, t)} />
             <PersonalEntryText
                 id='Size'
                 label={label('size')}
