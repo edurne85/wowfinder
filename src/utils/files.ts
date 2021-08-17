@@ -47,7 +47,7 @@ export default function registerListeners(): void {
         prepareDir(target);
     });
     ipcMain.on('files:dump', (event, rpath: string, data: string) => {
-        event.returnValue =  dump(rpath, data);
+        event.returnValue = dump(rpath, data);
     });
     ipcMain.on('files:slurp', (event, fpath: string) => {
         event.returnValue = slurp(fpath);

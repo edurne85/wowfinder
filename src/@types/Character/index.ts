@@ -146,7 +146,7 @@ export default class Character {
 
     private static _imported: Characters | null = null;
 
-    static import(dir = 'data/Characters'): Characters {
+    static import(dir = window.Main.asset('Characters')): Characters {
         return (this._imported ||= this._importForced(dir));
     }
 }

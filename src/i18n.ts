@@ -3,7 +3,7 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 const resources: Resource = {};
-const translationsPath = 'assets/translations';
+const translationsPath = window.Main.asset('translations');
 
 function baseName(path: string): string {
     path = path.replace(/\\/g, '/');

@@ -94,7 +94,7 @@ export default class Faction {
 
     private static _imported: Factions | null = null;
 
-    static import(dir = 'data/Factions'): Factions {
+    static import(dir = window.Main.asset('Factions')): Factions {
         return (this._imported ||= this._importForced(dir));
     }
 }

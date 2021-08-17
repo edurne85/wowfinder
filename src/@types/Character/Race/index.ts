@@ -89,7 +89,7 @@ export default class Race {
 
     private static _imported: Races | null = null;
 
-    static import(dir = 'data/Races'): Races {
+    static import(dir = window.Main.asset('Races')): Races {
         return (this._imported ||= this._importForced(dir));
     }
 }

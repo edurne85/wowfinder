@@ -13,6 +13,8 @@ export const api = {
     ipcRenderer.send('message', message);
   },
 
+  asset: (asset: string): string => ipcRenderer.sendSync('asset', asset),
+
   /**
    * Provide an easier way to listen to events
    */

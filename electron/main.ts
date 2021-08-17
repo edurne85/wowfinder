@@ -1,15 +1,16 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import registerFilesListeners from '../src/utils/files';
+import * as path from 'path';
 
 let mainWindow: BrowserWindow | null;
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
-// const assetsPath =
-//   process.env.NODE_ENV === 'production'
-//     ? process.resourcesPath
-//     : app.getAppPath()
+const assetsPath =
+  process.env.NODE_ENV === 'production'
+    ? process.resourcesPath
+    : app.getAppPath();
 
 function createWindow (): void {
   mainWindow = new BrowserWindow({
@@ -34,6 +35,9 @@ async function registerListeners (): Promise<void> {
    */
   ipcMain.on('message', (_, message) => {
     console.log(message);
+  });
+  ipcMain.on('asset', (event, asset: string) => {
+    event.returnValue = path.join(assetsPath, 'assets', asset);
   });
   registerFilesListeners();
 }

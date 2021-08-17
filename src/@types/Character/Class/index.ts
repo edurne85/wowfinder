@@ -188,7 +188,7 @@ export default class Class {
 
     private static _imported: Classes | null = null;
 
-    static import(dir = 'data/Classes'): Classes {
+    static import(dir = window.Main.asset('Classes')): Classes {
         return (this._imported ||= this._importForced(dir));
     }
 }

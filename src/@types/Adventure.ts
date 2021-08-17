@@ -61,7 +61,7 @@ export default class Adventure {
 
     private static _imported: Adventures | null = null;
 
-    static import(dir = 'data/Adventures'): Adventures {
+    static import(dir = window.Main.asset('Adventures')): Adventures {
         return (this._imported ||= this._importForced(dir));
     }
 
