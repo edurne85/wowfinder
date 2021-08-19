@@ -9,12 +9,16 @@ import Header from '../../helpers/Header';
 import { HitPoints } from "./HitPoints";
 import { Speed } from "./Speed";
 import { Defenses } from "./Defenses";
+import { Saves } from "./Saves";
+import { Resistances } from "./Resistances";
 
 const LogoImg = styled.img`
     display: inline-block;
     flex: auto;
     height: auto;
     width: 65mm;
+    aspect-ratio: auto 481 / 178;
+    vertical-align: middle;
 `;
 
 const logoSrc = window.Main.asset('charsheet-logo.png');
@@ -24,7 +28,7 @@ export function MainPage({char, xp}: {char: Character, xp: number}) {
     const bonuses = char.classBonuses;
     return (<Page key="Main" id="Main">
         <div />
-        <LogoImg src={logoSrc} width={481} height={178} alt='' />
+        <LogoImg src={logoSrc} width={245} height={90} alt='' />
         <PersonalBlock char={char} xp={xp} />
         <Columns columns={[
             {
@@ -32,20 +36,18 @@ export function MainPage({char, xp}: {char: Character, xp: number}) {
                 id: 'MainLeft',
                 children: (<>
                     <StatBlock stats={char.stats} />
-                    <Header>{t('ui.charsheet.h.hitpoints.h')}</Header>
+                    <Header>{t('ui.hitpoints.h')}</Header>
                     { /* TODO: extra (misc) HP */}
                     <HitPoints bonuses={bonuses} misc={char.miscHP} />
-                    <Header>{t('ui.charsheet.h.speed.h')}</Header>
+                    <Header>{t('ui.speed.h')}</Header>
                     <Speed speeds={char.speed} />
-                    <Header>{t('ui.charsheet.h.armor.h')}</Header>
+                    <Header>{t('ui.armor.h')}</Header>
                     <Defenses char={char} />
-                    <Header>{t('ui.charsheet.h.saves.h')}</Header>
-                    <div></div>
-                    {/* TODO Saves */}
-                    <Header>{t('ui.charsheet.h.resist.h')}</Header>
-                    <div></div>
-                    {/* TODO Resist */}
-                    <Header>{t('ui.charsheet.h.attack.h')}</Header>
+                    <Header>{t('ui.saves.h')}</Header>
+                    <Saves char={char} />
+                    <Header>{t('ui.resist.h')}</Header>
+                    <Resistances char={char} />
+                    <Header>{t('ui.attack.h')}</Header>
                     <div></div>
                     {/* TODO Attack */}
                 </>),
@@ -54,7 +56,7 @@ export function MainPage({char, xp}: {char: Character, xp: number}) {
                 key: 'MainRight',
                 id: 'MainRight',
                 children: (<>
-                    <Header>{t('ui.charsheet.h.classes.h')}</Header>
+                    <Header>{t('ui.classes.h')}</Header>
                     <div></div>
                     {/* TODO Classes */}
                 </>),

@@ -189,84 +189,89 @@
         "exalted": "exalted"
     },
     "ui": {
-        "charsheet": {
-            "h": {
-                "personal": {
-                    "charName": "Character name",
-                    "align": "Alignment",
-                    "player": "Player",
-                    "tLevel": "Total Level",
-                    "xp": "Experience",
-                    "nLevel": "Next Level",
-                    "faith": "Faith / Deity",
-                    "origin": "Origin / Nationality",
-                    "race": "Race",
-                    "size": "Size",
-                    "gender": "Gender",
-                    "age": "Age",
-                    "height": "Height",
-                    "weight": "Weight",
-                    "hair": "Hair",
-                    "eyes": "Eyes"
-                },
-                "hitpoints": {
-                    "h": "Hit Points",
-                    "curr": "Current",
-                    "total": "Total",
-                    "base": "Base",
-                    "misc": "Misc",
-                    "temp": "Temp"
-                },
-                "speed": {
-                    "h": "Speed",
-                    "base": "Base",
-                    "load": "Enc.",
-                    "fly": "Fly",
-                    "maneuverability": "Maneuverability",
-                    "swim": "Swim",
-                    "climb": "Climb",
-                    "burrow": "Burrow",
-                    "misc": "Misc"
-                },
-                "armor": {
-                    "h":  "Defense Scores",
-                    "total": "Total",
-                    "armor": "Armor",
-                    "shield": "Shield",
-                    "size": "Size",
-                    "dodge": "Dodge",
-                    "nat": "Nat",
-                    "defl": "Defl",
-                    "misc": "Misc",
-                    "temp": "Temp",
-                    "AC": "AC",
-                    "touch": "T",
-                    "flatf": "FF",
-                    "cmd": "CMD"
-                },
-                "saves": {
-                    "h": "Saving Throws"
-                },
-                "resist": {
-                    "h": "Resistances"
-                },
-                "attack": {
-                    "h":  "Attack Scores",
-                    "bab": "BaB"
-                },
-                "classes": {
-                    "h": "Classes and Levels"
-                }
-            },
+        "common": {
+            "total": "Total",
+            "mod": "Mod",
+            "stat": "Stat",
+            "base": "Base",
+            "enhancement": "Enh",
+            "gear": "Gear",
+            "misc": "Misc",
+            "temp": "Temp"
+        },
+        "personal": {
+            "charName": "Character name",
+            "align": "Alignment",
+            "player": "Player",
+            "tLevel": "Total Level",
+            "xp": "Experience",
+            "nLevel": "Next Level",
+            "faith": "Faith / Deity",
+            "origin": "Origin / Nationality",
+            "race": "Race",
+            "size": "Size",
+            "gender": "Gender",
+            "age": "Age",
+            "height": "Height",
+            "weight": "Weight",
+            "hair": "Hair",
+            "eyes": "Eyes"
+        },
+        "hitpoints": {
+            "h": "Hit Points",
+            "curr": "Current",
+            "total": "Total",
+            "base": "Base",
+            "misc": "Misc",
+            "temp": "Temp"
+        },
+        "speed": {
+            "h": "Speed",
+            "base": "Base",
+            "load": "Enc.",
+            "fly": "Fly",
+            "maneuverability": "Maneuverability",
+            "swim": "Swim",
+            "climb": "Climb",
+            "burrow": "Burrow",
+            "misc": "Misc"
+        },
+        "armor": {
+            "h":  "Defense Scores",
+            "total": "Total",
+            "armor": "Armor",
+            "shield": "Shield",
+            "size": "Size",
+            "dodge": "Dodge",
+            "nat": "Nat",
+            "defl": "Defl",
+            "misc": "Misc",
+            "temp": "Temp",
+            "AC": "AC",
+            "touch": "T",
+            "flatf": "FF",
+            "cmd": "CMD"
+        },
+        "saves": {
+            "h": "Saving Throws",
             "abbr": {
-                "total": "Total",
-                "mod": "Mod",
-                "base": "Base",
-                "enhance": "Enh",
-                "gear": "Gear",
-                "misc": "Misc",
-                "temp": "Temp"
-            }
+                "fort": "Fort",
+                "refl": "Refl",
+                "will": "Will"
+            },
+            "fort": "Fortitude",
+            "refl": "Reflexes",
+            "will": "Will"
+        },
+        "resist": {
+            "h": "Resistances"
+        },
+        "attack": {
+            "h":  "Attack Scores",
+            "bab": "BaB"
+        },
+        "classes": {
+            "h": "Classes and Levels"
         }
     }
 }

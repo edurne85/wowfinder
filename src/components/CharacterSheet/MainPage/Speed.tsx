@@ -85,27 +85,27 @@ export function Speed ({speeds}: {speeds: Speeds}) {
     return (<StyledTable>
         <tbody>
             <tr>
-                <th>{t('ui.charsheet.h.speed.base')}</th>
+                <th>{t('ui.speed.base')}</th>
                 <SpeedCells name="Base" speed={speeds.base} />
-                <th>{t('ui.charsheet.h.speed.load')}</th>
+                <th>{t('ui.speed.load')}</th>
                 <SpeedCells name="Load" speed={speeds.encumbered} />
             </tr>
             <tr>
-                <th>{t('ui.charsheet.h.speed.fly')}</th>
+                <th>{t('ui.speed.fly')}</th>
                 <SpeedCells name="Fly" speed={speeds.fly.speed} />
-                <td colSpan={2}>{t('ui.charsheet.h.speed.maneuverability')}</td>
+                <td colSpan={2}>{t('ui.speed.maneuverability')}</td>
                 <td colSpan={2}><select id="mnuFlyManeuverability">{/* TODO */}</select></td>
             </tr>
             <tr>
-                <th>{t('ui.charsheet.h.speed.swim')}</th>
+                <th>{t('ui.speed.swim')}</th>
                 <SpeedCells name="Swim" speed={speeds.swim} />
-                <th>{t('ui.charsheet.h.speed.climb')}</th>
+                <th>{t('ui.speed.climb')}</th>
                 <SpeedCells name="Climb" speed={speeds.climb} />
             </tr>
             <tr>
-                <th>{t('ui.charsheet.h.speed.burrow')}</th>
+                <th>{t('ui.speed.burrow')}</th>
                 <SpeedCells name="Burrow" speed={speeds.burrow} />
-                <th>{t('ui.charsheet.h.speed.misc')}</th>
+                <th>{t('ui.speed.misc')}</th>
                 <SpeedCells name="Misc" speed={speeds.misc} />
             </tr>
         </tbody>

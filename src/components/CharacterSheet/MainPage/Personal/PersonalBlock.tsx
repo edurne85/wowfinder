@@ -11,7 +11,7 @@ const Personal = styled.div`
     flex: auto;
     height: auto;
     width: 123mm;
-    margin: 10mm 0;
+    margin: 5mm 0;
 `;
 
 function raceName(race: Race | null, t: TFunction) {
@@ -24,7 +24,7 @@ function raceName(race: Race | null, t: TFunction) {
 const PersonalBlock: React.FC<CharXpProps> = ({char, xp}) => {
     // TODO: insert values as they become available
     const { t } = useTranslation();
-    const label = (key: string): string => t(`ui.charsheet.h.personal.${key}`);
+    const label = (key: string): string => t(`ui.personal.${key}`);
     const tlevel = Math.floor(
         (1 + Math.sqrt(1 + 4*xp / 1000)) / 2
     );

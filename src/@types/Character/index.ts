@@ -6,6 +6,8 @@ import Class, { ClassBonuses, ClassLevels } from './Class';
 import { Speeds } from './Speeds';
 import { ArmorValues, FullArmorValues } from './ArmorValues';
 import Size from './Size';
+import { Saves } from './Saves';
+import { Resistances } from './Resistances';
 
 interface CharacterBuilder {
     key: string,
@@ -16,6 +18,8 @@ interface CharacterBuilder {
     miscHP?: number,
     baseStats: StatSet,
     armor?: ArmorValues,
+    // saves?: Saves,
+    resistances?: Resistances,
 }
 
 type Characters = {[key:string]: Character};
@@ -32,6 +36,9 @@ export default class Character {
     private _classes: ClassLevels;
     private _miscHP: number;
     private _armor: ArmorValues;
+    private _resistances: Resistances;
+
+    private _cachedBonuses: ClassBonuses | null = null;
 
     constructor({
         key,
@@ -42,6 +49,7 @@ export default class Character {
         classes = [],
         miscHP = 0,
         armor = new ArmorValues({}),
+        resistances,
     }: CharacterBuilder) {
         this.key = key;
         this._personal = Object.assign({}, personalDefaults, personal);
@@ -71,6 +79,9 @@ export default class Character {
         });
         this._miscHP = miscHP;
         this._armor = new ArmorValues(armor);
+        this._resistances = new Resistances({...(resistances || {})});
+
+        this._cachedBonuses = null;
     }
 
     get fullName(): string { return this._personal.fullName; }
@@ -108,9 +119,26 @@ export default class Character {
         });
     }
 
+    get saves(): Saves {
+        const zero = {
+            fort: 0,
+            refl: 0,
+            will: 0,
+        };
+        return new Saves({
+            stats: this._stats,
+            base: this.classBonuses.saves,
+            enhance: zero, // TODO
+            gear: zero, // TODO
+            misc: zero, // TODO
+            temp: zero, // TODO
+        });
+    }
+
+    get resistances(): Resistances { return this._resistances; }
+
     get classBonuses(): ClassBonuses {
-        // TODO Implement caching!
-        return Class.multiclass(this._classes, this._stats.totals);
+        return (this._cachedBonuses ||= Class.multiclass(this._classes, this._stats.totals));
     }
 
     addLevel(cls: Class, levels = 1): ClassLevels {
@@ -120,6 +148,7 @@ export default class Character {
         } else {
             this._classes.push({cls, level: levels});
         }
+        this._cachedBonuses = null;
         return this.classes;
     }
 

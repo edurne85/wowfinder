@@ -79,31 +79,31 @@ export function Defenses({char}: {char: Character})  {
         <thead>
             <tr>
                 <th></th>
-                <th>{t('ui.charsheet.h.armor.total')}</th>
+                <th>{t('ui.armor.total')}</th>
                 <th></th>
-                <th>{t('ui.charsheet.h.armor.armor')}</th>
-                <th>{t('ui.charsheet.h.armor.shield')}</th>
+                <th>{t('ui.armor.armor')}</th>
+                <th>{t('ui.armor.shield')}</th>
                 <th>{t('stats.abbr.DEX')}</th>
-                <th>{t('ui.charsheet.h.armor.size')}</th>
-                <th>{t('ui.charsheet.h.armor.dodge')}</th>
-                <th>{t('ui.charsheet.h.armor.nat')}</th>
-                <th>{t('ui.charsheet.h.armor.defl')}</th>
-                <th>{t('ui.charsheet.h.armor.misc')}</th>
-                <th>{t('ui.charsheet.h.armor.temp')}</th>
+                <th>{t('ui.armor.size')}</th>
+                <th>{t('ui.armor.dodge')}</th>
+                <th>{t('ui.armor.nat')}</th>
+                <th>{t('ui.armor.defl')}</th>
+                <th>{t('ui.armor.misc')}</th>
+                <th>{t('ui.armor.temp')}</th>
             </tr>
         </thead>
         <tbody>
             <ArmorRow
-                label={t('ui.charsheet.h.armor.AC')}
+                label={t('ui.armor.AC')}
                 idPrefix="AcFull"
                 values={armor} />
             <ArmorRow
-                label={t('ui.charsheet.h.armor.touch')}
+                label={t('ui.armor.touch')}
                 idPrefix="AcTouch"
                 values={armor.touch}
                 skipPhysical={true} />
             <ArmorRow
-                label={t('ui.charsheet.h.armor.flatf')}
+                label={t('ui.armor.flatf')}
                 idPrefix="AcFlat"
                 values={armor.flatFooted}
                 skipEvasive={true} />
@@ -111,23 +111,23 @@ export function Defenses({char}: {char: Character})  {
         <thead>
             <tr>
                 <th></th>
-                <th>{t('ui.charsheet.h.armor.total')}</th>
+                <th>{t('ui.armor.total')}</th>
                 <th></th>
-                <th>{t('ui.charsheet.h.attack.bab')}</th>
+                <th>{t('ui.attack.bab')}</th>
                 <th>{t('stats.abbr.STR')}</th>
                 <th>{t('stats.abbr.DEX')}</th>
-                <th>{t('ui.charsheet.h.armor.size')}</th>
-                <th>{t('ui.charsheet.h.armor.dodge')}</th>
+                <th>{t('ui.armor.size')}</th>
+                <th>{t('ui.armor.dodge')}</th>
                 <th></th>
-                <th>{t('ui.charsheet.h.armor.defl')}</th>
-                <th>{t('ui.charsheet.h.armor.misc')}</th>
-                <th>{t('ui.charsheet.h.armor.temp')}</th>
+                <th>{t('ui.armor.defl')}</th>
+                <th>{t('ui.armor.misc')}</th>
+                <th>{t('ui.armor.temp')}</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <th>{t('ui.charsheet.h.armor.cmd')}</th>
-                <TdInput id="txtCmdTotal" value={armor.cmd} />
+                <th>{t('ui.armor.cmd')}</th>
+                <ThInput id="txtCmdTotal" value={armor.cmd} />
                 <td>=10+</td>
                 <TdInput id="txtCmdBab" value={armor.bab} />
                 <TdInput id="txtCmdStr" value={armor.str} />

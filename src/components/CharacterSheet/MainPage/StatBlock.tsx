@@ -54,13 +54,13 @@ function StatHead() {
     const { t } = useTranslation();
     return (<tr id="trStatsTitles">
         <StyledThTop></StyledThTop>
-        <StyledThTop>{t('ui.charsheet.abbr.total')}</StyledThTop>
-        <StyledThTop>{t('ui.charsheet.abbr.mod')}</StyledThTop>
-        <StyledThTop>{t('ui.charsheet.abbr.base')}</StyledThTop>
-        <StyledThTop>{t('ui.charsheet.abbr.enhance')}</StyledThTop>
-        <StyledThTop>{t('ui.charsheet.abbr.gear')}</StyledThTop>
-        <StyledThTop>{t('ui.charsheet.abbr.misc')}</StyledThTop>
-        <StyledThTop>{t('ui.charsheet.abbr.temp')}</StyledThTop>
+        <StyledThTop>{t('ui.common.total')}</StyledThTop>
+        <StyledThTop>{t('ui.common.mod')}</StyledThTop>
+        <StyledThTop>{t('ui.common.base')}</StyledThTop>
+        <StyledThTop>{t('ui.common.enhance')}</StyledThTop>
+        <StyledThTop>{t('ui.common.gear')}</StyledThTop>
+        <StyledThTop>{t('ui.common.misc')}</StyledThTop>
+        <StyledThTop>{t('ui.common.temp')}</StyledThTop>
     </tr>);
 }
 
@@ -71,10 +71,10 @@ function StatRow({id, total, mod, base, enhance, gear, misc, temp}: StatRowBuild
         <StyledTd><input id={`txtTotal${id}`} value={total} readOnly={true} /></StyledTd>
         <StyledTd><input id={`txtMod${id}`} value={mod} readOnly={true} /></StyledTd>
         <StyledTd><input id={`txtBase${id}`} value={base} readOnly={true} /></StyledTd>
-        <StyledTd><input id={`txtEnhance${id}`} value={enhance} readOnly={true} /></StyledTd>
-        <StyledTd><input id={`txtGear${id}`} value={gear} readOnly={true} /></StyledTd>
-        <StyledTd><input id={`txtMisc${id}`} value={misc} readOnly={true} /></StyledTd>
-        <StyledTd><input id={`txtTemp${id}`} value={temp} readOnly={true} /></StyledTd>
+        <StyledTd><input id={`txtEnhance${id}`} value={enhance || ''} readOnly={true} /></StyledTd>
+        <StyledTd><input id={`txtGear${id}`} value={gear || ''} readOnly={true} /></StyledTd>
+        <StyledTd><input id={`txtMisc${id}`} value={misc || ''} readOnly={true} /></StyledTd>
+        <StyledTd><input id={`txtTemp${id}`} value={temp || ''} readOnly={true} /></StyledTd>
     </tr>);
 }
 

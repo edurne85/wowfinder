@@ -9,6 +9,7 @@ import Character from './@types/Character';
 import Class from './@types/Character/Class';
 import './i18n';
 import { useTranslation } from "react-i18next";
+import { CharacterSheet } from './components/CharacterSheet';
 
 const factions = Faction.import();
 const chars = Character.import();
@@ -39,12 +40,15 @@ function CharList() {
     rewards={rewards}
     />);
 }
+function TestCharSheet() {
+  return (<CharacterSheet char={chars['arthur']} xp={rewards['arthur'].XP} />);
+}
 
 export function App() {
   return (
     <>
       <GlobalStyle />
-      <RewTable />
+      <TestCharSheet />
     </>
   )
 }
