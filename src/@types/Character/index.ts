@@ -84,6 +84,10 @@ export default class Character {
         this._cachedBonuses = null;
     }
 
+    private _invalidateCache(): void {
+        this._cachedBonuses = null;
+    }
+
     get fullName(): string { return this._personal.fullName; }
     
     toString(): string { return this._personal.fullName; }
@@ -148,7 +152,7 @@ export default class Character {
         } else {
             this._classes.push({cls, level: levels});
         }
-        this._cachedBonuses = null;
+        this._invalidateCache();
         return this.classes;
     }
 
