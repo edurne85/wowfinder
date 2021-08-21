@@ -48,7 +48,6 @@ export enum ClassFeature {
     resistNatureLure = 'resistNatureLure',
     venomInmunity = 'venomInmunity',
     thousandFaces = 'thousandFaces',
-    timelessBody = 'timelessBody',
     // Druid - WowFinder specific
     bearForm = 'bearForm',
     catForm = 'catForm',
@@ -70,6 +69,7 @@ export enum ClassFeature {
     bravery = 'bravery',
     armorTraining = 'armorTraining',
     weaponTraining = 'weaponTraining',
+    armorMastery = 'armorMastery',
     weaponMastery = 'weaponMastery',
     // Barbarian + Fighter - Wowfinder specific
     tauntAttack = 'tauntAttack',
@@ -96,8 +96,15 @@ export enum ClassFeature {
     improvedEvasion = 'improvedEvasion',
     diamondBody = 'diamondBody',
     abundantStep = 'abundantStep',
+    diamondSoul = 'diamondSoul',
+    quiveringPalm = 'quiveringPalm',
+    tongueSunMoon = 'tongueSunMoon',
+    emptyBody = 'emptyBody',
+    perfectSelf = 'perfectSelf',
     // Barbarian + Monk
     fastMovement = 'fastMovement',
+    // Druid + Monk
+    timelessBody = 'timelessBody',
     // TODO (WiP)
 }
 
