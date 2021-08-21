@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fThousands } from "../../../../utils";
 import { borderless, bottomLine } from "../../../helpers/mixins";
 import { PersonalEntry, PersonalItemProps } from "./base";
 
@@ -17,21 +18,6 @@ class PersonalEntryNumber extends PersonalEntry<number> {
     }: PersonalItemProps<number>) {
         return (<StyledInput id={`txt${id}`} value={value} readOnly={true} />);
     }
-}
-
-// TODO: Migrate to utils
-
-const factor = 1000;
-function fThousands (value: number, sep: string = ' '): string {
-    if (value < 0) {
-        return '-' + fThousands(-value, sep);
-    }
-    const blocks = [];
-    do {
-        blocks.push(value % factor);
-        value = Math.floor(value / factor);
-    } while (value > 0);
-    return blocks.reverse().map(num => num.toString().padStart(3, '0')).join(sep).replace(/^0+/, '');
 }
 
 const suffixes = [

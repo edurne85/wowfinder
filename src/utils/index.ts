@@ -1,14 +1,16 @@
-type jsonAble = Record<string, unknown> | [];
+import type { JsonValue, JSerializable } from './json';
+import { jClone } from './json';
+import { sum, fThousands } from './numbers';
 
-function jClone(obj: jsonAble): jsonAble {
-    return JSON.parse(JSON.stringify(obj));
-}
+const debug = true;
 
-function sum(...args: number[]): number {
-    return args.reduce((a, b) => a + b, 0);
-}
-
+export type {
+    JsonValue,
+    JSerializable,
+};
 export {
     jClone,
     sum,
+    fThousands,
+    debug,
 };

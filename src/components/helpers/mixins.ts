@@ -84,5 +84,6 @@ export {
     borderless,
     bottomLine,
     font,
+    FontFamily,
     baseFont,
 };
