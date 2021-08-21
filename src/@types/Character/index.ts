@@ -9,6 +9,8 @@ import Size from './Size';
 import { Saves } from './Saves';
 import { Resistances } from './Resistances';
 
+type SkillRanks = { [key: string]: number };
+
 interface CharacterBuilder {
     key: string,
     personal: CharPersonalDetails,
@@ -17,8 +19,8 @@ interface CharacterBuilder {
     active?: boolean,
     miscHP?: number,
     baseStats: StatSet,
+    skillRanks?: SkillRanks,
     armor?: ArmorValues,
-    // saves?: Saves,
     resistances?: Resistances,
 }
 
@@ -35,6 +37,7 @@ export default class Character {
     private _race?: Race; // TODO Make non-optional once we have base definitions for all races
     private _classes: ClassLevels;
     private _miscHP: number;
+    private _skillRanks: SkillRanks;
     private _armor: ArmorValues;
     private _resistances: Resistances;
 
@@ -48,6 +51,7 @@ export default class Character {
         race,
         classes = [],
         miscHP = 0,
+        skillRanks = {},
         armor = new ArmorValues({}),
         resistances,
     }: CharacterBuilder) {
@@ -78,6 +82,7 @@ export default class Character {
             temp: zeroDefault,
         });
         this._miscHP = miscHP;
+        this._skillRanks = Object.assign({}, skillRanks);
         this._armor = new ArmorValues(armor);
         this._resistances = new Resistances({...(resistances || {})});
 
@@ -106,6 +111,8 @@ export default class Character {
     }
 
     get miscHP(): number { return this._miscHP; }
+
+    get skillRanks(): SkillRanks { return Object.assign({}, this._skillRanks); }
 
     get speed(): Speeds {
         // TODO Implement

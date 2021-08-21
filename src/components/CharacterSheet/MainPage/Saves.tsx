@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import Character from "../../../@types/Character";
 import { SaveBreakdown } from "../../../@types/Character/Saves";
+import { InputCell } from "../../helpers/InputCell";
 import { borderless, smallText, reverseColors, colors, borderThin, borderThick } from "../../helpers/mixins";
 
 const StyledTable = styled.table`
@@ -29,13 +30,6 @@ const StyledTable = styled.table`
         ${reverseColors}
     }
 `;
-
-function InputCell({id, value, hideZero = false}: {id: string, value: number, hideZero?: boolean}) {
-    const val = value || (hideZero ? '' : 0);
-    return (<td>
-        <input id={id} value={val} readOnly={true} />
-    </td>);
-}
 
 interface RowArgs {
     idSuffix: string;

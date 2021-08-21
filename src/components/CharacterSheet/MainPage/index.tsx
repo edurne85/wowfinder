@@ -11,6 +11,8 @@ import { Speed } from "./Speed";
 import { Defenses } from "./Defenses";
 import { Saves } from "./Saves";
 import { Resistances } from "./Resistances";
+import { Attacks } from "./Attacks";
+import Classes from "./Classes";
 
 const LogoImg = styled.img`
     display: inline-block;
@@ -48,8 +50,7 @@ export function MainPage({char, xp}: {char: Character, xp: number}) {
                     <Header>{t('ui.resist.h')}</Header>
                     <Resistances char={char} />
                     <Header>{t('ui.attack.h')}</Header>
-                    <div></div>
-                    {/* TODO Attack */}
+                    <Attacks char={char} />
                 </>),
             },
             {
@@ -57,8 +58,8 @@ export function MainPage({char, xp}: {char: Character, xp: number}) {
                 id: 'MainRight',
                 children: (<>
                     <Header>{t('ui.classes.h')}</Header>
-                    <div></div>
-                    {/* TODO Classes */}
+                    <Classes char={char} />
+                    <Header>{t('ui.traits.h')}</Header>
                 </>),
             },
         ]} />

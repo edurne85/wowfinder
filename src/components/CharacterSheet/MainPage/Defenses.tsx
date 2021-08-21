@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import Character from "../../../@types/Character";
 import { FullArmorValues } from "../../../@types/Character/ArmorValues";
+import { InputCell, InputH } from "../../helpers/InputCell";
 import { borderThin, reverseColors, smallText, borderless, colors } from "../../helpers/mixins";
 
 const StyledTable = styled.table`
@@ -30,14 +31,6 @@ const StyledTable = styled.table`
     }
 `;
 
-function TdInput({id, value}: {id: string, value: number|string}) {
-    return (<td><input id={id} readOnly={true} value={value || ''} /></td>);
-}
-
-function ThInput({id, value}: {id: string, value: number|string}) {
-    return (<th><input id={id} readOnly={true} value={value} /></th>);
-}
-
 interface ArmorRowArgs {
     label: string,
     idPrefix: string,
@@ -57,17 +50,17 @@ function ArmorRow({
 }: ArmorRowArgs) {
     return (<tr>
         <th>{label}</th>
-        <ThInput id={`txt${idPrefix}Total`} value={values.total} />
+        <InputH id={`txt${idPrefix}Total`} value={values.total} />
         <td>=10+</td>
-        {skipPhysical ? <EmptyTd /> : <TdInput id={`txt${idPrefix}Armor`} value={values.armor} />}
-        {skipPhysical ? <EmptyTd /> : <TdInput id={`txt${idPrefix}Shield`} value={values.shield} />}
-        {skipEvasive ? <EmptyTd /> : <TdInput id={`txt${idPrefix}Dex`} value={values.dex} />}
-        <TdInput id={`txt${idPrefix}Size`} value={values.size} />
-        {skipEvasive ? <EmptyTd /> : <TdInput id={`txt${idPrefix}Dodge`} value={values.dodge} />}
-        {skipPhysical ? <EmptyTd /> : <TdInput id={`txt${idPrefix}Natural`} value={values.nat} />}
-        <TdInput id={`txt${idPrefix}Deflect`} value={values.defl} />
-        <TdInput id={`txt${idPrefix}Misc`} value={values.miscAll} />
-        <TdInput id={`txt${idPrefix}Temp`} value={values.tempAll} />
+        {skipPhysical ? <EmptyTd /> : <InputCell id={`txt${idPrefix}Armor`} value={values.armor} />}
+        {skipPhysical ? <EmptyTd /> : <InputCell id={`txt${idPrefix}Shield`} value={values.shield} />}
+        {skipEvasive ? <EmptyTd /> : <InputCell id={`txt${idPrefix}Dex`} value={values.dex} />}
+        <InputCell id={`txt${idPrefix}Size`} value={values.size} />
+        {skipEvasive ? <EmptyTd /> : <InputCell id={`txt${idPrefix}Dodge`} value={values.dodge} hideZero={true} />}
+        {skipPhysical ? <EmptyTd /> : <InputCell id={`txt${idPrefix}Natural`} value={values.nat} hideZero={true} />}
+        <InputCell id={`txt${idPrefix}Deflect`} value={values.defl} hideZero={true} />
+        <InputCell id={`txt${idPrefix}Misc`} value={values.miscAll} hideZero={true} />
+        <InputCell id={`txt${idPrefix}Temp`} value={values.tempAll} hideZero={true} />
     </tr>);
 }
 
@@ -84,7 +77,7 @@ export function Defenses({char}: {char: Character})  {
                 <th>{t('ui.armor.armor')}</th>
                 <th>{t('ui.armor.shield')}</th>
                 <th>{t('stats.abbr.DEX')}</th>
-                <th>{t('ui.armor.size')}</th>
+                <th>{t('ui.common.size')}</th>
                 <th>{t('ui.armor.dodge')}</th>
                 <th>{t('ui.armor.nat')}</th>
                 <th>{t('ui.armor.defl')}</th>
@@ -116,7 +109,7 @@ export function Defenses({char}: {char: Character})  {
                 <th>{t('ui.attack.bab')}</th>
                 <th>{t('stats.abbr.STR')}</th>
                 <th>{t('stats.abbr.DEX')}</th>
-                <th>{t('ui.armor.size')}</th>
+                <th>{t('ui.common.size')}</th>
                 <th>{t('ui.armor.dodge')}</th>
                 <th></th>
                 <th>{t('ui.armor.defl')}</th>
@@ -127,17 +120,17 @@ export function Defenses({char}: {char: Character})  {
         <tbody>
             <tr>
                 <th>{t('ui.armor.cmd')}</th>
-                <ThInput id="txtCmdTotal" value={armor.cmd} />
+                <InputH id="txtCmdTotal" value={armor.cmd} />
                 <td>=10+</td>
-                <TdInput id="txtCmdBab" value={armor.bab} />
-                <TdInput id="txtCmdStr" value={armor.str} />
-                <TdInput id="txtCmdDex" value={armor.dex} />
-                <TdInput id="txtCmdSize" value={armor.size} />
-                <TdInput id="txtCmdDodge" value={armor.dodge} />
+                <InputCell id="txtCmdBab" value={armor.bab} />
+                <InputCell id="txtCmdStr" value={armor.str} />
+                <InputCell id="txtCmdDex" value={armor.dex} />
+                <InputCell id="txtCmdSize" value={armor.size} />
+                <InputCell id="txtCmdDodge" value={armor.dodge} hideZero={true} />
                 <td></td>
-                <TdInput id="txtCmdDeflect" value={armor.defl} />
-                <TdInput id="txtCmdMisc" value={armor.misc + armor.miscE} />
-                <TdInput id="txtCmdTemp" value={armor.temp + armor.tempE} />
+                <InputCell id="txtCmdDeflect" value={armor.defl} hideZero={true} />
+                <InputCell id="txtCmdMisc" value={armor.misc + armor.miscE} hideZero={true} />
+                <InputCell id="txtCmdTemp" value={armor.temp + armor.tempE} hideZero={true} />
             </tr>
         </tbody>
     </StyledTable>);

@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Speeds } from "../../../@types/Character/Speeds";
 import { LengthUnit, Speed as SpeedValue, SpeedUnit, TimeUnit } from "../../../@types/Units";
+import { InputSuffixedCell } from "../../helpers/InputCell";
 import { borderless, borderThick, borderThin, reverseColors, smallText } from "../../helpers/mixins";
 
 const StyledTable = styled.table`
@@ -57,12 +58,7 @@ const targetUnits: {[key:string]: TargetUnit} = {
         suffix: '□',
     },
 }
-function InputCell({id, speed, targetUnit}: {id: string, speed: SpeedValue, targetUnit: TargetUnit}) {
-    return(<td>
-        <input id={id} value={Math.round(speed.as(targetUnit.unit))} readOnly={true}/>
-        <span className="suffix">{targetUnit.suffix}</span>
-    </td>);
-}
+
 function EmptySpeed() {
     return (<>
         <td></td>
@@ -70,13 +66,19 @@ function EmptySpeed() {
         <td></td>
     </>);
 }
+
+function InputSpeedCell({id, speed, targetUnit}: {id: string, speed: SpeedValue, targetUnit: TargetUnit}) {
+    return <InputSuffixedCell id={id} value={Math.round(speed.as(targetUnit.unit))} suffix={targetUnit.suffix} />;
+}
+
+
 function SpeedCells({name, speed}: {name: string, speed: SpeedValue}) {
     return speed.value === 0
         ? <EmptySpeed />
         :(<>
-            <InputCell id={`txtSpeed${name}Feet`} speed={speed} targetUnit={targetUnits.feet} />
-            <InputCell id={`txtSpeed${name}Meters`} speed={speed} targetUnit={targetUnits.meters} />
-            <InputCell id={`txtSpeed${name}Squares`} speed={speed} targetUnit={targetUnits.squares} />
+            <InputSpeedCell id={`txtSpeed${name}Feet`} speed={speed} targetUnit={targetUnits.feet} />
+            <InputSpeedCell id={`txtSpeed${name}Meters`} speed={speed} targetUnit={targetUnits.meters} />
+            <InputSpeedCell id={`txtSpeed${name}Squares`} speed={speed} targetUnit={targetUnits.squares} />
         </>);
 }
 
@@ -94,7 +96,7 @@ export function Speed ({speeds}: {speeds: Speeds}) {
                 <th>{t('ui.speed.fly')}</th>
                 <SpeedCells name="Fly" speed={speeds.fly.speed} />
                 <td colSpan={2}>{t('ui.speed.maneuverability')}</td>
-                <td colSpan={2}><select id="mnuFlyManeuverability">{/* TODO */}</select></td>
+                <td colSpan={2}><select id="mnuFlyManeuverability">{/* TODO: maneuverability */}</select></td>
             </tr>
             <tr>
                 <th>{t('ui.speed.swim')}</th>

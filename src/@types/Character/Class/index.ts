@@ -193,6 +193,7 @@ export default class Class {
     }
 }
 export {
+    Classes,
     ClassLevels,
     ClassFeature,
     ClassBonuses,

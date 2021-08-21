@@ -125,7 +125,7 @@ const Skills: {[key in Skill]: SkillSpec} = {
     athletics: mkSkill(Skill.athletics, StatKey.STR),
     appraise: mkSkill(Skill.appraise, StatKey.INT),
     bluff: mkSkill(Skill.bluff, StatKey.CHA),
-    alchemy: mkSkill(Skill.alchemy, StatKey.INT, StatKey.DEX),
+    alchemy: mkSkill(Skill.alchemy, StatKey.INT, StatKey.DEX, true),
     blacksmithing: mkSkill(Skill.blacksmithing, StatKey.INT, StatKey.DEX, true),
     cooking: mkSkill(Skill.cooking, StatKey.INT, StatKey.DEX, true),
     inscription: mkSkill(Skill.inscription, StatKey.INT, StatKey.DEX, true),

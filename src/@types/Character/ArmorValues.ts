@@ -219,7 +219,7 @@ class FullArmorValues extends ArmorValues {
             this.temp + this.tempE;
     }
 
-    get cmdFlatFooted(): number { // TODO Review!
+    get cmdFlatFooted(): number {
         return 10 + this.bab + this.str + this.size +
             this.misc + this.temp;
     }
