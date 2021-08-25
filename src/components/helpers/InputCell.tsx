@@ -28,7 +28,7 @@ function InputCell({id, value, hideZero = false, classes = []}: CellArgs<CommonV
 function CheckCell({id, value, hideZero = false, classes = []}: CellArgs<boolean>) {
     const className = [...classes, 'check-box'].join(' ');
     return (<td className={className}>
-        <input type="checkbox" id={id} checked={value} />
+        <input type="checkbox" id={id} checked={value} readOnly={true} />
     </td>);
 }
 

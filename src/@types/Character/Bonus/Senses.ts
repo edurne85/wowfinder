@@ -34,4 +34,12 @@ export default class Senses {
             smell: args.some(s => s._smell),
         });
     }
+
+    static build(raw: any = {}): Senses {
+        return new Senses(Object.assign({
+            darkVision: 0,
+            lowLightVision: false,
+            smell: false,
+        }, raw));
+    }
 }

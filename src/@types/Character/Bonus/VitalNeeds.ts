@@ -29,4 +29,12 @@ export default class VitalNeeds {
             sleep: args.every(a => a._sleep),
         });
     }
+
+    static build(raw: any = {}): VitalNeeds {
+        return new VitalNeeds(Object.assign({
+            breathe: true,
+            eat: true,
+            sleep: true,
+        }, raw));
+    }
 }

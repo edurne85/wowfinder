@@ -40,6 +40,7 @@ interface SkillArgs {
     isClass: boolean,
     // TODO Racial bonus
     size: Size,
+    gear: number,
     // TODO Gear bonuses
     // TODO Misc bonuses
     // TODO ACP
@@ -48,7 +49,7 @@ interface SkillArgs {
 
 const trainedClassSkillBonus = 3;
 
-function SkillRow({k, statMods, ranks, isClass, size}: SkillArgs) {
+function SkillRow({k, statMods, ranks, isClass, size, gear}: SkillArgs) {
     const { t } = useTranslation();
     const skill = Skills[k as Skill];
     let statKey: StatKey = skill.primary;
@@ -64,7 +65,7 @@ function SkillRow({k, statMods, ranks, isClass, size}: SkillArgs) {
     const trained = isClass && ranks > 0 ? trainedClassSkillBonus : 0;
     const sizeMod = skill.sizeModFactor * size;
     const usable = isClass || ranks > 0 || !skill.trainedOnly;
-    const total = usable ? statBonus + ranks + trained + sizeMod : 0; // TODO
+    const total = usable ? statBonus + ranks + trained + sizeMod + gear: 0; // TODO
     return (<tr>
         <CheckCell id={id('Untrained')} value={!skill.trainedOnly} />
         <CheckCell id={id('Class')} value={isClass} />
@@ -76,7 +77,7 @@ function SkillRow({k, statMods, ranks, isClass, size}: SkillArgs) {
         <InputCell id={id('Trained')} value={trained} hideZero={true} />
         <InputCell id={id('Racial')} value={0} hideZero={true} />
         <InputCell id={id('SizeMod')} value={sizeMod} hideZero={true} />
-        <InputCell id={id('Gear')} value={0} hideZero={true} />
+        <InputCell id={id('Gear')} value={gear} hideZero={true} />
         <InputCell id={id('Misc')} value={0} hideZero={true} />
         <InputCell id={id('Acp')} value={0} hideZero={true} />
         <InputCell id={id('Temp')} value={0} hideZero={true} />
@@ -89,6 +90,7 @@ export function SkillsPage({char, visible = true}: {char: Character, visible?: b
     const statMods = char.stats.totalMods;
     const size = char.race?.size || 0;
     const classSkills = char.classBonuses.classSkills;
+    const gearBonuses = char.gearBonuses.skills;
     return (<Page key="Skills" id="Skills" visible={visible}>
         <Header>{t('ui.skills.h')}</Header>
         <StyledTable>
@@ -113,11 +115,13 @@ export function SkillsPage({char, visible = true}: {char: Character, visible?: b
             <tbody>
                 {sortedKeys.map(k => (
                     <SkillRow {...{
+                        key: k,
                         k,
                         statMods,
                         isClass: classSkills.has(k as Skill),
                         size,
                         ranks: char.skillRanks[k] || 0,
+                        gear: gearBonuses.value(k as Skill),
                     }}/>
                 ))}
             </tbody>

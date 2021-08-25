@@ -38,4 +38,13 @@ export default class Dice {
         }
         return total;
     }
+
+    static build(raw: any): Dice {
+        const cured = Object.assign({
+            sides: 6,
+            qtty: 1,
+            fixedMod: 0,
+        }, raw);
+        return new Dice(cured);
+    }
 }

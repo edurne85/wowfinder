@@ -30,12 +30,12 @@ type FullBonuses = {[key in BonusType]: Bonus};
 
 interface BonusBuilder {
     type: BonusType;
-    hp: number,
-    stats: StatsBonus;
-    skills: SkillsBonus;
-    armorClass: number;
-    vitalNeeds: VitalNeeds;
-    senses: Senses;
+    hp?: number,
+    stats?: StatsBonus;
+    skills?: SkillsBonus;
+    armorClass?: number;
+    vitalNeeds?: VitalNeeds;
+    senses?: Senses;
 }
 
 class Bonus {
@@ -47,7 +47,15 @@ class Bonus {
     private _vitalNeeds: VitalNeeds;
     private _senses: Senses;
 
-    constructor({type, hp, stats, skills, armorClass, vitalNeeds, senses}: BonusBuilder) {
+    constructor({
+        type,
+        hp = 0,
+        stats = StatsBonus.zero,
+        skills = SkillsBonus.zero,
+        armorClass = 0,
+        vitalNeeds = VitalNeeds.defaults,
+        senses = Senses.defaults,
+    }: BonusBuilder) {
         this._type = type;
         this._hp = hp;
         this._stats = StatsBonus.sum(stats);
@@ -121,6 +129,23 @@ class Bonus {
                 : Bonus.max(t, ...args.map(b => b.asType(t)));
         }
         return result as FullBonuses;
+    }
+
+    retyped(type: BonusType): Bonus {
+        const { hp, stats, skills, armorClass, vitalNeeds, senses } = this;
+        return new Bonus({type, hp, stats, skills, armorClass, vitalNeeds, senses});
+    }
+
+    static build(raw: any = {}): Bonus {
+        return new Bonus({
+            type: raw.type as BonusType || BonusType.temporal,
+            hp: raw.hp as number || 0,
+            stats: StatsBonus.build(raw.stats),
+            skills: SkillsBonus.build(raw.skills),
+            armorClass: raw.armorClass as number || 0,
+            vitalNeeds: VitalNeeds.build(raw.vitalNeeds),
+            senses: Senses.build(raw.senses),
+        });
     }
 }
 

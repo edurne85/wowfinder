@@ -8,6 +8,8 @@ import { ArmorValues, FullArmorValues } from './ArmorValues';
 import Size from './Size';
 import { Saves } from './Saves';
 import { Resistances } from './Resistances';
+import { buildGear, Gear } from '../Gear';
+import { Bonus } from './Bonus';
 
 type SkillRanks = { [key: string]: number };
 
@@ -22,6 +24,7 @@ interface CharacterBuilder {
     skillRanks?: SkillRanks,
     armor?: ArmorValues,
     resistances?: Resistances,
+    gear?: Gear[],
 }
 
 type Characters = {[key:string]: Character};
@@ -40,8 +43,10 @@ export default class Character {
     private _skillRanks: SkillRanks;
     private _armor: ArmorValues;
     private _resistances: Resistances;
+    private _gear: Gear[];
 
-    private _cachedBonuses: ClassBonuses | null = null;
+    private _cachedClassBonuses: ClassBonuses | null = null;
+    private _cachedGearBonuses: Bonus | null = null;
 
     constructor({
         key,
@@ -54,6 +59,7 @@ export default class Character {
         skillRanks = {},
         armor = new ArmorValues({}),
         resistances,
+        gear = [],
     }: CharacterBuilder) {
         this.key = key;
         this._personal = Object.assign({}, personalDefaults, personal);
@@ -85,12 +91,16 @@ export default class Character {
         this._skillRanks = Object.assign({}, skillRanks);
         this._armor = new ArmorValues(armor);
         this._resistances = new Resistances({...(resistances || {})});
+        // TODO Refine gear 
+        this._gear = gear.map(g => buildGear(g));
 
-        this._cachedBonuses = null;
+        this._cachedClassBonuses = null;
+        this._combineGearBonuses();
     }
 
     private _invalidateCache(): void {
-        this._cachedBonuses = null;
+        this._cachedClassBonuses = null;
+        this._cachedGearBonuses = null;
     }
 
     get fullName(): string { return this._personal.fullName; }
@@ -149,7 +159,17 @@ export default class Character {
     get resistances(): Resistances { return this._resistances; }
 
     get classBonuses(): ClassBonuses {
-        return (this._cachedBonuses ||= Class.multiclass(this._classes, this._stats.totals));
+        return (this._cachedClassBonuses ||= Class.multiclass(this._classes, this._stats.totals));
+    }
+
+    private _combineGearBonuses(): Bonus {
+        const result = Bonus.combine(...(this._gear.map(g => g.bonuses))).gear;
+        this._stats = this._stats.updateGear(result.stats.values);
+        return result;
+    }
+
+    get gearBonuses(): Bonus {
+        return (this._cachedGearBonuses ||= this._combineGearBonuses());
     }
 
     get classFeatures(): ClassFeature[] {

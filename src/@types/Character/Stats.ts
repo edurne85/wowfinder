@@ -124,6 +124,11 @@ export default class Stats {
     get misc(): StatSet { return Object.assign({}, this._misc); }
 
     get temp(): StatSet { return Object.assign({}, this._temp); }
+
+    updateGear(gear: StatSet): Stats {
+        const { base, racial, enhance, misc, temp } = this;
+        return new Stats({base, racial, enhance, gear, misc, temp});
+    }
 }
 
 export {

@@ -15,6 +15,10 @@ export default class SkillsBonus {
         }
     }
 
+    value(skill: Skill): number {
+        return this._values[skill] || 0;
+    }
+
     static get zero(): SkillsBonus { return new SkillsBonus({}); }
 
     static sum(...args: SkillsBonus[]): SkillsBonus {
@@ -37,5 +41,15 @@ export default class SkillsBonus {
             }
         }
         return new SkillsBonus(result);
+    }
+
+    static build(raw: any = {}): SkillsBonus {
+        const cured: any = {};
+        for (const k of Object.keys(Skill)) {
+            if (raw[k]) {
+                cured[k] = raw[k] || 0;
+            }
+        }
+        return new SkillsBonus({...cured});
     }
 }

@@ -15,6 +15,8 @@ export default class StatsBonus {
         }
     }
 
+    get values(): StatSet { return {...this._values}; }
+
     static get zero(): StatsBonus { return new StatsBonus(zeroDefault); }
 
     static sum(...args: StatsBonus[]): StatsBonus {
@@ -33,5 +35,15 @@ export default class StatsBonus {
                 Math.max(...args.map(s => s._values[stat as StatKey]));
         }
         return result;
+    }
+
+    static build(raw: any = {}): StatsBonus {
+        const cured: any = {};
+        for (const k of Object.keys(StatKey)) {
+            if (raw[k]) {
+                cured[k] = raw[k] || 0;
+            }
+        }
+        return new StatsBonus({...cured});
     }
 }
