@@ -62,7 +62,7 @@ export default class Class {
     private div: number;
     private esp: number;
     private wealth: number;
-    private features: {level: number, feature: ClassFeature}[];
+    private _features: {level: number, feature: ClassFeature}[];
     private skills: Set<Skill>;
 
     constructor({
@@ -91,7 +91,7 @@ export default class Class {
         this.div = div || 0;
         this.esp = esp || 0;
         this.wealth = wealth || 0;
-        this.features = features.map(helpers.mapFeatures);
+        this._features = features.map(helpers.mapFeatures);
         this.skills = new Set(
             skills
                 .filter(s => helpers.validSkills.has(s as Skill))
@@ -100,6 +100,10 @@ export default class Class {
     }
 
     get key(): string { return this._key; }
+
+    features(level: number): ClassFeature[] {
+        return this._features.filter(f => f.level <= level).map(f => f.feature);
+    }
 
     static multiclass(classLevels: ClassLevels, stats: StatSet): ClassBonuses {
         const goodSaves = {
@@ -140,7 +144,7 @@ export default class Class {
             result.efl.div += cls.div * level;
             result.efl.esp += cls.esp * level;
             result.skillRanks += (cls.skl + statMod(stats.INT)) * level;
-            for (const f of cls.features.filter(f => f.level <= level)) {
+            for (const f of cls._features.filter(f => f.level <= level)) {
                 result.features[f.feature] = (result.features[f.feature] || 0) + 1;
             }
             cls.skills.forEach((value: Skill) => result.classSkills.add(value));

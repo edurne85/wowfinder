@@ -83,13 +83,13 @@ function SkillRow({k, statMods, ranks, isClass, size}: SkillArgs) {
     </tr>);
 }
 
-export function SkillsPage({char}: {char: Character}) {
+export function SkillsPage({char, visible = true}: {char: Character, visible?: boolean}) {
     const { t } = useTranslation();
     const sortedKeys = Object.keys(Skills).sort((k1, k2) => t(`skills.${k1}`).localeCompare(t(`skills.${k2}`)));
     const statMods = char.stats.totalMods;
     const size = char.race?.size || 0;
     const classSkills = char.classBonuses.classSkills;
-    return (<Page key="Skills" id="Skills">
+    return (<Page key="Skills" id="Skills" visible={visible}>
         <Header>{t('ui.skills.h')}</Header>
         <StyledTable>
             <thead>

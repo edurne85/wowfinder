@@ -13,6 +13,7 @@ import { Saves } from "./Saves";
 import { Resistances } from "./Resistances";
 import { Attacks } from "./Attacks";
 import Classes from "./Classes";
+import { useState } from "react";
 
 const LogoImg = styled.img`
     display: inline-block;
@@ -25,10 +26,11 @@ const LogoImg = styled.img`
 
 const logoSrc = window.Main.asset('charsheet-logo.png');
 
-export function MainPage({char, xp}: {char: Character, xp: number}) {
+export function MainPage({char, xp, visible = true}: {char: Character, xp: number, visible?: boolean}) {
+    // const { selectedPages, setSelectedPages } = useState<Boolean[]>([]);
     const { t } = useTranslation();
     const bonuses = char.classBonuses;
-    return (<Page key="Main" id="Main">
+    return (<Page key="Main" id="Main" visible={visible}>
         <div />
         <LogoImg src={logoSrc} width={245} height={90} alt='' />
         <PersonalBlock char={char} xp={xp} />

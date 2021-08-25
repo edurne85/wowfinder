@@ -1,11 +1,67 @@
 import Character from '../../@types/Character';
-import { MainPage } from './MainPage';
-import { SkillsPage } from './SkillsPage';
+import Class, { ClassFeature, ClassLevels } from '../../@types/Character/Class';
+import type { FullPageSelection, TypedPageArgs } from './TypedPage';
+import { PageType, TypedPage } from './TypedPage';
+
+function ConditionalTypedPage({type, char, xp, availables}: TypedPageArgs & {availables: FullPageSelection} ) {
+    return availables[type] ? <TypedPage {...{type, char, xp}} /> : <></>;
+}
+
+function hasSpells(char: Character): boolean {
+    return char.classBonuses.efl.arc > 0
+        || char.classBonuses.efl.div > 0
+        || char.classBonuses.efl.esp > 0;
+}
+
+const druidMoonkinForm = [ClassFeature.moonkinForm];
+
+function hasAnyFeatures(char: Character, ...features: ClassFeature[]) {
+    return features.some(f => char.classFeatures.includes(f));
+}
+
+const druidFeralForms = [ClassFeature.bearForm, ClassFeature.catForm];
+function hasDruidFeralForms(char: Character): boolean {
+    return hasAnyFeatures(char, ...druidFeralForms);
+}
+
+const druidTravelForms = [
+    ClassFeature.cheetahForm,
+    ClassFeature.dolphinForm,
+    ClassFeature.crowForm,
+    ClassFeature.greatStagForm,
+    ClassFeature.eagleForm,
+];
+function hasDruidTravelForms(char: Character): boolean {
+    return hasAnyFeatures(char, ...druidTravelForms);
+}
+
+function hasDruidMoonkinForm(char: Character): boolean {
+    return hasAnyFeatures(char, ClassFeature.moonkinForm);
+}
+
+function hasDruidTreeForm(char: Character): boolean {
+    return hasAnyFeatures(char, ClassFeature.treeLifeForm);
+}
 
 export function CharacterSheet({char, xp = 0}: {char: Character, xp: number}) {
+    const availables: FullPageSelection = {
+        [PageType.main]: true,
+        [PageType.skills]: true,
+        [PageType.gear]: false,
+        [PageType.spells]: false && hasSpells(char),
+        [PageType.feral]: false && hasDruidFeralForms(char),
+        [PageType.moonkin]: false && hasDruidMoonkinForm(char),
+        [PageType.tree]: false && hasDruidTreeForm(char),
+        [PageType.travel]: false && hasDruidTravelForms(char),
+    }
+    const args = {
+        char,
+        xp,
+        availables,
+    };
     return (<>
-        <MainPage char={char} xp={xp} />
-        <SkillsPage char={char} />
+        <ConditionalTypedPage type={PageType.main} {...args} />
+        <ConditionalTypedPage type={PageType.skills} {...args} />
         { /* TODO: Gear page(s) */}
     </>);
 }

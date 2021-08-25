@@ -25,8 +25,8 @@ function stackable(type: BonusType): boolean {
     return stackables.includes(type);
 }
 
-type partialBonuses = {[key in BonusType]?: Bonus};
-type fullBonuses = {[key in BonusType]: Bonus};
+type PartialBonuses = {[key in BonusType]?: Bonus};
+type FullBonuses = {[key in BonusType]: Bonus};
 
 interface BonusBuilder {
     type: BonusType;
@@ -108,52 +108,52 @@ class Bonus {
         });
     }
 
-    private _asType(t: BonusType): Bonus {
+    asType(t: BonusType): Bonus {
         return this.type === t ? this : Bonus.zero(t);
     }
 
-    static combine(...args: Bonus[]): fullBonuses {
-        const result: partialBonuses = {};
+    static combine(...args: Bonus[]): FullBonuses {
+        const result: PartialBonuses = {};
         for (const type of Object.keys(BonusType)) {
             const t = type as BonusType;
             result[t] = stackable(t)
-                ? Bonus.sum(t, ...args.map(b => b._asType(t)))
-                : Bonus.max(t, ...args.map(b => b._asType(t)));
+                ? Bonus.sum(t, ...args.map(b => b.asType(t)))
+                : Bonus.max(t, ...args.map(b => b.asType(t)));
         }
-        return result as fullBonuses;
+        return result as FullBonuses;
     }
 }
 
 class MultiBonus {
-    private _bonuses: partialBonuses;
+    private _bonuses: PartialBonuses;
 
-    constructor(bonuses: partialBonuses) {
+    constructor(bonuses: PartialBonuses) {
         this._bonuses = Object.assign({}, bonuses);
     }
 
-    static get zero(): fullBonuses {
-        const b: partialBonuses = {};
+    static get zero(): FullBonuses {
+        const b: PartialBonuses = {};
         for (const type of Object.keys(BonusType)) {
             const t = type as BonusType;
             b[t] = Bonus.zero(t);
         }
-        return b as fullBonuses;
+        return b as FullBonuses;
     }
 
-    get bonuses(): fullBonuses {
+    get bonuses(): FullBonuses {
         return Object.assign(MultiBonus.zero, this._bonuses);
     }
 
-    private static _combine(...bonuses: partialBonuses[]): fullBonuses {
+    private static _combine(...bonuses: PartialBonuses[]): FullBonuses {
         return Bonus.combine(...bonuses.reduce((acc: Bonus[], val) => acc.concat(Object.values(val)), []));
     }
 
-    static combine(...bonuses: MultiBonus[]): fullBonuses {
+    static combine(...bonuses: MultiBonus[]): FullBonuses {
         return MultiBonus._combine(
             ...bonuses
                 .map(b => b._bonuses)
                 .reduce(
-                    (acc: partialBonuses[], val) => acc.concat(val), []
+                    (acc: PartialBonuses[], val) => acc.concat(val), []
                 ));
     }
 }

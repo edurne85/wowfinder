@@ -2,7 +2,7 @@ import JSON5 from 'json5';
 import Stats, { StatSet, zeroDefault } from './Stats';
 import CharPersonalDetails, { personalDefaults } from './Personal';
 import Race from './Race';
-import Class, { ClassBonuses, ClassLevels } from './Class';
+import Class, { ClassBonuses, ClassFeature, ClassLevels } from './Class';
 import { Speeds } from './Speeds';
 import { ArmorValues, FullArmorValues } from './ArmorValues';
 import Size from './Size';
@@ -150,6 +150,10 @@ export default class Character {
 
     get classBonuses(): ClassBonuses {
         return (this._cachedBonuses ||= Class.multiclass(this._classes, this._stats.totals));
+    }
+
+    get classFeatures(): ClassFeature[] {
+        return this.classes.map(c => c.cls.features(c.level)).flat();
     }
 
     addLevel(cls: Class, levels = 1): ClassLevels {
