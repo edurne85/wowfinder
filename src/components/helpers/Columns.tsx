@@ -1,5 +1,5 @@
-import { ReactNode } from 'react'
-import styled from 'styled-components'
+import { ReactNode } from 'react';
+import styled from 'styled-components';
 
 const ColumnsContainer = styled.div`
     display: flex;
@@ -53,4 +53,4 @@ export default Columns;
 
 export {
     ColumnDefs,
-}
+};

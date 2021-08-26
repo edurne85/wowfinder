@@ -8,47 +8,52 @@ import Faction, { Reputation } from './@types/Faction';
 import Character from './@types/Character';
 import Class from './@types/Character/Class';
 import './i18n';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 import { CharacterSheet } from './components/CharacterSheet';
+import { debug } from './utils';
 
 const factions = Faction.import();
 const chars = Character.import();
 const adventures = Adventure.import();
 const rewards = Adventure.combined(adventures);
 const classes = Class.import();
-console.log({factions, chars, adventures, rewards, classes});
 
-function Rep(r: string) {
+function Rep(r: string): JSX.Element {
   const { t } = useTranslation();
   return (<li>{t(`reputation.${r}`)}</li>);
 }
-function Reputations() {
+function Reputations(): JSX.Element {
   return(<ul>
     {Object.keys(Reputation).map(Rep)}
   </ul>);
 }
 
-function RewTable() {
+function RewTable(): JSX.Element {
   return (<RewardsTable
     chars={chars}
     factions={Object.values(factions.byKey)}
     data={rewards} />);
 }
-function CharList() {
+function CharList(): JSX.Element {
   return (<CharacterList
     chars={chars}
     rewards={rewards}
     />);
 }
-function TestCharSheet() {
-  return (<CharacterSheet char={chars['arthur']} xp={rewards['arthur'].XP} />);
+function TestCharSheet(): JSX.Element {
+  return (<CharacterSheet char={chars.arthur} xp={rewards.arthur.XP} />);
 }
 
-export function App() {
+if (debug) {
+  console.log('Imported data', {factions, chars, adventures, rewards, classes});
+  console.log('Test components', {Reputations, RewTable, CharList, TestCharSheet});
+}
+
+export function App(): JSX.Element {
   return (
     <>
       <GlobalStyle />
       <TestCharSheet />
     </>
-  )
+  );
 }

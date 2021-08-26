@@ -1,7 +1,7 @@
-import React from "react";
-import { ReactFragment } from "react";
-import styled from "styled-components";
-import { smallText } from "../../../helpers/mixins";
+import React from 'react';
+
+import styled from 'styled-components';
+import { smallText } from '../../../helpers/mixins';
 
 interface PersonalItemProps<T> {
     id: string;
@@ -17,7 +17,7 @@ const Below = styled.span`
 `;
 
 abstract class PersonalEntry<T> extends React.Component<PersonalItemProps<T>> {
-    render() {
+    render(): JSX.Element {
         const Label = styled.label`
             display: inline-block;
             width: ${this.props.width}mm;
@@ -30,7 +30,8 @@ abstract class PersonalEntry<T> extends React.Component<PersonalItemProps<T>> {
             </Label>
         );
     }
-    abstract subRender(props: PersonalItemProps<T>): ReactFragment;
+
+    abstract subRender(props: PersonalItemProps<T>): JSX.Element;
 }
 
 export {

@@ -1,7 +1,7 @@
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import { borderless, smallText } from "../../helpers/mixins";
-import { HitPointProps } from "../base";
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import { borderless, smallText } from '../../helpers/mixins';
+import { HitPointProps } from '../base';
 
 const StyledTable = styled.table`
     margin-top: 5mm;
@@ -61,4 +61,4 @@ const HitPoints: React.FC<HitPointProps> = ({bonuses, misc, current}) => {
 
 export {
     HitPoints,
-}
+};

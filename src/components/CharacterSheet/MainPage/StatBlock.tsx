@@ -1,7 +1,7 @@
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import Stats, { StatKeys } from "../../../@types/Character/Stats";
-import { borderless, borderThick, reverseColors, smallText } from "../../helpers/mixins";
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import Stats, { StatKeys } from '../../../@types/Character/Stats';
+import { borderless, borderThick, reverseColors, smallText } from '../../helpers/mixins';
 
 interface StatRowBuilder {
     key: string;
@@ -50,7 +50,7 @@ const StyledTable = styled.table`
     border-spacing: 0;
 `;
 
-function StatHead() {
+function StatHead(): JSX.Element {
     const { t } = useTranslation();
     return (<tr id="trStatsTitles">
         <StyledThTop></StyledThTop>
@@ -64,7 +64,7 @@ function StatHead() {
     </tr>);
 }
 
-function StatRow({id, total, mod, base, enhance, gear, misc, temp}: StatRowBuilder) {
+function StatRow({id, total, mod, base, enhance, gear, misc, temp}: StatRowBuilder): JSX.Element {
     const { t } = useTranslation();
     return (<tr id={`tr${id}`}>
         <StyledThBody>{t(`stats.abbr.${id}`)}</StyledThBody>
@@ -78,7 +78,7 @@ function StatRow({id, total, mod, base, enhance, gear, misc, temp}: StatRowBuild
     </tr>);
 }
 
-export function StatBlock({stats}: {stats: Stats}) {
+export function StatBlock({stats}: {stats: Stats}): JSX.Element {
     const {totals, totalMods, base, enhance, gear, misc, temp} = stats;
     return (<StyledTable id="tblStats">
         <thead>

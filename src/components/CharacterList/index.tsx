@@ -1,6 +1,6 @@
 import Character from '../../@types/Character';
 import { Reward, Rewards } from '../../@types/Rewards';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Container = styled.div`
     display: flex;
@@ -27,18 +27,18 @@ const CharacterPickerP = styled.p`
     }
 `;
 
-function selectCharacter(char: Character) {
+function selectCharacter(char: Character): void {
     // TODO
     console.log('selectCharacter', char);
 }
 
-function CharacterPicker({char, rewards}: {char: Character, rewards: Reward}) {
+function CharacterPicker({char /*, rewards */}: {char: Character, rewards: Reward}): JSX.Element {
     return (<CharacterPickerP onClick={() => selectCharacter(char)}>
         {char.fullName}
     </CharacterPickerP>);
 }
 
-export function CharacterList({chars, rewards}: {chars: {[key:string]: Character}, rewards: Rewards}) {
+export function CharacterList({chars, rewards}: {chars: {[key:string]: Character}, rewards: Rewards}): JSX.Element {
     const activeCharKeys = Object.keys(chars).filter(k => chars[k].active).sort();
     return (<Container>
         <ListPanel>

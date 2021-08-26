@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { reverseColors } from './mixins';
 
 const Header = styled.h1`

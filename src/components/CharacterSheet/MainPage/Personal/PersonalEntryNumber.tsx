@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { fThousands } from "../../../../utils";
-import { borderless, bottomLine } from "../../../helpers/mixins";
-import { PersonalEntry, PersonalItemProps } from "./base";
+import styled from 'styled-components';
+import { fThousands } from '../../../../utils';
+import { borderless, bottomLine } from '../../../helpers/mixins';
+import { PersonalEntry, PersonalItemProps } from './base';
 
 const StyledInput = styled.input`
     display: block;
@@ -15,20 +15,20 @@ class PersonalEntryNumber extends PersonalEntry<number> {
     subRender({
         id,
         value = 0,
-    }: PersonalItemProps<number>) {
+    }: PersonalItemProps<number>): JSX.Element {
         return (<StyledInput id={`txt${id}`} value={value} readOnly={true} />);
     }
 }
 
 const suffixes = [
     '', 'k', 'M', 'G',
-]
+];
 
 class PersonalEntryBigNumber extends PersonalEntry<number> {
     subRender({
         id,
         value = 0,
-    }: PersonalItemProps<number>) {
+    }: PersonalItemProps<number>): JSX.Element {
         const maxS = suffixes.length;
         let v = value;
         let s = 0;
@@ -42,9 +42,9 @@ class PersonalEntryBigNumber extends PersonalEntry<number> {
     }
 }
 
-export default PersonalEntryNumber
+export default PersonalEntryNumber;
 
 export {
     PersonalEntryNumber,
     PersonalEntryBigNumber
-}
+};

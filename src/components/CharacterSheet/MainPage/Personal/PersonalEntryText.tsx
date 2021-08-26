@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { borderless, bottomLine } from "../../../helpers/mixins";
-import { PersonalEntry, PersonalItemProps } from "./base";
+import styled from 'styled-components';
+import { borderless, bottomLine } from '../../../helpers/mixins';
+import { PersonalEntry, PersonalItemProps } from './base';
 
 const sharedStyle = `
     display: block;
@@ -22,7 +22,7 @@ class PersonalEntryText extends PersonalEntry<string> {
     subRender({
         id,
         value = '',
-    }: PersonalItemProps<string>) {
+    }: PersonalItemProps<string>): JSX.Element {
         return (<StyledInput id={`txt${id}`} value={value} readOnly={true} />);
     }
 }
@@ -31,14 +31,14 @@ class PersonalEntryTextCentered extends PersonalEntry<string> {
     subRender({
         id,
         value = '',
-    }: PersonalItemProps<string>) {
+    }: PersonalItemProps<string>): JSX.Element {
         return (<StyledInputCentered id={`txt${id}`} value={value} readOnly={true} />);
     }
 }
 
-export default PersonalEntryText
+export default PersonalEntryText;
 
 export {
     PersonalEntryText,
     PersonalEntryTextCentered,
-}
+};

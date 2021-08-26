@@ -1,8 +1,8 @@
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import Character from "../../../@types/Character";
-import { InputCell } from "../../helpers/InputCell";
-import { borderless, borderThick, borderThin, reverseColors, smallText } from "../../helpers/mixins";
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import Character from '../../../@types/Character';
+import { InputCell } from '../../helpers/InputCell';
+import { borderless, borderThick, borderThin, reverseColors, smallText } from '../../helpers/mixins';
 
 const StyledTable = styled.table`
     & th, & td, & input {
@@ -34,7 +34,7 @@ interface RowArgs {
     misc: number,
     temp: number,
 }
-function Row({label, idSuffix, bab, gear, stat, sizeMod, misc, temp}: RowArgs) {
+function Row({label, idSuffix, bab, gear, stat, sizeMod, misc, temp}: RowArgs): JSX.Element {
     const total: number = bab + gear + stat + sizeMod + misc + temp;
     return (<tr>
         <th>{label}</th>
@@ -48,7 +48,7 @@ function Row({label, idSuffix, bab, gear, stat, sizeMod, misc, temp}: RowArgs) {
     </tr>);
 }
 
-export function Attacks({char}: {char: Character}) {
+export function Attacks({char}: {char: Character}): JSX.Element {
     const { t } = useTranslation();
     const bab = char.classBonuses.bab;
     const stats = char.stats.totalMods;

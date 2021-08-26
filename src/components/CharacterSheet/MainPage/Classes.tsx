@@ -1,8 +1,8 @@
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import Character from "../../../@types/Character";
-import Class from "../../../@types/Character/Class";
-import { borderThin, font, FontFamily } from "../../helpers/mixins";
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import Character from '../../../@types/Character';
+import Class from '../../../@types/Character/Class';
+import { borderThin, font, FontFamily } from '../../helpers/mixins';
 
 const StyledTable = styled.table`
     & td, & th, & input, & select {
@@ -24,7 +24,7 @@ const StyledTable = styled.table`
     }
 `;
 
-function ClassPicker({selectedKey = null}: {selectedKey?: string | null}) {
+function ClassPicker({selectedKey = null}: {selectedKey?: string | null}): JSX.Element {
     const allClasses = Class.import();
     const { t } = useTranslation();
     const cKeys = Object.keys(allClasses);
@@ -41,7 +41,7 @@ interface ClassEntryArgs {
     level: number,
     first?: boolean,
 }
-function ClassEntry({cKey, level, first = false}: ClassEntryArgs) {
+function ClassEntry({cKey, level, first = false}: ClassEntryArgs): JSX.Element {
     const firstClass = first ? ' first-class' : '';
     return (<>
         <td className={`class-select${firstClass}`}>
@@ -55,7 +55,7 @@ function ClassEntry({cKey, level, first = false}: ClassEntryArgs) {
 
 const maxClassCount = 12;
 
-export default function Classes({char}: {char: Character}) {
+export default function Classes({char}: {char: Character}): JSX.Element {
     const pairs: {key: string, level: number}[] = char.classes.map(c => ({key: c.cls.key, level: c.level}));
     while (pairs.length < maxClassCount) {
         pairs.push({key: '', level: 0});

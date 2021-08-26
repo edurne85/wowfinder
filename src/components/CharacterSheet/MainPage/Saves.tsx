@@ -1,9 +1,9 @@
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import Character from "../../../@types/Character";
-import { SaveBreakdown } from "../../../@types/Character/Saves";
-import { InputCell } from "../../helpers/InputCell";
-import { borderless, smallText, reverseColors, colors, borderThin, borderThick } from "../../helpers/mixins";
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import Character from '../../../@types/Character';
+import { SaveBreakdown } from '../../../@types/Character/Saves';
+import { InputCell } from '../../helpers/InputCell';
+import { borderless, smallText, reverseColors, borderThin, borderThick } from '../../helpers/mixins';
 
 const StyledTable = styled.table`
     border-spacing: 0;
@@ -36,7 +36,7 @@ interface RowArgs {
     label: string;
     value: SaveBreakdown;
 }
-function Row({idSuffix, label, value}: RowArgs) {
+function Row({idSuffix, label, value}: RowArgs): JSX.Element {
     return (<tr id={`tr${idSuffix}`}>
         <th>{label}</th>
         <InputCell id={`txtTotal${idSuffix}`} value={value.total} />
@@ -49,7 +49,7 @@ function Row({idSuffix, label, value}: RowArgs) {
     </tr>);
 }
 
-export function Saves({char}: {char: Character}) {
+export function Saves({char}: {char: Character}): JSX.Element {
     const { t } = useTranslation();
     const { fort, refl, will } = char.saves;
     return (<StyledTable>

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 type CommonValue = number | string;
 
@@ -9,7 +9,7 @@ interface CellArgs<T> {
     classes?: string[],
 }
 
-function InputH({id, value, hideZero = false, classes = []}: CellArgs<CommonValue>) {
+function InputH({id, value, hideZero = false, classes = []}: CellArgs<CommonValue>): JSX.Element {
     const val = value || (hideZero ? '' : 0);
     const className = classes.length > 0 ? { className: classes.join(' ') } : {};
     return (<th {...className}>
@@ -17,7 +17,7 @@ function InputH({id, value, hideZero = false, classes = []}: CellArgs<CommonValu
     </th>);
 }
 
-function InputCell({id, value, hideZero = false, classes = []}: CellArgs<CommonValue>) {
+function InputCell({id, value, hideZero = false, classes = []}: CellArgs<CommonValue>): JSX.Element {
     const val = value || (hideZero ? '' : 0);
     const className = classes.length > 0 ? { className: classes.join(' ') } : {};
     return (<td {...className}>
@@ -25,14 +25,14 @@ function InputCell({id, value, hideZero = false, classes = []}: CellArgs<CommonV
     </td>);
 }
 
-function CheckCell({id, value, hideZero = false, classes = []}: CellArgs<boolean>) {
+function CheckCell({id, value, classes = []}: CellArgs<boolean>): JSX.Element {
     const className = [...classes, 'check-box'].join(' ');
     return (<td className={className}>
         <input type="checkbox" id={id} checked={value} readOnly={true} />
     </td>);
 }
 
-function InputSuffixedCell({id, value, suffix }: {id: string, value: number | string, suffix: string}) {
+function InputSuffixedCell({id, value, suffix }: {id: string, value: number | string, suffix: string}): JSX.Element {
     return(<td>
         <input id={id} value={value} readOnly={true}/>
         <span className="suffix">{suffix}</span>
@@ -44,4 +44,4 @@ export {
     InputCell,
     CheckCell,
     InputSuffixedCell,
-}
+};

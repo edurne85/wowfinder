@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { debug } from '../../utils';
 import { baseFont, borderless, mainColor } from './mixins';
 

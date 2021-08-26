@@ -1,9 +1,9 @@
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import { Speeds } from "../../../@types/Character/Speeds";
-import { LengthUnit, Speed as SpeedValue, SpeedUnit, TimeUnit } from "../../../@types/Units";
-import { InputSuffixedCell } from "../../helpers/InputCell";
-import { borderless, borderThick, borderThin, reverseColors, smallText } from "../../helpers/mixins";
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import { Speeds } from '../../../@types/Character/Speeds';
+import { LengthUnit, Speed as SpeedValue, SpeedUnit, TimeUnit } from '../../../@types/Units';
+import { InputSuffixedCell } from '../../helpers/InputCell';
+import { borderless, borderThick, borderThin, reverseColors, smallText } from '../../helpers/mixins';
 
 const StyledTable = styled.table`
     & th, & td, & input {
@@ -57,9 +57,9 @@ const targetUnits: {[key:string]: TargetUnit} = {
         unit: new SpeedUnit({ length: LengthUnit.square, time: TimeUnit.turn }),
         suffix: '□',
     },
-}
+};
 
-function EmptySpeed() {
+function EmptySpeed(): JSX.Element {
     return (<>
         <td></td>
         <td></td>
@@ -67,12 +67,11 @@ function EmptySpeed() {
     </>);
 }
 
-function InputSpeedCell({id, speed, targetUnit}: {id: string, speed: SpeedValue, targetUnit: TargetUnit}) {
+function InputSpeedCell({id, speed, targetUnit}: {id: string, speed: SpeedValue, targetUnit: TargetUnit}): JSX.Element {
     return <InputSuffixedCell id={id} value={Math.round(speed.as(targetUnit.unit))} suffix={targetUnit.suffix} />;
 }
 
-
-function SpeedCells({name, speed}: {name: string, speed: SpeedValue}) {
+function SpeedCells({name, speed}: {name: string, speed: SpeedValue}): JSX.Element {
     return speed.value === 0
         ? <EmptySpeed />
         :(<>
@@ -82,7 +81,7 @@ function SpeedCells({name, speed}: {name: string, speed: SpeedValue}) {
         </>);
 }
 
-export function Speed ({speeds}: {speeds: Speeds}) {
+export function Speed ({speeds}: {speeds: Speeds}): JSX.Element {
     const { t } = useTranslation();
     return (<StyledTable>
         <tbody>

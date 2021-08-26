@@ -1,9 +1,9 @@
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import Character from "../../../@types/Character";
-import { ResistanceBreakdown } from "../../../@types/Character/Resistances";
-import { InputCell } from "../../helpers/InputCell";
-import { borderless, borderThick, borderThin, reverseColors, smallText } from "../../helpers/mixins";
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import Character from '../../../@types/Character';
+import { ResistanceBreakdown } from '../../../@types/Character/Resistances';
+import { InputCell } from '../../helpers/InputCell';
+import { borderless, borderThick, borderThin, reverseColors, smallText } from '../../helpers/mixins';
 
 const StyledTable = styled.table`
     & th, & td, & input {
@@ -32,7 +32,7 @@ interface RowArgs {
     label: string;
     value: ResistanceBreakdown;
 }
-function Row({idSuffix, label, value}: RowArgs) {
+function Row({idSuffix, label, value}: RowArgs): JSX.Element {
     return(<tr id={`trResist${idSuffix}`}>
         <th>{label}</th>
         <InputCell id={`txtResistTotal${idSuffix}`} value={value.total} />
@@ -43,7 +43,7 @@ function Row({idSuffix, label, value}: RowArgs) {
     </tr>);
 }
 
-export function Resistances({char}: {char: Character}) {
+export function Resistances({char}: {char: Character}): JSX.Element {
     const { t } = useTranslation();
     const resists = char.resistances;
     return (<StyledTable>

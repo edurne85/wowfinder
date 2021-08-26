@@ -1,19 +1,18 @@
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 import Character from '../../../@types/Character';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import Page from '../../helpers/Page';
 import { PersonalBlock } from './Personal';
 import Columns from '../../helpers/Columns';
 import { StatBlock } from './StatBlock';
 import Header from '../../helpers/Header';
-import { HitPoints } from "./HitPoints";
-import { Speed } from "./Speed";
-import { Defenses } from "./Defenses";
-import { Saves } from "./Saves";
-import { Resistances } from "./Resistances";
-import { Attacks } from "./Attacks";
-import Classes from "./Classes";
-import { useState } from "react";
+import { HitPoints } from './HitPoints';
+import { Speed } from './Speed';
+import { Defenses } from './Defenses';
+import { Saves } from './Saves';
+import { Resistances } from './Resistances';
+import { Attacks } from './Attacks';
+import Classes from './Classes';
 
 const LogoImg = styled.img`
     display: inline-block;
@@ -26,8 +25,7 @@ const LogoImg = styled.img`
 
 const logoSrc = window.Main.asset('charsheet-logo.png');
 
-export function MainPage({char, xp, visible = true}: {char: Character, xp: number, visible?: boolean}) {
-    // const { selectedPages, setSelectedPages } = useState<Boolean[]>([]);
+export function MainPage({char, xp, visible = true}: {char: Character, xp: number, visible?: boolean}): JSX.Element {
     const { t } = useTranslation();
     const bonuses = char.classBonuses;
     return (<Page key="Main" id="Main" visible={visible}>

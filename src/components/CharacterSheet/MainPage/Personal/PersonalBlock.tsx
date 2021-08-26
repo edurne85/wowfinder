@@ -1,10 +1,10 @@
-import { TFunction } from "i18next";
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import Race from "../../../../@types/Character/Race";
-import { CharXpProps } from "../../base";
-import PersonalEntryNumber, { PersonalEntryBigNumber } from "./PersonalEntryNumber";
-import { PersonalEntryText, PersonalEntryTextCentered } from "./PersonalEntryText";
+import { TFunction } from 'i18next';
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import Race from '../../../../@types/Character/Race';
+import { CharXpProps } from '../../base';
+import PersonalEntryNumber, { PersonalEntryBigNumber } from './PersonalEntryNumber';
+import { PersonalEntryText, PersonalEntryTextCentered } from './PersonalEntryText';
 
 const Personal = styled.div`
     display: inline-block;
@@ -14,7 +14,7 @@ const Personal = styled.div`
     margin: 5mm 0;
 `;
 
-function raceName(race: Race | null, t: TFunction) {
+function raceName(race: Race | null, t: TFunction): string {
     if (!race)
         return '';
     const baseName = race.key.split('.', 2)[0];
@@ -115,4 +115,4 @@ const PersonalBlock: React.FC<CharXpProps> = ({char, xp}) => {
 
 export {
     PersonalBlock,
-}
+};

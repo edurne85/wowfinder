@@ -9,7 +9,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "release": "electron-forge publish",
-    "lint": "eslint . --fix --ext js,ts",
+    "lint": "eslint . --fix --ext js,ts,tsx",
     "test": "jest --passWithNoTests"
   },
   "keywords": [],

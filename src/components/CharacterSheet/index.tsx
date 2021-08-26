@@ -1,9 +1,14 @@
 import Character from '../../@types/Character';
-import Class, { ClassFeature, ClassLevels } from '../../@types/Character/Class';
+import { ClassFeature } from '../../@types/Character/Class';
 import type { FullPageSelection, TypedPageArgs } from './TypedPage';
 import { PageType, TypedPage } from './TypedPage';
 
-function ConditionalTypedPage({type, char, xp, availables}: TypedPageArgs & {availables: FullPageSelection} ) {
+function ConditionalTypedPage({
+    type,
+    char,
+    xp,
+    availables,
+}: TypedPageArgs & {availables: FullPageSelection} ): JSX.Element {
     return availables[type] ? <TypedPage {...{type, char, xp}} /> : <></>;
 }
 
@@ -13,9 +18,7 @@ function hasSpells(char: Character): boolean {
         || char.classBonuses.efl.esp > 0;
 }
 
-const druidMoonkinForm = [ClassFeature.moonkinForm];
-
-function hasAnyFeatures(char: Character, ...features: ClassFeature[]) {
+function hasAnyFeatures(char: Character, ...features: ClassFeature[]): boolean {
     return features.some(f => char.classFeatures.includes(f));
 }
 
@@ -43,7 +46,7 @@ function hasDruidTreeForm(char: Character): boolean {
     return hasAnyFeatures(char, ClassFeature.treeLifeForm);
 }
 
-export function CharacterSheet({char, xp = 0}: {char: Character, xp: number}) {
+export function CharacterSheet({char, xp = 0}: {char: Character, xp: number}): JSX.Element {
     const availables: FullPageSelection = {
         [PageType.main]: true,
         [PageType.skills]: true,
@@ -53,7 +56,7 @@ export function CharacterSheet({char, xp = 0}: {char: Character, xp: number}) {
         [PageType.moonkin]: false && hasDruidMoonkinForm(char),
         [PageType.tree]: false && hasDruidTreeForm(char),
         [PageType.travel]: false && hasDruidTravelForms(char),
-    }
+    };
     const args = {
         char,
         xp,

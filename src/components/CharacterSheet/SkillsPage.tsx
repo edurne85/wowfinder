@@ -1,14 +1,14 @@
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import Character from "../../@types/Character";
-import Size from "../../@types/Character/Size";
-import Skills, { Skill } from "../../@types/Character/Skills";
-import { StatKey, StatSet } from "../../@types/Character/Stats";
-import { debug } from "../../utils";
-import Header from "../helpers/Header";
-import { CheckCell, InputCell } from "../helpers/InputCell";
-import { borderless, font, FontFamily, smallText } from "../helpers/mixins";
-import Page from "../helpers/Page";
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import Character from '../../@types/Character';
+import Size from '../../@types/Character/Size';
+import Skills, { Skill } from '../../@types/Character/Skills';
+import { StatKey, StatSet } from '../../@types/Character/Stats';
+import { debug } from '../../utils';
+import Header from '../helpers/Header';
+import { CheckCell, InputCell } from '../helpers/InputCell';
+import { borderless, font, FontFamily, smallText } from '../helpers/mixins';
+import Page from '../helpers/Page';
 
 const StyledTable = styled.table`
     ${font({family: FontFamily.priori})}
@@ -41,7 +41,6 @@ interface SkillArgs {
     // TODO Racial bonus
     size: Size,
     gear: number,
-    // TODO Gear bonuses
     // TODO Misc bonuses
     // TODO ACP
     // TODO Temp bonuses
@@ -49,7 +48,7 @@ interface SkillArgs {
 
 const trainedClassSkillBonus = 3;
 
-function SkillRow({k, statMods, ranks, isClass, size, gear}: SkillArgs) {
+function SkillRow({k, statMods, ranks, isClass, size, gear}: SkillArgs): JSX.Element {
     const { t } = useTranslation();
     const skill = Skills[k as Skill];
     let statKey: StatKey = skill.primary;
@@ -84,7 +83,7 @@ function SkillRow({k, statMods, ranks, isClass, size, gear}: SkillArgs) {
     </tr>);
 }
 
-export function SkillsPage({char, visible = true}: {char: Character, visible?: boolean}) {
+export function SkillsPage({char, visible = true}: {char: Character, visible?: boolean}): JSX.Element {
     const { t } = useTranslation();
     const sortedKeys = Object.keys(Skills).sort((k1, k2) => t(`skills.${k1}`).localeCompare(t(`skills.${k2}`)));
     const statMods = char.stats.totalMods;

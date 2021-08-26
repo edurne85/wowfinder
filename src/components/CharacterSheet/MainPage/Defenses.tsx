@@ -1,9 +1,9 @@
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import Character from "../../../@types/Character";
-import { FullArmorValues } from "../../../@types/Character/ArmorValues";
-import { InputCell, InputH } from "../../helpers/InputCell";
-import { borderThin, reverseColors, smallText, borderless, colors } from "../../helpers/mixins";
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import Character from '../../../@types/Character';
+import { FullArmorValues } from '../../../@types/Character/ArmorValues';
+import { InputCell, InputH } from '../../helpers/InputCell';
+import { borderThin, reverseColors, smallText, borderless, colors } from '../../helpers/mixins';
 
 const StyledTable = styled.table`
     border-spacing: 0;
@@ -39,7 +39,7 @@ interface ArmorRowArgs {
     skipEvasive?: boolean,
 }
 
-const EmptyTd = () => (<td></td>);
+const EmptyTd = (): JSX.Element => (<td></td>);
 
 function ArmorRow({
     label,
@@ -47,7 +47,7 @@ function ArmorRow({
     values,
     skipPhysical = false,
     skipEvasive = false,
-}: ArmorRowArgs) {
+}: ArmorRowArgs): JSX.Element {
     return (<tr>
         <th>{label}</th>
         <InputH id={`txt${idPrefix}Total`} value={values.total} />
@@ -64,10 +64,9 @@ function ArmorRow({
     </tr>);
 }
 
-export function Defenses({char}: {char: Character})  {
+export function Defenses({char}: {char: Character}): JSX.Element  {
     const { t } = useTranslation();
     const armor = char.armor;
-    const statMods = char.stats.totalMods;
     return (<StyledTable id="tblArmor">
         <thead>
             <tr>

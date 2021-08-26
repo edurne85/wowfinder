@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { ReactElement , useState } from 'react';
+
 import Character from '../../@types/Character';
 import { MainPage } from './MainPage';
 import { SkillsPage } from './SkillsPage';
@@ -49,17 +50,17 @@ const defaultPages: FullPageSelection = {
     [PageType.tree]: false,
 };
 
-function TypedPage({type, char, xp}: TypedPageArgs) {
+function TypedPage({type, char, xp}: TypedPageArgs): ReactElement {
     const [ selectedPages ] = useState<PartialPageSelection>(defaultPages);
-    return pageTypes[type]({char, xp, visible: !!selectedPages[type]});
+    return pageTypes[type]({char, xp, visible: !!selectedPages[type]}) as ReactElement;
 }
 
 export type {
     FullPageSelection,
     TypedPageArgs,
-}
+};
 
 export {
     TypedPage,
     PageType,
-}
+};
