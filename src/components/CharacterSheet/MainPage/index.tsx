@@ -38,9 +38,6 @@ export function MainPage({char, xp, visible = true}: {char: Character, xp: numbe
                 id: 'MainLeft',
                 children: (<>
                     <StatBlock stats={char.stats} />
-                    <Header>{t('ui.hitpoints.h')}</Header>
-                    { /* TODO: extra (misc) HP */}
-                    <HitPoints bonuses={bonuses} misc={char.miscHP} />
                     <Header>{t('ui.speed.h')}</Header>
                     <Speed speeds={char.speed} />
                     <Header>{t('ui.armor.h')}</Header>
@@ -59,6 +56,9 @@ export function MainPage({char, xp, visible = true}: {char: Character, xp: numbe
                 children: (<>
                     <Header>{t('ui.classes.h')}</Header>
                     <Classes char={char} />
+                    <Header>{t('ui.hitpoints.h')}</Header>
+                    { /* TODO: extra (misc) HP */}
+                    <HitPoints bonuses={bonuses} misc={char.miscHP} />
                     <Header>{t('ui.traits.h')}</Header>
                 </>),
             },

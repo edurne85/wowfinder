@@ -36,6 +36,16 @@ const personalDefaults: CharPersonalDetails = {
     }),
 };
 
+function jsonImport(raw: any): CharPersonalDetails {
+    const res = Object.assign({}, personalDefaults, raw);
+    res.align = Object.values(Alignment).includes(res.align) ? res.align : Alignment.NN;
+    res.height = res.height instanceof Length ? res.height : new Length({ value: res.height, unit: LengthUnit.inch});
+    res.weight = res.weight instanceof Mass ? res.weight : new Mass({value: res.weight, unit: MassUnit.lb});
+    res.age = res.age instanceof Time ? res.age : new Time({value: res.age, unit: TimeUnit.year});
+    return res;
+}
+
 export {
     personalDefaults,
+    jsonImport,
 };

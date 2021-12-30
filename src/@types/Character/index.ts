@@ -1,6 +1,6 @@
 import JSON5 from 'json5';
 import Stats, { StatSet, zeroDefault } from './Stats';
-import CharPersonalDetails, { personalDefaults } from './Personal';
+import CharPersonalDetails, { jsonImport as personalDetailsJsonImport } from './Personal';
 import Race from './Race';
 import Class, { ClassBonuses, ClassFeature, ClassLevels } from './Class';
 import { Speeds } from './Speeds';
@@ -61,7 +61,7 @@ export default class Character {
         gear = [],
     }: CharacterBuilder) {
         this.key = key;
-        this._personal = Object.assign({}, personalDefaults, personal);
+        this._personal = personalDetailsJsonImport(personal);
         this._active = active;
         if (race in Races) {
             this._race = Races[race];
