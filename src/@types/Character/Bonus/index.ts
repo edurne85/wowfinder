@@ -3,6 +3,7 @@ import SkillsBonus from './Skills';
 import VitalNeeds from './VitalNeeds';
 import Senses from './Senses';
 import { sum } from '../../../utils';
+import SavesBonus from './Saves';
 
 enum BonusType {
     armor = 'armor',
@@ -33,6 +34,8 @@ interface BonusBuilder {
     hp?: number,
     stats?: StatsBonus;
     skills?: SkillsBonus;
+    saves?: SavesBonus;
+    // TODO: resistances
     armorClass?: number;
     vitalNeeds?: VitalNeeds;
     senses?: Senses;
@@ -43,6 +46,7 @@ class Bonus {
     private _hp: number;
     private _stats: StatsBonus;
     private _skills: SkillsBonus;
+    private _saves: SavesBonus;
     private _armorClass: number;
     private _vitalNeeds: VitalNeeds;
     private _senses: Senses;
@@ -52,6 +56,7 @@ class Bonus {
         hp = 0,
         stats = StatsBonus.zero,
         skills = SkillsBonus.zero,
+        saves = SavesBonus.zero,
         armorClass = 0,
         vitalNeeds = VitalNeeds.defaults,
         senses = Senses.defaults,
@@ -60,6 +65,7 @@ class Bonus {
         this._hp = hp;
         this._stats = StatsBonus.sum(stats);
         this._skills = SkillsBonus.sum(skills);
+        this._saves = SavesBonus.sum(saves);
         this._armorClass = armorClass;
         this._vitalNeeds = vitalNeeds;
         this._senses = senses;
@@ -73,6 +79,8 @@ class Bonus {
     get stats(): StatsBonus { return StatsBonus.sum(this._stats); }
     
     get skills(): SkillsBonus { return SkillsBonus.sum(this._skills); }
+
+    get saves(): SavesBonus { return SavesBonus.sum(this._saves); }
     
     get armorClass(): number { return this._armorClass; }
 
@@ -86,6 +94,7 @@ class Bonus {
             hp: 0,
             stats: StatsBonus.zero,
             skills: SkillsBonus.zero,
+            saves: SavesBonus.zero,
             armorClass: 0,
             vitalNeeds: VitalNeeds.defaults,
             senses: Senses.defaults,
@@ -98,6 +107,7 @@ class Bonus {
             hp: sum(...args.map(a => a._hp)),
             stats: StatsBonus.sum(...args.map(a => a._stats)),
             skills: SkillsBonus.sum(...args.map(a => a._skills)),
+            saves: SavesBonus.sum(...args.map(a => a._saves)),
             armorClass: sum(...args.map(a => a._armorClass)),
             vitalNeeds: VitalNeeds.combine(...args.map(a => a._vitalNeeds)),
             senses: Senses.combine(...args.map(a => a._senses)),
@@ -110,6 +120,7 @@ class Bonus {
             hp: Math.max(...args.map(a => a._hp)),
             stats: StatsBonus.max(...args.map(a => a._stats)),
             skills: SkillsBonus.max(...args.map(a => a._skills)),
+            saves: SavesBonus.max(...args.map(a => a._saves)),
             armorClass: Math.max(...args.map(a => a._armorClass)),
             vitalNeeds: VitalNeeds.combine(...args.map(a => a._vitalNeeds)),
             senses: Senses.combine(...args.map(a => a._senses)),
@@ -182,6 +193,14 @@ class MultiBonus {
                 ));
     }
 }
+
+interface BonusProvider {
+    get fullBonus(): MultiBonus
+}
+
+export type {
+    BonusProvider,
+};
 
 export {
     BonusType,

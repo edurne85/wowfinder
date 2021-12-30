@@ -95,6 +95,8 @@ class ArmorValues {
     get tempE(): number { return this._tempE; }
 
     get tempAll(): number { return this.temp + this.tempP + this.tempE; }
+
+    static get zero(): ArmorValues { return new ArmorValues({}); }
 }
 
 class FullArmorValues extends ArmorValues {

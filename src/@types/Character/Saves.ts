@@ -40,17 +40,42 @@ class SaveBreakdown {
     get temp(): number { return this._temp; }
 }
 
-interface SimpleSaves {
-    fort: number;
-    refl: number;
-    will: number;
+interface SimpleSavesBuilder {
+    fort?: number;
+    refl?: number;
+    will?: number;
 }
 
-const zero: SimpleSaves = {
-    fort: 0,
-    refl: 0,
-    will: 0,
-};
+class SimpleSaves {
+    protected _fort: number;
+    protected _refl: number;
+    protected _will: number;
+
+    constructor({
+        fort = 0,
+        refl = 0,
+        will = 0,
+    }: SimpleSavesBuilder) {
+        this._fort = fort;
+        this._refl = refl;
+        this._will = will;
+        
+    }
+
+    get fort(): number { return this._fort; }
+
+    get refl(): number { return this._refl; }
+
+    get will(): number { return this._will; }
+
+    static get zero(): SimpleSaves {
+        return new SimpleSaves({
+            fort: 0,
+            refl: 0,
+            will: 0,
+        });
+    }
+}
 
 interface SavesBuilder {
     stats: Stats;
@@ -68,7 +93,14 @@ class Saves {
     private _gear: SimpleSaves;
     private _misc: SimpleSaves;
     private _temp: SimpleSaves;
-    constructor({stats, base = zero, enhance = zero, gear = zero, misc = zero, temp = zero}: SavesBuilder) {
+    constructor({
+        stats,
+        base = SimpleSaves.zero,
+        enhance = SimpleSaves.zero,
+        gear = SimpleSaves.zero,
+        misc = SimpleSaves.zero,
+        temp = SimpleSaves.zero,
+    }: SavesBuilder) {
         this._stats = new Stats(stats);
         this._base = Object.assign({}, base);
         this._ehn = Object.assign({}, enhance);
@@ -121,7 +153,12 @@ class Saves {
     }
 }
 
+export type {
+    SimpleSavesBuilder,
+};
+
 export {
     Saves,
+    SimpleSaves,
     SaveBreakdown,
 };

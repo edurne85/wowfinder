@@ -1,4 +1,4 @@
-import { Bonus, BonusType } from '../Character/Bonus';
+import { Bonus, BonusProvider, BonusType, MultiBonus } from '../Character/Bonus';
 import Size from '../Character/Size';
 import { Mass, MassUnit } from '../Units';
 import { buildShape, Shape } from './Slot';
@@ -16,7 +16,7 @@ function asPounds(w: Weight): Mass {
     return (w as Mass) || new Mass({value: w as number, unit: MassUnit.lb});
 }
 
-export default class Gear {
+export default class Gear implements BonusProvider {
     protected _label: string;
     protected _shape: Shape;
     protected _size: Size;
@@ -46,6 +46,10 @@ export default class Gear {
     get weight(): Mass { return this._weight; }
 
     get bonuses(): Bonus { return this._bonuses.asType(BonusType.gear); }
+
+    get fullBonus(): MultiBonus {
+        return new MultiBonus({gear: this.bonuses});
+    }
 
     static build(raw: any): Gear {
         return new Gear({

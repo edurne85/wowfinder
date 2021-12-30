@@ -1,4 +1,5 @@
 import React from 'react';
+import { nextScore, reputationByScoreNullable, threshholds } from '../../@types/Faction';
 
 type CommonValue = number | string;
 
@@ -9,9 +10,13 @@ interface CellArgs<T> {
     classes?: string[],
 }
 
+function mkClassName(...classes: string[]): { className?: string } {
+    return classes.length > 0 ? { className: classes.join(' ') } : {};
+}
+
 function InputH({id, value, hideZero = false, classes = []}: CellArgs<CommonValue>): JSX.Element {
     const val = value || (hideZero ? '' : 0);
-    const className = classes.length > 0 ? { className: classes.join(' ') } : {};
+    const className = mkClassName(...classes);
     return (<th {...className}>
         <input id={id} value={val} readOnly={true} />
     </th>);
@@ -19,9 +24,25 @@ function InputH({id, value, hideZero = false, classes = []}: CellArgs<CommonValu
 
 function InputCell({id, value, hideZero = false, classes = []}: CellArgs<CommonValue>): JSX.Element {
     const val = value || (hideZero ? '' : 0);
-    const className = classes.length > 0 ? { className: classes.join(' ') } : {};
+    const className = mkClassName(...classes);
     return (<td {...className}>
         <input id={id} value={val} readOnly={true} />
+    </td>);
+}
+
+function ReputationCell({value, classes = []}: CellArgs<number>): JSX.Element {
+    const className = mkClassName(...classes);
+    const tier = reputationByScoreNullable(value);
+    let bottom = '';
+    if (tier) {
+        const threshhold = threshholds[tier] || 0;
+        const current = value - threshhold;
+        const next = nextScore(value) - threshhold;
+        bottom = `${current}/${next}`;
+    }
+    return (<td {...className} title={`total: ${value}`}>
+        <p>{tier || 'unknown'}</p>
+        <p>{bottom}</p>
     </td>);
 }
 
@@ -43,5 +64,6 @@ export {
     InputH,
     InputCell,
     CheckCell,
+    ReputationCell,
     InputSuffixedCell,
 };

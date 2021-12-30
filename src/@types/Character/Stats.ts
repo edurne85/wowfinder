@@ -65,14 +65,25 @@ const zeroDefault: StatSet = {
     WIS: 0,
     CHA: 0,
 };
-type StatBlock = {
+
+/* type StatBlock = {
     base: StatSet,
     racial: StatSet,
     enhance: StatSet,
     gear: StatSet,
     misc: StatSet,
     temp: StatSet,
+}; */
+
+type PartialStatBlock = {
+    base?: StatSet,
+    racial?: StatSet,
+    enhance?: StatSet,
+    gear?: StatSet,
+    misc?: StatSet,
+    temp?: StatSet,
 };
+
 export default class Stats {
     private _base: StatSet;
     private _racial: StatSet;
@@ -88,7 +99,7 @@ export default class Stats {
         gear = zeroDefault,
         misc = zeroDefault,
         temp = zeroDefault,
-    }: StatBlock) {
+    }: PartialStatBlock) {
         this._base = base;
         this._racial = racial;
         this._enhance = enhance;
@@ -125,9 +136,15 @@ export default class Stats {
 
     get temp(): StatSet { return Object.assign({}, this._temp); }
 
-    updateGear(gear: StatSet): Stats {
-        const { base, racial, enhance, misc, temp } = this;
-        return new Stats({base, racial, enhance, gear, misc, temp});
+    updated({base, racial, enhance, gear, misc, temp}: PartialStatBlock): Stats {
+        return new Stats({
+            base: base || this.base,
+            racial: racial || this.racial,
+            enhance: enhance || this.enhance,
+            gear: gear || this.gear,
+            misc: misc || this.misc,
+            temp: temp || this.temp,
+        });
     }
 }
 

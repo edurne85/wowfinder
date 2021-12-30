@@ -25,18 +25,33 @@ const threshholds: {[key in Rep]: number} = {
     revered: 21000,
     exalted: 42000,
 };
+Object.freeze(threshholds);
 
-const sortedDown = ([...Object.keys(threshholds)] as Rep[])
+const sortedDownTiers = ([...Object.keys(threshholds)] as Rep[])
     .sort((a: Rep, b: Rep): number => threshholds[b] - threshholds[a]);
-const lastRep = sortedDown[sortedDown.length - 1];
+const lastRep = sortedDownTiers[sortedDownTiers.length - 1];
 
-function reputationByScore(score: number): Rep {
-    for (const k of sortedDown) {
+const sortedUpScores = [...Object.values(threshholds)].sort((a, b) => a - b);
+
+function reputationByScoreNullable(score: number): Rep | null {
+    for (const k of sortedDownTiers) {
         if (score >= threshholds[k]) {
             return k;
         }
     }
-    return lastRep;
+    return null;
+}
+function reputationByScore(score: number): Rep {
+    return reputationByScoreNullable(score) || lastRep;
+}
+
+function nextScore(current: number): number {
+    for (const score of sortedUpScores) {
+        if (score > current) {
+            return score;
+        }
+    }
+    return NaN;
 }
 
 type Factions = {byKey: {[key:number]: Faction}, byLabel: {[label:string]: Faction}};
@@ -102,5 +117,8 @@ export default class Faction {
 export {
     Reputation,
     reputationByScore,
+    reputationByScoreNullable,
+    nextScore,
     initialHatedScore,
+    threshholds,
 };

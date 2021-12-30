@@ -6,10 +6,11 @@ import Class, { ClassBonuses, ClassFeature, ClassLevels } from './Class';
 import { Speeds } from './Speeds';
 import { ArmorValues, FullArmorValues } from './ArmorValues';
 import Size from './Size';
-import { Saves } from './Saves';
+import { Saves, SimpleSaves } from './Saves';
 import { Resistances } from './Resistances';
 import { buildGear, Gear } from '../Gear';
 import { Bonus } from './Bonus';
+import Armor from '../Gear/Armor';
 
 type SkillRanks = { [key: string]: number };
 
@@ -22,7 +23,6 @@ interface CharacterBuilder {
     miscHP?: number,
     baseStats: StatSet,
     skillRanks?: SkillRanks,
-    armor?: ArmorValues,
     resistances?: Resistances,
     gear?: Gear[],
 }
@@ -57,7 +57,6 @@ export default class Character {
         classes = [],
         miscHP = 0,
         skillRanks = {},
-        armor = new ArmorValues({}),
         resistances,
         gear = [],
     }: CharacterBuilder) {
@@ -82,14 +81,13 @@ export default class Character {
         this._stats = new Stats({
             base: baseStats,
             racial: this._race? this._race.statMods : zeroDefault,
-            enhance: zeroDefault,
-            gear: zeroDefault, // TODO
-            misc: zeroDefault, // TODO: Class auras?
-            temp: zeroDefault,
+            // TODO ? enhance
+            // TODO ? misc (class auras?)
+            // TODO ? temp
         });
         this._miscHP = miscHP;
         this._skillRanks = Object.assign({}, skillRanks);
-        this._armor = new ArmorValues(armor);
+        this._armor = ArmorValues.zero;
         this._resistances = new Resistances({...(resistances || {})});
         // TODO Refine gear 
         this._gear = gear.map(g => buildGear(g));
@@ -141,18 +139,13 @@ export default class Character {
     }
 
     get saves(): Saves {
-        const zero = {
-            fort: 0,
-            refl: 0,
-            will: 0,
-        };
         return new Saves({
             stats: this._stats,
-            base: this.classBonuses.saves,
-            enhance: zero, // TODO
-            gear: zero, // TODO
-            misc: zero, // TODO
-            temp: zero, // TODO
+            base: new SimpleSaves(this.classBonuses.saves),
+            enhance: SimpleSaves.zero, // TODO
+            gear: this.gearBonuses.saves,
+            misc: SimpleSaves.zero, // TODO
+            temp: SimpleSaves.zero, // TODO
         });
     }
 
@@ -163,9 +156,17 @@ export default class Character {
     }
 
     private _combineGearBonuses(): Bonus {
-        const result = Bonus.combine(...(this._gear.map(g => g.bonuses))).gear;
-        this._stats = this._stats.updateGear(result.stats.values);
-        return result;
+        const combined = Bonus.combine(...(this._gear.map(g => g.bonuses))).gear;
+        this._stats = this._stats.updated({gear: combined.stats.values});
+        const allArmor: Armor[] = this._gear.filter(g => g instanceof Armor).map(g => g as Armor);
+        const armor = Math.max(...allArmor.map(a => a.fullBonus.bonuses.armor.armorClass));
+        const shield = Math.max(...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass));
+        this._armor = new ArmorValues({
+            armor,
+            shield,
+            miscP: combined.armorClass,
+        });
+        return combined;
     }
 
     get gearBonuses(): Bonus {
