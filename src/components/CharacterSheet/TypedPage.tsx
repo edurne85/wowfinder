@@ -5,7 +5,7 @@ import { MainPage } from './MainPage';
 import { SkillsPage } from './SkillsPage';
 
 interface TypedPageBaseArgs {
-    char: Character,
+    char?: Character,
     xp: number,
 }
 

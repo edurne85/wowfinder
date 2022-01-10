@@ -44,16 +44,20 @@ function TestCharSheet(): JSX.Element {
   return (<CharacterSheet char={chars.arthur} xp={rewards.arthur.XP} />);
 }
 
+function PrintCharSheet(): JSX.Element {
+  return (<CharacterSheet />);
+}
+
 if (debug) {
   console.log('Imported data', {factions, chars, adventures, rewards, classes});
-  console.log('Test components', {Reputations, RewTable, CharList, TestCharSheet});
+  console.log('Test components', {Reputations, RewTable, CharList, TestCharSheet, PrintCharSheet});
 }
 
 export function App(): JSX.Element {
   return (
     <>
       <GlobalStyle />
-      <TestCharSheet />
+      <PrintCharSheet />
     </>
   );
 }

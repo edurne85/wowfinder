@@ -25,9 +25,9 @@ const LogoImg = styled.img`
 
 const logoSrc = window.Main.asset('charsheet-logo.png');
 
-export function MainPage({char, xp, visible = true}: {char: Character, xp: number, visible?: boolean}): JSX.Element {
+export function MainPage({char, xp, visible = true}: {char?: Character, xp: number, visible?: boolean}): JSX.Element {
     const { t } = useTranslation();
-    const bonuses = char.classBonuses;
+    const bonuses = char?.classBonuses;
     return (<Page key="Main" id="Main" visible={visible}>
         <div />
         <LogoImg src={logoSrc} width={245} height={90} alt='' />
@@ -37,9 +37,9 @@ export function MainPage({char, xp, visible = true}: {char: Character, xp: numbe
                 key: 'MainLeft',
                 id: 'MainLeft',
                 children: (<>
-                    <StatBlock stats={char.stats} />
+                    <StatBlock stats={char?.stats} />
                     <Header>{t('ui.speed.h')}</Header>
-                    <Speed speeds={char.speed} />
+                    <Speed speeds={char?.speed} />
                     <Header>{t('ui.armor.h')}</Header>
                     <Defenses char={char} />
                     <Header>{t('ui.saves.h')}</Header>
@@ -58,7 +58,7 @@ export function MainPage({char, xp, visible = true}: {char: Character, xp: numbe
                     <Classes char={char} />
                     <Header>{t('ui.hitpoints.h')}</Header>
                     { /* TODO: extra (misc) HP */}
-                    <HitPoints bonuses={bonuses} misc={char.miscHP} />
+                    <HitPoints bonuses={bonuses} misc={char?.miscHP} />
                     <Header>{t('ui.traits.h')}</Header>
                 </>),
             },

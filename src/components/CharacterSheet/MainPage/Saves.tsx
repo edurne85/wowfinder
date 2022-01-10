@@ -34,24 +34,23 @@ const StyledTable = styled.table`
 interface RowArgs {
     idSuffix: string;
     label: string;
-    value: SaveBreakdown;
+    value?: SaveBreakdown;
 }
 function Row({idSuffix, label, value}: RowArgs): JSX.Element {
     return (<tr id={`tr${idSuffix}`}>
         <th>{label}</th>
-        <InputCell id={`txtTotal${idSuffix}`} value={value.total} />
-        <InputCell id={`txtStat${idSuffix}`} value={value.stat} />
-        <InputCell id={`txtBase${idSuffix}`} value={value.base} />
-        <InputCell id={`txtEnhance${idSuffix}`} value={value.enhance} hideZero={true} />
-        <InputCell id={`txtGear${idSuffix}`} value={value.gear} hideZero={true} />
-        <InputCell id={`txtMisc${idSuffix}`} value={value.misc} hideZero={true} />
-        <InputCell id={`txtTemp${idSuffix}`} value={value.temp} hideZero={true} />
+        <InputCell id={`txtTotal${idSuffix}`} value={value?.total} />
+        <InputCell id={`txtStat${idSuffix}`} value={value?.stat} />
+        <InputCell id={`txtBase${idSuffix}`} value={value?.base} />
+        <InputCell id={`txtEnhance${idSuffix}`} value={value?.enhance} hideZero={true} />
+        <InputCell id={`txtGear${idSuffix}`} value={value?.gear} hideZero={true} />
+        <InputCell id={`txtMisc${idSuffix}`} value={value?.misc} hideZero={true} />
+        <InputCell id={`txtTemp${idSuffix}`} value={value?.temp} hideZero={true} />
     </tr>);
 }
 
-export function Saves({char}: {char: Character}): JSX.Element {
+export function Saves({char}: {char?: Character}): JSX.Element {
     const { t } = useTranslation();
-    const { fort, refl, will } = char.saves;
     return (<StyledTable>
         <thead>
             <tr id="trSavesTitles">
@@ -66,9 +65,9 @@ export function Saves({char}: {char: Character}): JSX.Element {
             </tr>
         </thead>
         <tbody>
-            <Row idSuffix="Fort" label="Fort" value={fort} />
-            <Row idSuffix="Refl" label="Refl" value={refl} />
-            <Row idSuffix="Will" label="Will" value={will} />
+            <Row idSuffix="Fort" label="Fort" value={char?.saves.fort} />
+            <Row idSuffix="Refl" label="Refl" value={char?.saves.refl} />
+            <Row idSuffix="Will" label="Will" value={char?.saves.will} />
         </tbody>
     </StyledTable>);
 }

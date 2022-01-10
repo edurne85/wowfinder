@@ -26,10 +26,10 @@ const StyledTable = styled.table`
     }
 `;
 
-const HitPoints: React.FC<HitPointProps> = ({bonuses, misc, current}) => {
+const HitPoints: React.FC<HitPointProps> = ({bonuses, misc=0, current}) => {
     const { t } = useTranslation();
-    const base = bonuses.hp;
-    const total = base + misc;
+    const base = bonuses?.hp;
+    const total = (base != null) ? base + misc : undefined;
     const curr = (typeof(current) === 'undefined' ? total : current);
     return(<StyledTable id="tblHp">
         <tbody>
@@ -51,7 +51,7 @@ const HitPoints: React.FC<HitPointProps> = ({bonuses, misc, current}) => {
                 <td className="separator">=</td>
                 <td><input id="txtHpBase" defaultValue={base} /></td>
                 <td className="separator">+</td>
-                <td><input id="txtHpMisc" defaultValue={misc} /></td>
+                <td><input id="txtHpMisc" defaultValue={misc || ''} /></td>
                 <td className="separator">+</td>
                 <td><input id="txtHpTemp" /></td>
             </tr>

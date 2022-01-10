@@ -67,12 +67,13 @@ function EmptySpeed(): JSX.Element {
     </>);
 }
 
-function InputSpeedCell({id, speed, targetUnit}: {id: string, speed: SpeedValue, targetUnit: TargetUnit}): JSX.Element {
-    return <InputSuffixedCell id={id} value={Math.round(speed.as(targetUnit.unit))} suffix={targetUnit.suffix} />;
+function InputSpeedCell({id, speed, targetUnit}: {id: string, speed?: SpeedValue, targetUnit: TargetUnit}): JSX.Element {
+    const value = speed != null ? Math.round(speed.as(targetUnit.unit)) : '';
+    return <InputSuffixedCell id={id} value={value} suffix={targetUnit.suffix} />;
 }
 
-function SpeedCells({name, speed}: {name: string, speed: SpeedValue}): JSX.Element {
-    return speed.value === 0
+function SpeedCells({name, speed}: {name: string, speed?: SpeedValue}): JSX.Element {
+    return !speed || !speed.value
         ? <EmptySpeed />
         :(<>
             <InputSpeedCell id={`txtSpeed${name}Feet`} speed={speed} targetUnit={targetUnits.feet} />
@@ -81,33 +82,33 @@ function SpeedCells({name, speed}: {name: string, speed: SpeedValue}): JSX.Eleme
         </>);
 }
 
-export function Speed ({speeds}: {speeds: Speeds}): JSX.Element {
+export function Speed ({speeds}: {speeds?: Speeds}): JSX.Element {
     const { t } = useTranslation();
     return (<StyledTable>
         <tbody>
             <tr>
                 <th>{t('ui.speed.base')}</th>
-                <SpeedCells name="Base" speed={speeds.base} />
+                <SpeedCells name="Base" speed={speeds?.base} />
                 <th>{t('ui.speed.load')}</th>
-                <SpeedCells name="Load" speed={speeds.encumbered} />
+                <SpeedCells name="Load" speed={speeds?.encumbered} />
             </tr>
             <tr>
                 <th>{t('ui.speed.fly')}</th>
-                <SpeedCells name="Fly" speed={speeds.fly.speed} />
+                <SpeedCells name="Fly" speed={speeds?.fly.speed} />
                 <td colSpan={2}>{t('ui.speed.maneuverability')}</td>
                 <td colSpan={2}><select id="mnuFlyManeuverability">{/* TODO: maneuverability */}</select></td>
             </tr>
             <tr>
                 <th>{t('ui.speed.swim')}</th>
-                <SpeedCells name="Swim" speed={speeds.swim} />
+                <SpeedCells name="Swim" speed={speeds?.swim} />
                 <th>{t('ui.speed.climb')}</th>
-                <SpeedCells name="Climb" speed={speeds.climb} />
+                <SpeedCells name="Climb" speed={speeds?.climb} />
             </tr>
             <tr>
                 <th>{t('ui.speed.burrow')}</th>
-                <SpeedCells name="Burrow" speed={speeds.burrow} />
+                <SpeedCells name="Burrow" speed={speeds?.burrow} />
                 <th>{t('ui.speed.misc')}</th>
-                <SpeedCells name="Misc" speed={speeds.misc} />
+                <SpeedCells name="Misc" speed={speeds?.misc} />
             </tr>
         </tbody>
     </StyledTable>);

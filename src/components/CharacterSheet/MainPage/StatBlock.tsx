@@ -6,13 +6,13 @@ import { borderless, borderThick, reverseColors, smallText } from '../../helpers
 interface StatRowBuilder {
     key: string;
     id: string;
-    total: number;
-    mod: number;
-    base: number;
-    enhance: number;
-    gear: number;
-    misc: number;
-    temp: number;
+    total?: number;
+    mod?: number;
+    base?: number;
+    enhance?: number;
+    gear?: number;
+    misc?: number;
+    temp?: number;
 }
 
 const commonStyles = `
@@ -78,8 +78,7 @@ function StatRow({id, total, mod, base, enhance, gear, misc, temp}: StatRowBuild
     </tr>);
 }
 
-export function StatBlock({stats}: {stats: Stats}): JSX.Element {
-    const {totals, totalMods, base, enhance, gear, misc, temp} = stats;
+export function StatBlock({stats}: {stats?: Stats}): JSX.Element {
     return (<StyledTable id="tblStats">
         <thead>
             <StatHead />
@@ -88,13 +87,13 @@ export function StatBlock({stats}: {stats: Stats}): JSX.Element {
             {StatKeys.map(key => <StatRow
                 key={key}
                 id={key}
-                total={totals[key]}
-                mod={totalMods[key]}
-                base={base[key]}
-                enhance={enhance[key]}
-                gear={gear[key]}
-                misc={misc[key]}
-                temp={temp[key]}
+                total={stats?.totals[key]}
+                mod={stats?.totalMods[key]}
+                base={stats?.base[key]}
+                enhance={stats?.enhance[key]}
+                gear={stats?.gear[key]}
+                misc={stats?.misc[key]}
+                temp={stats?.temp[key]}
             />)}
         </tbody>
     </StyledTable>);

@@ -7,7 +7,7 @@ interface PersonalItemProps<T> {
     id: string;
     label: string;
     width: number;
-    value?: T;
+    value?: T | null;
 }
 
 const Below = styled.span`

@@ -5,6 +5,13 @@ type CommonValue = number | string;
 
 interface CellArgs<T> {
     id: string,
+    value?: T,
+    hideZero?: boolean,
+    classes?: string[],
+}
+
+interface CellArgsStrict<T> {
+    id: string,
     value: T,
     hideZero?: boolean,
     classes?: string[],
@@ -15,7 +22,7 @@ function mkClassName(...classes: string[]): { className?: string } {
 }
 
 function InputH({id, value, hideZero = false, classes = []}: CellArgs<CommonValue>): JSX.Element {
-    const val = value || (hideZero ? '' : 0);
+    const val = value != null ? value || (hideZero ? '' : 0) : '';
     const className = mkClassName(...classes);
     return (<th {...className}>
         <input id={id} value={val} readOnly={true} />
@@ -23,14 +30,14 @@ function InputH({id, value, hideZero = false, classes = []}: CellArgs<CommonValu
 }
 
 function InputCell({id, value, hideZero = false, classes = []}: CellArgs<CommonValue>): JSX.Element {
-    const val = value || (hideZero ? '' : 0);
+    const val = value != null ? value || (hideZero ? '' : 0) : '';
     const className = mkClassName(...classes);
     return (<td {...className}>
         <input id={id} value={val} readOnly={true} />
     </td>);
 }
 
-function ReputationCell({value, classes = []}: CellArgs<number>): JSX.Element {
+function ReputationCell({value, classes = []}: CellArgsStrict<number>): JSX.Element {
     const className = mkClassName(...classes);
     const tier = reputationByScoreNullable(value);
     let bottom = '';

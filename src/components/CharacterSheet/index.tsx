@@ -12,18 +12,18 @@ function ConditionalTypedPage({
     return availables[type] ? <TypedPage {...{type, char, xp}} /> : <></>;
 }
 
-function hasSpells(char: Character): boolean {
-    return char.classBonuses.efl.arc > 0
+function hasSpells(char?: Character): boolean {
+    return char != null && (char.classBonuses.efl.arc > 0
         || char.classBonuses.efl.div > 0
-        || char.classBonuses.efl.esp > 0;
+        || char.classBonuses.efl.esp > 0);
 }
 
-function hasAnyFeatures(char: Character, ...features: ClassFeature[]): boolean {
-    return features.some(f => char.classFeatures.includes(f));
+function hasAnyFeatures(char?: Character, ...features: ClassFeature[]): boolean {
+    return char != null && features.some(f => char.classFeatures.includes(f));
 }
 
 const druidFeralForms = [ClassFeature.bearForm, ClassFeature.catForm];
-function hasDruidFeralForms(char: Character): boolean {
+function hasDruidFeralForms(char?: Character): boolean {
     return hasAnyFeatures(char, ...druidFeralForms);
 }
 
@@ -34,19 +34,19 @@ const druidTravelForms = [
     ClassFeature.greatStagForm,
     ClassFeature.eagleForm,
 ];
-function hasDruidTravelForms(char: Character): boolean {
+function hasDruidTravelForms(char?: Character): boolean {
     return hasAnyFeatures(char, ...druidTravelForms);
 }
 
-function hasDruidMoonkinForm(char: Character): boolean {
+function hasDruidMoonkinForm(char?: Character): boolean {
     return hasAnyFeatures(char, ClassFeature.moonkinForm);
 }
 
-function hasDruidTreeForm(char: Character): boolean {
+function hasDruidTreeForm(char?: Character): boolean {
     return hasAnyFeatures(char, ClassFeature.treeLifeForm);
 }
 
-export function CharacterSheet({char, xp = 0}: {char: Character, xp: number}): JSX.Element {
+export function CharacterSheet({char, xp = 0}: {char?: Character, xp?: number}): JSX.Element {
     const availables: FullPageSelection = {
         [PageType.main]: true,
         [PageType.skills]: true,

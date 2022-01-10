@@ -6,15 +6,15 @@ type CharProps = {
 };
 
 type CharXpProps = {
-    char: Character,
-    xp: number,
+    char?: Character,
+    xp?: number,
 };
 
 type BonusOnlyProps = {
-    bonuses: ClassBonuses,
+    bonuses?: ClassBonuses,
 };
 
-type HitPointProps = BonusOnlyProps & { misc: number, current?: number};
+type HitPointProps = BonusOnlyProps & { misc?: number, current?: number};
 
 export {
     CharProps,

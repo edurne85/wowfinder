@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import Character from '../../@types/Character';
+import { SkillsBonus } from '../../@types/Character/Bonus';
 import Size from '../../@types/Character/Size';
 import Skills, { Skill } from '../../@types/Character/Skills';
 import { StatKey, StatSet } from '../../@types/Character/Stats';
@@ -35,7 +36,7 @@ const StyledTable = styled.table`
 
 interface SkillArgs {
     k: string,
-    statMods: StatSet,
+    statMods?: StatSet,
     ranks: number,
     isClass: boolean,
     // TODO Racial bonus
@@ -51,20 +52,26 @@ const trainedClassSkillBonus = 3;
 function SkillRow({k, statMods, ranks, isClass, size, gear}: SkillArgs): JSX.Element {
     const { t } = useTranslation();
     const skill = Skills[k as Skill];
+    const hasTotal = (statMods != null);
     let statKey: StatKey = skill.primary;
-    let statBonus = statMods[skill.primary];
-    if (skill.secondary !== null) {
-        const secondaryBonus = statMods[skill.secondary];
-        if (secondaryBonus > statBonus) {
-            statKey = skill.secondary;
-            statBonus = secondaryBonus;
+    let statBonus: number | undefined;
+    if (statMods) {
+        statBonus = statMods[skill.primary];
+        if (skill.secondary !== null) {
+            const secondaryBonus = statMods[skill.secondary];
+            if (secondaryBonus > statBonus) {
+                statKey = skill.secondary;
+                statBonus = secondaryBonus;
+            }
         }
     }
     const id: (suffix: string) => string = (suffix) => `txtSkill_${k}_${suffix}`;
     const trained = isClass && ranks > 0 ? trainedClassSkillBonus : 0;
     const sizeMod = skill.sizeModFactor * size;
     const usable = isClass || ranks > 0 || !skill.trainedOnly;
-    const total = usable ? statBonus + ranks + trained + sizeMod + gear: 0; // TODO
+    const total = hasTotal
+    ? (usable ? (statBonus || 0) + ranks + trained + sizeMod + gear: 0)
+    : undefined;
     return (<tr>
         <CheckCell id={id('Untrained')} value={!skill.trainedOnly} />
         <CheckCell id={id('Class')} value={isClass} />
@@ -83,13 +90,13 @@ function SkillRow({k, statMods, ranks, isClass, size, gear}: SkillArgs): JSX.Ele
     </tr>);
 }
 
-export function SkillsPage({char, visible = true}: {char: Character, visible?: boolean}): JSX.Element {
+export function SkillsPage({char, visible = true}: {char?: Character, visible?: boolean}): JSX.Element {
     const { t } = useTranslation();
     const sortedKeys = Object.keys(Skills).sort((k1, k2) => t(`skills.${k1}`).localeCompare(t(`skills.${k2}`)));
-    const statMods = char.stats.totalMods;
-    const size = char.race?.size || 0;
-    const classSkills = char.classBonuses.classSkills;
-    const gearBonuses = char.gearBonuses.skills;
+    const statMods = char?.stats.totalMods;
+    const size = char?.race?.size || 0;
+    const classSkills = char?.classBonuses.classSkills || new Set<Skill>();
+    const gearBonuses = char?.gearBonuses.skills || new SkillsBonus({});
     return (<Page key="Skills" id="Skills" visible={visible}>
         <Header>{t('ui.skills.h')}</Header>
         <StyledTable>
@@ -119,7 +126,7 @@ export function SkillsPage({char, visible = true}: {char: Character, visible?: b
                         statMods,
                         isClass: classSkills.has(k as Skill),
                         size,
-                        ranks: char.skillRanks[k] || 0,
+                        ranks: char?.skillRanks[k] || 0,
                         gear: gearBonuses.value(k as Skill),
                     }}/>
                 ))}

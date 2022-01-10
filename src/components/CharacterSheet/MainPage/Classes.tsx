@@ -55,8 +55,8 @@ function ClassEntry({cKey, level, first = false}: ClassEntryArgs): JSX.Element {
 
 const maxClassCount = 12;
 
-export default function Classes({char}: {char: Character}): JSX.Element {
-    const pairs: {key: string, level: number}[] = char.classes.map(c => ({key: c.cls.key, level: c.level}));
+export default function Classes({char}: {char?: Character}): JSX.Element {
+    const pairs: {key: string, level: number}[] = char != null ? char.classes.map(c => ({key: c.cls.key, level: c.level})) : [];
     while (pairs.length < maxClassCount) {
         pairs.push({key: '', level: 0});
     }
