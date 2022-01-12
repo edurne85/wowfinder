@@ -4,7 +4,7 @@ import Character from '../../@types/Character';
 import { SkillsBonus } from '../../@types/Character/Bonus';
 import Size from '../../@types/Character/Size';
 import Skills, { Skill } from '../../@types/Character/Skills';
-import { StatKey, StatSet } from '../../@types/Character/Stats';
+import { StatSet } from '../../@types/Character/Stats';
 import { debug } from '../../utils';
 import Header from '../helpers/Header';
 import { CheckCell, InputCell } from '../helpers/InputCell';
@@ -15,7 +15,7 @@ const StyledTable = styled.table`
     ${font({family: FontFamily.priori})}
     & th, & td, & input {
         box-sizing: border-box;
-        width: 11mm;
+        width: 10.5mm;
         text-align: center;
         ${smallText}
         ${borderless}
@@ -25,6 +25,9 @@ const StyledTable = styled.table`
             outline: 1px dashed #ff9;
         }
     ` : ''}
+    & .skill-stat-abbr {
+        width: 16mm;
+    }
     & .skill-name, & .skill-name input {
         width: 50mm;
         text-align: left;
@@ -53,15 +56,18 @@ function SkillRow({k, statMods, ranks, isClass, size, gear}: SkillArgs): JSX.Ele
     const { t } = useTranslation();
     const skill = Skills[k as Skill];
     const hasTotal = (statMods != null);
-    let statKey: StatKey = skill.primary;
+    const primaryAbbr = t(`stats.abbr.${skill.primary}`);
+    const secondaryAbbr = skill.secondary ? t(`stats.abbr.${skill.secondary}`) : null;
+    let fullAbbr = skill.secondary ?  `${primaryAbbr} / ${secondaryAbbr}` : primaryAbbr;
     let statBonus: number | undefined;
     if (statMods) {
         statBonus = statMods[skill.primary];
+        fullAbbr = primaryAbbr;
         if (skill.secondary !== null) {
             const secondaryBonus = statMods[skill.secondary];
             if (secondaryBonus > statBonus) {
-                statKey = skill.secondary;
                 statBonus = secondaryBonus;
+                fullAbbr = secondaryAbbr || '';
             }
         }
     }
@@ -77,7 +83,7 @@ function SkillRow({k, statMods, ranks, isClass, size, gear}: SkillArgs): JSX.Ele
         <CheckCell id={id('Class')} value={isClass} />
         <td className="skill-name">{t(`skills.${k}`)}</td>
         <InputCell id={id('Total')} value={total} hideZero={!usable} />
-        <td className="skill-stat-abbr">{t(`stats.abbr.${statKey}`)}</td>
+        <td className="skill-stat-abbr">{fullAbbr}</td>
         <InputCell id={id('StatMod')} value={statBonus} />
         <InputCell id={id('Ranks')} value={ranks} hideZero={true} />
         <InputCell id={id('Trained')} value={trained} hideZero={true} />
