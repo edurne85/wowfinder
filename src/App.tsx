@@ -57,7 +57,7 @@ export function App(): JSX.Element {
   return (
     <>
       <GlobalStyle />
-      <PrintCharSheet />
+      <TestCharSheet />
     </>
   );
 }

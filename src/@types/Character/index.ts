@@ -177,6 +177,18 @@ export default class Character {
         return this.classes.map(c => c.cls.features(c.level)).flat();
     }
 
+    get classFeaturesCondensed(): {feature: ClassFeature, count: number}[] {
+        const counts: {[key: string]: number} = {};
+        const features = this.classFeatures;
+        for (const f of features) {
+            if (!(f in counts)) {
+                counts[f] = 0;
+            }
+            counts[f]++;
+        }
+        return Object.keys(counts).map(k => ({feature: k as ClassFeature, count: counts[k]}));
+    }
+
     addLevel(cls: Class, levels = 1): ClassLevels {
         const matches = this._classes.filter(c => c.cls.key === cls.key);
         if (matches.length > 0) {

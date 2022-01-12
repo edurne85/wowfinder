@@ -13,6 +13,7 @@ import { Saves } from './Saves';
 import { Resistances } from './Resistances';
 import { Attacks } from './Attacks';
 import Classes from './Classes';
+import Traits from './Traits';
 
 const LogoImg = styled.img`
     display: inline-block;
@@ -60,6 +61,7 @@ export function MainPage({char, xp, visible = true}: {char?: Character, xp: numb
                     { /* TODO: extra (misc) HP */}
                     <HitPoints bonuses={bonuses} misc={char?.miscHP} />
                     <Header>{t('ui.traits.h')}</Header>
+                    <Traits char={char} />
                 </>),
             },
         ]} />
