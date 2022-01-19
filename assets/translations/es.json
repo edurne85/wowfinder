@@ -194,6 +194,24 @@
         "revered": "reverenciado",
         "exalted": "exaltado"
     },
+    "gear": {
+        "slot": {
+            "mhand": "Mano diestra",
+            "ohand": "Mano zurda",
+            "head": "Cabeza",
+            "torso": "Torso",
+            "back": "Espalda",
+            "ear": "Oreja",
+            "neck": "Cuello",
+            "shoulders": "Hombros",
+            "hands": "Man os",
+            "wrists": "Muñecas",
+            "waist": "Cintura",
+            "legs": "Piernas",
+            "feet": "Pies",
+            "ring": "Anillo"
+        }
+    },
     "ui": {
         "common": {
             "total": "Total",
@@ -295,6 +313,23 @@
             "acp": "P. Arm",
             "untrained": "S",
             "class": "C"
+        },
+        "inventory": {
+            "h": "Inventario",
+            "gear": "Equipo",
+            "money": {
+                "h": "Money",
+                "abbr": {
+                    "g": "o",
+                    "s": "p",
+                    "c": "c"
+                },
+                "full": {
+                    "g": "moneda(s) de oro",
+                    "s": "moneda(s) de plata",
+                    "c": "moneda(s) de cobre"
+                }
+            }
         }
     }
 }

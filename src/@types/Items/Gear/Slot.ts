@@ -74,9 +74,22 @@ function buildShape(slots: string[]): Shape {
     return Object.keys(slotCounts).map(s => ({slot: s as GearSlot, qtty: slotCounts[s]}));
 }
 
+function gt0(qtty: number): boolean {
+    return Math.floor(qtty) > 0;
+}
+
+function explodeShape(shape: Shape): string[] {
+    const res: string[] = [];
+    for (const elem of shape.filter(shape => gt0(shape.qtty))) {
+        res.push(...Array(elem.qtty).fill(elem.slot));
+    }
+    return res;
+}
+
 export default GearSlot;
 export {
     Shape,
     Shapes,
     buildShape,
+    explodeShape,
 };

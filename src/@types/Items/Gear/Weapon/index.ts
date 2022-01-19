@@ -1,7 +1,7 @@
-import { Bonus, BonusType } from '../../Character/Bonus';
-import Size from '../../Character/Size';
-import { Damage } from '../../Damage';
-import { Length, LengthUnit } from '../../Units';
+import { Bonus, BonusType } from '../../../Character/Bonus';
+import Size from '../../../Character/Size';
+import { Damage } from '../../../Damage';
+import { Length, LengthUnit } from '../../../Units';
 import Gear, { GearBuilder, Weight } from '../base';
 import WeaponFlags from './Flags';
 import WeaponGroup from './Group';

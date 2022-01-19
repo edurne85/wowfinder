@@ -8,9 +8,10 @@ import { ArmorValues, FullArmorValues } from './ArmorValues';
 import Size from './Size';
 import { Saves, SimpleSaves } from './Saves';
 import { Resistances } from './Resistances';
-import { buildGear, Gear } from '../Gear';
+import { Gear } from '../Items/Gear';
 import { Bonus } from './Bonus';
-import Armor from '../Gear/Armor';
+import Armor from '../Items/Gear/Armor';
+import Inventory from '../Items/Inventory';
 
 type SkillRanks = { [key: string]: number };
 
@@ -43,7 +44,8 @@ export default class Character {
     private _skillRanks: SkillRanks;
     private _armor: ArmorValues;
     private _resistances: Resistances;
-    private _gear: Gear[];
+    private _inventory: Inventory;
+    // private _gear: Gear[];
 
     private _cachedClassBonuses: ClassBonuses | null = null;
     private _cachedGearBonuses: Bonus | null = null;
@@ -89,8 +91,10 @@ export default class Character {
         this._skillRanks = Object.assign({}, skillRanks);
         this._armor = ArmorValues.zero;
         this._resistances = new Resistances({...(resistances || {})});
-        // TODO Refine gear 
-        this._gear = gear.map(g => buildGear(g));
+        // TODO Refine inventory / gear
+        this._inventory = new Inventory({
+            gear,
+        });
 
         this._cachedClassBonuses = null;
         this._combineGearBonuses();
@@ -156,9 +160,9 @@ export default class Character {
     }
 
     private _combineGearBonuses(): Bonus {
-        const combined = Bonus.combine(...(this._gear.map(g => g.bonuses))).gear;
+        const combined = Bonus.combine(...(this._inventory.gear.map(g => g.bonuses))).gear;
         this._stats = this._stats.updated({gear: combined.stats.values});
-        const allArmor: Armor[] = this._gear.filter(g => g instanceof Armor).map(g => g as Armor);
+        const allArmor: Armor[] = this._inventory.gear.filter(g => g instanceof Armor).map(g => g as Armor);
         const armor = Math.max(...allArmor.map(a => a.fullBonus.bonuses.armor.armorClass));
         const shield = Math.max(...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass));
         this._armor = new ArmorValues({

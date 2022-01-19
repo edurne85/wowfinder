@@ -1,7 +1,7 @@
-import { Bonus, BonusProvider, BonusType, MultiBonus } from '../Character/Bonus';
-import Size from '../Character/Size';
-import { Mass, MassUnit } from '../Units';
-import { buildShape, Shape } from './Slot';
+import { Bonus, BonusProvider, BonusType, MultiBonus } from '../../Character/Bonus';
+import Size from '../../Character/Size';
+import { Mass, MassUnit } from '../../Units';
+import { buildShape, explodeShape, Shape } from './Slot';
 
 type Weight = number | Mass;
 interface GearBuilder {
@@ -35,6 +35,16 @@ export default class Gear implements BonusProvider {
         this._size = size;
         this._weight = asPounds(weight);
         this._bonuses = bonuses.retyped(BonusType.gear);
+    }
+
+    static copy(gear: Gear): Gear {
+        return new Gear({
+            label: gear._label,
+            shape: explodeShape(gear._shape),
+            size: gear._size,
+            weight: gear._weight,
+            bonuses: gear._bonuses, // TODO make copy
+        });
     }
 
     get label(): string { return this._label; }

@@ -1,5 +1,5 @@
-import { Bonus, BonusType, MultiBonus } from '../../Character/Bonus';
-import Size from '../../Character/Size';
+import { Bonus, BonusType, MultiBonus } from '../../../Character/Bonus';
+import Size from '../../../Character/Size';
 import Gear, { GearBuilder, Weight } from '../base';
 import ArmorBonusType from './BonusType';
 import ArmorFlags from './Flags';
