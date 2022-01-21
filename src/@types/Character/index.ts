@@ -8,10 +8,9 @@ import { ArmorValues, FullArmorValues } from './ArmorValues';
 import Size from './Size';
 import { Saves, SimpleSaves } from './Saves';
 import { Resistances } from './Resistances';
-import { Gear } from '../Items/Gear';
 import { Bonus } from './Bonus';
 import Armor from '../Items/Gear/Armor';
-import Inventory from '../Items/Inventory';
+import Inventory, { InventoryBuilder } from '../Items/Inventory';
 
 type SkillRanks = { [key: string]: number };
 
@@ -25,7 +24,7 @@ interface CharacterBuilder {
     baseStats: StatSet,
     skillRanks?: SkillRanks,
     resistances?: Resistances,
-    gear?: Gear[],
+    inventory?: InventoryBuilder,
 }
 
 type Characters = {[key:string]: Character};
@@ -60,7 +59,7 @@ export default class Character {
         miscHP = 0,
         skillRanks = {},
         resistances,
-        gear = [],
+        inventory = Inventory.defaultBuilder,
     }: CharacterBuilder) {
         this.key = key;
         this._personal = personalDetailsJsonImport(personal);
@@ -92,9 +91,8 @@ export default class Character {
         this._armor = ArmorValues.zero;
         this._resistances = new Resistances({...(resistances || {})});
         // TODO Refine inventory / gear
-        this._inventory = new Inventory({
-            gear,
-        });
+        console.warn ()
+        this._inventory = new Inventory(inventory);
 
         this._cachedClassBonuses = null;
         this._combineGearBonuses();
@@ -154,6 +152,8 @@ export default class Character {
     }
 
     get resistances(): Resistances { return this._resistances; }
+
+    get inventory(): Inventory { return Inventory.copy(this._inventory); }
 
     get classBonuses(): ClassBonuses {
         return (this._cachedClassBonuses ||= Class.multiclass(this._classes, this._stats.totals));

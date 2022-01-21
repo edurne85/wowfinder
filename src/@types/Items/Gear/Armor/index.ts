@@ -71,6 +71,8 @@ export default class Armor extends Gear {
         });
     }
 
+    get $type(): string { return 'Armor'; }
+
     static build(raw: any = {}): Armor {
         return new Armor({
             label: raw.label as string || '',

@@ -61,6 +61,8 @@ export default class Gear implements BonusProvider {
         return new MultiBonus({gear: this.bonuses});
     }
 
+    get $type(): string { return ''; }
+    
     static build(raw: any): Gear {
         return new Gear({
             label: raw.label as string || '',

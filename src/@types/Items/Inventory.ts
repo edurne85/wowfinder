@@ -18,6 +18,24 @@ export default class Inventory {
         this._money = Money.fromRaw(money);
     }
 
+    static copy(inventory: Inventory): Inventory {
+        return new Inventory({
+            money: inventory._money.raw,
+            gear: inventory.gear,
+        });
+    }
+
+    static get defaultBuilder(): InventoryBuilder {
+        return {
+            money: 0,
+            gear: [],
+        };
+    }
+
+    static get empty(): Inventory {
+        return new Inventory(Inventory.defaultBuilder);
+    }
+
     get money(): Money {
         return Money.fromMoney(this.money);
     }
@@ -25,4 +43,8 @@ export default class Inventory {
     get gear(): Gear[] {
         return this._gear.map(Gear.copy);
     }
+}
+
+export {
+    InventoryBuilder,
 }

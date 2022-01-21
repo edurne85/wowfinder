@@ -92,6 +92,8 @@ export default class Weapon extends Gear {
         return this.ranged ? this._range : this.meleeRange;
     }
 
+    get $type(): string { return 'Weapon'; }
+
     static build(raw: any = {}): Weapon {
         return new Weapon({
             label: raw.label as string || '',

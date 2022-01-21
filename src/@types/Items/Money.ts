@@ -71,7 +71,7 @@ export default class Money {
     }
 
     get raw(): number {
-        return this.raw;
+        return this._raw;
     }
 
     get split(): MoneyBreakdown {
