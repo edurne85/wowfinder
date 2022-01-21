@@ -1,3 +1,5 @@
+import { debug } from '../../utils';
+
 const colors = {
     transparent: 'transparent',
     white: '#fff',
@@ -56,6 +58,24 @@ const printableBottomBorder = (selector: string): string => `
     }
 `;
 
+interface DebugOutlineArgs {
+    selector?: string;
+    width?: string,
+    style?: string,
+    color?: string,
+}
+const debugOutline = ({
+    selector = '&',
+    width = '1px',
+    style = 'dashed',
+    color = '#ccc',
+}: DebugOutlineArgs): string => (
+    debug ? `@media screen {
+        ${selector} {
+            outline: ${width} ${style} ${color};
+        }
+    }`: '');
+
 enum FontFamily {
     priori = 'Priori Serif OT',
 }
@@ -93,6 +113,7 @@ export {
     borderless,
     bottomLine,
     printableBottomBorder,
+    debugOutline,
     font,
     FontFamily,
     baseFont,
