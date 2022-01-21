@@ -8,7 +8,7 @@ import { StatSet } from '../../@types/Character/Stats';
 import { debug } from '../../utils';
 import Header from '../helpers/Header';
 import { CheckCell, InputCell } from '../helpers/InputCell';
-import { borderless, font, FontFamily, smallText } from '../helpers/mixins';
+import { borderless, font, FontFamily, printableBottomBorder, smallText } from '../helpers/mixins';
 import Page from '../helpers/Page';
 
 const StyledTable = styled.table`
@@ -21,10 +21,13 @@ const StyledTable = styled.table`
         ${borderless}
     }
     ${debug ? `
-        & th, & td {
-            outline: 1px dashed #ff9;
+        @media screen {
+            & th, & td {
+                outline: 1px dashed #ff9;
+            }
         }
     ` : ''}
+    ${printableBottomBorder('& td input')}
     & .skill-stat-abbr {
         width: 16mm;
     }

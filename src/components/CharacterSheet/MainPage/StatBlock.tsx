@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import Stats, { StatKeys } from '../../../@types/Character/Stats';
-import { borderless, borderThick, reverseColors, smallText } from '../../helpers/mixins';
+import { borderless, borderThick, borderThin, reverseColors, smallText } from '../../helpers/mixins';
 
 interface StatRowBuilder {
     key: string;
@@ -40,6 +40,9 @@ const StyledTd = styled.td`
     ${commonTStyles}
     ${smallText}
     ${borderThick}
+    @media print {
+        ${borderThin}
+    }
     & > input {
         ${commonStyles}
         ${borderless}

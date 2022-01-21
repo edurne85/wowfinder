@@ -2,18 +2,19 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import Character from '../../../@types/Character';
 import { InputCell } from '../../helpers/InputCell';
-import { borderless, borderThick, borderThin, reverseColors, smallText } from '../../helpers/mixins';
+import { borderless, borderThick, borderThin, printableBottomBorder, reverseColors, smallText } from '../../helpers/mixins';
 
 const StyledTable = styled.table`
     & th, & td, & input {
         box-sizing: border-box;
-        width: 11.5mm;
+        width: 11.0mm;
         text-align: center;
         ${borderless}
     }
     & td {
         ${borderThin}
     }
+    ${printableBottomBorder('& td')}
     & td.thick {
         ${borderThick}
     }
@@ -41,11 +42,11 @@ function Row({label, idSuffix, bab, gear, stat, sizeMod, misc, temp}: RowArgs): 
         : undefined;
     return (<tr>
         <th>{label}</th>
-        <InputCell id={`txtTotal${idSuffix}`} value={total} />
-        <InputCell id={`txtBab${idSuffix}`} value={bab} />
+        <InputCell id={`txtTotal${idSuffix}`} value={total} hideZero={true}  />
+        <InputCell id={`txtBab${idSuffix}`} value={bab} hideZero={true}  />
         <InputCell id={`txtGear${idSuffix}`} value={gear} hideZero={true} />
-        <InputCell id={`txtStat${idSuffix}`} value={stat} />
-        <InputCell id={`txtSize${idSuffix}`} value={sizeMod} />
+        <InputCell id={`txtStat${idSuffix}`} value={stat} hideZero={true} />
+        <InputCell id={`txtSize${idSuffix}`} value={sizeMod} hideZero={true}  />
         <InputCell id={`txtMisc${idSuffix}`} value={misc} hideZero={true} />
         <InputCell id={`txtTemp${idSuffix}`} value={temp} hideZero={true} />
     </tr>);

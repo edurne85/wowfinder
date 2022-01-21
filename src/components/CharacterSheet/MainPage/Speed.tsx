@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Speeds } from '../../../@types/Character/Speeds';
 import { LengthUnit, Speed as SpeedValue, SpeedUnit, TimeUnit } from '../../../@types/Units';
 import { InputSuffixedCell } from '../../helpers/InputCell';
-import { borderless, borderThick, borderThin, reverseColors, smallText } from '../../helpers/mixins';
+import { borderless, borderThick, borderThin, printableBottomBorder, reverseColors, smallText } from '../../helpers/mixins';
 
 const StyledTable = styled.table`
     & th, & td, & input {
@@ -14,6 +14,7 @@ const StyledTable = styled.table`
         ${borderThin}
         text-align: left;
     }
+    ${printableBottomBorder('& td')}
     & td.thick {
         ${borderThick}
     }
@@ -36,6 +37,7 @@ const StyledTable = styled.table`
         select {
             width: 100%;
         }
+        ${borderless}
     }
 `;
 

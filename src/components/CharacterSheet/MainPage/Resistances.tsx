@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Character from '../../../@types/Character';
 import { ResistanceBreakdown } from '../../../@types/Character/Resistances';
 import { InputCell } from '../../helpers/InputCell';
-import { borderless, borderThick, borderThin, reverseColors, smallText } from '../../helpers/mixins';
+import { borderless, borderThick, borderThin, printableBottomBorder, reverseColors, smallText } from '../../helpers/mixins';
 
 const StyledTable = styled.table`
     & th, & td, & input {
@@ -15,6 +15,7 @@ const StyledTable = styled.table`
     & td {
         ${borderThin}
     }
+    ${printableBottomBorder('& td')}
     & td.thick {
         ${borderThick}
     }

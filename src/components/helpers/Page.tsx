@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { debug } from '../../utils';
-import { baseFont, borderless, mainColor } from './mixins';
+import { baseFont, borderless, printableBottomBorder, mainColor } from './mixins';
 
 interface PageStyledProps {
     visible: boolean;
@@ -15,8 +15,16 @@ const PageStyled = styled.section`
     ${mainColor}
     ${borderless}
     display: ${ (props: PageStyledProps) => props.visible ? 'block' : 'none'};
+    ${printableBottomBorder('input, select')}
+    @media print {
+        select {
+            -webkit-appearance: none;
+        }
+    }
     ${debug ? `
+    @media screen {
         outline: 1px dashed #ccc;
+    }
     ` : ''}
 `;
 

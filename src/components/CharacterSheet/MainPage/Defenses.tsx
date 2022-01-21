@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Character from '../../../@types/Character';
 import { FullArmorValues } from '../../../@types/Character/ArmorValues';
 import { InputCell, InputH } from '../../helpers/InputCell';
-import { borderThin, reverseColors, smallText, borderless, colors } from '../../helpers/mixins';
+import { borderThin, reverseColors, smallText, borderless, colors, printableBottomBorder } from '../../helpers/mixins';
 
 const StyledTable = styled.table`
     border-spacing: 0;
@@ -29,6 +29,7 @@ const StyledTable = styled.table`
     & tbody input {
         ${borderThin}
     }
+    ${printableBottomBorder('& tbody input')}
 `;
 
 interface ArmorRowArgs {

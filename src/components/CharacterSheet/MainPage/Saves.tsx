@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Character from '../../../@types/Character';
 import { SaveBreakdown } from '../../../@types/Character/Saves';
 import { InputCell } from '../../helpers/InputCell';
-import { borderless, smallText, reverseColors, borderThin, borderThick } from '../../helpers/mixins';
+import { borderless, smallText, reverseColors, borderThin, borderThick, printableBottomBorder } from '../../helpers/mixins';
 
 const StyledTable = styled.table`
     border-spacing: 0;
@@ -20,6 +20,7 @@ const StyledTable = styled.table`
     & td {
         ${borderThin}
     }
+    ${printableBottomBorder('& td')}
     & td.thick {
         ${borderThick}
     }

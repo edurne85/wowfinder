@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { borderless, smallText } from '../../helpers/mixins';
+import { borderless, printableBottomBorder, smallText } from '../../helpers/mixins';
 import { HitPointProps } from '../base';
 
 const StyledTable = styled.table`
@@ -14,6 +14,7 @@ const StyledTable = styled.table`
 	& td {
 		border: 0.2mm #000 solid;
 	}
+    ${printableBottomBorder('& td')}
 	& td.separator, & th:empty {
 		${borderless};
 		width: 3.5mm;

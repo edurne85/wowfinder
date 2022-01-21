@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import Character from '../../../@types/Character';
 import Class from '../../../@types/Character/Class';
-import { borderThin, font, FontFamily } from '../../helpers/mixins';
+import { borderThin, printableBottomBorder, font, FontFamily } from '../../helpers/mixins';
 
 const StyledTable = styled.table`
     & td, & th, & input, & select {
@@ -19,6 +19,7 @@ const StyledTable = styled.table`
     & input {
         ${borderThin}
     }
+    ${printableBottomBorder('& input')}
     & .first-class, & .first-class * {
         font-weight: bold;
     }

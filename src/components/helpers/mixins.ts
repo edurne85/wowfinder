@@ -47,6 +47,15 @@ const borderless = border(0, colors.transparent, 'none');
 
 const bottomLine = `border-bottom: 1px ${colors.gray3} solid;`;
 
+const printableBottomBorder = (selector: string): string => `
+    @media print {
+        ${selector} {
+            ${borderless}
+            ${bottomLine}
+        }
+    }
+`;
+
 enum FontFamily {
     priori = 'Priori Serif OT',
 }
@@ -83,6 +92,7 @@ export {
     borderThick,
     borderless,
     bottomLine,
+    printableBottomBorder,
     font,
     FontFamily,
     baseFont,
