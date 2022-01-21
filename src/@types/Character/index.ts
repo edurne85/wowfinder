@@ -91,7 +91,6 @@ export default class Character {
         this._armor = ArmorValues.zero;
         this._resistances = new Resistances({...(resistances || {})});
         // TODO Refine inventory / gear
-        console.warn ()
         this._inventory = new Inventory(inventory);
 
         this._cachedClassBonuses = null;

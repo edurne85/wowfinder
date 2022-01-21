@@ -47,4 +47,4 @@ export default class Inventory {
 
 export {
     InventoryBuilder,
-}
+};
