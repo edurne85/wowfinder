@@ -30,7 +30,8 @@ export default function Traits({char}: {char?: Character}): JSX.Element {
     // TODO: feats
     lines.splice(maxLines);
     lines.push(...Array(maxLines - lines.length).fill('\xa0'));
+    let lineCount = 0;
     return (<TraitsContainer>
-        {lines.map(l=> <Line>{l}</Line>)}
+        {lines.map(l=> <Line key={`TraitsLine-${++lineCount}`}>{l}</Line>)}
     </TraitsContainer>);
 }
