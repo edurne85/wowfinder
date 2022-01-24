@@ -37,7 +37,7 @@ export default class Inventory {
     }
 
     get money(): Money {
-        return Money.fromMoney(this.money);
+        return Money.fromMoney(this._money);
     }
 
     get gear(): Gear[] {

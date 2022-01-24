@@ -101,6 +101,9 @@ const baseFont = font({
     size: 12,
 });
 
+const scrollable = 'overflow: auto;';
+
+
 export {
     colors,
     screenColors,
@@ -117,4 +120,5 @@ export {
     font,
     FontFamily,
     baseFont,
+    scrollable,
 };

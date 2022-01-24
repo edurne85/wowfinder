@@ -115,7 +115,6 @@ export default class Character {
     get race(): Race | null { return this._race || null; }
 
     get classes(): ClassLevels {
-        // defensive copy:
         return this._classes.map(({cls, level}) => ({cls, level}));
     }
 

@@ -196,6 +196,7 @@
     },
     "gear": {
         "slot": {
+            "$separator": ", ",
             "mhand": "Mano diestra",
             "ohand": "Mano zurda",
             "head": "Cabeza",
@@ -204,7 +205,7 @@
             "ear": "Oreja",
             "neck": "Cuello",
             "shoulders": "Hombros",
-            "hands": "Man os",
+            "hands": "Manos",
             "wrists": "Muñecas",
             "waist": "Cintura",
             "legs": "Piernas",
@@ -316,9 +317,16 @@
         },
         "inventory": {
             "h": "Inventario",
-            "gear": "Equipo",
+            "weight": "Peso",
+            "gear": {
+                "h": "Equipo",
+                "slot": "Posición"
+            },
+            "load": {
+                "h": "Carga"
+            },
             "money": {
-                "h": "Money",
+                "h": "Dinero",
                 "abbr": {
                     "g": "o",
                     "s": "p",
@@ -329,7 +337,19 @@
                     "s": "moneda(s) de plata",
                     "c": "moneda(s) de cobre"
                 }
-            }
+            },
+            "possessions": "Posesiones"
+        }
+    },
+    "labels": {
+        "gear": {
+            "butcherApron": "Delantal del Carnicero",
+            "commandSword": "Espada de mando",
+            "copperBracers": "Brazaletes de cobre",
+            "copperChainBoots": "Botas de cadenas de cobre",
+            "rethilgoreCuirassFragment": "Fragmento de coraza de Rethilgore",
+            "runnedCopperGauntlets": "Guanteletes rúnicos de cobre",
+            "runedCopperPants": "Pantalones rúnicos de cobre"
         }
     }
 }

@@ -50,7 +50,7 @@ export function CharacterSheet({char, xp = 0}: {char?: Character, xp?: number}):
     const availables: FullPageSelection = {
         [PageType.main]: true,
         [PageType.skills]: true,
-        [PageType.gear]: false,
+        [PageType.inventory]: true,
         [PageType.spells]: false && hasSpells(char),
         [PageType.feral]: false && hasDruidFeralForms(char),
         [PageType.moonkin]: false && hasDruidMoonkinForm(char),
@@ -65,6 +65,7 @@ export function CharacterSheet({char, xp = 0}: {char?: Character, xp?: number}):
     return (<>
         <ConditionalTypedPage type={PageType.main} {...args} />
         <ConditionalTypedPage type={PageType.skills} {...args} />
+        <ConditionalTypedPage type={PageType.inventory} {...args} />
         { /* TODO: Gear page(s) */}
     </>);
 }

@@ -7,6 +7,8 @@ interface MoneyBreakdown {
 
 type CoinType = 'c' | 's' | 'g';
 
+const displayCoinTypes: CoinType[] = ['g', 's', 'c'];
+
 const ratio = 100;
 const ratios: MoneyBreakdown = {
     _: 0,
@@ -77,6 +79,11 @@ export default class Money {
     get split(): MoneyBreakdown {
         return Money.explode(this._raw);
     }
+
+    toString(): string {
+        const breakdown = this.split;
+        return displayCoinTypes.map(t => `${breakdown[t]}${t}`).join();
+    }
 }
 
 export type {
@@ -84,4 +91,5 @@ export type {
 };
 export {
     MoneyBreakdown,
+    displayCoinTypes,
 };

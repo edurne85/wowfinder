@@ -13,7 +13,7 @@ interface GearBuilder {
 }
 
 function asPounds(w: Weight): Mass {
-    return (w as Mass) || new Mass({value: w as number, unit: MassUnit.lb});
+    return (w instanceof Mass) ? w : new Mass({value: w as number, unit: MassUnit.lb});
 }
 
 export default class Gear implements BonusProvider {
@@ -49,7 +49,7 @@ export default class Gear implements BonusProvider {
 
     get label(): string { return this._label; }
 
-    get shape(): Shape { return {...this._shape}; }
+    get shape(): Shape { return [...this._shape]; }
 
     get size(): Size { return this._size; }
 
@@ -68,7 +68,7 @@ export default class Gear implements BonusProvider {
             label: raw.label as string || '',
             shape: raw.shape as string[] || [],
             size: raw.size as Size || 0,
-            weight: raw.weight as Weight || 0,
+            weight: raw.weight || 0,
             bonuses: Bonus.build(raw.bonuses || {}),
         });
     }

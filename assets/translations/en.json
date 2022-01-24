@@ -196,6 +196,7 @@
     },
     "gear": {
         "slot": {
+            "$separator": ", ",
             "mhand": "Main hand",
             "ohand": "Off hand",
             "head": "Head",
@@ -316,7 +317,14 @@
         },
         "inventory": {
             "h": "Inventory",
-            "gear": "Gear",
+            "weight": "Weight",
+            "gear": {
+                "h": "Gear",
+                "slot": "Slot"
+            },
+            "load": {
+                "h": "Load"
+            },
             "money": {
                 "h": "Money",
                 "abbr": {
@@ -329,7 +337,19 @@
                     "s": "silver coin(s)",
                     "c": "copper coin(s)"
                 }
-            }
+            },
+            "possessions": "Possessions"
+        }
+    },
+    "labels": {
+        "gear": {
+            "butcherApron": "Butcher's Apron",
+            "commandSword": "Command Sword",
+            "copperBracers": "Copper bracers",
+            "copperChainBoots": "Copper Chain Boots",
+            "rethilgoreCuirassFragment": "Rethilgore's Cuirass Fragment",
+            "runnedCopperGauntlets": "Runned Copper Gauntlets",
+            "runedCopperPants": "Runned Copper Pants"
         }
     }
 }
