@@ -2,6 +2,8 @@
 
 Based on Electron + TypeScript + React
 
+Utility package for the "Wowfinder" campaigh (TTRPG campaign based on the Pathfinder 1ed system and set on the Warcraft universe by Blizzard).
+
 ## Installation
 
 Use a package manager of your choice (npm, yarn, etc.) in order to install all dependencies
