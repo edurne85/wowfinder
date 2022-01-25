@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Damage as Dmg } from '../../../@types/Damage';
 import { DamageType } from '../../../@types/DamageType';
 import Dice from '../../../@types/Dice';
+import { Join } from '../../helpers/Join';
 
 const typeColors = {
     [DamageType.bludgeoning]: '#999',
@@ -37,7 +38,11 @@ function DamageComponent({ dice, type }: { dice?: Dice, type: DamageType }): JSX
 const DamageContainer = styled.span``;
 
 export function Damage({ damage }: { damage: Dmg }): JSX.Element {
-    return (<DamageContainer>
-        {Object.keys(damage).map(k => k as DamageType).map(type => (<DamageComponent dice={damage[type]} type={type} key={`damage-component-${type}`} />))}
-    </DamageContainer>);
+    return (
+        <DamageContainer>
+            <Join
+                separator=" + "
+                items={Object.keys(damage).map(k => k as DamageType).map(type => (<DamageComponent dice={damage[type]} type={type} key={`damage-component-${type}`} />))} />
+        </DamageContainer>
+    );
 }
