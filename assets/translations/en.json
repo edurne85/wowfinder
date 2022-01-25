@@ -211,6 +211,50 @@
             "legs": "Legs",
             "feet": "Feet",
             "ring": "Ring"
+        },
+        "weapon": {
+            "group": {
+                "$separator": ", ",
+                "axe": "axes",
+                "bladeHeavy": "bladeHeavy",
+                "bladeLight ": "bladeLight",
+                "bow": "bow",
+                "close": "close",
+                "crossbow": "crossbow",
+                "double": "double",
+                "flail": "flail",
+                "gunpowder": "gunpowder",
+                "hammer": "hammer",
+                "monk": "monk",
+                "natural": "natural",
+                "pole": "pole",
+                "spear": "spear",
+                "thrown": "thrown"
+            }
+        }
+    },
+    "damageTypes": {
+        "full": {
+            "bludgeoning": "bludgeoning",
+            "slashing": "slashing",
+            "piercing": "piercing",
+            "arcane": "arcane",
+            "fire": "fire",
+            "cold": "cold",
+            "nature": "nature",
+            "shadow": "shadow",
+            "holy": "holy"
+        },
+        "abbr": {
+            "bludgeoning": "bldg",
+            "slashing": "slsh",
+            "piercing": "pier",
+            "arcane": "ar",
+            "fire": "fi",
+            "cold": "cd",
+            "nature": "nt",
+            "shadow": "sh",
+            "holy": "hl"
         }
     },
     "ui": {
@@ -265,7 +309,7 @@
             "misc": "Misc"
         },
         "armor": {
-            "h":  "Defense Scores",
+            "h": "Defense Scores",
             "total": "Total",
             "armor": "Armor",
             "shield": "Shield",
@@ -294,7 +338,7 @@
             "h": "Resistances"
         },
         "attack": {
-            "h":  "Attack Scores",
+            "h": "Attack Scores",
             "bab": "BaB",
             "melee": "Melee",
             "ranged": "Ranged",
@@ -320,7 +364,14 @@
             "weight": "Weight",
             "gear": {
                 "h": "Gear",
-                "slot": "Slot"
+                "slot": "Slot",
+                "range": {
+                    "h": "Range",
+                    "melee": "Melee"
+                },
+                "baseDamage": "Base damage",
+                "bonusDamage": "Bonus damage",
+                "intrinsic": "Intrinsic mod"
             },
             "load": {
                 "h": "Load"

@@ -151,7 +151,7 @@ export default class Character {
 
     get resistances(): Resistances { return this._resistances; }
 
-    get inventory(): Inventory { return Inventory.copy(this._inventory); }
+    get inventory(): Inventory { return this._inventory; }
 
     get classBonuses(): ClassBonuses {
         return (this._cachedClassBonuses ||= Class.multiclass(this._classes, this._stats.totals));

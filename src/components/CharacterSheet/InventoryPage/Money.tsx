@@ -22,7 +22,7 @@ const InlineHeader = styled(Header)`
 
 function Coins({type, ammount} : {type: CoinType, ammount: number}): JSX.Element {
     const { t } = useTranslation();
-    return (<CoinsContainer>
+    return (<CoinsContainer title={t(`ui.inventory.money.full.${type}`)}>
         {ammount || 0}
         <CoinsSuffix color={colors[type]}>{t(`ui.inventory.money.abbr.${type}`)}</CoinsSuffix>
     </CoinsContainer>);

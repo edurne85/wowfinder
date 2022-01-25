@@ -41,7 +41,7 @@ export default class Inventory {
     }
 
     get gear(): Gear[] {
-        return this._gear.map(Gear.copy);
+        return this._gear;
     }
 }
 

@@ -24,7 +24,8 @@ const Possessions = styled.div`
 export function InventoryPage({char, visible = true}: {char?: Character, visible?: boolean}): JSX.Element {
     const inventory = char?.inventory || new Inventory({});
     const { t } = useTranslation();
-    // TODO Gear (equipped), carried, owned
+    // TODO (WiP) Gear (equipped)
+    // TODO carried, owned
     return (<Page key="Gear" id="Gear" visible={visible}>
         <Header>{t('ui.inventory.h')}</Header>
         <Columns columns={[

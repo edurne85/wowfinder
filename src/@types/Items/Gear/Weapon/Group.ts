@@ -7,6 +7,7 @@ enum WeaponGroup {
     crossbow = 'crossbow',
     double = 'double',
     flail = 'flail',
+    gunpowder = 'gunpwoder',
     hammer = 'hammer',
     monk = 'monk',
     natural = 'natural',

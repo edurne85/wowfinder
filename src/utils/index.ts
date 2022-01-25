@@ -1,16 +1,7 @@
-import type { JsonValue, JSerializable } from './json';
-import { jClone } from './json';
-import { sum, fThousands } from './numbers';
+export type { JsonValue, JSerializable } from './json';
 
-const debug = true;
+export { jClone } from './json';
 
-export type {
-    JsonValue,
-    JSerializable,
-};
-export {
-    jClone,
-    sum,
-    fThousands,
-    debug,
-};
+export { sum, fThousands } from './numbers';
+
+export { debug, debugOutput, debugTrace } from './debug';

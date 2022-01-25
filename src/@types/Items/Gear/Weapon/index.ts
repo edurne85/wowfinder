@@ -1,6 +1,6 @@
 import { Bonus, BonusType } from '../../../Character/Bonus';
 import Size from '../../../Character/Size';
-import { Damage } from '../../../Damage';
+import { buildDamage, Damage } from '../../../Damage';
 import { Length, LengthUnit } from '../../../Units';
 import Gear, { GearBuilder, Weight } from '../base';
 import WeaponFlags from './Flags';
@@ -15,6 +15,7 @@ function asFeet(r: Range): Length {
 
 interface WeaponBuilder extends GearBuilder {
     baseDamage: Damage;
+    bonusDamage?: Damage;
     intrinsic?: number;
     groups: Set<WeaponGroup>;
     rank: WeaponRank;
@@ -27,6 +28,7 @@ interface WeaponBuilder extends GearBuilder {
 
 export default class Weapon extends Gear {
     private _baseDamage: Damage;
+    private _bonusDamage: Damage;
     private _intrinsic: number;
     private _groups: Set<WeaponGroup>;
     private _rank: WeaponRank;
@@ -43,6 +45,7 @@ export default class Weapon extends Gear {
         weight,
         bonuses = Bonus.zero(BonusType.gear),
         baseDamage,
+        bonusDamage = {},
         intrinsic = 0,
         groups,
         rank,
@@ -54,6 +57,7 @@ export default class Weapon extends Gear {
     }: WeaponBuilder) {
         super({label, shape, size, weight, bonuses});
         this._baseDamage = baseDamage;
+        this._bonusDamage = bonusDamage;
         this._intrinsic = intrinsic;
         this._groups = new Set(groups);
         this._rank = rank;
@@ -65,6 +69,12 @@ export default class Weapon extends Gear {
     }
 
     get baseDamage(): Damage { return this._baseDamage; }
+
+    get hasBonusDamage(): boolean {
+        return Object.keys(this._bonusDamage).length > 0;
+    }
+
+    get bonusDamage(): Damage { return this._bonusDamage; }
 
     get intrinsic(): number { return this._intrinsic; }
 
@@ -101,7 +111,9 @@ export default class Weapon extends Gear {
             size: raw.size as Size || 0,
             weight: raw.weight as Weight || 0,
             bonuses: Bonus.build(raw.bonuses || {}),
-            baseDamage: raw.baseDamage as Damage || {}, // TODO Builder
+            baseDamage: buildDamage(raw.baseDamage),
+            bonusDamage: buildDamage(raw.bonusDamage || {}),
+            intrinsic: raw.intrinsic as number || 0,
             groups: raw.groups as Set<WeaponGroup> || [],
             rank: raw.rank as WeaponRank || WeaponRank.simple,
             proficiency: raw.proficiency as WeaponProficiency || WeaponProficiency.unarmed,

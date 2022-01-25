@@ -211,6 +211,50 @@
             "legs": "Piernas",
             "feet": "Pies",
             "ring": "Anillo"
+        },
+        "weapon": {
+            "group": {
+                "$separator": ", ",
+                "axe": "hachas",
+                "bladeHeavy": "filos pesados",
+                "bladeLight ": "filos ligeros",
+                "bow": "arcos",
+                "close": "corto alcance",
+                "crossbow": "ballestas",
+                "double": "dobles",
+                "flail": "manguales",
+                "gunpowder": "pólvora",
+                "hammer": "martillos",
+                "monk": "monje",
+                "natural": "naturales",
+                "pole": "asta",
+                "spear": "lanzas",
+                "thrown": "arrojadizas"
+            }
+        }
+    },
+    "damageTypes": {
+        "full": {
+            "bludgeoning": "contundente",
+            "slashing": "cortante",
+            "piercing": "perforante",
+            "arcane": "arcano",
+            "fire": "fuego",
+            "cold": "frío",
+            "nature": "naturaleza",
+            "shadow": "sombra",
+            "holy": "luz"
+        },
+        "abbr": {
+            "bludgeoning": "cont",
+            "slashing": "cort",
+            "piercing": "perf",
+            "arcane": "ar",
+            "fire": "fg",
+            "cold": "fr",
+            "nature": "nt",
+            "shadow": "sm",
+            "holy": "lz"
         }
     },
     "ui": {
@@ -320,7 +364,14 @@
             "weight": "Peso",
             "gear": {
                 "h": "Equipo",
-                "slot": "Posición"
+                "slot": "Posición",
+                "range": {
+                    "h": "Alcance",
+                    "melee": "CaC"
+                },
+                "baseDamage": "Daño base",
+                "bonusDamage": "Daño adicional",
+                "intrinsic": "Modificador"
             },
             "load": {
                 "h": "Carga"
