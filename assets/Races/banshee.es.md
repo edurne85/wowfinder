@@ -4,6 +4,10 @@
 
 **Tipo**: Humanoide (elfo, muerto viviente)
 
+**Tamaño**: Mediano
+
+**Características**: +2 DES, +2 SAB, -2 CON
+
 **Género**: Las banshees son inherentemente hembras. El equivalente varón se conoce como espectro (en construcción).
 
 **Alineamiento**: no legal, no benigno. Habitualmente caótico neutral.

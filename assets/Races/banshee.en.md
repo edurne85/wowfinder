@@ -4,6 +4,10 @@
 
 **Type**: Humanoid (elf, undead)
 
+**Size**: Medium
+
+**Ability scores**: +2 DEX, +2 WIS, -2 CON
+
 **Gender**: Banshees are inherently female. The male equivalent is known as Spectre (under construction).
 
 **Alignment**: Banshees can't be Lawful nor Good. Most often they are Chaotic Neutral.
