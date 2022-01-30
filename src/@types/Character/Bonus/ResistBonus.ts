@@ -46,6 +46,10 @@ export default class ResistBonus {
         }
         return result;
     }
+
+    static build(raw: any = {}): ResistBonus {
+        return new ResistBonus(Object.assign({}, this.zero._values, raw));
+    }
 }
 
 export {

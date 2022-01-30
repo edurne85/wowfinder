@@ -165,7 +165,7 @@ class Bonus {
             stats: StatsBonus.build(raw.stats),
             skills: SkillsBonus.build(raw.skills),
             saves: SavesBonus.build(raw.saves),
-            // TODO: Resistances
+            resistances: ResistBonus.build(raw.resistances),
             armorClass: raw.armorClass as number || 0,
             vitalNeeds: VitalNeeds.build(raw.vitalNeeds),
             senses: Senses.build(raw.senses),

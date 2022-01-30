@@ -59,7 +59,7 @@ export default class Character {
         classes = [],
         miscHP = 0,
         skillRanks = {},
-        resistances,
+        // resistances,
         inventory = Inventory.defaultBuilder,
     }: CharacterBuilder) {
         this.key = key;
@@ -85,19 +85,21 @@ export default class Character {
             base: baseStats,
             racial: this._race? this._race.statMods : zeroDefault,
             // TODO ? enhance
-            // TODO ? misc (class auras?)
             misc: auraBonuses.stats.values,
             // TODO ? temp
         });
         this._miscHP = miscHP;
         this._skillRanks = Object.assign({}, skillRanks);
         this._armor = ArmorValues.zero;
-        this._resistances = new Resistances({...(resistances || {})});
+        // this._resistances = new Resistances({...(resistances || {})});
+        this._resistances = Resistances.fromCategorized({
+            misc: auraBonuses.resistances.values,
+        });
         // TODO Refine inventory / gear
         this._inventory = new Inventory(inventory);
 
         this._cachedClassBonuses = null;
-        this._combineGearBonuses();
+        this._cachedGearBonuses = this._combineGearBonuses();
     }
 
     private _invalidateCache(): void {
@@ -163,6 +165,7 @@ export default class Character {
     private _combineGearBonuses(): Bonus {
         const combined = Bonus.combine(...(this._inventory.gear.map(g => g.bonuses))).gear;
         this._stats = this._stats.updated({gear: combined.stats.values});
+        this._resistances = this._resistances.updatedByCategory({gear: combined.resistances.values});
         const allArmor: Armor[] = this._inventory.gear.filter(g => g instanceof Armor).map(g => g as Armor);
         const armor = Math.max(...allArmor.map(a => a.fullBonus.bonuses.armor.armorClass));
         const shield = Math.max(...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass));
