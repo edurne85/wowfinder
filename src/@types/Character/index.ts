@@ -8,9 +8,10 @@ import { ArmorValues, FullArmorValues } from './ArmorValues';
 import Size from './Size';
 import { Saves, SimpleSaves } from './Saves';
 import { Resistances } from './Resistances';
-import { Bonus } from './Bonus';
+import { Bonus, BonusType } from './Bonus';
 import Armor from '../Items/Gear/Armor';
 import Inventory, { InventoryBuilder } from '../Items/Inventory';
+import { Aura, auraBonuses } from './Class/Auras';
 
 type SkillRanks = { [key: string]: number };
 
@@ -79,11 +80,13 @@ export default class Character {
                 throw new Error(`Unknown class key: ${cls}`);
             }
         }
+        const auraBonuses = this.auraBonuses;
         this._stats = new Stats({
             base: baseStats,
             racial: this._race? this._race.statMods : zeroDefault,
             // TODO ? enhance
             // TODO ? misc (class auras?)
+            misc: auraBonuses.stats.values,
             // TODO ? temp
         });
         this._miscHP = miscHP;
@@ -143,7 +146,7 @@ export default class Character {
             stats: this._stats,
             base: new SimpleSaves(this.classBonuses.saves),
             enhance: SimpleSaves.zero, // TODO
-            gear: this.gearBonuses.saves,
+            gear: new SimpleSaves(this.gearBonuses.saves),
             misc: SimpleSaves.zero, // TODO
             temp: SimpleSaves.zero, // TODO
         });
@@ -189,6 +192,26 @@ export default class Character {
             counts[f]++;
         }
         return Object.keys(counts).map(k => ({feature: k as ClassFeature, count: counts[k]}));
+    }
+
+    get classAuras(): Aura[] {
+        return this.classes.map(c => c.cls.auras(c.level)).flat();
+    }
+
+    get classAurasCondensed(): {aura: Aura, count: number}[] {
+        const counts: {[key: string]: number} = {};
+        const auras = this.classAuras;
+        for (const a of auras) {
+            if (!(a in counts)) {
+                counts[a] = 0;
+            }
+            counts[a]++;
+        }
+        return Object.keys(counts).map(k => ({aura: k as Aura, count: counts[k]}));
+    }
+
+    get auraBonuses(): Bonus {
+        return Bonus.sum(BonusType.aura, ...this.classAurasCondensed.map(({aura, count}) => auraBonuses[aura](count)));
     }
 
     addLevel(cls: Class, levels = 1): ClassLevels {

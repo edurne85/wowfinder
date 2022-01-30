@@ -102,11 +102,11 @@ class Saves {
         temp = SimpleSaves.zero,
     }: SavesBuilder) {
         this._stats = new Stats(stats);
-        this._base = Object.assign({}, base);
-        this._ehn = Object.assign({}, enhance);
-        this._gear = Object.assign({}, gear);
-        this._misc = Object.assign({}, misc);
-        this._temp = Object.assign({}, temp);
+        this._base = new SimpleSaves(base);
+        this._ehn = new SimpleSaves(enhance);
+        this._gear = new SimpleSaves(gear);
+        this._misc = new SimpleSaves(misc);
+        this._temp = new SimpleSaves(temp);
     }
 
     get base(): SimpleSaves { return Object.assign({}, this._base); }

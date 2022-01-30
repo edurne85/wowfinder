@@ -12,6 +12,9 @@ const Personal = styled.div`
     height: auto;
     width: 123mm;
     margin: 5mm 0;
+    & input, & select {
+        font-size: 9pt;
+    }
 `;
 
 function raceName(race: Race | null, t: TFunction): string {

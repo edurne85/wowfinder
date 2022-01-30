@@ -21,18 +21,18 @@ const StyledInputCentered = styled.input`
 class PersonalEntryText extends PersonalEntry<string> {
     subRender({
         id,
-        value = '',
+        value,
     }: PersonalItemProps<string>): JSX.Element {
-        return (<StyledInput id={`txt${id}`} value={value} readOnly={true} />);
+        return (<StyledInput id={`txt${id}`} value={value || ''} readOnly={true} />);
     }
 }
 
 class PersonalEntryTextCentered extends PersonalEntry<string> {
     subRender({
         id,
-        value = '',
+        value,
     }: PersonalItemProps<string>): JSX.Element {
-        return (<StyledInputCentered id={`txt${id}`} value={value} readOnly={true} />);
+        return (<StyledInputCentered id={`txt${id}`} value={value || ''} readOnly={true} />);
     }
 }
 

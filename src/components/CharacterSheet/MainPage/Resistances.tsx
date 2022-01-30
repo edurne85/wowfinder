@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import Character from '../../../@types/Character';
 import { ResistanceBreakdown } from '../../../@types/Character/Resistances';
+import { capitalizeFirstLetter } from '../../../utils';
 import { InputCell } from '../../helpers/InputCell';
 import { borderless, borderThick, borderThin, printableBottomBorder, reverseColors, smallText } from '../../helpers/mixins';
 
@@ -29,13 +30,14 @@ const StyledTable = styled.table`
 `;
 
 interface RowArgs {
-    idSuffix: string;
-    label: string;
+    id: string;
     value?: ResistanceBreakdown;
 }
-function Row({idSuffix, label, value}: RowArgs): JSX.Element {
+function Row({id, value}: RowArgs): JSX.Element {
+    const { t } = useTranslation();
+    const idSuffix = capitalizeFirstLetter(id);
     return(<tr id={`trResist${idSuffix}`}>
-        <th>{label}</th>
+        <th title={t(`damageTypes.full.${id}`)}>{t(`damageTypes.abbr.${id}`)}</th>
         <InputCell id={`txtResistTotal${idSuffix}`} value={value?.total} />
         <InputCell id={`txtResistEnhance${idSuffix}`} value={value?.enhance} hideZero={true} />
         <InputCell id={`txtResistGear${idSuffix}`} value={value?.gear} hideZero={true} />
@@ -59,15 +61,15 @@ export function Resistances({char}: {char?: Character}): JSX.Element {
             </tr>
         </thead>
         <tbody>
-            <Row idSuffix="Bludgeoning" label="Bludg" value={resists?.bludgeoning} />
-            <Row idSuffix="Slashing" label="Slash" value={resists?.slashing} />
-            <Row idSuffix="Piercing" label="Piercing" value={resists?.piercing} />
-            <Row idSuffix="Arcane" label="Arcane" value={resists?.arcane} />
-            <Row idSuffix="Fire" label="Fire" value={resists?.fire} />
-            <Row idSuffix="Cold" label="Cold" value={resists?.cold} />
-            <Row idSuffix="Nature" label="Nature" value={resists?.nature} />
-            <Row idSuffix="Shadow" label="Shadow" value={resists?.shadow} />
-            <Row idSuffix="Holy" label="Holy" value={resists?.holy} />
+            <Row id="bludgeoning" value={resists?.bludgeoning} />
+            <Row id="slashing" value={resists?.slashing} />
+            <Row id="piercing" value={resists?.piercing} />
+            <Row id="arcane" value={resists?.arcane} />
+            <Row id="fire" value={resists?.fire} />
+            <Row id="cold" value={resists?.cold} />
+            <Row id="nature" value={resists?.nature} />
+            <Row id="shadow" value={resists?.shadow} />
+            <Row id="holy" value={resists?.holy} />
         </tbody>
     </StyledTable>);
 }

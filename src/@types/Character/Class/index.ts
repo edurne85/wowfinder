@@ -1,7 +1,12 @@
 import JSON5 from 'json5';
 import { Skill } from '../Skills';
 import { StatSet, statMod } from '../Stats';
+import type { Aura } from './Auras';
 import { ClassFeature } from './Features';
+
+type featureEntry = {level: number, feature: string};
+type auraEntry = {level: number, aura: Aura};
+type rawFeaturesEntry = featureEntry | auraEntry;
 
 interface ClassBuilder {
     key: string,
@@ -15,7 +20,7 @@ interface ClassBuilder {
     div: number,
     esp: number,
     wealth: number,
-    features: {level: number, feature: string}[],
+    features: rawFeaturesEntry[],
     skills: string[],
 }
 
@@ -37,14 +42,21 @@ interface ClassBonuses {
     features: {[key in ClassFeature]?: number},
 }
 
+type FeaturesList = {level: number, feature: ClassFeature}[];
+type AurasList = {level: number, aura: Aura}[];
+
 const helpers = {
     hdAvg: (hd: number): number => (hd+1) / 2,
     hdFirst: (hd: number): number => hd - helpers.hdAvg(hd),
     validSkills: new Set(Object.values(Skill)),
-    mapFeatures: (f: {level: number, feature: string}) => ({
-        level: f.level,
-        feature: ClassFeature[f.feature as keyof typeof ClassFeature]
-    }),
+    mapFeatures: (list: {level: number, feature?: string}[]): FeaturesList =>
+        list
+            .filter(entry => entry.feature as ClassFeature)
+            .map(f => ({ level: f.level, feature: ClassFeature[f.feature as keyof typeof ClassFeature]})),
+    mapAuras: (list: {level: number, aura?: Aura}[]): AurasList => 
+        list
+            .filter(entry => entry.aura as Aura)
+            .map(entry => ({level: entry.level, aura: entry.aura as Aura})),
 };
 
 type Classes = {[key:string]: Class};
@@ -62,7 +74,8 @@ export default class Class {
     private div: number;
     private esp: number;
     private wealth: number;
-    private _features: {level: number, feature: ClassFeature}[];
+    private _features: FeaturesList;
+    private _auras: AurasList;
     private skills: Set<Skill>;
 
     constructor({
@@ -91,7 +104,8 @@ export default class Class {
         this.div = div || 0;
         this.esp = esp || 0;
         this.wealth = wealth || 0;
-        this._features = features.map(helpers.mapFeatures);
+        this._features = helpers.mapFeatures(features);
+        this._auras = helpers.mapAuras(features);
         this.skills = new Set(
             skills
                 .filter(s => helpers.validSkills.has(s as Skill))
@@ -103,6 +117,10 @@ export default class Class {
 
     features(level: number): ClassFeature[] {
         return this._features.filter(f => f.level <= level).map(f => f.feature);
+    }
+
+    auras(level: number): Aura[] {
+        return this._auras.filter(a => a.level <= level).map(a => a.aura);
     }
 
     static multiclass(classLevels: ClassLevels, stats: StatSet): ClassBonuses {

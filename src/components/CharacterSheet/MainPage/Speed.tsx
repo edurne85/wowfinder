@@ -25,7 +25,7 @@ const StyledTable = styled.table`
         ${smallText}
     }
     & input {
-        width: 7mm;
+        width: 6mm;
         text-align: right;
         ${borderless};
     }

@@ -114,7 +114,7 @@ export const barbarian = {
     fastMovement: (): number => 10,
 };
 export const bard = {
-    inspireCourage: function(eLevel: number): number {
+    inspireCourage: function (eLevel: number): number {
         let result = 1;
         if (eLevel >= 5) {
             result += 1;
@@ -126,7 +126,7 @@ export const bard = {
         }
         return result;
     },
-    inspireCompetence: function(eLevel: number): number {
+    inspireCompetence: function (eLevel: number): number {
         let result = 0;
         if (eLevel >= 3) {
             result += 2;
@@ -138,7 +138,7 @@ export const bard = {
         }
         return result;
     },
-    loreMaster: function(eLevel: number): number {
+    loreMaster: function (eLevel: number): number {
         let result = 0;
         if (eLevel >= 5) {
             result += 1;
@@ -155,7 +155,7 @@ export const cleric = {
     channel: (eLevel: number): number => Math.floor((eLevel + 1) / 2),
 };
 export const fighter = {
-    weaponTrainingBonuses: function(eLevel: number): number[] {
+    weaponTrainingBonuses: function (eLevel: number): number[] {
         const result: number[] = [];
         let count = 0;
         if (eLevel >= 5) {
@@ -172,7 +172,7 @@ export const fighter = {
     }
 };
 export const monk = {
-    flurryBlowsMods: function(eLevel: number): number[] {
+    flurryBlowsMods: function (eLevel: number): number[] {
         const result = [];
         let base = eLevel - 2;
         result.push(base, base);
@@ -187,7 +187,7 @@ export const monk = {
         return result;
     },
     fastMovement: (eLevel: number): number => Math.floor(eLevel / 3) * 10,
-    slowFall: function(eLevel: number, baseHeight: number): number {
+    slowFall: function (eLevel: number, baseHeight: number): number {
         if (eLevel >= 4) {
             baseHeight -= Math.floor(eLevel / 2) * 10;
         }

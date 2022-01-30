@@ -66,9 +66,9 @@ export function Saves({char}: {char?: Character}): JSX.Element {
             </tr>
         </thead>
         <tbody>
-            <Row idSuffix="Fort" label="Fort" value={char?.saves.fort} />
-            <Row idSuffix="Refl" label="Refl" value={char?.saves.refl} />
-            <Row idSuffix="Will" label="Will" value={char?.saves.will} />
+            <Row idSuffix="Fort" label={t('ui.saves.abbr.fort')} value={char?.saves.fort} />
+            <Row idSuffix="Refl" label={t('ui.saves.abbr.refl')} value={char?.saves.refl} />
+            <Row idSuffix="Will" label={t('ui.saves.abbr.will')} value={char?.saves.will} />
         </tbody>
     </StyledTable>);
 }

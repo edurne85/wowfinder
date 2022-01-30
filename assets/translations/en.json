@@ -14,7 +14,9 @@
         "wzd": "Wizard"
     },
     "races": {
-        "human": "Human (SW)"
+        "human": "Human",
+        "high-elf": "High Elf",
+        "night-elf": "Night Elf"
     },
     "classFeatures": {
         "rage": "Rage",
@@ -112,6 +114,17 @@
         "perfectSelf": "Perfect Self",
         "fastMovement": "Fast Movement",
         "timelessBody": "Timeless Body"
+    },
+    "auras": {
+        "commanding": "Commanding Shout",
+        "arcane": "Arcane Brilliance",
+        "wild": "Gift of the Wild",
+        "bear": "Bear's Fortitude",
+        "cat": "Cat's Subtlety",
+        "moon": "Lunar Inspiration",
+        "root": "Vital Roots",
+        "mysterious": "Mysterious Fortitude",
+        "fortitude": "Power Word: Fortitude"
     },
     "skills": {
         "acrobatics": "Acrobatics",
@@ -246,15 +259,15 @@
             "holy": "holy"
         },
         "abbr": {
-            "bludgeoning": "bldg",
-            "slashing": "slsh",
-            "piercing": "pier",
-            "arcane": "ar",
-            "fire": "fi",
-            "cold": "cd",
-            "nature": "nt",
-            "shadow": "sh",
-            "holy": "hl"
+            "bludgeoning": "Bldg",
+            "slashing": "Slsh",
+            "piercing": "Pier",
+            "arcane": "Ar",
+            "fire": "Fi",
+            "cold": "Cd",
+            "nature": "Nt",
+            "shadow": "Sh",
+            "holy": "Hl"
         }
     },
     "ui": {
@@ -400,7 +413,8 @@
             "copperChainBoots": "Copper Chain Boots",
             "rethilgoreCuirassFragment": "Rethilgore's Cuirass Fragment",
             "runnedCopperGauntlets": "Runned Copper Gauntlets",
-            "runedCopperPants": "Runned Copper Pants"
+            "runedCopperPants": "Runned Copper Pants",
+            "shadowfangMeteorFragment": "Meteor Fragment"
         }
     }
 }

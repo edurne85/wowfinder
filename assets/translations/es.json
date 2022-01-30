@@ -14,7 +14,9 @@
         "wzd": "Mago"
     },
     "races": {
-        "human": "Human (SW)"
+        "human": "Humano",
+        "high-elf": "Alto Elfo",
+        "night-elf": "Elfo Nocturno"
     },
     "classFeatures": {
         "rage": "Furia",
@@ -112,6 +114,17 @@
         "perfectSelf": "Yo perfecto",
         "fastMovement": "Movimiento rápido",
         "timelessBody": "Cuerpo eterno"
+    },
+    "auras": {
+        "commanding": "Grito de orden",
+        "arcane": "Luminosidad arcana",
+        "wild": "Don de lo salvaje",
+        "bear": "Fortaleza de oso",
+        "cat": "Sutileza de gato",
+        "moon": "Inspiración lunar",
+        "root": "Raíces vitales",
+        "mysterious": "Fortaleza misteriosa",
+        "fortitude": "Palabra de poder: Fortaleza"
     },
     "skills": {
         "acrobatics": "Acrobacias",
@@ -246,15 +259,15 @@
             "holy": "luz"
         },
         "abbr": {
-            "bludgeoning": "cont",
-            "slashing": "cort",
-            "piercing": "perf",
-            "arcane": "ar",
-            "fire": "fg",
-            "cold": "fr",
-            "nature": "nt",
-            "shadow": "sm",
-            "holy": "lz"
+            "bludgeoning": "Cont",
+            "slashing": "Cort",
+            "piercing": "Perf",
+            "arcane": "Ar",
+            "fire": "Fg",
+            "cold": "Fr",
+            "nature": "Nt",
+            "shadow": "Sm",
+            "holy": "Sg"
         }
     },
     "ui": {
@@ -324,7 +337,7 @@
             "cmd": "DMC"
         },
         "saves": {
-            "h": "Tiradas se salvación",
+            "h": "Tiradas de salvación",
             "abbr": {
                 "fort": "Fort",
                 "refl": "Refl",
@@ -400,7 +413,8 @@
             "copperChainBoots": "Botas de cadenas de cobre",
             "rethilgoreCuirassFragment": "Fragmento de coraza de Rethilgore",
             "runnedCopperGauntlets": "Guanteletes rúnicos de cobre",
-            "runedCopperPants": "Pantalones rúnicos de cobre"
+            "runedCopperPants": "Pantalones rúnicos de cobre",
+            "shadowfangMeteorFragment": "Fragmento de meteorito"
         }
     }
 }

@@ -24,4 +24,12 @@ export default class SavesBonus extends SimpleSaves {
             will: Math.max(...args.map(a => a._will)),
         });
     }
+
+    static build(raw: any = {}): SavesBonus {
+        return new SavesBonus({
+            fort: raw.fort || 0,
+            refl: raw.refl || 0,
+            will: raw.will || 0,
+        });
+    }
 }

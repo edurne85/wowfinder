@@ -4,6 +4,7 @@ import VitalNeeds from './VitalNeeds';
 import Senses from './Senses';
 import { sum } from '../../../utils';
 import SavesBonus from './Saves';
+import ResistBonus from './ResistBonus';
 
 enum BonusType {
     armor = 'armor',
@@ -16,6 +17,7 @@ enum BonusType {
     dodge = 'dodge',
     natural = 'natural',
     temporal = 'temporal',
+    aura = 'aura',
 }
 
 const stackables: BonusType[] = [
@@ -35,10 +37,11 @@ interface BonusBuilder {
     stats?: StatsBonus;
     skills?: SkillsBonus;
     saves?: SavesBonus;
-    // TODO: resistances
+    resistances?: ResistBonus;
     armorClass?: number;
     vitalNeeds?: VitalNeeds;
     senses?: Senses;
+    // TODO Speed
 }
 
 class Bonus {
@@ -47,6 +50,7 @@ class Bonus {
     private _stats: StatsBonus;
     private _skills: SkillsBonus;
     private _saves: SavesBonus;
+    private _resistances: ResistBonus;
     private _armorClass: number;
     private _vitalNeeds: VitalNeeds;
     private _senses: Senses;
@@ -57,6 +61,7 @@ class Bonus {
         stats = StatsBonus.zero,
         skills = SkillsBonus.zero,
         saves = SavesBonus.zero,
+        resistances = ResistBonus.zero,
         armorClass = 0,
         vitalNeeds = VitalNeeds.defaults,
         senses = Senses.defaults,
@@ -66,6 +71,7 @@ class Bonus {
         this._stats = StatsBonus.sum(stats);
         this._skills = SkillsBonus.sum(skills);
         this._saves = SavesBonus.sum(saves);
+        this._resistances = ResistBonus.sum(resistances);
         this._armorClass = armorClass;
         this._vitalNeeds = vitalNeeds;
         this._senses = senses;
@@ -81,6 +87,8 @@ class Bonus {
     get skills(): SkillsBonus { return SkillsBonus.sum(this._skills); }
 
     get saves(): SavesBonus { return SavesBonus.sum(this._saves); }
+
+    get resistances(): ResistBonus { return ResistBonus.sum(this._resistances); }
     
     get armorClass(): number { return this._armorClass; }
 
@@ -95,6 +103,7 @@ class Bonus {
             stats: StatsBonus.zero,
             skills: SkillsBonus.zero,
             saves: SavesBonus.zero,
+            resistances: ResistBonus.zero,
             armorClass: 0,
             vitalNeeds: VitalNeeds.defaults,
             senses: Senses.defaults,
@@ -108,6 +117,7 @@ class Bonus {
             stats: StatsBonus.sum(...args.map(a => a._stats)),
             skills: SkillsBonus.sum(...args.map(a => a._skills)),
             saves: SavesBonus.sum(...args.map(a => a._saves)),
+            resistances: ResistBonus.sum(...args.map(a => a._resistances)),
             armorClass: sum(...args.map(a => a._armorClass)),
             vitalNeeds: VitalNeeds.combine(...args.map(a => a._vitalNeeds)),
             senses: Senses.combine(...args.map(a => a._senses)),
@@ -121,6 +131,7 @@ class Bonus {
             stats: StatsBonus.max(...args.map(a => a._stats)),
             skills: SkillsBonus.max(...args.map(a => a._skills)),
             saves: SavesBonus.max(...args.map(a => a._saves)),
+            resistances: ResistBonus.max(...args.map(a => a._resistances)),
             armorClass: Math.max(...args.map(a => a._armorClass)),
             vitalNeeds: VitalNeeds.combine(...args.map(a => a._vitalNeeds)),
             senses: Senses.combine(...args.map(a => a._senses)),
@@ -143,8 +154,8 @@ class Bonus {
     }
 
     retyped(type: BonusType): Bonus {
-        const { hp, stats, skills, armorClass, vitalNeeds, senses } = this;
-        return new Bonus({type, hp, stats, skills, armorClass, vitalNeeds, senses});
+        const { hp, stats, skills, saves, resistances, armorClass, vitalNeeds, senses } = this;
+        return new Bonus({type, hp, stats, skills, saves, resistances, armorClass, vitalNeeds, senses});
     }
 
     static build(raw: any = {}): Bonus {
@@ -153,6 +164,8 @@ class Bonus {
             hp: raw.hp as number || 0,
             stats: StatsBonus.build(raw.stats),
             skills: SkillsBonus.build(raw.skills),
+            saves: SavesBonus.build(raw.saves),
+            // TODO: Resistances
             armorClass: raw.armorClass as number || 0,
             vitalNeeds: VitalNeeds.build(raw.vitalNeeds),
             senses: Senses.build(raw.senses),

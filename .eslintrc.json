@@ -51,6 +51,13 @@
       {
         "allowArgumentsExplicitlyTypedAsAny": true
       }
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 180,
+        "ignoreComments": true
+      }
     ]
   }
 }

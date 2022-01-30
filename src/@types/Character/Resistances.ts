@@ -34,6 +34,9 @@ class ResistanceBreakdown {
     }
 }
 
+type ResistancePartialSet = {[key in DamageType]?: number};
+type ResistanceSet = {[key in DamageType]: number};
+
 type ResistancesBuilder = {[key in DamageType]?: ResistanceBreakdown};
 type FullResistances = {[key in DamageType]: ResistanceBreakdown};
 
@@ -75,6 +78,11 @@ class Resistances {
 
     get holy(): ResistanceBreakdown { return this.byType(DamageType.holy); }
 }
+
+export type {
+    ResistancePartialSet,
+    ResistanceSet,
+};
 export {
     ResistanceBreakdown,
     Resistances,

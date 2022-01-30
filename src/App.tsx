@@ -43,6 +43,9 @@ function CharList(): JSX.Element {
 function TestCharSheet(): JSX.Element {
   return (<CharacterSheet char={chars.arthur} xp={rewards.arthur.XP} />);
 }
+function TestCharSheet2(): JSX.Element {
+  return (<CharacterSheet char={chars.kaliri} />); 
+}
 
 function PrintCharSheet(): JSX.Element {
   return (<CharacterSheet />);
@@ -50,14 +53,14 @@ function PrintCharSheet(): JSX.Element {
 
 if (debug) {
   console.log('Imported data', {factions, chars, adventures, rewards, classes});
-  console.log('Test components', {Reputations, RewTable, CharList, TestCharSheet, PrintCharSheet});
+  console.log('Test components', {Reputations, RewTable, CharList, TestCharSheet, TestCharSheet2, PrintCharSheet});
 }
 
 export function App(): JSX.Element {
   return (
     <>
       <GlobalStyle />
-      <PrintCharSheet />
+      <TestCharSheet />
     </>
   );
 }
