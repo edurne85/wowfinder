@@ -1,6 +1,6 @@
 # Human (Stormwind, Elwynn Forest)
 
-Uses the [standard human profile from Pathfinder](http://paizo.com/pathfinderRPG/prd/coreRulebook/races.html#humans) with the changes described below:
+Uses the [standard human profile from Pathfinder](http://paizo.com/pathfinderRPG/prd/coreRulebook/races.html#humans), with the changes described below:
 
 **Ability scores**: In addition to the free choice of +2 boost, all Stormwind humans get an additional +2 to their Charisma (it is perfectly valid to assign the free boost on Charisma to get a total of +4).
 
