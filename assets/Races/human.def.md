@@ -4,6 +4,8 @@
 
 **Common alignments**: `LG`, `LN`, `NG`
 
+**Likely origins**: Kingdom of Stormwind; Lordaeron; Theramore, Dustswallow Marsh;
+
 * Medium humanoid (human) (0 RP)
 * Normal speed (0 RP)
 * Abilities: Human heritage (0 RP): +2 to one ability at choice
