@@ -407,13 +407,13 @@
     },
     "labels": {
         "gear": {
-            "butcherApron": "Butcher's Apron",
-            "commandSword": "Command Sword",
-            "copperBracers": "Copper bracers",
-            "copperChainBoots": "Copper Chain Boots",
-            "rethilgoreCuirassFragment": "Rethilgore's Cuirass Fragment",
-            "runnedCopperGauntlets": "Runned Copper Gauntlets",
-            "runedCopperPants": "Runned Copper Pants",
+            "blacksmithingCopperBracers": "Copper bracers",
+            "blacksmithingCopperChainBoots": "Copper Chain Boots",
+            "blacksmithingRunnedCopperGauntlets": "Runned Copper Gauntlets",
+            "blacksmithingRunedCopperPants": "Runned Copper Pants",
+            "shadowfangButcherApron": "Butcher's Apron",
+            "shadowfangCommandSword": "Command Sword",
+            "shadowfangRethilgoreCuirassFragment": "Rethilgore's Cuirass Fragment",
             "shadowfangMeteorFragment": "Meteor Fragment"
         }
     }
