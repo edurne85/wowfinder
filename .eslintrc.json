@@ -34,6 +34,7 @@
         "allowExpressions": true
       }
     ],
+    "no-return-assign": "off",
     "semi": "off",
     "@typescript-eslint/semi": ["error"],
     "no-unused-vars": "off",

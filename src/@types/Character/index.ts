@@ -1,4 +1,4 @@
-import JSON5 from 'json5';
+import { forceDataImportKeyS } from '../../utils';
 import Stats, { StatSet, zeroDefault } from './Stats';
 import CharPersonalDetails, { jsonImport as personalDetailsJsonImport } from './Personal';
 import Race from './Race';
@@ -34,7 +34,7 @@ const Races = Race.import();
 const Classes = Class.import();
 
 export default class Character {
-    private key: string;
+    private _key: string;
     private _personal: CharPersonalDetails;
     private _active: boolean;
     private _stats: Stats;
@@ -62,7 +62,7 @@ export default class Character {
         // resistances,
         inventory = Inventory.defaultBuilder,
     }: CharacterBuilder) {
-        this.key = key;
+        this._key = key;
         this._personal = personalDetailsJsonImport(personal);
         this._active = active;
         if (race in Races) {
@@ -106,6 +106,8 @@ export default class Character {
         this._cachedClassBonuses = null;
         this._cachedGearBonuses = null;
     }
+
+    get key(): string { return this._key; }
 
     get fullName(): string { return this._personal.fullName; }
     
@@ -228,30 +230,14 @@ export default class Character {
         return this.classes;
     }
 
-    private static _import(json: string): Character {
-        const obj = JSON5.parse(json) || {};
-        return new Character({...obj});
-    }
-
-    private static _importForced (dir: string): Characters {
-        const byKey: Characters = {};
-        for (const file of window.Files.getFiles(dir, 'json5')) {
-            try {
-                const raw = Character._import(window.Files.slurp(file));
-                if (byKey[raw.key]) {
-                    console.warn(`Duplicate character key ${raw.key} found.`);
-                }
-                byKey[raw.key] = raw;
-            } catch (e) {
-                console.error(e);
-            }
-        }
-        return Object.freeze(byKey);
+    static build(raw: any): Character {
+        // TODO Validate props
+        return new Character(raw);
     }
 
     private static _imported: Characters | null = null;
 
     static import(dir = window.Main.asset('Characters')): Characters {
-        return (this._imported ||= this._importForced(dir));
+        return (this._imported ||= forceDataImportKeyS<Character>(dir, this.build));
     }
 }

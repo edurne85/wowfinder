@@ -1,3 +1,4 @@
+import { ByKey, forceDataImportKeyS } from '../../../utils';
 import { Bonus, BonusProvider, BonusType, MultiBonus } from '../../Character/Bonus';
 import Size from '../../Character/Size';
 import { Mass, MassUnit } from '../../Units';
@@ -49,6 +50,8 @@ export default class Gear implements BonusProvider {
 
     get label(): string { return this._label; }
 
+    get key(): string { return this._label; }
+
     get shape(): Shape { return [...this._shape]; }
 
     get size(): Size { return this._size; }
@@ -71,6 +74,13 @@ export default class Gear implements BonusProvider {
             weight: raw.weight || 0,
             bonuses: Bonus.build(raw.bonuses || {}),
         });
+    }
+
+    private static _imported: ByKey<Gear> | null = null;
+
+    static import(dir = window.Main.asset('Items/Gear')): ByKey<Gear> {
+        // TODO: Include subtypes
+        return this._imported ||= forceDataImportKeyS<Gear>(dir, this.build);
     }
 }
 

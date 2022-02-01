@@ -1,4 +1,4 @@
-import JSON5 from 'json5';
+import { forceDataImportKeyLabel } from '../utils';
 
 enum Reputation {
     hated = 'hated',
@@ -76,41 +76,18 @@ export default class Faction {
     
     toString(): string { return this.name; }
 
-    private static _import (json: string): Faction {
-        const obj = JSON5.parse(json) || {};
+    static build(raw: any): Faction {
         return new Faction({
-            key: (parseInt(obj.key) || 0),
-            label: (obj.label || '') + '',
-            name: (obj.name || '') + '',
+            key: parseInt(raw.key) || 0,
+            label: (raw.label || '') + '',
+            name:  (raw.name || '') + '',
         });
-    }
-    
-    private static _importForced (dir: string): Factions {
-        const byKey: {[key:number]: Faction} = {};
-        const byLabel: {[label:string]: Faction} = {};
-        for (const file of window.Files.getFiles(dir, 'json5')) {
-            try {
-                const raw = Faction._import(window.Files.slurp(file));
-                if (byKey[raw.key]) {
-                    console.warn(`Duplicate faction key ${raw.key} found.`, {byKey, raw, file});
-                }
-                if (byLabel[raw.label]) {
-                    console.warn (`Duplicate faction label ${raw.label} found.`, {byLabel, raw, file});
-                }
-                byKey[raw.key] = byLabel[raw.label] = raw;
-            } catch (e) {
-                console.error(e);
-            }
-        }
-        const res = {byKey, byLabel};
-        [byKey, byLabel, res].map(Object.freeze);
-        return res;
     }
 
     private static _imported: Factions | null = null;
 
     static import(dir = window.Main.asset('Factions')): Factions {
-        return (this._imported ||= this._importForced(dir));
+        return (this._imported ||= forceDataImportKeyLabel<Faction>(dir, this.build));
     }
 }
 

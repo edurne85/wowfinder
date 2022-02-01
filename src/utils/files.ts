@@ -17,7 +17,7 @@ const prepareDir = (target: string): void => {
     try {
         fs.mkdirSync(dname, { recursive: true });
     }
-    catch (err) {
+    catch (err: any) {
         if (err.code === 'EEXIST') { return ;}
         throw err;
     }

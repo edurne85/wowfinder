@@ -1,4 +1,4 @@
-import JSON5 from 'json5';
+import { forceDataImport } from '../utils';
 import type { Rewards } from './Rewards';
 
 function jclone<T>(obj: T): T {
@@ -42,27 +42,15 @@ export default class Adventure {
     // String representation suitable for sorting (by date, then title)
     toString(): string { return `[${this._date}] ${this._title}`; }
 
-    private static _import (json: string): Adventure {
-        const obj = JSON5.parse(json) || {};
-        return new Adventure({...obj});
-    }
-
-    private static _importForced(dir: string): Adventures {
-        const adventures: Adventure[] = [];
-        for (const file of window.Files.getFiles(dir, 'json5')) {
-            try {
-                adventures.push(Adventure._import(window.Files.slurp(file)));
-            } catch (e) {
-                console.error(e);
-            }
-        }
-        return Object.freeze(adventures.sort());
+    static build (raw: any): Adventure {
+        // TODO Validate props
+        return new Adventure(raw);
     }
 
     private static _imported: Adventures | null = null;
 
     static import(dir = window.Main.asset('Adventures')): Adventures {
-        return (this._imported ||= this._importForced(dir));
+        return (this._imported ||= Object.values(forceDataImport<Adventure>(dir, this.build)));
     }
 
     static combined(adventures: Adventures): Rewards {

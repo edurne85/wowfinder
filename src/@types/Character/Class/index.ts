@@ -1,4 +1,4 @@
-import JSON5 from 'json5';
+import { forceDataImportKeyS } from '../../../utils';
 import { Skill } from '../Skills';
 import { StatSet, statMod } from '../Stats';
 import type { Aura } from './Auras';
@@ -187,31 +187,15 @@ export default class Class {
         return result;
     }
 
-    private static _import(json: string): Class {
-        const obj = JSON5.parse(json) || {};
-        return new Class({...obj});
-    }
-
-    private static _importForced  (dir: string): Classes {
-        const byKey: {[key:string]: Class} = {};
-        for (const file of window.Files.getFiles(dir, 'json5')) {
-            try {
-                const raw = Class._import(window.Files.slurp(file));
-                if (byKey[raw._key]) {
-                    console.warn(`Duplicate class key ${raw.key} found.`);
-                }
-                byKey[raw._key] = raw;
-            } catch (e) {
-                console.error(e);
-            }
-        }
-        return Object.freeze(byKey);
+    static build(raw: any): Class {
+        // TODO Validate props
+        return new Class(raw);
     }
 
     private static _imported: Classes | null = null;
 
     static import(dir = window.Main.asset('Classes')): Classes {
-        return (this._imported ||= this._importForced(dir));
+        return this._imported ||= forceDataImportKeyS(dir, this.build);
     }
 }
 export {
