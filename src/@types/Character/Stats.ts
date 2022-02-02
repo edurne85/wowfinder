@@ -1,4 +1,5 @@
 import { sum } from '../../utils';
+import { Mass, MassUnit } from '../Units';
 
 enum StatKey {
     STR = 'STR',
@@ -66,15 +67,6 @@ const zeroDefault: StatSet = {
     CHA: 0,
 };
 
-/* type StatBlock = {
-    base: StatSet,
-    racial: StatSet,
-    enhance: StatSet,
-    gear: StatSet,
-    misc: StatSet,
-    temp: StatSet,
-}; */
-
 type PartialStatBlock = {
     base?: StatSet,
     racial?: StatSet,
@@ -83,6 +75,22 @@ type PartialStatBlock = {
     misc?: StatSet,
     temp?: StatSet,
 };
+
+function carry(str: number): Mass {
+    if (str <= 0) {
+        return new Mass({value: 0, unit: MassUnit.lb});
+    }
+    let mult = 1;
+    while (str > 20) {
+        mult *= 4;
+        str -= 10;
+    }
+    const base = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 115, 130, 150, 175, 200, 230, 260, 300, 350, 400];
+    return new Mass({
+        value: Math.floor(base[str - 1] * mult),
+        unit: MassUnit.lb,
+    });
+}    
 
 export default class Stats {
     private _base: StatSet;
@@ -136,6 +144,8 @@ export default class Stats {
 
     get temp(): StatSet { return Object.assign({}, this._temp); }
 
+    get carry(): Mass { return carry(this.totals.STR); }
+
     updated({base, racial, enhance, gear, misc, temp}: PartialStatBlock): Stats {
         return new Stats({
             base: base || this.base,
@@ -160,4 +170,5 @@ export {
     statMod,
     baseDefault,
     zeroDefault,
+    carry,
 };

@@ -374,7 +374,14 @@
         },
         "inventory": {
             "h": "Inventory",
-            "weight": "Weight",
+            "weight": {
+                "h": "Weight",
+                "light": "Light",
+                "medium": "Medium",
+                "heavy": "Heavy",
+                "lift": "Lift",
+                "drag": "Drag"
+            },
             "gear": {
                 "h": "Gear",
                 "slot": "Slot",

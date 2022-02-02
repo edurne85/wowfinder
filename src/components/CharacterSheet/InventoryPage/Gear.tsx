@@ -115,7 +115,7 @@ function GearDetails({ item }: { item: G }): JSX.Element {
         {item instanceof Weapon ? <WeaponDetails weapon={item} /> : <></>}
         {item instanceof Armor ? <ArmorDetails armor={item} /> : <></>}
         <ToDo text="Item size category" />
-        <GearDetailLine h={t('ui.inventory.weight')}>{item.weight.toString()}</GearDetailLine>
+        <GearDetailLine h={t('ui.inventory.weight.h')}>{item.weight.toString()}</GearDetailLine>
         <ToDo text="Bonus rendering" />
         Detailed item view under construction!
     </GearDetailsContainer>);
@@ -142,7 +142,7 @@ function GearItem({ item }: { item: G }): JSX.Element {
 }
 
 const GearContainer = styled.div`
-    height: 120mm;
+    height: 100mm;
     ${debugOutline({ color: '#909' })}
     ${scrollable}
 `;

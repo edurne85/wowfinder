@@ -374,7 +374,15 @@
         },
         "inventory": {
             "h": "Inventario",
-            "weight": "Peso",
+            "weight": {
+                "h": "Peso",
+                "light": "Ligera",
+                "medium": "Media",
+                "heavy": "Pesada",
+                "lift": "Levantar",
+                "drag": "Arrastrar",
+                "excess": "Exceso"
+            },
             "gear": {
                 "h": "Equipo",
                 "slot": "Posición",
