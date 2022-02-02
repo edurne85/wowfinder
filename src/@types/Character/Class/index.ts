@@ -46,7 +46,7 @@ type FeaturesList = {level: number, feature: ClassFeature}[];
 type AurasList = {level: number, aura: Aura}[];
 
 const helpers = {
-    hdAvg: (hd: number): number => (hd+1) / 2,
+    hdAvg: (hd: number): number => Math.ceil((hd+1) / 2),
     hdFirst: (hd: number): number => hd - helpers.hdAvg(hd),
     validSkills: new Set(Object.values(Skill)),
     mapFeatures: (list: {level: number, feature?: string}[]): FeaturesList =>
