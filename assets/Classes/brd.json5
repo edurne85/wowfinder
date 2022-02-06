@@ -3,7 +3,6 @@
     hd: 8,
     bab: 0.75,
     skl: 6,
-    skills: [],
     refl: true,
     will: true,
     esp: 0.67,

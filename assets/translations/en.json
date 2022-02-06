@@ -113,7 +113,12 @@
         "emptyBody": "Empty Body",
         "perfectSelf": "Perfect Self",
         "fastMovement": "Fast Movement",
-        "timelessBody": "Timeless Body"
+        "timelessBody": "Timeless Body",
+        "sneak": "Sneak Attack",
+        "trapfinding": "Trapfinding",
+        "rogueTalent": "Rogue Talent",
+        "advancedTalents": "Advanced Talents",
+        "masterStrike": "Master Strike"
     },
     "auras": {
         "commanding": "Commanding Shout",
@@ -380,7 +385,8 @@
                 "medium": "Medium",
                 "heavy": "Heavy",
                 "lift": "Lift",
-                "drag": "Drag"
+                "drag": "Drag",
+                "excess": "Excess"
             },
             "gear": {
                 "h": "Gear",
@@ -419,7 +425,9 @@
             "blacksmithingRunnedCopperGauntlets": "Runned Copper Gauntlets",
             "blacksmithingRunedCopperPants": "Runned Copper Pants",
             "shadowfangButcherApron": "Butcher's Apron",
+            "shadowfangButcherClaw": "Butcher's Claw",
             "shadowfangCommandSword": "Command Sword",
+            "shadowfangHardenedStool": "Hardened Stool",
             "shadowfangRethilgoreCuirassFragment": "Rethilgore's Cuirass Fragment",
             "shadowfangMeteorFragment": "Meteor Fragment"
         }

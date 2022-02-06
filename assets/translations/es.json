@@ -113,7 +113,12 @@
         "emptyBody": "Cuerpo vacío",
         "perfectSelf": "Yo perfecto",
         "fastMovement": "Movimiento rápido",
-        "timelessBody": "Cuerpo eterno"
+        "timelessBody": "Cuerpo eterno",
+        "sneak": "Ataque furtivo",
+        "trapfinding": "Encontrar trampas",
+        "rogueTalent": "Talento de pícaro",
+        "advancedTalents": "Talentos avanzados",
+        "masterStrike": "Golpe maestro"
     },
     "auras": {
         "commanding": "Grito de orden",
@@ -420,7 +425,9 @@
             "blacksmithingRunnedCopperGauntlets": "Guanteletes rúnicos de cobre",
             "blacksmithingRunedCopperPants": "Pantalones rúnicos de cobre",
             "shadowfangButcherApron": "Delantal del Carnicero",
+            "shadowfangButcherClaw": "Garra del Carnicero",
             "shadowfangCommandSword": "Espada de mando",
+            "shadowfangHardenedStool": "Taburete endurecido",
             "shadowfangRethilgoreCuirassFragment": "Fragmento de coraza de Rethilgore",
             "shadowfangMeteorFragment": "Fragmento de meteorito"
         }
