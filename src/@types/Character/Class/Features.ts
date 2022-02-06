@@ -2,9 +2,6 @@ export enum ClassFeature {
     // Barbarian
     rage = 'rage',
     ragePower = 'ragePower',
-    uncannyDodge = 'uncannyDodge',
-    trapSense = 'trapSense',
-    improvedUncannyDodge = 'improvedUncannyDodge',
     damageReduction = 'damageReduction',
     greaterRage = 'greaterRage',
     indomitableWill = 'indomitableWill',
@@ -81,7 +78,6 @@ export enum ClassFeature {
     flurryBlows = 'flurryBlows',
     stunningFist = 'stunningFist',
     unarmedStrike = 'unarmedStrike',
-    evasion = 'evasion',
     maneuverTraining = 'maneuverTraining',
     stillMind = 'stillMind',
     kiPool = 'kiPool',
@@ -105,6 +101,19 @@ export enum ClassFeature {
     fastMovement = 'fastMovement',
     // Druid + Monk
     timelessBody = 'timelessBody',
+    // Rogue
+    sneak = 'sneak',
+    trapfinding = 'trapfinding',
+    rogueTalent = 'rogueTalent',
+    advancedTalents = 'advancedTalents',
+    masterStrike = 'masterStrike',
+
+    // Generic / Multiple
+    evasion = 'evasion',
+    trapSense = 'trapSense',
+    uncannyDodge = 'uncannyDodge',
+    improvedUncannyDodge = 'improvedUncannyDodge',
+
     // TODO (WiP)
 }
 

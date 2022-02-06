@@ -2,8 +2,8 @@ import { StatKey, StatSet } from './Stats';
 
 enum Skill {
     acrobatics = 'acrobatics',
-    athletics = 'athletics',
     appraise = 'appraise',
+    athletics = 'athletics',
     bluff = 'bluff',
     alchemy = 'alchemy',
     blacksmithing = 'blacksmithing',

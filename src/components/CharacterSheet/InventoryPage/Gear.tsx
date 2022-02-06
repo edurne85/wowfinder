@@ -28,11 +28,16 @@ const GearDetailsContainer = styled.div`
 const GearItemTitle = styled.p`
     font-weight: bold;
 `;
-const GearItemLine = styled.p`
+
+const lineStyle = `
     font-style: italic;
     &>b {
         font-weight: bold;
     }
+`;
+
+const GearItemLine = styled.p`
+    ${lineStyle}
 `;
 
 const GearDetailLine: React.FC<{ h?: string }> = ({ h, children }) => {
@@ -43,8 +48,15 @@ const GearDetailLine: React.FC<{ h?: string }> = ({ h, children }) => {
     </GearItemLine>);
 };
 
+const ToDoLine = styled.p`
+    ${lineStyle}
+    &>b {
+        color: red;
+    }
+`;
+
 function ToDo({ text }: { text: string }): JSX.Element {
-    return (<GearDetailLine h="To Do">{text}</GearDetailLine>);
+    return(<ToDoLine><b>To Do</b>: {text}</ToDoLine>);
 }
 
 function WeaponBonusDamage({ weapon }: { weapon: Weapon }): JSX.Element {

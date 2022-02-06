@@ -2,19 +2,21 @@ import { Length, LengthUnit, Mass, MassUnit, Time, TimeUnit } from '../Units';
 import Alignment from './Alignment';
 
 export default interface CharPersonalDetails {
-    align: Alignment,
     fullName: string,
+    align: Alignment,
     height: Length,
     weight: Mass,
     faith: string,
     origin: string,
     hair: string,
     eyes: string,
+    skin: string,
     gender: string,
     age: Time,
 }
 
 const personalDefaults: CharPersonalDetails = {
+    fullName: '',
     align: Alignment.NN,
     height: new Length({
         value: 63,
@@ -24,11 +26,11 @@ const personalDefaults: CharPersonalDetails = {
         value: 143,
         unit: MassUnit.lb,
     }), // ~ 65kg
-    fullName: '',
     faith: '',
     origin: '',
     hair: '',
     eyes: '',
+    skin: '',
     gender: '',
     age: new Time({
         value: 20,
