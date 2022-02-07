@@ -44,7 +44,7 @@ function TestCharSheet(): JSX.Element {
   return (<CharacterSheet char={chars.arthur} xp={rewards.arthur.XP} />);
 }
 function TestCharSheet2(): JSX.Element {
-  return (<CharacterSheet char={chars.kaliri} />); 
+  return (<CharacterSheet char={chars.keina} xp={rewards.keina.XP} />); 
 }
 
 function PrintCharSheet(): JSX.Element {

@@ -29,9 +29,6 @@ export const files = {
   slurp: (fpath: string): string => {
     return ipcRenderer.sendSync('files:slurp', fpath);
   },
-  getFiles: (dpath: string, filterKey = 'any'): string[] => {
-    return ipcRenderer.sendSync('files:getFiles', dpath, filterKey);
-  },
   prepareDir: (target: string): void => {
     ipcRenderer.sendSync('files:prepareDir', target);
   },
@@ -41,8 +38,20 @@ export const files = {
   del: (fpath: string): void => {
     return ipcRenderer.sendSync('files:del', fpath);
   },
-  isFile: (fpath: string): boolean => {
-    return ipcRenderer.sendSync('files:isFile', fpath);
+  getFiles: (dpath: string, filterKey = 'any'): string[] => {
+    return ipcRenderer.sendSync('files:getFiles', dpath, filterKey);
+  },
+  getDirectories: (dpath: string): string[] => {
+    return ipcRenderer.sendSync('files:getDirectories', dpath);
+  },
+  isFile: (path: string): boolean => {
+    return ipcRenderer.sendSync('files:isFile', path);
+  },
+  isDirectory: (path: string): boolean => {
+    return ipcRenderer.sendSync('files:isDirectory', path);
+  },
+  resolvePath: (...pathSegments: string[]): string => {
+    return ipcRenderer.sendSync('files:resolvePath', ...pathSegments);
   },
 };
 

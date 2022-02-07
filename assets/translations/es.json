@@ -417,19 +417,5 @@
             },
             "possessions": "Posesiones"
         }
-    },
-    "labels": {
-        "gear": {
-            "blacksmithingCopperBracers": "Brazaletes de cobre",
-            "blacksmithingCopperChainBoots": "Botas de cadenas de cobre",
-            "blacksmithingRunnedCopperGauntlets": "Guanteletes rúnicos de cobre",
-            "blacksmithingRunedCopperPants": "Pantalones rúnicos de cobre",
-            "shadowfangButcherApron": "Delantal del Carnicero",
-            "shadowfangButcherClaw": "Garra del Carnicero",
-            "shadowfangCommandSword": "Espada de mando",
-            "shadowfangHardenedStool": "Taburete endurecido",
-            "shadowfangRethilgoreCuirassFragment": "Fragmento de coraza de Rethilgore",
-            "shadowfangMeteorFragment": "Fragmento de meteorito"
-        }
     }
 }

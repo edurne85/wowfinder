@@ -4,21 +4,21 @@ import { ipcMain } from 'electron';
 
 const outputPrefix = 'output/';
 
-type fileFilter = (s:string) => boolean;
-const filters: {[key:string]: fileFilter} = {
+type fileFilter = (s: string) => boolean;
+const filters: { [key: string]: fileFilter } = {
     any: () => true,
-    json: (s) => /\.json$/i.test(s),
-    json5: (s) => /\.json5?$/i.test(s),
+    json: s => /\.json$/i.test(s),
+    json5: s => /\.json5?$/i.test(s),
 };
-
 
 const prepareDir = (target: string): void => {
     const dname = path.dirname(target);
     try {
         fs.mkdirSync(dname, { recursive: true });
-    }
-    catch (err: any) {
-        if (err.code === 'EEXIST') { return ;}
+    } catch (err: any) {
+        if (err.code === 'EEXIST') {
+            return;
+        }
         throw err;
     }
 };
@@ -30,17 +30,28 @@ const dump = (rpath: string, data: string): string => {
     return target;
 };
 
-const slurp = (fpath: string): string =>  fs.readFileSync(fpath).toString();
+const slurp = (fpath: string): string => fs.readFileSync(fpath).toString();
 
 const del = (fpath: string): void => fs.unlinkSync(fpath);
 
-const isFile = (fpath: string): boolean => fs.statSync(fpath).isFile();
+const isFile = (path: string): boolean =>
+    fs.existsSync(path) && fs.statSync(path).isFile();
+
+const isDirectory = (path: string): boolean =>
+    fs.existsSync(path) && fs.statSync(path).isDirectory();
 
 const getFiles = (dpath: string, filterKey = 'any'): string[] =>
-    fs.readdirSync(dpath)
+    fs
+        .readdirSync(dpath)
         .filter(filters[filterKey] || filters.any)
-        .map((f) => path.resolve(dpath, f))
+        .map(f => path.resolve(dpath, f))
         .filter(isFile);
+
+const getDirectories = (dpath: string): string[] =>
+    fs
+        .readdirSync(dpath, { withFileTypes: true })
+        .filter(dirent => dirent.isDirectory())
+        .map(dirent => dirent.name);
 
 export default function registerListeners(): void {
     ipcMain.on('files:prepareDir', (event, target: string) => {
@@ -58,13 +69,18 @@ export default function registerListeners(): void {
     ipcMain.on('files:getFiles', (event, dpath: string, filterKey = 'any') => {
         event.returnValue = getFiles(dpath, filterKey);
     });
+    ipcMain.on('files:getDirectories', (event, dpath: string) => {
+        event.returnValue = getDirectories(dpath);
+    });
+    ipcMain.on('files:isFile', (event, path: string) => {
+        event.returnValue = isFile(path);
+    });
+    ipcMain.on('files:isDirectory', (event, path: string) => {
+        event.returnValue = isDirectory(path);
+    });
+    ipcMain.on('files:resolvePath', (event, ...pathSegments) => {
+        event.returnValue = path.resolve(...pathSegments);
+    });
 }
 
-export {
-    prepareDir,
-    dump,
-    slurp,
-    del,
-    getFiles,
-    filters,
-};
+export { prepareDir, dump, slurp, del, getFiles, filters };
