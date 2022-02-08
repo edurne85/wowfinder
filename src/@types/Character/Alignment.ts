@@ -12,6 +12,15 @@ enum Alignment {
 
 export default Alignment;
 
+const playableAlignments = [
+    Alignment.LG,
+    Alignment.LN,
+    Alignment.NG,
+    Alignment.NN,
+    Alignment.CG,
+    Alignment.CN,
+];
+
 const isGood = (alignment: Alignment): boolean  => /G/.test(alignment);
 const isEvil = (alignment: Alignment): boolean  => /E/.test(alignment);
 const isChaotic = (alignment: Alignment): boolean  => /C/.test(alignment);
@@ -24,4 +33,5 @@ export {
     isChaotic,
     isLawful,
     isNeutral,
+    playableAlignments,
 };

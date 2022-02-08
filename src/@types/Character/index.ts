@@ -31,21 +31,35 @@ interface CharacterBuilder {
 type Characters = {[key:string]: Character};
 
 const Races = Race.import();
+function checkRace(raceName: string): Race {
+    const r = Races[raceName];
+    if (!r) {
+        throw new Error(`Unknown race key: ${raceName}`);
+    }
+    return r;
+}
+
 const Classes = Class.import();
+function checkClass(className: string): Class {
+    const c = Classes[className];
+    if (!c) {
+        throw new Error(`Unknown class key: ${className}`);
+    }
+    return c;
+}
 
 export default class Character {
     private _key: string;
     private _personal: CharPersonalDetails;
     private _active: boolean;
     private _stats: Stats;
-    private _race?: Race; // TODO Make non-optional once we have base definitions for all races
+    private _race: Race;
     private _classes: ClassLevels;
     private _miscHP: number;
     private _skillRanks: SkillRanks;
     private _armor: ArmorValues;
     private _resistances: Resistances;
     private _inventory: Inventory;
-    // private _gear: Gear[];
 
     private _cachedClassBonuses: ClassBonuses | null = null;
     private _cachedGearBonuses: Bonus | null = null;
@@ -59,26 +73,15 @@ export default class Character {
         classes = [],
         miscHP = 0,
         skillRanks = {},
-        // resistances,
         inventory = Inventory.defaultBuilder,
     }: CharacterBuilder) {
         this._key = key;
         this._personal = personalDetailsJsonImport(personal);
         this._active = active;
-        if (race in Races) {
-            this._race = Races[race];
-        } else {
-            if (race) { // TODO Remove condition once _race is not optional
-                throw new Error(`Unknown race key: ${race}`);
-            }
-        }
+        this._race = checkRace(race);
         this._classes = [];
         for (const {cls, level} of classes) {
-            if (cls in Classes) {
-                this._classes.push({cls: Classes[cls], level});
-            } else {
-                throw new Error(`Unknown class key: ${cls}`);
-            }
+            this._classes.push({cls: checkClass(cls), level});
         }
         const auraBonuses = this.auraBonuses;
         this._stats = new Stats({
