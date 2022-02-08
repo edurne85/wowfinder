@@ -1,0 +1,143 @@
+{
+    "common": {
+        "total": "Total",
+        "mod": "Mod",
+        "stat": "Ability",
+        "statMod": "Mod",
+        "racial": "Racial",
+        "size": "Size",
+        "base": "Base",
+        "enhancement": "Enh",
+        "gear": "Gear",
+        "misc": "Misc",
+        "temp": "Temp"
+    },
+    "personal": {
+        "charName": "Character name",
+        "align": "Alignment",
+        "player": "Player",
+        "tLevel": "Total Level",
+        "xp": "Experience",
+        "nLevel": "Next Level",
+        "faith": "Faith / Deity",
+        "origin": "Origin / Nationality",
+        "race": "Race",
+        "size": "Size",
+        "gender": "Gender",
+        "age": "Age",
+        "height": "Height",
+        "weight": "Weight",
+        "hair": "Hair",
+        "eyes": "Eyes"
+    },
+    "hitpoints": {
+        "h": "Hit Points",
+        "curr": "Current",
+        "total": "Total",
+        "base": "Base",
+        "misc": "Misc",
+        "temp": "Temp"
+    },
+    "speed": {
+        "h": "Speed",
+        "base": "Base",
+        "load": "Enc.",
+        "fly": "Fly",
+        "maneuverability": "Maneuverability",
+        "swim": "Swim",
+        "climb": "Climb",
+        "burrow": "Burr.",
+        "misc": "Misc"
+    },
+    "armor": {
+        "h": "Defense Scores",
+        "total": "Total",
+        "armor": "Armor",
+        "shield": "Shield",
+        "dodge": "Dodge",
+        "nat": "Nat",
+        "defl": "Defl",
+        "misc": "Misc",
+        "temp": "Temp",
+        "AC": "AC",
+        "touch": "T",
+        "flatf": "FF",
+        "cmd": "CMD"
+    },
+    "saves": {
+        "h": "Saving Throws",
+        "abbr": {
+            "fort": "Fort",
+            "refl": "Refl",
+            "will": "Will"
+        },
+        "fort": "Fortitude",
+        "refl": "Reflexes",
+        "will": "Will"
+    },
+    "resist": {
+        "h": "Resistances"
+    },
+    "attack": {
+        "h": "Attack Scores",
+        "bab": "BaB",
+        "melee": "Melee",
+        "ranged": "Ranged",
+        "cmb": "CMB"
+    },
+    "classes": {
+        "h": "Classes and Levels"
+    },
+    "traits": {
+        "h": "Feats, Traits and Features"
+    },
+    "skills": {
+        "h": "Skills",
+        "skill": "Skill",
+        "ranks": "Ranks",
+        "trained": "Trained",
+        "acp": "ACP",
+        "untrained": "U",
+        "class": "C"
+    },
+    "inventory": {
+        "h": "Inventory",
+        "weight": {
+            "h": "Weight",
+            "light": "Light",
+            "medium": "Medium",
+            "heavy": "Heavy",
+            "lift": "Lift",
+            "drag": "Drag",
+            "excess": "Excess"
+        },
+        "gear": {
+            "h": "Gear",
+            "slot": "Slot",
+            "range": {
+                "h": "Range",
+                "melee": "Melee"
+            },
+            "baseDamage": "Base damage",
+            "bonusDamage": "Bonus damage",
+            "intrinsic": "Intrinsic mod"
+        },
+        "load": {
+            "h": "Load"
+        },
+        "money": {
+            "h": "Money",
+            "abbr": {
+                "g": "g",
+                "s": "s",
+                "c": "c"
+            },
+            "full": {
+                "g": "gold coin(s)",
+                "s": "silver coin(s)",
+                "c": "copper coin(s)"
+            }
+        },
+        "possessions": "Possessions"
+    }
+}

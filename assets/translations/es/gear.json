@@ -1,0 +1,39 @@
+{
+    "slot": {
+        "$separator": ", ",
+        "mhand": "Mano diestra",
+        "ohand": "Mano zurda",
+        "head": "Cabeza",
+        "torso": "Torso",
+        "back": "Espalda",
+        "ear": "Oreja",
+        "neck": "Cuello",
+        "shoulders": "Hombros",
+        "hands": "Manos",
+        "wrists": "Muñecas",
+        "waist": "Cintura",
+        "legs": "Piernas",
+        "feet": "Pies",
+        "ring": "Anillo"
+    },
+    "weapon": {
+        "group": {
+            "$separator": ", ",
+            "axe": "hachas",
+            "bladeHeavy": "filos pesados",
+            "bladeLight ": "filos ligeros",
+            "bow": "arcos",
+            "close": "corto alcance",
+            "crossbow": "ballestas",
+            "double": "dobles",
+            "flail": "manguales",
+            "gunpowder": "pólvora",
+            "hammer": "martillos",
+            "monk": "monje",
+            "natural": "naturales",
+            "pole": "asta",
+            "spear": "lanzas",
+            "thrown": "arrojadizas"
+        }
+    }
+}

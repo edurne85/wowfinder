@@ -1,0 +1,143 @@
+{
+    "common": {
+        "total": "Total",
+        "mod": "Mod",
+        "stat": "Car",
+        "statMod": "Mod",
+        "racial": "Racial",
+        "size": "Tam",
+        "base": "Base",
+        "enhancement": "Mej",
+        "gear": "Eq",
+        "misc": "Misc",
+        "temp": "Temp"
+    },
+    "personal": {
+        "charName": "Nombre del personaje",
+        "align": "Alineamiento",
+        "player": "Jugador",
+        "tLevel": "N. total",
+        "xp": "Experiencia",
+        "nLevel": "N. sig",
+        "faith": "Fe / Deidad",
+        "origin": "Origen / Nacionalidad",
+        "race": "Raza",
+        "size": "Tamaño",
+        "gender": "Género",
+        "age": "Edad",
+        "height": "Altura",
+        "weight": "Peso",
+        "hair": "Pelo",
+        "eyes": "Ojos"
+    },
+    "hitpoints": {
+        "h": "Puntos de golpe",
+        "curr": "Actuales",
+        "total": "Totales",
+        "base": "Base",
+        "misc": "Misc",
+        "temp": "Temp"
+    },
+    "speed": {
+        "h": "Velocidad",
+        "base": "Base",
+        "load": "Carga",
+        "fly": "Vuelo",
+        "maneuverability": "Maniobrabilidad",
+        "swim": "Nadar",
+        "climb": "Trepar",
+        "burrow": "Excavar",
+        "misc": "Misc"
+    },
+    "armor": {
+        "h":  "Puntuaciones defensivas",
+        "total": "Total",
+        "armor": "Arm",
+        "shield": "Esc",
+        "dodge": "Esq",
+        "nat": "Nat",
+        "defl": "Desv",
+        "misc": "Misc",
+        "temp": "Temp",
+        "AC": "CA",
+        "touch": "T",
+        "flatf": "Des",
+        "cmd": "DMC"
+    },
+    "saves": {
+        "h": "Tiradas de salvación",
+        "abbr": {
+            "fort": "Fort",
+            "refl": "Refl",
+            "will": "Vol"
+        },
+        "fort": "Fortaleza",
+        "refl": "Reflejos",
+        "will": "Voluntad"
+    },
+    "resist": {
+        "h": "Resistencias"
+    },
+    "attack": {
+        "h":  "Puntuaciones de ataque",
+        "bab": "AB",
+        "melee": "CaC",
+        "ranged": "Dist",
+        "cmb": "BMC"
+    },
+    "classes": {
+        "h": "Clases y niveles"
+    },
+    "traits": {
+        "h": "Dotes y rasgos"
+    },
+    "skills": {
+        "h": "Habilidades",
+        "skill": "Habilidad",
+        "ranks": "Rangos",
+        "trained": "Entr",
+        "acp": "P. Arm",
+        "untrained": "S",
+        "class": "C"
+    },
+    "inventory": {
+        "h": "Inventario",
+        "weight": {
+            "h": "Peso",
+            "light": "Ligera",
+            "medium": "Media",
+            "heavy": "Pesada",
+            "lift": "Levantar",
+            "drag": "Arrastrar",
+            "excess": "Exceso"
+        },
+        "gear": {
+            "h": "Equipo",
+            "slot": "Posición",
+            "range": {
+                "h": "Alcance",
+                "melee": "CaC"
+            },
+            "baseDamage": "Daño base",
+            "bonusDamage": "Daño adicional",
+            "intrinsic": "Modificador"
+        },
+        "load": {
+            "h": "Carga"
+        },
+        "money": {
+            "h": "Dinero",
+            "abbr": {
+                "g": "o",
+                "s": "p",
+                "c": "c"
+            },
+            "full": {
+                "g": "moneda(s) de oro",
+                "s": "moneda(s) de plata",
+                "c": "moneda(s) de cobre"
+            }
+        },
+        "possessions": "Posesiones"
+    }
+}
