@@ -5,6 +5,7 @@ import Senses from './Senses';
 import { sum } from '../../../utils';
 import SavesBonus from './Saves';
 import ResistBonus from './ResistBonus';
+import SpellPowerBonus from './SpellPowerBonus';
 
 enum BonusType {
     armor = 'armor',
@@ -41,6 +42,7 @@ interface BonusBuilder {
     armorClass?: number;
     vitalNeeds?: VitalNeeds;
     senses?: Senses;
+    spellPower?: SpellPowerBonus;
     // TODO Speed
 }
 
@@ -54,6 +56,7 @@ class Bonus {
     private _armorClass: number;
     private _vitalNeeds: VitalNeeds;
     private _senses: Senses;
+    private _spellPower: SpellPowerBonus;
 
     constructor({
         type,
@@ -65,6 +68,7 @@ class Bonus {
         armorClass = 0,
         vitalNeeds = VitalNeeds.defaults,
         senses = Senses.defaults,
+        spellPower = SpellPowerBonus.zero,
     }: BonusBuilder) {
         this._type = type;
         this._hp = hp;
@@ -75,6 +79,7 @@ class Bonus {
         this._armorClass = armorClass;
         this._vitalNeeds = vitalNeeds;
         this._senses = senses;
+        this._spellPower = spellPower;
         Object.freeze(this);
     }
 
@@ -96,6 +101,8 @@ class Bonus {
 
     get senses(): Senses { return this._senses; }
 
+    get spellPower(): SpellPowerBonus { return this._spellPower; }
+
     static zero(type: BonusType): Bonus {
         return new Bonus({
             type,
@@ -107,6 +114,7 @@ class Bonus {
             armorClass: 0,
             vitalNeeds: VitalNeeds.defaults,
             senses: Senses.defaults,
+            spellPower: SpellPowerBonus.zero,
         });
     }
 
@@ -121,6 +129,7 @@ class Bonus {
             armorClass: sum(...args.map(a => a._armorClass)),
             vitalNeeds: VitalNeeds.combine(...args.map(a => a._vitalNeeds)),
             senses: Senses.combine(...args.map(a => a._senses)),
+            spellPower: SpellPowerBonus.sum(...args.map(a => a._spellPower)),
         });
     }
 
@@ -135,6 +144,7 @@ class Bonus {
             armorClass: Math.max(...args.map(a => a._armorClass)),
             vitalNeeds: VitalNeeds.combine(...args.map(a => a._vitalNeeds)),
             senses: Senses.combine(...args.map(a => a._senses)),
+            spellPower: SpellPowerBonus.max(...args.map(a => a._spellPower)),
         });
     }
 
@@ -169,6 +179,7 @@ class Bonus {
             armorClass: raw.armorClass as number || 0,
             vitalNeeds: VitalNeeds.build(raw.vitalNeeds),
             senses: Senses.build(raw.senses),
+            spellPower: SpellPowerBonus.build(raw.spellPower),
         });
     }
 }
@@ -221,4 +232,9 @@ export {
     MultiBonus,
     StatsBonus,
     SkillsBonus,
+    VitalNeeds,
+    Senses,
+    SavesBonus,
+    ResistBonus,
+    SpellPowerBonus,
 };

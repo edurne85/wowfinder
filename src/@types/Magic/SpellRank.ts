@@ -1,4 +1,3 @@
-
 interface SpellRankBuilder {
     key: string;
     rank?: number;
@@ -9,15 +8,12 @@ class SpellRank {
     private _key: string;
     private _rank: number;
 
-    constructor({
-        key,
-        rank = 1,
-    }: SpellRankBuilder) {
+    constructor({ key, rank = 1 }: SpellRankBuilder) {
         this._key = key;
         this._rank = rank;
     }
 }
 
-export {
-    SpellRank,
-};
+export type { SpellRankBuilder };
+
+export { SpellRank };

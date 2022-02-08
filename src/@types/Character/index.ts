@@ -1,6 +1,8 @@
 import { forceDataImportKeyS } from '../../utils';
 import Stats, { StatSet, zeroDefault } from './Stats';
-import CharPersonalDetails, { jsonImport as personalDetailsJsonImport } from './Personal';
+import CharPersonalDetails, {
+    jsonImport as personalDetailsJsonImport,
+} from './Personal';
 import Race from './Race';
 import Class, { ClassBonuses, ClassFeature, ClassLevels } from './Class';
 import { Speeds } from './Speeds';
@@ -12,23 +14,31 @@ import { Bonus, BonusType } from './Bonus';
 import Armor from '../Items/Gear/Armor';
 import Inventory, { InventoryBuilder } from '../Items/Inventory';
 import { Aura, auraBonuses } from './Class/Auras';
+import {
+    CastingMode,
+    computedSpellPower,
+    FullComputedSpellPower,
+    fullComputedSpellPower,
+    School,
+    SubSchool,
+} from '../Magic';
 
 type SkillRanks = { [key: string]: number };
 
 interface CharacterBuilder {
-    key: string,
-    personal: CharPersonalDetails,
-    race: string,
-    classes: {cls: string, level: number}[],
-    active?: boolean,
-    miscHP?: number,
-    baseStats: StatSet,
-    skillRanks?: SkillRanks,
-    resistances?: Resistances,
-    inventory?: InventoryBuilder,
+    key: string;
+    personal: CharPersonalDetails;
+    race: string;
+    classes: { cls: string; level: number }[];
+    active?: boolean;
+    miscHP?: number;
+    baseStats: StatSet;
+    skillRanks?: SkillRanks;
+    resistances?: Resistances;
+    inventory?: InventoryBuilder;
 }
 
-type Characters = {[key:string]: Character};
+type Characters = { [key: string]: Character };
 
 const Races = Race.import();
 function checkRace(raceName: string): Race {
@@ -80,13 +90,13 @@ export default class Character {
         this._active = active;
         this._race = checkRace(race);
         this._classes = [];
-        for (const {cls, level} of classes) {
-            this._classes.push({cls: checkClass(cls), level});
+        for (const { cls, level } of classes) {
+            this._classes.push({ cls: checkClass(cls), level });
         }
         const auraBonuses = this.auraBonuses;
         this._stats = new Stats({
             base: baseStats,
-            racial: this._race? this._race.statMods : zeroDefault,
+            racial: this._race ? this._race.statMods : zeroDefault,
             // TODO ? enhance
             misc: auraBonuses.stats.values,
             // TODO ? temp
@@ -110,27 +120,45 @@ export default class Character {
         this._cachedGearBonuses = null;
     }
 
-    get key(): string { return this._key; }
-
-    get fullName(): string { return this._personal.fullName; }
-    
-    toString(): string { return this._personal.fullName; }
-    
-    get active(): boolean { return this._active; }
-
-    get personal(): CharPersonalDetails { return Object.assign({}, this._personal); }
-
-    get stats(): Stats { return this._stats; }
-
-    get race(): Race | null { return this._race || null; }
-
-    get classes(): ClassLevels {
-        return this._classes.map(({cls, level}) => ({cls, level}));
+    get key(): string {
+        return this._key;
     }
 
-    get miscHP(): number { return this._miscHP; }
+    get fullName(): string {
+        return this._personal.fullName;
+    }
 
-    get skillRanks(): SkillRanks { return Object.assign({}, this._skillRanks); }
+    toString(): string {
+        return this._personal.fullName;
+    }
+
+    get active(): boolean {
+        return this._active;
+    }
+
+    get personal(): CharPersonalDetails {
+        return Object.assign({}, this._personal);
+    }
+
+    get stats(): Stats {
+        return this._stats;
+    }
+
+    get race(): Race | null {
+        return this._race || null;
+    }
+
+    get classes(): ClassLevels {
+        return this._classes.map(({ cls, level }) => ({ cls, level }));
+    }
+
+    get miscHP(): number {
+        return this._miscHP;
+    }
+
+    get skillRanks(): SkillRanks {
+        return Object.assign({}, this._skillRanks);
+    }
 
     get speed(): Speeds {
         // TODO Implement
@@ -159,21 +187,38 @@ export default class Character {
         });
     }
 
-    get resistances(): Resistances { return this._resistances; }
+    get resistances(): Resistances {
+        return this._resistances;
+    }
 
-    get inventory(): Inventory { return this._inventory; }
+    get inventory(): Inventory {
+        return this._inventory;
+    }
 
     get classBonuses(): ClassBonuses {
-        return (this._cachedClassBonuses ||= Class.multiclass(this._classes, this._stats.totals));
+        return (this._cachedClassBonuses ||= Class.multiclass(
+            this._classes,
+            this._stats.totals
+        ));
     }
 
     private _combineGearBonuses(): Bonus {
-        const combined = Bonus.combine(...(this._inventory.gear.map(g => g.bonuses))).gear;
-        this._stats = this._stats.updated({gear: combined.stats.values});
-        this._resistances = this._resistances.updatedByCategory({gear: combined.resistances.values});
-        const allArmor: Armor[] = this._inventory.gear.filter(g => g instanceof Armor).map(g => g as Armor);
-        const armor = Math.max(...allArmor.map(a => a.fullBonus.bonuses.armor.armorClass));
-        const shield = Math.max(...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass));
+        const combined = Bonus.combine(
+            ...this._inventory.gear.map(g => g.bonuses)
+        ).gear;
+        this._stats = this._stats.updated({ gear: combined.stats.values });
+        this._resistances = this._resistances.updatedByCategory({
+            gear: combined.resistances.values,
+        });
+        const allArmor: Armor[] = this._inventory.gear
+            .filter(g => g instanceof Armor)
+            .map(g => g as Armor);
+        const armor = Math.max(
+            ...allArmor.map(a => a.fullBonus.bonuses.armor.armorClass)
+        );
+        const shield = Math.max(
+            ...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass)
+        );
         this._armor = new ArmorValues({
             armor,
             shield,
@@ -190,8 +235,8 @@ export default class Character {
         return this.classes.map(c => c.cls.features(c.level)).flat();
     }
 
-    get classFeaturesCondensed(): {feature: ClassFeature, count: number}[] {
-        const counts: {[key: string]: number} = {};
+    get classFeaturesCondensed(): { feature: ClassFeature; count: number }[] {
+        const counts: { [key: string]: number } = {};
         const features = this.classFeatures;
         for (const f of features) {
             if (!(f in counts)) {
@@ -199,15 +244,18 @@ export default class Character {
             }
             counts[f]++;
         }
-        return Object.keys(counts).map(k => ({feature: k as ClassFeature, count: counts[k]}));
+        return Object.keys(counts).map(k => ({
+            feature: k as ClassFeature,
+            count: counts[k],
+        }));
     }
 
     get classAuras(): Aura[] {
         return this.classes.map(c => c.cls.auras(c.level)).flat();
     }
 
-    get classAurasCondensed(): {aura: Aura, count: number}[] {
-        const counts: {[key: string]: number} = {};
+    get classAurasCondensed(): { aura: Aura; count: number }[] {
+        const counts: { [key: string]: number } = {};
         const auras = this.classAuras;
         for (const a of auras) {
             if (!(a in counts)) {
@@ -215,11 +263,37 @@ export default class Character {
             }
             counts[a]++;
         }
-        return Object.keys(counts).map(k => ({aura: k as Aura, count: counts[k]}));
+        return Object.keys(counts).map(k => ({
+            aura: k as Aura,
+            count: counts[k],
+        }));
     }
 
     get auraBonuses(): Bonus {
-        return Bonus.sum(BonusType.aura, ...this.classAurasCondensed.map(({aura, count}) => auraBonuses[aura](count)));
+        return Bonus.sum(
+            BonusType.aura,
+            ...this.classAurasCondensed.map(({ aura, count }) =>
+                auraBonuses[aura](count)
+            )
+        );
+    }
+
+    spellPower(mode: CastingMode, school: School | SubSchool): number {
+        return computedSpellPower(
+            this.gearBonuses.spellPower,
+            mode,
+            school,
+            this.stats.totals,
+            this.classBonuses.efl
+        );
+    }
+
+    get fullSpellPower(): FullComputedSpellPower {
+        return fullComputedSpellPower(
+            this.gearBonuses.spellPower,
+            this.stats.totals,
+            this.classBonuses.efl
+        );
     }
 
     addLevel(cls: Class, levels = 1): ClassLevels {
@@ -227,7 +301,7 @@ export default class Character {
         if (matches.length > 0) {
             matches[0].level += levels;
         } else {
-            this._classes.push({cls, level: levels});
+            this._classes.push({ cls, level: levels });
         }
         this._invalidateCache();
         return this.classes;
@@ -241,6 +315,9 @@ export default class Character {
     private static _imported: Characters | null = null;
 
     static import(dir = window.Main.asset('Characters')): Characters {
-        return (this._imported ||= forceDataImportKeyS<Character>(dir, this.build));
+        return (this._imported ||= forceDataImportKeyS<Character>(
+            dir,
+            this.build
+        ));
     }
 }

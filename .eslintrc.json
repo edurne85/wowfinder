@@ -59,6 +59,7 @@
         "code": 180,
         "ignoreComments": true
       }
-    ]
+    ],
+    "@typescript-eslint/no-non-null-assertion": "off"
   }
 }

@@ -11,3 +11,5 @@ export { capitalizeFirstLetter } from './strings';
 export type { Keyed, ByKey, builder } from './dataImport';
 
 export { forceDataImport, forceDataImportKeyS, forceDataImportKeyLabel } from './dataImport';
+
+export type { Expanded } from './Expanded';

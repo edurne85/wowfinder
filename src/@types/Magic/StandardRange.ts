@@ -9,11 +9,11 @@ enum StandardRange {
 }
 
 function rangeInFeet(range: StandardRange, size: Size, efl: number): number {
-    switch(range) {
+    switch (range) {
         case StandardRange.touch:
             return Math.max(0, 5 * (1 + size));
         case StandardRange.short:
-            return 25 + Math.floor(efl/2) * 5;
+            return 25 + Math.floor(efl / 2) * 5;
         case StandardRange.medium:
             return 100 + 10 * efl;
         case StandardRange.long:
@@ -24,10 +24,10 @@ function rangeInFeet(range: StandardRange, size: Size, efl: number): number {
 }
 
 function computeRange(range: StandardRange, size: Size, efl: number): Length {
-    return { value: rangeInFeet(range, size, efl), unit: LengthUnit.foot };
+    return new Length({
+        value: rangeInFeet(range, size, efl),
+        unit: LengthUnit.foot,
+    });
 }
 
-export {
-    StandardRange,
-    computeRange,
-};
+export { StandardRange, computeRange };

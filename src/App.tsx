@@ -19,48 +19,59 @@ const rewards = Adventure.combined(adventures);
 const classes = Class.import();
 
 function Rep(r: string): JSX.Element {
-  const { t } = useTranslation();
-  return (<li>{t(`reputation.${r}`)}</li>);
+    const { t } = useTranslation();
+    return <li>{t(`reputation.${r}`)}</li>;
 }
 function Reputations(): JSX.Element {
-  return(<ul>
-    {Object.keys(Reputation).map(Rep)}
-  </ul>);
+    return <ul>{Object.keys(Reputation).map(Rep)}</ul>;
 }
 
 function RewTable(): JSX.Element {
-  return (<RewardsTable
-    chars={chars}
-    factions={Object.values(factions.byKey)}
-    data={rewards} />);
+    return (
+        <RewardsTable
+            chars={chars}
+            factions={Object.values(factions.byKey)}
+            data={rewards}
+        />
+    );
 }
 function CharList(): JSX.Element {
-  return (<CharacterList
-    chars={chars}
-    rewards={rewards}
-    />);
+    return <CharacterList chars={chars} rewards={rewards} />;
 }
 function TestCharSheet(): JSX.Element {
-  return (<CharacterSheet char={chars.arthur} xp={rewards.arthur.XP} />);
+    return <CharacterSheet char={chars.arthur} xp={rewards.arthur.XP} />;
 }
 function TestCharSheet2(): JSX.Element {
-  return (<CharacterSheet char={chars.keina} xp={rewards.keina.XP} />); 
+    return <CharacterSheet char={chars.keina} xp={rewards.keina.XP} />;
 }
 
 function PrintCharSheet(): JSX.Element {
-  return (<CharacterSheet />);
+    return <CharacterSheet />;
 }
 
 if (debug) {
-  console.log('Imported data', {factions, chars, adventures, rewards, classes});
-  console.log('Test components', {Reputations, RewTable, CharList, TestCharSheet, TestCharSheet2, PrintCharSheet});
+    console.log('Imported data', {
+        factions,
+        chars,
+        adventures,
+        rewards,
+        classes,
+    });
+    console.log('Test components', {
+        Reputations,
+        RewTable,
+        CharList,
+        TestCharSheet,
+        TestCharSheet2,
+        PrintCharSheet,
+    });
 }
 
 export function App(): JSX.Element {
-  return (
-    <>
-      <GlobalStyle />
-      <PrintCharSheet />
-    </>
-  );
+    return (
+        <>
+            <GlobalStyle />
+            <PrintCharSheet />
+        </>
+    );
 }
