@@ -1,3 +1,4 @@
+import { debugOutput } from '../../../../utils';
 import { Bonus, BonusType } from '../../../Character/Bonus';
 import Size from '../../../Character/Size';
 import { buildDamage, Damage } from '../../../Damage';
@@ -10,7 +11,7 @@ import WeaponRank from './Rank';
 
 type Range = number | Length;
 function asFeet(r: Range): Length {
-    return (r as Length) || new Length({ value: r as number, unit: LengthUnit.foot });
+    return (typeof(r) === 'number' ? new Length({ value: r as number, unit: LengthUnit.foot }) : (r as Length));
 }
 
 interface WeaponBuilder extends GearBuilder {
@@ -65,6 +66,9 @@ export default class Weapon extends Gear {
         this._flags = new Set(flags);
         this._critRange = criticalRange;
         this._critMult = criticalMultiplier;
+        if (range) {
+            debugOutput('Processing range', {given: range, result: asFeet(range)});
+        }
         this._range = asFeet(range);
     }
 
@@ -121,6 +125,7 @@ export default class Weapon extends Gear {
             criticalRange: raw.criticalRange as number || 20,
             // If we are given a 0 multiplier, we don't want to override it!
             criticalMultiplier: Object.keys(raw).includes('criticalMultiplier') ? raw.criticalMultiplier : 2,
+            range: raw.range as Range || 0,
         });
     }
 }

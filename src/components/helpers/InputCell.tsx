@@ -4,7 +4,7 @@ import { nextScore, reputationByScoreNullable, threshholds } from '../../@types/
 type CommonValue = number | string;
 
 interface CellArgs<T> {
-    id: string,
+    id?: string,
     value?: T,
     hideZero?: boolean,
     classes?: string[],
@@ -25,7 +25,7 @@ function InputH({id, value, hideZero = false, classes = []}: CellArgs<CommonValu
     const val = value != null ? value || (hideZero ? '' : 0) : '';
     const className = mkClassName(...classes);
     return (<th {...className}>
-        <input id={id} value={val} readOnly={true} />
+        <input {...id?{id}:{}} value={val} readOnly={true} />
     </th>);
 }
 
@@ -33,7 +33,7 @@ function InputCell({id, value, hideZero = false, classes = []}: CellArgs<CommonV
     const val = value != null ? value || (hideZero ? '' : 0) : '';
     const className = mkClassName(...classes);
     return (<td {...className}>
-        <input id={id} value={val} readOnly={true} />
+        <input {...id?{id}:{}} value={val} readOnly={true} />
     </td>);
 }
 
@@ -56,7 +56,7 @@ function ReputationCell({value, classes = []}: CellArgsStrict<number>): JSX.Elem
 function CheckCell({id, value, classes = []}: CellArgs<boolean>): JSX.Element {
     const className = [...classes, 'check-box'].join(' ');
     return (<td className={className}>
-        <input type="checkbox" id={id} checked={value} readOnly={true} />
+        <input type="checkbox" {...id?{id}:{}} checked={value} readOnly={true} />
     </td>);
 }
 

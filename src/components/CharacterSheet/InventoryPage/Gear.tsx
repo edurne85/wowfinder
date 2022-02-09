@@ -101,7 +101,7 @@ function WeaponGrouping({ weapon }: { weapon: Weapon }): JSX.Element {
 
 function WeaponDetails({ weapon }: { weapon: Weapon }): JSX.Element {
     const { t } = useTranslation();
-    const range: string = weapon.ranged ? weapon.range.toString() : t('ui.inventory.gear.range.melee');
+    const range: string = weapon.ranged ? weapon.range.fullDisplay : t('ui.inventory.gear.range.melee');
     return (<>
         <GearDetailLine h={t('ui.inventory.gear.range.h')}>{range}</GearDetailLine>
         <WeaponDamage weapon={weapon} />

@@ -1,3 +1,4 @@
+import { debugOutput } from '../../utils';
 import { converter, makeConverter, Scalar } from './base';
 
 enum LengthUnit {
@@ -30,7 +31,7 @@ class Length extends Scalar<LengthUnit> {
             return '0';
         }
         const inFeet = convertLength(this, LengthUnit.foot);
-        const feet = Math.floor(inFeet.value);
+        const feet = Math.floor(+inFeet.value.toFixed(2));
         const inchesOnly = convertLength(
             new Length({
                 value: inFeet.value - feet,
@@ -42,6 +43,19 @@ class Length extends Scalar<LengthUnit> {
         const strFeet = feet !== 0 ? `${feet}'` : '';
         const strInches = inches !== 0 ? ` ${inches}"`: '';
         return `${strFeet}${strInches}`;
+    }
+
+    get fullDisplay(): string {
+        const meters = Math.round(convertLength(this, LengthUnit.meter).value);
+        const squares = Math.round(convertLength(this, LengthUnit.square).value);
+        debugOutput('Length.fullDisplay', {
+            value: this.value,
+            unit: this.unit.toString(),
+            feetInches: this.feetInches,
+            meters,
+            squares,
+        })
+        return `${this.feetInches} (${meters}m) (${squares}□)`;
     }
 }
 
