@@ -21,8 +21,8 @@ export default class SpellPowerBonus implements SpellPowerValues<number> {
         return this._data.divine;
     }
 
-    get espontaneous(): number {
-        return this._data.espontaneous;
+    get spontaneous(): number {
+        return this._data.spontaneous;
     }
 
     get abj(): number {

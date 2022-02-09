@@ -3,13 +3,13 @@ import { StatKey } from '../Character/Stats';
 enum CastingMode {
     arcane = 'arcane',
     divine = 'divine',
-    espontaneous = 'espontaneous',
+    spontaneous = 'spontaneous',
 }
 
 const castingStats = {
     [CastingMode.arcane]: StatKey.INT,
     [CastingMode.divine]: StatKey.WIS,
-    [CastingMode.espontaneous]: StatKey.CHA,
+    [CastingMode.spontaneous]: StatKey.CHA,
 };
 
 type CastingModeValues<T> = {

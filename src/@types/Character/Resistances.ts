@@ -7,7 +7,7 @@ enum ResistanceCategory {
     temp = 'temp',
 }
 
-type ResistanceBreakdown = { [key in ResistanceCategory]: number };
+type ResistanceBreakdown = { [key in ResistanceCategory]: number } & { readonly total: number };
 type ResistanceBreakdownBuilder = { [key in ResistanceCategory]?: number };
 
 class ResistanceBreakdownImpl

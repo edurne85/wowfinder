@@ -1,4 +1,4 @@
-import { EffectiveCasterLevels, zeroCasterLevel } from '.';
+import { EffectiveCasterLevels, zeroCasterLevel , levelByMode } from './EffectiveCasterLevels';
 import type { Expanded } from '../../utils';
 import Stats, { StatSet, zeroDefault } from '../Character/Stats';
 import {
@@ -8,7 +8,7 @@ import {
     castingStats,
     fillCastingModeValues,
 } from './CastingMode';
-import { levelByMode } from './EffectiveCasterLevels';
+
 import {
     allSubSchoolsByParent,
     fillSchoolValues,
@@ -84,9 +84,13 @@ function fullComputedSpellPower(
     return res as FullComputedSpellPower;
 }
 
+const zeroSpellPower = fullComputedSpellPower(fillSpellPowerValues({}, 0));
+
 export type {
     SpellPowerValues,
     SpellPowerValuesPartial,
     FullComputedSpellPower,
+    FullComputedSchools,
+    ComputedSubSchools,
 };
-export { fillSpellPowerValues, computedSpellPower, fullComputedSpellPower };
+export { fillSpellPowerValues, computedSpellPower, fullComputedSpellPower, zeroSpellPower };

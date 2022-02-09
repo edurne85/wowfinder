@@ -4,6 +4,7 @@ import Character from '../../@types/Character';
 import { MainPage } from './MainPage';
 import { SkillsPage } from './SkillsPage';
 import { InventoryPage } from './InventoryPage';
+import { MagicPage } from './MagicPage';
 
 interface TypedPageBaseArgs {
     char?: Character,
@@ -16,6 +17,7 @@ enum PageType {
     main = 'Main',
     skills = 'Skills',
     inventory = 'Inventory',
+    magic = 'Magic',
     spells = 'Spells',
     feral = 'FeralForms',
     travel = 'TravelForms',
@@ -27,6 +29,7 @@ const pageTypes: {[keys in PageType]: React.FC<PageArgs>} = {
     [PageType.main]: MainPage,
     [PageType.skills]: SkillsPage,
     /* TODO / WIP */ [PageType.inventory]: InventoryPage,
+    /* TODO / WIP */ [PageType.magic]: MagicPage,
     /* TODO */ [PageType.spells]: () => <></>,
     /* TODO */ [PageType.feral]: () => <></>,
     /* TODO */ [PageType.travel]: () => <></>,
@@ -44,6 +47,7 @@ const defaultPages: FullPageSelection = {
     [PageType.main]: true,
     [PageType.skills]: true,
     [PageType.inventory]: true,
+    [PageType.magic]: true,
     [PageType.spells]: false,
     [PageType.feral]: false,
     [PageType.travel]: false,

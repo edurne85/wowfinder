@@ -51,6 +51,7 @@ export function CharacterSheet({char, xp = 0}: {char?: Character, xp?: number}):
         [PageType.main]: true,
         [PageType.skills]: true,
         [PageType.inventory]: true,
+        [PageType.magic]: hasSpells(char),
         [PageType.spells]: false && hasSpells(char),
         [PageType.feral]: false && hasDruidFeralForms(char),
         [PageType.moonkin]: false && hasDruidMoonkinForm(char),
@@ -66,6 +67,6 @@ export function CharacterSheet({char, xp = 0}: {char?: Character, xp?: number}):
         <ConditionalTypedPage type={PageType.main} {...args} />
         <ConditionalTypedPage type={PageType.skills} {...args} />
         <ConditionalTypedPage type={PageType.inventory} {...args} />
-        { /* TODO: Gear page(s) */}
+        <ConditionalTypedPage type={PageType.magic} {...args} />
     </>);
 }

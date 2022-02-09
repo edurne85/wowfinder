@@ -54,7 +54,7 @@ class Length extends Scalar<LengthUnit> {
             feetInches: this.feetInches,
             meters,
             squares,
-        })
+        });
         return `${this.feetInches} (${meters}m) (${squares}□)`;
     }
 }

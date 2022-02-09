@@ -1,0 +1,35 @@
+{
+    "modes": {
+        "abbr": {
+            "arcane": "Arc",
+            "divine": "Div",
+            "spontaneous": "Esp"
+        },
+        "full": {
+            "arcane": "Arcano",
+            "divine": "Divino",
+            "spontaneous": "Espontáeno"
+        }
+    },
+    "range": {
+        "touch": "Toque",
+        "short": "Corto",
+        "medium": "Medio",
+        "long": "Largo"
+    },
+    "schools": {
+        "abj": "Abjuración",
+        "con": "Conjuración",
+        "div": "Adivinación",
+        "enc": "Encantamiento",
+        "evo": "Evocación",
+        "ill": "Ilusión",
+        "nec": "Nigromancia",
+        "tra": "Transmutación",
+        "uni": "Universal",
+        "sub" : {
+            "void": "Vacío",
+            "heal": "Curación"
+        }
+    }
+}

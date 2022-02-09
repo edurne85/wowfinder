@@ -18,7 +18,7 @@ function levelByMode(efl: EffectiveCasterLevels, mode: CastingMode): number {
             return efl.arc;
         case CastingMode.divine:
             return efl.div;
-        case CastingMode.espontaneous:
+        case CastingMode.spontaneous:
             return efl.esp;
         default:
             return 0;

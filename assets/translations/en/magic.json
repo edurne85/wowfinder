@@ -1,0 +1,35 @@
+{
+    "modes": {
+        "abbr": {
+            "arcane": "Arc",
+            "divine": "Div",
+            "spontaneous": "Spn"
+        },
+        "full": {
+            "arcane": "Arcane",
+            "divine": "Divine",
+            "spontaneous": "Spontaneous"
+        }
+    },
+    "range": {
+        "touch": "Touch",
+        "short": "Short",
+        "medium": "Medium",
+        "long": "Long"
+    },
+    "schools": {
+        "abj": "Abjuration",
+        "con": "Conjuration",
+        "div": "Adivination",
+        "enc": "Enchantment",
+        "evo": "Evocation",
+        "ill": "Illusion",
+        "nec": "Necromancy",
+        "tra": "Transmutation",
+        "uni": "Universal",
+        "sub" : {
+            "void": "Void",
+            "heal": "Healing"
+        }
+    }
+}
