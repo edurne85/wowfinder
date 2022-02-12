@@ -5,13 +5,14 @@
         "clr": "Clérigo",
         "drd": "Druida",
         "fgt": "Guerrero",
+        "mag": "Mago",
         "mnk": "Monje",
         "orc": "Oráculo",
         "pal": "Paladín",
         "rng": "Explorador",
         "rog": "Pícaro",
-        "src": "Hechicero",
-        "wzd": "Mago"
+        "src": "Hechicero (!)",
+        "wzd": "Mago (obs) (!)"
     },
     "races": {
         "human": "Humano",

@@ -5,13 +5,14 @@
         "clr": "Cleric",
         "drd": "Druid",
         "fgt": "Fighter",
+        "mag": "Mage",
         "mnk": "Monk",
         "orc": "Oracle",
         "pal": "Paladin",
         "rng": "Ranger",
         "rog": "Rogue",
-        "src": "Sorcerer",
-        "wzd": "Wizard"
+        "src": "Sorcerer (!)",
+        "wzd": "Wizard (!)"
     },
     "races": {
         "human": "Human",

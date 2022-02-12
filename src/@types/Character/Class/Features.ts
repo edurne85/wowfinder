@@ -73,6 +73,17 @@ export enum ClassFeature {
     tauntTarget = 'tauntTarget',
     tauntArea = 'tauntArea',
     sunderArmor = 'sunderArmor',
+    // Mage
+    arcaneBond = 'arcaneBond',
+    arcaneSchool = 'arcaneSchool',
+    bloodline = 'bloodline',
+    featScribeScroll = 'featScribeScroll',
+    featSchewMaterials = 'featSchewMaterials',
+    bloodlineFeat = 'bloodlineFeat',
+    bloodlinePower = 'bloodlinePower',
+    bloodlineSpell = 'bloodlineSpell',
+    evocation = 'evocation',
+    bonusArcaneFeat = 'bonusArcaneFeat',
     // Monk
     bonusMonkFeat = 'bonusMonkFeat',
     flurryBlows = 'flurryBlows',
