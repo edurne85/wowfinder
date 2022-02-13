@@ -10,6 +10,19 @@ function slotsByLevelPrep(casterLevel: number, spellLevel: number): number {
     return Math.floor((1.0 + Math.sqrt(1 + 8 * diff)) / 2.0);
 }
 
+const espSlotsCap = 6;
+const espSlotsBase = 3;
+
+function slotsByLevelEsp(casterLevel: number, spellLevel: number): number {
+    if (spellLevel <= 0) {
+        return 0;
+    }
+    const diff = casterLevel - spellLevel * 2;
+    const extra = spellLevel === 1 ? 1 : 0;
+    const slots = (diff >= 0 ? espSlotsBase + diff : 0) + extra;
+    return Math.min(espSlotsCap, slots);
+}
+
 function slotsByLevel(
     mode: CastingMode,
     casterLevel: number,
@@ -19,6 +32,8 @@ function slotsByLevel(
         case CastingMode.arcane:
         case CastingMode.divine:
             return slotsByLevelPrep(casterLevel, spellLevel);
+        case CastingMode.spontaneous:
+            return slotsByLevelEsp(casterLevel, spellLevel);
         default:
             return 0;
     }
