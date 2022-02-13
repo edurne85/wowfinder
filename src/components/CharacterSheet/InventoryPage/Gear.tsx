@@ -15,9 +15,9 @@ function Slots({ shape }: { shape: Shape }): JSX.Element {
 
 const GearDetailsContainer = styled.div`
     position: absolute;
-    left: 0.3em;
-    top: 100%;
-    right: 0;
+    left: 0.5em;
+    top: 150%;
+    right: 0.5em;
     background: #eee;
     box-shadow: 3px 3px 3px #999;
     z-index: 1;
