@@ -1,8 +1,8 @@
 {
     $type: 'Armor',
-    label: 'craft.blacksmithing.copperChainBoots',
-    shape: ['feet'],
-    weight: 6,
+    label: 'craft.blacksmithing-old.copperBracers',
+    shape: ['wrists'],
+    weight: 4,
     bonuses: {
         armorClass: +1,
     },

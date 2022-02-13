@@ -1,0 +1,16 @@
+{
+    $type: 'Accesory',
+    label: 'unique.shadowfang.shadowfangPendant',
+    shape: ['neck'],
+    size: 0,
+    weight: 0, // TODO
+    bonuses: {
+        stats: {
+            DEX: +4,
+            WIS: +4,
+        },
+        // TODO Grants "Vanish" (1/enc per 5 drd levels)
+        /* TODO Enables "Rejuvenation" (touch range) while in
+                        cat, cheetah, dolphin, and greatstag forms */
+    },
+}

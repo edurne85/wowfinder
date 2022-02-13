@@ -41,8 +41,13 @@ function RewTable(): JSX.Element {
 function CharList(): JSX.Element {
     return <CharacterList chars={chars} rewards={rewards} />;
 }
-function TestCharSheet({charName}: {charName: string}): JSX.Element {
-    return <CharacterSheet char={chars[charName]} xp={rewards[charName]?.XP || 0} />;
+function TestCharSheet({ charName }: { charName: string }): JSX.Element {
+    return (
+        <CharacterSheet
+            char={chars[charName]}
+            xp={rewards[charName]?.XP || 0}
+        />
+    );
 }
 function PrintCharSheet(): JSX.Element {
     return <CharacterSheet />;

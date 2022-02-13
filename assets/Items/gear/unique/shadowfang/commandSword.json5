@@ -1,0 +1,26 @@
+{
+    $type: 'Weapon',
+    label: 'unique.shadowfang.commandSword',
+    shape: ['mhand'],
+    size: 0,
+    weight: 4,
+    bonuses: {
+        skills: {
+            diplomacy: +2,
+            intimidate: +2,
+        },
+    },
+    baseDamage: {
+        slashing: { sides: 8 },
+    },
+    bonusDamage: {
+        holy: { sides: 6 },
+    },
+    intrinsic: +2,
+    groups: ['bladeHeavy'],
+    rank: 'martial',
+    proficiency: 'swordLong',
+    flags: [],
+    criticalRange: 19,
+    criticalMultiplier: 2,
+}

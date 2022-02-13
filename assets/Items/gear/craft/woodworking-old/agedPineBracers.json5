@@ -1,0 +1,13 @@
+{
+    $type: 'Armor',
+    label: 'craft.woodworking-old.agedPineBracers',
+    shape: ['wrists'],
+    weight: 3,
+    bonuses: {
+        armorClass: +1,
+        stats: {
+            WIS: +1,
+        },
+    },
+    type: 'misc',
+}

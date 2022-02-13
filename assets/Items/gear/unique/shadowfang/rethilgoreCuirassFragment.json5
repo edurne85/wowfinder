@@ -1,0 +1,27 @@
+{
+    $type: 'Armor',
+    label: 'unique.shadowfang.rethilgoreCuirassFragment',
+    shape: ['ohand'],
+    size: 0,
+    weight: 15,
+    bonuses: {
+        resistances: {
+            bludgeoning: 2,
+            slashing: 2,
+            piercing: 2,
+            arcane: 2,
+            fire: 2,
+            cold: 2,
+            nature: 2,
+            shadow: 2,
+        },
+    },
+    type: 'light',
+    acBonus: +2,
+    bonusType: 'shield',
+    intrinsic: +2,
+    maxDex: 2,
+    acp: -2,
+    asf: 0.15,
+    flags: ['metal'],
+}

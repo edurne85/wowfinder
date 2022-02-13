@@ -1,0 +1,21 @@
+{
+    $type: 'Armor',
+    label: 'unique.shadowfang.hardenedStool',
+    shape: ['ohand'],
+    size: 0,
+    weight: 10,
+    bonuses: {
+        stats: {
+            WIS: +2,
+        },
+        /* Trigger:
+                        when casting a Cure wounds spell,
+                        restore 1 sanity per dice healed
+                    */
+    },
+    type: 'light',
+    acBonus: +2,
+    bonusType: 'shield',
+    intrinsic: +2, // +1 unless Plants domain
+    asf: 0.15,
+}

@@ -1,0 +1,20 @@
+{
+    $type: 'Weapon',
+    label: 'craft.woodworking-old.compoundPineBow',
+    shape: ['mhand', 'ohand'],
+    range: 110,
+    size: 0,
+    weight: 3,
+    bonuses: {
+        // TODO SR: 1 ??
+    },
+    baseDamage: {
+        piercing: { sides: 8 },
+    },
+    groups: ['bows'],
+    rank: 'martial',
+    proficiency: 'bow',
+    flags: [],
+    criticalRange: 20,
+    criticalMultiplier: 3,
+}

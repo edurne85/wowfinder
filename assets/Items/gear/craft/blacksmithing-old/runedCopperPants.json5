@@ -1,6 +1,6 @@
 {
     $type: 'Armor',
-    label: 'craft.blacksmithing.runedCopperPants',
+    label: 'craft.blacksmithing-old.runedCopperPants',
     shape: ['legs'],
     weight: 8,
     bonuses: {

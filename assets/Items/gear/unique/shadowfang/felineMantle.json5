@@ -1,0 +1,22 @@
+{
+    $type: 'Armor',
+    label: 'unique.shadowfang.felineMantle',
+    shape: ['back'],
+    size: 0,
+    weight: 2,
+    bonuses: {
+        stats: {
+            DEX: +4,
+        },
+        skills: {
+            stealth: +4,
+        },
+        // TODO Grant feat: Weapon finesse
+    },
+    type: 'light',
+    acBonus: +2,
+    bonusType: 'dodge',
+    asf: 0.2,
+    flags: [],
+    // TODO Cat form bonuses
+}

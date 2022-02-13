@@ -1,0 +1,25 @@
+{
+    $type: 'Accessory',
+    label: 'unique.shadowfang.meteorFragment',
+    shape: ['neck'],
+    size: 0,
+    weight: 1,
+    bonuses: {
+        resistances: {
+            bludgeoning: 2,
+            slashing: 2,
+            piercing: 2,
+            arcane: 4,
+            fire: 4,
+            cold: 4,
+            nature: 4,
+            shadow: 4,
+            holy: 4,
+        },
+        saves: {
+            fort: 2,
+            refl: 2,
+            will: 2,
+        },
+    },
+}

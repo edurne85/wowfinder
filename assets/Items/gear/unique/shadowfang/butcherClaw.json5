@@ -1,0 +1,18 @@
+{
+    $type: 'Weapon',
+    label: 'unique.shadowfang.butcherClaw',
+    shape: ['mhand'],
+    size: 0,
+    weight: 1,
+    bonuses: {},
+    baseDamage: {
+        slashing: { sides: 4 },
+    },
+    groups: ['close', 'natural'],
+    rank: 'exotic',
+    proficiency: 'natural',
+    flags: [],
+    criticalRange: 20,
+    criticalMultiplier: 2,
+    // TODO Shapeshifted bonuses!
+}
