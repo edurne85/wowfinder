@@ -112,6 +112,12 @@ export enum ClassFeature {
     fastMovement = 'fastMovement',
     // Druid + Monk
     timelessBody = 'timelessBody',
+    // Oracle
+    mystery = 'mystery',
+    oracleCurse = 'oracleCurse',
+    revelation = 'revelation',
+    mysterySpell = 'mysterySpell',
+    finalRevelation = 'finalRevelation',
     // Rogue
     sneak = 'sneak',
     trapfinding = 'trapfinding',
