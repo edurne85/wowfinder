@@ -1,4 +1,4 @@
-import { ByKey, forceDataImportKeyS } from '../../../utils';
+import { ByKeyRecursive, forceDataImportKeySRecursive } from '../../../utils';
 import { Bonus, BonusProvider, BonusType, MultiBonus } from '../../Character/Bonus';
 import Size from '../../Character/Size';
 import { Mass, MassUnit } from '../../Units';
@@ -50,7 +50,7 @@ export default class Gear implements BonusProvider {
 
     get label(): string { return this._label; }
 
-    get key(): string { return this._label; }
+    get key(): string { return this._label.split('.').reverse()[0]; }
 
     get shape(): Shape { return [...this._shape]; }
 
@@ -76,11 +76,10 @@ export default class Gear implements BonusProvider {
         });
     }
 
-    private static _imported: ByKey<Gear> | null = null;
+    private static _imported: ByKeyRecursive<Gear> | null = null;
 
-    static import(dir = window.Main.asset('Items/Gear')): ByKey<Gear> {
-        // TODO: Include subtypes
-        return this._imported ||= forceDataImportKeyS<Gear>(dir, this.build);
+    static import(dir = window.Main.asset('Items/gear'), builder: (raw: any) => Gear): ByKeyRecursive<Gear> {
+        return this._imported ||= forceDataImportKeySRecursive<Gear>(dir, builder);
     }
 }
 

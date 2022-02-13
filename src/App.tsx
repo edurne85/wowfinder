@@ -11,12 +11,15 @@ import './i18n';
 import { useTranslation } from 'react-i18next';
 import { CharacterSheet } from './components/CharacterSheet';
 import { debug } from './utils';
+import { Gear } from './@types/Items/Gear/base';
+import { buildGear } from './@types/Items/Gear';
 
 const factions = Faction.import();
 const chars = Character.import();
 const adventures = Adventure.import();
 const rewards = Adventure.combined(adventures);
 const classes = Class.import();
+const gear = Gear.import(undefined, buildGear);
 
 function Rep(r: string): JSX.Element {
     const { t } = useTranslation();
@@ -38,13 +41,9 @@ function RewTable(): JSX.Element {
 function CharList(): JSX.Element {
     return <CharacterList chars={chars} rewards={rewards} />;
 }
-function TestCharSheet(): JSX.Element {
-    return <CharacterSheet char={chars.arthur} xp={rewards.arthur.XP} />;
+function TestCharSheet({charName}: {charName: string}): JSX.Element {
+    return <CharacterSheet char={chars[charName]} xp={rewards[charName]?.XP || 0} />;
 }
-function TestCharSheet2(): JSX.Element {
-    return <CharacterSheet char={chars.keina} xp={rewards.keina.XP} />;
-}
-
 function PrintCharSheet(): JSX.Element {
     return <CharacterSheet />;
 }
@@ -56,13 +55,13 @@ if (debug) {
         adventures,
         rewards,
         classes,
+        gear,
     });
     console.log('Test components', {
         Reputations,
         RewTable,
         CharList,
         TestCharSheet,
-        TestCharSheet2,
         PrintCharSheet,
     });
 }

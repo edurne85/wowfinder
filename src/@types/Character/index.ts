@@ -11,7 +11,7 @@ import Size from './Size';
 import { Saves, SimpleSaves } from './Saves';
 import { Resistances } from './Resistances';
 import { Bonus, BonusType } from './Bonus';
-import Armor from '../Items/Gear/Armor';
+import { Armor } from '../Items/Gear/Armor';
 import Inventory, { InventoryBuilder } from '../Items/Inventory';
 import { Aura, auraBonuses } from './Class/Auras';
 import {

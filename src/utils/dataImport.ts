@@ -10,11 +10,15 @@ interface Labeled {
 
 interface KeyedLabeled extends Keyed<number>, Labeled {}
 
-type ByKey<T extends Keyed<string>> = {[key:string]: T};
-type ByLabel<T extends Labeled> = {[label: string]: T };
+type ByKey<T extends Keyed<string>> = { [key: string]: T };
+type ByKeyRecursive<T extends Keyed<string>> = {
+    [key: string]: T | ByKeyRecursive<T>;
+};
+type ByKeyRecursiveEntry<T extends Keyed<string>> = T | ByKeyRecursive<T>;
+type ByLabel<T extends Labeled> = { [label: string]: T };
 type ByKeyLabel<T extends KeyedLabeled> = {
-    byKey: {[key: number]: T },
-    byLabel: ByLabel<T>,
+    byKey: { [key: number]: T };
+    byLabel: ByLabel<T>;
 };
 type builder<T> = (raw: any) => T;
 
@@ -32,21 +36,32 @@ function iterateDir(dir: string, action: (raw: any) => void): void {
 function warnDuplicateKey(type: string, key: string | number): void {
     console.warn(`Duplicate ${type} element with key ${key} found.`);
 }
-function checkDuplicateKeyS<T extends Keyed<string>>(collection: ByKey<T>, obj: T): void {
+function checkDuplicateKeyS<T extends Keyed<string>>(
+    collection: ByKeyRecursive<T>,
+    obj: T
+): void {
     if (collection[obj.key]) {
         warnDuplicateKey(typeof obj, obj.key);
     }
 }
 
-function checkDuplicateKeyN<T extends Keyed<number>>(collection: {[key:number]: T}, obj: T): void {
+function checkDuplicateKeyN<T extends Keyed<number>>(
+    collection: { [key: number]: T },
+    obj: T
+): void {
     if (collection[obj.key]) {
         warnDuplicateKey(typeof obj, obj.key);
     }
 }
 
-function checkDuplicateLabel<T extends Labeled>(collection: ByLabel<T>, obj: T): void {
+function checkDuplicateLabel<T extends Labeled>(
+    collection: ByLabel<T>,
+    obj: T
+): void {
     if (collection[obj.label]) {
-        console.warn(`Duplicate ${typeof obj} element with label ${obj.label} found.`);
+        console.warn(
+            `Duplicate ${typeof obj} element with label ${obj.label} found.`
+        );
     }
 }
 
@@ -58,7 +73,10 @@ function forceDataImport<T>(dir: string, builder: builder<T>): readonly T[] {
     return Object.freeze(data.sort());
 }
 
-function forceDataImportKeyS<T extends Keyed<string>>(dir: string, builder: builder<T>): ByKey<T> {
+function forceDataImportKeyS<T extends Keyed<string>>(
+    dir: string,
+    builder: builder<T>
+): ByKey<T> {
     const byKey: ByKey<T> = {};
     iterateDir(dir, raw => {
         const obj = builder(raw);
@@ -68,8 +86,24 @@ function forceDataImportKeyS<T extends Keyed<string>>(dir: string, builder: buil
     return Object.freeze(byKey);
 }
 
-function forceDataImportKeyLabel<T extends KeyedLabeled>(dir: string, builder: builder<T>): ByKeyLabel<T> {
-    const byKeyLabel: ByKeyLabel<T> = { byKey: {}, byLabel: {}};
+function forceDataImportKeySRecursive<T extends Keyed<string>>(
+    dir: string,
+    builder: builder<T>
+): ByKeyRecursive<T> {
+    const byKey: ByKeyRecursive<T> = { ... forceDataImportKeyS<T>(dir, builder) };
+    for (const subdir of window.Files.getDirectories(dir)) {
+        checkDuplicateKeyS(byKey, {key: subdir});
+        const fullSubDirPath = window.Files.resolvePath(dir, subdir);
+        byKey[subdir] = forceDataImportKeySRecursive<T>(fullSubDirPath, builder);
+    }
+    return byKey;
+}
+
+function forceDataImportKeyLabel<T extends KeyedLabeled>(
+    dir: string,
+    builder: builder<T>
+): ByKeyLabel<T> {
+    const byKeyLabel: ByKeyLabel<T> = { byKey: {}, byLabel: {} };
     iterateDir(dir, raw => {
         const obj = builder(raw);
         checkDuplicateKeyN(byKeyLabel.byKey, obj);
@@ -80,13 +114,5 @@ function forceDataImportKeyLabel<T extends KeyedLabeled>(dir: string, builder: b
     return byKeyLabel;
 }
 
-export type {
-    Keyed,
-    ByKey,
-    builder,
-};
-export {
-    forceDataImport,
-    forceDataImportKeyS,
-    forceDataImportKeyLabel,
-};
+export type { Keyed, ByKey, ByKeyRecursive, ByKeyRecursiveEntry, builder };
+export { forceDataImport, forceDataImportKeyS, forceDataImportKeyLabel, forceDataImportKeySRecursive };

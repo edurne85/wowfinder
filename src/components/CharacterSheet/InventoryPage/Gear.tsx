@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Gear as G, Weapon } from '../../../@types/Items/Gear';
-import Armor from '../../../@types/Items/Gear/Armor';
+import { Gear as G, Weapon, Armor } from '../../../@types/Items/Gear';
 import { explodeShape, Shape } from '../../../@types/Items/Gear/Slot';
 import { debugOutline, scrollable } from '../../helpers/mixins';
 import { Damage } from './Damage';

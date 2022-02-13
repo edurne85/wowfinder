@@ -1,0 +1,14 @@
+{
+    $type: 'Armor',
+    label: 'craft.blacksmithing.runedCopperPants',
+    shape: ['legs'],
+    weight: 8,
+    bonuses: {
+        armorClass: +1,
+        stats: {
+            CON: +2,
+        },
+    },
+    type: 'misc',
+    maxDex: 4,
+}

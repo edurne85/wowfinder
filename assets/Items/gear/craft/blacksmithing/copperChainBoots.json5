@@ -1,0 +1,11 @@
+{
+    $type: 'Armor',
+    label: 'craft.blacksmithing.copperChainBoots',
+    shape: ['feet'],
+    weight: 6,
+    bonuses: {
+        armorClass: +1,
+    },
+    type: 'misc',
+    maxDex: 4,
+}

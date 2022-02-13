@@ -1,0 +1,10 @@
+{
+    $type: 'Armor',
+    label: 'craft.blacksmithing.runnedCopperGauntlets',
+    shape: ['hands'],
+    weight: 8,
+    bonuses: {
+        armorClass: +1,
+    },
+    type: 'misc',
+}

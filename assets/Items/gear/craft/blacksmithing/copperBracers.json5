@@ -1,0 +1,11 @@
+{
+    $type: 'Armor',
+    label: 'craft.blacksmithing.copperBracers',
+    shape: ['wrists'],
+    weight: 4,
+    bonuses: {
+        armorClass: +1,
+    },
+    type: 'misc',
+    maxDex: 4,
+}

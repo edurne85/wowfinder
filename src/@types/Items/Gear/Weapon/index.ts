@@ -1,4 +1,3 @@
-import { debugOutput } from '../../../../utils';
 import { Bonus, BonusType } from '../../../Character/Bonus';
 import Size from '../../../Character/Size';
 import { buildDamage, Damage } from '../../../Damage';
@@ -27,7 +26,7 @@ interface WeaponBuilder extends GearBuilder {
     range?: Range;
 }
 
-export default class Weapon extends Gear {
+class Weapon extends Gear {
     private _baseDamage: Damage;
     private _bonusDamage: Damage;
     private _intrinsic: number;
@@ -66,9 +65,6 @@ export default class Weapon extends Gear {
         this._flags = new Set(flags);
         this._critRange = criticalRange;
         this._critMult = criticalMultiplier;
-        if (range) {
-            debugOutput('Processing range', {given: range, result: asFeet(range)});
-        }
         this._range = asFeet(range);
     }
 

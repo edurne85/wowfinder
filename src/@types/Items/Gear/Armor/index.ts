@@ -16,7 +16,7 @@ interface ArmorBuilder extends GearBuilder {
     flags?: Set<ArmorFlags>;
 }
 
-export default class Armor extends Gear {
+class Armor extends Gear {
     private _type: ArmorType;
     private _acBonus: number;
     private _bonusType: ArmorBonusType;
@@ -91,3 +91,7 @@ export default class Armor extends Gear {
         });
     }
 }
+
+export {
+    Armor,
+};
