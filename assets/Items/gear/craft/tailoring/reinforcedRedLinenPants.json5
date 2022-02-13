@@ -1,0 +1,14 @@
+{
+    $type: 'Armor',
+    label: 'craft.tailoring.reinforcedRedLinenPants',
+    shape: ['legs'],
+    weight: 3,
+    bonuses: {
+        armorClass: +3,
+        stats: {
+            CHA: +2,
+        },
+    },
+    type: 'misc',
+    maxDex: 3,
+}

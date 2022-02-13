@@ -164,8 +164,8 @@ class Bonus {
     }
 
     retyped(type: BonusType): Bonus {
-        const { hp, stats, skills, saves, resistances, armorClass, vitalNeeds, senses } = this;
-        return new Bonus({type, hp, stats, skills, saves, resistances, armorClass, vitalNeeds, senses});
+        const { hp, stats, skills, saves, resistances, armorClass, vitalNeeds, senses, spellPower } = this;
+        return new Bonus({type, hp, stats, skills, saves, resistances, armorClass, vitalNeeds, senses, spellPower});
     }
 
     static build(raw: any = {}): Bonus {

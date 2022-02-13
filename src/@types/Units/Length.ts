@@ -1,4 +1,3 @@
-import { debugOutput } from '../../utils';
 import { converter, makeConverter, Scalar } from './base';
 
 enum LengthUnit {
@@ -48,13 +47,6 @@ class Length extends Scalar<LengthUnit> {
     get fullDisplay(): string {
         const meters = Math.round(convertLength(this, LengthUnit.meter).value);
         const squares = Math.round(convertLength(this, LengthUnit.square).value);
-        debugOutput('Length.fullDisplay', {
-            value: this.value,
-            unit: this.unit.toString(),
-            feetInches: this.feetInches,
-            meters,
-            squares,
-        });
         return `${this.feetInches} (${meters}m) (${squares}□)`;
     }
 }

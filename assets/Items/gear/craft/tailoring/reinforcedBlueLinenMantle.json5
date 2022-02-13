@@ -1,0 +1,14 @@
+{
+    $type: 'Armor',
+    label: 'craft.tailoring.reinforcedBlueLinenMantle',
+    shape: ['back'],
+    weight: 2,
+    bonuses: {
+        armorClass: +2,
+        stats: {
+            INT: +1,
+        },
+    },
+    type: 'misc',
+    maxDex: 3,
+}

@@ -1,0 +1,11 @@
+{
+    $type: 'Armor',
+    label: 'craft.tailoring.reinforcedLinenBelt',
+    shape: ['wrists'],
+    weight: 1.5,
+    bonuses: {
+        armorClass: +1,
+    },
+    type: 'misc',
+    maxDex: 3,
+}

@@ -1,0 +1,14 @@
+{
+    $type: 'Armor',
+    label: 'craft.tailoring.reinforcedRedLinenFlops',
+    shape: ['feet'],
+    weight: 4.5,
+    bonuses: {
+        armorClass: +3,
+        stats: {
+            CHA: +2,
+        },
+    },
+    type: 'misc',
+    maxDex: 3,
+}

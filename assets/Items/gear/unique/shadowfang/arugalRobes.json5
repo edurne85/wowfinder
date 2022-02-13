@@ -1,0 +1,26 @@
+{
+    $type: 'Armor',
+    label: 'unique.shadowfang.arugalRobes',
+    shape: ['torso'],
+    size: 0,
+    weight: 2,
+    bonuses: {
+        stats: {
+            INT: +4,
+            CHA: +4,
+        },
+        spellPower: {
+            void: +4,
+        },
+        // TODO -4 max sanity
+        /* TODO Aura: "Insanity": 
+            Range: Short
+            Effect: disadvantage on sanity rolls
+         */
+    },
+    type: 'light',
+    acBonus: +5,
+    bonusType: 'armor',
+    maxDex: 3,
+    acp: 0, // TODO Review for balance
+}

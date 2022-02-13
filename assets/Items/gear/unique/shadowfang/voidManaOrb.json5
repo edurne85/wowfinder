@@ -1,0 +1,16 @@
+{
+    $type: 'Accesory',
+    label: 'unique.shadowfang.voidManaOrb',
+    shape: ['ohand'],
+    size: 0,
+    weight: 2,
+    bonuses: {
+        stats: {
+            INT: +4,
+        },
+        /* TODO Trigger: creature in Short range fails sanity test:
+            May attempt: absorb mental energy
+            https://docs.google.com/document/d/13Vrlk8UHMLDSjLbU58NWEy3joKJOw95U3EDIW6Ta74U/edit
+         */
+    }
+}

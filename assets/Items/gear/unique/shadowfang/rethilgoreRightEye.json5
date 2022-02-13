@@ -1,0 +1,15 @@
+{
+    $type: 'Accessory',
+    label: 'unique.shadowfang.rethilgoreRightEye',
+    shape: ['neck'],
+    size: 0,
+    weight: 1,
+    bonuses: {
+        spellPower: {
+            arcane: +2,
+        },
+        // TODO Max sanity: -2
+        // TODO 1/enc: restore up to 2 levels worth of arcane slots
+    }
+
+}

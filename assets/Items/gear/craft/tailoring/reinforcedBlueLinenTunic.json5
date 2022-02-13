@@ -1,0 +1,15 @@
+{
+    $type: 'Armor',
+    label: 'craft.tailoring.reinforcedBlueLinenTunic',
+    shape: ['torso'],
+    weight: 4,
+    bonuses: {
+        armorClass: +4,
+        stats: {
+            INT: +2,
+        },
+    },
+    type: 'misc',
+    maxDex: 3,
+    acp: 1,
+}

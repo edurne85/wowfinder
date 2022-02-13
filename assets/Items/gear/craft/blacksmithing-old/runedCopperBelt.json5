@@ -1,0 +1,11 @@
+{
+    $type: 'Armor',
+    label: 'craft.blacksmithing-old.runedCopperBelt',
+    shape: ['waist'],
+    weight: 4,
+    bonuses: {
+        armorClass: +1,
+    },
+    type: 'misc',
+    maxDex: 4,
+}
