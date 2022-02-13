@@ -62,7 +62,7 @@ const helpers = {
 type Classes = {[key:string]: Class};
 type ClassLevels = { cls: Class, level: number }[];
 
-export default class Class {
+class Class {
     private _key: string;
     private hd: number;
     private bab: number;
@@ -198,9 +198,12 @@ export default class Class {
         return this._imported ||= forceDataImportKeyS(dir, this.build);
     }
 }
-export {
+export type {
     Classes,
     ClassLevels,
-    ClassFeature,
     ClassBonuses,
+};
+export {
+    ClassFeature,
+    Class,
 };

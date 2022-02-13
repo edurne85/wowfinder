@@ -90,11 +90,16 @@ function forceDataImportKeySRecursive<T extends Keyed<string>>(
     dir: string,
     builder: builder<T>
 ): ByKeyRecursive<T> {
-    const byKey: ByKeyRecursive<T> = { ... forceDataImportKeyS<T>(dir, builder) };
+    const byKey: ByKeyRecursive<T> = {
+        ...forceDataImportKeyS<T>(dir, builder),
+    };
     for (const subdir of window.Files.getDirectories(dir)) {
-        checkDuplicateKeyS(byKey, {key: subdir});
+        checkDuplicateKeyS(byKey, { key: subdir });
         const fullSubDirPath = window.Files.resolvePath(dir, subdir);
-        byKey[subdir] = forceDataImportKeySRecursive<T>(fullSubDirPath, builder);
+        byKey[subdir] = forceDataImportKeySRecursive<T>(
+            fullSubDirPath,
+            builder
+        );
     }
     return byKey;
 }
@@ -115,4 +120,9 @@ function forceDataImportKeyLabel<T extends KeyedLabeled>(
 }
 
 export type { Keyed, ByKey, ByKeyRecursive, ByKeyRecursiveEntry, builder };
-export { forceDataImport, forceDataImportKeyS, forceDataImportKeyLabel, forceDataImportKeySRecursive };
+export {
+    forceDataImport,
+    forceDataImportKeyS,
+    forceDataImportKeyLabel,
+    forceDataImportKeySRecursive,
+};

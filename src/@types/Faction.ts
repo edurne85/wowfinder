@@ -56,7 +56,7 @@ function nextScore(current: number): number {
 
 type Factions = {byKey: {[key:number]: Faction}, byLabel: {[label:string]: Faction}};
 
-export default class Faction {
+class Faction {
     private _key: number;
     private _label: string;
     private _name: string;
@@ -91,7 +91,11 @@ export default class Faction {
     }
 }
 
+export type {
+    Factions,
+};
 export {
+    Faction,
     Reputation,
     reputationByScore,
     reputationByScoreNullable,

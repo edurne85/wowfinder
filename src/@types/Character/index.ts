@@ -4,7 +4,7 @@ import CharPersonalDetails, {
     jsonImport as personalDetailsJsonImport,
 } from './Personal';
 import Race from './Race';
-import Class, { ClassBonuses, ClassFeature, ClassLevels } from './Class';
+import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
 import { Speeds } from './Speeds';
 import { ArmorValues, FullArmorValues } from './ArmorValues';
 import Size from './Size';
@@ -58,7 +58,7 @@ function checkClass(className: string): Class {
     return c;
 }
 
-export default class Character {
+class Character {
     private _key: string;
     private _personal: CharPersonalDetails;
     private _active: boolean;
@@ -321,3 +321,11 @@ export default class Character {
         ));
     }
 }
+
+export type {
+    Characters,
+};
+
+export {
+    Character,
+};

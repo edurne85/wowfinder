@@ -24,7 +24,7 @@ function combineRewards(rewards: Rewards[]): Rewards {
 
 type Adventures = readonly Adventure[];
 
-export default class Adventure {
+class Adventure {
     private _title: string;
     private _date: string;
     private _rewards: Rewards;
@@ -57,3 +57,10 @@ export default class Adventure {
         return combineRewards(adventures.map((a) => a._rewards));
     }
 }
+
+export type {
+    Adventures,
+};
+export {
+    Adventure,
+};
