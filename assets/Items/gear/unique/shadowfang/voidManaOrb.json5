@@ -1,5 +1,5 @@
 {
-    $type: 'Accesory',
+    $type: 'Accessory',
     label: 'unique.shadowfang.voidManaOrb',
     shape: ['ohand'],
     size: 0,

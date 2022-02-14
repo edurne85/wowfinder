@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import M, { CoinType, displayCoinTypes } from '../../../@types/Items/Money';
+import { Money as M, CoinType, displayCoinTypes } from '../../../@types/Item/Money';
 import Header from '../../helpers/Header';
 
 

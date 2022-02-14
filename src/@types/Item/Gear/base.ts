@@ -1,7 +1,8 @@
 import { ByKeyRecursive, forceDataImportKeySRecursive } from '../../../utils';
 import { Bonus, BonusProvider, BonusType, MultiBonus } from '../../Character/Bonus';
 import Size from '../../Character/Size';
-import { Mass, MassUnit } from '../../Units';
+import { Mass } from '../../Units';
+import { Item } from '../base';
 import { buildShape, explodeShape, Shape } from './Slot';
 
 type Weight = number | Mass;
@@ -13,15 +14,9 @@ interface GearBuilder {
     bonuses?: Bonus,
 }
 
-function asPounds(w: Weight): Mass {
-    return (w instanceof Mass) ? w : new Mass({value: w as number, unit: MassUnit.lb});
-}
-
-export default class Gear implements BonusProvider {
-    protected _label: string;
+export default class Gear extends Item implements BonusProvider {
     protected _shape: Shape;
     protected _size: Size;
-    protected _weight: Mass;
     protected _bonuses: Bonus;
 
     constructor({
@@ -31,32 +26,25 @@ export default class Gear implements BonusProvider {
         weight,
         bonuses = Bonus.zero(BonusType.gear),
     }: GearBuilder) {
-        this._label = label;
+        super({label, weight});
         this._shape = buildShape(shape);
         this._size = size;
-        this._weight = asPounds(weight);
         this._bonuses = bonuses.retyped(BonusType.gear);
     }
 
     static copy(gear: Gear): Gear {
         return new Gear({
-            label: gear._label,
+            label: gear.label,
             shape: explodeShape(gear._shape),
             size: gear._size,
-            weight: gear._weight,
+            weight: gear.weight,
             bonuses: gear._bonuses, // TODO make copy
         });
     }
 
-    get label(): string { return this._label; }
-
-    get key(): string { return this._label.split('.').reverse()[0]; }
-
     get shape(): Shape { return [...this._shape]; }
 
     get size(): Size { return this._size; }
-
-    get weight(): Mass { return this._weight; }
 
     get bonuses(): Bonus { return this._bonuses.asType(BonusType.gear); }
 

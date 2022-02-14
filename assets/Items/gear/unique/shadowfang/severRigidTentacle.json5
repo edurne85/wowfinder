@@ -1,6 +1,6 @@
 {
     // TODO Add wands subtype
-    $type: 'Accesory',
+    $type: 'Accessory',
     label: 'unique.shadowfang.severRigidTentacle',
     shape: ['mhand'],
     size: 0,

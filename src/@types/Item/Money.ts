@@ -90,6 +90,7 @@ export type {
     CoinType
 };
 export {
+    Money,
     MoneyBreakdown,
     displayCoinTypes,
 };
