@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Gear as G, Weapon, Armor } from '../../../@types/Item';
+import { Gear as G, Weapon, Armor, rarityColorsLight } from '../../../@types/Item';
 import { explodeShape, Shape } from '../../../@types/Item/Gear/Slot';
 import { debugOutline, scrollable } from '../../helpers/mixins';
 import { Damage } from './Damage';
@@ -119,7 +119,7 @@ function GearDetails({ item }: { item: G }): JSX.Element {
     // TODO Implement
     const { t } = useTranslation();
     return (<GearDetailsContainer className="details">
-        <GearItemTitle>{t(`labels.gear.${item.label}`)}</GearItemTitle>
+        <GearItemTitle style={{color: rarityColorsLight[item.rarity]}}>{t(`labels.items.gear.${item.label}`)}</GearItemTitle>
         <GearDetailLine h={t('ui.inventory.gear.slot')}>
             <Slots shape={item.shape} />
         </GearDetailLine>
@@ -147,7 +147,7 @@ function GearItem({ item }: { item: G }): JSX.Element {
     const { t } = useTranslation();
     return (<GearItemContainer>
         [<Slots shape={item.shape} />]
-        {' ' + t(`labels.gear.${item.label}`)}
+        {' ' + t(`labels.items.gear.${item.label}`)}
         <GearDetails item={item} />
     </GearItemContainer>);
 }

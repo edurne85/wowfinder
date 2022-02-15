@@ -1,5 +1,6 @@
 {
     $type: 'Weapon',
+    rarity: 'rare',
     label: 'unique.shadowfang.butcherClaw',
     shape: ['mhand'],
     size: 0,

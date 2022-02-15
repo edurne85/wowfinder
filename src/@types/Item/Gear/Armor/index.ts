@@ -1,6 +1,5 @@
 import { Bonus, BonusType, MultiBonus } from '../../../Character/Bonus';
-import Size from '../../../Character/Size';
-import Gear, { GearBuilder, Weight } from '../base';
+import { Gear, GearBuilder } from '../base';
 import ArmorBonusType from './BonusType';
 import ArmorFlags from './Flags';
 import ArmorType from './Type';
@@ -27,11 +26,6 @@ class Armor extends Gear {
     private _flags: Set<ArmorFlags>;
 
     constructor({
-        label,
-        shape,
-        size = Size.medium,
-        weight,
-        bonuses = Bonus.zero(BonusType.gear),
         type = ArmorType.misc,
         acBonus = 0,
         bonusType = ArmorBonusType.armor,
@@ -40,8 +34,9 @@ class Armor extends Gear {
         acp = 0,
         asf = 0,
         flags = new Set<ArmorFlags>(),
+        ... args
     }: ArmorBuilder) {
-        super({label, shape, size, weight, bonuses});
+        super(args);
         this._type = type;
         this._acBonus = acBonus;
         this._bonusType = bonusType;
@@ -73,13 +68,9 @@ class Armor extends Gear {
 
     get $type(): string { return 'Armor'; }
 
-    static build(raw: any = {}): Armor {
-        return new Armor({
-            label: raw.label as string || '',
-            shape: raw.shape as string[] || [],
-            size: raw.size as Size || 0,
-            weight: raw.weight as Weight || 0,
-            bonuses: Bonus.build(raw.bonuses || {}),
+    static preBuild(raw: any): ArmorBuilder {
+        return {
+            ... Gear.preBuild(raw),
             type: raw.type as ArmorType || ArmorType.misc,
             acBonus: raw.acBonus as number || 0,
             bonusType: raw.bonusType as ArmorBonusType || ArmorBonusType.armor,
@@ -88,7 +79,11 @@ class Armor extends Gear {
             acp: raw.acp as number || 0,
             asf: raw.asf as number || 0,
             flags: raw.flags as Set<ArmorFlags> || [],
-        });
+        };
+    }
+
+    static build(raw: any = {}): Armor {
+        return new Armor(Armor.preBuild(raw));
     }
 }
 

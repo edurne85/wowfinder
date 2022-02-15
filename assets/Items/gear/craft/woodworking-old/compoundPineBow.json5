@@ -1,5 +1,6 @@
 {
     $type: 'Weapon',
+    rarity: 'common',
     label: 'craft.woodworking-old.compoundPineBow',
     shape: ['mhand', 'ohand'],
     range: 110,

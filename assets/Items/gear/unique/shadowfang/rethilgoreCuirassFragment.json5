@@ -1,5 +1,6 @@
 {
     $type: 'Armor',
+    rarity: 'rare',
     label: 'unique.shadowfang.rethilgoreCuirassFragment',
     shape: ['ohand'],
     size: 0,

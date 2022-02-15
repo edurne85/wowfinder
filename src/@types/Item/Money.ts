@@ -86,6 +86,10 @@ export default class Money {
     }
 }
 
+function asMoney(value: Money | number): Money {
+    return value instanceof Money ? value : Money.fromRaw(value as number || 0);
+}
+
 export type {
     CoinType
 };
@@ -93,4 +97,5 @@ export {
     Money,
     MoneyBreakdown,
     displayCoinTypes,
+    asMoney,
 };

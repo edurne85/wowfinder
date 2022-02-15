@@ -1,5 +1,6 @@
 {
     $type: 'Armor',
+    rarity: 'rare',
     label: 'unique.shadowfang.butcherApron',
     shape: ['torso'],
     size: 0,

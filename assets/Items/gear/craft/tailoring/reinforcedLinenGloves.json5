@@ -1,5 +1,6 @@
 {
     $type: 'Armor',
+    rarity: 'common',
     label: 'craft.tailoring.reinforcedLinenGloves',
     shape: ['hands'],
     weight: 1.5,

@@ -1,8 +1,6 @@
-import { Bonus, BonusType } from '../../../Character/Bonus';
-import Size from '../../../Character/Size';
 import { buildDamage, Damage } from '../../../Damage';
 import { Length, LengthUnit } from '../../../Units';
-import Gear, { GearBuilder, Weight } from '../base';
+import { Gear, GearBuilder } from '../base';
 import WeaponFlags from './Flags';
 import WeaponGroup from './Group';
 import WeaponProficiency from './Proficiency';
@@ -39,11 +37,6 @@ class Weapon extends Gear {
     private _range: Length;
 
     constructor({
-        label,
-        shape,
-        size = Size.medium,
-        weight,
-        bonuses = Bonus.zero(BonusType.gear),
         baseDamage,
         bonusDamage = {},
         intrinsic = 0,
@@ -54,8 +47,9 @@ class Weapon extends Gear {
         criticalRange = 20,
         criticalMultiplier = 2,
         range = 0,
+        ... args
     }: WeaponBuilder) {
-        super({label, shape, size, weight, bonuses});
+        super(args);
         this._baseDamage = baseDamage;
         this._bonusDamage = bonusDamage;
         this._intrinsic = intrinsic;
@@ -93,7 +87,7 @@ class Weapon extends Gear {
     get ranged(): boolean { return this._range.value > 0; }
 
     private get meleeRange(): Length {
-        const s = (this._size as number) + (this._flags.has(WeaponFlags.reach) ? 1 : 0);
+        const s = (this.size as number) + (this._flags.has(WeaponFlags.reach) ? 1 : 0);
         const value = Math.floor(5 * Math.pow(2, s));
         return new Length({value, unit: LengthUnit.foot});
     }
@@ -104,13 +98,9 @@ class Weapon extends Gear {
 
     get $type(): string { return 'Weapon'; }
 
-    static build(raw: any = {}): Weapon {
-        return new Weapon({
-            label: raw.label as string || '',
-            shape: raw.shape as string[] || [],
-            size: raw.size as Size || 0,
-            weight: raw.weight as Weight || 0,
-            bonuses: Bonus.build(raw.bonuses || {}),
+    static preBuild(raw: any): WeaponBuilder {
+        return {
+            ... Gear.preBuild(raw),
             baseDamage: buildDamage(raw.baseDamage),
             bonusDamage: buildDamage(raw.bonusDamage || {}),
             intrinsic: raw.intrinsic as number || 0,
@@ -122,7 +112,11 @@ class Weapon extends Gear {
             // If we are given a 0 multiplier, we don't want to override it!
             criticalMultiplier: Object.keys(raw).includes('criticalMultiplier') ? raw.criticalMultiplier : 2,
             range: raw.range as Range || 0,
-        });
+        };
+    }
+
+    static build(raw: any = {}): Weapon {
+        return new Weapon(Weapon.preBuild(raw));
     }
 }
 

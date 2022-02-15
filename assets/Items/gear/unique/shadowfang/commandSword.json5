@@ -1,5 +1,6 @@
 {
     $type: 'Weapon',
+    rarity: 'rare',
     label: 'unique.shadowfang.commandSword',
     shape: ['mhand'],
     size: 0,

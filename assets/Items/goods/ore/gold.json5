@@ -1,0 +1,6 @@
+{
+    $type: 'Ore',
+    key: 'gold',
+    iLevel: 35,
+    rarity: 'uncommon',
+}

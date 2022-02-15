@@ -1,5 +1,6 @@
 {
     $type: 'Armor',
+    rarity: 'common',
     label: 'craft.blacksmithing-old.copperChainBoots',
     shape: ['feet'],
     weight: 6,

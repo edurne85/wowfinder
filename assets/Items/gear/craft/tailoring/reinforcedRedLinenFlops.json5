@@ -1,5 +1,6 @@
 {
     $type: 'Armor',
+    rarity: 'common',
     label: 'craft.tailoring.reinforcedRedLinenFlops',
     shape: ['feet'],
     weight: 4.5,

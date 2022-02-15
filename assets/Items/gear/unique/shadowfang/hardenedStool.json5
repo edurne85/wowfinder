@@ -1,5 +1,6 @@
 {
     $type: 'Armor',
+    rarity: 'rare',
     label: 'unique.shadowfang.hardenedStool',
     shape: ['ohand'],
     size: 0,

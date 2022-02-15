@@ -16,10 +16,16 @@ const convertMass: converter<MassUnit> = makeConverter({
     [MassUnit.oz]: kgInLb / 16, // 16 oz = 1 lb
 });
 
-class Mass extends Scalar<MassUnit>{}
+class Mass extends Scalar<MassUnit> {
+    static asPounds(w: Weight): Mass {
+        return w instanceof Mass
+            ? w
+            : new Mass({ value: w as number, unit: MassUnit.lb });
+    }
+}
 
-export {
-    MassUnit,
-    convertMass,
-    Mass,
-};
+type Weight = number | Mass;
+
+
+export type { Weight };
+export { MassUnit, convertMass, Mass };

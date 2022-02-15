@@ -1,5 +1,6 @@
 {
     $type: 'Armor',
+    rarity: 'common',
     label: 'craft.tailoring.reinforcedBlueLinenMantle',
     shape: ['back'],
     weight: 2,

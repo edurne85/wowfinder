@@ -1,5 +1,6 @@
 {
     $type: 'Armor',
+    rarity: 'rare',
     label: 'unique.shadowfang.felineMantle',
     shape: ['back'],
     size: 0,

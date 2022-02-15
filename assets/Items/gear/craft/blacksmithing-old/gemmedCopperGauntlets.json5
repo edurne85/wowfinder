@@ -1,5 +1,6 @@
 {
     $type: 'Armor',
+    rarity: 'uncommon',
     label: 'craft.blacksmithing-old.gemmedCopperGauntlets',
     shape: ['hands'],
     weight: 8,

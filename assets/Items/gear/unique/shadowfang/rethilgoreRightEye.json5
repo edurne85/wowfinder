@@ -1,5 +1,6 @@
 {
     $type: 'Accessory',
+    rarity: 'rare',
     label: 'unique.shadowfang.rethilgoreRightEye',
     shape: ['neck'],
     size: 0,

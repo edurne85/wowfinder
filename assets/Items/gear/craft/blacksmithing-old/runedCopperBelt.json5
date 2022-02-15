@@ -1,5 +1,6 @@
 {
     $type: 'Armor',
+    rarity: 'common',
     label: 'craft.blacksmithing-old.runedCopperBelt',
     shape: ['waist'],
     weight: 4,

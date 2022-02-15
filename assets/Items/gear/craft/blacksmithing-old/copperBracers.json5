@@ -1,5 +1,6 @@
 {
     $type: 'Armor',
+    rarity: 'common',
     label: 'craft.blacksmithing-old.copperBracers',
     shape: ['wrists'],
     weight: 4,
