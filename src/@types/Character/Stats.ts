@@ -120,6 +120,10 @@ export default class Stats {
         return addStatSets(this._base, this._racial, this._enhance, this._gear, this._misc, this._temp);
     }
 
+    get active(): StatSet {
+        return addStatSets(this._base, this._racial, this._enhance);
+    }
+
     get totalMods(): StatSet {
         const totals = this.totals;
         return {

@@ -1,4 +1,4 @@
-import { forceDataImportKeyS } from '../../utils';
+import { forceDataImportKeyS, sum } from '../../utils';
 import Stats, { StatSet, zeroDefault } from './Stats';
 import CharPersonalDetails, {
     jsonImport as personalDetailsJsonImport,
@@ -22,14 +22,22 @@ import {
     School,
     SubSchool,
 } from '../Magic';
+import { Feat, feats } from './Feats';
 
 type SkillRanks = { [key: string]: number };
+
+interface FeatChoice {
+    feat: Feat;
+    class?: Class;
+    level: number;
+}
 
 interface CharacterBuilder {
     key: string;
     personal: CharPersonalDetails;
     race: string;
     classes: { cls: string; level: number }[];
+    feats: Iterable<FeatChoice>;
     active?: boolean;
     miscHP?: number;
     baseStats: StatSet;
@@ -58,6 +66,34 @@ function checkClass(className: string): Class {
     return c;
 }
 
+function parseFeatChoice(raw: any): FeatChoice | null {
+    const res = { ...raw };
+    if (res.class) {
+        if (!(res.class instanceof Class)) {
+            const k = res.class;
+            res.class = Classes[k];
+            if (!res.class) {
+                console.warn(`Unknown class key: ${k}`);
+                return null;
+            }
+        }
+    }
+    if (!Object.keys(Feat).includes(res.feat)) {
+        console.warn(`Unknown feat key: ${res.feat}`);
+        return null;
+    }
+    return res;
+}
+function parseFeatChoices(raw: any[]): FeatChoice[] {
+    const res: FeatChoice[] = [];
+    for (const f of raw.map(parseFeatChoice)) {
+        if (f !== null) {
+            res.push(f);
+        }
+    }
+    return res;
+}
+
 class Character {
     private _key: string;
     private _personal: CharPersonalDetails;
@@ -65,6 +101,7 @@ class Character {
     private _stats: Stats;
     private _race: Race;
     private _classes: ClassLevels;
+    private _feats: FeatChoice[];
     private _miscHP: number;
     private _skillRanks: SkillRanks;
     private _armor: ArmorValues;
@@ -81,6 +118,7 @@ class Character {
         baseStats,
         race,
         classes = [],
+        feats = [],
         miscHP = 0,
         skillRanks = {},
         inventory = Inventory.defaultBuilder,
@@ -103,6 +141,7 @@ class Character {
         });
         this._miscHP = miscHP;
         this._skillRanks = Object.assign({}, skillRanks);
+        this._feats = parseFeatChoices([...feats]);
         this._armor = ArmorValues.zero;
         // this._resistances = new Resistances({...(resistances || {})});
         this._resistances = Resistances.fromCategorized({
@@ -200,6 +239,27 @@ class Character {
             this._classes,
             this._stats.totals
         ));
+    }
+
+    get allFeats(): Feat[] {
+        return this._feats.map(entry => entry.feat);
+    }
+
+    get validFeats(): Feat[] {
+        return this._feats
+            .filter(entry => {
+                const levelReq =
+                    (entry.class
+                        ? sum(
+                              ...this._classes
+                                  .filter(c => entry.class === c.cls)
+                                  .map(c => c.level)
+                          )
+                        : sum(...this.classes.map(entry => entry.level))) >=
+                    entry.level;
+                return levelReq && feats[entry.feat].requirements.test(this);
+            })
+            .map(entry => entry.feat);
     }
 
     private _combineGearBonuses(): Bonus {
@@ -322,10 +382,6 @@ class Character {
     }
 }
 
-export type {
-    Characters,
-};
+export type { Characters };
 
-export {
-    Character,
-};
+export { Character };

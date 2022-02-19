@@ -1,6 +1,6 @@
 import { TFunction, useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import Character from '../../../@types/Character';
+import { Character } from '../../../@types/Character';
 
 const maxLines = 32;
 
@@ -27,6 +27,7 @@ export default function Traits({char}: {char?: Character}): JSX.Element {
     const lines: string[] = [];
     // TODO Racial traits
     lines.push(...(char? classFeatureStrings(char, t) : []));
+    lines.push(...(char?.validFeats || []));
     // TODO: feats
     lines.splice(maxLines);
     lines.push(...Array(maxLines - lines.length).fill('\xa0'));
