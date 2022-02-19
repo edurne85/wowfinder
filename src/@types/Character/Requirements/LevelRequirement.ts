@@ -30,7 +30,14 @@ class CasterLevelRequirement extends LevelRequirementBase {
     }
 }
 
+class AttackBonusRequirement extends LevelRequirementBase {
+    test(value: Character): boolean {
+        return value.classBonuses.bab >= this.level;
+    }
+}
+
 export {
     CharacterLevelRequirement,
     CasterLevelRequirement,
+    AttackBonusRequirement,
 };
