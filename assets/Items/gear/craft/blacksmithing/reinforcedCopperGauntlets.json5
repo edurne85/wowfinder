@@ -1,0 +1,16 @@
+{
+    $type: 'Armor',
+    rarity: 'common',
+    label: 'craft.blacksmithing.reinforcedCopperGauntlets',
+    shape: ['hands'],
+    weight: 4.5,
+    bonuses: {
+        armorClass: +4,
+    },
+    type: 'misc',
+    maxDex: 2,
+    acp: 1,
+    asf: 0.1,
+    flags: ['metal'],
+    // TODO: Weapon stats
+}

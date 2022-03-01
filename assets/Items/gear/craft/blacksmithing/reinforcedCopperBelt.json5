@@ -1,0 +1,15 @@
+{
+    $type: 'Armor',
+    rarity: 'common',
+    label: 'craft.blacksmithing.reinforcedCopperBelt',
+    shape: ['waist'],
+    weight: 4.5,
+    bonuses: {
+        armorClass: +4,
+    },
+    type: 'misc',
+    maxDex: 2,
+    acp: 1,
+    asf: 0.1,
+    flags: ['metal'],
+}

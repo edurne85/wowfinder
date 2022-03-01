@@ -15,6 +15,7 @@
         "wzd": "Mago (obs) (!)"
     },
     "races": {
+        "dwarf-bronzebeard": "Enano Barbabronce",
         "human": "Humano",
         "high-elf": "Alto Elfo",
         "night-elf": "Elfo Nocturno"

@@ -1,0 +1,15 @@
+{
+    $type: 'Armor',
+    rarity: 'common',
+    label: 'craft.tailoring.reinforcedGreenLinenMantle',
+    shape: ['back'],
+    weight: 2,
+    bonuses: {
+        armorClass: +2,
+        stats: {
+            WIS: +1,
+        },
+    },
+    type: 'misc',
+    maxDex: 3,
+}

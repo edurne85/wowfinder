@@ -1,0 +1,30 @@
+{
+    $type: 'Weapon',
+    rarity: 'rare',
+    label: 'unique.elwynn.henzesVengeance',
+    shape: ['mhand'],
+    size: 0,
+    weight: 4,
+    bonuses: {
+        stats: {
+            STR: +2,
+        },
+        resistances: {
+            shadow: +2,
+        },
+        // TODO: Cast: Light, rank 1; Ef.L: 1; at will; target: self (item)
+    },
+    baseDamage: {
+        bludgeoning: { sides: 8 },
+    },
+    bonusDamage: {
+        holy: { sides: 6 },
+    },
+    intrinsic: +2,
+    groups: ['hammer'],
+    rank: 'martial',
+    proficiency: 'warhammer',
+    flags: [],
+    criticalRange: 20,
+    criticalMultiplier: 3,
+}

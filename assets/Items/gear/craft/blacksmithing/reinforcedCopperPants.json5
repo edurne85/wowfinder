@@ -1,0 +1,19 @@
+{
+    $type: 'Armor',
+    rarity: 'common',
+    label: 'craft.blacksmithing.reinforcedCopperPants',
+    shape: ['legs'],
+    weight: 9,
+    bonuses: {
+        armorClass: +6,
+        stats: {
+            STR: +2,
+            CON: +2,
+        },
+    },
+    type: 'misc',
+    maxDex: 2,
+    acp: 1,
+    asf: 0.1,
+    flags: ['metal'],
+}

@@ -1,0 +1,16 @@
+{
+    $type: 'Armor',
+    rarity: 'common',
+    label: 'craft.tailoring.reinforcedRedLinenTunic',
+    shape: ['torso'],
+    weight: 4,
+    bonuses: {
+        armorClass: +4,
+        stats: {
+            CHA: +2,
+        },
+    },
+    type: 'misc',
+    maxDex: 3,
+    acp: 1,
+}

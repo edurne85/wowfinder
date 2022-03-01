@@ -1,0 +1,40 @@
+{
+    key: 'dwarf-bronzebeard',
+    size: 0,
+    statMods: {
+        STR: 0,
+        DEX: 0,
+        CON: 2,
+        INT: 0,
+        WIS: 2,
+        CHA: -2,
+    },
+    skillMods: {
+        perception: 2,
+    },
+    initialLangs: [
+        'common', 'dwarven',
+    ],
+    additionalLangs: [
+        'thalassian',
+        'darnassian',
+        'gnomish',
+        'ursine',
+    ],
+    commonAligns: [
+        'LG',
+    ],
+    speed: {
+        base: 20,
+    },
+    /* TODO
+        Darkvision: 60'
+        Defensive training: Lesser giants
+        Greed
+        Hatred (Orc, Goblinoid)
+        Hardy
+        Stability
+        Stonecunning
+        Stoneform
+     */
+}

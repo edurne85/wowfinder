@@ -15,6 +15,7 @@
         "wzd": "Wizard (!)"
     },
     "races": {
+        "dwarf-bronzebeard": "Bronzebeard Dwarf",
         "human": "Human",
         "high-elf": "High Elf",
         "night-elf": "Night Elf"

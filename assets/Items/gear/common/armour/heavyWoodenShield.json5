@@ -1,0 +1,14 @@
+{
+    $type: 'Armor',
+    rarity: 'vulgar',
+    label: 'common.armour.heavyWoodenShield',
+    shape: ['ohand'],
+    size: 0,
+    weight: 10,
+    type: 'light',
+    acBonus: +2,
+    bonusType: 'shield',
+    acp: -2,
+    asf: 0.15,
+    flags: [],
+}
