@@ -16,6 +16,12 @@ import { StatKey } from '../Stats';
 import { Feat } from './Feat';
 import { FeatSpec } from './FeatSpec';
 import { FeatFlag } from './FeatFlag';
+import {
+    ExoticWeaponProficiency,
+    MartialWeaponProficiency,
+    SimpleWeaponProficiency,
+} from '../../Item/Gear/Weapon/Proficiency';
+import { capitalizeFirstLetter } from '../../../utils';
 
 const raw: { [key in Feat]?: FeatSpec } = {};
 
@@ -41,6 +47,12 @@ const req = {
 function checkNoDuplicate(key: string): void {
     if (Object.keys(raw).includes(key)) {
         throw new Error(`Duplicate feat key: ${key}`);
+    }
+}
+const allFeatKeys = Object.keys(Feat);
+function checkFeatKey(key: string): asserts key is Feat {
+    if (!allFeatKeys.includes(key)) {
+        throw new Error(`Invalid feat key: ${key}`);
     }
 }
 
@@ -277,10 +289,105 @@ const feats: { [key in Feat]: FeatSpec } = {
             throwAnything: build.combat(Feat.throwAnything),
             toughness: build.combat(Feat.toughness),
             weaponFinesse: build.combat(Feat.weaponFinesse),
-            
+        },
+        ...{
+            // Combat expertise feats
+            // TODO
+        },
+        ...{
+            // Critical feats
+            // TODO
+        },
+        ...{
+            // Combat mobility feats
+            // TODO
+        },
+        ...{
+            // Unarmed combat feats
+            // TODO
+        },
+        ...{
+            // Shooting feats
+            // TODO
+        },
+        ...{
+            // Power attack feats
+            // TODO
+        },
+        ...{
+            // Mounted combat feats
+            // TODO
+        },
+        ...{
+            // Shield feats
+            // TODO
+        },
+        ...{
+            // Dual wielding feats
+            // TODO
+        },
+        ...{
+            // Vital strike feats
+            // TODO
         },
     },
 };
+
+function mkKey(prefix: string, weapon: string): Feat {
+    const w = capitalizeFirstLetter(weapon);
+    const key = `${prefix}${w}`;
+    checkFeatKey(key);
+    return key;
+}
+function focusKey(weapon: string): Feat {
+    return mkKey('weaponFocus', weapon);
+}
+
+const weaponFocusFlags = [FeatFlag.byWeapon, FeatFlag.weaponFocus];
+const weaponProficiencyFlags = [FeatFlag.byWeapon, FeatFlag.proficiency];
+
+const simpleWeapons = Object.keys(SimpleWeaponProficiency);
+const nonSimpleWeapons = ([] as string[]).concat(
+    Object.keys(MartialWeaponProficiency),
+    Object.keys(ExoticWeaponProficiency)
+);
+const allWeapons = ([] as string[]).concat(simpleWeapons, nonSimpleWeapons);
+
+for (const w of simpleWeapons) {
+    const focus = focusKey(w);
+    feats[focus] = feat(focus, allOf(req.level.bab(1)), weaponFocusFlags);
+}
+for (const w of nonSimpleWeapons) {
+    const proficiency = mkKey('proficiency', w);
+    feats[proficiency] = feat(proficiency, undefined, weaponProficiencyFlags);
+    const focus = focusKey(w);
+    feats[focus] = feat(
+        focus,
+        allOf(...req.feats(proficiency), req.level.bab(1)),
+        weaponProficiencyFlags
+    );
+}
+for (const w of allWeapons) {
+    const focus = focusKey(w);
+    const gfocus = mkKey('greaterWeaponFocus', w);
+    feats[gfocus] = feat(
+        gfocus,
+        allOf(...req.feats(focus), req.level.bab(8)),
+        weaponFocusFlags
+    );
+    const specialization = mkKey('weaponSpecialization', w);
+    feats[specialization] = feat(
+        specialization,
+        allOf(...req.feats(focus), req.level.bab(4)),
+        weaponFocusFlags
+    );
+    const gSpecialization = mkKey('greaterWeaponSpecialization', w);
+    feats[gSpecialization] = feat(
+        gSpecialization,
+        allOf(...req.feats(specialization), req.level.bab(12)),
+        weaponFocusFlags
+    );
+}
 
 Object.freeze(feats);
 

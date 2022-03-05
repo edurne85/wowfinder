@@ -1,4 +1,4 @@
-enum WeaponProficiency {
+enum SimpleWeaponProficiency {
     unarmed = 'unarmed',
     gauntlet = 'gauntlet',
     dagger = 'dagger',
@@ -19,6 +19,9 @@ enum WeaponProficiency {
     dart = 'dart',
     javelin = 'javelin',
     sling = 'sling',
+}
+
+enum MartialWeaponProficiency {
     axeThrown = 'axeThrown',
     hammerLight = 'hammerLight',
     axeHand = 'axeHand',
@@ -52,6 +55,9 @@ enum WeaponProficiency {
     bowLongComposite = 'bowLongComposite',
     bowShort = 'bowShort',
     bowShortComposite = 'bowShortComposite',
+}
+
+enum ExoticWeaponProficiency {
     kama = 'kama',
     nunchaku = 'nunchaku',
     sai = 'sai',
@@ -75,4 +81,19 @@ enum WeaponProficiency {
     slingStaffHalfling = 'slingStaffHalfling',
 }
 
+const WeaponProficiency = {
+    ...SimpleWeaponProficiency,
+    ...MartialWeaponProficiency,
+    ...ExoticWeaponProficiency,
+};
+
+type WeaponProficiency = typeof WeaponProficiency;
+
 export default WeaponProficiency;
+
+export {
+    WeaponProficiency,
+    SimpleWeaponProficiency,
+    MartialWeaponProficiency,
+    ExoticWeaponProficiency,
+};

@@ -1,4 +1,7 @@
-enum Feat {
+import { capitalizeFirstLetter } from '../../../utils';
+import { ExoticWeaponProficiency, MartialWeaponProficiency, SimpleWeaponProficiency } from '../../Item/Gear/Weapon/Proficiency';
+
+enum CoreFeat {
     endurance = 'endurance',
     diehard = 'diehard',
     fleet = 'fleet',
@@ -89,5 +92,36 @@ enum Feat {
     toughness = 'toughness',
     weaponFinesse = 'weaponFinesse',
 }
+
+const weaponFeats: {[key: string]: string} = {};
+
+const profKeys = {
+    simple: Object.keys(SimpleWeaponProficiency),
+    martial: Object.keys(MartialWeaponProficiency),
+    exotic: Object.keys(ExoticWeaponProficiency),
+};
+
+const nonSimple = [...profKeys.martial, ...profKeys.exotic];
+const allWeapons = [...profKeys.simple, ...profKeys.martial, ...profKeys.exotic];
+
+for (const p of nonSimple) {
+    const w = capitalizeFirstLetter(p);
+    weaponFeats[`proficiency${w}`] = `proficiency${w}`;
+}
+
+for (const p of allWeapons) {
+    const w = capitalizeFirstLetter(p);
+    weaponFeats[`weaponFocus${w}`] = `weaponFocus${w}`;
+    weaponFeats[`greaterWeaponFocus${w}`] = `greaterWeaponFocus${w}`;
+    weaponFeats[`weaponSpecialization${w}`] = `weaponSpecialization${w}`;
+    weaponFeats[`greaterWeaponSpecialization${w}`] = `greaterWeaponSpecialization${w}`;
+}
+
+const Feat = {
+    ...CoreFeat,
+    ...weaponFeats,
+};
+
+type Feat = keyof typeof Feat;
 
 export { Feat };
