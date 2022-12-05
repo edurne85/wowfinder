@@ -1,0 +1,17 @@
+{
+    $type: 'Armor',
+    rarity: 'rare',
+    label: 'unique.shadowfang.phantomCloak',
+    shape: ['back'],
+    size: 0,
+    weight: 0,
+    bonuses: {
+        armorClass: +4,
+        stats: {
+            STR: +4,
+        },
+    },
+    type: 'heavy',
+    asf: 0.1,
+    flags: ['metal'],
+}
