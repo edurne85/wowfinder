@@ -1,0 +1,16 @@
+{
+    $type: 'Armor',
+    rarity: 'Common',
+    label: 'craft.leatherworking-old.embossedLeatherPants',
+    shape: ['legs'],
+    size: 0,
+    weight: 0,
+    bonuses: {
+        armorClass: +2,
+        stats: {
+            CON: +1,
+            WIS: +1,
+        },
+    },
+    type: 'misc',
+}

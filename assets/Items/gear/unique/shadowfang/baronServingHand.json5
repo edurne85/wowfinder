@@ -1,0 +1,15 @@
+{
+    $type: 'Armor',
+    rarity: 'rare',
+    label: 'unique.shadowfang.baronServingHand',
+    shape: ['hands'],
+    size: 0,
+    weight: 0,
+    bonuses: {
+        stats: {
+            STR: +2,
+        },
+        // TODO Attack bonuses (+2 dual wielding, incl. nat & double)
+    },
+    type: 'misc',
+}

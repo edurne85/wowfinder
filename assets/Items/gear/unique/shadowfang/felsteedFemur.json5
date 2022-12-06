@@ -1,0 +1,21 @@
+{
+    $type: 'Weapon',
+    rarity: 'rare',
+    label: 'unique.shadowfang.feelsteedFemur',
+    shape: ['mhand', 'ohand'],
+    size: 0,
+    weight: 4,
+    bonuses: {}, // TODO Bonus feat: twoWeaponFighting
+    baseDamage: {
+        bludgeoning: { sides: 8 },
+    },
+    intrinsic: +1,
+    groups: ['double', 'natural'],
+    rank: 'simple',
+    proficiency: 'quarterstaff',
+    flags: [],
+    criticalRange: 20,
+    criticalMultiplier: 2,
+    // TODO Shapeshifted bonuses!
+    // TODO Shillelagh bonuses
+}

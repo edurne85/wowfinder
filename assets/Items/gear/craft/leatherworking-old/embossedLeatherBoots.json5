@@ -1,0 +1,15 @@
+{
+    $type: 'Armor',
+    rarity: 'Common',
+    label: 'craft.leatherworking-old.embossedLeatherBoots',
+    shape: ['feet'],
+    size: 0,
+    weight: 0,
+    bonuses: {
+        armorClass: +1,
+        stats: {
+            WIS: +1,
+        },
+    },
+    type: 'misc',
+}

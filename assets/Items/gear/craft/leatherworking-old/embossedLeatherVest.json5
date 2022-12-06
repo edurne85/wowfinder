@@ -1,0 +1,20 @@
+{
+    $type: 'Armor',
+    rarity: 'Common',
+    label: 'craft.leatherworking-old.embossedLeatherVest',
+    shape: ['torso'],
+    size: 0,
+    weight: 15,
+    bonuses: {
+        stats: {
+            CON: +1,
+        },
+    },
+    type: 'light',
+    acBonus: +2,
+    bonusType: 'armor',
+    maxDex: 6,
+    acp: 0,
+    asf: 0.1,
+    flags: [],
+}

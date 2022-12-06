@@ -1,0 +1,22 @@
+{
+    $type: 'Armor',
+    rarity: 'rare',
+    label: 'unique.shadowfang.arugalBelt',
+    shape: ['waist'],
+    size: 0,
+    weight: 2,
+    bonuses: {
+        armorClass: +2,
+        stats: {
+            STR: +2,
+            DEX: +2,
+            CON: +2,
+            INT: +2,
+            WIS: +2,
+            CHA: +2,
+        },
+        // TODO: extra shapeshift per turn
+        // TODO: cursed wolf form
+    },
+    type: 'misc',
+}

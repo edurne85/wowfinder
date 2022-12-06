@@ -1,0 +1,13 @@
+{
+    $type: 'Accessory',
+    rarity: 'common',
+    label: 'craft.woodworking-old.agedPineAmulet',
+    shape: ['neck'],
+    weight: 1,
+    bonuses: {
+        stats: {
+            WIS: +1,
+        },
+    },
+    type: 'misc',
+}
