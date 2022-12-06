@@ -300,7 +300,8 @@ const feats: { [key in Feat]: FeatSpec } = {
         },
         ...{
             // Combat mobility feats
-            // TODO
+            dodge: build.combat(Feat.dodge, req.stat(StatKey.DEX, 13)),
+            // TODO: mobility, spring attack, wind stance, lightning stance
         },
         ...{
             // Unarmed combat feats
@@ -312,7 +313,10 @@ const feats: { [key in Feat]: FeatSpec } = {
         },
         ...{
             // Power attack feats
-            // TODO
+            powerAttack: build.combat(Feat.powerAttack, req.stat(StatKey.STR, 13), req.level.bab(1)),
+            cleave: build.combat(Feat.cleave, ...req.feats('powerAttack')),
+            greatCleave: build.combat(Feat.greatCleave, ...req.feats('cleave'), req.level.bab(4)),
+            // TODO: Imp. Bull Rush, Greater Bull Rush, Imp. Overrun, Greater Overrun, Imp. Sunder, Greater Sunder
         },
         ...{
             // Mounted combat feats
@@ -320,15 +324,53 @@ const feats: { [key in Feat]: FeatSpec } = {
         },
         ...{
             // Shield feats
-            // TODO
+            proficiencyShield: build.combat(Feat.proficiencyShield),
+            // TODO: improved shield bash, shield slam, shield master
+            weaponFocusShield: build.combat(
+                Feat.weaponFocusShield,
+                ...req.feats('proficiencyShield'),
+                req.level.bab(1)
+            ),
+            greaterWeaponFocusShield: build.combat(
+                Feat.greaterWeaponFocusShield,
+                ...req.feats('weaponFocusShield'),
+                req.level.bab(8), // TODO: change to effective level (fighter)
+            ),
         },
         ...{
             // Dual wielding feats
-            // TODO
+            twoWeaponFighting: build.combat(Feat.twoWeaponFighting, req.stat(StatKey.DEX, 15)),
+            doubleSlice: build.combat(Feat.doubleSlice, ...req.feats('twoWeaponFighting')),
+            improvedTwoWeaponFighting: build.combat(
+                Feat.improvedTwoWeaponFighting,
+                ...req.feats('twoWeaponFighting'),
+                req.level.bab(6),
+                req.stat(StatKey.DEX, 17),
+            ),
+            twoWeaponRend: build.combat(
+                Feat.twoWeaponRend,
+                ...req.feats('improvedTwoWeaponFighting', 'doubleSlice'),
+                req.level.bab(11),
+            ),
+            greaterTwoWeaponFighting: build.combat(
+                Feat.greaterTwoWeaponFighting,
+                ...req.feats('improvedTwoWeaponFighting'),
+                req.level.bab(11),
+                req.stat(StatKey.DEX, 19),
+            ),
+            twoWeaponDefense: build.combat(Feat.twoWeaponDefense, ...req.feats('twoWeaponFighting')),
         },
         ...{
             // Vital strike feats
-            // TODO
+            vitalStrike: build.combat(Feat.vitalStrike, req.level.bab(1)),
+            improvedVitalStrike: build.combat(
+                Feat.improvedVitalStrike,
+                ...req.feats('vitalStrike'),
+                req.level.bab(11)),
+            greaterVitalStrike: build.combat(
+                Feat.greaterVitalStrike,
+                ...req.feats('improvedVitalStrike'),
+                req.level.bab(16)),
         },
     },
 };
