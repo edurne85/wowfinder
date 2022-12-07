@@ -29,7 +29,22 @@
         "uni": "Universal",
         "sub" : {
             "void": "Void",
-            "heal": "Healing"
+            "banish": "Banishment",
+            "counter": "Counterspell",
+            "call": "Calling",
+            "create": "Creation",
+            "heal": "Healing",
+            "summon": "Summoning",
+            "teleport": "Teleportation",
+            "scry": "Scrying",
+            "charm": "Charm",
+            "compel": "Compulsion",
+            "figment": "Figment",
+            "glamer": "Glamer",
+            "phantom": "Phantom",
+            "shadow": "Shadow",
+            "enhancement": "Enhancement",
+            "polymorph": "Polymorph"
         }
     }
 }

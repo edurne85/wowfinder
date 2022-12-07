@@ -29,7 +29,22 @@
         "uni": "Universal",
         "sub" : {
             "void": "Vacío",
-            "heal": "Curación"
+            "banish": "Exorcismo",
+            "counter": "Contraconjuro",
+            "call": "Llamada",
+            "create": "Creación",
+            "heal": "Curación",
+            "summon": "Invocación",
+            "teleport": "Teletransporte",
+            "scry": "Escrutinio",
+            "charm": "Encanto",
+            "compel": "Compulsión",
+            "figment": "Ficción",
+            "glamer": "Glamor",
+            "phantom": "Fantasma",
+            "shadow": "Sombra",
+            "enhancement": "Mejora",
+            "polymorph": "Polimorfia"
         }
     }
 }

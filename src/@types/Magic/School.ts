@@ -12,12 +12,42 @@ enum School {
 
 enum SubSchool {
     void = 'void',
+    banish = 'banish',
+    counter = 'counter',
+    call = 'call',
+    create = 'create',
     heal = 'heal',
+    summon = 'summon',
+    teleport = 'teleport',
+    scry = 'scry',
+    charm = 'charm',
+    compel = 'compel',
+    figment = 'figment',
+    glamer = 'glamer',
+    phantom = 'phantom',
+    shadow = 'shadow',
+    enhancement = 'enhancement',
+    polymorph = 'polymorph',
 }
 
 const subSchoolParents: { [key in SubSchool]: School } = {
     void: School.uni,
+    banish: School.abj,
+    counter: School.enc,
+    call: School.con,
+    create: School.con,
     heal: School.con,
+    summon: School.con,
+    teleport: School.con,
+    scry: School.div,
+    charm: School.enc,
+    compel: School.enc,
+    figment: School.ill,
+    glamer: School.ill,
+    phantom: School.ill,
+    shadow: School.ill,
+    enhancement: School.tra,
+    polymorph: School.tra,
 };
 
 function subSchoolsByParent(parent: School): SubSchool[] {
