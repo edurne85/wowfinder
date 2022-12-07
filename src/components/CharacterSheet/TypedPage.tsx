@@ -1,6 +1,6 @@
 import { ReactElement , useState } from 'react';
 
-import Character from '../../@types/Character';
+import { Character } from '../../@types/Character';
 import { MainPage } from './MainPage';
 import { SkillsPage } from './SkillsPage';
 import { InventoryPage } from './InventoryPage';

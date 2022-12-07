@@ -21,21 +21,23 @@ export function SpellRange({ efl = 0, mode }: { efl: number, mode: CastingMode }
     const { t } = useTranslation();
     return (
         <RangeContainer>
-            <tr>
-                <th className="h" colSpan={2}>{t('ui.magic.range')} ({t(`magic.modes.abbr.${mode}`)})</th>
-            </tr>
-            <tr>
-                <th>{t('magic.range.short')}</th>
-                <td>{rangeFormatted(StandardRange.short, efl)}</td>
-            </tr>
-            <tr>
-                <th>{t('magic.range.medium')}</th>
-                <td>{rangeFormatted(StandardRange.medium, efl)}</td>
+            <tbody>
+                <tr>
+                    <th className="h" colSpan={2}>{t('ui.magic.range')} ({t(`magic.modes.abbr.${mode}`)})</th>
                 </tr>
-            <tr>
-                <th>{t('magic.range.long')}</th>
-                <td>{rangeFormatted(StandardRange.long, efl)}</td>
-            </tr>
+                <tr>
+                    <th>{t('magic.range.short')}</th>
+                    <td>{rangeFormatted(StandardRange.short, efl)}</td>
+                </tr>
+                <tr>
+                    <th>{t('magic.range.medium')}</th>
+                    <td>{rangeFormatted(StandardRange.medium, efl)}</td>
+                    </tr>
+                <tr>
+                    <th>{t('magic.range.long')}</th>
+                    <td>{rangeFormatted(StandardRange.long, efl)}</td>
+                </tr>
+            </tbody>
         </RangeContainer>
     );
 }

@@ -1,5 +1,7 @@
-import Character from '../../@types/Character';
+import { useContext } from 'react';
+import { Character } from '../../@types/Character';
 import { ClassFeature } from '../../@types/Character/Class';
+import { GlobalContext } from '../helpers/GlobalContext';
 import type { FullPageSelection, TypedPageArgs } from './TypedPage';
 import { PageType, TypedPage } from './TypedPage';
 
@@ -47,11 +49,12 @@ function hasDruidTreeForm(char?: Character): boolean {
 }
 
 export function CharacterSheet({char, xp = 0}: {char?: Character, xp?: number}): JSX.Element {
+    const forcePages = useContext(GlobalContext).forcePages;
     const availables: FullPageSelection = {
         [PageType.main]: true,
         [PageType.skills]: true,
         [PageType.inventory]: true,
-        [PageType.magic]: hasSpells(char),
+        [PageType.magic]: forcePages.magic || hasSpells(char),
         [PageType.spells]: false && hasSpells(char),
         [PageType.feral]: false && hasDruidFeralForms(char),
         [PageType.moonkin]: false && hasDruidMoonkinForm(char),

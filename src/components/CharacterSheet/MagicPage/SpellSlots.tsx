@@ -1,6 +1,8 @@
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { GlobalContext } from '../../helpers/GlobalContext';
 import styled from 'styled-components';
-import Character from '../../../@types/Character';
+import { Character } from '../../../@types/Character';
 import {
     CastingMode,
     zeroCasterLevel,
@@ -48,7 +50,7 @@ interface SpellSlotsArgs {
     char?: Character;
     mode: CastingMode;
 }
-const spellLevelMax = 9;
+const spellLevelMax = 15;
 const levels: number[] = [...Array(spellLevelMax + 1).keys()];
 
 export function SpellSlots({ char, mode }: SpellSlotsArgs): JSX.Element {
@@ -59,26 +61,33 @@ export function SpellSlots({ char, mode }: SpellSlotsArgs): JSX.Element {
     );
     const statKey = castingStats[mode];
     const stat = char?.stats?.totals[statKey] || 0;
+    const context = useContext(GlobalContext);
+    const v:(n: number) => number = (n: number) =>
+        context.forceBlank ? 0 : n;
     return (
         <SlotsContainer>
-            <tr>
-                <th colSpan={5}>{t('ui.magic.slots')} ({t(`magic.modes.abbr.${mode}`)})</th>
-            </tr>
-            <tr>
-            <th>{t('ui.magic.level')}</th>
-            <th>{t('ui.common.total')}</th>
-            <th>{t('ui.magic.class')}</th>
-            <th>{t(`stats.abbr.${statKey}`)}</th>
-            <th>{t('ui.common.misc')}</th>
-            </tr>
-            {levels.map(l => (
-                <SlotsRow
-                    level={l}
-                    key={l}
-                    cls={slotsByLevel(mode, clevel, l)}
-                    stat={clevel ? slotsByStat(stat, l) : 0}
-                />
-            ))}
+            <thead>
+                <tr>
+                    <th colSpan={5}>{t('ui.magic.slots')} ({t(`magic.modes.abbr.${mode}`)})</th>
+                </tr>
+                <tr>
+                <th>{t('ui.magic.level')}</th>
+                <th>{t('ui.common.total')}</th>
+                <th>{t('ui.magic.class')}</th>
+                <th>{t(`stats.abbr.${statKey}`)}</th>
+                <th>{t('ui.common.misc')}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {levels.map(l => (
+                    <SlotsRow
+                        level={l}
+                        key={l}
+                        cls={v(slotsByLevel(mode, clevel, l))}
+                        stat={v(clevel ? slotsByStat(stat, l) : 0)}
+                    />
+                ))}
+            </tbody>
         </SlotsContainer>
     );
 }
