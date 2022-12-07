@@ -4,6 +4,8 @@ import { debug } from './utils';
 import { FullData } from './FullData';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { RewardsTable, CharacterList, CharacterSheet, Reputations } from './components';
+import { useContext } from 'react';
+import { GlobalContext } from './components/helpers/GlobalContext';
 
 const data = FullData.import();
 
@@ -28,7 +30,13 @@ function TestCharSheet({ charName }: { charName: string }): JSX.Element {
     );
 }
 function PrintCharSheet(): JSX.Element {
-    return <CharacterSheet />;
+    const context = useContext(GlobalContext);
+    context.forceBlank = true;
+    return (
+        <GlobalContext.Provider value={context}>
+            <CharacterSheet />
+        </GlobalContext.Provider>
+    );
 }
 
 if (debug) {
@@ -43,10 +51,11 @@ if (debug) {
 }
 
 export function App(): JSX.Element {
+    const context = useContext(GlobalContext);
     return (
-        <>
+        <GlobalContext.Provider value={context}>
             <GlobalStyle />
             <PrintCharSheet />
-        </>
+        </GlobalContext.Provider>
     );
 }
