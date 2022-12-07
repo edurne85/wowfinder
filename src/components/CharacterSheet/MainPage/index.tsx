@@ -21,7 +21,6 @@ const LogoImg = styled.img`
     height: auto;
     width: 65mm;
     aspect-ratio: auto 481 / 178;
-    vertical-align: middle;
 `;
 
 const logoSrc = window.Main.asset('charsheet-logo.png');

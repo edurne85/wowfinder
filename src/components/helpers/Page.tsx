@@ -1,3 +1,4 @@
+import { ReactChildren } from '../../utils';
 import styled from 'styled-components';
 import { baseFont, borderless, printableBottomBorder, mainColor, debugOutline } from './mixins';
 
@@ -23,7 +24,14 @@ const PageStyled = styled.section`
     ${debugOutline({})}
 `;
 
-const Page: React.FC<{key: string, id: string, visible?: boolean}> = ({id, children, visible = true}) => {
+interface PageProps {
+    key: string;
+    id: string;
+    visible?: boolean;
+    children: ReactChildren;
+}
+
+const Page: React.FC<PageProps> = ({id, children, visible = true}) => {
     return <PageStyled visible={visible} id={`page${id}`}>{children}</PageStyled>;
 };
 

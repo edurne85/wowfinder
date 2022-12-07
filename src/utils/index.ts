@@ -18,3 +18,5 @@ export {
 } from './dataImport';
 
 export type { Expanded } from './Expanded';
+
+export type ReactChildren = React.ReactNode | Iterable<React.ReactNode>;
