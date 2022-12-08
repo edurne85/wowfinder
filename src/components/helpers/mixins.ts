@@ -9,14 +9,10 @@ const colors = {
 };
 Object.freeze(colors);
 
-function screenColors(fg = colors.black, bg = colors.white): string {
-    return `@media screen {
-        color: ${fg};
-        background-color: ${bg};
-    }`;
-}
-
-const reverseColors = screenColors(colors.white, colors.black);
+const reverseColors = `
+        color: ${colors.white};
+        background-color: ${colors.black};
+`;
 
 const screenZoomDefault = 1.6;
 const screenZoomMinWidthDefault = 900;
@@ -106,7 +102,6 @@ const scrollable = 'overflow: auto;';
 
 export {
     colors,
-    screenColors,
     reverseColors,
     screenZoom,
     mainColor,

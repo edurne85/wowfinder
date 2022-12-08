@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { GlobalContext } from '../../helpers/GlobalContext';
 import styled from 'styled-components';
 import { borderless, debugOutline, printableBottomBorder, smallText } from '../../helpers/mixins';
 
@@ -79,9 +81,16 @@ function currentLoad(limits: Limits, load: number): LimitType {
     return LimitType.excess;
 }
 
+const WeightInput: React.FC<{ value: number }> = ({ value }) => {
+    const context = useContext(GlobalContext);
+    return (<input defaultValue={context.forceBlank ? '' : value} />);
+};
+
 const Weight: React.FC<WeightProps> = ({load = 0, capacity}) => {
     const { t } = useTranslation();
     const l = limits(capacity);
+    const context = useContext(GlobalContext);
+    const totalText = context.forceBlank ? '' : t(`ui.inventory.weight.${currentLoad(l, load)}`);
     return(<StyledTable id="tblHp">
         <tbody>
             <tr>
@@ -93,13 +102,13 @@ const Weight: React.FC<WeightProps> = ({load = 0, capacity}) => {
                 <th>{t('ui.inventory.weight.drag')}</th>
             </tr>
             <tr>
-                <td><input defaultValue={load} /></td>
-                <td className="text">{t(`ui.inventory.weight.${currentLoad(l, load)}`)}</td>
-                <td><input defaultValue={l.light} /></td>
-                <td><input defaultValue={l.medium} /></td>
-                <td><input defaultValue={l.heavy} /></td>
-                <td><input defaultValue={l.lift} /></td>
-                <td><input defaultValue={l.drag} /></td>
+                <td><WeightInput value={load} /></td>
+                <td className="text">{totalText}</td>
+                <td><WeightInput value={l.light} /></td>
+                <td><WeightInput value={l.medium} /></td>
+                <td><WeightInput value={l.heavy} /></td>
+                <td><WeightInput value={l.lift} /></td>
+                <td><WeightInput value={l.drag} /></td>
             </tr>
         </tbody>
     </StyledTable>);

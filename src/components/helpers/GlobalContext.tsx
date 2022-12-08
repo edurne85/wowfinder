@@ -1,7 +1,6 @@
 import React from 'react';
 
 const defaultContext = {
-    // debug: false,
     forceBlank: false,
     forcePages: {
         magic: false,

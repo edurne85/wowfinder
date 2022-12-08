@@ -1,11 +1,10 @@
 import './i18n';
-
-import { debug } from './utils';
+import { useContext } from 'react';
+import { CharacterList, CharacterSheet, Reputations, RewardsTable } from './components';
+import { GlobalContext } from './components/helpers/GlobalContext';
 import { FullData } from './FullData';
 import { GlobalStyle } from './styles/GlobalStyle';
-import { RewardsTable, CharacterList, CharacterSheet, Reputations } from './components';
-import { useContext } from 'react';
-import { GlobalContext } from './components/helpers/GlobalContext';
+import { debug } from './utils';
 
 const data = FullData.import();
 
@@ -32,6 +31,7 @@ function TestCharSheet({ charName }: { charName: string }): JSX.Element {
 function PrintCharSheet(): JSX.Element {
     const context = useContext(GlobalContext);
     context.forceBlank = true;
+    context.forcePages.magic = true;
     return (
         <GlobalContext.Provider value={context}>
             <CharacterSheet />
