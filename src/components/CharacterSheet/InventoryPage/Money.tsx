@@ -17,6 +17,7 @@ const CoinsContainer = styled.span``;
 const CoinsInnerContainer = styled.span`
     display: inline-block;
     min-width: 3em;
+    text-align: right;
     border-bottom: thin dashed #ccc;
 `;
 const CoinsSuffix = styled.span<{color: string}>`
