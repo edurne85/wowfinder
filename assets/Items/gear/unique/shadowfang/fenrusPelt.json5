@@ -1,0 +1,16 @@
+{
+    $type: 'Armor',
+    rarity: 'rare',
+    label: 'unique.shadowfang.fenrusPelt',
+    shape: ['back'],
+    size: 0,
+    weight: 3,
+    bonuses: {
+        armorClass: +2,
+        stats: {
+            STR: +4,
+        },
+    },
+    type: 'light',
+    asf: 0.2,
+}
