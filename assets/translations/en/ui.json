@@ -41,7 +41,7 @@
     "speed": {
         "h": "Speed",
         "base": "Base",
-        "load": "Enc.",
+        "reduced": "Enc.",
         "fly": "Fly",
         "maneuverability": "Maneuverability",
         "swim": "Swim",

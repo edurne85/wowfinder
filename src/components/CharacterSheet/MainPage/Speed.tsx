@@ -91,8 +91,8 @@ export function Speed ({speeds}: {speeds?: Speeds}): JSX.Element {
             <tr>
                 <th>{t('ui.speed.base')}</th>
                 <SpeedCells name="Base" speed={speeds?.base} />
-                <th>{t('ui.speed.load')}</th>
-                <SpeedCells name="Load" speed={speeds?.encumbered} />
+                <th>{t('ui.speed.reduced')}</th>
+                <SpeedCells name="Reduced" speed={speeds?.encumbered} />
             </tr>
             <tr>
                 <th>{t('ui.speed.fly')}</th>

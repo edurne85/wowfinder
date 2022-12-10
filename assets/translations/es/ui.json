@@ -41,12 +41,12 @@
     "speed": {
         "h": "Velocidad",
         "base": "Base",
-        "load": "Carga",
+        "reduced": "Reduc.",
         "fly": "Vuelo",
         "maneuverability": "Maniobrabilidad",
         "swim": "Nadar",
         "climb": "Trepar",
-        "burrow": "Excavar",
+        "burrow": "Cavar",
         "misc": "Misc"
     },
     "armor": {
