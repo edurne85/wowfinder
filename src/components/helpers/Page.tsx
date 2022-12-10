@@ -17,6 +17,7 @@ const PageStyled = styled.section`
     display: ${ (props: PageStyledProps) => props.visible ? 'block' : 'none'};
     ${printableBottomBorder('input, select')}
     @media print {
+        -webkit-print-color-adjust: exact;
         page-break-after: always;
         margin: 0;
         &:last-child {
