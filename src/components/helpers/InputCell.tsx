@@ -1,4 +1,3 @@
-import React from 'react';
 import { nextScore, reputationByScoreNullable, threshholds } from '../../@types/Faction';
 
 type CommonValue = number | string;

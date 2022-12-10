@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { ReactChildren } from '../../../utils';
 import styled from 'styled-components';
 import { Gear as G, Weapon, Armor, rarityColorsLight } from '../../../@types/Item';
 import { explodeShape, Shape } from '../../../@types/Item/Gear/Slot';
@@ -39,7 +40,7 @@ const GearItemLine = styled.p`
     ${lineStyle}
 `;
 
-const GearDetailLine: React.FC<{ h?: string }> = ({ h, children }) => {
+const GearDetailLine: React.FC<{ h?: string, children: ReactChildren }> = ({ h, children }) => {
     const H = (): JSX.Element => h ? (<><b>{h}</b>: {' '}</>) : (<></>);
     return (<GearItemLine>
         <H />

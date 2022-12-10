@@ -1,6 +1,6 @@
 import type {Reward, Rewards } from '../../@types/Rewards';
-import Character from '../../@types/Character';
-import Faction from '../../@types/Faction';
+import { Character } from '../../@types/Character';
+import { Faction } from '../../@types/Faction';
 import { ReputationCell } from '../helpers/InputCell';
 
 function rewardCell(char: string, faction: string, value: number): JSX.Element {

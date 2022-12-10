@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { ReactChildren } from '../../utils';
 import styled from 'styled-components';
 
 const ColumnsContainer = styled.div`
@@ -25,7 +26,7 @@ const ColumnDiv = styled.div`
     }
 `;
 
-const Column: React.FC<{key: string, id: string}> = ({
+const Column: React.FC<{key: string, id: string, children: ReactChildren}> = ({
     id, children
 }) => (
     <ColumnDiv id={`column-${id}`}>

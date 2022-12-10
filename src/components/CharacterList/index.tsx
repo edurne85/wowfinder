@@ -1,4 +1,4 @@
-import Character from '../../@types/Character';
+import { Character } from '../../@types/Character';
 import { Reward, Rewards } from '../../@types/Rewards';
 import styled from 'styled-components';
 

@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import Character from '../../../@types/Character';
+import { Character } from '../../../@types/Character';
 import { SaveBreakdown } from '../../../@types/Character/Saves';
 import { InputCell } from '../../helpers/InputCell';
 import { borderless, smallText, reverseColors, borderThin, borderThick, printableBottomBorder } from '../../helpers/mixins';

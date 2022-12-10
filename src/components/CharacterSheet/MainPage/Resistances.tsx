@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import Character from '../../../@types/Character';
+import { Character } from '../../../@types/Character';
 import { ResistanceBreakdown } from '../../../@types/Character/Resistances';
 import { capitalizeFirstLetter } from '../../../utils';
 import { InputCell } from '../../helpers/InputCell';
