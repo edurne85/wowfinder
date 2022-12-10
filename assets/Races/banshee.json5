@@ -1,0 +1,34 @@
+{
+    key: 'banshee',
+    size: 0,
+    statMods: {
+        STR: 0,
+        DEX: 2,
+        CON: -2,
+        INT: 0,
+        WIS: 2,
+        CHA: 0,
+    },
+    skillMods: {
+        perception: 2,
+    },
+    initialLangs: [
+        'common', 'thalassian', 'darnassian',
+    ],
+    additionalLangs: [
+        'gutterspeak',
+        'shathyar',
+    ],
+    commonAligns: [
+        'NN', 'CN', 'NE', 'CE',
+    ],
+    speed: {
+        base: 30,
+        fly: 40, // TODO: average maneuverability
+    },
+    /* TODO
+        Darkvision: 60'
+        +2 saving throws against disease and mind-affecting effects
+        Resistance to energy drain
+    */
+}

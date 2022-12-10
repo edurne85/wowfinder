@@ -1,0 +1,39 @@
+{
+    key: 'draenei',
+    size: 0,
+    statMods: {
+        STR: 2,
+        DEX: -2,
+        CON: 0,
+        INT: 0,
+        WIS: 4,
+        CHA: 0,
+    },
+    skillMods: {
+        perception: 2,
+    },
+    initialLangs: [
+        'common', 'draenic',
+    ],
+    additionalLangs: [
+        'orcish',
+        'darnassian',
+        'eredun',
+        'thalassian',
+        'arakkoa',
+        'ursine',
+    ],
+    commonAligns: [
+        'LG',
+    ],
+    speed: {
+        base: 20,
+    },
+    /* TODO
+        Ancient Foe: 
+        Defensive training: Demons
+        Eternal Hope
+        Lightbringer
+        Touch of the Naaru
+     */
+}
