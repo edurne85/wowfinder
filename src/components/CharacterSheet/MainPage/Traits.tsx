@@ -1,18 +1,12 @@
 import { TFunction, useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { Character } from '../../../@types/Character';
+import { mapLines } from '../../helpers/FillableLine';
 
 const maxLines = 32;
 
 const TraitsContainer = styled.div`
     margin-top: 2.8ex;
-`;
-
-const Line = styled.p`
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    border-bottom: 1px dashed #999;
 `;
 
 function classFeatureString(translated: string, count: number): string {
@@ -26,13 +20,12 @@ export default function Traits({char}: {char?: Character}): JSX.Element {
     const { t } = useTranslation();
     const lines: string[] = [];
     // TODO Racial traits
-    lines.push(...(char? classFeatureStrings(char, t) : []));
+    lines.push(...(char ? classFeatureStrings(char, t) : []));
     lines.push(...(char?.validFeats || []));
     // TODO: feats
     lines.splice(maxLines);
-    lines.push(...Array(maxLines - lines.length).fill('\xa0'));
-    let lineCount = 0;
+    lines.push(...Array(maxLines - lines.length));
     return (<TraitsContainer>
-        {lines.map(l=> <Line key={`TraitsLine-${++lineCount}`}>{l}</Line>)}
+        {mapLines(lines, 'TraitsLine-')}
     </TraitsContainer>);
 }
