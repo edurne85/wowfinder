@@ -4,7 +4,7 @@
     label: 'unique.shadowfang.baronServingHand',
     shape: ['hands'],
     size: 0,
-    weight: 0,
+    weight: 3,
     bonuses: {
         stats: {
             STR: +2,
