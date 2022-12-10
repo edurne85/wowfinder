@@ -2,7 +2,7 @@
     key: 'fgt',
     hd: 10,
     bab: 1,
-    skl: 4,
+    skl: 2,
     fort: true,
     wealth: 10500,
     skills: [
