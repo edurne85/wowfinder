@@ -257,7 +257,7 @@ class Character {
                           )
                         : sum(...this.classes.map(entry => entry.level))) >=
                     entry.level;
-                return levelReq && feats[entry.feat].requirements.test(this);
+                return entry.level === 0 || (levelReq && feats[entry.feat].requirements.test(this));
             })
             .map(entry => entry.feat);
     }
