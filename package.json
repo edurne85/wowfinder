@@ -16,7 +16,7 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
-    "i18next": "^22.1.5",
+    "i18next": "^22.4.1",
     "i18next-browser-languagedetector": "^6.1.5",
     "json5": "^2.2.1",
     "react": "^17.0.2",
