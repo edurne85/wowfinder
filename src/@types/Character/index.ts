@@ -48,9 +48,10 @@ interface CharacterBuilder {
 
 type Characters = { [key: string]: Character };
 
+const defaultRace = 'human.cha';
 const Races = Race.import();
 function checkRace(raceName: string): Race {
-    const r = Races[raceName];
+    const r = Races[raceName || defaultRace];
     if (!r) {
         throw new Error(`Unknown race key: ${raceName}`);
     }
