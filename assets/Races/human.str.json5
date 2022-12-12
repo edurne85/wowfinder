@@ -1,5 +1,5 @@
 {
-    key: 'human.con',
+    key: 'human.str',
     size: 0,
     statMods: {
         STR: 2,
