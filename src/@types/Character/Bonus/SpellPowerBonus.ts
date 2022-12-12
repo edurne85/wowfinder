@@ -65,8 +65,68 @@ export default class SpellPowerBonus implements SpellPowerValues<number> {
         return this._data.void;
     }
 
+    get banish(): number {
+        return this._data.banish;
+    }
+
+    get counter(): number {
+        return this._data.counter;
+    }
+
+    get call(): number {
+        return this._data.call;
+    }
+
+    get create(): number {
+        return this._data.create;
+    }
+
     get heal(): number {
         return this._data.heal;
+    }
+
+    get summon(): number {
+        return this._data.summon;
+    }
+
+    get teleport(): number {
+        return this._data.teleport;
+    }
+
+    get scry(): number {
+        return this._data.scry;
+    }
+
+    get charm(): number {
+        return this._data.charm;
+    }
+
+    get compel(): number {
+        return this._data.compel;
+    }
+
+    get figment(): number {
+        return this._data.figment;
+    }
+
+    get glamer(): number {
+        return this._data.glamer;
+    }
+
+    get phantom(): number {
+        return this._data.phantom;
+    }
+
+    get shadow(): number {
+        return this._data.shadow;
+    }
+
+    get enhancement(): number {
+        return this._data.enhancement;
+    }
+
+    get polymorph(): number {
+        return this._data.polymorph;
     }
 
     computed(mode: CastingMode, school: School | SubSchool): number {
