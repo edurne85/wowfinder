@@ -1,9 +1,13 @@
+import { sum } from '../../utils';
 import { buildItem, Gear, Item } from '.';
+import { convertMass, MassUnit } from '../Units/Mass';
 import Money from './Money';
 
 interface InventoryBuilder {
     money?: number;
     gear?: Gear[];
+    carried?: Item[];
+    owned?: Item[];
 }
 
 const needsPreffix = (val: any): boolean =>
@@ -14,14 +18,23 @@ const asGear = (i: Item): Gear => i as Gear;
 
 class Inventory {
     #gear: Gear[];
+    #carried: Item[];
+    #owned: Item[];
     #money: Money;
 
-    constructor({ money = 0, gear = [] }: InventoryBuilder) {
+    constructor({
+        money = 0,
+        gear = [],
+        carried = [],
+        owned = [],
+    }: InventoryBuilder) {
         this.#gear = gear
             .map(addPreffix)
             .map(buildItem)
             .filter(isGear)
             .map(asGear);
+        this.#carried = carried.map(buildItem);
+        this.#owned = owned.map(buildItem);
         this.#money = Money.fromRaw(money);
     }
 
@@ -49,6 +62,19 @@ class Inventory {
 
     get gear(): Gear[] {
         return this.#gear;
+    }
+
+    get carried(): Item[] {
+        return this.#carried;
+    }
+
+    get owned(): Item[] {
+        return this.#owned;
+    }
+
+    get load(): number {
+        const items = [...this.#gear, ...this.#carried];
+        return sum(...items.map(g => convertMass(g.weight, MassUnit.lb).value));
     }
 }
 

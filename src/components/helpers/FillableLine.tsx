@@ -1,15 +1,12 @@
 import styled from 'styled-components';
+import { ReactContent } from './ReactContent';
 
-const FillableLine = styled.p`
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+const FillableLine = styled.div`
+    overflow: visible;
     &.empty {
         border-bottom: 1px dashed #999;
     }
 `;
-
-type ReactContent = string | number | JSX.Element | JSX.Element[];
 
 function mapLines<T extends ReactContent> (lines: T[], keyPrefix: string): JSX.Element[] {
     let lineCount = 0;

@@ -13,8 +13,10 @@ const ColumnsContainer = styled.div`
 const ColumnDiv = styled.div`
     display: flex;
     flex-direction: column;
-    flex-basis: 100%;
+    flex-basis: 0;
+    flex-grow: 1;
     flex: 1;
+    max-width: 50%;
     & > *, & > h1 {
         margin-top: 5mm;
     }
