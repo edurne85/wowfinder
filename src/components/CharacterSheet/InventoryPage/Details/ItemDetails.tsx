@@ -55,5 +55,5 @@ function ItemDetails({ item }: { item: Item }): JSX.Element {
     );
 }
 
-export { ItemDetails as ItemDetails };
+export { ItemDetails };
 
