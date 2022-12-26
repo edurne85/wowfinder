@@ -1,3 +1,5 @@
+export type Validator<T> = (value: T) => boolean;
+
 export type { JsonValue, JSerializable } from './json';
 
 export { jClone } from './json';
