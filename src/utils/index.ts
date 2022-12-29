@@ -8,7 +8,7 @@ export { sum, fThousands } from './numbers';
 
 export { debug, debugOutput, debugTrace } from './debug';
 
-export { capitalizeFirstLetter, enumTryParse, parseIfNeeded } from './strings';
+export { capitalizeFirstLetter, parseIfNeeded } from './strings';
 
 export type { Parser, TryParser } from './strings';
 
