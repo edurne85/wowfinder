@@ -1,4 +1,3 @@
-import { enumTryParse } from '../../../utils';
 import { ActionLength } from '../../Action/ActionLength';
 import { Time } from '../../Units';
 
@@ -10,9 +9,8 @@ namespace CastingTime {
         if (input === 'special') {
             return 'special';
         }
-        const actionLength = enumTryParse(input, ActionLength.free);
-        if (actionLength) {
-            return actionLength;
+        if (input in ActionLength) {
+            return ActionLength[input as keyof typeof ActionLength];
         }
         const time = Time.tryParseTime(input);
         if (time) {

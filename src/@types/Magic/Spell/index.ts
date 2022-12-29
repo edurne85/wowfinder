@@ -1,7 +1,7 @@
 export { CastingTime } from './CastingTime';
+export type { SpellComponent } from './Components';
 export {
     parseSpellComponent,
-    SpellComponent,
     SpellCoreComponent,
 } from './Components';
 export {
@@ -11,5 +11,7 @@ export {
 } from './Descriptor';
 export { parseValidFlags, SpellFlag, tryParseFlag } from './Flags';
 export { computeRange, SpellRange, StandardRange } from './Range';
-export { SpellRank, SpellRankBuilder } from './Rank';
-export { Spell, SpellBuilder } from './Spell';
+export type { SpellRankBuilder } from './Rank';
+export { SpellRank } from './Rank';
+export type { SpellBuilder, Spells } from './Spell';
+export { Spell } from './Spell';

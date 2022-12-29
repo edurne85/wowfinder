@@ -15,4 +15,5 @@ function parseSpellComponent(component: string): SpellComponent {
     return buildItem(component);
 }
 
-export { SpellComponent, SpellCoreComponent, parseSpellComponent };
+export type { SpellComponent };
+export { SpellCoreComponent, parseSpellComponent };
