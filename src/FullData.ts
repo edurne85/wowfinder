@@ -3,6 +3,7 @@ import { Character, Characters } from './@types/Character';
 import { Class, Classes } from './@types/Character/Class';
 import { Faction, Factions } from './@types/Faction';
 import { buildItem, Item } from './@types/Item';
+import { Spell, Spells } from './@types/Magic/Spell';
 import { Rewards } from './@types/Rewards';
 import { ByKeyRecursive } from './utils';
 
@@ -13,6 +14,7 @@ class FullData {
     #rewards: Rewards;
     #classes: Classes;
     #items: ByKeyRecursive<Item>;
+    #spells: Spells;
     private constructor() {
         this.#factions = Faction.import();
         this.#chars = Character.import();
@@ -20,6 +22,7 @@ class FullData {
         this.#rewards = Adventure.combined(this.#adventures);
         this.#classes = Class.import();
         this.#items = Item.import(undefined, buildItem);
+        this.#spells = Spell.import();
     }
 
     get factions(): Factions {
@@ -44,6 +47,10 @@ class FullData {
 
     get items(): ByKeyRecursive<Item> {
         return this.#items;
+    }
+
+    get spells(): Spells {
+        return this.#spells;
     }
 
     static #imported: FullData | null = null;
