@@ -1,4 +1,4 @@
-import { sum } from '../../utils';
+import { sum, TryParser } from '../../utils';
 
 class Scalar<T> {
     private _value: number;
@@ -14,6 +14,21 @@ class Scalar<T> {
 
     toString(): string {
         return `${this._value} ${this._unit}`;
+    }
+
+    static tryParse<T>(input: string, unitParser: TryParser<T>): Scalar<T> | undefined {
+        const match = input.match(/(\d+\.?\d*)\s*(\w+)/);
+        if (!match) {
+            return undefined;
+        }
+        const unit = unitParser(match[2]);
+        if (!unit) {
+            return undefined;
+        }
+        return new Scalar({
+            value: +match[1],
+            unit,
+        });
     }
 }
 

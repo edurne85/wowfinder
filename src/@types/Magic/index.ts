@@ -13,8 +13,6 @@ export {
     fillSubSchoolValues,
     allSubSchoolsByParent,
 } from './School';
-export type { SpellRankBuilder } from './SpellRank';
-export { SpellRank } from './SpellRank';
 export { StandardRange, computeRange } from './StandardRange';
 
 export type {
