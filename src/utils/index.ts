@@ -8,7 +8,9 @@ export { sum, fThousands } from './numbers';
 
 export { debug, debugOutput, debugTrace } from './debug';
 
-export { capitalizeFirstLetter } from './strings';
+export { capitalizeFirstLetter, enumTryParse, parseIfNeeded } from './strings';
+
+export type { Parser, TryParser } from './strings';
 
 export type { Keyed, ByKey, ByKeyRecursive, ByKeyRecursiveEntry, builder } from './dataImport';
 
