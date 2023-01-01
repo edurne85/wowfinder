@@ -3,42 +3,18 @@
     ranks: [
         {
             rank: 1,
-            levels: [
-                {
-                    castingMode: 'arcane',
-                    level: 1,
-                },
-            ],
             duration: '1 min/level',
         },
         {
             rank: 2,
-            levels: [
-                {
-                    castingMode: 'arcane',
-                    level: 4,
-                },
-            ],
             duration: '1 min/level',
         },
         {
             rank: 3,
-            levels: [
-                {
-                    castingMode: 'arcane',
-                    level: 8,
-                },
-            ],
             duration: '10 min/level',
         },
         {
             rank: 4,
-            levels: [
-                {
-                    castingMode: 'arcane',
-                    level: 13,
-                },
-            ],
             duration: '1 hour/level',
         },
     ],

@@ -7,7 +7,7 @@ import { SpellDuration, tryParseSpellDuration } from './Duration';
 import { parseValidFlags, SpellFlag } from './Flags';
 import { SpellRange } from './Range';
 
-interface ISpellBuilderBase {
+interface SpellBaseBuilder {
     descriptors?: (SpellDescriptor | string)[];
     castingTime?: CastingTime | string;
     components?: (SpellComponent | string)[];
@@ -20,7 +20,7 @@ interface ISpellBuilderBase {
     flags?: (SpellFlag | string)[];
 }
 
-abstract class SpellBase implements ISpellBuilderBase {
+abstract class SpellBase implements SpellBaseBuilder {
     #descriptors: Set<SpellDescriptor>;
     #castingTime?: CastingTime;
     #components: SpellComponent[];
@@ -38,7 +38,7 @@ abstract class SpellBase implements ISpellBuilderBase {
         area,
         duration,
         flags = [],
-    }: ISpellBuilderBase) {
+    }: SpellBaseBuilder) {
         this.#descriptors = new Set(parseValidSpellDescriptors(descriptors));
         this.#castingTime = parseIfNeeded(castingTime, CastingTime.tryParse);
         this.#components = components.map(c =>
@@ -83,4 +83,4 @@ abstract class SpellBase implements ISpellBuilderBase {
     }
 }
 
-export { ISpellBuilderBase, SpellBase };
+export { SpellBaseBuilder, SpellBase };

@@ -1,41 +1,49 @@
+export {
+    CastingMode,
+    castingStats,
+    fillCastingModeValues
+} from './CastingMode';
+export type {
+    CastingModeValues,
+    CastingModeValuesPartial
+} from './CastingMode';
+export { levelByMode, zeroCasterLevel } from './EffectiveCasterLevels';
+export type { EffectiveCasterLevels } from './EffectiveCasterLevels';
+export {
+    allSubSchoolsByParent,
+    fillSchoolValues,
+    fillSubSchoolValues,
+    School,
+    SubSchool,
+    subSchoolParents,
+    subSchoolsByParent
+} from './School';
 export type {
     SchoolValues,
     SchoolValuesPartial,
     SubSchoolValues,
-    SubSchoolValuesPartial,
+    SubSchoolValuesPartial
 } from './School';
-export {
-    School,
-    SubSchool,
-    subSchoolParents,
-    subSchoolsByParent,
-    fillSchoolValues,
-    fillSubSchoolValues,
-    allSubSchoolsByParent,
-} from './School';
-export { StandardRange, computeRange } from './StandardRange';
-
-export type {
-    CastingModeValues,
-    CastingModeValuesPartial,
-} from './CastingMode';
-export { CastingMode, castingStats, fillCastingModeValues } from './CastingMode';
-
-export type {
-    SpellPowerValues,
-    SpellPowerValuesPartial,
-    FullComputedSpellPower,
-    FullComputedSchools,
-    ComputedSubSchools,
-} from './SpellPower';
-export {
-    fillSpellPowerValues,
-    computedSpellPower,
-    fullComputedSpellPower,
-    zeroSpellPower,
-} from './SpellPower';
-
-export type { EffectiveCasterLevels } from './EffectiveCasterLevels';
-export { zeroCasterLevel, levelByMode } from './EffectiveCasterLevels';
-
 export { slotsByLevel, slotsByLevelPrep, slotsByStat } from './slots';
+export { buildSpellListEntry, SpellList } from './SpellList';
+export type {
+    SpellListBuilder,
+    SpellListEntry,
+    SpellListEntryBuilder,
+    SpellLists
+} from './SpellList';
+export {
+    computedSpellPower,
+    fillSpellPowerValues,
+    fullComputedSpellPower,
+    zeroSpellPower
+} from './SpellPower';
+export type {
+    ComputedSubSchools,
+    FullComputedSchools,
+    FullComputedSpellPower,
+    SpellPowerValues,
+    SpellPowerValuesPartial
+} from './SpellPower';
+export { computeRange, StandardRange } from './StandardRange';
+
