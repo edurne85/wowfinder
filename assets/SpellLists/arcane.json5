@@ -2,8 +2,8 @@
     key: 'arcane',
     spells: {
         '0': [
+            { spell: 'resistance', rank: 1 },
             /*
-            { spell: 'resistance' },
             { spell: 'detectMagic' },
             { spell: 'detectPoison' },
             { spell: 'readMagic' },
@@ -28,37 +28,25 @@
         */
         ],
         '1': [
-            {
-                spell: 'enlargePerson',
-                rank: 1,
-            },
+            { spell: 'enlargePerson', rank: 1 },
         ],
         '2': [],
         '3': [],
         '4': [
-            {
-                spell: 'enlargePerson',
-                rank: 2,
-            },
+            { spell: 'enlargePerson', rank: 2 },
         ],
         '5': [],
         '6': [],
         '7': [],
         '8': [
-            {
-                spell: 'enlargePerson',
-                rank: 3,
-            },
+            { spell: 'enlargePerson', rank: 3 },
         ],
         '9': [],
         '10': [],
         '11': [],
         '12': [],
         '13': [
-            {
-                spell: 'enlargePerson',
-                rank: 4,
-            },
+            { spell: 'enlargePerson', rank: 4 },
         ],
         '14': [],
         '15': [],
