@@ -25,11 +25,9 @@ export type {
     SubSchoolValuesPartial
 } from './School';
 export { slotsByLevel, slotsByLevelPrep, slotsByStat } from './slots';
-export { buildSpellListEntry, SpellList } from './SpellList';
+export { SpellList } from './SpellList';
 export type {
     SpellListBuilder,
-    SpellListEntry,
-    SpellListEntryBuilder,
     SpellLists
 } from './SpellList';
 export {

@@ -2,60 +2,82 @@ import { forceDataImportKeyS } from '../../utils';
 import { Spell } from './Spell';
 
 interface SpellListEntry {
-    level: number;
     spell: Spell;
     rank: number;
 }
 
-type SpellListEntryBuilder = SpellListEntry | `(${number})${string}:${number}}`;
+interface SpellListEntryBuilder {
+    spell: string | Spell;
+    rank?: number; // default 1
+}
 
-function buildSpellListEntry(entry: SpellListEntryBuilder): SpellListEntry {
-    if (typeof entry === 'string') {
-        const match = entry.match(/^\((\d+)\)(.+):(\d+)$/);
-        if (!match) {
-            throw new Error(`Invalid spell list entry: ${entry}`);
-        }
-        const [, sLevel, key, sRank] = match;
-        const spell = Spell.import()[key];
-        const level = Number(sLevel);
-        const rank = Number(sRank);
+function buildSpellListEntry({
+    spell: key,
+    rank,
+}: SpellListEntryBuilder): SpellListEntry {
+    let spell: Spell;
+    if (typeof key === 'string') {
+        spell = Spell.import()[key];
         if (!spell) {
             throw new Error(`Invalid spell key: ${key}`);
         }
-        if (!spell.ranks.find((r) => r.rank === rank)) {
-            throw new Error(`Invalid spell rank: ${key}: ${rank}`);
-        }
-        return {
-            level,
-            spell,
-            rank,
-        };
+    } else {
+        spell = key;
     }
-    return entry;
+    rank ||= 1;
+    return {
+        spell,
+        rank,
+    };
 }
+
+type SpellListLevel = SpellListEntry[];
+
+type SpellListLevelBuilder = SpellListEntryBuilder[];
+
+function buildSpellListLevel(entries: SpellListLevelBuilder): SpellListLevel {
+    return entries.map(buildSpellListEntry);
+}
+
+type SpellListLevels = { [key: number]: SpellListLevel };
+
+type SpellListLevelsBuilder = { [key: number]: SpellListLevelBuilder };
 
 interface SpellListBuilder {
     key: string;
-    spells: SpellListEntryBuilder[];
+    spells: SpellListLevelsBuilder;
 }
 
 type SpellLists = { [key: string]: SpellList };
 
-class SpellList {
+class SpellList implements SpellListBuilder {
     #key: string;
-    #spells: SpellListEntry[];
+    #spells: SpellListLevels;
 
     constructor({ key, spells }: SpellListBuilder) {
         this.#key = key;
-        this.#spells = spells.map(buildSpellListEntry);
+        this.#spells = Object.fromEntries(
+            Object.entries(spells).map(([level, entries]) => [
+                level,
+                buildSpellListLevel(entries),
+            ])
+        );
     }
 
     get key(): string {
         return this.#key;
     }
 
-    get spells(): SpellListEntry[] {
-        return [...this.#spells];
+    get spells(): SpellListLevelsBuilder {
+        const res: SpellListLevels = {};
+        for (const [level, entries] of Object.entries(this.#spells)) {
+            const l = Number(level);
+            if (isNaN(l)) {
+                throw new Error(`Invalid spell list level: ${level}`);
+            }
+            res[l] = [...entries];
+        }
+        return res;
     }
 
     static build(raw: any): SpellList {
@@ -65,9 +87,12 @@ class SpellList {
     static #imported: SpellLists | null = null;
 
     static import(dir = window.Main.asset('SpellLists')): SpellLists {
-        return (this.#imported ||= forceDataImportKeyS<SpellList>(dir, this.build));
+        return (this.#imported ||= forceDataImportKeyS<SpellList>(
+            dir,
+            this.build
+        ));
     }
 }
 
-export type { SpellListBuilder, SpellListEntryBuilder, SpellListEntry, SpellLists };
-export { SpellList, buildSpellListEntry };
+export type { SpellListBuilder, SpellLists };
+export { SpellList };

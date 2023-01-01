@@ -1,6 +1,66 @@
 {
     key: 'arcane',
-    spells: [
-
-    ],
+    spells: {
+        '0': [
+            /*
+            { spell: 'resistance' },
+            { spell: 'detectMagic' },
+            { spell: 'detectPoison' },
+            { spell: 'readMagic' },
+            { spell: 'acidSplash' },
+            { spell: 'daze' },
+            { spell: 'flare' },
+            { spell: 'dancingLights' },
+            { spell: 'light' },
+            { spell: 'rayOfFrost' },
+            { spell: 'fireBolt' },
+            { spell: 'ghostSound' },
+            { spell: 'disruptUndead' },
+            { spell: 'bleed' },
+            { spell: 'touchOfFatigue' },
+            { spell: 'openClose' },
+            { spell: 'message' },
+            { spell: 'mageHand' },
+            { spell: 'mending' },
+            { spell: 'arcaneMark' },
+            { spell: 'prestidigitation' },
+            { spell: 'mindRay' },
+        */
+        ],
+        '1': [
+            {
+                spell: 'enlargePerson',
+                rank: 1,
+            },
+        ],
+        '2': [],
+        '3': [],
+        '4': [
+            {
+                spell: 'enlargePerson',
+                rank: 2,
+            },
+        ],
+        '5': [],
+        '6': [],
+        '7': [],
+        '8': [
+            {
+                spell: 'enlargePerson',
+                rank: 3,
+            },
+        ],
+        '9': [],
+        '10': [],
+        '11': [],
+        '12': [],
+        '13': [
+            {
+                spell: 'enlargePerson',
+                rank: 4,
+            },
+        ],
+        '14': [],
+        '15': [],
+    },
 }

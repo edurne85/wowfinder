@@ -64,8 +64,11 @@ class RankedSpell extends SpellBase implements RankedSpellBuilder {
     }
 
     getFullName(t: TFunction<'translation'>): string {
-        // TODO Change to roman numeral notation
         return `${t(this.key)} - ${toRoman(this.#rank)}`;
+    }
+
+    getDescription(t: TFunction<'translation'>): string {
+        return `${t(`spells.${this.key}.description`)}\n\n${t(`spells.${this.key}.${this.#rank}`)}`;
     }
 }
 

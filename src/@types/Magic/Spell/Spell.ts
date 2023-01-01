@@ -63,7 +63,11 @@ class Spell extends SpellBase implements SpellBuilder {
     }
 
     getFullName(t: TFunction<'translation'>): string {
-        return t(this.#key);
+        return t(`spells.${this.key}.name`);
+    }
+
+    getDescription(t: TFunction<'translation'>): string {
+        return t(`spells.${this.key}.description`);
     }
 
     get ranks(): SpellRankBuilder[] {
