@@ -53,6 +53,8 @@
         "allowArgumentsExplicitlyTypedAsAny": true
       }
     ],
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/prefer-enum-initializers": "warn",
     "max-len": [
       "warn",
       {

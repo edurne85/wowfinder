@@ -373,10 +373,10 @@ class Character {
         return new Character(raw);
     }
 
-    private static _imported: Characters | null = null;
+    static #imported: Characters | null = null;
 
     static import(dir = window.Main.asset('Characters')): Characters {
-        return (this._imported ||= forceDataImportKeyS<Character>(
+        return (this.#imported ||= forceDataImportKeyS<Character>(
             dir,
             this.build
         ));

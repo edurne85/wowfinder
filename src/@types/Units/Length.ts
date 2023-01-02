@@ -21,10 +21,10 @@ const convertLength: converter<LengthUnit> = makeConverter({
 });
 
 class Length extends Scalar<LengthUnit> {
-    constructor({value, unit}: {value: number, unit: LengthUnit}) {
-        super({value, unit});
+    constructor({ value, unit }: { value: number; unit: LengthUnit }) {
+        super({ value, unit });
     }
-    
+
     get feetInches(): string {
         if (this.value === 0) {
             return '0';
@@ -36,23 +36,29 @@ class Length extends Scalar<LengthUnit> {
                 value: inFeet.value - feet,
                 unit: LengthUnit.foot,
             }),
-            LengthUnit.inch,
+            LengthUnit.inch
         );
         const inches = Math.round(inchesOnly.value);
         const strFeet = feet !== 0 ? `${feet}'` : '';
-        const strInches = inches !== 0 ? ` ${inches}"`: '';
+        const strInches = inches !== 0 ? ` ${inches}"` : '';
         return `${strFeet}${strInches}`;
     }
 
     get fullDisplay(): string {
         const meters = Math.round(convertLength(this, LengthUnit.meter).value);
-        const squares = Math.round(convertLength(this, LengthUnit.square).value);
+        const squares = Math.round(
+            convertLength(this, LengthUnit.square).value
+        );
         return `${this.feetInches} (${meters}m) (${squares}□)`;
+    }
+
+    static tryParseLength(input: string): Length | undefined {
+        const base = Scalar.tryParse(
+            input,
+            (value: string) => LengthUnit[value as keyof typeof LengthUnit]
+        );
+        return base ? new Length(base) : undefined;
     }
 }
 
-export {
-    LengthUnit,
-    convertLength,
-    Length,
-};
+export { LengthUnit, convertLength, Length };

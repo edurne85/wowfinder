@@ -1,0 +1,27 @@
+{
+    key: 'enlargePerson',
+    ranks: [
+        {
+            rank: 1,
+            duration: '1 min/level',
+        },
+        {
+            rank: 2,
+            duration: '1 min/level',
+        },
+        {
+            rank: 3,
+            duration: '10 min/level',
+        },
+        {
+            rank: 4,
+            duration: '1 hour/level',
+        },
+    ],
+    sch: 'tra',
+    castingTime: 'full',
+    components: ['V', 'S', 'M'],
+    range: 'short',
+    save: 'fort',
+    flags: ['spellResistance'],
+}
