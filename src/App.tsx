@@ -1,10 +1,12 @@
-import './i18n';
 import { useContext } from 'react';
 import { CharacterList, CharacterSheet, Reputations, RewardsTable } from './components';
 import { GlobalContext } from './components/helpers/GlobalContext';
 import { FullData } from './FullData';
+import './i18n';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { debug } from './utils';
+
+import { Spell } from './components/Spells';
 
 const data = FullData.import();
 
@@ -28,6 +30,11 @@ function TestCharSheet({ charName }: { charName: string }): JSX.Element {
         />
     );
 }
+
+function TestSpell({spellKey}: {spellKey: string}): JSX.Element {
+    return <Spell spell={data.spells[spellKey]} />;
+}
+
 function PrintCharSheet(): JSX.Element {
     const context = useContext(GlobalContext);
     context.forceBlank = true;
@@ -47,6 +54,7 @@ if (debug) {
         CharList,
         TestCharSheet,
         PrintCharSheet,
+        TestSpell,
     });
 }
 
@@ -55,7 +63,8 @@ export function App(): JSX.Element {
     return (
         <GlobalContext.Provider value={context}>
             <GlobalStyle />
-            <PrintCharSheet />
+            { /* <TestSpell spellKey='enlargePerson' /> */}
+            <TestCharSheet charName="garet" />
         </GlobalContext.Provider>
     );
 }

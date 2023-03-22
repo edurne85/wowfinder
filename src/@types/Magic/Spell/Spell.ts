@@ -70,7 +70,7 @@ class Spell extends SpellBase implements SpellBuilder {
         return t(`spells.${this.key}.description`);
     }
 
-    get ranks(): SpellRankBuilder[] {
+    get ranks(): SpellRank[] {
         return [...this.#ranks];
     }
 
@@ -82,7 +82,7 @@ class Spell extends SpellBase implements SpellBuilder {
         return this.#subSchool;
     }
 
-    get sch(): SubSchool | School | string {
+    get sch(): SubSchool | School {
         return this.#subSchool || this.#school;
     }
 

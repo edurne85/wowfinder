@@ -146,6 +146,8 @@
         "level": "Level",
         "class": "Class",
         "range": "Range",
-        "power": "Spellpower"
+        "power": "Spellpower",
+        "school": "School",
+        "rank": "Rank"
     }
 }
