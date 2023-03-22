@@ -15,7 +15,7 @@
       "esModuleInterop": true,
       "noImplicitAny": true,
       "sourceMap": true,
-      "baseUrl": ".",
+      "baseUrl": "./src",
       "outDir": "dist",
       "strict": true ,
       "moduleResolution": "node",

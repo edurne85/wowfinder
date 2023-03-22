@@ -146,6 +146,8 @@
         "level": "Nivel",
         "class": "Clase",
         "range": "Alcance",
-        "power": "Potencia de hechizo"
+        "power": "Potencia de hechizo",
+        "school": "Escuela",
+        "rank": "Rango"
     }
 }
