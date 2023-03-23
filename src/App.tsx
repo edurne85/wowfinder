@@ -1,12 +1,18 @@
 import { useContext } from 'react';
-import { CharacterList, CharacterSheet, Reputations, RewardsTable } from './components';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
+import {
+    CharacterList,
+    CharacterSheet,
+    Reputations,
+    RewardsTable,
+} from './components';
 import { GlobalContext } from './components/helpers/GlobalContext';
+import { Spell } from './components/Spells';
 import { FullData } from './FullData';
 import './i18n';
+import { routes } from './Routes';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { debug } from './utils';
-
-import { Spell } from './components/Spells';
 
 const data = FullData.import();
 
@@ -20,7 +26,7 @@ function RewTable(): JSX.Element {
     );
 }
 function CharList(): JSX.Element {
-    return <CharacterList chars={data.chars} rewards={data.rewards} />;
+    return <CharacterList chars={data.chars} /* rewards={data.rewards} */ />;
 }
 function TestCharSheet({ charName }: { charName: string }): JSX.Element {
     return (
@@ -31,7 +37,7 @@ function TestCharSheet({ charName }: { charName: string }): JSX.Element {
     );
 }
 
-function TestSpell({spellKey}: {spellKey: string}): JSX.Element {
+function TestSpell({ spellKey }: { spellKey: string }): JSX.Element {
     return <Spell spell={data.spells[spellKey]} />;
 }
 
@@ -57,14 +63,15 @@ if (debug) {
         TestSpell,
     });
 }
+const router = createHashRouter(routes(data));
 
 export function App(): JSX.Element {
     const context = useContext(GlobalContext);
     return (
         <GlobalContext.Provider value={context}>
             <GlobalStyle />
-            { /* <TestSpell spellKey='enlargePerson' /> */}
-            <TestCharSheet charName="garet" />
+            {/* <TestSpell spellKey='enlargePerson' /> */}
+            <RouterProvider router={router} />
         </GlobalContext.Provider>
     );
 }
