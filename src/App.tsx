@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
+import { FullData } from './@types/FullData';
 import {
     CharacterList,
     CharacterSheet,
@@ -8,7 +9,6 @@ import {
 } from './components';
 import { GlobalContext } from './components/helpers/GlobalContext';
 import { Spell } from './components/Spells';
-import { FullData } from './FullData';
 import './i18n';
 import { routes } from './Routes';
 import { GlobalStyle } from './styles/GlobalStyle';

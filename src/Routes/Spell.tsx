@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Spell } from '../components/Spells';
-import { FullData } from '../FullData';
+import { FullData } from '../@types/FullData';
 import { RouteProvider, WiP } from './base';
 
 function SpellWrapper({ data }: { data: FullData }): JSX.Element {

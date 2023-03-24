@@ -1,4 +1,4 @@
-import { FullData } from '../FullData';
+import { FullData } from '../@types/FullData';
 import { RouteObject } from 'react-router-dom';
 
 type RouteProvider = (data: FullData) => RouteObject[];

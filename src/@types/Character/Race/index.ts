@@ -104,3 +104,5 @@ export default class Race {
         return (this._imported ||= forceDataImportKeyS(dir, this.build));
     }
 }
+
+export { Race, Races };

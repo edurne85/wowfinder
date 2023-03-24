@@ -1,12 +1,13 @@
-import { Adventure, Adventures } from './@types/Adventure';
-import { Character, Characters } from './@types/Character';
-import { Class, Classes } from './@types/Character/Class';
-import { Faction, Factions } from './@types/Faction';
-import { buildItem, Item } from './@types/Item';
-import { SpellList, SpellLists } from './@types/Magic';
-import { Spell, Spells } from './@types/Magic/Spell';
-import { Rewards } from './@types/Rewards';
-import { ByKeyRecursive } from './utils';
+import { Adventure, Adventures } from './Adventure';
+import { Character, Characters } from './Character';
+import { Class, Classes } from './Character/Class';
+import { Faction, Factions } from './Faction';
+import { buildItem, Item } from './Item';
+import { SpellList, SpellLists } from './Magic';
+import { Spell, Spells } from './Magic/Spell';
+import { Rewards } from './Rewards';
+import { ByKeyRecursive } from '../utils';
+import { Race, Races } from './Character/Race';
 
 class FullData {
     #factions: Factions;
@@ -14,6 +15,7 @@ class FullData {
     #adventures: Adventures;
     #rewards: Rewards;
     #classes: Classes;
+    #races: Races;
     #items: ByKeyRecursive<Item>;
     #spells: Spells;
     #spellLists: SpellLists;
@@ -23,6 +25,7 @@ class FullData {
         this.#adventures = Adventure.import();
         this.#rewards = Adventure.combined(this.#adventures);
         this.#classes = Class.import();
+        this.#races = Race.import();
         this.#items = Item.import(undefined, buildItem);
         this.#spells = Spell.import();
         this.#spellLists = SpellList.import();
@@ -48,6 +51,10 @@ class FullData {
         return this.#classes;
     }
 
+    get races(): Races {
+        return this.#races;
+    }
+    
     get items(): ByKeyRecursive<Item> {
         return this.#items;
     }

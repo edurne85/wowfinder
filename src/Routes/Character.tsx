@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { CharacterList, CharacterSheet } from '../components';
-import { FullData } from '../FullData';
+import { FullData } from '../@types/FullData';
 import { RouteProvider } from './base';
 
 function CharacterSheetWrapper({data}: {data: FullData}): JSX.Element {

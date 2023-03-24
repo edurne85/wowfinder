@@ -11,6 +11,7 @@
     "release": "electron-forge publish",
     "lint": "eslint . --ext js,ts,tsx",
     "lint-fix": "eslint . --fix --ext js,ts,tsx",
+    "cloc": "cloc -v src/ --by-file --include-lang=TypeScript",
     "test": "jest --passWithNoTests"
   },
   "keywords": [],
