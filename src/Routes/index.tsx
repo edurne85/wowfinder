@@ -1,27 +1,29 @@
-import { WithNavigation } from '../components/Navigation/Navigation';
+import { TranslationProvider } from '../i18n';
 import { RouteObject } from 'react-router-dom';
 import { FullData } from '../@types/FullData';
-import { characterRoutes } from './Character';
-import { classRoutes } from './Class';
+import { WithNavigation } from '../components/Navigation/Navigation';
+import { TitleProvider } from './base';
+import { characterNames, characterRoutes } from './Character';
+import { classNames, classRoutes } from './Class';
 import { factionRoutes } from './Faction';
 import { homeRoutes } from './Home';
 import { itemRoutes } from './Item';
-import { raceRoutes } from './Race';
+import { raceNames, raceRoutes } from './Race';
 import { spellRoutes } from './Spell';
 
 function addNavigation(...routes: RouteObject[]): RouteObject[] {
-  return routes.map(route => {
-    if (route.element) {
-      return {
-        ...route,
-        element: <WithNavigation>{route.element}</WithNavigation>,
-      };
-    }
-    return route;
-  });
+    return routes.map(route => {
+        if (route.element) {
+            return {
+                ...route,
+                element: <WithNavigation>{route.element}</WithNavigation>,
+            };
+        }
+        return route;
+    });
 }
 
-function routes(data: FullData): RouteObject[] {
+function getRoutes(data: FullData): RouteObject[] {
     return addNavigation(
         ...homeRoutes(data),
         ...factionRoutes(data),
@@ -29,8 +31,28 @@ function routes(data: FullData): RouteObject[] {
         ...spellRoutes(data),
         ...classRoutes(data),
         ...raceRoutes(data),
-        ...itemRoutes(data),
+        ...itemRoutes(data)
     );
 }
 
-export { routes };
+function customTitles(t: TranslationProvider, data: FullData): TitleProvider[] {
+    return [
+        ...characterNames(t, data),
+        ...classNames(t, data),
+        ...raceNames(t, data),
+    ];
+}
+
+function getCustomTitle(data: FullData) {
+    return function (t: TranslationProvider, path: string): string | null {
+        for (const title of customTitles(t, data)) {
+            const match = path.match(title.match);
+            if (match) {
+                return title.title(match);
+            }
+        }
+        return null;
+    };
+}
+
+export { getRoutes, getCustomTitle };

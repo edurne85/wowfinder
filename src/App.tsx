@@ -10,7 +10,7 @@ import {
 import { GlobalContext } from './components/helpers/GlobalContext';
 import { Spell } from './components/Spells';
 import './i18n';
-import { routes } from './Routes';
+import { getRoutes } from './Routes';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { debug } from './utils';
 
@@ -63,10 +63,13 @@ if (debug) {
         TestSpell,
     });
 }
-const router = createHashRouter(routes(data));
+
+const routes = getRoutes(data);
+const router = createHashRouter(routes);
 
 export function App(): JSX.Element {
     const context = useContext(GlobalContext);
+    context.routes = routes;
     return (
         <GlobalContext.Provider value={context}>
             <GlobalStyle />

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { CharacterList, CharacterSheet } from '../components';
 import { FullData } from '../@types/FullData';
-import { RouteProvider } from './base';
+import { RouteProvider, TitlesProvider } from './base';
 
 function CharacterSheetWrapper({data}: {data: FullData}): JSX.Element {
     let { char } = useParams<'char'>();
@@ -25,8 +25,21 @@ const characterRoutes: RouteProvider = data => {
         {
             path: '/chars/:char',
             element: <CharacterSheetWrapper data={data} />,
+            title: (path: string) => {
+                const char = path.replace(/^\/chars\/:/, '');
+                return data.chars[char]?.fullName || char;
+            }
         },
     ];
 };
 
-export { characterRoutes };
+const characterNames: TitlesProvider = (_, data) => ([
+    {
+        match: /^\/chars\/:?(.*)/,
+        title: (fragments: RegExpMatchArray | null): string | null => {
+            return fragments ? data.chars[fragments[1]]?.fullName || fragments[1] : null;
+        }
+    }
+]);
+
+export { characterRoutes, characterNames };

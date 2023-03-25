@@ -1,4 +1,4 @@
-import { RouteProvider, WiP } from './base';
+import { RouteProvider, TitlesProvider, WiP } from './base';
 import { Link } from 'react-router-dom';
 import Race from '../@types/Character/Race';
 import { useTranslation } from 'react-i18next';
@@ -34,4 +34,15 @@ const raceRoutes: RouteProvider = data => {
     ];
 };
 
-export { raceRoutes };
+const raceNames: TitlesProvider = (t) => [
+    {
+        match: /^\/races\/:?(.*)/,
+        title: (fragments: RegExpMatchArray | null): string | null => {
+            return fragments?.length
+                ? t(`races.${fragments[1]}`) || fragments[1]
+                : null;
+        },
+    },
+];
+
+export { raceRoutes, raceNames };

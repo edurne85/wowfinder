@@ -1,4 +1,5 @@
 import { Breadcrumbs } from './Breadcrumbs';
+import { useTranslation } from 'react-i18next';
 
 function Navigation(): JSX.Element {
     const canGoBack: boolean = window.history.length > 1;
@@ -8,19 +9,20 @@ function Navigation(): JSX.Element {
         canGoBack,
         canGoForward,
     });
+    const { t } = useTranslation();
     return (
         <nav>
             <button
                 onClick={() => window.history.back()}
                 disabled={!canGoBack}
             >
-                Back
+                {t('navigation.back')}
             </button>
             <button
                 onClick={() => window.history.forward()}
                 disabled={!canGoForward}
             >
-                Forward
+                {t('navigation.forward')}
             </button>
             <Breadcrumbs />
         </nav>

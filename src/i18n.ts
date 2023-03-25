@@ -1,6 +1,11 @@
-import i18n, { Resource } from 'i18next';
-import { initReactI18next } from 'react-i18next';
+import i18n, { Resource, TypeOptions } from 'i18next';
+import { initReactI18next, UseTranslationResponse } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+
+
+type TranslationProvider = UseTranslationResponse<
+    TypeOptions['defaultNS']
+>['t'];
 
 const translationsPath = window.Main.asset('translations');
 
@@ -69,3 +74,4 @@ i18n.use(LanguageDetector)
     });
 
 export { slurpRecursive };
+export type { TranslationProvider };
