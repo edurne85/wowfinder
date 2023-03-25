@@ -5,7 +5,7 @@ import { DetailLine } from './base';
 
 function WeaponBonusDamage({ weapon }: { weapon: Weapon }): JSX.Element {
     const { t } = useTranslation();
-    const h = t('ui.inventory.gear.bonusDamage');
+    const h = t('charsheet.inventory.gear.bonusDamage');
     return weapon.hasBonusDamage ? (
         <DetailLine h={h}>
             <Damage damage={weapon.bonusDamage} />
@@ -22,7 +22,7 @@ function WeaponDamage({ weapon }: { weapon: Weapon }): JSX.Element {
     const hasCrit = weapon.criticalMultiplier > 1;
     return (
         <>
-            <DetailLine h={t('ui.inventory.gear.baseDamage')}>
+            <DetailLine h={t('charsheet.inventory.gear.baseDamage')}>
                 <Damage damage={weapon.baseDamage} />
                 {hasCrit
                     ? `(${critRange} / ×${Math.floor(
@@ -39,7 +39,7 @@ function WeaponIntrinsicMod({ weapon }: { weapon: Weapon }): JSX.Element {
     const { t } = useTranslation();
     const i = weapon.intrinsic;
     const prefix = i > 0 ? '+' : '';
-    const h = t('ui.inventory.gear.intrinsic');
+    const h = t('charsheet.inventory.gear.intrinsic');
     return i === 0 ? (
         <></>
     ) : (
@@ -68,10 +68,10 @@ function WeaponDetails({ weapon }: { weapon: Weapon }): JSX.Element {
     const { t } = useTranslation();
     const range: string = weapon.ranged
         ? weapon.range.fullDisplay
-        : t('ui.inventory.gear.range.melee');
+        : t('charsheet.inventory.gear.range.melee');
     return (
         <>
-            <DetailLine h={t('ui.inventory.gear.range.h')}>{range}</DetailLine>
+            <DetailLine h={t('charsheet.inventory.gear.range.h')}>{range}</DetailLine>
             <WeaponDamage weapon={weapon} />
             <WeaponIntrinsicMod weapon={weapon} />
             <WeaponGrouping weapon={weapon} />

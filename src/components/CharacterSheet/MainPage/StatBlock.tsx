@@ -57,13 +57,13 @@ function StatHead(): JSX.Element {
     const { t } = useTranslation();
     return (<tr id="trStatsTitles">
         <StyledThTop></StyledThTop>
-        <StyledThTop>{t('ui.common.total')}</StyledThTop>
-        <StyledThTop>{t('ui.common.mod')}</StyledThTop>
-        <StyledThTop>{t('ui.common.base')}</StyledThTop>
-        <StyledThTop>{t('ui.common.enhancement')}</StyledThTop>
-        <StyledThTop>{t('ui.common.gear')}</StyledThTop>
-        <StyledThTop>{t('ui.common.misc')}</StyledThTop>
-        <StyledThTop>{t('ui.common.temp')}</StyledThTop>
+        <StyledThTop>{t('charsheet.common.total')}</StyledThTop>
+        <StyledThTop>{t('charsheet.common.mod')}</StyledThTop>
+        <StyledThTop>{t('charsheet.common.base')}</StyledThTop>
+        <StyledThTop>{t('charsheet.common.enhancement')}</StyledThTop>
+        <StyledThTop>{t('charsheet.common.gear')}</StyledThTop>
+        <StyledThTop>{t('charsheet.common.misc')}</StyledThTop>
+        <StyledThTop>{t('charsheet.common.temp')}</StyledThTop>
     </tr>);
 }
 

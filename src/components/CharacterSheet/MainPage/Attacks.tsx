@@ -61,17 +61,17 @@ export function Attacks({char}: {char?: Character}): JSX.Element {
         <thead>
             <tr>
                 <th></th>
-                <th>{t('ui.common.total')}</th>
-                <th>{t('ui.attack.bab')}</th>
-                <th>{t('ui.common.gear')}</th>
-                <th>{t('ui.common.stat')}</th>
-                <th>{t('ui.common.size')}</th>
-                <th>{t('ui.common.misc')}</th>
-                <th>{t('ui.common.temp')}</th>
+                <th>{t('charsheet.common.total')}</th>
+                <th>{t('charsheet.attack.bab')}</th>
+                <th>{t('charsheet.common.gear')}</th>
+                <th>{t('charsheet.common.stat')}</th>
+                <th>{t('charsheet.common.size')}</th>
+                <th>{t('charsheet.common.misc')}</th>
+                <th>{t('charsheet.common.temp')}</th>
             </tr>
         </thead>
         <tbody>
-            <Row label={t('ui.attack.melee')}
+            <Row label={t('charsheet.attack.melee')}
                 idSuffix={'Melee'}
                 bab={bab}
                 gear={0}
@@ -79,7 +79,7 @@ export function Attacks({char}: {char?: Character}): JSX.Element {
                 sizeMod={0}
                 misc={0}
                 temp={0} />
-            <Row label={t('ui.attack.ranged')}
+            <Row label={t('charsheet.attack.ranged')}
                 idSuffix={'Ranged'}
                 bab={bab}
                 gear={0}
@@ -87,7 +87,7 @@ export function Attacks({char}: {char?: Character}): JSX.Element {
                 sizeMod={0}
                 misc={0}
                 temp={0} />
-            <Row label={t('ui.attack.cmb')}
+            <Row label={t('charsheet.attack.cmb')}
                 idSuffix={'Cmb'}
                 bab={bab}
                 gear={0}

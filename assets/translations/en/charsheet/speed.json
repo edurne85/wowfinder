@@ -1,0 +1,11 @@
+{
+    "h": "Speed",
+    "base": "Base",
+    "reduced": "Enc.",
+    "fly": "Fly",
+    "maneuverability": "Maneuverability",
+    "swim": "Swim",
+    "climb": "Climb",
+    "burrow": "Burr.",
+    "misc": "Misc"
+}

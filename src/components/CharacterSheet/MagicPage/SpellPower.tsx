@@ -62,7 +62,7 @@ export function SpellPower({
         <PowerContainer>
             <thead>
                 <tr>
-                    <th colSpan={1}>{t('ui.magic.power')} ({t(`magic.modes.abbr.${mode}`)})</th>
+                    <th colSpan={1}>{t('charsheet.magic.power')} ({t(`magic.modes.abbr.${mode}`)})</th>
                 </tr>
             </thead>
             <tbody>

@@ -90,16 +90,16 @@ const Weight: React.FC<WeightProps> = ({load = 0, capacity}) => {
     const { t } = useTranslation();
     const l = limits(capacity);
     const context = useContext(GlobalContext);
-    const totalText = context.forceBlank ? '' : t(`ui.inventory.weight.${currentLoad(l, load)}`);
+    const totalText = context.forceBlank ? '' : t(`charsheet.inventory.weight.${currentLoad(l, load)}`);
     return(<StyledTable id="tblHp">
         <tbody>
             <tr>
-                <th colSpan={2}>{t('ui.common.total')}</th>
-                <th>{t('ui.inventory.weight.light')}</th>
-                <th>{t('ui.inventory.weight.medium')}</th>
-                <th>{t('ui.inventory.weight.heavy')}</th>
-                <th>{t('ui.inventory.weight.lift')}</th>
-                <th>{t('ui.inventory.weight.drag')}</th>
+                <th colSpan={2}>{t('charsheet.common.total')}</th>
+                <th>{t('charsheet.inventory.weight.light')}</th>
+                <th>{t('charsheet.inventory.weight.medium')}</th>
+                <th>{t('charsheet.inventory.weight.heavy')}</th>
+                <th>{t('charsheet.inventory.weight.lift')}</th>
+                <th>{t('charsheet.inventory.weight.drag')}</th>
             </tr>
             <tr>
                 <td><WeightInput value={load} /></td>

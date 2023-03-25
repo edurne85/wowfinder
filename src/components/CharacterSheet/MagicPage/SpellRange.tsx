@@ -23,7 +23,7 @@ export function SpellRange({ efl = 0, mode }: { efl: number, mode: CastingMode }
         <RangeContainer>
             <tbody>
                 <tr>
-                    <th className="h" colSpan={2}>{t('ui.magic.range')} ({t(`magic.modes.abbr.${mode}`)})</th>
+                    <th className="h" colSpan={2}>{t('charsheet.magic.range')} ({t(`magic.modes.abbr.${mode}`)})</th>
                 </tr>
                 <tr>
                     <th>{t('magic.range.short')}</th>

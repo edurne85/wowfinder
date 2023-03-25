@@ -56,19 +56,19 @@ export function Saves({char}: {char?: Character}): JSX.Element {
         <thead>
             <tr id="trSavesTitles">
                 <th></th>
-                <th>{t('ui.common.total')}</th>
-                <th>{t('ui.common.stat')}</th>
-                <th>{t('ui.common.base')}</th>
-                <th>{t('ui.common.enhancement')}</th>
-                <th>{t('ui.common.gear')}</th>
-                <th>{t('ui.common.misc')}</th>
-                <th>{t('ui.common.temp')}</th>
+                <th>{t('charsheet.common.total')}</th>
+                <th>{t('charsheet.common.stat')}</th>
+                <th>{t('charsheet.common.base')}</th>
+                <th>{t('charsheet.common.enhancement')}</th>
+                <th>{t('charsheet.common.gear')}</th>
+                <th>{t('charsheet.common.misc')}</th>
+                <th>{t('charsheet.common.temp')}</th>
             </tr>
         </thead>
         <tbody>
-            <Row idSuffix="Fort" label={t('ui.saves.abbr.fort')} value={char?.saves.fort} />
-            <Row idSuffix="Refl" label={t('ui.saves.abbr.refl')} value={char?.saves.refl} />
-            <Row idSuffix="Will" label={t('ui.saves.abbr.will')} value={char?.saves.will} />
+            <Row idSuffix="Fort" label={t('charsheet.saves.abbr.fort')} value={char?.saves.fort} />
+            <Row idSuffix="Refl" label={t('charsheet.saves.abbr.refl')} value={char?.saves.refl} />
+            <Row idSuffix="Will" label={t('charsheet.saves.abbr.will')} value={char?.saves.will} />
         </tbody>
     </StyledTable>);
 }

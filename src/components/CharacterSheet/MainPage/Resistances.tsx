@@ -53,11 +53,11 @@ export function Resistances({char}: {char?: Character}): JSX.Element {
         <thead>
             <tr id="trResistTitles">
                 <th></th>
-                <th>{t('ui.common.total')}</th>
-                <th>{t('ui.common.enhancement')}</th>
-                <th>{t('ui.common.gear')}</th>
-                <th>{t('ui.common.misc')}</th>
-                <th>{t('ui.common.temp')}</th>
+                <th>{t('charsheet.common.total')}</th>
+                <th>{t('charsheet.common.enhancement')}</th>
+                <th>{t('charsheet.common.gear')}</th>
+                <th>{t('charsheet.common.misc')}</th>
+                <th>{t('charsheet.common.temp')}</th>
             </tr>
         </thead>
         <tbody>

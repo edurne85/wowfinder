@@ -60,7 +60,7 @@ export function MagicPage({
     const { t } = useTranslation();
     return (
         <Page key="Magic" id="Magic" visible={visible}>
-            <Header>{t('ui.magic.h')}</Header>
+            <Header>{t('charsheet.magic.h')}</Header>
             <Columns
                 columns={[
                     {
