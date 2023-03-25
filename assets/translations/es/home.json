@@ -1,0 +1,11 @@
+{
+    "title": "WowFinder Companion",
+    "menu": {
+        "factions": "Facciones y reputación",
+        "chars": "Personajes",
+        "spells": "Conjuros",
+        "classes": "Clases",
+        "races": "Razas",
+        "items": "Objetos"
+    }
+}
