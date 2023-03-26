@@ -11,6 +11,7 @@
     "release": "electron-forge publish",
     "lint": "eslint . --ext js,ts,tsx",
     "lint-fix": "eslint . --fix --ext js,ts,tsx",
+    "cloc": "cloc -v src/ --by-file --include-lang=TypeScript",
     "test": "jest --passWithNoTests"
   },
   "keywords": [],
@@ -23,6 +24,7 @@
     "react-dom": "^17.0.2",
     "react-hot-loader": "^4.13.0",
     "react-i18next": "^12.2.0",
+    "react-router-dom": "^6.9.0",
     "styled-components": "^5.3.9"
   },
   "devDependencies": {

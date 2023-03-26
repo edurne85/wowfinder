@@ -1,6 +1,6 @@
 import { TFunction, useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Character } from '../../../@types/Character';
+import { Character } from '../../../types/Character';
 import { mapLines } from '../../helpers/FillableLine';
 
 const maxLines = 32;

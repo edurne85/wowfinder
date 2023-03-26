@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { Character } from '../../@types/Character';
-import { ClassFeature } from '../../@types/Character/Class';
+import { Character } from '../../types/Character';
+import { ClassFeature } from '../../types/Character/Class';
 import { GlobalContext } from '../helpers/GlobalContext';
 import type { FullPageSelection, TypedPageArgs } from './TypedPage';
 import { PageType, TypedPage } from './TypedPage';

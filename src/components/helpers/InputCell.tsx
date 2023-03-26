@@ -1,4 +1,4 @@
-import { nextScore, reputationByScoreNullable, threshholds } from '../../@types/Faction';
+import { nextScore, reputationByScoreNullable, threshholds } from '../../types/Faction';
 
 type CommonValue = number | string;
 

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { GlobalContext } from '../../helpers/GlobalContext';
 import styled from 'styled-components';
-import { Character } from '../../../@types/Character';
+import { Character } from '../../../types/Character';
 import {
     CastingMode,
     zeroCasterLevel,
@@ -10,7 +10,7 @@ import {
     slotsByLevel,
     slotsByStat,
     castingStats,
-} from '../../../@types/Magic';
+} from '../../../types/Magic';
 import { InputCell } from '../../helpers/InputCell';
 
 const SlotsContainer = styled.table`
@@ -68,14 +68,14 @@ export function SpellSlots({ char, mode }: SpellSlotsArgs): JSX.Element {
         <SlotsContainer>
             <thead>
                 <tr>
-                    <th colSpan={5}>{t('ui.magic.slots')} ({t(`magic.modes.abbr.${mode}`)})</th>
+                    <th colSpan={5}>{t('charsheet.magic.slots')} ({t(`magic.modes.abbr.${mode}`)})</th>
                 </tr>
                 <tr>
-                <th>{t('ui.magic.level')}</th>
-                <th>{t('ui.common.total')}</th>
-                <th>{t('ui.magic.class')}</th>
+                <th>{t('charsheet.magic.level')}</th>
+                <th>{t('charsheet.common.total')}</th>
+                <th>{t('charsheet.magic.class')}</th>
                 <th>{t(`stats.abbr.${statKey}`)}</th>
-                <th>{t('ui.common.misc')}</th>
+                <th>{t('charsheet.common.misc')}</th>
                 </tr>
             </thead>
             <tbody>

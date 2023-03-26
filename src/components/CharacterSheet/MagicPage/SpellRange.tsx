@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import Size from '../../../@types/Character/Size';
-import { CastingMode, computeRange, StandardRange } from '../../../@types/Magic';
+import Size from '../../../types/Character/Size';
+import { CastingMode, computeRange, StandardRange } from '../../../types/Magic';
 
 const RangeContainer = styled.table`
     & th {
@@ -23,7 +23,7 @@ export function SpellRange({ efl = 0, mode }: { efl: number, mode: CastingMode }
         <RangeContainer>
             <tbody>
                 <tr>
-                    <th className="h" colSpan={2}>{t('ui.magic.range')} ({t(`magic.modes.abbr.${mode}`)})</th>
+                    <th className="h" colSpan={2}>{t('charsheet.magic.range')} ({t(`magic.modes.abbr.${mode}`)})</th>
                 </tr>
                 <tr>
                     <th>{t('magic.range.short')}</th>

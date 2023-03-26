@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Spell as S, SpellRank, SpellBase } from '../../@types/Magic/Spell';
+import { Spell as S, SpellRank, SpellBase } from '../../types/Magic/Spell';
 import React from 'react';
 import { Descriptors } from './Descriptors';
 import { toRoman } from '../../utils';
@@ -71,7 +71,7 @@ function Rank({ parent, rank }: SpellRankArgs): JSX.Element {
             raw={rank}
             hRank={3}
             texts={{
-                title: `${t('ui.magic.rank')} ${toRoman(rank.rank)}`,
+                title: `${t('charsheet.magic.rank')} ${toRoman(rank.rank)}`,
                 description: t(`spells.${parent.key}.${rank.rank}`),
             }}
         />

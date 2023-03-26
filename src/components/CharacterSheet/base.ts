@@ -1,5 +1,5 @@
-import { Character } from '../../@types/Character';
-import { ClassBonuses } from '../../@types/Character/Class';
+import { Character } from '../../types/Character';
+import { ClassBonuses } from '../../types/Character/Class';
 
 type CharProps = {
     char: Character,

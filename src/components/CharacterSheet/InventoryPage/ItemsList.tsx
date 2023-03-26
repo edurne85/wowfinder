@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Gear, Item } from '../../../@types/Item';
+import { Gear, Item } from '../../../types/Item';
 import { mapLines } from '../../helpers/FillableLine';
 import { debugOutline } from '../../helpers/mixins';
 import { ReactContent } from '../../helpers/ReactContent';

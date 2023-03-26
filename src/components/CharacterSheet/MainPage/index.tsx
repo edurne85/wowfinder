@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Character } from '../../../@types/Character';
+import { Character } from '../../../types/Character';
 import styled from 'styled-components';
 import Page from '../../helpers/Page';
 import { PersonalBlock } from './Personal';
@@ -38,15 +38,15 @@ export function MainPage({char, xp, visible = true}: {char?: Character, xp: numb
                 id: 'MainLeft',
                 children: (<>
                     <StatBlock stats={char?.stats} />
-                    <Header>{t('ui.speed.h')}</Header>
+                    <Header>{t('charsheet.speed.h')}</Header>
                     <Speed speeds={char?.speed} />
-                    <Header>{t('ui.armor.h')}</Header>
+                    <Header>{t('charsheet.armor.h')}</Header>
                     <Defenses char={char} />
-                    <Header>{t('ui.saves.h')}</Header>
+                    <Header>{t('charsheet.saves.h')}</Header>
                     <Saves char={char} />
-                    <Header>{t('ui.resist.h')}</Header>
+                    <Header>{t('charsheet.resist.h')}</Header>
                     <Resistances char={char} />
-                    <Header>{t('ui.attack.h')}</Header>
+                    <Header>{t('charsheet.attack.h')}</Header>
                     <Attacks char={char} />
                 </>),
             },
@@ -54,12 +54,12 @@ export function MainPage({char, xp, visible = true}: {char?: Character, xp: numb
                 key: 'MainRight',
                 id: 'MainRight',
                 children: (<>
-                    <Header>{t('ui.classes.h')}</Header>
+                    <Header>{t('charsheet.classes.h')}</Header>
                     <Classes char={char} />
-                    <Header>{t('ui.hitpoints.h')}</Header>
+                    <Header>{t('charsheet.hitpoints.h')}</Header>
                     { /* TODO: extra (misc) HP */}
                     <HitPoints bonuses={bonuses} misc={char?.miscHP} />
-                    <Header>{t('ui.traits.h')}</Header>
+                    <Header>{t('charsheet.traits.h')}</Header>
                     <Traits char={char} />
                 </>),
             },

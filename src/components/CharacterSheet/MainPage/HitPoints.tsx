@@ -35,15 +35,15 @@ const HitPoints: React.FC<HitPointProps> = ({bonuses, misc=0, current}) => {
     return(<StyledTable id="tblHp">
         <tbody>
             <tr>
-                <th>{t('ui.hitpoints.curr')}</th>
+                <th>{t('charsheet.hitpoints.curr')}</th>
                 <th></th>
-                <th>{t('ui.hitpoints.total')}</th>
+                <th>{t('charsheet.hitpoints.total')}</th>
                 <th></th>
-                <th>{t('ui.hitpoints.base')}</th>
+                <th>{t('charsheet.hitpoints.base')}</th>
                 <th></th>
-                <th>{t('ui.hitpoints.misc')}</th>
+                <th>{t('charsheet.hitpoints.misc')}</th>
                 <th></th>
-                <th>{t('ui.hitpoints.temp')}</th>
+                <th>{t('charsheet.hitpoints.temp')}</th>
             </tr>
             <tr>
                 <td><input id="txtHpCurrent" defaultValue={curr} /></td>

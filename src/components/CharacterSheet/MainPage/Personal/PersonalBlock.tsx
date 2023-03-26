@@ -1,7 +1,7 @@
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import Race from '../../../../@types/Character/Race';
+import Race from '../../../../types/Character/Race';
 import { CharXpProps } from '../../base';
 import PersonalEntryNumber, { PersonalEntryBigNumber } from './PersonalEntryNumber';
 import { PersonalEntryText, PersonalEntryTextCentered } from './PersonalEntryText';
@@ -27,7 +27,7 @@ function raceName(race: Race | null, t: TFunction): string {
 const PersonalBlock: React.FC<CharXpProps> = ({char, xp = 0}) => {
     // TODO: insert values as they become available
     const { t } = useTranslation();
-    const label = (key: string): string => t(`ui.personal.${key}`);
+    const label = (key: string): string => t(`charsheet.personal.${key}`);
     const tlevel = Math.floor(
         (1 + Math.sqrt(1 + 4*xp / 1000)) / 2
     );

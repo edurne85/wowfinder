@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import {
     Gear, Item, rarityColorsLight
-} from '../../../../@types/Item';
+} from '../../../../types/Item';
 import { ArmorDetailsWrapped } from './ArmorDetails';
 import { DetailLine, ItemTitle, Slots, ToDo } from './base';
 import { WeaponDetailsWrapped } from './WeaponDetails';
@@ -23,7 +23,7 @@ function GearDetails({ gear }: { gear: Gear }): JSX.Element {
     const { t } = useTranslation();
     return (
         <>
-            <DetailLine h={t('ui.inventory.gear.slot')}>
+            <DetailLine h={t('charsheet.inventory.gear.slot')}>
                 <Slots shape={gear.shape} />
             </DetailLine>
             <WeaponDetailsWrapped item={gear} />
@@ -48,7 +48,7 @@ function ItemDetails({ item }: { item: Item }): JSX.Element {
                 {t(`labels.items.gear.${item.label}`)}
             </ItemTitle>
             <GearDetailsWrapped item={item} />
-            <DetailLine h={t('ui.inventory.weight.h')}>
+            <DetailLine h={t('charsheet.inventory.weight.h')}>
                 {item.weight.toString()}
             </DetailLine>
         </ItemDetailsContainer>

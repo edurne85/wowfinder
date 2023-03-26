@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Character } from '../../@types/Character';
-import { SkillsBonus } from '../../@types/Character/Bonus';
-import Size from '../../@types/Character/Size';
-import Skills, { Skill } from '../../@types/Character/Skills';
-import { StatSet } from '../../@types/Character/Stats';
+import { Character } from '../../types/Character';
+import { SkillsBonus } from '../../types/Character/Bonus';
+import Size from '../../types/Character/Size';
+import Skills, { Skill } from '../../types/Character/Skills';
+import { StatSet } from '../../types/Character/Stats';
 import Header from '../helpers/Header';
 import { CheckCell, InputCell } from '../helpers/InputCell';
 import { borderless, debugOutline, font, FontFamily, printableBottomBorder, smallText } from '../helpers/mixins';
@@ -100,24 +100,24 @@ export function SkillsPage({char, visible = true}: {char?: Character, visible?: 
     const classSkills = char?.classBonuses.classSkills || new Set<Skill>();
     const gearBonuses = char?.gearBonuses.skills || new SkillsBonus({});
     return (<Page key="Skills" id="Skills" visible={visible}>
-        <Header>{t('ui.skills.h')}</Header>
+        <Header>{t('charsheet.skills.h')}</Header>
         <StyledTable>
             <thead>
                 <tr>
-                    <th className="check-box">{t('ui.skills.untrained')}</th>
-                    <th className="check-box">{t('ui.skills.class')}</th>
-                    <th className="skill-name">{t('ui.skills.skill')}</th>
-                    <th>{t('ui.common.total')}</th>
-                    <th>{t('ui.common.stat')}</th>
-                    <th>{t('ui.common.statMod')}</th>
-                    <th>{t('ui.skills.ranks')}</th>
-                    <th>{t('ui.skills.trained')}</th>
-                    <th>{t('ui.common.racial')}</th>
-                    <th>{t('ui.common.size')}</th>
-                    <th>{t('ui.common.gear')}</th>
-                    <th>{t('ui.common.misc')}</th>
-                    <th>{t('ui.skills.acp')}</th>
-                    <th>{t('ui.common.temp')}</th>
+                    <th className="check-box">{t('charsheet.skills.untrained')}</th>
+                    <th className="check-box">{t('charsheet.skills.class')}</th>
+                    <th className="skill-name">{t('charsheet.skills.skill')}</th>
+                    <th>{t('charsheet.common.total')}</th>
+                    <th>{t('charsheet.common.stat')}</th>
+                    <th>{t('charsheet.common.statMod')}</th>
+                    <th>{t('charsheet.skills.ranks')}</th>
+                    <th>{t('charsheet.skills.trained')}</th>
+                    <th>{t('charsheet.common.racial')}</th>
+                    <th>{t('charsheet.common.size')}</th>
+                    <th>{t('charsheet.common.gear')}</th>
+                    <th>{t('charsheet.common.misc')}</th>
+                    <th>{t('charsheet.skills.acp')}</th>
+                    <th>{t('charsheet.common.temp')}</th>
                 </tr>
             </thead>
             <tbody>

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Speeds } from '../../../@types/Character/Speeds';
-import { LengthUnit, Speed as SpeedValue, SpeedUnit, TimeUnit } from '../../../@types/Units';
+import { Speeds } from '../../../types/Character/Speeds';
+import { LengthUnit, Speed as SpeedValue, SpeedUnit, TimeUnit } from '../../../types/Units';
 import { InputSuffixedCell } from '../../helpers/InputCell';
 import { borderless, borderThick, borderThin, printableBottomBorder, reverseColors, smallText } from '../../helpers/mixins';
 
@@ -89,27 +89,27 @@ export function Speed ({speeds}: {speeds?: Speeds}): JSX.Element {
     return (<StyledTable>
         <tbody>
             <tr>
-                <th>{t('ui.speed.base')}</th>
+                <th>{t('charsheet.speed.base')}</th>
                 <SpeedCells name="Base" speed={speeds?.base} />
-                <th>{t('ui.speed.reduced')}</th>
+                <th>{t('charsheet.speed.reduced')}</th>
                 <SpeedCells name="Reduced" speed={speeds?.encumbered} />
             </tr>
             <tr>
-                <th>{t('ui.speed.fly')}</th>
+                <th>{t('charsheet.speed.fly')}</th>
                 <SpeedCells name="Fly" speed={speeds?.fly.speed} />
-                <td colSpan={2}>{t('ui.speed.maneuverability')}</td>
+                <td colSpan={2}>{t('charsheet.speed.maneuverability')}</td>
                 <td colSpan={2}><select id="mnuFlyManeuverability">{/* TODO: maneuverability */}</select></td>
             </tr>
             <tr>
-                <th>{t('ui.speed.swim')}</th>
+                <th>{t('charsheet.speed.swim')}</th>
                 <SpeedCells name="Swim" speed={speeds?.swim} />
-                <th>{t('ui.speed.climb')}</th>
+                <th>{t('charsheet.speed.climb')}</th>
                 <SpeedCells name="Climb" speed={speeds?.climb} />
             </tr>
             <tr>
-                <th>{t('ui.speed.burrow')}</th>
+                <th>{t('charsheet.speed.burrow')}</th>
                 <SpeedCells name="Burrow" speed={speeds?.burrow} />
-                <th>{t('ui.speed.misc')}</th>
+                <th>{t('charsheet.speed.misc')}</th>
                 <SpeedCells name="Misc" speed={speeds?.misc} />
             </tr>
         </tbody>
