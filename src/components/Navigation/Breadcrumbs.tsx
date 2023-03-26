@@ -8,13 +8,16 @@ import { TranslationProvider } from '../../i18n';
 
 const BreadcrumbsContainer = styled.div`
     display: inline-block;
-    & > a,
-    & > span {
-        margin: 0 0.5rem;
+    margin-left: 1.5em;
+    span.title {
+        font-weight: bold;
     }
 `;
 
-type PathTitleProvider = (t: TranslationProvider, path: string) => string | null;
+type PathTitleProvider = (
+    t: TranslationProvider,
+    path: string
+) => string | null;
 
 type PathTitleResolver = (path: string) => string;
 
@@ -24,10 +27,11 @@ interface ChunkLinkProps {
     isLast?: boolean;
 }
 
-function titlesResolver(t: TranslationProvider, titlesProvider: PathTitleProvider): PathTitleResolver {
-    return function title(
-        path: string
-    ): string {
+function titlesResolver(
+    t: TranslationProvider,
+    titlesProvider: PathTitleProvider
+): PathTitleResolver {
+    return function title(path: string): string {
         const customTitle = titlesProvider(t, path);
         const lastChunk = path.split(/[/.]/).pop() || '';
         return customTitle || t(`navigation.${lastChunk}`);
@@ -41,7 +45,9 @@ function SlashChunkLink({
 }: ChunkLinkProps): JSX.Element {
     const path = `/${chunks.join('/')}`;
     const title = titleResolver(path);
-    return <>/{isLast ? <span>{title}</span> : <Link to={path}>{title}</Link>}</>;
+    return (
+        <> » {isLast ? <span>{title}</span> : <Link to={path}>{title}</Link>}</>
+    );
 }
 
 // TODO / WiP: suport i18n
@@ -55,13 +61,19 @@ function Breadcrumbs(): JSX.Element {
         .map(s => s.replace(/^:/, ''))
         .filter(s => s);
     const lastSlashIndex = slashChunks.length - 1;
+    console.log({ path, slashChunks, lastSlashIndex });
     /* const lastSlashChunk = slashChunks.length
         ? slashChunks[lastSlashIndex]
         : '';
     // const dotChunks = lastSlashChunk.split('.'); */ // TODO
     return (
         <BreadcrumbsContainer>
-            <Link to="/">{t('navigation.home')}</Link>
+            <span className="title">{t('navigation.address')}:</span>
+            {slashChunks.length ? (
+                <Link to="/">{t('navigation.home')}</Link>
+            ) : (
+                <span>{t('navigation.home')}</span>
+            )}
             {slashChunks.map((_chunk, i) => (
                 <SlashChunkLink
                     key={i}

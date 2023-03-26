@@ -6,12 +6,19 @@ const colors = {
     gray6: '#666',
     gray3: '#333',
     black: '#000',
+    link: '#00f',
+    linkBackground: '#ccf',
 };
 Object.freeze(colors);
 
 const reverseColors = `
         color: ${colors.white};
         background-color: ${colors.black};
+`;
+
+const linkColors = `
+        color: ${colors.link};
+        background-color: ${colors.linkBackground};
 `;
 
 const screenZoomDefault = 1.6;
@@ -103,6 +110,7 @@ const scrollable = 'overflow: auto;';
 export {
     colors,
     reverseColors,
+    linkColors,
     screenZoom,
     mainColor,
     smallText,

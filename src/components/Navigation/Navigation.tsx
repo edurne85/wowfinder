@@ -1,9 +1,41 @@
 import { Breadcrumbs } from './Breadcrumbs';
 import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import { mainColor, font, linkColors } from '../helpers/mixins';
+
+const NavigationContainer = styled.nav`
+    margin: 0.5em 0;
+
+    button,
+    a,
+    span {
+        ${mainColor}
+        ${font({
+            size: 12,
+        })}
+        display: inline-block;
+        appearance: none;
+        border: none;
+        padding: 0.1em 0.5em;
+    }
+
+    button,
+    a {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    button:hover,
+    a:hover {
+        text-decoration: underline;
+        ${linkColors}
+    }
+`;
 
 function Navigation(): JSX.Element {
     const canGoBack: boolean = window.history.length > 1;
-    const canGoForward: boolean = window.history.state.idx < window.history.length - 1;
+    const canGoForward: boolean =
+        window.history.state.idx < window.history.length - 1;
     console.log({
         history: window.history,
         canGoBack,
@@ -11,11 +43,8 @@ function Navigation(): JSX.Element {
     });
     const { t } = useTranslation();
     return (
-        <nav>
-            <button
-                onClick={() => window.history.back()}
-                disabled={!canGoBack}
-            >
+        <NavigationContainer>
+            <button onClick={() => window.history.back()} disabled={!canGoBack}>
                 {t('navigation.back')}
             </button>
             <button
@@ -25,11 +54,15 @@ function Navigation(): JSX.Element {
                 {t('navigation.forward')}
             </button>
             <Breadcrumbs />
-        </nav>
+        </NavigationContainer>
     );
 }
 
-function WithNavigation({ children }: { children: React.ReactNode }): JSX.Element {
+function WithNavigation({
+    children,
+}: {
+    children: React.ReactNode;
+}): JSX.Element {
     return (
         <>
             <Navigation />
