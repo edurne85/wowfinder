@@ -14,10 +14,16 @@ export type {
     ByKeyRecursiveEntry,
     Keyed,
 } from './dataImport';
-export { debug, debugOutput, debugTrace } from './debug';
+export {
+    debug,
+    debugOutput,
+    debugTrace,
+    reportWiP,
+    reportNotImplemented,
+} from './debug';
 export type { Expanded } from './Expanded';
 export { jClone } from './json';
-export type { JSerializable, JsonValue } from './json';
+export type { JSerializable, JsonValue, Exportable } from './json';
 export { fThousands, sum, toRoman } from './numbers';
 export { capitalizeFirstLetter, parseIfNeeded } from './strings';
 export type { Parser, TryParser } from './strings';

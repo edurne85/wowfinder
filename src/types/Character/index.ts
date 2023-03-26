@@ -1,4 +1,4 @@
-import { forceDataImportKeyS, sum } from '../../utils';
+import { Exportable, forceDataImportKeyS, JsonValue, sum } from '../../utils';
 import { Armor } from '../Item';
 import { Inventory } from '../Item/Inventory';
 import {
@@ -18,6 +18,7 @@ import { Feat, feats } from './Feats';
 import type { FeatChoice } from './helpers';
 import { checkClass, checkRace, parseFeatChoices } from './helpers';
 import CharPersonalDetails, {
+    jsonExport as personalDetailsJsonExport,
     jsonImport as personalDetailsJsonImport,
 } from './Personal';
 import Race from './Race';
@@ -29,7 +30,7 @@ import Stats, { zeroDefault } from './Stats';
 
 type Characters = { [key: string]: Character };
 
-class Character {
+class Character implements Exportable<JsonValue> {
     #key: string;
     #personal: CharPersonalDetails;
     #active: boolean;
@@ -302,6 +303,27 @@ class Character {
         }
         this.#invalidateCache();
         return this.classes;
+    }
+
+    export(): JsonValue {
+        return {
+            key: this.#key,
+            personal: personalDetailsJsonExport(this.#personal),
+            race: this.#race?.key || '',
+            classes: this.#classes.map(c => ({
+                cls: c.cls.key,
+                level: c.level,
+            })),
+            feats: this.#feats.map(f => ({
+                feat: f.feat,
+            })),
+            active: this.#active,
+            miscHP: this.#miscHP,
+            baseStats: this.#stats.base,
+            skillRanks: this.#skillRanks,
+            resistances: this.#resistances.export(),
+            inventory: this.#inventory.export(),
+        };
     }
 
     static build(raw: any): Character {

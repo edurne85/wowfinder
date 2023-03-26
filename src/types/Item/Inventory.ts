@@ -1,4 +1,4 @@
-import { sum } from '../../utils';
+import { JsonValue, sum } from '../../utils';
 import { buildItem, Gear, Item } from '.';
 import { convertMass, MassUnit } from '../Units/Mass';
 import Money from './Money';
@@ -75,6 +75,15 @@ class Inventory {
     get load(): number {
         const items = [...this.#gear, ...this.#carried];
         return sum(...items.map(g => convertMass(g.weight, MassUnit.lb).value));
+    }
+
+    export(): JsonValue {
+        return {
+            money: this.#money.raw,
+            gear: this.#gear.map(g => g.key),
+            carried: this.#carried.map(c => c.key),
+            owned: this.#owned.map(o => o.key),
+        };
     }
 }
 

@@ -1,3 +1,4 @@
+import { JsonValue } from '../../utils';
 import { DamageType } from '../DamageType';
 
 enum ResistanceCategory {
@@ -7,7 +8,9 @@ enum ResistanceCategory {
     temp = 'temp',
 }
 
-type ResistanceBreakdown = { [key in ResistanceCategory]: number } & { readonly total: number };
+type ResistanceBreakdown = { [key in ResistanceCategory]: number } & {
+    readonly total: number;
+};
 type ResistanceBreakdownBuilder = { [key in ResistanceCategory]?: number };
 
 class ResistanceBreakdownImpl
@@ -267,10 +270,24 @@ class Resistances implements FullResistances, ResistancesBuilder {
 
     updatedByCategory(data: CategorizedResistancesBuilder): Resistances {
         const { enhance, gear, misc, temp } = this.categorized;
-        const curated = Object.assign({}, {enhance, gear, misc, temp}, data);
+        const curated = Object.assign({}, { enhance, gear, misc, temp }, data);
         return Resistances.fromCategorized(
             curated as CategorizedResistancesBuilder
         );
+    }
+
+    export(): JsonValue {
+        return {
+            bludgeoning: this.bludgeoning,
+            slashing: this.slashing,
+            piercing: this.piercing,
+            arcane: this.arcane,
+            fire: this.fire,
+            cold: this.cold,
+            nature: this.nature,
+            shadow: this.shadow,
+            holy: this.holy,
+        };
     }
 }
 
