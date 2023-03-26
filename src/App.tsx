@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
-import { FullData } from './@types/FullData';
+import { FullData } from './types/FullData';
 import {
     CharacterList,
     CharacterSheet,

@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Character } from '../../../@types/Character';
+import { Character } from '../../../types/Character';
 import {
     CastingMode,
     zeroSpellPower,
     zeroCasterLevel,
     levelByMode,
-} from '../../../@types/Magic';
+} from '../../../types/Magic';
 import Columns from '../../helpers/Columns';
 import Header from '../../helpers/Header';
 import { reverseColors, debugOutline } from '../../helpers/mixins';

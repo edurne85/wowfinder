@@ -1,5 +1,5 @@
 import { ToDo } from './base';
-import { Armor, Item } from '../../../../@types/Item';
+import { Armor, Item } from '../../../../types/Item';
 
 function ArmorDetails({ armor }: { armor: Armor }): JSX.Element {
     return (

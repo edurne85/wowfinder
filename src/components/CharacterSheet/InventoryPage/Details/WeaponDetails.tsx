@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Item, Weapon } from '../../../../@types/Item';
+import { Item, Weapon } from '../../../../types/Item';
 import { Damage } from '../Damage';
 import { DetailLine } from './base';
 

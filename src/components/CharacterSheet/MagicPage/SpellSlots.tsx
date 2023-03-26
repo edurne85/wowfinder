@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { GlobalContext } from '../../helpers/GlobalContext';
 import styled from 'styled-components';
-import { Character } from '../../../@types/Character';
+import { Character } from '../../../types/Character';
 import {
     CastingMode,
     zeroCasterLevel,
@@ -10,7 +10,7 @@ import {
     slotsByLevel,
     slotsByStat,
     castingStats,
-} from '../../../@types/Magic';
+} from '../../../types/Magic';
 import { InputCell } from '../../helpers/InputCell';
 
 const SlotsContainer = styled.table`

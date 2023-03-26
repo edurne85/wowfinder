@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Shape, explodeShape } from '../../../../@types/Item/Gear/Slot';
+import { Shape, explodeShape } from '../../../../types/Item/Gear/Slot';
 import styled from 'styled-components';
 import { ReactChildren } from '../../../../utils';
 

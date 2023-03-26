@@ -1,4 +1,4 @@
-import { FullData } from '../../@types/FullData';
+import { FullData } from '../../types/FullData';
 import React from 'react';
 import { RouteObject } from 'react-router-dom';
 

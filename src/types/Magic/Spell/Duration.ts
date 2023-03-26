@@ -1,5 +1,5 @@
 import { TFunction } from 'i18next';
-import { Time } from '../../../@types/Units';
+import { Time } from '../../../types/Units';
 
 type FixedSpellDuration = {
     durationType: 'fixed';

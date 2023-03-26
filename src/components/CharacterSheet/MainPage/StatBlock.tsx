@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import Stats, { StatKeys } from '../../../@types/Character/Stats';
+import Stats, { StatKeys } from '../../../types/Character/Stats';
 import { borderless, borderThick, borderThin, reverseColors, smallText } from '../../helpers/mixins';
 
 interface StatRowBuilder {

@@ -1,6 +1,6 @@
 import { RouteProvider, TitlesProvider, WiP } from './base';
 import { Link } from 'react-router-dom';
-import Race from '../@types/Character/Race';
+import Race from '../types/Character/Race';
 import { useTranslation } from 'react-i18next';
 
 interface RaceListProps {

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Character } from '../../@types/Character';
+import { Character } from '../../types/Character';
 
 const CharacterPickerP = styled.p`
     font-size: 14pt;

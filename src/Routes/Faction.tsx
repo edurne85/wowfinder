@@ -1,5 +1,5 @@
 import { RewardsTable } from '../components';
-import { FullData } from '../@types/FullData';
+import { FullData } from '../types/FullData';
 import { RouteProvider } from './base';
 
 function RewTable({ data }: { data: FullData }): JSX.Element {

@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Damage as Dmg } from '../../../@types/Damage';
-import { DamageType } from '../../../@types/DamageType';
-import Dice from '../../../@types/Dice';
+import { Damage as Dmg } from '../../../types/Damage';
+import { DamageType } from '../../../types/DamageType';
+import Dice from '../../../types/Dice';
 import { Join } from '../../helpers/Join';
 
 const typeColors = {

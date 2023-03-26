@@ -1,4 +1,4 @@
-import { SpellBase, SpellDescriptor } from '../../@types/Magic/Spell';
+import { SpellBase, SpellDescriptor } from '../../types/Magic/Spell';
 
 interface DescriptorsArgs {
     descriptors: Iterable<SpellDescriptor>;

@@ -1,4 +1,4 @@
-import { FullData } from '../@types/FullData';
+import { FullData } from '../types/FullData';
 import { RouteObject, useLocation } from 'react-router-dom';
 import { reportWiP } from '../utils/debug';
 import { TranslationProvider } from '../i18n';

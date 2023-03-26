@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Character } from '../../@types/Character';
-import { SkillsBonus } from '../../@types/Character/Bonus';
-import Size from '../../@types/Character/Size';
-import Skills, { Skill } from '../../@types/Character/Skills';
-import { StatSet } from '../../@types/Character/Stats';
+import { Character } from '../../types/Character';
+import { SkillsBonus } from '../../types/Character/Bonus';
+import Size from '../../types/Character/Size';
+import Skills, { Skill } from '../../types/Character/Skills';
+import { StatSet } from '../../types/Character/Stats';
 import Header from '../helpers/Header';
 import { CheckCell, InputCell } from '../helpers/InputCell';
 import { borderless, debugOutline, font, FontFamily, printableBottomBorder, smallText } from '../helpers/mixins';

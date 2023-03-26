@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { Character } from '../../../@types/Character';
-import Stats from '../../../@types/Character/Stats';
-import { Inventory } from '../../../@types/Item/Inventory';
-import { convertMass, Mass, MassUnit } from '../../../@types/Units';
+import { Character } from '../../../types/Character';
+import Stats from '../../../types/Character/Stats';
+import { Inventory } from '../../../types/Item/Inventory';
+import { convertMass, Mass, MassUnit } from '../../../types/Units';
 import Columns from '../../helpers/Columns';
 import Header from '../../helpers/Header';
 import Page from '../../helpers/Page';

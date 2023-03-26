@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Character } from '../../../@types/Character';
+import { Character } from '../../../types/Character';
 import styled from 'styled-components';
 import Page from '../../helpers/Page';
 import { PersonalBlock } from './Personal';

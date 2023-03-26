@@ -1,7 +1,7 @@
 import { TFunction } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import Race from '../../../../@types/Character/Race';
+import Race from '../../../../types/Character/Race';
 import { CharXpProps } from '../../base';
 import PersonalEntryNumber, { PersonalEntryBigNumber } from './PersonalEntryNumber';
 import { PersonalEntryText, PersonalEntryTextCentered } from './PersonalEntryText';

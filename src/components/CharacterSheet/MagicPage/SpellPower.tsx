@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { GlobalContext } from '../../helpers/GlobalContext';
 import styled from 'styled-components';
-import { allSubSchoolsByParent, CastingMode, FullComputedSchools, School, SubSchool } from '../../../@types/Magic';
+import { allSubSchoolsByParent, CastingMode, FullComputedSchools, School, SubSchool } from '../../../types/Magic';
 import { font } from '../../helpers/mixins';
 
 const PowerContainer = styled.table`

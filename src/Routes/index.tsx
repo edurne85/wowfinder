@@ -1,6 +1,6 @@
 import { TranslationProvider } from '../i18n';
 import { RouteObject } from 'react-router-dom';
-import { FullData } from '../@types/FullData';
+import { FullData } from '../types/FullData';
 import { WithNavigation } from '../components/Navigation/Navigation';
 import { TitleProvider } from './base';
 import { characterNames, characterRoutes } from './Character';

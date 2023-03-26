@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import {
     Gear, Item, rarityColorsLight
-} from '../../../../@types/Item';
+} from '../../../../types/Item';
 import { ArmorDetailsWrapped } from './ArmorDetails';
 import { DetailLine, ItemTitle, Slots, ToDo } from './base';
 import { WeaponDetailsWrapped } from './WeaponDetails';

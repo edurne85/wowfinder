@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { GlobalContext } from '../../helpers/GlobalContext';
 import styled from 'styled-components';
-import { Money as M, CoinType, displayCoinTypes } from '../../../@types/Item/Money';
+import { Money as M, CoinType, displayCoinTypes } from '../../../types/Item/Money';
 import Header from '../../helpers/Header';
 
 

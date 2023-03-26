@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Character } from '../../../@types/Character';
-import { FullArmorValues } from '../../../@types/Character/ArmorValues';
+import { Character } from '../../../types/Character';
+import { FullArmorValues } from '../../../types/Character/ArmorValues';
 import { InputCell, InputH } from '../../helpers/InputCell';
 import { borderThin, reverseColors, smallText, borderless, colors, printableBottomBorder } from '../../helpers/mixins';
 

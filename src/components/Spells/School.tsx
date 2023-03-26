@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { School as S, SubSchool } from '../../@types/Magic';
-import { Spell, SpellBase } from '../../@types/Magic/Spell';
+import { School as S, SubSchool } from '../../types/Magic';
+import { Spell, SpellBase } from '../../types/Magic/Spell';
 
 interface SchoolArgs {
     sch: S | SubSchool;

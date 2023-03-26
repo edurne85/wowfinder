@@ -1,6 +1,6 @@
 import { RouteProvider, TitlesProvider, WiP } from './base';
 import { Link } from 'react-router-dom';
-import { Class } from '../@types/Character/Class';
+import { Class } from '../types/Character/Class';
 import { useTranslation } from 'react-i18next';
 
 interface ClassListProps {

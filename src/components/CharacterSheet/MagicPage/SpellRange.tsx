@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import Size from '../../../@types/Character/Size';
-import { CastingMode, computeRange, StandardRange } from '../../../@types/Magic';
+import Size from '../../../types/Character/Size';
+import { CastingMode, computeRange, StandardRange } from '../../../types/Magic';
 
 const RangeContainer = styled.table`
     & th {
