@@ -1,19 +1,6 @@
 import { forceDataImportKeyS, sum } from '../../utils';
-import Stats, { StatSet, zeroDefault } from './Stats';
-import CharPersonalDetails, {
-    jsonImport as personalDetailsJsonImport,
-} from './Personal';
-import Race from './Race';
-import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
-import { Speeds } from './Speeds';
-import { ArmorValues, FullArmorValues } from './ArmorValues';
-import Size from './Size';
-import { Saves, SimpleSaves } from './Saves';
-import { Resistances } from './Resistances';
-import { Bonus, BonusType } from './Bonus';
 import { Armor } from '../Item';
-import { Inventory, InventoryBuilder } from '../Item/Inventory';
-import { Aura, auraBonuses } from './Class/Auras';
+import { Inventory } from '../Item/Inventory';
 import {
     CastingMode,
     computedSpellPower,
@@ -22,95 +9,42 @@ import {
     School,
     SubSchool,
 } from '../Magic';
+import { ArmorValues, FullArmorValues } from './ArmorValues';
+import { Bonus, BonusType } from './Bonus';
+import { CharacterBuilder, SkillRanks } from './builder';
+import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
+import { Aura, auraBonuses } from './Class/Auras';
 import { Feat, feats } from './Feats';
-
-type SkillRanks = { [key: string]: number };
-
-interface FeatChoice {
-    feat: Feat;
-    class?: Class;
-    level: number;
-}
-
-interface CharacterBuilder {
-    key: string;
-    personal: CharPersonalDetails;
-    race: string;
-    classes: { cls: string; level: number }[];
-    feats: Iterable<FeatChoice>;
-    active?: boolean;
-    miscHP?: number;
-    baseStats: StatSet;
-    skillRanks?: SkillRanks;
-    resistances?: Resistances;
-    inventory?: InventoryBuilder;
-}
+import type { FeatChoice } from './helpers';
+import { checkClass, checkRace, parseFeatChoices } from './helpers';
+import CharPersonalDetails, {
+    jsonImport as personalDetailsJsonImport,
+} from './Personal';
+import Race from './Race';
+import { Resistances } from './Resistances';
+import { Saves, SimpleSaves } from './Saves';
+import Size from './Size';
+import { Speeds } from './Speeds';
+import Stats, { zeroDefault } from './Stats';
 
 type Characters = { [key: string]: Character };
 
-const defaultRace = 'human.cha';
-const Races = Race.import();
-function checkRace(raceName: string): Race {
-    const r = Races[raceName || defaultRace];
-    if (!r) {
-        throw new Error(`Unknown race key: ${raceName}`);
-    }
-    return r;
-}
-
-const Classes = Class.import();
-function checkClass(className: string): Class {
-    const c = Classes[className];
-    if (!c) {
-        throw new Error(`Unknown class key: ${className}`);
-    }
-    return c;
-}
-
-function parseFeatChoice(raw: any): FeatChoice | null {
-    const res = { ...raw };
-    if (res.class) {
-        if (!(res.class instanceof Class)) {
-            const k = res.class;
-            res.class = Classes[k];
-            if (!res.class) {
-                console.warn(`Unknown class key: ${k}`);
-                return null;
-            }
-        }
-    }
-    if (!Object.keys(Feat).includes(res.feat)) {
-        console.warn(`Unknown feat key: ${res.feat}`);
-        return null;
-    }
-    return res;
-}
-function parseFeatChoices(raw: any[]): FeatChoice[] {
-    const res: FeatChoice[] = [];
-    for (const f of raw.map(parseFeatChoice)) {
-        if (f !== null) {
-            res.push(f);
-        }
-    }
-    return res;
-}
-
 class Character {
-    private _key: string;
-    private _personal: CharPersonalDetails;
-    private _active: boolean;
-    private _stats: Stats;
-    private _race: Race;
-    private _classes: ClassLevels;
-    private _feats: FeatChoice[];
-    private _miscHP: number;
-    private _skillRanks: SkillRanks;
-    private _armor: ArmorValues;
-    private _resistances: Resistances;
-    private _inventory: Inventory;
+    #key: string;
+    #personal: CharPersonalDetails;
+    #active: boolean;
+    #stats: Stats;
+    #race: Race;
+    #classes: ClassLevels;
+    #feats: FeatChoice[];
+    #miscHP: number;
+    #skillRanks: SkillRanks;
+    #armor: ArmorValues;
+    #resistances: Resistances;
+    #inventory: Inventory;
 
-    private _cachedClassBonuses: ClassBonuses | null = null;
-    private _cachedGearBonuses: Bonus | null = null;
+    #cachedClassBonuses: ClassBonuses | null = null;
+    #cachedGearBonuses: Bonus | null = null;
 
     constructor({
         key,
@@ -124,80 +58,79 @@ class Character {
         skillRanks = {},
         inventory = Inventory.defaultBuilder,
     }: CharacterBuilder) {
-        this._key = key;
-        this._personal = personalDetailsJsonImport(personal);
-        this._active = active;
-        this._race = checkRace(race);
-        this._classes = [];
+        this.#key = key;
+        this.#personal = personalDetailsJsonImport(personal);
+        this.#active = active;
+        this.#race = checkRace(race);
+        this.#classes = [];
         for (const { cls, level } of classes) {
-            this._classes.push({ cls: checkClass(cls), level });
+            this.#classes.push({ cls: checkClass(cls), level });
         }
         const auraBonuses = this.auraBonuses;
-        this._stats = new Stats({
+        this.#stats = new Stats({
             base: baseStats,
-            racial: this._race ? this._race.statMods : zeroDefault,
+            racial: this.#race ? this.#race.statMods : zeroDefault,
             // TODO ? enhance
             misc: auraBonuses.stats.values,
             // TODO ? temp
         });
-        this._miscHP = miscHP;
-        this._skillRanks = Object.assign({}, skillRanks);
-        this._feats = parseFeatChoices([...feats]);
-        this._armor = ArmorValues.zero;
-        // this._resistances = new Resistances({...(resistances || {})});
-        this._resistances = Resistances.fromCategorized({
+        this.#miscHP = miscHP;
+        this.#skillRanks = Object.assign({}, skillRanks);
+        this.#feats = parseFeatChoices([...feats]);
+        this.#armor = ArmorValues.zero;
+        this.#resistances = Resistances.fromCategorized({
             misc: auraBonuses.resistances.values,
         });
         // TODO Refine inventory / gear
-        this._inventory = new Inventory(inventory);
+        this.#inventory = new Inventory(inventory);
 
-        this._cachedClassBonuses = null;
-        this._cachedGearBonuses = this._combineGearBonuses();
+        this.#cachedClassBonuses = null;
+        this.#cachedGearBonuses = this.#combineGearBonuses();
     }
 
-    private _invalidateCache(): void {
-        this._cachedClassBonuses = null;
-        this._cachedGearBonuses = null;
+    #invalidateCache(): void {
+        this.#cachedClassBonuses = null;
+        this.#cachedGearBonuses = null;
     }
 
     get key(): string {
-        return this._key;
+        return this.#key;
     }
 
     get fullName(): string {
-        return this._personal.fullName;
+        return this.#personal.fullName;
     }
 
     toString(): string {
-        return this._personal.fullName;
+        return this.#personal.fullName;
     }
 
     get active(): boolean {
-        return this._active;
+        return this.#active;
     }
 
     get personal(): CharPersonalDetails {
-        return Object.assign({}, this._personal);
+        return Object.assign({}, this.#personal);
     }
 
     get stats(): Stats {
-        return this._stats;
+        return this.#stats;
     }
 
     get race(): Race | null {
-        return this._race || null;
+        return this.#race || null;
     }
 
     get classes(): ClassLevels {
-        return this._classes.map(({ cls, level }) => ({ cls, level }));
+        return this.#classes.map(({ cls, level }) => ({ cls, level }));
     }
 
     get miscHP(): number {
-        return this._miscHP;
+        return this.#miscHP;
     }
 
     get skillRanks(): SkillRanks {
-        return Object.assign({}, this._skillRanks);
+        return Object.assign({}, this.#skillRanks);
     }
 
     get speed(): Speeds {
@@ -209,16 +142,16 @@ class Character {
 
     get armor(): FullArmorValues {
         return FullArmorValues.fromBaseValues({
-            base: this._armor,
-            stats: this._stats,
+            base: this.#armor,
+            stats: this.#stats,
             bab: this.classBonuses.bab,
-            size: this._race?.size || Size.medium,
+            size: this.#race?.size || Size.medium,
         });
     }
 
     get saves(): Saves {
         return new Saves({
-            stats: this._stats,
+            stats: this.#stats,
             base: new SimpleSaves(this.classBonuses.saves),
             enhance: SimpleSaves.zero, // TODO
             gear: new SimpleSaves(this.gearBonuses.saves),
@@ -228,50 +161,53 @@ class Character {
     }
 
     get resistances(): Resistances {
-        return this._resistances;
+        return this.#resistances;
     }
 
     get inventory(): Inventory {
-        return this._inventory;
+        return this.#inventory;
     }
 
     get classBonuses(): ClassBonuses {
-        return (this._cachedClassBonuses ||= Class.multiclass(
-            this._classes,
-            this._stats.totals
+        return (this.#cachedClassBonuses ||= Class.multiclass(
+            this.#classes,
+            this.#stats.totals
         ));
     }
 
     get allFeats(): Feat[] {
-        return this._feats.map(entry => entry.feat);
+        return this.#feats.map(entry => entry.feat);
     }
 
     get validFeats(): Feat[] {
-        return this._feats
+        return this.#feats
             .filter(entry => {
                 const levelReq =
                     (entry.class
                         ? sum(
-                              ...this._classes
+                              ...this.#classes
                                   .filter(c => entry.class === c.cls)
                                   .map(c => c.level)
                           )
                         : sum(...this.classes.map(entry => entry.level))) >=
                     entry.level;
-                return entry.level === 0 || (levelReq && feats[entry.feat].requirements.test(this));
+                return (
+                    entry.level === 0 ||
+                    (levelReq && feats[entry.feat].requirements.test(this))
+                );
             })
             .map(entry => entry.feat);
     }
 
-    private _combineGearBonuses(): Bonus {
+    #combineGearBonuses(): Bonus {
         const combined = Bonus.combine(
-            ...this._inventory.gear.map(g => g.bonuses)
+            ...this.#inventory.gear.map(g => g.bonuses)
         ).gear;
-        this._stats = this._stats.updated({ gear: combined.stats.values });
-        this._resistances = this._resistances.updatedByCategory({
+        this.#stats = this.#stats.updated({ gear: combined.stats.values });
+        this.#resistances = this.#resistances.updatedByCategory({
             gear: combined.resistances.values,
         });
-        const allArmor: Armor[] = this._inventory.gear
+        const allArmor: Armor[] = this.#inventory.gear
             .filter(g => g instanceof Armor)
             .map(g => g as Armor);
         const armor = Math.max(
@@ -280,7 +216,7 @@ class Character {
         const shield = Math.max(
             ...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass)
         );
-        this._armor = new ArmorValues({
+        this.#armor = new ArmorValues({
             armor,
             shield,
             miscP: combined.armorClass,
@@ -289,7 +225,7 @@ class Character {
     }
 
     get gearBonuses(): Bonus {
-        return (this._cachedGearBonuses ||= this._combineGearBonuses());
+        return (this.#cachedGearBonuses ||= this.#combineGearBonuses());
     }
 
     get classFeatures(): ClassFeature[] {
@@ -358,18 +294,18 @@ class Character {
     }
 
     addLevel(cls: Class, levels = 1): ClassLevels {
-        const matches = this._classes.filter(c => c.cls.key === cls.key);
+        const matches = this.#classes.filter(c => c.cls.key === cls.key);
         if (matches.length > 0) {
             matches[0].level += levels;
         } else {
-            this._classes.push({ cls, level: levels });
+            this.#classes.push({ cls, level: levels });
         }
-        this._invalidateCache();
+        this.#invalidateCache();
         return this.classes;
     }
 
     static build(raw: any): Character {
-        // TODO Validate props
+        // TODO Validate props (https://github.com/edurne85/wowfinder/issues/281)
         return new Character(raw);
     }
 
@@ -384,5 +320,4 @@ class Character {
 }
 
 export type { Characters };
-
 export { Character };
