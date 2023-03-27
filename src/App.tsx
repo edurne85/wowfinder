@@ -12,7 +12,7 @@ import { Spell } from './components/Spells';
 import './i18n';
 import { getRoutes } from './Routes';
 import { GlobalStyle } from './styles/GlobalStyle';
-import { debug } from './utils';
+import { debug, debugOutput, exportByChars } from './utils';
 
 const data = FullData.import();
 
@@ -61,6 +61,14 @@ if (debug) {
         TestCharSheet,
         PrintCharSheet,
         TestSpell,
+    });
+    debugOutput('Players', {
+        naia: exportByChars(data, 'garet', 'benel'),
+        andrea: exportByChars(data, 'keina'),
+        estanis: exportByChars(data, 'mythea'),
+        alex: exportByChars(data, 'dael'),
+        txema: exportByChars(data, 'bhuldirm'),
+        joana: exportByChars(data, 'arianna', 'kaliri'),
     });
 }
 
