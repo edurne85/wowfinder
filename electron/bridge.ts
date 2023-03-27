@@ -53,6 +53,9 @@ export const files = {
   resolvePath: (...pathSegments: string[]): string => {
     return ipcRenderer.sendSync('files:resolvePath', ...pathSegments);
   },
+  getTempDir: (): string => {
+    return ipcRenderer.sendSync('files:getTempDir');
+  },
 };
 
 contextBridge.exposeInMainWorld('Files', files);

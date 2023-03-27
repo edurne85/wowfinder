@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { ipcMain } from 'electron';
+import { app, ipcMain } from 'electron';
 
 const outputPrefix = 'output/';
 
@@ -53,6 +53,10 @@ const getDirectories = (dpath: string): string[] =>
         .filter(dirent => dirent.isDirectory())
         .map(dirent => dirent.name);
 
+const getTempDir = (): string => {
+    return app.getPath('temp');
+};
+
 export default function registerListeners(): void {
     ipcMain.on('files:prepareDir', (event, target: string) => {
         prepareDir(target);
@@ -80,6 +84,9 @@ export default function registerListeners(): void {
     });
     ipcMain.on('files:resolvePath', (event, ...pathSegments) => {
         event.returnValue = path.resolve(...pathSegments);
+    });
+    ipcMain.on('files:getTempDir', (event) => {
+        event.returnValue = getTempDir();
     });
 }
 
