@@ -7,6 +7,7 @@ export {
     forceDataImportKeyS,
     forceDataImportKeySRecursive,
 } from './dataImport';
+export { exportByChars } from './dataExport';
 export type {
     builder,
     ByKey,
