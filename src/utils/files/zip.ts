@@ -1,7 +1,6 @@
 import * as archiver from 'archiver';
 import { dialog, ipcMain } from 'electron';
 import * as fs from 'fs';
-import * as fsx from 'fs-extra';
 import * as path from 'path';
 import { dumpable, dumpToDir } from './directories';
 
@@ -38,7 +37,7 @@ function zipDir(dirPath: string, filePath: string): Archiver {
 const dumpToZip = (fullZipPath: string, data: dumpable): string => {
     const fullDirPath = dumpToDir(path.basename(fullZipPath, '.zip'), data);
     zipDir(fullDirPath, fullZipPath);
-    fsx.removeSync(fullDirPath);
+    // fsx.removeSync(fullDirPath);
     return fullZipPath;
 };
 
