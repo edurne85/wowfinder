@@ -1,0 +1,18 @@
+{
+    charName: 'Character name',
+    align: 'Alignment',
+    player: 'Player',
+    tLevel: 'Level',
+    xp: 'Experience',
+    nLevel: 'Next Level',
+    faith: 'Faith / Deity',
+    origin: 'Origin / Nationality',
+    race: 'Race',
+    size: 'Size',
+    gender: 'Gender',
+    age: 'Age',
+    height: 'Height',
+    weight: 'Weight',
+    hair: 'Hair',
+    eyes: 'Eyes',
+}

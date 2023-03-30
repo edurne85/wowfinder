@@ -1,0 +1,10 @@
+{
+    h: 'Magia',
+    slots: 'Espacios de conjuro',
+    level: 'Nivel',
+    class: 'Clase',
+    range: 'Alcance',
+    power: 'Potencia de hechizo',
+    school: 'Escuela',
+    rank: 'Rango',
+}

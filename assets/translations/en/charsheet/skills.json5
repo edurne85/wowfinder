@@ -1,0 +1,9 @@
+{
+    h: 'Skills',
+    skill: 'Skill',
+    ranks: 'Ranks',
+    trained: 'Trained',
+    acp: 'ACP',
+    untrained: 'U',
+    class: 'C',
+}

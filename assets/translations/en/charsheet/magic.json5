@@ -1,0 +1,10 @@
+{
+    h: 'Magic',
+    slots: 'Spell slots',
+    level: 'Level',
+    class: 'Class',
+    range: 'Range',
+    power: 'Spellpower',
+    school: 'School',
+    rank: 'Rank',
+}

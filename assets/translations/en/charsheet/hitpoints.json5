@@ -1,0 +1,8 @@
+{
+    h: 'Hit Points',
+    curr: 'Current',
+    total: 'Total',
+    base: 'Base',
+    misc: 'Misc',
+    temp: 'Temp',
+}

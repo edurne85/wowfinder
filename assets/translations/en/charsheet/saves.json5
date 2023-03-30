@@ -1,0 +1,11 @@
+{
+    h: 'Saving Throws',
+    abbr: {
+        fort: 'Fort',
+        refl: 'Refl',
+        will: 'Will',
+    },
+    fort: 'Fortitude',
+    refl: 'Reflexes',
+    will: 'Will',
+}
