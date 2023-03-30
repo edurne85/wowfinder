@@ -10,6 +10,7 @@ import { homeRoutes } from './Home';
 import { itemRoutes } from './Item';
 import { raceNames, raceRoutes } from './Race';
 import { spellRoutes } from './Spell';
+import { ExportByCharacterSelection } from '../components/DataExporter';
 
 function addNavigation(...routes: RouteObject[]): RouteObject[] {
     return routes.map(route => {
@@ -24,15 +25,20 @@ function addNavigation(...routes: RouteObject[]): RouteObject[] {
 }
 
 function getRoutes(data: FullData): RouteObject[] {
-    return addNavigation(
-        ...homeRoutes(data),
+    return [...addNavigation(
+        ...homeRoutes(),
         ...factionRoutes(data),
         ...characterRoutes(data),
         ...spellRoutes(data),
         ...classRoutes(data),
         ...raceRoutes(data),
-        ...itemRoutes(data)
-    );
+        ...itemRoutes(data),
+    ),
+    {
+        path: '/export',
+        element: <ExportByCharacterSelection data={data} />,
+    }
+];
 }
 
 function customTitles(t: TranslationProvider, data: FullData): TitleProvider[] {

@@ -36,11 +36,6 @@ function Navigation(): JSX.Element {
     const canGoBack: boolean = window.history.length > 1;
     const canGoForward: boolean =
         window.history.state.idx < window.history.length - 1;
-    console.log({
-        history: window.history,
-        canGoBack,
-        canGoForward,
-    });
     const { t } = useTranslation();
     return (
         <NavigationContainer>

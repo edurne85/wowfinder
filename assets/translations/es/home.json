@@ -6,6 +6,7 @@
         "spells": "Conjuros",
         "classes": "Clases",
         "races": "Razas",
-        "items": "Objetos"
+        "items": "Objetos",
+        "export": "Exportar datos"
     }
 }

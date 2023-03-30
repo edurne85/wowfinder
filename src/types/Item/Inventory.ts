@@ -1,4 +1,4 @@
-import { sum } from '../../utils';
+import { JsonValue, sum } from '../../utils';
 import { buildItem, Gear, Item } from '.';
 import { convertMass, MassUnit } from '../Units/Mass';
 import Money from './Money';
@@ -8,6 +8,14 @@ interface InventoryBuilder {
     gear?: Gear[];
     carried?: Item[];
     owned?: Item[];
+}
+
+interface InventoryExport {
+    [key: string]: JsonValue;
+    money: number;
+    gear: string[];
+    carried: string[];
+    owned: string[];
 }
 
 const needsPreffix = (val: any): boolean =>
@@ -76,7 +84,16 @@ class Inventory {
         const items = [...this.#gear, ...this.#carried];
         return sum(...items.map(g => convertMass(g.weight, MassUnit.lb).value));
     }
+
+    export(): InventoryExport {
+        return {
+            money: this.#money.raw,
+            gear: this.#gear.map(g => g.key),
+            carried: this.#carried.map(c => c.key),
+            owned: this.#owned.map(o => o.key),
+        };
+    }
 }
 
-export type { InventoryBuilder };
+export type { InventoryBuilder, InventoryExport };
 export { Inventory };

@@ -1,4 +1,8 @@
 {
+    "buttons": {
+        "ok": "Aceptar",
+        "cancel": "Cancelar"
+    },
     "classes": {
         "brb": "Bárbaro",
         "brd": "Bardo",

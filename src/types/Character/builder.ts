@@ -1,14 +1,15 @@
-import { InventoryBuilder } from '../Item/Inventory';
-import { FeatChoice } from './helpers';
-import CharPersonalDetails from './Personal';
-import { Resistances } from './Resistances';
+import { JsonValue } from '../../utils';
+import { InventoryBuilder, InventoryExport } from '../Item/Inventory';
+import { FeatChoice, FeatChoiceExport } from './helpers';
+import { CharPersonalDetailsBuilder } from './Personal';
+import { Resistances, ResistancesExport } from './Resistances';
 import { StatSet } from './Stats';
 
 type SkillRanks = { [key: string]: number };
 
 interface CharacterBuilder {
     key: string;
-    personal: CharPersonalDetails;
+    personal: CharPersonalDetailsBuilder;
     race: string;
     classes: { cls: string; level: number }[];
     feats: Iterable<FeatChoice>;
@@ -20,4 +21,19 @@ interface CharacterBuilder {
     inventory?: InventoryBuilder;
 }
 
-export type { SkillRanks, CharacterBuilder };
+interface CharacterExport {
+    [key: string]: JsonValue;
+    key: string;
+    personal: CharPersonalDetailsBuilder;
+    race: string;
+    classes: { cls: string; level: number }[];
+    feats: FeatChoiceExport[];
+    active: boolean;
+    miscHP: number;
+    baseStats: StatSet;
+    skillRanks: SkillRanks;
+    resistances: ResistancesExport;
+    inventory: InventoryExport;
+}
+
+export type { SkillRanks, CharacterBuilder, CharacterExport };

@@ -6,6 +6,7 @@
         "spells": "Spells",
         "classes": "Classes",
         "races": "Races",
-        "items": "Items"
+        "items": "Items",
+        "export": "Export data"
     }
 }

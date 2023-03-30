@@ -1,4 +1,4 @@
-import { forceDataImportKeyS, sum } from '../../utils';
+import { Exportable, forceDataImportKeyS, JsonValue, sum } from '../../utils';
 import { Armor } from '../Item';
 import { Inventory } from '../Item/Inventory';
 import {
@@ -11,13 +11,14 @@ import {
 } from '../Magic';
 import { ArmorValues, FullArmorValues } from './ArmorValues';
 import { Bonus, BonusType } from './Bonus';
-import { CharacterBuilder, SkillRanks } from './builder';
+import { CharacterBuilder, CharacterExport, SkillRanks } from './builder';
 import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
 import { Aura, auraBonuses } from './Class/Auras';
 import { Feat, feats } from './Feats';
-import type { FeatChoice } from './helpers';
-import { checkClass, checkRace, parseFeatChoices } from './helpers';
+import { exportFeatchChoices, FeatChoice , checkClass, checkRace, parseFeatChoices } from './helpers';
+
 import CharPersonalDetails, {
+    jsonExport as personalDetailsJsonExport,
     jsonImport as personalDetailsJsonImport,
 } from './Personal';
 import Race from './Race';
@@ -29,7 +30,7 @@ import Stats, { zeroDefault } from './Stats';
 
 type Characters = { [key: string]: Character };
 
-class Character {
+class Character implements Exportable<JsonValue> {
     #key: string;
     #personal: CharPersonalDetails;
     #active: boolean;
@@ -304,6 +305,25 @@ class Character {
         return this.classes;
     }
 
+    export(): CharacterExport {
+        return {
+            key: this.#key,
+            personal: personalDetailsJsonExport(this.#personal),
+            race: this.#race?.key || '',
+            classes: this.#classes.map(c => ({
+                cls: c.cls.key,
+                level: c.level,
+            })),
+            feats: exportFeatchChoices(...this.#feats),
+            active: this.#active,
+            miscHP: this.#miscHP,
+            baseStats: this.#stats.base,
+            skillRanks: this.#skillRanks,
+            resistances: this.#resistances.export(),
+            inventory: this.#inventory.export(),
+        };
+    }
+
     static build(raw: any): Character {
         // TODO Validate props (https://github.com/edurne85/wowfinder/issues/281)
         return new Character(raw);
@@ -319,5 +339,5 @@ class Character {
     }
 }
 
-export type { Characters };
+export type { Characters, CharacterBuilder, CharacterExport };
 export { Character };

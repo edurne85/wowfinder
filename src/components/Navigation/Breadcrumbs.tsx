@@ -61,7 +61,7 @@ function Breadcrumbs(): JSX.Element {
         .map(s => s.replace(/^:/, ''))
         .filter(s => s);
     const lastSlashIndex = slashChunks.length - 1;
-    console.log({ path, slashChunks, lastSlashIndex });
+    // console.log({ path, slashChunks, lastSlashIndex });
     /* const lastSlashChunk = slashChunks.length
         ? slashChunks[lastSlashIndex]
         : '';

@@ -1,3 +1,4 @@
+import { JsonValue } from '../../utils';
 import { Class } from './Class';
 import { Feat } from './Feats';
 import Race from './Race';
@@ -24,6 +25,13 @@ function checkClass(className: string): Class {
 interface FeatChoice {
     feat: Feat;
     class?: Class;
+    level: number;
+}
+
+interface FeatChoiceExport {
+    [key: string]: JsonValue;
+    feat: string;
+    class: string;
     level: number;
 }
 
@@ -56,5 +64,13 @@ function parseFeatChoices(raw: any[]): FeatChoice[] {
     return res;
 }
 
-export type { FeatChoice };
-export { checkRace, checkClass, parseFeatChoices };
+function exportFeatchChoices(... raw: FeatChoice[]): FeatChoiceExport[] {
+    return raw.map((f) => ({
+        feat: f.feat,
+        class: f.class?.key || '',
+        level: f.level,
+    }));
+}
+
+export type { FeatChoice, FeatChoiceExport };
+export { checkRace, checkClass, parseFeatChoices, exportFeatchChoices };

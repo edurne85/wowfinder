@@ -1,3 +1,4 @@
+import { JsonValue } from '../../utils';
 import { DamageType } from '../DamageType';
 
 enum ResistanceCategory {
@@ -7,7 +8,9 @@ enum ResistanceCategory {
     temp = 'temp',
 }
 
-type ResistanceBreakdown = { [key in ResistanceCategory]: number } & { readonly total: number };
+type ResistanceBreakdown = { [key in ResistanceCategory]: number } & {
+    readonly total: number;
+};
 type ResistanceBreakdownBuilder = { [key in ResistanceCategory]?: number };
 
 class ResistanceBreakdownImpl
@@ -160,6 +163,11 @@ class CategorizedResistances
 }
 
 type ResistancesBuilder = { [key in DamageType]?: ResistanceBreakdown };
+
+type ResistancesExport = {
+    [key: string]: ResistanceBreakdown & { [key: string]: JsonValue };
+};
+
 type FullResistances = { [key in DamageType]: ResistanceBreakdown };
 
 class Resistances implements FullResistances, ResistancesBuilder {
@@ -267,12 +275,26 @@ class Resistances implements FullResistances, ResistancesBuilder {
 
     updatedByCategory(data: CategorizedResistancesBuilder): Resistances {
         const { enhance, gear, misc, temp } = this.categorized;
-        const curated = Object.assign({}, {enhance, gear, misc, temp}, data);
+        const curated = Object.assign({}, { enhance, gear, misc, temp }, data);
         return Resistances.fromCategorized(
             curated as CategorizedResistancesBuilder
         );
     }
+
+    export(): ResistancesExport {
+        return {
+            bludgeoning: this.bludgeoning,
+            slashing: this.slashing,
+            piercing: this.piercing,
+            arcane: this.arcane,
+            fire: this.fire,
+            cold: this.cold,
+            nature: this.nature,
+            shadow: this.shadow,
+            holy: this.holy,
+        };
+    }
 }
 
-export type { ResistancePartialSet, ResistanceSet };
+export type { ResistancePartialSet, ResistanceSet, ResistancesExport };
 export { ResistanceBreakdown, Resistances };

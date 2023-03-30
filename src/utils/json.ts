@@ -3,6 +3,10 @@ interface JSerializable {
     toJson(): JsonValue;
 }
 
+interface Exportable<T extends JsonValue> {
+    export(): T;
+}
+
 function jClone(obj: JsonValue): JsonValue {
     return JSON.parse(JSON.stringify(obj));
 }
@@ -10,6 +14,7 @@ function jClone(obj: JsonValue): JsonValue {
 export type {
     JsonValue,
     JSerializable,
+    Exportable,
 };
 export {
     jClone,
