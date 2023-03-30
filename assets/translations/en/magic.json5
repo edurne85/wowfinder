@@ -1,50 +1,50 @@
 {
-    "modes": {
-        "abbr": {
-            "arcane": "Arc",
-            "divine": "Div",
-            "spontaneous": "Spn"
+    modes: {
+        abbr: {
+            arcane: 'Arc',
+            divine: 'Div',
+            spontaneous: 'Spn',
         },
-        "full": {
-            "arcane": "Arcane",
-            "divine": "Divine",
-            "spontaneous": "Spontaneous"
-        }
+        full: {
+            arcane: 'Arcane',
+            divine: 'Divine',
+            spontaneous: 'Spontaneous',
+        },
     },
-    "range": {
-        "touch": "Touch",
-        "short": "Short",
-        "medium": "Medium",
-        "long": "Long"
+    range: {
+        touch: 'Touch',
+        short: 'Short',
+        medium: 'Medium',
+        long: 'Long',
     },
-    "schools": {
-        "abj": "Abjuration",
-        "con": "Conjuration",
-        "div": "Adivination",
-        "enc": "Enchantment",
-        "evo": "Evocation",
-        "ill": "Illusion",
-        "nec": "Necromancy",
-        "tra": "Transmutation",
-        "uni": "Universal",
-        "sub" : {
-            "void": "Void",
-            "banish": "Banishment",
-            "counter": "Counterspell",
-            "call": "Calling",
-            "create": "Creation",
-            "heal": "Healing",
-            "summon": "Summoning",
-            "teleport": "Teleportation",
-            "scry": "Scrying",
-            "charm": "Charm",
-            "compel": "Compulsion",
-            "figment": "Figment",
-            "glamer": "Glamer",
-            "phantom": "Phantom",
-            "shadow": "Shadow",
-            "enhancement": "Enhancement",
-            "polymorph": "Polymorph"
-        }
-    }
+    schools: {
+        abj: 'Abjuration',
+        con: 'Conjuration',
+        div: 'Adivination',
+        enc: 'Enchantment',
+        evo: 'Evocation',
+        ill: 'Illusion',
+        nec: 'Necromancy',
+        tra: 'Transmutation',
+        uni: 'Universal',
+        sub: {
+            void: 'Void',
+            banish: 'Banishment',
+            counter: 'Counterspell',
+            call: 'Calling',
+            create: 'Creation',
+            heal: 'Healing',
+            summon: 'Summoning',
+            teleport: 'Teleportation',
+            scry: 'Scrying',
+            charm: 'Charm',
+            compel: 'Compulsion',
+            figment: 'Figment',
+            glamer: 'Glamer',
+            phantom: 'Phantom',
+            shadow: 'Shadow',
+            enhancement: 'Enhancement',
+            polymorph: 'Polymorph',
+        },
+    },
 }

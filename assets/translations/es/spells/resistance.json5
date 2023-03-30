@@ -1,8 +1,8 @@
 {
-    "name": "Resistencia",
-    "description": "Induces al receptor con energía mágica que lo protegerá contra el daño, dándole un bonificador de resistencia en sus tiradas de salvación.\n Resistencia puede hacerse permanente con un conjuro de permanencia.",
-    "1": "Otorga un bonificador de +1",
-    "2": "Otorga un bonificador de +Pot/3",
-    "3": "Otorga un bonificador de +Pot/2",
-    "4": "Otorga un bonificador de +Pot"
+    name: 'Resistencia',
+    description: 'Induces al receptor con energía mágica que lo protegerá contra el daño, dándole un bonificador de resistencia en sus tiradas de salvación.\n Resistencia puede hacerse permanente con un conjuro de permanencia.',
+    '1': 'Otorga un bonificador de +1',
+    '2': 'Otorga un bonificador de +Pot/3',
+    '3': 'Otorga un bonificador de +Pot/2',
+    '4': 'Otorga un bonificador de +Pot',
 }

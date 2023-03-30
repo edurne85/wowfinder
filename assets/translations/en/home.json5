@@ -1,12 +1,12 @@
 {
-    "title": "WowFinder Companion",
-    "menu": {
-        "factions": "Factions and Reputation",
-        "chars": "Characters",
-        "spells": "Spells",
-        "classes": "Classes",
-        "races": "Races",
-        "items": "Items",
-        "export": "Export data"
-    }
+    title: 'WowFinder Companion',
+    menu: {
+        factions: 'Factions and Reputation',
+        chars: 'Characters',
+        spells: 'Spells',
+        classes: 'Classes',
+        races: 'Races',
+        items: 'Items',
+        export: 'Export data',
+    },
 }

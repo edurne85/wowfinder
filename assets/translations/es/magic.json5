@@ -1,50 +1,50 @@
 {
-    "modes": {
-        "abbr": {
-            "arcane": "Arc",
-            "divine": "Div",
-            "spontaneous": "Esp"
+    modes: {
+        abbr: {
+            arcane: 'Arc',
+            divine: 'Div',
+            spontaneous: 'Esp',
         },
-        "full": {
-            "arcane": "Arcano",
-            "divine": "Divino",
-            "spontaneous": "Espontáeno"
-        }
+        full: {
+            arcane: 'Arcano',
+            divine: 'Divino',
+            spontaneous: 'Espontáeno',
+        },
     },
-    "range": {
-        "touch": "Toque",
-        "short": "Corto",
-        "medium": "Medio",
-        "long": "Largo"
+    range: {
+        touch: 'Toque',
+        short: 'Corto',
+        medium: 'Medio',
+        long: 'Largo',
     },
-    "schools": {
-        "abj": "Abjuración",
-        "con": "Conjuración",
-        "div": "Adivinación",
-        "enc": "Encantamiento",
-        "evo": "Evocación",
-        "ill": "Ilusión",
-        "nec": "Nigromancia",
-        "tra": "Transmutación",
-        "uni": "Universal",
-        "sub" : {
-            "void": "Vacío",
-            "banish": "Exorcismo",
-            "counter": "Contraconjuro",
-            "call": "Llamada",
-            "create": "Creación",
-            "heal": "Curación",
-            "summon": "Invocación",
-            "teleport": "Teletransporte",
-            "scry": "Escrutinio",
-            "charm": "Encanto",
-            "compel": "Compulsión",
-            "figment": "Ficción",
-            "glamer": "Glamor",
-            "phantom": "Fantasma",
-            "shadow": "Sombra",
-            "enhancement": "Mejora",
-            "polymorph": "Polimorfia"
-        }
-    }
+    schools: {
+        abj: 'Abjuración',
+        con: 'Conjuración',
+        div: 'Adivinación',
+        enc: 'Encantamiento',
+        evo: 'Evocación',
+        ill: 'Ilusión',
+        nec: 'Nigromancia',
+        tra: 'Transmutación',
+        uni: 'Universal',
+        sub: {
+            void: 'Vacío',
+            banish: 'Exorcismo',
+            counter: 'Contraconjuro',
+            call: 'Llamada',
+            create: 'Creación',
+            heal: 'Curación',
+            summon: 'Invocación',
+            teleport: 'Teletransporte',
+            scry: 'Escrutinio',
+            charm: 'Encanto',
+            compel: 'Compulsión',
+            figment: 'Ficción',
+            glamer: 'Glamor',
+            phantom: 'Fantasma',
+            shadow: 'Sombra',
+            enhancement: 'Mejora',
+            polymorph: 'Polimorfia',
+        },
+    },
 }

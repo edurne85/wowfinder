@@ -1,90 +1,90 @@
 {
-    "buttons": {
-        "ok": "Aceptar",
-        "cancel": "Cancelar"
+    buttons: {
+        ok: 'Aceptar',
+        cancel: 'Cancelar',
     },
-    "classes": {
-        "brb": "Bárbaro",
-        "brd": "Bardo",
-        "clr": "Clérigo",
-        "drd": "Druida",
-        "fgt": "Guerrero",
-        "mag": "Mago",
-        "mnk": "Monje",
-        "orc": "Oráculo",
-        "pal": "Paladín",
-        "rng": "Explorador",
-        "rog": "Pícaro",
-        "src": "Hechicero (!)",
-        "wzd": "Mago (obs) (!)"
+    classes: {
+        brb: 'Bárbaro',
+        brd: 'Bardo',
+        clr: 'Clérigo',
+        drd: 'Druida',
+        fgt: 'Guerrero',
+        mag: 'Mago',
+        mnk: 'Monje',
+        orc: 'Oráculo',
+        pal: 'Paladín',
+        rng: 'Explorador',
+        rog: 'Pícaro',
+        src: 'Hechicero (!)',
+        wzd: 'Mago (obs) (!)',
     },
-    "races": {
-        "dwarf-bronzebeard": "Enano Barbabronce",
-        "human": "Humano",
-        "high-elf": "Alto Elfo",
-        "night-elf": "Elfo Nocturno"
+    races: {
+        'dwarf-bronzebeard': 'Enano Barbabronce',
+        human: 'Humano',
+        'high-elf': 'Alto Elfo',
+        'night-elf': 'Elfo Nocturno',
     },
-    "auras": {
-        "commanding": "Grito de orden",
-        "arcane": "Luminosidad arcana",
-        "wild": "Don de lo salvaje",
-        "bear": "Fortaleza de oso",
-        "cat": "Sutileza de gato",
-        "moon": "Inspiración lunar",
-        "root": "Raíces vitales",
-        "mysterious": "Fortaleza misteriosa",
-        "fortitude": "Palabra de poder: Fortaleza"
+    auras: {
+        commanding: 'Grito de orden',
+        arcane: 'Luminosidad arcana',
+        wild: 'Don de lo salvaje',
+        bear: 'Fortaleza de oso',
+        cat: 'Sutileza de gato',
+        moon: 'Inspiración lunar',
+        root: 'Raíces vitales',
+        mysterious: 'Fortaleza misteriosa',
+        fortitude: 'Palabra de poder: Fortaleza',
     },
-    "stats": {
-        "abbr": {
-            "STR": "FUE",
-            "DEX": "DES",
-            "CON": "CON",
-            "INT": "INT",
-            "WIS": "SAB",
-            "CHA": "CAR"
+    stats: {
+        abbr: {
+            STR: 'FUE',
+            DEX: 'DES',
+            CON: 'CON',
+            INT: 'INT',
+            WIS: 'SAB',
+            CHA: 'CAR',
         },
-        "full": {
-            "STR": "Fuerza",
-            "DEX": "Destreza",
-            "CON": "Constitución",
-            "INT": "Inteligencia",
-            "WIS": "Sabiduría",
-            "CHA": "Carisma"
-        }
-    },
-    "reputation": {
-        "hated": "odiado",
-        "hostile": "hostil",
-        "unfriendly": "enemigo",
-        "neutral": "neutral",
-        "friendly": "amistoso",
-        "honored": "honorado",
-        "revered": "reverenciado",
-        "exalted": "exaltado"
-    },
-    "damageTypes": {
-        "full": {
-            "bludgeoning": "contundente",
-            "slashing": "cortante",
-            "piercing": "perforante",
-            "arcane": "arcano",
-            "fire": "fuego",
-            "cold": "frío",
-            "nature": "naturaleza",
-            "shadow": "sombra",
-            "holy": "luz"
+        full: {
+            STR: 'Fuerza',
+            DEX: 'Destreza',
+            CON: 'Constitución',
+            INT: 'Inteligencia',
+            WIS: 'Sabiduría',
+            CHA: 'Carisma',
         },
-        "abbr": {
-            "bludgeoning": "Cont",
-            "slashing": "Cort",
-            "piercing": "Perf",
-            "arcane": "Ar",
-            "fire": "Fg",
-            "cold": "Fr",
-            "nature": "Nt",
-            "shadow": "Sm",
-            "holy": "Sg"
-        }
-    }
+    },
+    reputation: {
+        hated: 'odiado',
+        hostile: 'hostil',
+        unfriendly: 'enemigo',
+        neutral: 'neutral',
+        friendly: 'amistoso',
+        honored: 'honorado',
+        revered: 'reverenciado',
+        exalted: 'exaltado',
+    },
+    damageTypes: {
+        full: {
+            bludgeoning: 'contundente',
+            slashing: 'cortante',
+            piercing: 'perforante',
+            arcane: 'arcano',
+            fire: 'fuego',
+            cold: 'frío',
+            nature: 'naturaleza',
+            shadow: 'sombra',
+            holy: 'luz',
+        },
+        abbr: {
+            bludgeoning: 'Cont',
+            slashing: 'Cort',
+            piercing: 'Perf',
+            arcane: 'Ar',
+            fire: 'Fg',
+            cold: 'Fr',
+            nature: 'Nt',
+            shadow: 'Sm',
+            holy: 'Sg',
+        },
+    },
 }

@@ -1,12 +1,11 @@
 {
-    "h": "Velocidad",
-    "base": "Base",
-    "reduced": "Reduc.",
-    "fly": "Vuelo",
-    "maneuverability": "Maniobrabilidad",
-    "swim": "Nadar",
-    "climb": "Trepar",
-    "burrow": "Cavar",
-    "misc": "Misc"
-
+    h: 'Velocidad',
+    base: 'Base',
+    reduced: 'Reduc.',
+    fly: 'Vuelo',
+    maneuverability: 'Maniobrabilidad',
+    swim: 'Nadar',
+    climb: 'Trepar',
+    burrow: 'Cavar',
+    misc: 'Misc',
 }

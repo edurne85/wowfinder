@@ -1,7 +1,7 @@
 {
-    "h": "Attack Scores",
-    "bab": "BaB",
-    "melee": "Melee",
-    "ranged": "Ranged",
-    "cmb": "CMB"
+    h: 'Attack Scores',
+    bab: 'BaB',
+    melee: 'Melee',
+    ranged: 'Ranged',
+    cmb: 'CMB',
 }

@@ -1,12 +1,12 @@
 {
-    "back": "Back",
-    "forward": "Forward",
-    "address": "Current location",
-    "home": "Home",
-    "factions": "Factions",
-    "chars": "Characters",
-    "spells": "Spells",
-    "classes": "Classes",
-    "races": "Races",
-    "items": "Items"
+    back: 'Back',
+    forward: 'Forward',
+    address: 'Current location',
+    home: 'Home',
+    factions: 'Factions',
+    chars: 'Characters',
+    spells: 'Spells',
+    classes: 'Classes',
+    races: 'Races',
+    items: 'Items',
 }

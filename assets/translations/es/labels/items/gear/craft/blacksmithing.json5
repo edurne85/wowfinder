@@ -1,8 +1,8 @@
 {
-    "reinforcedCopperBelt": "Cinturón reforzado de cobre",
-    "reinforcedCopperBoots": "Botas reforzadas de cobre",
-    "reinforcedCopperBracers": "Brazaletes reforzados de cobre",
-    "reinforcedCopperCuirass": "Coraza reforzada de cobre",
-    "reinforcedCopperGauntlets": "Guanteletes reforzados de cobre",
-    "reinforcedCopperPants": "Pantalones reforzados de cobre"
+    reinforcedCopperBelt: 'Cinturón reforzado de cobre',
+    reinforcedCopperBoots: 'Botas reforzadas de cobre',
+    reinforcedCopperBracers: 'Brazaletes reforzados de cobre',
+    reinforcedCopperCuirass: 'Coraza reforzada de cobre',
+    reinforcedCopperGauntlets: 'Guanteletes reforzados de cobre',
+    reinforcedCopperPants: 'Pantalones reforzados de cobre',
 }

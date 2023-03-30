@@ -1,7 +1,7 @@
 {
-    "copper": "Copper ore",
-    "tin": "Tin ore",
-    "silver": "Silver ore",
-    "iron": "Iron ore",
-    "gold": "Gold ore"
+    copper: 'Copper ore',
+    tin: 'Tin ore',
+    silver: 'Silver ore',
+    iron: 'Iron ore',
+    gold: 'Gold ore',
 }

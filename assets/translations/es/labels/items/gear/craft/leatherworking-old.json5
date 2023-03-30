@@ -1,6 +1,6 @@
 {
-    "embossedLeatherVest": "Jubón de cuero estampado",
-    "embossedLeatherGauntlets": "Guanteletes de cuero estampado",
-    "embossedLeatherPants": "Pantalones de cuero estampado",
-    "embossedLeatherBoots": "Botas de cuero estampado"
+    embossedLeatherVest: 'Jubón de cuero estampado',
+    embossedLeatherGauntlets: 'Guanteletes de cuero estampado',
+    embossedLeatherPants: 'Pantalones de cuero estampado',
+    embossedLeatherBoots: 'Botas de cuero estampado',
 }
