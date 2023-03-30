@@ -31,7 +31,9 @@ type AdventureBuilder = {
     rewards: Rewards;
 };
 
-class Adventure implements Exportable<JsonValue> {
+type AdventureExport = AdventureBuilder & { [key: string]: JsonValue };
+
+class Adventure implements Exportable<AdventureExport> {
     private _key: string;
     private _title: string;
     private _date: string;
@@ -85,7 +87,7 @@ class Adventure implements Exportable<JsonValue> {
         );
     }
 
-    export(): AdventureBuilder {
+    export(): AdventureExport {
         return {
             key: this._key,
             title: this._title,
@@ -95,5 +97,5 @@ class Adventure implements Exportable<JsonValue> {
     }
 }
 
-export type { Adventures };
+export type { Adventures, AdventureBuilder, AdventureExport };
 export { Adventure };

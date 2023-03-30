@@ -12,7 +12,7 @@ import { Spell } from './components/Spells';
 import './i18n';
 import { getRoutes } from './Routes';
 import { GlobalStyle } from './styles/GlobalStyle';
-import { debug, debugOutput, exportByChars } from './utils';
+import { debug, debugOutput, exportByCharsAsJsonAssets } from './utils';
 
 const data = FullData.import();
 
@@ -63,12 +63,12 @@ if (debug) {
         TestSpell,
     });
     debugOutput('Players', {
-        naia: exportByChars(data, 'garet', 'benel'),
-        andrea: exportByChars(data, 'keina'),
-        estanis: exportByChars(data, 'mythea'),
-        alex: exportByChars(data, 'dael'),
-        txema: exportByChars(data, 'bhuldirm'),
-        joana: exportByChars(data, 'arianna', 'kaliri'),
+        naia: exportByCharsAsJsonAssets(data, 'garet', 'benel'),
+        andrea: exportByCharsAsJsonAssets(data, 'keina'),
+        estanis: exportByCharsAsJsonAssets(data, 'mythea'),
+        alex: exportByCharsAsJsonAssets(data, 'dael'),
+        txema: exportByCharsAsJsonAssets(data, 'bhuldirm'),
+        joana: exportByCharsAsJsonAssets(data, 'arianna', 'kaliri'),
     });
 }
 

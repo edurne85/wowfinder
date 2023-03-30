@@ -12,18 +12,29 @@ import {
 } from '../Units';
 import Alignment from './Alignment';
 
-export default interface CharPersonalDetails {
+interface DetailsCommon {
     fullName: string;
-    align: Alignment;
-    height: Length;
-    weight: Mass;
     faith: string;
     origin: string;
     hair: string;
     eyes: string;
     skin: string;
     gender: string;
+}
+
+export default interface CharPersonalDetails extends DetailsCommon {
+    align: Alignment;
+    height: Length;
+    weight: Mass;
     age: Time;
+}
+
+interface CharPersonalDetailsBuilder extends DetailsCommon {
+    [key: string]: JsonValue;
+    align: string;
+    height: number;
+    weight: number;
+    age: number;
 }
 
 const personalDefaults: CharPersonalDetails = {
@@ -69,7 +80,7 @@ function jsonImport(raw: any): CharPersonalDetails {
     return res;
 }
 
-function jsonExport(source: CharPersonalDetails): JsonValue {
+function jsonExport(source: CharPersonalDetails): CharPersonalDetailsBuilder {
     return {
         fullName: source.fullName,
         align: source.align.toString(),
@@ -85,4 +96,5 @@ function jsonExport(source: CharPersonalDetails): JsonValue {
     };
 }
 
+export type { CharPersonalDetails, CharPersonalDetailsBuilder };
 export { personalDefaults, jsonImport, jsonExport };

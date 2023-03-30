@@ -12,6 +12,7 @@ function Home(): JSX.Element {
             <h2><Link to="/classes">{t('home.menu.classes')}</Link></h2>
             <h2><Link to="/races">{t('home.menu.races')}</Link></h2>
             <h2><Link to="/items">{t('home.menu.items')}</Link></h2>
+            <h2><Link to="/export">{t('home.menu.export')}</Link></h2>
         </div>
     );
 }

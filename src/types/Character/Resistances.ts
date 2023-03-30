@@ -163,6 +163,11 @@ class CategorizedResistances
 }
 
 type ResistancesBuilder = { [key in DamageType]?: ResistanceBreakdown };
+
+type ResistancesExport = {
+    [key: string]: ResistanceBreakdown & { [key: string]: JsonValue };
+};
+
 type FullResistances = { [key in DamageType]: ResistanceBreakdown };
 
 class Resistances implements FullResistances, ResistancesBuilder {
@@ -276,7 +281,7 @@ class Resistances implements FullResistances, ResistancesBuilder {
         );
     }
 
-    export(): JsonValue {
+    export(): ResistancesExport {
         return {
             bludgeoning: this.bludgeoning,
             slashing: this.slashing,
@@ -291,5 +296,5 @@ class Resistances implements FullResistances, ResistancesBuilder {
     }
 }
 
-export type { ResistancePartialSet, ResistanceSet };
+export type { ResistancePartialSet, ResistanceSet, ResistancesExport };
 export { ResistanceBreakdown, Resistances };

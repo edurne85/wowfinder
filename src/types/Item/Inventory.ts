@@ -10,6 +10,14 @@ interface InventoryBuilder {
     owned?: Item[];
 }
 
+interface InventoryExport {
+    [key: string]: JsonValue;
+    money: number;
+    gear: string[];
+    carried: string[];
+    owned: string[];
+}
+
 const needsPreffix = (val: any): boolean =>
     typeof val === 'string' && !/^gear\./.test(val);
 const addPreffix = (val: any): any => (needsPreffix(val) ? `gear.${val}` : val);
@@ -77,7 +85,7 @@ class Inventory {
         return sum(...items.map(g => convertMass(g.weight, MassUnit.lb).value));
     }
 
-    export(): JsonValue {
+    export(): InventoryExport {
         return {
             money: this.#money.raw,
             gear: this.#gear.map(g => g.key),
@@ -87,5 +95,5 @@ class Inventory {
     }
 }
 
-export type { InventoryBuilder };
+export type { InventoryBuilder, InventoryExport };
 export { Inventory };

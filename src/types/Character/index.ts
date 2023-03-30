@@ -11,12 +11,12 @@ import {
 } from '../Magic';
 import { ArmorValues, FullArmorValues } from './ArmorValues';
 import { Bonus, BonusType } from './Bonus';
-import { CharacterBuilder, SkillRanks } from './builder';
+import { CharacterBuilder, CharacterExport, SkillRanks } from './builder';
 import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
 import { Aura, auraBonuses } from './Class/Auras';
 import { Feat, feats } from './Feats';
-import type { FeatChoice } from './helpers';
-import { checkClass, checkRace, parseFeatChoices } from './helpers';
+import { exportFeatchChoices, FeatChoice , checkClass, checkRace, parseFeatChoices } from './helpers';
+
 import CharPersonalDetails, {
     jsonExport as personalDetailsJsonExport,
     jsonImport as personalDetailsJsonImport,
@@ -305,7 +305,7 @@ class Character implements Exportable<JsonValue> {
         return this.classes;
     }
 
-    export(): JsonValue {
+    export(): CharacterExport {
         return {
             key: this.#key,
             personal: personalDetailsJsonExport(this.#personal),
@@ -314,9 +314,7 @@ class Character implements Exportable<JsonValue> {
                 cls: c.cls.key,
                 level: c.level,
             })),
-            feats: this.#feats.map(f => ({
-                feat: f.feat,
-            })),
+            feats: exportFeatchChoices(...this.#feats),
             active: this.#active,
             miscHP: this.#miscHP,
             baseStats: this.#stats.base,
@@ -341,5 +339,5 @@ class Character implements Exportable<JsonValue> {
     }
 }
 
-export type { Characters };
+export type { Characters, CharacterBuilder, CharacterExport };
 export { Character };
