@@ -1,11 +1,11 @@
 export {
     CastingMode,
     castingStats,
-    fillCastingModeValues
+    fillCastingModeValues,
 } from './CastingMode';
 export type {
     CastingModeValues,
-    CastingModeValuesPartial
+    CastingModeValuesPartial,
 } from './CastingMode';
 export { levelByMode, zeroCasterLevel } from './EffectiveCasterLevels';
 export type { EffectiveCasterLevels } from './EffectiveCasterLevels';
@@ -16,32 +16,28 @@ export {
     School,
     SubSchool,
     subSchoolParents,
-    subSchoolsByParent
+    subSchoolsByParent,
 } from './School';
 export type {
     SchoolValues,
     SchoolValuesPartial,
     SubSchoolValues,
-    SubSchoolValuesPartial
+    SubSchoolValuesPartial,
 } from './School';
 export { slotsByLevel, slotsByLevelPrep, slotsByStat } from './slots';
+export { computeRange, StandardRange } from './Spell';
 export { SpellList } from './SpellList';
-export type {
-    SpellListBuilder,
-    SpellLists
-} from './SpellList';
+export type { SpellListBuilder, SpellLists } from './SpellList';
 export {
     computedSpellPower,
     fillSpellPowerValues,
     fullComputedSpellPower,
-    zeroSpellPower
+    zeroSpellPower,
 } from './SpellPower';
 export type {
     ComputedSubSchools,
     FullComputedSchools,
     FullComputedSpellPower,
     SpellPowerValues,
-    SpellPowerValuesPartial
+    SpellPowerValuesPartial,
 } from './SpellPower';
-export { computeRange, StandardRange } from './StandardRange';
-
