@@ -10,7 +10,6 @@ import { FeatFlag } from './FeatFlag';
 import { FeatSpec } from './FeatSpec';
 
 const feats: { [key in Feat]: FeatSpec } = {
-    // TODO Make type exhaustive once weapon feats are included
     ...baseFeats,
     ...classFeatureFeats,
     ...magicFeats,
