@@ -3,9 +3,8 @@ import { Time } from '../../Units';
 
 type CastingTime = ActionLength | Time | 'special';
 
-namespace CastingTime {
-
-    export function tryParse(input: string): CastingTime | undefined {
+const CastingTime = {
+    tryParse(input: string): CastingTime | undefined {
         if (input === 'special') {
             return 'special';
         }
@@ -17,15 +16,18 @@ namespace CastingTime {
             return time;
         }
         return undefined;
-    }
+    },
 
-    export function tryParseExtended(input: string | CastingTime): CastingTime | undefined {
-        return (typeof input === 'string') ? tryParse(input) : input;
-    }
+    tryParseExtended(input: string | CastingTime): CastingTime | undefined {
+        return typeof input === 'string' ? CastingTime.tryParse(input) : input;
+    },
 
-    export function forceParse(input: string, defaultValue: CastingTime = 'special'): CastingTime {
-        return tryParse(input) ?? defaultValue;
-    }
-}
+    forceParse(
+        input: string,
+        defaultValue: CastingTime = 'special'
+    ): CastingTime {
+        return CastingTime.tryParse(input) ?? defaultValue;
+    },
+} as const;
 
 export { CastingTime };

@@ -33,8 +33,8 @@ function computeRange(range: StandardRange, size: Size, efl: number): Length {
 
 type SpellRange = StandardRange | Length | 'special';
 
-namespace SpellRange {
-    export function tryParse(input: string): SpellRange | undefined {
+const SpellRange = {
+    tryParse(input: string): SpellRange | undefined {
         if (input === 'special') {
             return 'special';
         }
@@ -48,11 +48,13 @@ namespace SpellRange {
             return length;
         }
         return undefined;
-    }
-
-    export function forceParse(input: string, defaultValue: SpellRange = 'special'): SpellRange {
-        return tryParse(input) ?? defaultValue;
-    }
-}
+    },
+    forceParse(
+        input: string,
+        defaultValue: SpellRange = 'special'
+    ): SpellRange {
+        return SpellRange.tryParse(input) ?? defaultValue;
+    },
+} as const;
 
 export { StandardRange, computeRange, SpellRange };
