@@ -1,7 +1,7 @@
-import { CombatVitalStrikeFeat } from "../../core/combat/vitalStrike";
-import { Feat } from "../../Feat";
-import { FeatSpec } from "../../FeatSpec";
-import { build, req } from "../helpers";
+import { CombatVitalStrikeFeat } from '../../core/combat/vitalStrike';
+import { Feat } from '../../Feat';
+import { FeatSpec } from '../../FeatSpec';
+import { build, req } from '../helpers';
 
 const combatVitalStrikeFeats: {[key in CombatVitalStrikeFeat]: FeatSpec} = {
     vitalStrike: build.combat(Feat.vitalStrike, req.level.bab(1)),

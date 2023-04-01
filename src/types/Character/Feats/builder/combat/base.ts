@@ -1,9 +1,9 @@
-import { StatKey } from "../../../Stats";
-import { CombatBaseFeat } from "../../core/combat/base";
-import { Feat } from "../../Feat";
-import { FeatFlag } from "../../FeatFlag";
-import { FeatSpec } from "../../FeatSpec";
-import { build, feat, allOf, req, either } from "../helpers";
+import { StatKey } from '../../../Stats';
+import { CombatBaseFeat } from '../../core/combat/base';
+import { Feat } from '../../Feat';
+import { FeatFlag } from '../../FeatFlag';
+import { FeatSpec } from '../../FeatSpec';
+import { build, feat, allOf, req, either } from '../helpers';
 
 const combatBaseFeats: { [key in CombatBaseFeat]: FeatSpec } = {
     agileManeuvers: build.combat(Feat.agileManeuvers),
