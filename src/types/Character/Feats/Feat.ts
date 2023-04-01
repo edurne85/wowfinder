@@ -64,6 +64,15 @@ const Feat = {
     ...weaponFeats,
 } as const;
 
+type WeaponFeat = keyof typeof weaponFeats;
 type Feat = keyof typeof Feat;
 
-export { Feat };
+export { Feat, weaponFeats };
+export type {
+    WeaponFeat,
+    WeaponKey,
+    WeaponFeatKeyPrefix,
+    SimpleWeaponKey,
+    MartialWeaponKey,
+    ExoticWeaponKey,
+};

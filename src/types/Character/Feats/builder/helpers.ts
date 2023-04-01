@@ -13,7 +13,7 @@ import {
     Requirement,
 } from '../../Requirements';
 import { StatKey } from '../../Stats';
-import { Feat } from '../Feat';
+import { Feat, WeaponFeat, weaponFeats } from '../Feat';
 import { FeatFlag } from '../FeatFlag';
 import { FeatSpec } from '../FeatSpec';
 
@@ -68,5 +68,12 @@ function checkFeatKey(key: string): asserts key is Feat {
     }
 }
 
-export { raw, req, build, feat, allOf, either, checkFeatKey };
+const allWeaponFeatKeys = Object.keys(weaponFeats);
+function checkWeaponFeatKey(key: string): asserts key is WeaponFeat {
+    if (!allWeaponFeatKeys) {
+        throw new Error(`Invalid weapon feat key: ${key}`);
+    }
+}
+
+export { raw, req, build, feat, allOf, either, checkFeatKey, checkWeaponFeatKey };
 export type { Req, Reqs, Flags };
