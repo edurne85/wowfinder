@@ -15,4 +15,5 @@ export {
     CasterLevelRequirement,
     AttackBonusRequirement,
 } from './LevelRequirement';
+export { CharacterFeatRequirement } from './FeatRequirement';
 export { ClassFeatureRequirement } from './FeatureRequirement';
