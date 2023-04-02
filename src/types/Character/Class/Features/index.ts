@@ -42,4 +42,10 @@ type ClassFeatureEntry = {
     feature: string
 };
 
-export { ClassFeature, ClassFeatureEntry, classFeatureUtils };
+type FeaturesList = {
+    level: number;
+    feature: ClassFeature;
+}[];
+
+export { ClassFeature, classFeatureUtils };
+export type { ClassFeatureEntry, FeaturesList };
