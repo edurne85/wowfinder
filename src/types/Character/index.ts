@@ -13,7 +13,7 @@ import { ArmorValues, FullArmorValues } from './ArmorValues';
 import { Bonus, BonusType } from './Bonus';
 import { CharacterBuilder, CharacterExport, SkillRanks } from './builder';
 import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
-import { Aura, auraBonuses } from './Class/Auras';
+import { Aura, auraBonuses } from './Class/Aura';
 import { Feat, feats } from './Feats';
 import { exportFeatchChoices, FeatChoice , checkClass, checkRace, parseFeatChoices } from './helpers';
 
