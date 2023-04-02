@@ -2,6 +2,7 @@ import { forceDataImportKeyS } from '../../../utils';
 import { Skill } from '../Skills';
 import { StatSet, statMod } from '../Stats';
 import type { Aura } from './Auras';
+import { ClassTier } from './ClassTier';
 import { ClassFeature } from './Features';
 
 type featureEntry = {
@@ -18,6 +19,7 @@ type rawFeaturesEntry = featureEntry | auraEntry;
 
 interface ClassBuilder {
     key: string;
+    tier?: ClassTier;
     hd: number;
     bab: number;
     fort: boolean;
@@ -82,6 +84,7 @@ type ClassLevels = { cls: Class; level: number }[];
 
 class Class {
     private _key: string;
+    private _tier: ClassTier;
     private hd: number;
     private bab: number;
     private fort: boolean;
@@ -98,6 +101,7 @@ class Class {
 
     constructor({
         key,
+        tier = ClassTier.base,
         hd,
         bab,
         fort = false,
@@ -112,6 +116,7 @@ class Class {
         skills = [],
     }: ClassBuilder) {
         this._key = key;
+        this._tier = tier;
         this.hd = hd;
         this.bab = bab;
         this.fort = !!fort;
@@ -133,6 +138,10 @@ class Class {
 
     get key(): string {
         return this._key;
+    }
+
+    get tier(): ClassTier {
+        return this._tier;
     }
 
     features(level: number): ClassFeature[] {
