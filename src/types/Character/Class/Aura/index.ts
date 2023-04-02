@@ -5,6 +5,11 @@ type AuraEntry = {
     aura: Aura;
 };
 
+type AurasList = {
+    level: number;
+    aura: Aura;
+}[];
+
 export { auraBonuses } from './bonuses';
-export type { AuraBonus, AuraEntry };
+export type { AuraBonus, AuraEntry, AurasList };
 export { Aura };
