@@ -1,21 +1,12 @@
 import { forceDataImportKeyS } from '../../../utils';
 import { Skill } from '../Skills';
 import { StatSet, statMod } from '../Stats';
-import type { Aura } from './Auras';
+import type { Aura, AuraEntry } from './Aura';
 import { ClassTier } from './ClassTier';
-import { ClassFeature } from './Features';
+import { ClassFeature, ClassFeatureEntry } from './Features';
 
-type featureEntry = {
-    level: number;
-    feature: string
-};
 
-type auraEntry = {
-    level: number;
-    aura: Aura
-};
-
-type rawFeaturesEntry = featureEntry | auraEntry;
+type RawFeaturesEntry = ClassFeatureEntry | AuraEntry;
 
 interface ClassBuilder {
     key: string;
@@ -30,7 +21,7 @@ interface ClassBuilder {
     div: number;
     esp: number;
     wealth: number;
-    features: rawFeaturesEntry[];
+    features: RawFeaturesEntry[];
     skills: string[];
 }
 

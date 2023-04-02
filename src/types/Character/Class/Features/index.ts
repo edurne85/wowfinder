@@ -37,4 +37,9 @@ const classFeatureUtils = {
     shared,
 };
 
-export { ClassFeature, classFeatureUtils };
+type ClassFeatureEntry = {
+    level: number;
+    feature: string
+};
+
+export { ClassFeature, ClassFeatureEntry, classFeatureUtils };
