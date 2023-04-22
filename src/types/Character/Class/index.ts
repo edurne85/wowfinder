@@ -3,21 +3,20 @@ import { Money } from '../../Item';
 import { Skill } from '../Skills';
 import { StatSet } from '../Stats';
 import { Aura, AurasList } from './Aura';
-import {
-    CastingProgression,
-    ClassBase,
-    Classes,
-    ClassLevels,
-    SavesProgression,
-} from './base';
-import { applyClassDefaults, ClassBuilder, preBuild } from './builder';
 import { ClassBonuses } from './ClassBonuses';
 import { ClassTier } from './ClassTier';
-import { combineClassBonuses } from './combineBonuses';
 import { ClassFeature, FeaturesList } from './Features';
-import { filterSkills, mapAuras, mapFeatures } from './helpers';
+import { ClassBuilder, applyClassDefaults, preBuild } from './builder';
+import { combineClassBonuses } from './combineBonuses';
+import {
+    CastingProgression,
+    ClassLevels,
+    Classes,
+    SavesProgression,
+    filterSkills, mapAuras, mapFeatures,
+} from './helpers';
 
-class Class implements ClassBase {
+class Class {
     #key: string;
     #tier: ClassTier;
     #hd: number;
