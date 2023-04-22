@@ -1,8 +1,8 @@
-import { Money } from "../../Item";
-import { Keyed } from "../../../utils";
-import { FeaturesList } from "./Features";
-import { AurasList } from "./Aura";
-import { Skill } from "../Skills";
+import { Money } from '../../Item';
+import { Keyed } from '../../../utils';
+import { FeaturesList } from './Features';
+import { AurasList } from './Aura';
+import { Skill } from '../Skills';
 
 interface SavesProgression {
     fortitude: boolean;

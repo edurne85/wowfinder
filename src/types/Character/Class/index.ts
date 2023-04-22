@@ -2,7 +2,7 @@ import { forceDataImportKeyS } from '../../../utils';
 import { Money } from '../../Item';
 import { Skill } from '../Skills';
 import { StatSet } from '../Stats';
-import type { Aura, AurasList } from './Aura';
+import { Aura, AurasList } from './Aura';
 import {
     CastingProgression,
     ClassBase,
@@ -14,7 +14,7 @@ import { applyClassDefaults, ClassBuilder, preBuild } from './builder';
 import { ClassBonuses } from './ClassBonuses';
 import { ClassTier } from './ClassTier';
 import { combineClassBonuses } from './combineBonuses';
-import type { ClassFeature, FeaturesList } from './Features';
+import { ClassFeature, FeaturesList } from './Features';
 import { filterSkills, mapAuras, mapFeatures } from './helpers';
 
 class Class implements ClassBase {
