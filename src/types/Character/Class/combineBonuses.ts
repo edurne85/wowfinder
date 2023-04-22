@@ -1,8 +1,8 @@
-import { Skill } from "../Skills";
-import { StatSet, statMod } from "../Stats";
-import { ClassLevels } from "./base";
-import { ClassBonuses } from "./ClassBonuses";
-import { hdFirst, hdAverage } from "./helpers";
+import { Skill } from '../Skills';
+import { StatSet, statMod } from '../Stats';
+import { ClassLevels } from './base';
+import { ClassBonuses } from './ClassBonuses';
+import { hdFirst, hdAverage } from './helpers';
 
 function combineClassBonuses(classLevels: ClassLevels, stats: StatSet): ClassBonuses {
     const goodSaves = {
@@ -69,4 +69,4 @@ function combineClassBonuses(classLevels: ClassLevels, stats: StatSet): ClassBon
     return result;
 }
 
-export { combineClassBonuses }
+export { combineClassBonuses };
