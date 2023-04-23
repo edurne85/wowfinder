@@ -10,6 +10,7 @@ import {
     SubSchool,
 } from '../Magic';
 import { ArmorValues, FullArmorValues } from './ArmorValues';
+import { CharacterBase } from './base';
 import { Bonus, BonusType } from './Bonus';
 import { CharacterBuilder, CharacterExport, SkillRanks } from './builder';
 import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
@@ -30,15 +31,11 @@ import Stats, { zeroDefault } from './Stats';
 
 type Characters = { [key: string]: Character };
 
-class Character implements Exportable<JsonValue> {
-    #key: string;
-    #personal: CharPersonalDetails;
+class Character extends CharacterBase implements Exportable<JsonValue> {
     #active: boolean;
     #stats: Stats;
     #race: Race;
     #classes: ClassLevels;
-    #feats: FeatChoice[];
-    #miscHP: number;
     #skillRanks: SkillRanks;
     #armor: ArmorValues;
     #resistances: Resistances;
@@ -54,13 +51,12 @@ class Character implements Exportable<JsonValue> {
         baseStats,
         race,
         classes = [],
-        feats = [],
+        featChoices = [],
         miscHP = 0,
         skillRanks = {},
         inventory = Inventory.defaultBuilder,
     }: CharacterBuilder) {
-        this.#key = key;
-        this.#personal = personalDetailsJsonImport(personal);
+        super({key, personal, featChoices, miscHP, baseStats});
         this.#active = active;
         this.#race = checkRace(race);
         this.#classes = [];
@@ -75,9 +71,7 @@ class Character implements Exportable<JsonValue> {
             misc: auraBonuses.stats.values,
             // TODO ? temp
         });
-        this.#miscHP = miscHP;
         this.#skillRanks = Object.assign({}, skillRanks);
-        this.#feats = parseFeatChoices([...feats]);
         this.#armor = ArmorValues.zero;
         this.#resistances = Resistances.fromCategorized({
             misc: auraBonuses.resistances.values,
@@ -94,24 +88,8 @@ class Character implements Exportable<JsonValue> {
         this.#cachedGearBonuses = null;
     }
 
-    get key(): string {
-        return this.#key;
-    }
-
-    get fullName(): string {
-        return this.#personal.fullName;
-    }
-
-    toString(): string {
-        return this.#personal.fullName;
-    }
-
     get active(): boolean {
         return this.#active;
-    }
-
-    get personal(): CharPersonalDetails {
-        return Object.assign({}, this.#personal);
     }
 
     get stats(): Stats {
@@ -124,10 +102,6 @@ class Character implements Exportable<JsonValue> {
 
     get classes(): ClassLevels {
         return this.#classes.map(({ cls, level }) => ({ cls, level }));
-    }
-
-    get miscHP(): number {
-        return this.#miscHP;
     }
 
     get skillRanks(): SkillRanks {
@@ -177,11 +151,11 @@ class Character implements Exportable<JsonValue> {
     }
 
     get allFeats(): Feat[] {
-        return this.#feats.map(entry => entry.feat);
+        return this.feats.map(entry => entry.feat);
     }
 
     get validFeats(): Feat[] {
-        return this.#feats
+        return this.feats
             .filter(entry => {
                 const levelReq =
                     (entry.class
@@ -307,17 +281,13 @@ class Character implements Exportable<JsonValue> {
 
     export(): CharacterExport {
         return {
-            key: this.#key,
-            personal: personalDetailsJsonExport(this.#personal),
+            ...super.export(),
             race: this.#race?.key || '',
             classes: this.#classes.map(c => ({
                 cls: c.cls.key,
                 level: c.level,
             })),
-            feats: exportFeatchChoices(...this.#feats),
             active: this.#active,
-            miscHP: this.#miscHP,
-            baseStats: this.#stats.base,
             skillRanks: this.#skillRanks,
             resistances: this.#resistances.export(),
             inventory: this.#inventory.export(),

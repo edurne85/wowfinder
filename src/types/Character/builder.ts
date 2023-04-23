@@ -7,33 +7,39 @@ import { StatSet } from './Stats';
 
 type SkillRanks = { [key: string]: number };
 
-interface CharacterBuilder {
+interface CharacterBaseBuilder {
     key: string;
     personal: CharPersonalDetailsBuilder;
-    race: string;
-    classes: { cls: string; level: number }[];
-    feats: Iterable<FeatChoice>;
-    active?: boolean;
+    featChoices: Iterable<FeatChoice>;
     miscHP?: number;
     baseStats: StatSet;
+    baseResistances?: Resistances;
+}
+
+interface CharacterBuilder extends CharacterBaseBuilder {
+    race: string;
+    classes: { cls: string; level: number }[];
+    active?: boolean;
     skillRanks?: SkillRanks;
-    resistances?: Resistances;
     inventory?: InventoryBuilder;
 }
 
-interface CharacterExport {
-    [key: string]: JsonValue;
+interface CharacterBaseExport {
     key: string;
     personal: CharPersonalDetailsBuilder;
-    race: string;
-    classes: { cls: string; level: number }[];
-    feats: FeatChoiceExport[];
-    active: boolean;
+    featChoices: FeatChoiceExport[];
     miscHP: number;
     baseStats: StatSet;
+    baseResistances: ResistancesExport;
+}
+interface CharacterExport extends CharacterBaseExport {
+    [key: string]: JsonValue;
+    race: string;
+    classes: { cls: string; level: number }[];
+    active: boolean;
     skillRanks: SkillRanks;
     resistances: ResistancesExport;
     inventory: InventoryExport;
 }
 
-export type { SkillRanks, CharacterBuilder, CharacterExport };
+export type { SkillRanks, CharacterBuilder, CharacterBaseBuilder, CharacterExport, CharacterBaseExport };
