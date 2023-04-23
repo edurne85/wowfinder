@@ -16,12 +16,8 @@ import { CharacterBuilder, CharacterExport, SkillRanks } from './builder';
 import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
 import { Aura, auraBonuses } from './Class/Aura';
 import { Feat, feats } from './Feats';
-import { exportFeatchChoices, FeatChoice , checkClass, checkRace, parseFeatChoices } from './helpers';
+import { checkClass, checkRace } from './helpers';
 
-import CharPersonalDetails, {
-    jsonExport as personalDetailsJsonExport,
-    jsonImport as personalDetailsJsonImport,
-} from './Personal';
 import Race from './Race';
 import { Resistances } from './Resistances';
 import { Saves, SimpleSaves } from './Saves';
@@ -56,7 +52,7 @@ class Character extends CharacterBase implements Exportable<JsonValue> {
         skillRanks = {},
         inventory = Inventory.defaultBuilder,
     }: CharacterBuilder) {
-        super({key, personal, featChoices, miscHP, baseStats});
+        super({ key, personal, featChoices, miscHP, baseStats });
         this.#active = active;
         this.#race = checkRace(race);
         this.#classes = [];
@@ -160,10 +156,10 @@ class Character extends CharacterBase implements Exportable<JsonValue> {
                 const levelReq =
                     (entry.class
                         ? sum(
-                              ...this.#classes
-                                  .filter(c => entry.class === c.cls)
-                                  .map(c => c.level)
-                          )
+                            ...this.#classes
+                                .filter(c => entry.class === c.cls)
+                                .map(c => c.level)
+                        )
                         : sum(...this.classes.map(entry => entry.level))) >=
                     entry.level;
                 return (

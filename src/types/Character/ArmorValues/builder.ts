@@ -21,17 +21,17 @@ interface FullArmorValuesBuilder extends ArmorValuesBuilder {
     dex?: number,
     bab?: number,
     size?: number,
-};
+}
 
 interface FullFromBaseBuilder {
     base: ArmorValues,
     stats: Stats,
     bab: number,
     size: Size,
-};
+}
 
 export type {
     ArmorValuesBuilder,
     FullArmorValuesBuilder,
     FullFromBaseBuilder,
-}
+};

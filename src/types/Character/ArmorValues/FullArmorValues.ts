@@ -1,6 +1,6 @@
-import { sizeCombatMod } from "../Size";
-import { ArmorValues } from "./ArmorValues";
-import { FullArmorValuesBuilder, FullFromBaseBuilder } from "./builder";
+import { sizeCombatMod } from '../Size';
+import { ArmorValues } from './ArmorValues';
+import { FullArmorValuesBuilder, FullFromBaseBuilder } from './builder';
 
 class FullArmorValues extends ArmorValues {
     private _str: number;
@@ -9,23 +9,13 @@ class FullArmorValues extends ArmorValues {
     private _size: number;
 
     constructor({
-        armor = 0,
-        shield = 0,
-        dodge = 0,
-        nat = 0,
-        defl = 0,
-        misc = 0,
-        miscP = 0,
-        miscE = 0,
-        temp = 0,
-        tempP = 0,
-        tempE = 0,
         str = 0,
         dex = 0,
         bab = 0,
         size = 0,
+        ...rest
     }: FullArmorValuesBuilder) {
-        super({ armor, shield, dodge, nat, defl, misc, miscP, miscE, temp, tempP, tempE });
+        super(rest);
         this._str = str;
         this._dex = dex;
         this._bab = bab;
@@ -33,32 +23,9 @@ class FullArmorValues extends ArmorValues {
     }
 
     static fromBaseValues({ base, stats, bab, size }: FullFromBaseBuilder): FullArmorValues {
-        const {
-            armor,
-            shield,
-            dodge,
-            nat,
-            defl,
-            misc,
-            miscP,
-            miscE,
-            temp,
-            tempP,
-            tempE,
-        } = base;
         const mods = stats.totalMods;
         return new FullArmorValues({
-            armor,
-            shield,
-            dodge,
-            nat,
-            defl,
-            misc,
-            miscP,
-            miscE,
-            temp,
-            tempP,
-            tempE,
+            ...base,
             str: mods.STR,
             dex: mods.DEX,
             bab,
