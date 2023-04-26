@@ -3,7 +3,7 @@ import { CharacterList, CharacterSheet } from '../components';
 import { FullData } from '../types/FullData';
 import { RouteProvider, TitlesProvider } from './base';
 
-function CharacterSheetWrapper({data}: {data: FullData}): JSX.Element {
+function CharacterSheetWrapper({ data }: { data: FullData }): JSX.Element {
     let { char } = useParams<'char'>();
     if (!char) throw new Error('No char param');
     char = char.replace(/^:/, '');
@@ -28,18 +28,20 @@ const characterRoutes: RouteProvider = data => {
             title: (path: string) => {
                 const char = path.replace(/^\/chars\/:/, '');
                 return data.chars[char]?.fullName || char;
-            }
+            },
         },
     ];
 };
 
-const characterNames: TitlesProvider = (_, data) => ([
+const characterNames: TitlesProvider = (_, data) => [
     {
         match: /^\/chars\/:?(.*)/,
         title: (fragments: RegExpMatchArray | null): string | null => {
-            return fragments ? data.chars[fragments[1]]?.fullName || fragments[1] : null;
-        }
-    }
-]);
+            return fragments
+                ? data.chars[fragments[1]]?.fullName || fragments[1]
+                : null;
+        },
+    },
+];
 
 export { characterRoutes, characterNames };

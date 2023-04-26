@@ -12,9 +12,9 @@ const displayCoinTypes: CoinType[] = ['g', 's', 'c'];
 const ratio = 100;
 const ratios: MoneyBreakdown = {
     _: 0,
-    c: ratio**0,
-    s: ratio**1,
-    g: ratio**2,
+    c: ratio ** 0,
+    s: ratio ** 1,
+    g: ratio ** 2,
 };
 
 export default class Money {
@@ -34,18 +34,8 @@ export default class Money {
         };
     }
 
-    static condense({
-        _ = 0,
-        c = 0,
-        s = 0,
-        g = 0
-    }: MoneyBreakdown): number {
-        return(
-            _ +
-            c * ratios.c +
-            s * ratios.s +
-            g * ratios.g
-        );
+    static condense({ _ = 0, c = 0, s = 0, g = 0 }: MoneyBreakdown): number {
+        return _ + c * ratios.c + s * ratios.s + g * ratios.g;
     }
 
     private constructor(raw: number) {
@@ -87,15 +77,10 @@ export default class Money {
 }
 
 function asMoney(value: Money | number): Money {
-    return value instanceof Money ? value : Money.fromRaw(value as number || 0);
+    return value instanceof Money
+        ? value
+        : Money.fromRaw((value as number) || 0);
 }
 
-export type {
-    CoinType
-};
-export {
-    Money,
-    MoneyBreakdown,
-    displayCoinTypes,
-    asMoney,
-};
+export type { CoinType };
+export { Money, MoneyBreakdown, displayCoinTypes, asMoney };

@@ -1,7 +1,7 @@
 enum WeaponGroup {
     axe = 'axes',
     bladeHeavy = 'bladeHeavy',
-    bladeLight  = 'bladeLight',
+    bladeLight = 'bladeLight',
     bow = 'bow',
     close = 'close',
     crossbow = 'crossbow',

@@ -283,7 +283,7 @@ class Resistances implements FullResistances, ResistancesBuilder {
 
     updatedByType(data: ResistancesBuilder): Resistances {
         return new Resistances(
-            Object.assign({}, this, data) as ResistancesBuilder
+            Object.assign({}, this, data) as ResistancesBuilder,
         );
     }
 
@@ -291,7 +291,7 @@ class Resistances implements FullResistances, ResistancesBuilder {
         const { enhance, gear, misc, temp } = this.categorized;
         const curated = Object.assign({}, { enhance, gear, misc, temp }, data);
         return Resistances.fromCategorized(
-            curated as CategorizedResistancesBuilder
+            curated as CategorizedResistancesBuilder,
         );
     }
 

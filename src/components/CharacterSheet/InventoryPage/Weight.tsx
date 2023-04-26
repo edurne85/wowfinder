@@ -2,7 +2,12 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { GlobalContext } from '../../helpers/GlobalContext';
 import styled from 'styled-components';
-import { borderless, debugOutline, printableBottomBorder, smallText } from '../../helpers/mixins';
+import {
+    borderless,
+    debugOutline,
+    printableBottomBorder,
+    smallText,
+} from '../../helpers/mixins';
 
 interface WeightProps {
     load?: number;
@@ -10,24 +15,26 @@ interface WeightProps {
 }
 
 const StyledTable = styled.table`
-    ${debugOutline({color: '#909'})}
+    ${debugOutline({ color: '#909' })}
     margin-top: 5mm;
     border-spacing: 0;
-    & td, & th, & input {
+    & td,
+    & th,
+    & input {
         box-sizing: border-box;
         width: 12mm;
         text-align: center;
     }
-	& td {
-		border: 0.2mm #000 solid;
-	}
+    & td {
+        border: 0.2mm #000 solid;
+    }
     & td.text {
         width: 20mm;
     }
     ${printableBottomBorder('& td')}
-	& th {
-		${smallText};
-	}
+    & th {
+        ${smallText};
+    }
     & input {
         ${borderless};
     }
@@ -43,11 +50,11 @@ enum LimitType {
 }
 
 type Limits = {
-    [LimitType.light]: number,
-    [LimitType.medium]: number,
-    [LimitType.heavy]: number,
-    [LimitType.lift]: number,
-    [LimitType.drag]: number,
+    [LimitType.light]: number;
+    [LimitType.medium]: number;
+    [LimitType.heavy]: number;
+    [LimitType.lift]: number;
+    [LimitType.drag]: number;
 };
 
 function limit(base: number, factor = 1.0): number {
@@ -83,37 +90,51 @@ function currentLoad(limits: Limits, load: number): LimitType {
 
 const WeightInput: React.FC<{ value: number }> = ({ value }) => {
     const context = useContext(GlobalContext);
-    return (<input defaultValue={context.forceBlank ? '' : value} />);
+    return <input defaultValue={context.forceBlank ? '' : value} />;
 };
 
-const Weight: React.FC<WeightProps> = ({load = 0, capacity}) => {
+const Weight: React.FC<WeightProps> = ({ load = 0, capacity }) => {
     const { t } = useTranslation();
     const l = limits(capacity);
     const context = useContext(GlobalContext);
-    const totalText = context.forceBlank ? '' : t(`charsheet.inventory.weight.${currentLoad(l, load)}`);
-    return(<StyledTable id="tblHp">
-        <tbody>
-            <tr>
-                <th colSpan={2}>{t('charsheet.common.total')}</th>
-                <th>{t('charsheet.inventory.weight.light')}</th>
-                <th>{t('charsheet.inventory.weight.medium')}</th>
-                <th>{t('charsheet.inventory.weight.heavy')}</th>
-                <th>{t('charsheet.inventory.weight.lift')}</th>
-                <th>{t('charsheet.inventory.weight.drag')}</th>
-            </tr>
-            <tr>
-                <td><WeightInput value={load} /></td>
-                <td className="text">{totalText}</td>
-                <td><WeightInput value={l.light} /></td>
-                <td><WeightInput value={l.medium} /></td>
-                <td><WeightInput value={l.heavy} /></td>
-                <td><WeightInput value={l.lift} /></td>
-                <td><WeightInput value={l.drag} /></td>
-            </tr>
-        </tbody>
-    </StyledTable>);
+    const totalText = context.forceBlank
+        ? ''
+        : t(`charsheet.inventory.weight.${currentLoad(l, load)}`);
+    return (
+        <StyledTable id="tblHp">
+            <tbody>
+                <tr>
+                    <th colSpan={2}>{t('charsheet.common.total')}</th>
+                    <th>{t('charsheet.inventory.weight.light')}</th>
+                    <th>{t('charsheet.inventory.weight.medium')}</th>
+                    <th>{t('charsheet.inventory.weight.heavy')}</th>
+                    <th>{t('charsheet.inventory.weight.lift')}</th>
+                    <th>{t('charsheet.inventory.weight.drag')}</th>
+                </tr>
+                <tr>
+                    <td>
+                        <WeightInput value={load} />
+                    </td>
+                    <td className="text">{totalText}</td>
+                    <td>
+                        <WeightInput value={l.light} />
+                    </td>
+                    <td>
+                        <WeightInput value={l.medium} />
+                    </td>
+                    <td>
+                        <WeightInput value={l.heavy} />
+                    </td>
+                    <td>
+                        <WeightInput value={l.lift} />
+                    </td>
+                    <td>
+                        <WeightInput value={l.drag} />
+                    </td>
+                </tr>
+            </tbody>
+        </StyledTable>
+    );
 };
 
-export {
-    Weight,
-};
+export { Weight };

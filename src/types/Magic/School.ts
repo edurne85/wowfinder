@@ -65,7 +65,7 @@ type SchoolValuesPartial<T> = {
 };
 function fillSchoolValues<T>(
     values: SchoolValuesPartial<T>,
-    defaultValue: T
+    defaultValue: T,
 ): SchoolValues<T> {
     const full: SchoolValuesPartial<T> = {};
     const givenKeys = Object.keys(values);
@@ -84,7 +84,7 @@ type SubSchoolValuesPartial<T> = {
 };
 function fillSubSchoolValues<T>(
     values: SubSchoolValuesPartial<T>,
-    defaultValue: T
+    defaultValue: T,
 ): SubSchoolValues<T> {
     const full: SubSchoolValuesPartial<T> = {};
     const givenKeys = Object.keys(values);
@@ -101,7 +101,10 @@ for (const s of Object.keys(School)) {
     breakdownSubSchoolsByParent[school] = subSchoolsByParent(school);
 }
 
-const allSubSchoolsByParent = fillSchoolValues<SubSchool[]>(breakdownSubSchoolsByParent, []);
+const allSubSchoolsByParent = fillSchoolValues<SubSchool[]>(
+    breakdownSubSchoolsByParent,
+    [],
+);
 
 function tryParseSchool(input: string): School | SubSchool | undefined {
     input = input.toLowerCase();

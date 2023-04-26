@@ -25,20 +25,21 @@ function addNavigation(...routes: RouteObject[]): RouteObject[] {
 }
 
 function getRoutes(data: FullData): RouteObject[] {
-    return [...addNavigation(
-        ...homeRoutes(),
-        ...factionRoutes(data),
-        ...characterRoutes(data),
-        ...spellRoutes(data),
-        ...classRoutes(data),
-        ...raceRoutes(data),
-        ...itemRoutes(data),
-    ),
-    {
-        path: '/export',
-        element: <ExportByCharacterSelection data={data} />,
-    }
-];
+    return [
+        ...addNavigation(
+            ...homeRoutes(),
+            ...factionRoutes(data),
+            ...characterRoutes(data),
+            ...spellRoutes(data),
+            ...classRoutes(data),
+            ...raceRoutes(data),
+            ...itemRoutes(data),
+        ),
+        {
+            path: '/export',
+            element: <ExportByCharacterSelection data={data} />,
+        },
+    ];
 }
 
 function customTitles(t: TranslationProvider, data: FullData): TitleProvider[] {

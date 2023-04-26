@@ -30,7 +30,13 @@ type SpellSphere = {
     selfCentered: boolean;
 };
 
-type SpellArea = SpellSelf | SpellPoint | SpellCone | SpellCube | SpellLine | SpellSphere;
+type SpellArea =
+    | SpellSelf
+    | SpellPoint
+    | SpellCone
+    | SpellCube
+    | SpellLine
+    | SpellSphere;
 
 function stringify(value: SpellArea, t: TFunction<'translation'>): string {
     switch (value.spellAreaType) {
@@ -60,7 +66,7 @@ function tryParseArea(input: string): SpellArea | undefined {
     if (!matches) {
         return undefined;
     }
-    const [ areaType, param ] = matches;
+    const [areaType, param] = matches;
     const length = Length.tryParseLength(param);
     switch (areaType) {
         case 'self':
@@ -68,15 +74,29 @@ function tryParseArea(input: string): SpellArea | undefined {
         case 'point':
             return { spellAreaType: 'point' };
         case 'cone':
-            return length ? { spellAreaType: 'cone', radius: length } : undefined;
+            return length
+                ? { spellAreaType: 'cone', radius: length }
+                : undefined;
         case 'cube':
             return length ? { spellAreaType: 'cube', size: length } : undefined;
         case 'line':
             return length ? { spellAreaType: 'line', length } : undefined;
         case 'sphere.point':
-            return length ? { spellAreaType: 'sphere', radius: length, selfCentered: false } : undefined;
+            return length
+                ? {
+                      spellAreaType: 'sphere',
+                      radius: length,
+                      selfCentered: false,
+                  }
+                : undefined;
         case 'sphere.self':
-            return length ? { spellAreaType: 'sphere', radius: length, selfCentered: true } : undefined;
+            return length
+                ? {
+                      spellAreaType: 'sphere',
+                      radius: length,
+                      selfCentered: true,
+                  }
+                : undefined;
         default:
             return undefined;
     }
@@ -84,7 +104,10 @@ function tryParseArea(input: string): SpellArea | undefined {
 
 const defaultArea = { spellAreaType: 'point' } as const;
 
-function parseArea(input: string, defaultValue: SpellArea = defaultArea): SpellArea {
+function parseArea(
+    input: string,
+    defaultValue: SpellArea = defaultArea,
+): SpellArea {
     return tryParseArea(input) ?? defaultValue;
 }
 
@@ -96,8 +119,4 @@ export type {
     SpellLine,
     SpellSphere,
 };
-export {
-    stringify,
-    tryParseArea,
-    parseArea,
-};
+export { stringify, tryParseArea, parseArea };

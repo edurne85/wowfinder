@@ -15,7 +15,11 @@ import { CharacterBuilder, CharacterExport, SkillRanks } from './builder';
 import { OverridableCharacterBase } from './CharacterOverride';
 import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
 import { Aura } from './Class/Aura';
-import { ClassAurasCondensed, getAuraBonuses, getClassAurasCondensed } from './Class/Aura/characterHelpers';
+import {
+    ClassAurasCondensed,
+    getAuraBonuses,
+    getClassAurasCondensed,
+} from './Class/Aura/characterHelpers';
 import { getClassFeaturesCondensed } from './Class/Features/characterHelpers';
 import { Feat, feats } from './Feats';
 import { checkClass, checkRace } from './helpers';
@@ -29,7 +33,10 @@ import Stats, { zeroDefault } from './Stats';
 
 type Characters = { [key: string]: Character };
 
-class Character extends OverridableCharacterBase implements Exportable<JsonValue> {
+class Character
+    extends OverridableCharacterBase
+    implements Exportable<JsonValue>
+{
     #active: boolean;
     #stats: Stats;
     #race: Race;
@@ -144,7 +151,7 @@ class Character extends OverridableCharacterBase implements Exportable<JsonValue
     get classBonuses(): ClassBonuses {
         return (this.#cachedClassBonuses ||= Class.multiclass(
             this.#classes,
-            this.#stats.totals
+            this.#stats.totals,
         ));
     }
 
@@ -158,10 +165,10 @@ class Character extends OverridableCharacterBase implements Exportable<JsonValue
                 const levelReq =
                     (entry.class
                         ? sum(
-                            ...this.#classes
-                                .filter(c => entry.class === c.cls)
-                                .map(c => c.level)
-                        )
+                              ...this.#classes
+                                  .filter(c => entry.class === c.cls)
+                                  .map(c => c.level),
+                          )
                         : sum(...this.classes.map(entry => entry.level))) >=
                     entry.level;
                 return (
@@ -174,7 +181,7 @@ class Character extends OverridableCharacterBase implements Exportable<JsonValue
 
     #combineGearBonuses(): Bonus {
         const combined = Bonus.combine(
-            ...this.#inventory.gear.map(g => g.bonuses)
+            ...this.#inventory.gear.map(g => g.bonuses),
         ).gear;
         this.#stats = this.#stats.updated({ gear: combined.stats.values });
         this.#resistances = this.#resistances.updatedByCategory({
@@ -184,10 +191,10 @@ class Character extends OverridableCharacterBase implements Exportable<JsonValue
             .filter(g => g instanceof Armor)
             .map(g => g as Armor);
         const armor = Math.max(
-            ...allArmor.map(a => a.fullBonus.bonuses.armor.armorClass)
+            ...allArmor.map(a => a.fullBonus.bonuses.armor.armorClass),
         );
         const shield = Math.max(
-            ...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass)
+            ...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass),
         );
         this.#armor = new ArmorValues({
             armor,
@@ -223,7 +230,7 @@ class Character extends OverridableCharacterBase implements Exportable<JsonValue
             mode,
             school,
             this.stats.totals,
-            this.classBonuses.efl
+            this.classBonuses.efl,
         );
     }
 
@@ -231,7 +238,7 @@ class Character extends OverridableCharacterBase implements Exportable<JsonValue
         return fullComputedSpellPower(
             this.gearBonuses.spellPower,
             this.stats.totals,
-            this.classBonuses.efl
+            this.classBonuses.efl,
         );
     }
 
@@ -271,7 +278,7 @@ class Character extends OverridableCharacterBase implements Exportable<JsonValue
     static import(dir = window.Main.asset('Characters')): Characters {
         return (this.#imported ||= forceDataImportKeyS<Character>(
             dir,
-            this.build
+            this.build,
         ));
     }
 }

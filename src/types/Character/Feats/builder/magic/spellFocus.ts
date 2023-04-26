@@ -8,46 +8,46 @@ const spellFocusFeats: { [key in SpellFocusFeat]: FeatSpec } = {
     spellFocusAbjuration: build.focus(Feat.spellFocusAbjuration),
     greaterSpellFocusAbjuration: build.focus(
         Feat.greaterSpellFocusAbjuration,
-        Feat.spellFocusAbjuration
+        Feat.spellFocusAbjuration,
     ),
     spellFocusConjuration: build.focus(Feat.spellFocusConjuration),
     greaterSpellFocusConjuration: build.focus(
         Feat.greaterSpellFocusConjuration,
-        Feat.spellFocusConjuration
+        Feat.spellFocusConjuration,
     ),
     augmentSummoning: build.magic(
         Feat.augmentSummoning,
-        allOf(...req.feats(Feat.spellFocusConjuration))
+        allOf(...req.feats(Feat.spellFocusConjuration)),
     ),
     spellFocusDivination: build.focus(Feat.spellFocusDivination),
     greaterSpellFocusDivination: build.focus(
         Feat.greaterSpellFocusDivination,
-        Feat.spellFocusDivination
+        Feat.spellFocusDivination,
     ),
     spellFocusEnchantment: build.focus(Feat.spellFocusEnchantment),
     greaterSpellFocusEnchantment: build.focus(
         Feat.greaterSpellFocusEnchantment,
-        Feat.spellFocusEnchantment
+        Feat.spellFocusEnchantment,
     ),
     spellFocusEvocation: build.focus(Feat.spellFocusEvocation),
     greaterSpellFocusEvocation: build.focus(
         Feat.greaterSpellFocusEvocation,
-        Feat.spellFocusEvocation
+        Feat.spellFocusEvocation,
     ),
     spellFocusIllusion: build.focus(Feat.spellFocusIllusion),
     greaterSpellFocusIllusion: build.focus(
         Feat.greaterSpellFocusIllusion,
-        Feat.spellFocusIllusion
+        Feat.spellFocusIllusion,
     ),
     spellFocusNecromancy: build.focus(Feat.spellFocusNecromancy),
     greaterSpellFocusNecromancy: build.focus(
         Feat.greaterSpellFocusNecromancy,
-        Feat.spellFocusNecromancy
+        Feat.spellFocusNecromancy,
     ),
     spellFocusTransmutation: build.focus(Feat.spellFocusTransmutation),
     greaterSpellFocusTransmutation: build.focus(
         Feat.greaterSpellFocusTransmutation,
-        Feat.spellFocusTransmutation
+        Feat.spellFocusTransmutation,
     ),
 };
 

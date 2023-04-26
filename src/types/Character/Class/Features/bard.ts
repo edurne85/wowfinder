@@ -18,7 +18,6 @@ const BardClassFeature = {
     inspireHeroics: 'inspireHeroics',
     massSuggestion: 'massSuggestion',
     deadlyPerformance: 'deadlyPerformance',
-
 } as const;
 
 type BardClassFeature = keyof typeof BardClassFeature;
@@ -59,7 +58,7 @@ const bard = {
             eLevel -= 6;
         }
         return result;
-    }
+    },
 } as const;
 
 export { BardClassFeature, bard };

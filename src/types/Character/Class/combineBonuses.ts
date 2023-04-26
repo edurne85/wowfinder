@@ -4,7 +4,10 @@ import { ClassLevels } from './base';
 import { ClassBonuses } from './ClassBonuses';
 import { hdFirst, hdAverage } from './helpers';
 
-function combineClassBonuses(classLevels: ClassLevels, stats: StatSet): ClassBonuses {
+function combineClassBonuses(
+    classLevels: ClassLevels,
+    stats: StatSet,
+): ClassBonuses {
     const goodSaves = {
         fort: false,
         refl: false,
@@ -44,10 +47,11 @@ function combineClassBonuses(classLevels: ClassLevels, stats: StatSet): ClassBon
         result.efl.esp += cls.casting.spontaneous * level;
         result.skillRanks += (cls.skillRanks + statMod(stats.INT)) * level;
         for (const f of cls.featuresList.filter(f => f.level <= level)) {
-            result.features[f.feature] =
-                (result.features[f.feature] || 0) + 1;
+            result.features[f.feature] = (result.features[f.feature] || 0) + 1;
         }
-        cls.classSkills.forEach((value: Skill) => result.classSkills.add(value));
+        cls.classSkills.forEach((value: Skill) =>
+            result.classSkills.add(value),
+        );
     }
     if (goodSaves.fort) {
         result.saves.fort += 2;

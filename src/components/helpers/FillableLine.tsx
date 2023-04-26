@@ -8,17 +8,18 @@ const FillableLine = styled.div`
     }
 `;
 
-function mapLines<T extends ReactContent> (lines: T[], keyPrefix: string): JSX.Element[] {
+function mapLines<T extends ReactContent>(
+    lines: T[],
+    keyPrefix: string,
+): JSX.Element[] {
     let lineCount = 0;
     return lines.map((value: T) => {
         const args = {
             key: `${keyPrefix}${++lineCount}`,
-            ...(value ? {} : {className: 'empty' }),
+            ...(value ? {} : { className: 'empty' }),
         };
         return <FillableLine {...args}>{value || '\xa0'}</FillableLine>;
     });
 }
 
-export {
-    mapLines,
-};
+export { mapLines };

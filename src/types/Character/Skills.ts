@@ -66,7 +66,7 @@ interface SkillSpecBuilder {
 
 interface SkillTotalBuilder {
     stats: StatSet;
-    ranks: {[key in Skill]?: number};
+    ranks: { [key in Skill]?: number };
     byClass: Skill[];
     acp: number;
     size: number;
@@ -79,7 +79,13 @@ class SkillSpec {
     private _trainedOnly: boolean;
     private _sizeModFactor: number;
 
-    constructor({key, primary, secondary = null, trainedOnly = false, sizeModFactor = 0}: SkillSpecBuilder) {
+    constructor({
+        key,
+        primary,
+        secondary = null,
+        trainedOnly = false,
+        sizeModFactor = 0,
+    }: SkillSpecBuilder) {
         this._key = key;
         this._primary = primary;
         this._secondary = secondary;
@@ -88,39 +94,76 @@ class SkillSpec {
         Object.freeze(this);
     }
 
-    get primary (): StatKey { return this._primary; }
-    get secondary (): StatKey | null { return this._secondary; }
-    get trainedOnly (): boolean { return this._trainedOnly; }
-    get acp(): number { return this._primary === StatKey.STR || this._primary === StatKey.DEX ? 1 : 0; }
-    get sizeModFactor(): number { return this._sizeModFactor; }
-    
-    total({stats, ranks = {}, byClass = [], acp = 0, size = 0}: SkillTotalBuilder): number|null {
+    get primary(): StatKey {
+        return this._primary;
+    }
+
+    get secondary(): StatKey | null {
+        return this._secondary;
+    }
+
+    get trainedOnly(): boolean {
+        return this._trainedOnly;
+    }
+
+    get acp(): number {
+        return this._primary === StatKey.STR || this._primary === StatKey.DEX
+            ? 1
+            : 0;
+    }
+
+    get sizeModFactor(): number {
+        return this._sizeModFactor;
+    }
+
+    total({
+        stats,
+        ranks = {},
+        byClass = [],
+        acp = 0,
+        size = 0,
+    }: SkillTotalBuilder): number | null {
         const isClass = byClass.includes(this._key);
         const tRanks = ranks[this._key] || 0;
         const isTrained = tRanks > 0;
-        const trainedBonus = (isClass && isTrained) ? classTrainedBonus : 0;
-        if (this._trainedOnly && !isTrained && !isClass ) {
+        const trainedBonus = isClass && isTrained ? classTrainedBonus : 0;
+        if (this._trainedOnly && !isTrained && !isClass) {
             return null;
         }
         const primary = stats[this._primary];
-        const secondary: number|null = this._secondary ? stats[this._secondary] : null;
-        const statBonus: number = secondary == null ? primary : Math.max(primary, secondary);
-        
+        const secondary: number | null = this._secondary
+            ? stats[this._secondary]
+            : null;
+        const statBonus: number =
+            secondary == null ? primary : Math.max(primary, secondary);
+
         // TODO: Racial, Gear, Misc, Temp
-        return statBonus + tRanks + trainedBonus + this.acp * acp + this._sizeModFactor * size;
+        return (
+            statBonus +
+            tRanks +
+            trainedBonus +
+            this.acp * acp +
+            this._sizeModFactor * size
+        );
     }
 }
 
 function mkSkill(
     key: Skill,
     primary: StatKey,
-    secondary: StatKey|null = null,
+    secondary: StatKey | null = null,
     trainedOnly = false,
-    sizeModFactor = 0
+    sizeModFactor = 0,
 ): SkillSpec {
-    return new SkillSpec({key, primary, secondary,  trainedOnly, sizeModFactor});
+    return new SkillSpec({
+        key,
+        primary,
+        secondary,
+        trainedOnly,
+        sizeModFactor,
+    });
 }
-const Skills: {[key in Skill]: SkillSpec} = {
+const Skills: { [key in Skill]: SkillSpec } = {
     acrobatics: mkSkill(Skill.acrobatics, StatKey.DEX, null, false, -2),
     athletics: mkSkill(Skill.athletics, StatKey.STR),
     appraise: mkSkill(Skill.appraise, StatKey.INT),
@@ -130,8 +173,13 @@ const Skills: {[key in Skill]: SkillSpec} = {
     cooking: mkSkill(Skill.cooking, StatKey.INT, StatKey.DEX, true),
     inscription: mkSkill(Skill.inscription, StatKey.INT, StatKey.DEX, true),
     jewelcrafting: mkSkill(Skill.jewelcrafting, StatKey.INT, StatKey.DEX, true),
-    leatherworking: mkSkill(Skill.leatherworking, StatKey.INT, StatKey.DEX, true),
-    tailoring : mkSkill(Skill.tailoring, StatKey.INT, StatKey.DEX, true),
+    leatherworking: mkSkill(
+        Skill.leatherworking,
+        StatKey.INT,
+        StatKey.DEX,
+        true,
+    ),
+    tailoring: mkSkill(Skill.tailoring, StatKey.INT, StatKey.DEX, true),
     technology: mkSkill(Skill.technology, StatKey.INT, StatKey.DEX, true),
     woodworking: mkSkill(Skill.woodworking, StatKey.INT, StatKey.DEX, true),
     diplomacy: mkSkill(Skill.diplomacy, StatKey.CHA),
@@ -174,11 +222,7 @@ const Skills: {[key in Skill]: SkillSpec} = {
     stealth: mkSkill(Skill.stealth, StatKey.DEX, null, false, -4),
 };
 
-type SkillSet = {[key in Skill]?: number};
+type SkillSet = { [key in Skill]?: number };
 
 export default Skills;
-export {
-    Skill,
-    SkillSet,
-    classTrainedBonus,
-};
+export { Skill, SkillSet, classTrainedBonus };

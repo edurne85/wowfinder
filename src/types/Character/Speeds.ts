@@ -9,7 +9,7 @@ enum FlyManeuverability {
 }
 
 function flyManeuverabilityBonus(maneuverability: FlyManeuverability): number {
-    switch(maneuverability) {
+    switch (maneuverability) {
         case FlyManeuverability.clumsy:
             return -8;
         case FlyManeuverability.poor:
@@ -41,12 +41,17 @@ interface SpeedBuilder {
     maneuverability?: FlyManeuverability;
 }
 
-const asFeet: (value: SpeedValue) => number = (value) =>
-    value === 0 ? 0 : value as number || convertSpeed(value as Speed, defaultSpeedUnit).value;
+const asFeet: (value: SpeedValue) => number = value =>
+    value === 0
+        ? 0
+        : (value as number) ||
+          convertSpeed(value as Speed, defaultSpeedUnit).value;
 
-const encumbered: (value: number) => number = (value) => value - (value >= 30 ? 10 : 5);
+const encumbered: (value: number) => number = value =>
+    value - (value >= 30 ? 10 : 5);
 
-const wrap: (value: number) => Speed = (value) => new Speed({value, unit: defaultSpeedUnit});
+const wrap: (value: number) => Speed = value =>
+    new Speed({ value, unit: defaultSpeedUnit });
 
 class Speeds {
     private _base: number;
@@ -78,28 +83,36 @@ class Speeds {
         this._maneuverablity = maneuverability;
     }
 
-    get base(): Speed { return wrap(this._base); }
+    get base(): Speed {
+        return wrap(this._base);
+    }
 
-    get fly(): { speed: Speed, maneuverability: FlyManeuverability} {
+    get fly(): { speed: Speed; maneuverability: FlyManeuverability } {
         return {
             speed: wrap(this._fly),
             maneuverability: this._maneuverablity,
         };
     }
 
-    get swim(): Speed { return wrap(this._swim); }
+    get swim(): Speed {
+        return wrap(this._swim);
+    }
 
-    get burrow(): Speed { return wrap(this._burrow); }
+    get burrow(): Speed {
+        return wrap(this._burrow);
+    }
 
-    get climb(): Speed { return wrap(this._climb); }
+    get climb(): Speed {
+        return wrap(this._climb);
+    }
 
-    get misc(): Speed { return wrap(this._misc); }
+    get misc(): Speed {
+        return wrap(this._misc);
+    }
 
-    get encumbered(): Speed  { return wrap(this._encumberance ? encumbered(this._base) : this._base); }
+    get encumbered(): Speed {
+        return wrap(this._encumberance ? encumbered(this._base) : this._base);
+    }
 }
 
-export {
-    Speeds,
-    FlyManeuverability,
-    flyManeuverabilityBonus,
-};
+export { Speeds, FlyManeuverability, flyManeuverabilityBonus };

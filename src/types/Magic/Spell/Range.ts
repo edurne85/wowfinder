@@ -51,7 +51,7 @@ const SpellRange = {
     },
     forceParse(
         input: string,
-        defaultValue: SpellRange = 'special'
+        defaultValue: SpellRange = 'special',
     ): SpellRange {
         return SpellRange.tryParse(input) ?? defaultValue;
     },

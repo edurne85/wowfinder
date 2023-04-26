@@ -39,35 +39,61 @@ class ArmorValues {
         this._tempE = tempE;
     }
 
-    get armor(): number { return this._armor; }
+    get armor(): number {
+        return this._armor;
+    }
 
-    get shield(): number { return this._shield; }
+    get shield(): number {
+        return this._shield;
+    }
 
-    get dodge(): number { return this._dodge; }
+    get dodge(): number {
+        return this._dodge;
+    }
 
-    get nat(): number { return this._nat; }
+    get nat(): number {
+        return this._nat;
+    }
 
-    get defl(): number { return this._defl; }
+    get defl(): number {
+        return this._defl;
+    }
 
-    get misc(): number { return this._misc; }
+    get misc(): number {
+        return this._misc;
+    }
 
-    get miscP(): number { return this._miscP; }
+    get miscP(): number {
+        return this._miscP;
+    }
 
-    get miscE(): number { return this._miscE; }
+    get miscE(): number {
+        return this._miscE;
+    }
 
-    get miscAll(): number { return this.misc + this.miscP + this.miscE; }
+    get miscAll(): number {
+        return this.misc + this.miscP + this.miscE;
+    }
 
-    get temp(): number { return this._temp; }
+    get temp(): number {
+        return this._temp;
+    }
 
-    get tempP(): number { return this._tempP; }
+    get tempP(): number {
+        return this._tempP;
+    }
 
-    get tempE(): number { return this._tempE; }
+    get tempE(): number {
+        return this._tempE;
+    }
 
-    get tempAll(): number { return this.temp + this.tempP + this.tempE; }
+    get tempAll(): number {
+        return this.temp + this.tempP + this.tempE;
+    }
 
-    static get zero(): ArmorValues { return new ArmorValues({}); }
+    static get zero(): ArmorValues {
+        return new ArmorValues({});
+    }
 }
 
-export {
-    ArmorValues,
-};
+export { ArmorValues };

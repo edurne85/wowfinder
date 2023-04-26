@@ -19,27 +19,43 @@ export default class Senses {
         this._smell = smell;
     }
 
-    get darkVision(): number { return this._darkVision; }
+    get darkVision(): number {
+        return this._darkVision;
+    }
 
-    get lowLightVision(): boolean { return this._lowLightVision; }
+    get lowLightVision(): boolean {
+        return this._lowLightVision;
+    }
 
-    get smell(): boolean { return this._smell; }
+    get smell(): boolean {
+        return this._smell;
+    }
 
-    static get defaults(): Senses { return new Senses({}); }
+    static get defaults(): Senses {
+        return new Senses({});
+    }
 
     static combine(...args: Senses[]): Senses {
         return new Senses({
-            darkVision: args.reduce((prev, curr): number => Math.max(prev, curr._darkVision), 0),
+            darkVision: args.reduce(
+                (prev, curr): number => Math.max(prev, curr._darkVision),
+                0,
+            ),
             lowLightVision: args.some(s => s._lowLightVision),
             smell: args.some(s => s._smell),
         });
     }
 
     static build(raw: any = {}): Senses {
-        return new Senses(Object.assign({
-            darkVision: 0,
-            lowLightVision: false,
-            smell: false,
-        }, raw));
+        return new Senses(
+            Object.assign(
+                {
+                    darkVision: 0,
+                    lowLightVision: false,
+                    smell: false,
+                },
+                raw,
+            ),
+        );
     }
 }

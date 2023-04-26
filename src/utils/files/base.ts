@@ -55,6 +55,5 @@ function registerFileBaseListeners(): void {
     });
 }
 
-
 export type { fileFilter };
 export { filters, isFile, registerFileBaseListeners };

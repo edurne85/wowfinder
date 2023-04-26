@@ -14,7 +14,7 @@ const build = {
         feat(
             key,
             allOf(...reqs, either(...req.features(ClassFeature.channel))),
-            [FeatFlag.class, FeatFlag.channel]
+            [FeatFlag.class, FeatFlag.channel],
         ),
     channelType: (key: Feat, ...reqs: Reqs): FeatSpec =>
         feat(key, allOf(...reqs, ...req.features(ClassFeature.channel)), [
@@ -35,13 +35,13 @@ const classFeatureFeats: { [key in ClassFeatureFeat]: FeatSpec } = {
     improvedChannel: build.channelEnh(Feat.improvedChannel),
     selectiveChannel: build.channelEnh(
         Feat.selectiveChannel,
-        req.stat(StatKey.CHA, 13)
+        req.stat(StatKey.CHA, 13),
     ),
     turnUndead: build.channelType(Feat.turnUndead),
     channelSmite: feat(
         Feat.channelSmite,
         allOf(...req.features(ClassFeature.channel)),
-        [FeatFlag.class, FeatFlag.channel, FeatFlag.combat]
+        [FeatFlag.class, FeatFlag.channel, FeatFlag.combat],
     ),
 };
 

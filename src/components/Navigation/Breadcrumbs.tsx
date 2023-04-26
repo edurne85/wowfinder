@@ -16,7 +16,7 @@ const BreadcrumbsContainer = styled.div`
 
 type PathTitleProvider = (
     t: TranslationProvider,
-    path: string
+    path: string,
 ) => string | null;
 
 type PathTitleResolver = (path: string) => string;
@@ -29,7 +29,7 @@ interface ChunkLinkProps {
 
 function titlesResolver(
     t: TranslationProvider,
-    titlesProvider: PathTitleProvider
+    titlesProvider: PathTitleProvider,
 ): PathTitleResolver {
     return function title(path: string): string {
         const customTitle = titlesProvider(t, path);

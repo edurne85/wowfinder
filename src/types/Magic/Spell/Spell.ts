@@ -13,7 +13,10 @@ interface SpellBuilder extends SpellBaseBuilder {
 
 type Spells = { [key: string]: Spell };
 
-function getFirstDefined<T>(failMessage: string, ...args: (T | undefined)[]): T{
+function getFirstDefined<T>(
+    failMessage: string,
+    ...args: (T | undefined)[]
+): T {
     for (const arg of args) {
         if (arg !== undefined) {
             return arg;
@@ -38,13 +41,13 @@ class Spell extends SpellBase implements SpellBuilder {
                     throw new Error(
                         `Invalid spell definition for ${this.#key}:${
                             rank.rank
-                        }: ${message}`
+                        }: ${message}`,
                     );
                 }
             };
             rankAssert(
                 !!rank.castingTime || !!this.castingTime,
-                'Missing casting time'
+                'Missing casting time',
             );
             rankAssert(!!rank.range || !!this.range, 'Missing range');
             // rankAssert(!!rank.area || !!this.area, 'Missing area');
@@ -91,11 +94,11 @@ class Spell extends SpellBase implements SpellBuilder {
         if (!rankObj) {
             throw new Error(`Invalid rank ${rank} for ${this.#key}`);
         }
-        const getProp = <T>(prop: (keyof SpellRank) & (keyof Spell)): T => {
+        const getProp = <T>(prop: keyof SpellRank & keyof Spell): T => {
             return getFirstDefined<T>(
                 `Missing ${prop} for ${this.#key}:${rank}`,
                 rankObj[prop] as T,
-                this[prop] as T
+                this[prop] as T,
             );
         };
         const builder = {

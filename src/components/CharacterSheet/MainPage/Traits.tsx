@@ -12,11 +12,16 @@ const TraitsContainer = styled.div`
 function classFeatureString(translated: string, count: number): string {
     return count > 1 ? `${translated} (${count})` : translated;
 }
-function classFeatureStrings(char: Character, t: TFunction<'translation'>): string[] {
-    return char.classFeaturesCondensed.map(({feature, count}) => classFeatureString(t(`classFeatures.${feature}`), count));
+function classFeatureStrings(
+    char: Character,
+    t: TFunction<'translation'>,
+): string[] {
+    return char.classFeaturesCondensed.map(({ feature, count }) =>
+        classFeatureString(t(`classFeatures.${feature}`), count),
+    );
 }
 
-export default function Traits({char}: {char?: Character}): JSX.Element {
+export default function Traits({ char }: { char?: Character }): JSX.Element {
     const { t } = useTranslation();
     const lines: string[] = [];
     // TODO Racial traits
@@ -25,7 +30,5 @@ export default function Traits({char}: {char?: Character}): JSX.Element {
     // TODO: feats
     lines.splice(maxLines);
     lines.push(...Array(maxLines - lines.length));
-    return (<TraitsContainer>
-        {mapLines(lines, 'TraitsLine-')}
-    </TraitsContainer>);
+    return <TraitsContainer>{mapLines(lines, 'TraitsLine-')}</TraitsContainer>;
 }

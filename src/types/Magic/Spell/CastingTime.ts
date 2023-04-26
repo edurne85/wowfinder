@@ -24,7 +24,7 @@ const CastingTime = {
 
     forceParse(
         input: string,
-        defaultValue: CastingTime = 'special'
+        defaultValue: CastingTime = 'special',
     ): CastingTime {
         return CastingTime.tryParse(input) ?? defaultValue;
     },

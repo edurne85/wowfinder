@@ -20,7 +20,7 @@ const spellRoutes: RouteProvider = data => {
         {
             path: '/spells/:spell',
             element: <SpellWrapper data={data} />,
-        }
+        },
     ];
 };
 

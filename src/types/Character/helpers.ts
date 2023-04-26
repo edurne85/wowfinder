@@ -64,8 +64,8 @@ function parseFeatChoices(raw: any[]): FeatChoice[] {
     return res;
 }
 
-function exportFeatchChoices(... raw: FeatChoice[]): FeatChoiceExport[] {
-    return raw.map((f) => ({
+function exportFeatchChoices(...raw: FeatChoice[]): FeatChoiceExport[] {
+    return raw.map(f => ({
         feat: f.feat,
         class: f.class?.key || '',
         level: f.level,

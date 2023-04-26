@@ -17,7 +17,8 @@ const ColumnDiv = styled.div`
     flex-grow: 1;
     flex: 1;
     max-width: 50%;
-    & > *, & > h1 {
+    & > *,
+    & > h1 {
         margin-top: 5mm;
     }
     & > h1 {
@@ -28,12 +29,12 @@ const ColumnDiv = styled.div`
     }
 `;
 
-const Column: React.FC<{key: string, id: string, children: ReactChildren}> = ({
-    id, children
-}) => (
-    <ColumnDiv id={`column-${id}`}>
-        {children}
-    </ColumnDiv>
+const Column: React.FC<{
+    key: string;
+    id: string;
+    children: ReactChildren;
+}> = ({ id, children }) => (
+    <ColumnDiv id={`column-${id}`}>{children}</ColumnDiv>
 );
 
 interface ColumnDefs {
@@ -42,18 +43,22 @@ interface ColumnDefs {
         key: string;
         id: string;
         children?: ReactNode | undefined;
-    }[]
+    }[];
 }
 
 const Columns: React.FC<ColumnDefs> = (props: ColumnDefs) => {
-    const attrs: {id?: string} = props.id ? { id: props.id } : {};
-    return (<ColumnsContainer {...attrs}>
-        {props.columns.map(c => <Column key={c.key} id={c.id}>{c.children}</Column>)}
-    </ColumnsContainer>);
+    const attrs: { id?: string } = props.id ? { id: props.id } : {};
+    return (
+        <ColumnsContainer {...attrs}>
+            {props.columns.map(c => (
+                <Column key={c.key} id={c.id}>
+                    {c.children}
+                </Column>
+            ))}
+        </ColumnsContainer>
+    );
 };
 
 export default Columns;
 
-export {
-    ColumnDefs,
-};
+export { ColumnDefs };

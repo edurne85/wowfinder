@@ -15,7 +15,7 @@ enum GearSlot {
     ring = 'ring', // Each
 }
 
-type Shape = {slot: GearSlot, qtty: number}[];
+type Shape = { slot: GearSlot; qtty: number }[];
 
 function compactShape(shape: Shape): Shape {
     const result: Shape = [];
@@ -25,7 +25,7 @@ function compactShape(shape: Shape): Shape {
             .map(entry => entry.qtty)
             .reduce((a, b) => a + b, 0);
         if (qtty > 0) {
-            result.push({slot, qtty});
+            result.push({ slot, qtty });
         }
     }
     return result;
@@ -63,7 +63,7 @@ const Shapes = {
 };
 
 function buildShape(slots: string[]): Shape {
-    const slotCounts: {[s: string]: number} = {};
+    const slotCounts: { [s: string]: number } = {};
     for (const s of slots) {
         if (s in GearSlot) {
             slotCounts[s] = (slotCounts[s] || 0) + 1;
@@ -71,7 +71,10 @@ function buildShape(slots: string[]): Shape {
             throw new Error(`Unknown gear slot ${s}`);
         }
     }
-    return Object.keys(slotCounts).map(s => ({slot: s as GearSlot, qtty: slotCounts[s]}));
+    return Object.keys(slotCounts).map(s => ({
+        slot: s as GearSlot,
+        qtty: slotCounts[s],
+    }));
 }
 
 function gt0(qtty: number): boolean {
@@ -87,9 +90,4 @@ function explodeShape(shape: Shape): string[] {
 }
 
 export default GearSlot;
-export {
-    Shape,
-    Shapes,
-    buildShape,
-    explodeShape,
-};
+export { Shape, Shapes, buildShape, explodeShape };

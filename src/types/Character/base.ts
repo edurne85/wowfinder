@@ -70,7 +70,7 @@ abstract class CharacterBase {
     get size(): Size | undefined {
         return this.#size;
     }
-    
+
     export(): CharacterBaseExport {
         return {
             key: this.#key,
@@ -85,4 +85,3 @@ abstract class CharacterBase {
 }
 
 export { CharacterBase };
-

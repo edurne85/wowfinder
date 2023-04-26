@@ -15,7 +15,7 @@ type Rep = Reputation;
 
 const initialHatedScore = -42000;
 
-const threshholds: {[key in Rep]: number} = {
+const threshholds: { [key in Rep]: number } = {
     hated: -42000,
     hostile: -6000,
     undfriendly: -3000,
@@ -27,8 +27,9 @@ const threshholds: {[key in Rep]: number} = {
 };
 Object.freeze(threshholds);
 
-const sortedDownTiers = ([...Object.keys(threshholds)] as Rep[])
-    .sort((a: Rep, b: Rep): number => threshholds[b] - threshholds[a]);
+const sortedDownTiers = ([...Object.keys(threshholds)] as Rep[]).sort(
+    (a: Rep, b: Rep): number => threshholds[b] - threshholds[a],
+);
 const lastRep = sortedDownTiers[sortedDownTiers.length - 1];
 
 const sortedUpScores = [...Object.values(threshholds)].sort((a, b) => a - b);
@@ -54,46 +55,66 @@ function nextScore(current: number): number {
     return NaN;
 }
 
-type Factions = {byKey: {[key:number]: Faction}, byLabel: {[label:string]: Faction}};
+type Factions = {
+    byKey: { [key: number]: Faction };
+    byLabel: { [label: string]: Faction };
+};
 
 class Faction {
     private _key: number;
     private _label: string;
     private _name: string;
 
-    constructor({key, label, name}: {key: number, label: string, name: string}) {
+    constructor({
+        key,
+        label,
+        name,
+    }: {
+        key: number;
+        label: string;
+        name: string;
+    }) {
         this._key = key;
         this._label = label;
         this._name = name;
         Object.freeze(this);
     }
 
-    get key(): number { return this._key; }
-    
-    get label(): string { return this._label; }
-    
-    get name(): string { return this._name; }
-    
-    toString(): string { return this.name; }
+    get key(): number {
+        return this._key;
+    }
+
+    get label(): string {
+        return this._label;
+    }
+
+    get name(): string {
+        return this._name;
+    }
+
+    toString(): string {
+        return this.name;
+    }
 
     static build(raw: any): Faction {
         return new Faction({
             key: parseInt(raw.key) || 0,
             label: (raw.label || '') + '',
-            name:  (raw.name || '') + '',
+            name: (raw.name || '') + '',
         });
     }
 
     private static _imported: Factions | null = null;
 
     static import(dir = window.Main.asset('Factions')): Factions {
-        return (this._imported ||= forceDataImportKeyLabel<Faction>(dir, this.build));
+        return (this._imported ||= forceDataImportKeyLabel<Faction>(
+            dir,
+            this.build,
+        ));
     }
 }
 
-export type {
-    Factions,
-};
+export type { Factions };
 export {
     Faction,
     Reputation,

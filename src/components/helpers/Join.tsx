@@ -1,7 +1,9 @@
 import { ReactNode } from 'react';
 
 type Wrapper = (props: { children: ReactNode }) => JSX.Element;
-const DefaultWrapper: Wrapper = ({children}: {children: ReactNode}) => (<span>{children}</span>);
+const DefaultWrapper: Wrapper = ({ children }: { children: ReactNode }) => (
+    <span>{children}</span>
+);
 
 let callCounter = 0;
 

@@ -1,5 +1,10 @@
 import { ByKeyRecursive, forceDataImportKeySRecursive } from '../../../utils';
-import { Bonus, BonusProvider, BonusType, MultiBonus } from '../../Character/Bonus';
+import {
+    Bonus,
+    BonusProvider,
+    BonusType,
+    MultiBonus,
+} from '../../Character/Bonus';
 import Size from '../../Character/Size';
 import { Mass } from '../../Units';
 import { Item, ItemBuilder } from '../base';
@@ -7,10 +12,10 @@ import { buildShape, explodeShape, Shape } from './Slot';
 
 type Weight = number | Mass;
 interface GearBuilder extends ItemBuilder {
-    shape: string[],
-    size: Size,
-    bonuses?: Bonus,
-    weight: Weight,
+    shape: string[];
+    size: Size;
+    bonuses?: Bonus;
+    weight: Weight;
 }
 
 export default class Gear extends Item implements BonusProvider {
@@ -18,7 +23,6 @@ export default class Gear extends Item implements BonusProvider {
     #size: Size;
     #bonuses: Bonus;
     #weight: Mass;
-    
 
     constructor({
         shape,
@@ -44,30 +48,38 @@ export default class Gear extends Item implements BonusProvider {
         });
     }
 
-    get shape(): Shape { return [...this.#shape]; }
+    get shape(): Shape {
+        return [...this.#shape];
+    }
 
-    get size(): Size { return this.#size; }
+    get size(): Size {
+        return this.#size;
+    }
 
-    get bonuses(): Bonus { return this.#bonuses.asType(BonusType.gear); }
+    get bonuses(): Bonus {
+        return this.#bonuses.asType(BonusType.gear);
+    }
 
     get weight(): Mass {
         return this.#weight;
     }
 
     get fullBonus(): MultiBonus {
-        return new MultiBonus({gear: this.bonuses});
+        return new MultiBonus({ gear: this.bonuses });
     }
 
-    get $type(): string { return ''; }
-    
+    get $type(): string {
+        return '';
+    }
+
     static preBuild(raw: any): GearBuilder {
-        return ({
-            ... Item.preBuild(raw),
-            shape: raw.shape as string[] || [],
-            size: raw.size as Size || 0,
+        return {
+            ...Item.preBuild(raw),
+            shape: (raw.shape as string[]) || [],
+            size: (raw.size as Size) || 0,
             weight: raw.weight || 0,
             bonuses: Bonus.build(raw.bonuses || {}),
-        });
+        };
     }
 
     static build(raw: any): Gear {
@@ -76,16 +88,17 @@ export default class Gear extends Item implements BonusProvider {
 
     private static _imported: ByKeyRecursive<Gear> | null = null;
 
-    static import(dir = window.Main.asset('Items/gear'), builder: (raw: any) => Gear): ByKeyRecursive<Gear> {
-        return this._imported ||= forceDataImportKeySRecursive<Gear>(dir, builder);
+    static import(
+        dir = window.Main.asset('Items/gear'),
+        builder: (raw: any) => Gear,
+    ): ByKeyRecursive<Gear> {
+        return (this._imported ||= forceDataImportKeySRecursive<Gear>(
+            dir,
+            builder,
+        ));
     }
 }
 
-export type {
-    Weight,
-    GearBuilder,
-};
+export type { Weight, GearBuilder };
 
-export {
-    Gear,
-};
+export { Gear };

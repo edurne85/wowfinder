@@ -54,7 +54,7 @@ class FullData {
     get races(): Races {
         return this.#races;
     }
-    
+
     get items(): ByKeyRecursive<Item> {
         return this.#items;
     }
@@ -69,10 +69,8 @@ class FullData {
 
     static #imported: FullData | null = null;
     static import(): FullData {
-        return this.#imported ||= new FullData();
+        return (this.#imported ||= new FullData());
     }
 }
 
-export {
-    FullData,
-};
+export { FullData };

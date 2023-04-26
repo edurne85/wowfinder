@@ -13,7 +13,9 @@ import {
     ClassLevels,
     Classes,
     SavesProgression,
-    filterSkills, mapAuras, mapFeatures,
+    filterSkills,
+    mapAuras,
+    mapFeatures,
 } from './helpers';
 
 class Class {
@@ -113,7 +115,7 @@ class Class {
     static import(dir = window.Main.asset('Classes')): Classes {
         return (this._imported ||= forceDataImportKeyS(
             dir,
-            raw => new Class(preBuild(raw))
+            raw => new Class(preBuild(raw)),
         ));
     }
 }

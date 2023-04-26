@@ -42,7 +42,7 @@ class RankedSpell extends SpellBase implements RankedSpellBuilder {
         const res = super.castingTime;
         assertDefined(
             res,
-            `Missing casting time for ${this.key}:${this.#rank}`
+            `Missing casting time for ${this.key}:${this.#rank}`,
         );
         return res;
     }
@@ -68,7 +68,9 @@ class RankedSpell extends SpellBase implements RankedSpellBuilder {
     }
 
     getDescription(t: TFunction<'translation'>): string {
-        return `${t(`spells.${this.key}.description`)}\n\n${t(`spells.${this.key}.${this.#rank}`)}`;
+        return `${t(`spells.${this.key}.description`)}\n\n${t(
+            `spells.${this.key}.${this.#rank}`,
+        )}`;
     }
 }
 

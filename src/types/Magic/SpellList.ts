@@ -60,7 +60,7 @@ class SpellList implements SpellListBuilder {
             Object.entries(spells).map(([level, entries]) => [
                 level,
                 buildSpellListLevel(entries),
-            ])
+            ]),
         );
     }
 
@@ -89,7 +89,7 @@ class SpellList implements SpellListBuilder {
     static import(dir = window.Main.asset('SpellLists')): SpellLists {
         return (this.#imported ||= forceDataImportKeyS<SpellList>(
             dir,
-            this.build
+            this.build,
         ));
     }
 }

@@ -34,7 +34,7 @@ class Armor extends Gear {
         acp = 0,
         asf = 0,
         flags = new Set<ArmorFlags>(),
-        ... args
+        ...args
     }: ArmorBuilder) {
         super(args);
         this._type = type;
@@ -48,7 +48,9 @@ class Armor extends Gear {
     }
 
     get encumbering(): boolean {
-        return this._type === ArmorType.heavy || this._type === ArmorType.medium;
+        return (
+            this._type === ArmorType.heavy || this._type === ArmorType.medium
+        );
     }
 
     get fullBonus(): MultiBonus {
@@ -56,29 +58,34 @@ class Armor extends Gear {
         return new MultiBonus({
             armor: new Bonus({
                 type: BonusType.armor,
-                armorClass: this._bonusType === ArmorBonusType.armor ? total : 0,
+                armorClass:
+                    this._bonusType === ArmorBonusType.armor ? total : 0,
             }),
             shield: new Bonus({
                 type: BonusType.shield,
-                armorClass: this._bonusType === ArmorBonusType.shield ? total : 0,
+                armorClass:
+                    this._bonusType === ArmorBonusType.shield ? total : 0,
             }),
             gear: this.bonuses,
         });
     }
 
-    get $type(): string { return 'Armor'; }
+    get $type(): string {
+        return 'Armor';
+    }
 
     static preBuild(raw: any): ArmorBuilder {
         return {
-            ... Gear.preBuild(raw),
-            type: raw.type as ArmorType || ArmorType.misc,
-            acBonus: raw.acBonus as number || 0,
-            bonusType: raw.bonusType as ArmorBonusType || ArmorBonusType.armor,
-            intrinsic: raw.intrinsic as number || 0,
-            maxDex: raw.maxDex as number || Number.POSITIVE_INFINITY,
-            acp: raw.acp as number || 0,
-            asf: raw.asf as number || 0,
-            flags: raw.flags as Set<ArmorFlags> || [],
+            ...Gear.preBuild(raw),
+            type: (raw.type as ArmorType) || ArmorType.misc,
+            acBonus: (raw.acBonus as number) || 0,
+            bonusType:
+                (raw.bonusType as ArmorBonusType) || ArmorBonusType.armor,
+            intrinsic: (raw.intrinsic as number) || 0,
+            maxDex: (raw.maxDex as number) || Number.POSITIVE_INFINITY,
+            acp: (raw.acp as number) || 0,
+            asf: (raw.asf as number) || 0,
+            flags: (raw.flags as Set<ArmorFlags>) || [],
         };
     }
 
@@ -87,6 +94,4 @@ class Armor extends Gear {
     }
 }
 
-export {
-    Armor,
-};
+export { Armor };

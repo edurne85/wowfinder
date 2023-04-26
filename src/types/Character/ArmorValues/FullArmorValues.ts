@@ -22,7 +22,12 @@ class FullArmorValues extends ArmorValues {
         this._size = size;
     }
 
-    static fromBaseValues({ base, stats, bab, size }: FullFromBaseBuilder): FullArmorValues {
+    static fromBaseValues({
+        base,
+        stats,
+        bab,
+        size,
+    }: FullFromBaseBuilder): FullArmorValues {
         const mods = stats.totalMods;
         return new FullArmorValues({
             ...base,
@@ -33,13 +38,21 @@ class FullArmorValues extends ArmorValues {
         });
     }
 
-    get str(): number { return this._str; }
+    get str(): number {
+        return this._str;
+    }
 
-    get dex(): number { return this._dex; }
+    get dex(): number {
+        return this._dex;
+    }
 
-    get bab(): number { return this._bab; }
+    get bab(): number {
+        return this._bab;
+    }
 
-    get size(): number { return this._size; }
+    get size(): number {
+        return this._size;
+    }
 
     get touch(): FullArmorValues {
         return new FullArmorValues({
@@ -78,22 +91,42 @@ class FullArmorValues extends ArmorValues {
     }
 
     get total(): number {
-        return 10 + this.armor + this.shield + this.nat +
-            this.dodge + this.defl + this.dex + this.size +
-            this.misc + this.miscP + this.miscE +
-            this.temp + this.tempP + this.tempE;
+        return (
+            10 +
+            this.armor +
+            this.shield +
+            this.nat +
+            this.dodge +
+            this.defl +
+            this.dex +
+            this.size +
+            this.misc +
+            this.miscP +
+            this.miscE +
+            this.temp +
+            this.tempP +
+            this.tempE
+        );
     }
 
     get cmd(): number {
-        return 10 + this.bab + this.str + this.dex +
-            this.size + this.dodge + this.defl +
-            this.misc + this.miscE +
-            this.temp + this.tempE;
+        return (
+            10 +
+            this.bab +
+            this.str +
+            this.dex +
+            this.size +
+            this.dodge +
+            this.defl +
+            this.misc +
+            this.miscE +
+            this.temp +
+            this.tempE
+        );
     }
 
     get cmdFlatFooted(): number {
-        return 10 + this.bab + this.str + this.size +
-            this.misc + this.temp;
+        return 10 + this.bab + this.str + this.size + this.misc + this.temp;
     }
 }
 

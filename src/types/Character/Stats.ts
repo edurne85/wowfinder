@@ -29,15 +29,17 @@ type StatPhysical = StatKey.STR | StatKey.DEX | StatKey.CON;
 type StatMental = StatKey.INT | StatKey.WIS | StatKey.CHA;
 
 function inGroup(stat: StatKey, group: StatGroup): boolean {
-    return (stat as StatPhysical && group === StatGroup.physical)
-        || (stat as StatMental && group === StatGroup.mental);
+    return (
+        ((stat as StatPhysical) && group === StatGroup.physical) ||
+        ((stat as StatMental) && group === StatGroup.mental)
+    );
 }
 
-const statMod = (value: number): number =>  Math.floor(value / 2 - 5);
+const statMod = (value: number): number => Math.floor(value / 2 - 5);
 
-type StatSet = {[key in StatKey]: number};
+type StatSet = { [key in StatKey]: number };
 
-type PartialStatSet = {[key in StatKey]?: number};
+type PartialStatSet = { [key in StatKey]?: number };
 
 function addStatSets(...args: StatSet[]): StatSet {
     return {
@@ -68,29 +70,32 @@ const zeroDefault: StatSet = {
 };
 
 type PartialStatBlock = {
-    base?: StatSet,
-    racial?: StatSet,
-    enhance?: StatSet,
-    gear?: StatSet,
-    misc?: StatSet,
-    temp?: StatSet,
+    base?: StatSet;
+    racial?: StatSet;
+    enhance?: StatSet;
+    gear?: StatSet;
+    misc?: StatSet;
+    temp?: StatSet;
 };
 
 function carry(str: number): Mass {
     if (str <= 0) {
-        return new Mass({value: 0, unit: MassUnit.lb});
+        return new Mass({ value: 0, unit: MassUnit.lb });
     }
     let mult = 1;
     while (str > 20) {
         mult *= 4;
         str -= 10;
     }
-    const base = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 115, 130, 150, 175, 200, 230, 260, 300, 350, 400];
+    const base = [
+        10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 115, 130, 150, 175, 200, 230,
+        260, 300, 350, 400,
+    ];
     return new Mass({
         value: Math.floor(base[str - 1] * mult),
         unit: MassUnit.lb,
     });
-}    
+}
 
 export default class Stats {
     private _base: StatSet;
@@ -117,7 +122,14 @@ export default class Stats {
     }
 
     get totals(): StatSet {
-        return addStatSets(this._base, this._racial, this._enhance, this._gear, this._misc, this._temp);
+        return addStatSets(
+            this._base,
+            this._racial,
+            this._enhance,
+            this._gear,
+            this._misc,
+            this._temp,
+        );
     }
 
     get active(): StatSet {
@@ -136,21 +148,42 @@ export default class Stats {
         };
     }
 
-    get base(): StatSet { return Object.assign({}, this._base); }
+    get base(): StatSet {
+        return Object.assign({}, this._base);
+    }
 
-    get racial(): StatSet { return Object.assign({}, this._racial); }
+    get racial(): StatSet {
+        return Object.assign({}, this._racial);
+    }
 
-    get enhance(): StatSet { return Object.assign({}, this._enhance); }
+    get enhance(): StatSet {
+        return Object.assign({}, this._enhance);
+    }
 
-    get gear(): StatSet { return Object.assign({}, this._gear); }
+    get gear(): StatSet {
+        return Object.assign({}, this._gear);
+    }
 
-    get misc(): StatSet { return Object.assign({}, this._misc); }
+    get misc(): StatSet {
+        return Object.assign({}, this._misc);
+    }
 
-    get temp(): StatSet { return Object.assign({}, this._temp); }
+    get temp(): StatSet {
+        return Object.assign({}, this._temp);
+    }
 
-    get carry(): Mass { return carry(this.totals.STR); }
+    get carry(): Mass {
+        return carry(this.totals.STR);
+    }
 
-    updated({base, racial, enhance, gear, misc, temp}: PartialStatBlock): Stats {
+    updated({
+        base,
+        racial,
+        enhance,
+        gear,
+        misc,
+        temp,
+    }: PartialStatBlock): Stats {
         return new Stats({
             base: base || this.base,
             racial: racial || this.racial,

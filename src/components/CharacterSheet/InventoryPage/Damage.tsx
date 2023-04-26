@@ -26,13 +26,23 @@ const DamageComponentContainer = styled.span`
     margin: 0 0.2em;
 `;
 
-function DamageComponent({ dice, type }: { dice?: Dice, type: DamageType }): JSX.Element {
+function DamageComponent({
+    dice,
+    type,
+}: {
+    dice?: Dice;
+    type: DamageType;
+}): JSX.Element {
     const { t } = useTranslation();
-    return dice ?
-        (<DamageComponentContainer type={type} title={t(`damageTypes.full.${type}`)}>
+    return dice ? (
+        <DamageComponentContainer
+            type={type}
+            title={t(`damageTypes.full.${type}`)}>
             {dice.toString() + ' ' + t(`damageTypes.abbr.${type}`)}
-        </DamageComponentContainer>) :
-        (<></>);
+        </DamageComponentContainer>
+    ) : (
+        <></>
+    );
 }
 
 const DamageContainer = styled.span``;
@@ -42,7 +52,16 @@ export function Damage({ damage }: { damage: Dmg }): JSX.Element {
         <DamageContainer>
             <Join
                 separator=" + "
-                items={Object.keys(damage).map(k => k as DamageType).map(type => (<DamageComponent dice={damage[type]} type={type} key={`damage-component-${type}`} />))} />
+                items={Object.keys(damage)
+                    .map(k => k as DamageType)
+                    .map(type => (
+                        <DamageComponent
+                            dice={damage[type]}
+                            type={type}
+                            key={`damage-component-${type}`}
+                        />
+                    ))}
+            />
         </DamageContainer>
     );
 }

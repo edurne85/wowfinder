@@ -21,17 +21,33 @@ const ItemLine = styled.p`
 function Slots({ shape }: { shape: Shape }): JSX.Element {
     const { t } = useTranslation();
     const sep = t('gear.slot.$separator');
-    return (<>{
-        explodeShape(shape).map(s => t(`gear.slot.${s}`)).join(sep)
-    }</>);
+    return (
+        <>
+            {explodeShape(shape)
+                .map(s => t(`gear.slot.${s}`))
+                .join(sep)}
+        </>
+    );
 }
 
-const DetailLine: React.FC<{ h?: string, children: ReactChildren }> = ({ h, children }) => {
-    const H = (): JSX.Element => h ? (<><b>{h}</b>: {' '}</>) : (<></>);
-    return (<ItemLine>
-        <H />
-        {children}
-    </ItemLine>);
+const DetailLine: React.FC<{ h?: string; children: ReactChildren }> = ({
+    h,
+    children,
+}) => {
+    const H = (): JSX.Element =>
+        h ? (
+            <>
+                <b>{h}</b>:{' '}
+            </>
+        ) : (
+            <></>
+        );
+    return (
+        <ItemLine>
+            <H />
+            {children}
+        </ItemLine>
+    );
 };
 
 const ToDoLine = styled.p`
@@ -42,12 +58,11 @@ const ToDoLine = styled.p`
 `;
 
 function ToDo({ text }: { text: string }): JSX.Element {
-    return(<ToDoLine><b>To Do</b>: {text}</ToDoLine>);
+    return (
+        <ToDoLine>
+            <b>To Do</b>: {text}
+        </ToDoLine>
+    );
 }
 
-export {
-    DetailLine,
-    ItemTitle,
-    ToDo,
-    Slots,
-};
+export { DetailLine, ItemTitle, ToDo, Slots };

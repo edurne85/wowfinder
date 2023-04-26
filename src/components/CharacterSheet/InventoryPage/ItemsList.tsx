@@ -41,9 +41,13 @@ function ListItem({
     return (
         <ListItemContainer>
             <ListItemHeading>
-                {showSlots && item instanceof Gear ?
-                     <>[<Slots shape={item.shape} />] {' '}</>
-                    : ''}
+                {showSlots && item instanceof Gear ? (
+                    <>
+                        [<Slots shape={item.shape} />]{' '}
+                    </>
+                ) : (
+                    ''
+                )}
                 {t(`labels.items.gear.${item.label}`)}
             </ListItemHeading>
             <ItemDetails item={item} />
@@ -69,7 +73,9 @@ function ItemsList({
     lines.splice(maxLines);
     lines.push(...Array(maxLines - lines.length).fill(''));
     return (
-        <ItemsListContainer style={{height: `${height}mm`}}>{mapLines(lines, 'gear-item-')}</ItemsListContainer>
+        <ItemsListContainer style={{ height: `${height}mm` }}>
+            {mapLines(lines, 'gear-item-')}
+        </ItemsListContainer>
     );
 }
 

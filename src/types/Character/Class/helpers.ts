@@ -29,7 +29,7 @@ function hdFirst(hd: number): number {
 }
 
 function mapFeatures(
-    list: { level: number; feature?: string }[]
+    list: { level: number; feature?: string }[],
 ): FeaturesList {
     return list
         .filter(entry => entry.feature as ClassFeature)
@@ -47,10 +47,11 @@ function mapAuras(list: { level: number; aura?: Aura }[]): AurasList {
 
 function filterSkills(raw: string[]): Set<Skill> {
     return new Set(
-        raw.filter(s => validSkills.has(s as Skill)).map(v => Skill[v as Skill])
+        raw
+            .filter(s => validSkills.has(s as Skill))
+            .map(v => Skill[v as Skill]),
     );
 }
 
 export { validSkills, hdAverage, hdFirst, mapFeatures, mapAuras, filterSkills };
 export type { Classes, ClassLevels, SavesProgression, CastingProgression };
-

@@ -38,7 +38,7 @@ function warnDuplicateKey(type: string, key: string | number): void {
 }
 function checkDuplicateKeyS<T extends Keyed<string>>(
     collection: ByKeyRecursive<T>,
-    obj: T
+    obj: T,
 ): void {
     if (collection[obj.key]) {
         warnDuplicateKey(typeof obj, obj.key);
@@ -47,7 +47,7 @@ function checkDuplicateKeyS<T extends Keyed<string>>(
 
 function checkDuplicateKeyN<T extends Keyed<number>>(
     collection: { [key: number]: T },
-    obj: T
+    obj: T,
 ): void {
     if (collection[obj.key]) {
         warnDuplicateKey(typeof obj, obj.key);
@@ -56,11 +56,11 @@ function checkDuplicateKeyN<T extends Keyed<number>>(
 
 function checkDuplicateLabel<T extends Labeled>(
     collection: ByLabel<T>,
-    obj: T
+    obj: T,
 ): void {
     if (collection[obj.label]) {
         console.warn(
-            `Duplicate ${typeof obj} element with label ${obj.label} found.`
+            `Duplicate ${typeof obj} element with label ${obj.label} found.`,
         );
     }
 }
@@ -75,7 +75,7 @@ function forceDataImport<T>(dir: string, builder: builder<T>): readonly T[] {
 
 function forceDataImportKeyS<T extends Keyed<string>>(
     dir: string,
-    builder: builder<T>
+    builder: builder<T>,
 ): ByKey<T> {
     const byKey: ByKey<T> = {};
     iterateDir(dir, raw => {
@@ -88,7 +88,7 @@ function forceDataImportKeyS<T extends Keyed<string>>(
 
 function forceDataImportKeySRecursive<T extends Keyed<string>>(
     dir: string,
-    builder: builder<T>
+    builder: builder<T>,
 ): ByKeyRecursive<T> {
     const byKey: ByKeyRecursive<T> = {
         ...forceDataImportKeyS<T>(dir, builder),
@@ -98,7 +98,7 @@ function forceDataImportKeySRecursive<T extends Keyed<string>>(
         const fullSubDirPath = window.Files.resolvePath(dir, subdir);
         byKey[subdir] = forceDataImportKeySRecursive<T>(
             fullSubDirPath,
-            builder
+            builder,
         );
     }
     return byKey;
@@ -106,7 +106,7 @@ function forceDataImportKeySRecursive<T extends Keyed<string>>(
 
 function forceDataImportKeyLabel<T extends KeyedLabeled>(
     dir: string,
-    builder: builder<T>
+    builder: builder<T>,
 ): ByKeyLabel<T> {
     const byKeyLabel: ByKeyLabel<T> = { byKey: {}, byLabel: {} };
     iterateDir(dir, raw => {

@@ -14,15 +14,15 @@ enum AssetType {
 
 type AssetBundle = {
     assets: {
-        [AssetType.Adventures]: { [k: string]: AdventureExport },
-        [AssetType.Characters]: { [k: string]: CharacterExport },
+        [AssetType.Adventures]: { [k: string]: AdventureExport };
+        [AssetType.Characters]: { [k: string]: CharacterExport };
     };
 };
 
 type AssetJsonBundle = {
     assets: {
-        [AssetType.Adventures]: { [k: string]: string },
-        [AssetType.Characters]: { [k: string]: string },
+        [AssetType.Adventures]: { [k: string]: string };
+        [AssetType.Characters]: { [k: string]: string };
     };
 };
 

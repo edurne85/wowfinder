@@ -75,5 +75,14 @@ function checkWeaponFeatKey(key: string): asserts key is WeaponFeat {
     }
 }
 
-export { raw, req, build, feat, allOf, either, checkFeatKey, checkWeaponFeatKey };
+export {
+    raw,
+    req,
+    build,
+    feat,
+    allOf,
+    either,
+    checkFeatKey,
+    checkWeaponFeatKey,
+};
 export type { Req, Reqs, Flags };

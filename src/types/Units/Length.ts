@@ -36,7 +36,7 @@ class Length extends Scalar<LengthUnit> {
                 value: inFeet.value - feet,
                 unit: LengthUnit.foot,
             }),
-            LengthUnit.inch
+            LengthUnit.inch,
         );
         const inches = Math.round(inchesOnly.value);
         const strFeet = feet !== 0 ? `${feet}'` : '';
@@ -51,7 +51,7 @@ class Length extends Scalar<LengthUnit> {
     get fullDisplay(): string {
         const meters = Math.round(convertLength(this, LengthUnit.meter).value);
         const squares = Math.round(
-            convertLength(this, LengthUnit.square).value
+            convertLength(this, LengthUnit.square).value,
         );
         return `${this.feetInches} (${meters}m) (${squares}□)`;
     }
@@ -59,7 +59,7 @@ class Length extends Scalar<LengthUnit> {
     static tryParseLength(input: string): Length | undefined {
         const base = Scalar.tryParse(
             input,
-            (value: string) => LengthUnit[value as keyof typeof LengthUnit]
+            (value: string) => LengthUnit[value as keyof typeof LengthUnit],
         );
         return base ? new Length(base) : undefined;
     }

@@ -39,7 +39,7 @@ const classFeatureUtils = {
 
 type ClassFeatureEntry = {
     level: number;
-    feature: string
+    feature: string;
 };
 
 type FeaturesList = {

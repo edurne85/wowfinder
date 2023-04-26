@@ -34,21 +34,21 @@ abstract class Item {
     abstract get weight(): Mass;
 
     static preBuild(raw: any): ItemBuilder {
-        return ({
-            label: raw.label as string || '',
-            rarity: raw.rarity as Rarity || Rarity.common,
-        });
+        return {
+            label: (raw.label as string) || '',
+            rarity: (raw.rarity as Rarity) || Rarity.common,
+        };
     }
 
     static #imported: ByKeyRecursive<Item> | null = null;
 
     static import(
         dir = window.Main.asset('Items'),
-        build: builder<Item>
+        build: builder<Item>,
     ): ByKeyRecursive<Item> {
         return (this.#imported ||= forceDataImportKeySRecursive<Item>(
             dir,
-            build
+            build,
         ));
     }
 }

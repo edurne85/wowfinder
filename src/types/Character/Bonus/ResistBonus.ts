@@ -27,13 +27,16 @@ export default class ResistBonus {
         return { ...this._values };
     }
 
-    static get zero(): ResistBonus { return new ResistBonus({}); }
+    static get zero(): ResistBonus {
+        return new ResistBonus({});
+    }
 
     static sum(...args: ResistBonus[]): ResistBonus {
         const result = this.zero;
         for (const type of Object.keys(DamageType)) {
-            result._values[type as DamageType] =
-                sum(...args.map(r => r._values[type as DamageType]));
+            result._values[type as DamageType] = sum(
+                ...args.map(r => r._values[type as DamageType]),
+            );
         }
         return result;
     }
@@ -41,8 +44,9 @@ export default class ResistBonus {
     static max(...args: ResistBonus[]): ResistBonus {
         const result = this.zero;
         for (const type of Object.keys(DamageType)) {
-            result._values[type as DamageType] =
-                Math.max(...args.map(r => r._values[type as DamageType]));
+            result._values[type as DamageType] = Math.max(
+                ...args.map(r => r._values[type as DamageType]),
+            );
         }
         return result;
     }
@@ -52,6 +56,4 @@ export default class ResistBonus {
     }
 }
 
-export {
-    fill as fillResistBonus,
-};
+export { fill as fillResistBonus };

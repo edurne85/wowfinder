@@ -30,7 +30,7 @@ class Time extends Scalar<TimeUnit> {
     static tryParseTime(input: string): Time | undefined {
         const base = Scalar.tryParse<TimeUnit>(
             input,
-            unit => TimeUnit[unit as keyof typeof TimeUnit]
+            unit => TimeUnit[unit as keyof typeof TimeUnit],
         );
         return base ? new Time(base) : undefined;
     }

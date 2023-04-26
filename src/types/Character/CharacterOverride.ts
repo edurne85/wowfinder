@@ -3,12 +3,15 @@ import { Resistances } from './Resistances';
 import Size from './Size';
 import { StatSet, baseDefault } from './Stats';
 import { CharacterBase } from './base';
-import type { CharacterOverrideBuilder, OverridableCharacterBaseBuilder } from './builder';
+import type {
+    CharacterOverrideBuilder,
+    OverridableCharacterBaseBuilder,
+} from './builder';
 import { FeatChoice } from './helpers';
 
-class CharacterOverride extends CharacterBase{
-    constructor({...rest}: CharacterOverrideBuilder) {
-        super({...rest});
+class CharacterOverride extends CharacterBase {
+    constructor({ ...rest }: CharacterOverrideBuilder) {
+        super({ ...rest });
     }
 
     static get zero(): CharacterOverride {
@@ -22,7 +25,9 @@ class CharacterOverride extends CharacterBase{
     }
 }
 
-function asCharacterOverrideBuilder(override: CharacterOverride): CharacterOverrideBuilder {
+function asCharacterOverrideBuilder(
+    override: CharacterOverride,
+): CharacterOverrideBuilder {
     return {
         key: override.key,
         personal: {
@@ -75,9 +80,13 @@ abstract class OverridableCharacterBase extends CharacterBase {
     get baseStats(): StatSet {
         return Object.assign({}, super.baseStats, this.#override.baseStats);
     }
-    
+
     get baseResistances(): Resistances {
-        return Object.assign({}, super.baseResistances, this.#override.baseResistances);
+        return Object.assign(
+            {},
+            super.baseResistances,
+            this.#override.baseResistances,
+        );
     }
 
     get size(): Size | undefined {

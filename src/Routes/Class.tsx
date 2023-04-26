@@ -34,7 +34,7 @@ const classRoutes: RouteProvider = data => {
     ];
 };
 
-const classNames: TitlesProvider = (t) => [
+const classNames: TitlesProvider = t => [
     {
         match: /^\/classes\/:?(.*)/,
         title: (fragments: RegExpMatchArray | null): string | null => {

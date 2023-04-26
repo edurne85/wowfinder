@@ -1,12 +1,26 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { Speeds } from '../../../types/Character/Speeds';
-import { LengthUnit, Speed as SpeedValue, SpeedUnit, TimeUnit } from '../../../types/Units';
+import {
+    LengthUnit,
+    Speed as SpeedValue,
+    SpeedUnit,
+    TimeUnit,
+} from '../../../types/Units';
 import { InputSuffixedCell } from '../../helpers/InputCell';
-import { borderless, borderThick, borderThin, printableBottomBorder, reverseColors, smallText } from '../../helpers/mixins';
+import {
+    borderless,
+    borderThick,
+    borderThin,
+    printableBottomBorder,
+    reverseColors,
+    smallText,
+} from '../../helpers/mixins';
 
 const StyledTable = styled.table`
-    & th, & td, & input {
+    & th,
+    & td,
+    & input {
         width: 11.5mm;
         text-align: center;
     }
@@ -32,7 +46,7 @@ const StyledTable = styled.table`
     & span.suffix {
         text-align: left;
     }
-    & td[colspan="2"] {
+    & td[colspan='2'] {
         font-size: 10pt;
         select {
             width: 100%;
@@ -42,14 +56,14 @@ const StyledTable = styled.table`
 `;
 
 interface TargetUnit {
-    unit: SpeedUnit,
-    suffix: string,
+    unit: SpeedUnit;
+    suffix: string;
 }
 
-const targetUnits: {[key:string]: TargetUnit} = {
+const targetUnits: { [key: string]: TargetUnit } = {
     feet: {
         unit: new SpeedUnit({ length: LengthUnit.foot, time: TimeUnit.turn }),
-        suffix: '\'',
+        suffix: "'",
     },
     meters: {
         unit: new SpeedUnit({ length: LengthUnit.meter, time: TimeUnit.turn }),
@@ -62,57 +76,94 @@ const targetUnits: {[key:string]: TargetUnit} = {
 };
 
 function EmptySpeed(): JSX.Element {
-    return (<>
-        <td></td>
-        <td></td>
-        <td></td>
-    </>);
+    return (
+        <>
+            <td></td>
+            <td></td>
+            <td></td>
+        </>
+    );
 }
 
-function InputSpeedCell({id, speed, targetUnit}: {id: string, speed?: SpeedValue, targetUnit: TargetUnit}): JSX.Element {
+function InputSpeedCell({
+    id,
+    speed,
+    targetUnit,
+}: {
+    id: string;
+    speed?: SpeedValue;
+    targetUnit: TargetUnit;
+}): JSX.Element {
     const value = speed != null ? Math.round(speed.as(targetUnit.unit)) : '';
-    return <InputSuffixedCell id={id} value={value} suffix={targetUnit.suffix} />;
+    return (
+        <InputSuffixedCell id={id} value={value} suffix={targetUnit.suffix} />
+    );
 }
 
-function SpeedCells({name, speed}: {name: string, speed?: SpeedValue}): JSX.Element {
-    return !speed || !speed.value
-        ? <EmptySpeed />
-        :(<>
-            <InputSpeedCell id={`txtSpeed${name}Feet`} speed={speed} targetUnit={targetUnits.feet} />
-            <InputSpeedCell id={`txtSpeed${name}Meters`} speed={speed} targetUnit={targetUnits.meters} />
-            <InputSpeedCell id={`txtSpeed${name}Squares`} speed={speed} targetUnit={targetUnits.squares} />
-        </>);
+function SpeedCells({
+    name,
+    speed,
+}: {
+    name: string;
+    speed?: SpeedValue;
+}): JSX.Element {
+    return !speed || !speed.value ? (
+        <EmptySpeed />
+    ) : (
+        <>
+            <InputSpeedCell
+                id={`txtSpeed${name}Feet`}
+                speed={speed}
+                targetUnit={targetUnits.feet}
+            />
+            <InputSpeedCell
+                id={`txtSpeed${name}Meters`}
+                speed={speed}
+                targetUnit={targetUnits.meters}
+            />
+            <InputSpeedCell
+                id={`txtSpeed${name}Squares`}
+                speed={speed}
+                targetUnit={targetUnits.squares}
+            />
+        </>
+    );
 }
 
-export function Speed ({speeds}: {speeds?: Speeds}): JSX.Element {
+export function Speed({ speeds }: { speeds?: Speeds }): JSX.Element {
     const { t } = useTranslation();
-    return (<StyledTable>
-        <tbody>
-            <tr>
-                <th>{t('charsheet.speed.base')}</th>
-                <SpeedCells name="Base" speed={speeds?.base} />
-                <th>{t('charsheet.speed.reduced')}</th>
-                <SpeedCells name="Reduced" speed={speeds?.encumbered} />
-            </tr>
-            <tr>
-                <th>{t('charsheet.speed.fly')}</th>
-                <SpeedCells name="Fly" speed={speeds?.fly.speed} />
-                <td colSpan={2}>{t('charsheet.speed.maneuverability')}</td>
-                <td colSpan={2}><select id="mnuFlyManeuverability">{/* TODO: maneuverability */}</select></td>
-            </tr>
-            <tr>
-                <th>{t('charsheet.speed.swim')}</th>
-                <SpeedCells name="Swim" speed={speeds?.swim} />
-                <th>{t('charsheet.speed.climb')}</th>
-                <SpeedCells name="Climb" speed={speeds?.climb} />
-            </tr>
-            <tr>
-                <th>{t('charsheet.speed.burrow')}</th>
-                <SpeedCells name="Burrow" speed={speeds?.burrow} />
-                <th>{t('charsheet.speed.misc')}</th>
-                <SpeedCells name="Misc" speed={speeds?.misc} />
-            </tr>
-        </tbody>
-    </StyledTable>);
+    return (
+        <StyledTable>
+            <tbody>
+                <tr>
+                    <th>{t('charsheet.speed.base')}</th>
+                    <SpeedCells name="Base" speed={speeds?.base} />
+                    <th>{t('charsheet.speed.reduced')}</th>
+                    <SpeedCells name="Reduced" speed={speeds?.encumbered} />
+                </tr>
+                <tr>
+                    <th>{t('charsheet.speed.fly')}</th>
+                    <SpeedCells name="Fly" speed={speeds?.fly.speed} />
+                    <td colSpan={2}>{t('charsheet.speed.maneuverability')}</td>
+                    <td colSpan={2}>
+                        <select id="mnuFlyManeuverability">
+                            {/* TODO: maneuverability */}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>{t('charsheet.speed.swim')}</th>
+                    <SpeedCells name="Swim" speed={speeds?.swim} />
+                    <th>{t('charsheet.speed.climb')}</th>
+                    <SpeedCells name="Climb" speed={speeds?.climb} />
+                </tr>
+                <tr>
+                    <th>{t('charsheet.speed.burrow')}</th>
+                    <SpeedCells name="Burrow" speed={speeds?.burrow} />
+                    <th>{t('charsheet.speed.misc')}</th>
+                    <SpeedCells name="Misc" speed={speeds?.misc} />
+                </tr>
+            </tbody>
+        </StyledTable>
+    );
 }
-

@@ -34,7 +34,4 @@ abstract class PersonalEntry<T> extends React.Component<PersonalItemProps<T>> {
     abstract subRender(props: PersonalItemProps<T>): JSX.Element;
 }
 
-export {
-    PersonalItemProps,
-    PersonalEntry,
-};
+export { PersonalItemProps, PersonalEntry };

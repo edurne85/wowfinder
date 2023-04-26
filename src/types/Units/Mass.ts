@@ -30,6 +30,5 @@ class Mass extends Scalar<MassUnit> {
 
 type Weight = number | Mass;
 
-
 export type { Weight };
 export { MassUnit, convertMass, Mass };

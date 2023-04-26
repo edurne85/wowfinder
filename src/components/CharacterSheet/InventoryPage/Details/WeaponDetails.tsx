@@ -26,7 +26,7 @@ function WeaponDamage({ weapon }: { weapon: Weapon }): JSX.Element {
                 <Damage damage={weapon.baseDamage} />
                 {hasCrit
                     ? `(${critRange} / ×${Math.floor(
-                          weapon.criticalMultiplier
+                          weapon.criticalMultiplier,
                       )})`
                     : ''}
             </DetailLine>
@@ -71,7 +71,9 @@ function WeaponDetails({ weapon }: { weapon: Weapon }): JSX.Element {
         : t('charsheet.inventory.gear.range.melee');
     return (
         <>
-            <DetailLine h={t('charsheet.inventory.gear.range.h')}>{range}</DetailLine>
+            <DetailLine h={t('charsheet.inventory.gear.range.h')}>
+                {range}
+            </DetailLine>
             <WeaponDamage weapon={weapon} />
             <WeaponIntrinsicMod weapon={weapon} />
             <WeaponGrouping weapon={weapon} />
@@ -83,6 +85,4 @@ function WeaponDetailsWrapped({ item }: { item: Item }): JSX.Element {
     return item instanceof Weapon ? <WeaponDetails weapon={item} /> : <></>;
 }
 
-export {
-    WeaponDetailsWrapped,
-};
+export { WeaponDetailsWrapped };

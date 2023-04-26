@@ -13,6 +13,4 @@ function ArmorDetailsWrapped({ item }: { item: Item }): JSX.Element {
     return item instanceof Armor ? <ArmorDetails armor={item} /> : <></>;
 }
 
-export {
-    ArmorDetailsWrapped,
-};
+export { ArmorDetailsWrapped };

@@ -15,15 +15,20 @@ export default class StatsBonus {
         }
     }
 
-    get values(): StatSet { return {...this._values}; }
+    get values(): StatSet {
+        return { ...this._values };
+    }
 
-    static get zero(): StatsBonus { return new StatsBonus(zeroDefault); }
+    static get zero(): StatsBonus {
+        return new StatsBonus(zeroDefault);
+    }
 
     static sum(...args: StatsBonus[]): StatsBonus {
         const result = this.zero;
         for (const stat of Object.keys(StatKey)) {
-            result._values[stat as StatKey] =
-                sum(...args.map(s => s._values[stat as StatKey]));
+            result._values[stat as StatKey] = sum(
+                ...args.map(s => s._values[stat as StatKey]),
+            );
         }
         return result;
     }
@@ -31,8 +36,9 @@ export default class StatsBonus {
     static max(...args: StatsBonus[]): StatsBonus {
         const result = this.zero;
         for (const stat of Object.keys(StatKey)) {
-            result._values[stat as StatKey] =
-                Math.max(...args.map(s => s._values[stat as StatKey]));
+            result._values[stat as StatKey] = Math.max(
+                ...args.map(s => s._values[stat as StatKey]),
+            );
         }
         return result;
     }
@@ -44,6 +50,6 @@ export default class StatsBonus {
                 cured[k] = raw[k] || 0;
             }
         }
-        return new StatsBonus({...cured});
+        return new StatsBonus({ ...cured });
     }
 }

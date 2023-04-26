@@ -19,14 +19,19 @@ function Descriptors({ descriptors }: DescriptorsArgs): JSX.Element {
 }
 
 function DescriptorsIfNeeded({ descriptors }: DescriptorsArgs): JSX.Element {
-    return [...descriptors].length > 0 ? <Descriptors descriptors={descriptors} /> : <></>;
+    return [...descriptors].length > 0 ? (
+        <Descriptors descriptors={descriptors} />
+    ) : (
+        <></>
+    );
 }
 
 function DescriptorsIfNeededRaw({ raw }: { raw: SpellBase }): JSX.Element {
-    return raw.descriptors ? <DescriptorsIfNeeded descriptors={raw.descriptors} /> : <></>;
+    return raw.descriptors ? (
+        <DescriptorsIfNeeded descriptors={raw.descriptors} />
+    ) : (
+        <></>
+    );
 }
 
-
-export {
-    DescriptorsIfNeededRaw as Descriptors,
-};
+export { DescriptorsIfNeededRaw as Descriptors };

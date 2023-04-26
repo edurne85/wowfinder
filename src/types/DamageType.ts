@@ -13,11 +13,7 @@ enum EnergyType {
     holy = 'holy',
 }
 
-const DamageType = {...PhysicalDamageType, ...EnergyType};
+const DamageType = { ...PhysicalDamageType, ...EnergyType };
 type DamageType = PhysicalDamageType | EnergyType;
 
-export {
-    PhysicalDamageType,
-    EnergyType,
-    DamageType,
-};
+export { PhysicalDamageType, EnergyType, DamageType };

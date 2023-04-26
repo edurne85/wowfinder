@@ -12,11 +12,14 @@ type TitleProvider = {
     title: (fragments: RegExpMatchArray | null) => CustomTitle;
 };
 
-type TitlesProvider = (t: TranslationProvider, data: FullData) => TitleProvider[];
+type TitlesProvider = (
+    t: TranslationProvider,
+    data: FullData,
+) => TitleProvider[];
 
-function WiP (): JSX.Element {
+function WiP(): JSX.Element {
     const location = useLocation();
-    reportWiP({route: location.pathname});
+    reportWiP({ route: location.pathname });
     return <div>Work in progress</div>;
 }
 

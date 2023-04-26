@@ -52,12 +52,12 @@ function exportByCharsAsJsonAssets(
     };
     for (const k of Object.keys(raw.assets[AssetType.Characters])) {
         result.assets[AssetType.Characters][k] = prettyJson(
-            raw.assets[AssetType.Characters][k]
+            raw.assets[AssetType.Characters][k],
         );
     }
     for (const k of Object.keys(raw.assets[AssetType.Adventures])) {
         result.assets[AssetType.Adventures][k] = prettyJson(
-            raw.assets[AssetType.Adventures][k]
+            raw.assets[AssetType.Adventures][k],
         );
     }
     return result;

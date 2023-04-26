@@ -26,7 +26,7 @@ function slotsByLevelEsp(casterLevel: number, spellLevel: number): number {
 function slotsByLevel(
     mode: CastingMode,
     casterLevel: number,
-    spellLevel: number
+    spellLevel: number,
 ): number {
     switch (mode) {
         case CastingMode.arcane:

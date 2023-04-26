@@ -26,16 +26,12 @@ function getClassAurasCondensed(char: Character): ClassAurasCondensed {
 function getAuraBonuses(char: Character): Bonus {
     return Bonus.sum(
         BonusType.aura,
-        ...getClassAurasCondensed(char).
-            map(({ aura, count }) => auraBonuses[aura](count))
+        ...getClassAurasCondensed(char).map(({ aura, count }) =>
+            auraBonuses[aura](count),
+        ),
     );
 }
 
-export {
-    getClassAurasCondensed,
-    getAuraBonuses,
-};
+export { getClassAurasCondensed, getAuraBonuses };
 
-export type {
-    ClassAurasCondensed,
-};
+export type { ClassAurasCondensed };
