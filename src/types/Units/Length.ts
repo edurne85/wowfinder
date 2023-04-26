@@ -44,6 +44,10 @@ class Length extends Scalar<LengthUnit> {
         return `${strFeet}${strInches}`;
     }
 
+    get inches(): number {
+        return convertLength(this, LengthUnit.inch).value;
+    }
+
     get fullDisplay(): string {
         const meters = Math.round(convertLength(this, LengthUnit.meter).value);
         const squares = Math.round(

@@ -17,6 +17,10 @@ const convertMass: converter<MassUnit> = makeConverter({
 });
 
 class Mass extends Scalar<MassUnit> {
+    get pounds(): number {
+        return convertMass(this, MassUnit.lb).value;
+    }
+
     static asPounds(w: Weight): Mass {
         return w instanceof Mass
             ? w
