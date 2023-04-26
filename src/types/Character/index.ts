@@ -10,9 +10,13 @@ import {
     SubSchool,
 } from '../Magic';
 import { ArmorValues, FullArmorValues } from './ArmorValues';
+import {
+    CharacterBuilder,
+    CharacterExport,
+    PersonalCharacterBase,
+    SkillRanks,
+} from './base';
 import { Bonus } from './Bonus';
-import { CharacterBuilder, CharacterExport, SkillRanks } from './builder';
-import { OverridableCharacterBase } from './CharacterOverride';
 import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
 import { Aura } from './Class/Aura';
 import {
@@ -22,21 +26,17 @@ import {
 } from './Class/Aura/characterHelpers';
 import { getClassFeaturesCondensed } from './Class/Features/characterHelpers';
 import { Feat, feats } from './Feats';
-import { checkClass, checkRace } from './helpers';
-
+import { buildStats, checkClass, checkRace } from './helpers';
 import Race from './Race';
 import { Resistances } from './Resistances';
 import { Saves, SimpleSaves } from './Saves';
 import Size from './Size';
 import { Speeds } from './Speeds';
-import Stats, { zeroDefault } from './Stats';
+import Stats from './Stats';
 
 type Characters = { [key: string]: Character };
 
-class Character
-    extends OverridableCharacterBase
-    implements Exportable<JsonValue>
-{
+class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
     #active: boolean;
     #stats: Stats;
     #race: Race;
@@ -50,36 +50,29 @@ class Character
     #cachedGearBonuses: Bonus | null = null;
 
     constructor({
-        key,
-        personal,
         active = true,
-        baseStats,
-        race,
         classes = [],
-        featChoices = [],
-        miscHP = 0,
         skillRanks = {},
         inventory = Inventory.defaultBuilder,
+        ...rest
     }: CharacterBuilder) {
-        super({ key, personal, featChoices, miscHP, baseStats });
+        super({
+            ...rest,
+            builderType: 'race',
+        });
+        const race = (this.#race = checkRace(rest.race));
+        const base = this.baseStats;
         this.#active = active;
-        this.#race = checkRace(race);
         this.#classes = [];
         for (const { cls, level } of classes) {
             this.#classes.push({ cls: checkClass(cls), level });
         }
-        const auraBonuses = this.auraBonuses;
-        this.#stats = new Stats({
-            base: baseStats,
-            racial: this.#race ? this.#race.statMods : zeroDefault,
-            // TODO ? enhance
-            misc: auraBonuses.stats.values,
-            // TODO ? temp
-        });
+        const auras = this.auraBonuses;
+        this.#stats = buildStats({ base, race, auras });
         this.#skillRanks = Object.assign({}, skillRanks);
         this.#armor = ArmorValues.zero;
         this.#resistances = Resistances.fromCategorized({
-            misc: auraBonuses.resistances.values,
+            misc: auras.resistances.values,
         });
         // TODO Refine inventory / gear
         this.#inventory = new Inventory(inventory);
@@ -190,15 +183,13 @@ class Character
         const allArmor: Armor[] = this.#inventory.gear
             .filter(g => g instanceof Armor)
             .map(g => g as Armor);
-        const armor = Math.max(
-            ...allArmor.map(a => a.fullBonus.bonuses.armor.armorClass),
-        );
-        const shield = Math.max(
-            ...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass),
-        );
         this.#armor = new ArmorValues({
-            armor,
-            shield,
+            armor: Math.max(
+                ...allArmor.map(a => a.fullBonus.bonuses.armor.armorClass),
+            ),
+            shield: Math.max(
+                ...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass),
+            ),
             miscP: combined.armorClass,
         });
         return combined;

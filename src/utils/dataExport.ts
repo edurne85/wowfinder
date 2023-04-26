@@ -3,7 +3,7 @@ import type { AssetBundle } from '../types/Assets';
 import { FullData } from '../types/FullData';
 import { Rewards } from '../types/Rewards';
 import { JsonValue } from './json';
-import { CharacterExport } from '../types/Character/builder';
+import { CharacterExport } from '../types/Character/base';
 import { AdventureExport } from '../types/Adventure';
 
 function exportByChars(source: FullData, ...charKeys: string[]): AssetBundle {

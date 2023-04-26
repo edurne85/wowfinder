@@ -1,47 +1,25 @@
-import CharPersonalDetails, { personalDefaultsBuilder } from './Personal';
-import { Resistances } from './Resistances';
-import Size from './Size';
-import { StatSet, baseDefault } from './Stats';
+import { Resistances } from '../Resistances';
+import Size from '../Size';
+import { StatSet } from '../Stats';
+import { FeatChoice } from '../helpers';
+import { CharacterOverride } from './CharacterOverride';
 import { CharacterBase } from './base';
-import type {
+import {
     CharacterOverrideBuilder,
     OverridableCharacterBaseBuilder,
 } from './builder';
-import { FeatChoice } from './helpers';
-
-class CharacterOverride extends CharacterBase {
-    constructor({ ...rest }: CharacterOverrideBuilder) {
-        super({ ...rest });
-    }
-
-    static get zero(): CharacterOverride {
-        return new CharacterOverride({
-            key: '',
-            personal: personalDefaultsBuilder,
-            featChoices: [],
-            baseStats: baseDefault,
-            baseResistances: Resistances.zero,
-        });
-    }
-}
 
 function asCharacterOverrideBuilder(
     override: CharacterOverride,
 ): CharacterOverrideBuilder {
     return {
         key: override.key,
-        personal: {
-            ...override.personal,
-            height: override.personal.height.inches,
-            weight: override.personal.weight.pounds,
-            age: override.personal.age.fullYears,
-        },
         featChoices: override.feats,
         baseStats: override.baseStats,
         baseResistances: override.baseResistances,
+        size: override.size,
     };
 }
-
 abstract class OverridableCharacterBase extends CharacterBase {
     #override: CharacterOverride;
 
@@ -49,7 +27,7 @@ abstract class OverridableCharacterBase extends CharacterBase {
         override = asCharacterOverrideBuilder(CharacterOverride.zero),
         ...rest
     }: OverridableCharacterBaseBuilder) {
-        super(rest);
+        super({ ...rest });
         this.#override = new CharacterOverride(override);
     }
 
@@ -59,14 +37,6 @@ abstract class OverridableCharacterBase extends CharacterBase {
 
     get key(): string {
         return this.#override.key || super.key;
-    }
-
-    get personal(): CharPersonalDetails {
-        return Object.assign({}, super.personal, this.#override.personal);
-    }
-
-    get fullName(): string {
-        return this.#override.fullName || super.fullName;
     }
 
     get feats(): FeatChoice[] {
@@ -89,9 +59,17 @@ abstract class OverridableCharacterBase extends CharacterBase {
         );
     }
 
-    get size(): Size | undefined {
+    get size(): Size {
         return this.#override.size || super.size;
+    }
+
+    setOverride(override: CharacterOverride): void {
+        this.#override = override;
+    }
+
+    clearOverride(): void {
+        this.#override = CharacterOverride.zero;
     }
 }
 
-export { CharacterOverride, OverridableCharacterBase };
+export { OverridableCharacterBase };
