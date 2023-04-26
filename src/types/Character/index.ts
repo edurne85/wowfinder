@@ -10,11 +10,13 @@ import {
     SubSchool,
 } from '../Magic';
 import { ArmorValues, FullArmorValues } from './ArmorValues';
-import { CharacterBase } from './base';
-import { Bonus, BonusType } from './Bonus';
+import { Bonus } from './Bonus';
 import { CharacterBuilder, CharacterExport, SkillRanks } from './builder';
+import { OverridableCharacterBase } from './CharacterOverride';
 import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
-import { Aura, auraBonuses } from './Class/Aura';
+import { Aura } from './Class/Aura';
+import { ClassAurasCondensed, getAuraBonuses, getClassAurasCondensed } from './Class/Aura/characterHelpers';
+import { getClassFeaturesCondensed } from './Class/Features/characterHelpers';
 import { Feat, feats } from './Feats';
 import { checkClass, checkRace } from './helpers';
 
@@ -27,7 +29,7 @@ import Stats, { zeroDefault } from './Stats';
 
 type Characters = { [key: string]: Character };
 
-class Character extends CharacterBase implements Exportable<JsonValue> {
+class Character extends OverridableCharacterBase implements Exportable<JsonValue> {
     #active: boolean;
     #stats: Stats;
     #race: Race;
@@ -199,51 +201,20 @@ class Character extends CharacterBase implements Exportable<JsonValue> {
         return (this.#cachedGearBonuses ||= this.#combineGearBonuses());
     }
 
-    get classFeatures(): ClassFeature[] {
-        return this.classes.map(c => c.cls.features(c.level)).flat();
-    }
-
     get classFeaturesCondensed(): { feature: ClassFeature; count: number }[] {
-        const counts: { [key: string]: number } = {};
-        const features = this.classFeatures;
-        for (const f of features) {
-            if (!(f in counts)) {
-                counts[f] = 0;
-            }
-            counts[f]++;
-        }
-        return Object.keys(counts).map(k => ({
-            feature: k as ClassFeature,
-            count: counts[k],
-        }));
+        return getClassFeaturesCondensed(this);
     }
 
     get classAuras(): Aura[] {
         return this.classes.map(c => c.cls.auras(c.level)).flat();
     }
 
-    get classAurasCondensed(): { aura: Aura; count: number }[] {
-        const counts: { [key: string]: number } = {};
-        const auras = this.classAuras;
-        for (const a of auras) {
-            if (!(a in counts)) {
-                counts[a] = 0;
-            }
-            counts[a]++;
-        }
-        return Object.keys(counts).map(k => ({
-            aura: k as Aura,
-            count: counts[k],
-        }));
+    get classAurasCondensed(): ClassAurasCondensed {
+        return getClassAurasCondensed(this);
     }
 
     get auraBonuses(): Bonus {
-        return Bonus.sum(
-            BonusType.aura,
-            ...this.classAurasCondensed.map(({ aura, count }) =>
-                auraBonuses[aura](count)
-            )
-        );
+        return getAuraBonuses(this);
     }
 
     spellPower(mode: CastingMode, school: School | SubSchool): number {

@@ -3,6 +3,7 @@ import { InventoryBuilder, InventoryExport } from '../Item/Inventory';
 import { FeatChoice, FeatChoiceExport } from './helpers';
 import { CharPersonalDetailsBuilder } from './Personal';
 import { Resistances, ResistancesExport } from './Resistances';
+import Size from './Size';
 import { StatSet } from './Stats';
 
 type SkillRanks = { [key: string]: number };
@@ -14,6 +15,7 @@ interface CharacterBaseBuilder {
     miscHP?: number;
     baseStats: StatSet;
     baseResistances?: Resistances;
+    size?: number;
 }
 
 interface CharacterBuilder extends CharacterBaseBuilder {
@@ -24,13 +26,20 @@ interface CharacterBuilder extends CharacterBaseBuilder {
     inventory?: InventoryBuilder;
 }
 
+type CharacterOverrideBuilder = CharacterBaseBuilder;
+
+interface OverridableCharacterBaseBuilder extends CharacterBaseBuilder {
+    override?: CharacterOverrideBuilder;
+}
+
 interface CharacterBaseExport {
     key: string;
     personal: CharPersonalDetailsBuilder;
     featChoices: FeatChoiceExport[];
-    miscHP: number;
+    miscHP: number | null;
     baseStats: StatSet;
     baseResistances: ResistancesExport;
+    size: Size | null;
 }
 interface CharacterExport extends CharacterBaseExport {
     [key: string]: JsonValue;
@@ -42,4 +51,20 @@ interface CharacterExport extends CharacterBaseExport {
     inventory: InventoryExport;
 }
 
-export type { SkillRanks, CharacterBuilder, CharacterBaseBuilder, CharacterExport, CharacterBaseExport };
+type CharacterOverrideExport = CharacterBaseExport;
+
+interface OverridableCharacterBaseExport extends CharacterBaseExport {
+    override: CharacterOverrideExport;
+}
+
+export type {
+    SkillRanks,
+    CharacterBaseBuilder,
+    CharacterBuilder,
+    CharacterOverrideBuilder,
+    OverridableCharacterBaseBuilder,
+    CharacterBaseExport,
+    CharacterExport,
+    CharacterOverrideExport,
+    OverridableCharacterBaseExport,
+};

@@ -42,7 +42,7 @@ const PersonalBlock: React.FC<CharXpProps> = ({char, xp = 0}) => {
         origin: char.personal.origin,
         race: raceName(char.race, t),
         gender: char.personal.gender,
-        age: `${char.personal.age.asFullYears}`,
+        age: `${char.personal.age.fullYears}`,
         height: `${char.personal.height.feetInches}`,
         weight: `${char.personal.weight}`,
         hair: char.personal.hair,

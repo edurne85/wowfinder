@@ -6,24 +6,33 @@ import CharPersonalDetails, {
     jsonExport as personalDetailsJsonExport,
     jsonImport as personalDetailsJsonImport,
 } from './Personal';
+import Size, { parseSize } from './Size';
 
 abstract class CharacterBase {
     #key: string;
     #personal: CharPersonalDetails;
     #featChoices: FeatChoice[];
-    #miscHP: number;
+    #miscHP?: number;
     #baseStats: StatSet;
     #baseResistances: Resistances;
-    // TODO: Size
+    #size?: Size;
 
     constructor({
-        key, personal, featChoices, miscHP, baseStats, baseResistances }: CharacterBaseBuilder) {
+        key,
+        personal,
+        featChoices,
+        miscHP,
+        baseStats,
+        baseResistances,
+        size,
+    }: CharacterBaseBuilder) {
         this.#key = key;
         this.#personal = personalDetailsJsonImport(personal);
         this.#featChoices = parseFeatChoices([...featChoices]);
         this.#miscHP = miscHP ?? 0;
         this.#baseStats = baseStats;
         this.#baseResistances = baseResistances ?? Resistances.zero;
+        this.#size = parseSize(size);
     }
 
     get key(): string {
@@ -46,7 +55,7 @@ abstract class CharacterBase {
         return this.#featChoices;
     }
 
-    get miscHP(): number {
+    get miscHP(): number | undefined {
         return this.#miscHP;
     }
 
@@ -58,14 +67,19 @@ abstract class CharacterBase {
         return this.#baseResistances;
     }
 
+    get size(): Size | undefined {
+        return this.#size;
+    }
+    
     export(): CharacterBaseExport {
         return {
             key: this.#key,
             personal: personalDetailsJsonExport(this.#personal),
             featChoices: exportFeatchChoices(...this.#featChoices),
-            miscHP: this.#miscHP,
+            miscHP: this.#miscHP ?? null,
             baseStats: this.#baseStats,
             baseResistances: this.#baseResistances.export(),
+            size: this.#size ?? null,
         };
     }
 }
