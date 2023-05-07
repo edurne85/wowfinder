@@ -8,6 +8,7 @@ import {
     parseFeatChoices,
 } from '../helpers';
 import Size, { parseSize } from '../Size';
+import { Speeds } from '../Speeds';
 
 abstract class CharacterBase {
     #key: string;
@@ -16,19 +17,23 @@ abstract class CharacterBase {
     #baseStats: StatSet;
     #baseResistances: Resistances;
     #size: Size;
-    // TODO Base speed
+    #speeds: Speeds;
 
     constructor(builder: CharacterBaseBuilder) {
         this.#key = builder.key;
-        this.#featChoices = parseFeatChoices([...builder.featChoices]);
+        this.#featChoices = parseFeatChoices([...(builder.featChoices || [])]);
         this.#miscHP = builder.miscHP ?? 0;
         this.#baseStats = builder.baseStats;
         this.#baseResistances = builder.baseResistances ?? Resistances.zero;
         if (builder.builderType === 'race') {
             const race = checkRace(builder.race);
             this.#size = race.size;
+            this.#speeds = race.speeds;
         } else {
             this.#size = parseSize(builder.size) || Size.medium;
+            this.#speeds = builder.speeds
+                ? new Speeds(builder.speeds)
+                : Speeds.default;
         }
     }
 
@@ -54,6 +59,10 @@ abstract class CharacterBase {
 
     get size(): Size {
         return this.#size;
+    }
+
+    get speeds(): Speeds {
+        return this.#speeds;
     }
 
     export(): CharacterBaseExport {

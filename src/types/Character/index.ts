@@ -31,7 +31,6 @@ import Race from './Race';
 import { Resistances } from './Resistances';
 import { Saves, SimpleSaves } from './Saves';
 import Size from './Size';
-import { Speeds } from './Speeds';
 import Stats from './Stats';
 
 type Characters = { [key: string]: Character };
@@ -104,13 +103,6 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
 
     get skillRanks(): SkillRanks {
         return Object.assign({}, this.#skillRanks);
-    }
-
-    get speed(): Speeds {
-        // TODO Implement
-        return new Speeds({
-            base: 30,
-        });
     }
 
     get armor(): FullArmorValues {

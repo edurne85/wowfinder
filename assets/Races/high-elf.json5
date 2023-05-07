@@ -12,9 +12,7 @@
     skillMods: {
         perception: 2,
     },
-    initialLangs: [
-        'common', 'thalassian',
-    ],
+    initialLangs: ['common', 'thalassian'],
     additionalLangs: [
         'draconic',
         'dwarven',
@@ -23,10 +21,8 @@
         'darnassian',
         'ursine',
     ],
-    commonAligns: [
-        'LG',
-    ],
-    speed: {
+    commonAligns: ['LG'],
+    speeds: {
         base: 30,
     },
 }

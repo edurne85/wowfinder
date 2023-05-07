@@ -50,7 +50,7 @@ export function MainPage({
                             <>
                                 <StatBlock stats={char?.stats} />
                                 <Header>{t('charsheet.speed.h')}</Header>
-                                <Speed speeds={char?.speed} />
+                                <Speed speeds={char?.speeds} />
                                 <Header>{t('charsheet.armor.h')}</Header>
                                 <Defenses char={char} />
                                 <Header>{t('charsheet.saves.h')}</Header>

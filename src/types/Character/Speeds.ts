@@ -113,6 +113,15 @@ class Speeds {
     get encumbered(): Speed {
         return wrap(this._encumberance ? encumbered(this._base) : this._base);
     }
+
+    static get zero(): Speeds {
+        return new Speeds({ base: 0 });
+    }
+
+    static get default(): Speeds {
+        return new Speeds({ base: 30 });
+    }
 }
 
 export { Speeds, FlyManeuverability, flyManeuverabilityBonus };
+export type { SpeedBuilder };

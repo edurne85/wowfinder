@@ -5,13 +5,14 @@ import { CharPersonalDetailsBuilder } from '../Personal';
 import Race from '../Race';
 import { Resistances, ResistancesExport } from '../Resistances';
 import Size from '../Size';
+import { SpeedBuilder } from '../Speeds';
 import { StatSet } from '../Stats';
 
 type SkillRanks = { [key: string]: number };
 
 interface CharacterBaseCoreBuilder {
     key: string;
-    featChoices: Iterable<FeatChoice>;
+    featChoices?: Iterable<FeatChoice>;
     miscHP?: number;
     baseStats: StatSet;
     baseResistances?: Resistances;
@@ -25,6 +26,7 @@ interface CharacterBaseRaceBuilder extends CharacterBaseCoreBuilder {
 interface CharacterBaseFullBuilder extends CharacterBaseCoreBuilder {
     builderType: 'full';
     size: number;
+    speeds?: SpeedBuilder;
 }
 type CharacterBaseBuilder = CharacterBaseFullBuilder | CharacterBaseRaceBuilder;
 interface CharacterBuilder extends CharacterBaseCoreBuilder {

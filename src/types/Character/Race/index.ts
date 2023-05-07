@@ -3,6 +3,7 @@ import Language, { defaultLang } from '../../Language';
 import Alignment, { playableAlignments } from '../Alignment';
 import Size from '../Size';
 import { SkillSet } from '../Skills';
+import { SpeedBuilder, Speeds } from '../Speeds';
 import { StatSet, zeroDefault as statsZero } from '../Stats';
 
 interface RaceBuilder {
@@ -15,6 +16,7 @@ interface RaceBuilder {
     initialLangs: Language[];
     additionalLangs?: Language[];
     commonAligns?: Alignment[];
+    speeds?: SpeedBuilder;
 }
 
 type Races = { [key: string]: Race };
@@ -29,6 +31,7 @@ export default class Race {
     private _initial: Language[];
     private _additional: Language[];
     private _aligns: Alignment[];
+    private _speeds: Speeds;
 
     constructor({
         key,
@@ -40,6 +43,7 @@ export default class Race {
         initialLangs = defaultLang,
         additionalLangs = [],
         commonAligns = playableAlignments,
+        speeds,
     }: RaceBuilder) {
         this._key = key;
         this._size = size;
@@ -50,6 +54,10 @@ export default class Race {
         Object.freeze((this._initial = [...initialLangs]));
         Object.freeze((this._additional = [...additionalLangs]));
         Object.freeze((this._aligns = [...commonAligns]));
+        Object.freeze(
+            // TODO Add speed data in race definitions!
+            (this._speeds = speeds ? new Speeds(speeds) : Speeds.default),
+        );
         Object.freeze(this);
     }
 
@@ -91,6 +99,10 @@ export default class Race {
 
     isCommonAlignment(alignment: Alignment): boolean {
         return this._aligns.includes(alignment);
+    }
+
+    get speeds(): Speeds {
+        return this._speeds;
     }
 
     static build(raw: any): Race {
