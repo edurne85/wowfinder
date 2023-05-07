@@ -23,6 +23,12 @@ function flyManeuverabilityBonus(maneuverability: FlyManeuverability): number {
     }
 }
 
+const ManeuverabilitySortedValues = Object.keys(FlyManeuverability).sort(
+    (a, b) =>
+        flyManeuverabilityBonus(a as FlyManeuverability) -
+        flyManeuverabilityBonus(b as FlyManeuverability),
+);
+
 type SpeedValue = number | Speed; // number taken as feet/turn
 
 const defaultSpeedUnit = new SpeedUnit({
@@ -123,5 +129,10 @@ class Speeds {
     }
 }
 
-export { Speeds, FlyManeuverability, flyManeuverabilityBonus };
+export {
+    Speeds,
+    FlyManeuverability,
+    ManeuverabilitySortedValues,
+    flyManeuverabilityBonus,
+};
 export type { SpeedBuilder };
