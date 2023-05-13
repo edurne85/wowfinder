@@ -13,7 +13,7 @@ interface Props {
     title: string;
 }
 
-function useTrasformation(char: Character, t: Transformation): void {
+function useTransformation(char: Character, t: Transformation): void {
     char.clearOverride();
     t.apply(char);
     useEffect(() => {
@@ -31,4 +31,4 @@ const ShapeshiftViewContainer = ({ title, children }: Props): JSX.Element => {
 };
 
 export type { Props as ShapeshiftViewContainerProps };
-export { ShapeshiftViewContainer, useTrasformation };
+export { ShapeshiftViewContainer, useTransformation };

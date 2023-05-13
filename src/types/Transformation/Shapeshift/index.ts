@@ -1,4 +1,4 @@
 export { Shapeshift } from './base';
-export { BearForm } from './BearForm';
-export { CatForm } from './CatForm';
-export { CheetahForm } from './CheetahForm';
+export * from './Feral';
+export * from './Travel';
+// export * from './Caster';

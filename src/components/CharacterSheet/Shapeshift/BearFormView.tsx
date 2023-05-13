@@ -6,13 +6,13 @@ import { useTranslation } from 'react-i18next';
 import { Defenses } from '../MainPage/Defenses';
 import { HitPoints } from '../MainPage/HitPoints';
 import Header from '../../helpers/Header';
-import { ShapeshiftViewContainer, useTrasformation } from './base';
+import { ShapeshiftViewContainer, useTransformation } from './base';
 import { Initiative } from '../MainPage/Initiative';
 
 function BearFormView({ char }: { char: Character }): JSX.Element {
     const { t } = useTranslation();
     const bearRank = char.classFeaturesCondensed.count('bearForm');
-    useTrasformation(char, new BearForm({ rank: bearRank }));
+    useTransformation(char, new BearForm({ rank: bearRank }));
     const classBonuses = char.classBonuses;
     return (
         <ShapeshiftViewContainer title={t('charsheet.shapeshift.bear')}>

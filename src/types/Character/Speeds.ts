@@ -54,7 +54,7 @@ const asFeet: (value: SpeedValue) => number = value =>
           convertSpeed(value as Speed, defaultSpeedUnit).value;
 
 const encumbered: (value: number) => number = value =>
-    value - (value >= 30 ? 10 : 5);
+    value > 0 ? value - (value >= 30 ? 10 : 5) : value;
 
 const wrap: (value: number) => Speed = value =>
     new Speed({ value, unit: defaultSpeedUnit });
@@ -118,6 +118,19 @@ class Speeds {
 
     get encumbered(): Speed {
         return wrap(this._encumberance ? encumbered(this._base) : this._base);
+    }
+
+    export(): Required<SpeedBuilder> {
+        return {
+            base: this._base,
+            fly: this._fly,
+            swim: this._swim,
+            burrow: this._burrow,
+            climb: this._climb,
+            misc: this._misc,
+            encumberance: this._encumberance,
+            maneuverability: this._maneuverablity,
+        };
     }
 
     static get zero(): Speeds {

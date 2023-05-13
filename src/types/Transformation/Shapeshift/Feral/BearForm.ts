@@ -1,7 +1,7 @@
-import { Character } from '../../Character';
-import { CharacterOverride } from '../../Character/base/CharacterOverride';
-import type { ShapeshiftBuilder } from './base';
-import { Shapeshift } from './base';
+import { Character } from '../../../Character';
+import { CharacterOverride } from '../../../Character/base/CharacterOverride';
+import type { ShapeshiftBuilder } from '../base';
+import { Shapeshift } from '../base';
 
 class BearForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {

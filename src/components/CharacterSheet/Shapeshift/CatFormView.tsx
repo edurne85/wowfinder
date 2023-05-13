@@ -6,13 +6,13 @@ import { StatBlock } from '../MainPage/StatBlock';
 import { Defenses } from '../MainPage/Defenses';
 import { HitPoints } from '../MainPage/HitPoints';
 import Header from '../../helpers/Header';
-import { ShapeshiftViewContainer, useTrasformation } from './base';
+import { ShapeshiftViewContainer, useTransformation } from './base';
 import { Initiative } from '../MainPage/Initiative';
 
 function CatFormView({ char }: { char: Character }): JSX.Element {
     const { t } = useTranslation();
     const catRank = char.classFeaturesCondensed.count('catForm');
-    useTrasformation(char, new CatForm({ rank: catRank }));
+    useTransformation(char, new CatForm({ rank: catRank }));
     const classBonuses = char.classBonuses;
     return (
         <ShapeshiftViewContainer title={t('charsheet.shapeshift.cat')}>

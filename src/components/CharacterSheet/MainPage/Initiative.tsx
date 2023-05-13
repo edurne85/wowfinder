@@ -35,7 +35,6 @@ const StyledTable = styled.table`
 
 const Initiative = ({ char }: { char?: Character }): JSX.Element => {
     const { t } = useTranslation();
-    console.log('Initiative', char?.stats);
     const dex = char?.stats?.totalMods?.DEX || 0;
     const total = dex;
     return (

@@ -1,7 +1,7 @@
-import { Character } from '../../Character';
-import { CharacterOverride } from '../../Character/base/CharacterOverride';
-import type { ShapeshiftBuilder } from './base';
-import { Shapeshift } from './base';
+import { Character } from '../../../Character';
+import { CharacterOverride } from '../../../Character/base/CharacterOverride';
+import type { ShapeshiftBuilder } from '../base';
+import { Shapeshift } from '../base';
 
 class CatForm extends Shapeshift {
     constructor({ rank }: ShapeshiftBuilder) {
@@ -19,7 +19,7 @@ class CatForm extends Shapeshift {
             size: Shapeshift.defaultSize(rank),
             /* TODO:
                 Stealth: +8 +4 * rank
-                Natural attacks: 2 sharp claws (1d6) and bite (1d4)
+                Natural attacks: 2 sharp claws (1d6) and weak bite (1d4)
                 Threat multiplier: x½
                 Combo points
                 Special abilities: TBD / Pending rules review
