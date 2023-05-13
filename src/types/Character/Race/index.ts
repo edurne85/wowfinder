@@ -17,6 +17,7 @@ interface RaceBuilder {
     additionalLangs?: Language[];
     commonAligns?: Alignment[];
     speeds?: SpeedBuilder;
+    naturalArmor?: number;
 }
 
 type Races = { [key: string]: Race };
@@ -32,6 +33,7 @@ export default class Race {
     private _additional: Language[];
     private _aligns: Alignment[];
     private _speeds: Speeds;
+    private _naturalArmor: number;
 
     constructor({
         key,
@@ -44,6 +46,7 @@ export default class Race {
         additionalLangs = [],
         commonAligns = playableAlignments,
         speeds,
+        naturalArmor = 0,
     }: RaceBuilder) {
         this._key = key;
         this._size = size;
@@ -58,6 +61,7 @@ export default class Race {
             // TODO Add speed data in race definitions!
             (this._speeds = speeds ? new Speeds(speeds) : Speeds.default),
         );
+        this._naturalArmor = naturalArmor || 0;
         Object.freeze(this);
     }
 
@@ -103,6 +107,10 @@ export default class Race {
 
     get speeds(): Speeds {
         return this._speeds;
+    }
+
+    get naturalArmor(): number {
+        return this._naturalArmor;
     }
 
     static build(raw: any): Race {

@@ -18,6 +18,7 @@ abstract class CharacterBase {
     #baseResistances: Resistances;
     #size: Size;
     #speeds: Speeds;
+    #naturalArmor: number;
 
     constructor(builder: CharacterBaseBuilder) {
         this.#key = builder.key;
@@ -29,11 +30,13 @@ abstract class CharacterBase {
             const race = checkRace(builder.race);
             this.#size = race.size;
             this.#speeds = race.speeds;
+            this.#naturalArmor = race.naturalArmor;
         } else {
             this.#size = parseSize(builder.size) || Size.medium;
             this.#speeds = builder.speeds
                 ? new Speeds(builder.speeds)
                 : Speeds.default;
+            this.#naturalArmor = builder.naturalArmor ?? 0;
         }
     }
 
@@ -65,6 +68,10 @@ abstract class CharacterBase {
         return this.#speeds;
     }
 
+    get naturalArmor(): number {
+        return this.#naturalArmor;
+    }
+
     export(): CharacterBaseExport {
         return {
             key: this.#key,
@@ -73,6 +80,7 @@ abstract class CharacterBase {
             baseStats: this.#baseStats,
             baseResistances: this.#baseResistances.export(),
             size: this.#size,
+            naturalArmor: this.#naturalArmor,
         };
     }
 }

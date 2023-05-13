@@ -51,6 +51,10 @@ abstract class OverridableCharacterBase extends CharacterBase {
         return this.#override?.speeds || super.speeds;
     }
 
+    get naturalArmor(): number {
+        return this.#override?.naturalArmor ?? super.naturalArmor;
+    }
+
     setOverride(override: CharacterOverride): void {
         this.#override = override;
     }

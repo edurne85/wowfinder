@@ -26,6 +26,7 @@ interface CharacterBaseRaceBuilder extends CharacterBaseCoreBuilder {
 interface CharacterBaseFullBuilder extends CharacterBaseCoreBuilder {
     builderType: 'full';
     size: number;
+    naturalArmor?: number;
     speeds?: SpeedBuilder;
 }
 type CharacterBaseBuilder = CharacterBaseFullBuilder | CharacterBaseRaceBuilder;
@@ -55,6 +56,7 @@ interface CharacterBaseExport {
     baseStats: StatSet;
     baseResistances: ResistancesExport;
     size: Size | null;
+    naturalArmor: number | null;
 }
 interface CharacterPersonalExport extends CharacterBaseExport {
     personal: CharPersonalDetailsBuilder;

@@ -17,8 +17,8 @@ class BearForm extends Shapeshift {
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),
+            naturalArmor: 2 + 2 * rank,
             /* TODO:
-                Natural armor: +4 +2 * rank
                 Natural attacks: 2 claws (1d4) and bite (1d6)
                 Threat multiplier: x2
                 Special abilities:

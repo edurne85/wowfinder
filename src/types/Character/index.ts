@@ -206,6 +206,7 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
             shield: Math.max(
                 ...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass),
             ),
+            nat: this.naturalArmor,
             miscP: combined.armorClass,
         });
         return combined;
