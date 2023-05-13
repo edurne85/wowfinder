@@ -14,6 +14,7 @@ import { Resistances } from './Resistances';
 import { Attacks } from './Attacks';
 import Classes from './Classes';
 import Traits from './Traits';
+import { Initiative } from './Initiative';
 
 const LogoImg = styled.img`
     display: inline-block;
@@ -49,6 +50,8 @@ export function MainPage({
                         children: (
                             <>
                                 <StatBlock stats={char?.stats} />
+                                <Header>{t('charsheet.initiative.h')}</Header>
+                                <Initiative char={char} />
                                 <Header>{t('charsheet.speed.h')}</Header>
                                 <Speed speeds={char?.speeds} />
                                 <Header>{t('charsheet.armor.h')}</Header>
