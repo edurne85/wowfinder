@@ -2,23 +2,18 @@ import { Character } from '../../types/Character';
 import { ClassBonuses } from '../../types/Character/Class';
 
 type CharProps = {
-    char: Character,
+    char: Character;
 };
 
 type CharXpProps = {
-    char?: Character,
-    xp?: number,
+    char?: Character;
+    xp?: number;
 };
 
 type BonusOnlyProps = {
-    bonuses?: ClassBonuses,
+    bonuses?: ClassBonuses;
 };
 
-type HitPointProps = BonusOnlyProps & { misc?: number, current?: number};
+type HitPointProps = BonusOnlyProps & { misc?: number; current?: number };
 
-export {
-    CharProps,
-    CharXpProps,
-    BonusOnlyProps,
-    HitPointProps,
-};
+export { CharProps, CharXpProps, BonusOnlyProps, HitPointProps };

@@ -46,7 +46,7 @@ function slurpRecursive(path: string): Resource {
         for (const subPath of filesAndDirs(path)) {
             const base = baseName(subPath);
             const fullPath = window.Files.resolvePath(path, subPath);
-            Object.assign(res, {[base]: {}}, res);
+            Object.assign(res, { [base]: {} }, res);
             Object.assign(res[base], slurpRecursive(fullPath));
         }
     }
@@ -56,7 +56,9 @@ function slurpRecursive(path: string): Resource {
 const resources: Resource = {};
 function loadLang(lang: string): void {
     resources[lang] = {
-        translation: slurpRecursive(window.Files.resolvePath(translationsPath, lang)),
+        translation: slurpRecursive(
+            window.Files.resolvePath(translationsPath, lang),
+        ),
     };
 }
 const langs = ['en', 'es'];

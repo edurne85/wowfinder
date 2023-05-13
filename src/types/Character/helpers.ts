@@ -1,11 +1,16 @@
 import { JsonValue } from '../../utils';
+import { Bonus } from './Bonus';
 import { Class } from './Class';
 import { Feat } from './Feats';
 import Race from './Race';
+import Stats, { StatSet } from './Stats';
 
 const defaultRace = 'human.cha';
 const Races = Race.import();
-function checkRace(raceName: string): Race {
+function checkRace(raceName: string | Race): Race {
+    if (raceName instanceof Race) {
+        return raceName;
+    }
     const r = Races[raceName || defaultRace];
     if (!r) {
         throw new Error(`Unknown race key: ${raceName}`);
@@ -64,13 +69,40 @@ function parseFeatChoices(raw: any[]): FeatChoice[] {
     return res;
 }
 
-function exportFeatchChoices(... raw: FeatChoice[]): FeatChoiceExport[] {
-    return raw.map((f) => ({
+function exportFeatchChoices(...raw: FeatChoice[]): FeatChoiceExport[] {
+    return raw.map(f => ({
         feat: f.feat,
         class: f.class?.key || '',
         level: f.level,
     }));
 }
 
+function buildStats({
+    base,
+    race,
+    auras,
+    gear,
+}: {
+    base: StatSet;
+    race: Race;
+    auras: Bonus;
+    gear: Bonus;
+}): Stats {
+    return new Stats({
+        base,
+        racial: race.statMods,
+        // TODO ? enhance
+        gear: gear.stats.values,
+        misc: auras.stats.values,
+        // TODO ? temp
+    });
+}
+
 export type { FeatChoice, FeatChoiceExport };
-export { checkRace, checkClass, parseFeatChoices, exportFeatchChoices };
+export {
+    checkRace,
+    checkClass,
+    parseFeatChoices,
+    exportFeatchChoices,
+    buildStats,
+};

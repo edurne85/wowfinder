@@ -4,21 +4,21 @@ import Race from '../types/Character/Race';
 import { useTranslation } from 'react-i18next';
 
 interface RaceListProps {
-  races: { [key: string]: Race };
+    races: { [key: string]: Race };
 }
 
-function RaceList({races}: RaceListProps): JSX.Element {
-  const classKeys = Object.keys(races).sort();
-  const { t } = useTranslation();
-  return (
-    <div>
-      {classKeys.map(key => (
-        <p key={key}>
-          <Link to={`/races/:${key}`}>{t(`races.${key}`)}</Link>
-        </p>
-      ))}
-    </div>
-  );
+function RaceList({ races }: RaceListProps): JSX.Element {
+    const classKeys = Object.keys(races).sort();
+    const { t } = useTranslation();
+    return (
+        <div>
+            {classKeys.map(key => (
+                <p key={key}>
+                    <Link to={`/races/:${key}`}>{t(`races.${key}`)}</Link>
+                </p>
+            ))}
+        </div>
+    );
 }
 
 const raceRoutes: RouteProvider = data => {
@@ -30,11 +30,11 @@ const raceRoutes: RouteProvider = data => {
         {
             path: '/races/:race',
             element: <WiP />,
-        }
+        },
     ];
 };
 
-const raceNames: TitlesProvider = (t) => [
+const raceNames: TitlesProvider = t => [
     {
         match: /^\/races\/:?(.*)/,
         title: (fragments: RegExpMatchArray | null): string | null => {

@@ -41,7 +41,7 @@ export default class Armor extends Gear {
         asf = 0,
         flags = new Set<ArmorFlags>(),
     }: ArmorBuilder) {
-        super({label, shape, size, weight, bonuses});
+        super({ label, shape, size, weight, bonuses });
         this._type = type;
         this._acBonus = acBonus;
         this._bonusType = bonusType;
@@ -53,7 +53,9 @@ export default class Armor extends Gear {
     }
 
     get encumbering(): boolean {
-        return this._type === ArmorType.heavy || this._type === ArmorType.medium;
+        return (
+            this._type === ArmorType.heavy || this._type === ArmorType.medium
+        );
     }
 
     get fullBonus(): MultiBonus {
@@ -61,33 +63,38 @@ export default class Armor extends Gear {
         return new MultiBonus({
             armor: new Bonus({
                 type: BonusType.armor,
-                armorClass: this._bonusType === ArmorBonusType.armor ? total : 0,
+                armorClass:
+                    this._bonusType === ArmorBonusType.armor ? total : 0,
             }),
             shield: new Bonus({
                 type: BonusType.shield,
-                armorClass: this._bonusType === ArmorBonusType.shield ? total : 0,
+                armorClass:
+                    this._bonusType === ArmorBonusType.shield ? total : 0,
             }),
             gear: this.bonuses,
         });
     }
 
-    get $type(): string { return 'Armor'; }
+    get $type(): string {
+        return 'Armor';
+    }
 
     static build(raw: any = {}): Armor {
         return new Armor({
-            label: raw.label as string || '',
-            shape: raw.shape as string[] || [],
-            size: raw.size as Size || 0,
-            weight: raw.weight as Weight || 0,
+            label: (raw.label as string) || '',
+            shape: (raw.shape as string[]) || [],
+            size: (raw.size as Size) || 0,
+            weight: (raw.weight as Weight) || 0,
             bonuses: Bonus.build(raw.bonuses || {}),
-            type: raw.type as ArmorType || ArmorType.misc,
-            acBonus: raw.acBonus as number || 0,
-            bonusType: raw.bonusType as ArmorBonusType || ArmorBonusType.armor,
-            intrinsic: raw.intrinsic as number || 0,
-            maxDex: raw.maxDex as number || Number.POSITIVE_INFINITY,
-            acp: raw.acp as number || 0,
-            asf: raw.asf as number || 0,
-            flags: raw.flags as Set<ArmorFlags> || [],
+            type: (raw.type as ArmorType) || ArmorType.misc,
+            acBonus: (raw.acBonus as number) || 0,
+            bonusType:
+                (raw.bonusType as ArmorBonusType) || ArmorBonusType.armor,
+            intrinsic: (raw.intrinsic as number) || 0,
+            maxDex: (raw.maxDex as number) || Number.POSITIVE_INFINITY,
+            acp: (raw.acp as number) || 0,
+            asf: (raw.asf as number) || 0,
+            flags: (raw.flags as Set<ArmorFlags>) || [],
         });
     }
 }

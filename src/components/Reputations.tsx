@@ -9,6 +9,4 @@ function Reputations(): JSX.Element {
     return <ul>{Object.keys(Reputation).map(Rep)}</ul>;
 }
 
-export {
-    Reputations,
-};
+export { Reputations };

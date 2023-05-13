@@ -3,18 +3,19 @@ import { Item } from './base';
 import { Armor, Gear, Weapon } from './Gear';
 import { Ore } from './Good';
 
-const builderByTypeKey: {[key: string]: builder<Item>} = {
-    'Gear': Gear.build,
-    'Accessory': Gear.build, // TODO Review: specific class & builder needed?
-    'Weapon': Weapon.build,
-    'Armor': Armor.build,
-    'Ore': Ore.build,
+const builderByTypeKey: { [key: string]: builder<Item> } = {
+    Gear: Gear.build,
+    Accessory: Gear.build, // TODO Review: specific class & builder needed?
+    Weapon: Weapon.build,
+    Armor: Armor.build,
+    Ore: Ore.build,
 };
 
 const builderKeys = Object.keys(builderByTypeKey);
 
 const errors = {
-    badKey: (fqkey: string): Error => new Error(`Not a valid fqKey for Item: ${fqkey}`),
+    badKey: (fqkey: string): Error =>
+        new Error(`Not a valid fqKey for Item: ${fqkey}`),
     badData: (raw: any): Error => new Error(`Invalid item data: ${raw}`),
 };
 
@@ -39,10 +40,10 @@ function buildItem(raw: any): Item {
     if (raw instanceof Item) {
         return raw;
     }
-    if (typeof(raw) === 'string') {
+    if (typeof raw === 'string') {
         return retrievePreloaded(raw as string);
     }
-    const $type = raw?.$type as string || '';
+    const $type = (raw?.$type as string) || '';
     if (builderKeys.includes($type)) {
         return builderByTypeKey[$type](raw);
     } else {
@@ -50,6 +51,4 @@ function buildItem(raw: any): Item {
     }
 }
 
-export {
-    buildItem,
-};
+export { buildItem };

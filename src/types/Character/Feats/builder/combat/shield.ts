@@ -9,12 +9,12 @@ const combatShieldFeats: { [key in CombatShieldFeat]: FeatSpec } = {
     weaponFocusShield: build.combat(
         Feat.weaponFocusShield,
         ...req.feats('proficiencyShield'),
-        req.level.bab(1)
+        req.level.bab(1),
     ),
     greaterWeaponFocusShield: build.combat(
         Feat.greaterWeaponFocusShield,
         ...req.feats('weaponFocusShield'),
-        req.level.bab(8) // TODO: change to effective level (fighter)
+        req.level.bab(8), // TODO: change to effective level (fighter)
     ),
 };
 

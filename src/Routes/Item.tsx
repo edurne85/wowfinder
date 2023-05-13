@@ -5,7 +5,7 @@ const itemRoutes: RouteProvider = () => {
         {
             path: '/items',
             element: <WiP />,
-        }
+        },
         // TODO: Add hierarchical item routes
     ];
 };

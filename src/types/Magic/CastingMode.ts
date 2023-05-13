@@ -21,7 +21,7 @@ type CastingModeValuesPartial<T> = {
 
 function fillCastingModeValues<T>(
     values: CastingModeValuesPartial<T>,
-    defaultValue: T
+    defaultValue: T,
 ): CastingModeValues<T> {
     const full: CastingModeValuesPartial<T> = {};
     const givenKeys = Object.keys(values);
@@ -32,8 +32,5 @@ function fillCastingModeValues<T>(
     return full as CastingModeValues<T>;
 }
 
-export type {
-    CastingModeValues,
-    CastingModeValuesPartial,
-};
+export type { CastingModeValues, CastingModeValuesPartial };
 export { CastingMode, castingStats, fillCastingModeValues };

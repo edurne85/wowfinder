@@ -1,4 +1,8 @@
-import { EffectiveCasterLevels, zeroCasterLevel , levelByMode } from './EffectiveCasterLevels';
+import {
+    EffectiveCasterLevels,
+    zeroCasterLevel,
+    levelByMode,
+} from './EffectiveCasterLevels';
 import type { Expanded } from '../../utils';
 import Stats, { StatSet, zeroDefault } from '../Character/Stats';
 import {
@@ -40,7 +44,7 @@ type PartialComputedSpellPower =
 
 function fillSpellPowerValues<T>(
     values: SpellPowerValuesPartial<T>,
-    defaultValue: T
+    defaultValue: T,
 ): SpellPowerValues<T> {
     return {
         ...fillCastingModeValues<T>(values, defaultValue),
@@ -54,7 +58,7 @@ function computedSpellPower(
     mode: CastingMode,
     school: School | SubSchool,
     stats?: StatSet,
-    efl: EffectiveCasterLevels = zeroCasterLevel
+    efl: EffectiveCasterLevels = zeroCasterLevel,
 ): number {
     const smods = new Stats({ base: stats || zeroDefault });
     const smod = smods.totalMods[castingStats[mode]];
@@ -64,7 +68,7 @@ function computedSpellPower(
 function fullComputedSpellPower(
     data: SpellPowerValues<number>,
     stats?: StatSet,
-    efl: EffectiveCasterLevels = zeroCasterLevel
+    efl: EffectiveCasterLevels = zeroCasterLevel,
 ): FullComputedSpellPower {
     const res: PartialComputedSpellPower = {};
     for (const mode of Object.keys(CastingMode)) {
@@ -93,4 +97,9 @@ export type {
     FullComputedSchools,
     ComputedSubSchools,
 };
-export { fillSpellPowerValues, computedSpellPower, fullComputedSpellPower, zeroSpellPower };
+export {
+    fillSpellPowerValues,
+    computedSpellPower,
+    fullComputedSpellPower,
+    zeroSpellPower,
+};

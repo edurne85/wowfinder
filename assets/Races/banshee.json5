@@ -12,19 +12,13 @@
     skillMods: {
         perception: 2,
     },
-    initialLangs: [
-        'common', 'thalassian', 'darnassian',
-    ],
-    additionalLangs: [
-        'gutterspeak',
-        'shathyar',
-    ],
-    commonAligns: [
-        'NN', 'CN', 'NE', 'CE',
-    ],
-    speed: {
+    initialLangs: ['common', 'thalassian', 'darnassian'],
+    additionalLangs: ['gutterspeak', 'shathyar'],
+    commonAligns: ['NN', 'CN', 'NE', 'CE'],
+    speeds: {
         base: 30,
-        fly: 40, // TODO: average maneuverability
+        fly: 40,
+        maneuverability: 'average',
     },
     /* TODO
         Darkvision: 60'

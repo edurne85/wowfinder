@@ -1,10 +1,5 @@
 import { Requirement } from './base';
-import {
-    PartialStatSet,
-    StatKeys,
-    StatSet,
-    zeroDefault
-} from '../Stats';
+import { PartialStatSet, StatKeys, StatSet, zeroDefault } from '../Stats';
 import { Character } from '..';
 import { FunctionBasedRequirement } from '.';
 
@@ -40,7 +35,7 @@ class MinStatsRequirement implements StatSet, Requirement<StatSet> {
 
     test(value: PartialStatSet): boolean {
         return StatKeys.every(
-            k => (value[k] || zeroDefault[k]) >= this.#min[k]
+            k => (value[k] || zeroDefault[k]) >= this.#min[k],
         );
     }
 }
@@ -77,20 +72,19 @@ class MaxStatsRequirement implements StatSet, Requirement<StatSet> {
     test(value: PartialStatSet): boolean {
         const keys = Object.keys(this.#max);
         return StatKeys.every(
-            k => !keys.includes(k) ||
-                (value[k] || zeroDefault[k]) <= this.#max[k]
+            k =>
+                !keys.includes(k) ||
+                (value[k] || zeroDefault[k]) <= this.#max[k],
         );
     }
 }
 
-function characterStatsRequirement<T extends Requirement<StatSet>>(req: T): Requirement<Character> {
-    return new FunctionBasedRequirement<Character>(
-        (char: Character) => req.test(char.stats.active),
+function characterStatsRequirement<T extends Requirement<StatSet>>(
+    req: T,
+): Requirement<Character> {
+    return new FunctionBasedRequirement<Character>((char: Character) =>
+        req.test(char.stats.active),
     );
 }
 
-export {
-    MinStatsRequirement,
-    MaxStatsRequirement,
-    characterStatsRequirement,
-};
+export { MinStatsRequirement, MaxStatsRequirement, characterStatsRequirement };

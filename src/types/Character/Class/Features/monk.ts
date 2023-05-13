@@ -50,7 +50,7 @@ const monk = {
             baseHeight = 0;
         }
         return Math.max(baseHeight, 0);
-    }
+    },
 } as const;
 
 export { monk, MonkClassFeature };

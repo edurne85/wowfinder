@@ -21,13 +21,13 @@ class EmptyRequirement<T> implements Requirement<T> {
 
 function or<T>(...requirements: Requirement<T>[]): Requirement<T> {
     return new FunctionBasedRequirement<T>(value =>
-        requirements.some(r => r.test(value))
+        requirements.some(r => r.test(value)),
     );
 }
 
 function and<T>(...requirements: Requirement<T>[]): Requirement<T> {
     return new FunctionBasedRequirement<T>(value =>
-        requirements.every(r => r.test(value))
+        requirements.every(r => r.test(value)),
     );
 }
 

@@ -2,18 +2,15 @@ import { buildGear, Gear } from './Gear';
 import Money from './Money';
 
 interface InventoryBuilder {
-    money?: number,
-    gear?: Gear[],
+    money?: number;
+    gear?: Gear[];
 }
 
 export default class Inventory {
     private _gear: Gear[];
     private _money: Money;
 
-    constructor({
-        money = 0,
-        gear = [],
-    }: InventoryBuilder) {
+    constructor({ money = 0, gear = [] }: InventoryBuilder) {
         this._gear = gear.map(g => buildGear(g));
         this._money = Money.fromRaw(money);
     }
@@ -45,6 +42,4 @@ export default class Inventory {
     }
 }
 
-export {
-    InventoryBuilder,
-};
+export { InventoryBuilder };

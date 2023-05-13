@@ -42,7 +42,7 @@ abstract class SpellBase implements SpellBaseBuilder {
         this.#descriptors = new Set(parseValidSpellDescriptors(descriptors));
         this.#castingTime = parseIfNeeded(castingTime, CastingTime.tryParse);
         this.#components = components.map(c =>
-            parseIfNeeded(c, parseSpellComponent)
+            parseIfNeeded(c, parseSpellComponent),
         );
         this.#range = parseIfNeeded(range, SpellRange.tryParse);
         this.#area = parseIfNeeded(area, parseArea);

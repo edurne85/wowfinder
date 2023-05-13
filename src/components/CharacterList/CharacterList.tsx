@@ -16,7 +16,6 @@ const CharacterPickerP = styled.p`
     }
 `;
 
-
 interface CharacterListProps {
     chars: { [key: string]: Character };
 }
@@ -29,9 +28,7 @@ function CharacterList({ chars }: CharacterListProps): JSX.Element {
         <div>
             {activeCharKeys.map(key => (
                 <CharacterPickerP key={key}>
-                    <Link to={`/chars/:${key}`}>
-                        {chars[key].fullName}
-                    </Link>
+                    <Link to={`/chars/:${key}`}>{chars[key].fullName}</Link>
                 </CharacterPickerP>
             ))}
         </div>

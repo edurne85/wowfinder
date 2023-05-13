@@ -3,11 +3,13 @@ import type { SimpleSavesBuilder } from '../Saves';
 import { sum } from '../../../utils';
 
 export default class SavesBonus extends SimpleSaves {
-    constructor({fort = 0, refl = 0, will = 0}: SimpleSavesBuilder) {
-        super({fort, refl, will});
+    constructor({ fort = 0, refl = 0, will = 0 }: SimpleSavesBuilder) {
+        super({ fort, refl, will });
     }
 
-    static get zero(): SavesBonus { return new SavesBonus({}); }
+    static get zero(): SavesBonus {
+        return new SavesBonus({});
+    }
 
     static sum(...args: SavesBonus[]): SavesBonus {
         return new SavesBonus({

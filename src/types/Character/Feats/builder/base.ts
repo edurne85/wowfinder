@@ -13,23 +13,23 @@ const baseFeats: { [key in BaseFeat]: FeatSpec } = {
     acrobaticSteps: build.basic(
         Feat.acrobaticSteps,
         ...req.feats(Feat.nimbleMoves),
-        req.stat(StatKey.DEX, 15)
+        req.stat(StatKey.DEX, 15),
     ),
     run: build.basic(Feat.run),
     greatFortitude: build.save(Feat.greatFortitude),
     improvedGreatFortitude: build.save(
         Feat.improvedGreatFortitude,
-        ...req.feats(Feat.greatFortitude)
+        ...req.feats(Feat.greatFortitude),
     ),
     ironWill: build.save(Feat.ironWill),
     improvedIronWill: build.save(
         Feat.improvedIronWill,
-        ...req.feats(Feat.ironWill)
+        ...req.feats(Feat.ironWill),
     ),
     lightningReflexes: build.save(Feat.lightningReflexes),
     improvedLightningReflexes: build.save(
         Feat.improvedLightningReflexes,
-        ...req.feats(Feat.lightningReflexes)
+        ...req.feats(Feat.lightningReflexes),
     ),
 };
 

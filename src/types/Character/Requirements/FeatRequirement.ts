@@ -28,7 +28,4 @@ class CharacterFeatRequirement implements Requirement<Character> {
     }
 }
 
-export {
-    FeatRequirement,
-    CharacterFeatRequirement
-};
+export { FeatRequirement, CharacterFeatRequirement };

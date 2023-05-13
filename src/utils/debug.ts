@@ -31,7 +31,7 @@ function reportWiP(data?: any): void {
     console.log(
         '%c WiP ',
         'font-weight: bold; background-color: #fa4; color: black',
-        data
+        data,
     );
 }
 

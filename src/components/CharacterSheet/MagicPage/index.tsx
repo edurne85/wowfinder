@@ -37,7 +37,7 @@ function MagicColumn({
     const { t } = useTranslation();
     const clevel = levelByMode(
         char?.classBonuses?.efl || zeroCasterLevel,
-        mode
+        mode,
     );
     const spellPower = (char?.fullSpellPower || zeroSpellPower)[mode];
     return (

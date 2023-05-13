@@ -77,13 +77,13 @@ class Adventure implements Exportable<AdventureExport> {
     static import(dir = window.Main.asset('Adventures')): Adventures {
         return (this._imported ||= forceDataImportKeyS<Adventure>(
             dir,
-            this.build
+            this.build,
         ));
     }
 
     static combined(adventures: Adventures): Rewards {
         return combineRewards(
-            Object.keys(adventures).map(k => adventures[k].rewards)
+            Object.keys(adventures).map(k => adventures[k].rewards),
         );
     }
 

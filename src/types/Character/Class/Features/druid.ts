@@ -26,7 +26,6 @@ const DruidClassFeature = {
 
 type DruidClassFeature = keyof typeof DruidClassFeature;
 
-const druid = {
-} as const;
+const druid = {} as const;
 
 export { druid, DruidClassFeature };

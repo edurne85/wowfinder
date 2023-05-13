@@ -96,5 +96,7 @@ function jsonExport(source: CharPersonalDetails): CharPersonalDetailsBuilder {
     };
 }
 
+const personalDefaultsBuilder = jsonExport(personalDefaults);
+
 export type { CharPersonalDetails, CharPersonalDetailsBuilder };
-export { personalDefaults, jsonImport, jsonExport };
+export { personalDefaults, personalDefaultsBuilder, jsonImport, jsonExport };

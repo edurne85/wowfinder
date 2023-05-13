@@ -16,14 +16,12 @@ abstract class LevelRequirementBase implements Requirement<Character> {
 }
 
 class CharacterLevelRequirement extends LevelRequirementBase {
-
     test(value: Character): boolean {
         return sum(...value.classes.map(entry => entry.level)) >= this.level;
     }
 }
 
 class CasterLevelRequirement extends LevelRequirementBase {
-
     test(value: Character): boolean {
         const efl = value.classBonuses.efl;
         return efl.arc + efl.div + efl.esp >= this.level;

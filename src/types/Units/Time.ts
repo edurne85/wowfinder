@@ -23,14 +23,14 @@ class Time extends Scalar<TimeUnit> {
         super({ value, unit });
     }
 
-    get asFullYears(): string {
-        return Math.floor(convertTime(this, TimeUnit.year).value).toString();
+    get fullYears(): number {
+        return Math.floor(convertTime(this, TimeUnit.year).value);
     }
 
     static tryParseTime(input: string): Time | undefined {
         const base = Scalar.tryParse<TimeUnit>(
             input,
-            unit => TimeUnit[unit as keyof typeof TimeUnit]
+            unit => TimeUnit[unit as keyof typeof TimeUnit],
         );
         return base ? new Time(base) : undefined;
     }

@@ -44,8 +44,7 @@ function Navigation(): JSX.Element {
             </button>
             <button
                 onClick={() => window.history.forward()}
-                disabled={!canGoForward}
-            >
+                disabled={!canGoForward}>
                 {t('navigation.forward')}
             </button>
             <Breadcrumbs />

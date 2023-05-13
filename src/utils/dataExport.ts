@@ -3,7 +3,7 @@ import type { AssetBundle } from '../types/Assets';
 import { FullData } from '../types/FullData';
 import { Rewards } from '../types/Rewards';
 import { JsonValue } from './json';
-import { CharacterExport } from '../types/Character/builder';
+import { CharacterExport } from '../types/Character/base';
 import { AdventureExport } from '../types/Adventure';
 
 function exportByChars(source: FullData, ...charKeys: string[]): AssetBundle {
@@ -52,12 +52,12 @@ function exportByCharsAsJsonAssets(
     };
     for (const k of Object.keys(raw.assets[AssetType.Characters])) {
         result.assets[AssetType.Characters][k] = prettyJson(
-            raw.assets[AssetType.Characters][k]
+            raw.assets[AssetType.Characters][k],
         );
     }
     for (const k of Object.keys(raw.assets[AssetType.Adventures])) {
         result.assets[AssetType.Adventures][k] = prettyJson(
-            raw.assets[AssetType.Adventures][k]
+            raw.assets[AssetType.Adventures][k],
         );
     }
     return result;

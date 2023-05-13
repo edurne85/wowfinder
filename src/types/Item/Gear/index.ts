@@ -7,7 +7,7 @@ function buildGear(raw: any): Gear {
     if (raw instanceof Gear) {
         return raw;
     }
-    if (typeof(raw) === 'string') {
+    if (typeof raw === 'string') {
         let data: ByKeyRecursiveEntry<Gear> = Gear.import(undefined, buildGear);
         for (const chunk of raw.split('.')) {
             if (Object.keys(data).includes(chunk)) {
@@ -22,19 +22,14 @@ function buildGear(raw: any): Gear {
             throw new Error(`Not a valid fqKey for Gear: ${raw}`);
         }
     }
-    switch(raw.$type as string || '') {
+    switch ((raw.$type as string) || '') {
         case 'Armor':
             return Armor.build(raw);
         case 'Weapon':
             return Weapon.build(raw);
-        default: 
+        default:
             return Gear.build(raw);
     }
 }
 
-export {
-    Gear,
-    Armor,
-    Weapon,
-    buildGear,
-};
+export { Gear, Armor, Weapon, buildGear };

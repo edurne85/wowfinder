@@ -43,7 +43,7 @@ const dumpToZip = (fullZipPath: string, data: dumpable): string => {
 
 const saveToZip = (
     raw: dumpable,
-    defaultPath = 'export.zip'
+    defaultPath = 'export.zip',
 ): Promise<boolean> => {
     return dialog
         .showSaveDialog({ defaultPath })
@@ -68,13 +68,13 @@ function registerZipListeners(): void {
         'files:dumpToZip',
         (event, baseDirName: string, data: dumpable) => {
             event.returnValue = dumpToZip(baseDirName, data);
-        }
+        },
     );
     ipcMain.on(
         'files:saveToZip',
         async (event, raw: dumpable, defaultPath = 'export.zip') => {
             event.returnValue = await saveToZip(raw, defaultPath);
-        }
+        },
     );
 }
 

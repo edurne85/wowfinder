@@ -10,35 +10,40 @@ import {
     SubSchool,
 } from '../Magic';
 import { ArmorValues, FullArmorValues } from './ArmorValues';
-import { Bonus, BonusType } from './Bonus';
-import { CharacterBuilder, CharacterExport, SkillRanks } from './builder';
+import {
+    CharacterBuilder,
+    CharacterExport,
+    CharacterOverride,
+    PersonalCharacterBase,
+    SkillRanks,
+} from './base';
+import { Bonus } from './Bonus';
 import { Class, ClassBonuses, ClassFeature, ClassLevels } from './Class';
-import { Aura, auraBonuses } from './Class/Aura';
+import { Aura } from './Class/Aura';
+import {
+    ClassAurasCondensed,
+    getAuraBonuses,
+    getClassAurasCondensed,
+} from './Class/Aura/characterHelpers';
+import { CondensedClassFeatures } from './Class/Features';
+import {
+    getClassFeatures,
+    getClassFeaturesCondensed,
+} from './Class/Features/characterHelpers';
 import { Feat, feats } from './Feats';
-import { exportFeatchChoices, FeatChoice , checkClass, checkRace, parseFeatChoices } from './helpers';
-
-import CharPersonalDetails, {
-    jsonExport as personalDetailsJsonExport,
-    jsonImport as personalDetailsJsonImport,
-} from './Personal';
+import { buildStats, checkClass, checkRace } from './helpers';
 import Race from './Race';
 import { Resistances } from './Resistances';
 import { Saves, SimpleSaves } from './Saves';
 import Size from './Size';
-import { Speeds } from './Speeds';
-import Stats, { zeroDefault } from './Stats';
+import Stats from './Stats';
 
 type Characters = { [key: string]: Character };
 
-class Character implements Exportable<JsonValue> {
-    #key: string;
-    #personal: CharPersonalDetails;
+class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
     #active: boolean;
-    #stats: Stats;
     #race: Race;
     #classes: ClassLevels;
-    #feats: FeatChoice[];
-    #miscHP: number;
     #skillRanks: SkillRanks;
     #armor: ArmorValues;
     #resistances: Resistances;
@@ -48,45 +53,42 @@ class Character implements Exportable<JsonValue> {
     #cachedGearBonuses: Bonus | null = null;
 
     constructor({
-        key,
-        personal,
         active = true,
-        baseStats,
-        race,
         classes = [],
-        feats = [],
-        miscHP = 0,
         skillRanks = {},
         inventory = Inventory.defaultBuilder,
+        ...rest
     }: CharacterBuilder) {
-        this.#key = key;
-        this.#personal = personalDetailsJsonImport(personal);
+        super({
+            ...rest,
+            builderType: 'race',
+        });
+        this.#race = checkRace(rest.race);
         this.#active = active;
-        this.#race = checkRace(race);
         this.#classes = [];
         for (const { cls, level } of classes) {
             this.#classes.push({ cls: checkClass(cls), level });
         }
-        const auraBonuses = this.auraBonuses;
-        this.#stats = new Stats({
-            base: baseStats,
-            racial: this.#race ? this.#race.statMods : zeroDefault,
-            // TODO ? enhance
-            misc: auraBonuses.stats.values,
-            // TODO ? temp
-        });
-        this.#miscHP = miscHP;
+        const auras = this.auraBonuses;
         this.#skillRanks = Object.assign({}, skillRanks);
-        this.#feats = parseFeatChoices([...feats]);
         this.#armor = ArmorValues.zero;
         this.#resistances = Resistances.fromCategorized({
-            misc: auraBonuses.resistances.values,
+            misc: auras.resistances.values,
         });
         // TODO Refine inventory / gear
         this.#inventory = new Inventory(inventory);
 
-        this.#cachedClassBonuses = null;
-        this.#cachedGearBonuses = this.#combineGearBonuses();
+        this.#forceResetCache();
+    }
+
+    setOverride(override: CharacterOverride): void {
+        super.setOverride(override);
+        this.#forceResetCache();
+    }
+
+    clearOverride(): void {
+        super.clearOverride();
+        this.#forceResetCache();
     }
 
     #invalidateCache(): void {
@@ -94,28 +96,25 @@ class Character implements Exportable<JsonValue> {
         this.#cachedGearBonuses = null;
     }
 
-    get key(): string {
-        return this.#key;
-    }
-
-    get fullName(): string {
-        return this.#personal.fullName;
-    }
-
-    toString(): string {
-        return this.#personal.fullName;
+    #forceResetCache(): void {
+        this.#cachedClassBonuses = Class.multiclass(
+            this.#classes,
+            this.stats.totals,
+        );
+        this.#cachedGearBonuses = this.#combineGearBonuses();
     }
 
     get active(): boolean {
         return this.#active;
     }
 
-    get personal(): CharPersonalDetails {
-        return Object.assign({}, this.#personal);
-    }
-
     get stats(): Stats {
-        return this.#stats;
+        return buildStats({
+            base: this.baseStats,
+            race: this.#race,
+            auras: this.auraBonuses,
+            gear: this.gearBonuses,
+        });
     }
 
     get race(): Race | null {
@@ -126,25 +125,14 @@ class Character implements Exportable<JsonValue> {
         return this.#classes.map(({ cls, level }) => ({ cls, level }));
     }
 
-    get miscHP(): number {
-        return this.#miscHP;
-    }
-
     get skillRanks(): SkillRanks {
         return Object.assign({}, this.#skillRanks);
     }
 
-    get speed(): Speeds {
-        // TODO Implement
-        return new Speeds({
-            base: 30,
-        });
-    }
-
     get armor(): FullArmorValues {
         return FullArmorValues.fromBaseValues({
-            base: this.#armor,
-            stats: this.#stats,
+            base: this.#armor.export(),
+            stats: this.stats,
             bab: this.classBonuses.bab,
             size: this.#race?.size || Size.medium,
         });
@@ -152,7 +140,7 @@ class Character implements Exportable<JsonValue> {
 
     get saves(): Saves {
         return new Saves({
-            stats: this.#stats,
+            stats: this.stats,
             base: new SimpleSaves(this.classBonuses.saves),
             enhance: SimpleSaves.zero, // TODO
             gear: new SimpleSaves(this.gearBonuses.saves),
@@ -172,23 +160,23 @@ class Character implements Exportable<JsonValue> {
     get classBonuses(): ClassBonuses {
         return (this.#cachedClassBonuses ||= Class.multiclass(
             this.#classes,
-            this.#stats.totals
+            this.stats.totals,
         ));
     }
 
     get allFeats(): Feat[] {
-        return this.#feats.map(entry => entry.feat);
+        return this.feats.map(entry => entry.feat);
     }
 
     get validFeats(): Feat[] {
-        return this.#feats
+        return this.feats
             .filter(entry => {
                 const levelReq =
                     (entry.class
                         ? sum(
                               ...this.#classes
                                   .filter(c => entry.class === c.cls)
-                                  .map(c => c.level)
+                                  .map(c => c.level),
                           )
                         : sum(...this.classes.map(entry => entry.level))) >=
                     entry.level;
@@ -202,24 +190,23 @@ class Character implements Exportable<JsonValue> {
 
     #combineGearBonuses(): Bonus {
         const combined = Bonus.combine(
-            ...this.#inventory.gear.map(g => g.bonuses)
+            ...this.#inventory.gear.map(g => g.bonuses),
         ).gear;
-        this.#stats = this.#stats.updated({ gear: combined.stats.values });
+        // this.#stats = this.stats.updated({ gear: combined.stats.values });
         this.#resistances = this.#resistances.updatedByCategory({
             gear: combined.resistances.values,
         });
         const allArmor: Armor[] = this.#inventory.gear
             .filter(g => g instanceof Armor)
             .map(g => g as Armor);
-        const armor = Math.max(
-            ...allArmor.map(a => a.fullBonus.bonuses.armor.armorClass)
-        );
-        const shield = Math.max(
-            ...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass)
-        );
         this.#armor = new ArmorValues({
-            armor,
-            shield,
+            armor: Math.max(
+                ...allArmor.map(a => a.fullBonus.bonuses.armor.armorClass),
+            ),
+            shield: Math.max(
+                ...allArmor.map(a => a.fullBonus.bonuses.shield.armorClass),
+            ),
+            nat: this.naturalArmor,
             miscP: combined.armorClass,
         });
         return combined;
@@ -230,50 +217,23 @@ class Character implements Exportable<JsonValue> {
     }
 
     get classFeatures(): ClassFeature[] {
-        return this.classes.map(c => c.cls.features(c.level)).flat();
+        return getClassFeatures(this);
     }
 
-    get classFeaturesCondensed(): { feature: ClassFeature; count: number }[] {
-        const counts: { [key: string]: number } = {};
-        const features = this.classFeatures;
-        for (const f of features) {
-            if (!(f in counts)) {
-                counts[f] = 0;
-            }
-            counts[f]++;
-        }
-        return Object.keys(counts).map(k => ({
-            feature: k as ClassFeature,
-            count: counts[k],
-        }));
+    get classFeaturesCondensed(): CondensedClassFeatures {
+        return getClassFeaturesCondensed(this);
     }
 
     get classAuras(): Aura[] {
         return this.classes.map(c => c.cls.auras(c.level)).flat();
     }
 
-    get classAurasCondensed(): { aura: Aura; count: number }[] {
-        const counts: { [key: string]: number } = {};
-        const auras = this.classAuras;
-        for (const a of auras) {
-            if (!(a in counts)) {
-                counts[a] = 0;
-            }
-            counts[a]++;
-        }
-        return Object.keys(counts).map(k => ({
-            aura: k as Aura,
-            count: counts[k],
-        }));
+    get classAurasCondensed(): ClassAurasCondensed {
+        return getClassAurasCondensed(this);
     }
 
     get auraBonuses(): Bonus {
-        return Bonus.sum(
-            BonusType.aura,
-            ...this.classAurasCondensed.map(({ aura, count }) =>
-                auraBonuses[aura](count)
-            )
-        );
+        return getAuraBonuses(this);
     }
 
     spellPower(mode: CastingMode, school: School | SubSchool): number {
@@ -282,7 +242,7 @@ class Character implements Exportable<JsonValue> {
             mode,
             school,
             this.stats.totals,
-            this.classBonuses.efl
+            this.classBonuses.efl,
         );
     }
 
@@ -290,7 +250,7 @@ class Character implements Exportable<JsonValue> {
         return fullComputedSpellPower(
             this.gearBonuses.spellPower,
             this.stats.totals,
-            this.classBonuses.efl
+            this.classBonuses.efl,
         );
     }
 
@@ -307,17 +267,13 @@ class Character implements Exportable<JsonValue> {
 
     export(): CharacterExport {
         return {
-            key: this.#key,
-            personal: personalDetailsJsonExport(this.#personal),
+            ...super.export(),
             race: this.#race?.key || '',
             classes: this.#classes.map(c => ({
                 cls: c.cls.key,
                 level: c.level,
             })),
-            feats: exportFeatchChoices(...this.#feats),
             active: this.#active,
-            miscHP: this.#miscHP,
-            baseStats: this.#stats.base,
             skillRanks: this.#skillRanks,
             resistances: this.#resistances.export(),
             inventory: this.#inventory.export(),
@@ -334,7 +290,7 @@ class Character implements Exportable<JsonValue> {
     static import(dir = window.Main.asset('Characters')): Characters {
         return (this.#imported ||= forceDataImportKeyS<Character>(
             dir,
-            this.build
+            this.build,
         ));
     }
 }

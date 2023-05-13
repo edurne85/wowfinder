@@ -8,9 +8,8 @@ enum ElementalDescriptor {
     water = 'water',
 }
 
-enum BaseDescriptor {
-    // TODO: Add the rest of the descriptors
-}
+enum BaseDescriptor {}
+// TODO: Add the rest of the descriptors
 
 const SpellDescriptor = {
     ...AlignmentDescriptor,
@@ -26,7 +25,9 @@ function tryParseSpellDescriptor(input: string): SpellDescriptor | undefined {
 }
 
 function parseValidSpellDescriptors(inputs: string[]): SpellDescriptor[] {
-    return inputs.map(tryParseSpellDescriptor).filter(Boolean) as SpellDescriptor[];
+    return inputs
+        .map(tryParseSpellDescriptor)
+        .filter(Boolean) as SpellDescriptor[];
 }
 
 export { SpellDescriptor, tryParseSpellDescriptor, parseValidSpellDescriptors };

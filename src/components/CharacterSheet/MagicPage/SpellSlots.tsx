@@ -57,25 +57,28 @@ export function SpellSlots({ char, mode }: SpellSlotsArgs): JSX.Element {
     const { t } = useTranslation();
     const clevel = levelByMode(
         char?.classBonuses?.efl || zeroCasterLevel,
-        mode
+        mode,
     );
     const statKey = castingStats[mode];
     const stat = char?.stats?.totals[statKey] || 0;
     const context = useContext(GlobalContext);
-    const v:(n: number) => number = (n: number) =>
+    const v: (n: number) => number = (n: number) =>
         context.forceBlank ? 0 : n;
     return (
         <SlotsContainer>
             <thead>
                 <tr>
-                    <th colSpan={5}>{t('charsheet.magic.slots')} ({t(`magic.modes.abbr.${mode}`)})</th>
+                    <th colSpan={5}>
+                        {t('charsheet.magic.slots')} (
+                        {t(`magic.modes.abbr.${mode}`)})
+                    </th>
                 </tr>
                 <tr>
-                <th>{t('charsheet.magic.level')}</th>
-                <th>{t('charsheet.common.total')}</th>
-                <th>{t('charsheet.magic.class')}</th>
-                <th>{t(`stats.abbr.${statKey}`)}</th>
-                <th>{t('charsheet.common.misc')}</th>
+                    <th>{t('charsheet.magic.level')}</th>
+                    <th>{t('charsheet.common.total')}</th>
+                    <th>{t('charsheet.magic.class')}</th>
+                    <th>{t(`stats.abbr.${statKey}`)}</th>
+                    <th>{t('charsheet.common.misc')}</th>
                 </tr>
             </thead>
             <tbody>

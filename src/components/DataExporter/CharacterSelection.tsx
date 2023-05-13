@@ -8,10 +8,7 @@ const CharacterSelectionContainer = styled.div`
     }
 `;
 
-type OnCharactersSelected = (
-    ok: boolean,
-    charKeys: string[]
-) => boolean;
+type OnCharactersSelected = (ok: boolean, charKeys: string[]) => boolean;
 
 interface CharacterSelectionProps {
     chars: Character[];
@@ -20,7 +17,7 @@ interface CharacterSelectionProps {
 
 function getCharacterSelection(): string[] {
     const checkboxes = document.querySelectorAll<HTMLInputElement>(
-        '#exportCharacterSelection input[type=checkbox]'
+        '#exportCharacterSelection input[type=checkbox]',
     );
     const selectedChars = Array.from(checkboxes)
         .filter(cb => cb.checked)
@@ -49,8 +46,7 @@ function CharacterSelection({
             <button
                 onClick={() =>
                     onCharactersSelected(true, getCharacterSelection())
-                }
-            >
+                }>
                 {t('buttons.ok')}
             </button>
         </CharacterSelectionContainer>

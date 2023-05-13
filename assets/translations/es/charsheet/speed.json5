@@ -3,9 +3,16 @@
     base: 'Base',
     reduced: 'Reduc.',
     fly: 'Vuelo',
-    maneuverability: 'Maniobrabilidad',
     swim: 'Nadar',
     climb: 'Trepar',
     burrow: 'Cavar',
     misc: 'Misc',
+    maneuverability: {
+        h: 'Maniobrabilidad',
+        perfect: 'Perfecta',
+        good: 'Buena',
+        average: 'Media',
+        poor: 'Mala',
+        clumsy: 'Torpe',
+    },
 }

@@ -13,7 +13,6 @@ const SharedClassFeature = {
 
 type SharedClassFeature = keyof typeof SharedClassFeature;
 
-const shared = {
-} as const;
+const shared = {} as const;
 
 export { shared, SharedClassFeature };

@@ -16,7 +16,14 @@ class SaveBreakdown {
     private _gear: number;
     private _misc: number;
     private _temp: number;
-    constructor({base, stat, enhance, gear, misc, temp}: SaveBreakdownBuilder) {
+    constructor({
+        base,
+        stat,
+        enhance,
+        gear,
+        misc,
+        temp,
+    }: SaveBreakdownBuilder) {
         this._base = base;
         this._stat = stat;
         this._enhance = enhance;
@@ -25,19 +32,40 @@ class SaveBreakdown {
         this._temp = temp;
     }
 
-    get total(): number { return this._stat + this._base + this._enhance + this._gear + this._misc + this._temp; }
+    get total(): number {
+        return (
+            this._stat +
+            this._base +
+            this._enhance +
+            this._gear +
+            this._misc +
+            this._temp
+        );
+    }
 
-    get base(): number { return this._base; }
+    get base(): number {
+        return this._base;
+    }
 
-    get stat(): number { return this._stat; }
-    
-    get enhance(): number { return this._enhance; }
-    
-    get gear(): number { return this._gear; }
-    
-    get misc(): number { return this._misc; }
-    
-    get temp(): number { return this._temp; }
+    get stat(): number {
+        return this._stat;
+    }
+
+    get enhance(): number {
+        return this._enhance;
+    }
+
+    get gear(): number {
+        return this._gear;
+    }
+
+    get misc(): number {
+        return this._misc;
+    }
+
+    get temp(): number {
+        return this._temp;
+    }
 }
 
 interface SimpleSavesBuilder {
@@ -51,22 +79,23 @@ class SimpleSaves {
     protected _refl: number;
     protected _will: number;
 
-    constructor({
-        fort = 0,
-        refl = 0,
-        will = 0,
-    }: SimpleSavesBuilder) {
+    constructor({ fort = 0, refl = 0, will = 0 }: SimpleSavesBuilder) {
         this._fort = fort;
         this._refl = refl;
         this._will = will;
-        
     }
 
-    get fort(): number { return this._fort; }
+    get fort(): number {
+        return this._fort;
+    }
 
-    get refl(): number { return this._refl; }
+    get refl(): number {
+        return this._refl;
+    }
 
-    get will(): number { return this._will; }
+    get will(): number {
+        return this._will;
+    }
 
     static get zero(): SimpleSaves {
         return new SimpleSaves({
@@ -109,15 +138,25 @@ class Saves {
         this._temp = new SimpleSaves(temp);
     }
 
-    get base(): SimpleSaves { return Object.assign({}, this._base); }
+    get base(): SimpleSaves {
+        return Object.assign({}, this._base);
+    }
 
-    get enhance(): SimpleSaves { return Object.assign({}, this._ehn); }
+    get enhance(): SimpleSaves {
+        return Object.assign({}, this._ehn);
+    }
 
-    get gear(): SimpleSaves { return Object.assign({}, this._gear); }
+    get gear(): SimpleSaves {
+        return Object.assign({}, this._gear);
+    }
 
-    get misc(): SimpleSaves { return Object.assign({}, this._misc); }
+    get misc(): SimpleSaves {
+        return Object.assign({}, this._misc);
+    }
 
-    get temp(): SimpleSaves { return Object.assign({}, this._temp); }
+    get temp(): SimpleSaves {
+        return Object.assign({}, this._temp);
+    }
 
     get fort(): SaveBreakdown {
         return new SaveBreakdown({
@@ -153,12 +192,6 @@ class Saves {
     }
 }
 
-export type {
-    SimpleSavesBuilder,
-};
+export type { SimpleSavesBuilder };
 
-export {
-    Saves,
-    SimpleSaves,
-    SaveBreakdown,
-};
+export { Saves, SimpleSaves, SaveBreakdown };

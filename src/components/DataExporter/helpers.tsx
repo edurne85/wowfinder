@@ -9,7 +9,7 @@ function onSelectionHandler(data: FullData): OnCharactersSelected {
         if (ok) {
             result = window.Files.saveToZip(
                 exportByCharsAsJsonAssets(data, ...charKeys),
-                'export.zip'
+                'export.zip',
             );
         }
         window.history.back();

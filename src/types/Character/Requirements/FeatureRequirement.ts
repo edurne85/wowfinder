@@ -10,14 +10,8 @@ class ClassFeatureRequirement extends Requirement<Character> {
     }
 
     test(value: Character): boolean {
-        return (
-            value.classFeaturesCondensed.filter(
-                entry => entry.feature === this.#feature && entry.count > 0
-            ).length > 0
-        );
+        return value.classFeaturesCondensed.count(this.#feature) > 0;
     }
 }
 
-export {
-    ClassFeatureRequirement,
-};
+export { ClassFeatureRequirement };

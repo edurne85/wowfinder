@@ -53,7 +53,7 @@ interface SpellHelperArgs {
     };
 }
 
-function SpellHelper ({ texts, raw, hRank }: SpellHelperArgs): JSX.Element {
+function SpellHelper({ texts, raw, hRank }: SpellHelperArgs): JSX.Element {
     return (
         <SpellContainer className="spell">
             <Heading hRank={hRank} text={texts.title} />

@@ -26,7 +26,13 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "quotes": ["error", "single"],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
     "react/prop-types": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",

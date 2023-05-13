@@ -25,11 +25,7 @@ enum Languages {
     zandali = 'zandali',
 }
 
-const defaultLang = [
-    Languages.common,
-];
+const defaultLang = [Languages.common];
 
 export default Languages;
-export {
-    defaultLang,
-};
+export { defaultLang };

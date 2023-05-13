@@ -267,9 +267,23 @@ class Resistances implements FullResistances, ResistancesBuilder {
         });
     }
 
+    static get zero(): Resistances {
+        return new Resistances({
+            bludgeoning: ResistanceBreakdownImpl.zero,
+            slashing: ResistanceBreakdownImpl.zero,
+            piercing: ResistanceBreakdownImpl.zero,
+            arcane: ResistanceBreakdownImpl.zero,
+            fire: ResistanceBreakdownImpl.zero,
+            cold: ResistanceBreakdownImpl.zero,
+            nature: ResistanceBreakdownImpl.zero,
+            shadow: ResistanceBreakdownImpl.zero,
+            holy: ResistanceBreakdownImpl.zero,
+        });
+    }
+
     updatedByType(data: ResistancesBuilder): Resistances {
         return new Resistances(
-            Object.assign({}, this, data) as ResistancesBuilder
+            Object.assign({}, this, data) as ResistancesBuilder,
         );
     }
 
@@ -277,7 +291,7 @@ class Resistances implements FullResistances, ResistancesBuilder {
         const { enhance, gear, misc, temp } = this.categorized;
         const curated = Object.assign({}, { enhance, gear, misc, temp }, data);
         return Resistances.fromCategorized(
-            curated as CategorizedResistancesBuilder
+            curated as CategorizedResistancesBuilder,
         );
     }
 

@@ -1,14 +1,15 @@
-import { ReactElement , useState } from 'react';
+import { ReactElement, useState } from 'react';
 
 import { Character } from '../../types/Character';
 import { MainPage } from './MainPage';
 import { SkillsPage } from './SkillsPage';
 import { InventoryPage } from './InventoryPage';
 import { MagicPage } from './MagicPage';
+import { FeralForms } from './Shapeshift';
 
 interface TypedPageBaseArgs {
-    char?: Character,
-    xp: number,
+    char?: Character;
+    xp: number;
 }
 
 type PageArgs = TypedPageBaseArgs & { visible: boolean };
@@ -25,13 +26,13 @@ enum PageType {
     tree = 'TreeForm',
 }
 
-const pageTypes: {[keys in PageType]: React.FC<PageArgs>} = {
+const pageTypes: { [keys in PageType]: React.FC<PageArgs> } = {
     [PageType.main]: MainPage,
     [PageType.skills]: SkillsPage,
     /* TODO / WIP */ [PageType.inventory]: InventoryPage,
     /* TODO / WIP */ [PageType.magic]: MagicPage,
     /* TODO */ [PageType.spells]: () => <></>,
-    /* TODO */ [PageType.feral]: () => <></>,
+    /* TODO / WIP */ [PageType.feral]: FeralForms,
     /* TODO */ [PageType.travel]: () => <></>,
     /* TODO */ [PageType.moonkin]: () => <></>,
     /* TODO */ [PageType.tree]: () => <></>,
@@ -39,9 +40,9 @@ const pageTypes: {[keys in PageType]: React.FC<PageArgs>} = {
 
 type TypedPageArgs = TypedPageBaseArgs & { type: PageType };
 
-type PartialPageSelection = {[keys in PageType]?: boolean}; 
+type PartialPageSelection = { [keys in PageType]?: boolean };
 
-type FullPageSelection = {[keys in PageType]: boolean}; 
+type FullPageSelection = { [keys in PageType]: boolean };
 
 const defaultPages: FullPageSelection = {
     [PageType.main]: true,
@@ -49,23 +50,21 @@ const defaultPages: FullPageSelection = {
     [PageType.inventory]: true,
     [PageType.magic]: true,
     [PageType.spells]: false,
-    [PageType.feral]: false,
+    [PageType.feral]: true,
     [PageType.travel]: false,
     [PageType.moonkin]: false,
     [PageType.tree]: false,
 };
 
-function TypedPage({type, char, xp}: TypedPageArgs): ReactElement {
-    const [ selectedPages ] = useState<PartialPageSelection>(defaultPages);
-    return pageTypes[type]({char, xp, visible: !!selectedPages[type]}) as ReactElement;
+function TypedPage({ type, char, xp }: TypedPageArgs): ReactElement {
+    const [selectedPages] = useState<PartialPageSelection>(defaultPages);
+    return pageTypes[type]({
+        char,
+        xp,
+        visible: !!selectedPages[type],
+    }) as ReactElement;
 }
 
-export type {
-    FullPageSelection,
-    TypedPageArgs,
-};
+export type { FullPageSelection, TypedPageArgs };
 
-export {
-    TypedPage,
-    PageType,
-};
+export { TypedPage, PageType };

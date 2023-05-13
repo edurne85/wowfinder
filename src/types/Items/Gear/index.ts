@@ -6,18 +6,14 @@ function buildGear(raw: any): Gear {
     if (raw instanceof Gear) {
         return raw;
     }
-    switch(raw.$type as string || '') {
+    switch ((raw.$type as string) || '') {
         case 'Armor':
             return Armor.build(raw);
         case 'Weapon':
             return Weapon.build(raw);
-        default: 
+        default:
             return Gear.build(raw);
     }
 }
 
-export {
-    Gear,
-    Weapon,
-    buildGear,
-};
+export { Gear, Weapon, buildGear };

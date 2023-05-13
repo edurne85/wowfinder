@@ -67,7 +67,7 @@ function registerDirectoryListeners(): void {
         'files:dumpToDir',
         (event, baseDirName: string, data: dumpable) => {
             event.returnValue = dumpToDir(baseDirName, data);
-        }
+        },
     );
 }
 

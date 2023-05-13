@@ -12,7 +12,7 @@ class Choice {
     #label: string;
     #validator: Validator<any>;
 
-    constructor({label, validator}: ChoiceBuilder) {
+    constructor({ label, validator }: ChoiceBuilder) {
         this.#label = label;
         this.#validator = validator;
     }
@@ -34,7 +34,7 @@ class ChoiceSelection {
     #choice: Choice;
     #value: any;
 
-    constructor ({choice, value}: ChoiceSelectionBuilder) {
+    constructor({ choice, value }: ChoiceSelectionBuilder) {
         if (!choice.validate(value)) {
             throw new Error(`Invalid value for choice ${choice.label}`);
         }
@@ -51,11 +51,6 @@ class ChoiceSelection {
     }
 }
 
-export type {
-    BaseChoiceBuilder,
-};
+export type { BaseChoiceBuilder };
 
-export {
-    Choice,
-    ChoiceSelection,
-};
+export { Choice, ChoiceSelection };

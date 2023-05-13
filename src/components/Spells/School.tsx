@@ -11,7 +11,11 @@ function School({ sch }: SchoolArgs): JSX.Element {
     const key = S[sch as S]
         ? `magic.schools.${sch}`
         : `magic.schools.sub.${sch}`;
-    return <span className="school"><b>{t('charsheet.magic.school')}</b>: {t(key)}</span>;
+    return (
+        <span className="school">
+            <b>{t('charsheet.magic.school')}</b>: {t(key)}
+        </span>
+    );
 }
 
 function SchoolIfNeededSpell({ spell }: { spell: Spell }): JSX.Element {
@@ -23,4 +27,3 @@ function SchoolIfNeededRaw({ raw }: { raw: SpellBase }): JSX.Element {
 }
 
 export { SchoolIfNeededRaw as School };
-

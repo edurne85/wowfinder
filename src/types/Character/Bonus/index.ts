@@ -22,19 +22,21 @@ enum BonusType {
 }
 
 const stackables: BonusType[] = [
-    BonusType.gear, BonusType.dodge, BonusType.temporal,
+    BonusType.gear,
+    BonusType.dodge,
+    BonusType.temporal,
 ];
 
 function stackable(type: BonusType): boolean {
     return stackables.includes(type);
 }
 
-type PartialBonuses = {[key in BonusType]?: Bonus};
-type FullBonuses = {[key in BonusType]: Bonus};
+type PartialBonuses = { [key in BonusType]?: Bonus };
+type FullBonuses = { [key in BonusType]: Bonus };
 
 interface BonusBuilder {
     type: BonusType;
-    hp?: number,
+    hp?: number;
     stats?: StatsBonus;
     skills?: SkillsBonus;
     saves?: SavesBonus;
@@ -83,25 +85,45 @@ class Bonus {
         Object.freeze(this);
     }
 
-    get type(): BonusType { return this._type; }
+    get type(): BonusType {
+        return this._type;
+    }
 
-    get hp(): number { return this._hp; }
+    get hp(): number {
+        return this._hp;
+    }
 
-    get stats(): StatsBonus { return StatsBonus.sum(this._stats); }
-    
-    get skills(): SkillsBonus { return SkillsBonus.sum(this._skills); }
+    get stats(): StatsBonus {
+        return StatsBonus.sum(this._stats);
+    }
 
-    get saves(): SavesBonus { return SavesBonus.sum(this._saves); }
+    get skills(): SkillsBonus {
+        return SkillsBonus.sum(this._skills);
+    }
 
-    get resistances(): ResistBonus { return ResistBonus.sum(this._resistances); }
-    
-    get armorClass(): number { return this._armorClass; }
+    get saves(): SavesBonus {
+        return SavesBonus.sum(this._saves);
+    }
 
-    get vitalNeeds(): VitalNeeds { return this._vitalNeeds; }
+    get resistances(): ResistBonus {
+        return ResistBonus.sum(this._resistances);
+    }
 
-    get senses(): Senses { return this._senses; }
+    get armorClass(): number {
+        return this._armorClass;
+    }
 
-    get spellPower(): SpellPowerBonus { return this._spellPower; }
+    get vitalNeeds(): VitalNeeds {
+        return this._vitalNeeds;
+    }
+
+    get senses(): Senses {
+        return this._senses;
+    }
+
+    get spellPower(): SpellPowerBonus {
+        return this._spellPower;
+    }
 
     static zero(type: BonusType): Bonus {
         return new Bonus({
@@ -164,19 +186,40 @@ class Bonus {
     }
 
     retyped(type: BonusType): Bonus {
-        const { hp, stats, skills, saves, resistances, armorClass, vitalNeeds, senses, spellPower } = this;
-        return new Bonus({type, hp, stats, skills, saves, resistances, armorClass, vitalNeeds, senses, spellPower});
+        const {
+            hp,
+            stats,
+            skills,
+            saves,
+            resistances,
+            armorClass,
+            vitalNeeds,
+            senses,
+            spellPower,
+        } = this;
+        return new Bonus({
+            type,
+            hp,
+            stats,
+            skills,
+            saves,
+            resistances,
+            armorClass,
+            vitalNeeds,
+            senses,
+            spellPower,
+        });
     }
 
     static build(raw: any = {}): Bonus {
         return new Bonus({
-            type: raw.type as BonusType || BonusType.temporal,
-            hp: raw.hp as number || 0,
+            type: (raw.type as BonusType) || BonusType.temporal,
+            hp: (raw.hp as number) || 0,
             stats: StatsBonus.build(raw.stats),
             skills: SkillsBonus.build(raw.skills),
             saves: SavesBonus.build(raw.saves),
             resistances: ResistBonus.build(raw.resistances),
-            armorClass: raw.armorClass as number || 0,
+            armorClass: (raw.armorClass as number) || 0,
             vitalNeeds: VitalNeeds.build(raw.vitalNeeds),
             senses: Senses.build(raw.senses),
             spellPower: SpellPowerBonus.build(raw.spellPower),
@@ -205,26 +248,28 @@ class MultiBonus {
     }
 
     private static _combine(...bonuses: PartialBonuses[]): FullBonuses {
-        return Bonus.combine(...bonuses.reduce((acc: Bonus[], val) => acc.concat(Object.values(val)), []));
+        return Bonus.combine(
+            ...bonuses.reduce(
+                (acc: Bonus[], val) => acc.concat(Object.values(val)),
+                [],
+            ),
+        );
     }
 
     static combine(...bonuses: MultiBonus[]): FullBonuses {
         return MultiBonus._combine(
             ...bonuses
                 .map(b => b._bonuses)
-                .reduce(
-                    (acc: PartialBonuses[], val) => acc.concat(val), []
-                ));
+                .reduce((acc: PartialBonuses[], val) => acc.concat(val), []),
+        );
     }
 }
 
 interface BonusProvider {
-    get fullBonus(): MultiBonus
+    get fullBonus(): MultiBonus;
 }
 
-export type {
-    BonusProvider,
-};
+export type { BonusProvider };
 
 export {
     BonusType,

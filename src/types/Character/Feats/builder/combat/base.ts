@@ -10,12 +10,12 @@ const combatBaseFeats: { [key in CombatBaseFeat]: FeatSpec } = {
     arcaneArmorTraining: feat(
         Feat.arcaneArmorTraining,
         allOf(req.level.caster(3)), // TODO Add requirement: Proficiency w/ light armor
-        [FeatFlag.combat, FeatFlag.magic]
+        [FeatFlag.combat, FeatFlag.magic],
     ),
     arcaneArmorMastery: feat(
         Feat.arcaneArmorMastery,
         allOf(...req.feats(Feat.arcaneArmorTraining), req.level.caster(7)), // TODO medium armor
-        [FeatFlag.combat, FeatFlag.magic]
+        [FeatFlag.combat, FeatFlag.magic],
     ),
     // TODO Add requirement: arcane casting
     arcaneStrike: feat(Feat.arcaneStrike, undefined, [
@@ -27,12 +27,12 @@ const combatBaseFeats: { [key in CombatBaseFeat]: FeatSpec } = {
     combatReflexes: build.combat(Feat.combatReflexes),
     standStill: build.combat(
         Feat.standStill,
-        ...req.feats(Feat.combatReflexes)
+        ...req.feats(Feat.combatReflexes),
     ),
     deadlyAim: build.combat(
         Feat.deadlyAim,
         req.stat(StatKey.DEX, 13),
-        req.level.bab(1)
+        req.level.bab(1),
     ),
     defensiveCombatTraining: build.combat(Feat.defensiveCombatTraining),
     disruptive: build.combat(Feat.disruptive, req.level.bab(6)),
@@ -40,7 +40,7 @@ const combatBaseFeats: { [key in CombatBaseFeat]: FeatSpec } = {
     improvedInitiative: build.combat(Feat.improvedInitiative),
     improvisedWeaponMastery: build.combat(
         Feat.improvisedWeaponMastery,
-        either(...req.feats(Feat.catchOffGuard, Feat.throwAnything))
+        either(...req.feats(Feat.catchOffGuard, Feat.throwAnything)),
     ),
     lunge: build.combat(Feat.lunge, req.level.bab(6)),
     quickDraw: build.combat(Feat.quickDraw, req.level.bab(1)),

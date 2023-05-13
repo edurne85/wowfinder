@@ -10,9 +10,12 @@
     "make": "electron-forge make",
     "release": "electron-forge publish",
     "lint": "eslint . --ext js,ts,tsx",
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,html,css,md}\"",
     "lint-fix": "eslint . --fix --ext js,ts,tsx",
+    "cloc-check": "sh -c ./cloc-check.sh",
     "cloc": "cloc -v src/ --by-file --include-lang=TypeScript",
-    "test": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests",
+    "preci": "npm-run-all -s lint-fix prettier"
   },
   "keywords": [],
   "license": "MIT",

@@ -31,13 +31,13 @@ abstract class Good extends Item {
         return asMoney(
             this.valueMultiplier *
                 rarityMultipliers[this.rarity] *
-                this.#iLevel ** 2
+                this.#iLevel ** 2,
         );
     }
 
     static preBuild(raw: any): GoodBuilder {
         return {
-            ... Item.preBuild(raw),
+            ...Item.preBuild(raw),
             iLevel: (raw.iLevel as number) || 0,
             rarity: (raw.rarity as Rarity) || Rarity.common,
         };
@@ -45,7 +45,7 @@ abstract class Good extends Item {
 
     protected static generate(infix: string, raw: RawGoodBuilder): GoodBuilder {
         return {
-            ... Good.preBuild(raw), 
+            ...Good.preBuild(raw),
             label: `good.${infix}.${raw.key || ''}`,
         };
     }
