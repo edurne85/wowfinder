@@ -1,0 +1,11 @@
+{
+    bear: 'Forma de oso',
+    cat: 'Forma de felino',
+    moonkin: 'Forma de lechúcico lunar',
+    treeLife: 'Forma de árbol de vida',
+    cheetah: 'Forma de viaje rápida (guepardo)',
+    dolphin: 'Forma acuática (delfín)',
+    crow: 'Forma voladora (cuervo)',
+    greatStag: 'Forma de viaje prolongado (gran ciervo)',
+    eagle: 'Forma voladora veloz (águila)',
+}

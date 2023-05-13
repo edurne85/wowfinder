@@ -81,15 +81,18 @@ function buildStats({
     base,
     race,
     auras,
+    gear,
 }: {
     base: StatSet;
     race: Race;
     auras: Bonus;
+    gear: Bonus;
 }): Stats {
     return new Stats({
         base,
         racial: race.statMods,
         // TODO ? enhance
+        gear: gear.stats.values,
         misc: auras.stats.values,
         // TODO ? temp
     });

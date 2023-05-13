@@ -1,6 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import Stats, { StatKeys } from '../../../types/Character/Stats';
+import Stats, {
+    StatKeys,
+    StatSet,
+    statMod,
+} from '../../../types/Character/Stats';
 import {
     borderless,
     borderThick,
@@ -118,7 +122,7 @@ function StatRow({
     );
 }
 
-export function StatBlock({ stats }: { stats?: Stats }): JSX.Element {
+function StatBlock({ stats }: { stats?: Stats }): JSX.Element {
     return (
         <StyledTable id="tblStats">
             <thead>
@@ -142,3 +146,44 @@ export function StatBlock({ stats }: { stats?: Stats }): JSX.Element {
         </StyledTable>
     );
 }
+
+interface SimpleStatRowBuilder {
+    key: string;
+    id: string;
+    value: number;
+    mod: number;
+}
+
+function SimpleStatRow({ id, value, mod }: SimpleStatRowBuilder): JSX.Element {
+    const { t } = useTranslation();
+    return (
+        <tr id={`tr${id}`}>
+            <StyledThBody>{t(`stats.abbr.${id}`)}</StyledThBody>
+            <StyledTd>
+                <input id={`txtValue${id}`} value={value} readOnly={true} />
+            </StyledTd>
+            <StyledTd>
+                <input id={`txtMod${id}`} value={mod} readOnly={true} />
+            </StyledTd>
+        </tr>
+    );
+}
+
+function SimpleStatBlock({ stats }: { stats: StatSet }): JSX.Element {
+    return (
+        <StyledTable id="tblStats">
+            <tbody>
+                {StatKeys.map(key => (
+                    <SimpleStatRow
+                        key={key}
+                        id={key}
+                        value={stats[key]}
+                        mod={statMod(stats[key])}
+                    />
+                ))}
+            </tbody>
+        </StyledTable>
+    );
+}
+
+export { StatBlock, SimpleStatBlock };

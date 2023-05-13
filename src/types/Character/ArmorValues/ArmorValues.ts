@@ -91,6 +91,22 @@ class ArmorValues {
         return this.temp + this.tempP + this.tempE;
     }
 
+    export(): ArmorValuesBuilder {
+        return {
+            armor: this.armor,
+            shield: this.shield,
+            dodge: this.dodge,
+            nat: this.nat,
+            defl: this.defl,
+            misc: this.misc,
+            miscP: this.miscP,
+            miscE: this.miscE,
+            temp: this.temp,
+            tempP: this.tempP,
+            tempE: this.tempE,
+        };
+    }
+
     static get zero(): ArmorValues {
         return new ArmorValues({});
     }

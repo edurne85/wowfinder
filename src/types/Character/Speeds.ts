@@ -134,5 +134,6 @@ export {
     FlyManeuverability,
     ManeuverabilitySortedValues,
     flyManeuverabilityBonus,
+    defaultSpeedUnit,
 };
 export type { SpeedBuilder };

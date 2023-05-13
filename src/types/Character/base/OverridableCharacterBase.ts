@@ -4,63 +4,46 @@ import { StatSet } from '../Stats';
 import { FeatChoice } from '../helpers';
 import { CharacterOverride } from './CharacterOverride';
 import { CharacterBase } from './base';
-import {
-    CharacterOverrideBuilder,
-    OverridableCharacterBaseBuilder,
-} from './builder';
+import { OverridableCharacterBaseBuilder } from './builder';
 
-function asCharacterOverrideBuilder(
-    override: CharacterOverride,
-): CharacterOverrideBuilder {
-    return {
-        key: override.key,
-        featChoices: override.feats,
-        baseStats: override.baseStats,
-        baseResistances: override.baseResistances,
-        size: override.size,
-    };
-}
 abstract class OverridableCharacterBase extends CharacterBase {
-    #override: CharacterOverride;
+    #override: CharacterOverride | null;
 
-    constructor({
-        override = asCharacterOverrideBuilder(CharacterOverride.zero),
-        ...rest
-    }: OverridableCharacterBaseBuilder) {
+    constructor({ override, ...rest }: OverridableCharacterBaseBuilder) {
         super({ ...rest });
-        this.#override = new CharacterOverride(override);
+        this.#override = override ? new CharacterOverride(override) : null;
     }
 
-    get override(): CharacterOverride {
+    get override(): CharacterOverride | null {
         return this.#override;
     }
 
     get key(): string {
-        return this.#override.key || super.key;
+        return this.#override?.key || super.key;
     }
 
     get feats(): FeatChoice[] {
-        return this.#override.feats || super.feats;
+        return this.#override?.feats || super.feats;
     }
 
     get miscHP(): number | undefined {
-        return this.#override.miscHP ?? super.miscHP;
+        return this.#override?.miscHP ?? super.miscHP;
     }
 
     get baseStats(): StatSet {
-        return Object.assign({}, super.baseStats, this.#override.baseStats);
+        return Object.assign({}, super.baseStats, this.#override?.baseStats);
     }
 
     get baseResistances(): Resistances {
         return Object.assign(
             {},
             super.baseResistances,
-            this.#override.baseResistances,
+            this.#override?.baseResistances,
         );
     }
 
     get size(): Size {
-        return this.#override.size || super.size;
+        return this.#override?.size || super.size;
     }
 
     setOverride(override: CharacterOverride): void {
@@ -68,7 +51,7 @@ abstract class OverridableCharacterBase extends CharacterBase {
     }
 
     clearOverride(): void {
-        this.#override = CharacterOverride.zero;
+        this.#override = null;
     }
 }
 

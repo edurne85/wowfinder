@@ -1,6 +1,5 @@
 import Size from '../Size';
 import Stats from '../Stats';
-import type { ArmorValues } from './ArmorValues';
 
 interface ArmorValuesBuilder {
     armor?: number;
@@ -24,7 +23,7 @@ interface FullArmorValuesBuilder extends ArmorValuesBuilder {
 }
 
 interface FullFromBaseBuilder {
-    base: ArmorValues;
+    base: ArmorValuesBuilder;
     stats: Stats;
     bab: number;
     size: Size;

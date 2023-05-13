@@ -1,4 +1,4 @@
-import { TFunction, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { Character } from '../../../types/Character';
 import { mapLines } from '../../helpers/FillableLine';
@@ -14,9 +14,9 @@ function classFeatureString(translated: string, count: number): string {
 }
 function classFeatureStrings(
     char: Character,
-    t: TFunction<'translation'>,
+    t: (key: string) => string,
 ): string[] {
-    return char.classFeaturesCondensed.map(({ feature, count }) =>
+    return char.classFeaturesCondensed.list.map(({ feature, count }) =>
         classFeatureString(t(`classFeatures.${feature}`), count),
     );
 }

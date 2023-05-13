@@ -5,6 +5,7 @@ import { MainPage } from './MainPage';
 import { SkillsPage } from './SkillsPage';
 import { InventoryPage } from './InventoryPage';
 import { MagicPage } from './MagicPage';
+import { FeralForms } from './Shapeshift';
 
 interface TypedPageBaseArgs {
     char?: Character;
@@ -31,7 +32,7 @@ const pageTypes: { [keys in PageType]: React.FC<PageArgs> } = {
     /* TODO / WIP */ [PageType.inventory]: InventoryPage,
     /* TODO / WIP */ [PageType.magic]: MagicPage,
     /* TODO */ [PageType.spells]: () => <></>,
-    /* TODO */ [PageType.feral]: () => <></>,
+    /* TODO / WIP */ [PageType.feral]: FeralForms,
     /* TODO */ [PageType.travel]: () => <></>,
     /* TODO */ [PageType.moonkin]: () => <></>,
     /* TODO */ [PageType.tree]: () => <></>,
@@ -49,7 +50,7 @@ const defaultPages: FullPageSelection = {
     [PageType.inventory]: true,
     [PageType.magic]: true,
     [PageType.spells]: false,
-    [PageType.feral]: false,
+    [PageType.feral]: true,
     [PageType.travel]: false,
     [PageType.moonkin]: false,
     [PageType.tree]: false,

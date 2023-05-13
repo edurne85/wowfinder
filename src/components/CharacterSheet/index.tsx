@@ -68,7 +68,7 @@ export function CharacterSheet({
         [PageType.inventory]: true,
         [PageType.magic]: forcePages.magic || hasSpells(char),
         [PageType.spells]: false && hasSpells(char),
-        [PageType.feral]: false && hasDruidFeralForms(char),
+        [PageType.feral]: hasDruidFeralForms(char),
         [PageType.moonkin]: false && hasDruidMoonkinForm(char),
         [PageType.tree]: false && hasDruidTreeForm(char),
         [PageType.travel]: false && hasDruidTravelForms(char),
@@ -84,6 +84,7 @@ export function CharacterSheet({
             <ConditionalTypedPage type={PageType.skills} {...args} />
             <ConditionalTypedPage type={PageType.inventory} {...args} />
             <ConditionalTypedPage type={PageType.magic} {...args} />
+            <ConditionalTypedPage type={PageType.feral} {...args} />
         </>
     );
 }

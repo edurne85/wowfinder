@@ -1,2 +1,2 @@
-export { Shapeshift } from './Shapeshift';
-export { Transformation } from './base';
+export * from './Shapeshift';
+export type { Transformation } from './base';

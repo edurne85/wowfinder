@@ -1,9 +1,9 @@
 function assertDefined<T>(
     val: T | undefined,
-    message: string,
+    message?: string,
 ): asserts val is T {
     if (val === undefined) {
-        throw new Error(message);
+        throw new Error(message || 'Failed assertion: Value is undefined');
     }
 }
 
