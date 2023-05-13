@@ -6,15 +6,15 @@ import { StatBlock } from '../MainPage/StatBlock';
 import { Defenses } from '../MainPage/Defenses';
 import { HitPoints } from '../MainPage/HitPoints';
 import Header from '../../helpers/Header';
-import { ShapeshiftViewContainer } from './base';
+import { ShapeshiftViewContainer, useTrasformation } from './base';
+import { Initiative } from '../MainPage/Initiative';
 
 function CatFormView({ char }: { char: Character }): JSX.Element {
     const { t } = useTranslation();
     const catRank = char.classFeaturesCondensed.count('catForm');
-    const catFormTransformation = new CatForm({ rank: catRank });
-    catFormTransformation.apply(char);
+    useTrasformation(char, new CatForm({ rank: catRank }));
     const classBonuses = char.classBonuses;
-    const res = (
+    return (
         <ShapeshiftViewContainer title={t('charsheet.shapeshift.cat')}>
             <Columns
                 columns={[
@@ -24,7 +24,8 @@ function CatFormView({ char }: { char: Character }): JSX.Element {
                         children: (
                             <>
                                 <StatBlock stats={char.stats} />
-                                {/* TODO Initiative */}
+                                <Header>{t('charsheet.initiative.h')}</Header>
+                                <Initiative char={char} />
                             </>
                         ),
                     },
@@ -56,8 +57,6 @@ function CatFormView({ char }: { char: Character }): JSX.Element {
             />
         </ShapeshiftViewContainer>
     );
-    char.clearOverride();
-    return res;
 }
 
 export { CatFormView };

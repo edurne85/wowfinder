@@ -1,5 +1,6 @@
 import { Resistances } from '../Resistances';
 import Size from '../Size';
+import { Speeds } from '../Speeds';
 import { StatSet } from '../Stats';
 import { FeatChoice } from '../helpers';
 import { CharacterOverride } from './CharacterOverride';
@@ -44,6 +45,10 @@ abstract class OverridableCharacterBase extends CharacterBase {
 
     get size(): Size {
         return this.#override?.size || super.size;
+    }
+
+    get speeds(): Speeds {
+        return this.#override?.speeds || super.speeds;
     }
 
     setOverride(override: CharacterOverride): void {
