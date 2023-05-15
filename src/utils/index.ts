@@ -2,10 +2,10 @@ export type Validator<T> = (value: T) => boolean;
 
 export { assertDefined } from './assertions';
 export {
-    forceDataImport,
-    forceDataImportKeyLabel,
-    forceDataImportKeyS,
-    forceDataImportKeySRecursive,
+    forceDataLoad,
+    forceDataLoadKeyLabel,
+    forceDataLoadKeyS,
+    forceDataLoadKeySRecursive,
 } from './dataLoad';
 export { exportByChars, exportByCharsAsJsonAssets } from './dataExport';
 export type {

@@ -1,4 +1,4 @@
-import { Exportable, forceDataImportKeyS, JsonValue } from '../utils';
+import { Exportable, forceDataLoadKeyS, JsonValue } from '../utils';
 import type { Rewards } from './Rewards';
 
 function jclone<T>(obj: T): T {
@@ -72,13 +72,10 @@ class Adventure implements Exportable<AdventureExport> {
         return new Adventure(raw);
     }
 
-    private static _imported: Adventures | null = null;
+    static #loaded: Adventures | null = null;
 
-    static import(dir = window.Main.asset('Adventures')): Adventures {
-        return (this._imported ||= forceDataImportKeyS<Adventure>(
-            dir,
-            this.build,
-        ));
+    static load(dir = window.Main.asset('Adventures')): Adventures {
+        return (this.#loaded ||= forceDataLoadKeyS<Adventure>(dir, this.build));
     }
 
     static combined(adventures: Adventures): Rewards {

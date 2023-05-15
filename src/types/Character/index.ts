@@ -1,4 +1,4 @@
-import { Exportable, forceDataImportKeyS, JsonValue, sum } from '../../utils';
+import { Exportable, forceDataLoadKeyS, JsonValue, sum } from '../../utils';
 import { Armor } from '../Item';
 import { Inventory } from '../Item/Inventory';
 import {
@@ -285,13 +285,10 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
         return new Character(raw);
     }
 
-    static #imported: Characters | null = null;
+    static #loaded: Characters | null = null;
 
-    static import(dir = window.Main.asset('Characters')): Characters {
-        return (this.#imported ||= forceDataImportKeyS<Character>(
-            dir,
-            this.build,
-        ));
+    static load(dir = window.Main.asset('Characters')): Characters {
+        return (this.#loaded ||= forceDataLoadKeyS<Character>(dir, this.build));
     }
 }
 

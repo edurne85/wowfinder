@@ -1,7 +1,7 @@
 import {
     builder,
     ByKeyRecursive,
-    forceDataImportKeySRecursive,
+    forceDataLoadKeySRecursive,
 } from '../../utils';
 import { Mass } from '../Units';
 import { Rarity } from './Rarity';
@@ -40,16 +40,13 @@ abstract class Item {
         };
     }
 
-    static #imported: ByKeyRecursive<Item> | null = null;
+    static #loaded: ByKeyRecursive<Item> | null = null;
 
-    static import(
+    static load(
         dir = window.Main.asset('Items'),
         build: builder<Item>,
     ): ByKeyRecursive<Item> {
-        return (this.#imported ||= forceDataImportKeySRecursive<Item>(
-            dir,
-            build,
-        ));
+        return (this.#loaded ||= forceDataLoadKeySRecursive<Item>(dir, build));
     }
 }
 

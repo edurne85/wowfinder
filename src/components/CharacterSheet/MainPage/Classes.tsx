@@ -40,7 +40,7 @@ function ClassPicker({
 }: {
     selectedKey?: string | null;
 }): JSX.Element {
-    const allClasses = Class.import();
+    const allClasses = Class.load();
     const { t } = useTranslation();
     const cKeys = Object.keys(allClasses);
     return (

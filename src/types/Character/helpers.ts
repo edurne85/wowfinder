@@ -6,7 +6,7 @@ import Race from './Race';
 import Stats, { StatSet } from './Stats';
 
 const defaultRace = 'human.cha';
-const Races = Race.import();
+const Races = Race.load();
 function checkRace(raceName: string | Race): Race {
     if (raceName instanceof Race) {
         return raceName;
@@ -18,7 +18,7 @@ function checkRace(raceName: string | Race): Race {
     return r;
 }
 
-const Classes = Class.import();
+const Classes = Class.load();
 function checkClass(className: string): Class {
     const c = Classes[className];
     if (!c) {

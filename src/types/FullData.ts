@@ -20,15 +20,15 @@ class FullData {
     #spells: Spells;
     #spellLists: SpellLists;
     private constructor() {
-        this.#factions = Faction.import();
-        this.#chars = Character.import();
-        this.#adventures = Adventure.import();
+        this.#factions = Faction.load();
+        this.#chars = Character.load();
+        this.#adventures = Adventure.load();
         this.#rewards = Adventure.combined(this.#adventures);
-        this.#classes = Class.import();
-        this.#races = Race.import();
-        this.#items = Item.import(undefined, buildItem);
-        this.#spells = Spell.import();
-        this.#spellLists = SpellList.import();
+        this.#classes = Class.load();
+        this.#races = Race.load();
+        this.#items = Item.load(undefined, buildItem);
+        this.#spells = Spell.load();
+        this.#spellLists = SpellList.load();
     }
 
     get factions(): Factions {
@@ -67,9 +67,9 @@ class FullData {
         return this.#spellLists;
     }
 
-    static #imported: FullData | null = null;
-    static import(): FullData {
-        return (this.#imported ||= new FullData());
+    static #loaded: FullData | null = null;
+    static load(): FullData {
+        return (this.#loaded ||= new FullData());
     }
 }
 
