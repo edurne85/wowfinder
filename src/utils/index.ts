@@ -6,7 +6,7 @@ export {
     forceDataImportKeyLabel,
     forceDataImportKeyS,
     forceDataImportKeySRecursive,
-} from './dataImport';
+} from './dataLoad';
 export { exportByChars, exportByCharsAsJsonAssets } from './dataExport';
 export type {
     builder,
@@ -14,7 +14,7 @@ export type {
     ByKeyRecursive,
     ByKeyRecursiveEntry,
     Keyed,
-} from './dataImport';
+} from './dataLoad';
 export {
     debug,
     debugOutput,
