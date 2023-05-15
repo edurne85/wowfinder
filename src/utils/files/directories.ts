@@ -47,6 +47,51 @@ const dumpToDir = (baseDirName: string, data: dumpable): string => {
     return dir;
 };
 
+function shouldCopy(
+    sourceStats: fs.Stats | null,
+    destinationStats: fs.Stats | null,
+): boolean {
+    return (
+        !!sourceStats &&
+        (!destinationStats || sourceStats.mtime > destinationStats.mtime)
+    );
+}
+
+function copyDir(source: string, destination: string): void {
+    const dirName = path.basename(source);
+    const destinationDir = path.join(destination, dirName);
+
+    try {
+        if (!fs.existsSync(destinationDir)) {
+            fs.mkdirSync(destinationDir);
+        }
+
+        const items = fs.readdirSync(source);
+
+        for (const item of items) {
+            const sourcePath = path.join(source, item);
+            const destinationPath = path.join(destinationDir, item);
+
+            const sourceStats = fs.statSync(sourcePath);
+            const destinationStats = fs.existsSync(destinationPath)
+                ? fs.statSync(destinationPath)
+                : null;
+
+            if (sourceStats.isFile()) {
+                if (shouldCopy(sourceStats, destinationStats)) {
+                    fs.copyFileSync(sourcePath, destinationPath);
+                }
+            } else if (sourceStats.isDirectory()) {
+                copyDir(sourcePath, destinationDir);
+            }
+        }
+    } catch (err) {
+        console.error(`Failed to copy dir: ${err}`);
+    }
+}
+
+// copyDir(sourcePath, destinationPath);
+
 function registerDirectoryListeners(): void {
     ipcMain.on('files:getFiles', (event, dpath: string, filterKey = 'any') => {
         event.returnValue = getFiles(dpath, filterKey);
@@ -72,4 +117,4 @@ function registerDirectoryListeners(): void {
 }
 
 export type { dumpable };
-export { registerDirectoryListeners, dumpToDir };
+export { registerDirectoryListeners, dumpToDir, copyDir };
