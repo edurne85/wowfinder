@@ -88,9 +88,9 @@ class Inventory {
     export(): InventoryExport {
         return {
             money: this.#money.raw,
-            gear: this.#gear.map(g => g.key),
-            carried: this.#carried.map(c => c.key),
-            owned: this.#owned.map(o => o.key),
+            gear: this.#gear.map(g => g.label),
+            carried: this.#carried.map(c => c.label),
+            owned: this.#owned.map(o => o.label),
         };
     }
 }
