@@ -1,4 +1,4 @@
-import { forceDataImportKeyS } from '../../utils';
+import { forceDataLoadKeyS } from '../../utils';
 import { Spell } from './Spell';
 
 interface SpellListEntry {
@@ -17,7 +17,7 @@ function buildSpellListEntry({
 }: SpellListEntryBuilder): SpellListEntry {
     let spell: Spell;
     if (typeof key === 'string') {
-        spell = Spell.import()[key];
+        spell = Spell.load()[key];
         if (!spell) {
             throw new Error(`Invalid spell key: ${key}`);
         }
@@ -84,13 +84,10 @@ class SpellList implements SpellListBuilder {
         return new SpellList(raw);
     }
 
-    static #imported: SpellLists | null = null;
+    static #loaded: SpellLists | null = null;
 
-    static import(dir = window.Main.asset('SpellLists')): SpellLists {
-        return (this.#imported ||= forceDataImportKeyS<SpellList>(
-            dir,
-            this.build,
-        ));
+    static load(dir = window.Main.asset('SpellLists')): SpellLists {
+        return (this.#loaded ||= forceDataLoadKeyS<SpellList>(dir, this.build));
     }
 }
 

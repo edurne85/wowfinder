@@ -1,4 +1,4 @@
-import { forceDataImportKeyS } from '../../../utils';
+import { forceDataLoadKeyS } from '../../../utils';
 import Language, { defaultLang } from '../../Language';
 import Alignment, { playableAlignments } from '../Alignment';
 import Size from '../Size';
@@ -118,10 +118,10 @@ export default class Race {
         return new Race(raw);
     }
 
-    private static _imported: Races | null = null;
+    static #loaded: Races | null = null;
 
-    static import(dir = window.Main.asset('Races')): Races {
-        return (this._imported ||= forceDataImportKeyS(dir, this.build));
+    static load(dir = window.Main.asset('Races')): Races {
+        return (this.#loaded ||= forceDataLoadKeyS(dir, this.build));
     }
 }
 

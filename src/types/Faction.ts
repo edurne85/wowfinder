@@ -1,4 +1,4 @@
-import { forceDataImportKeyLabel } from '../utils';
+import { forceDataLoadKeyLabel } from '../utils';
 
 enum Reputation {
     hated = 'hated',
@@ -104,10 +104,10 @@ class Faction {
         });
     }
 
-    private static _imported: Factions | null = null;
+    static #loaded: Factions | null = null;
 
-    static import(dir = window.Main.asset('Factions')): Factions {
-        return (this._imported ||= forceDataImportKeyLabel<Faction>(
+    static load(dir = window.Main.asset('Factions')): Factions {
+        return (this.#loaded ||= forceDataLoadKeyLabel<Faction>(
             dir,
             this.build,
         ));

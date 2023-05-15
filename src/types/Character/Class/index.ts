@@ -1,4 +1,4 @@
-import { forceDataImportKeyS } from '../../../utils';
+import { forceDataLoadKeyS } from '../../../utils';
 import { Money } from '../../Item';
 import { Skill } from '../Skills';
 import { StatSet } from '../Stats';
@@ -110,10 +110,10 @@ class Class {
         return combineClassBonuses(classLevels, stats);
     }
 
-    private static _imported: Classes | null = null;
+    static #loaded: Classes | null = null;
 
-    static import(dir = window.Main.asset('Classes')): Classes {
-        return (this._imported ||= forceDataImportKeyS(
+    static load(dir = window.Main.asset('Classes')): Classes {
+        return (this.#loaded ||= forceDataLoadKeyS(
             dir,
             raw => new Class(preBuild(raw)),
         ));

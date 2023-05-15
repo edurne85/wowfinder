@@ -2,11 +2,11 @@ export type Validator<T> = (value: T) => boolean;
 
 export { assertDefined } from './assertions';
 export {
-    forceDataImport,
-    forceDataImportKeyLabel,
-    forceDataImportKeyS,
-    forceDataImportKeySRecursive,
-} from './dataImport';
+    forceDataLoad,
+    forceDataLoadKeyLabel,
+    forceDataLoadKeyS,
+    forceDataLoadKeySRecursive,
+} from './dataLoad';
 export { exportByChars, exportByCharsAsJsonAssets } from './dataExport';
 export type {
     builder,
@@ -14,7 +14,7 @@ export type {
     ByKeyRecursive,
     ByKeyRecursiveEntry,
     Keyed,
-} from './dataImport';
+} from './dataLoad';
 export {
     debug,
     debugOutput,

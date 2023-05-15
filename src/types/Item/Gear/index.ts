@@ -8,7 +8,7 @@ function buildGear(raw: any): Gear {
         return raw;
     }
     if (typeof raw === 'string') {
-        let data: ByKeyRecursiveEntry<Gear> = Gear.import(undefined, buildGear);
+        let data: ByKeyRecursiveEntry<Gear> = Gear.load(undefined, buildGear);
         for (const chunk of raw.split('.')) {
             if (Object.keys(data).includes(chunk)) {
                 data = (data as ByKeyRecursive<Gear>)[chunk];

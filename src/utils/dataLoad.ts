@@ -65,7 +65,7 @@ function checkDuplicateLabel<T extends Labeled>(
     }
 }
 
-function forceDataImport<T>(dir: string, builder: builder<T>): readonly T[] {
+function forceDataLoad<T>(dir: string, builder: builder<T>): readonly T[] {
     const data: T[] = [];
     iterateDir(dir, raw => {
         data.push(builder(raw));
@@ -73,7 +73,7 @@ function forceDataImport<T>(dir: string, builder: builder<T>): readonly T[] {
     return Object.freeze(data.sort());
 }
 
-function forceDataImportKeyS<T extends Keyed<string>>(
+function forceDataLoadKeyS<T extends Keyed<string>>(
     dir: string,
     builder: builder<T>,
 ): ByKey<T> {
@@ -86,25 +86,22 @@ function forceDataImportKeyS<T extends Keyed<string>>(
     return Object.freeze(byKey);
 }
 
-function forceDataImportKeySRecursive<T extends Keyed<string>>(
+function forceDataLoadKeySRecursive<T extends Keyed<string>>(
     dir: string,
     builder: builder<T>,
 ): ByKeyRecursive<T> {
     const byKey: ByKeyRecursive<T> = {
-        ...forceDataImportKeyS<T>(dir, builder),
+        ...forceDataLoadKeyS<T>(dir, builder),
     };
     for (const subdir of window.Files.getDirectories(dir)) {
         checkDuplicateKeyS(byKey, { key: subdir });
         const fullSubDirPath = window.Files.resolvePath(dir, subdir);
-        byKey[subdir] = forceDataImportKeySRecursive<T>(
-            fullSubDirPath,
-            builder,
-        );
+        byKey[subdir] = forceDataLoadKeySRecursive<T>(fullSubDirPath, builder);
     }
     return byKey;
 }
 
-function forceDataImportKeyLabel<T extends KeyedLabeled>(
+function forceDataLoadKeyLabel<T extends KeyedLabeled>(
     dir: string,
     builder: builder<T>,
 ): ByKeyLabel<T> {
@@ -121,8 +118,8 @@ function forceDataImportKeyLabel<T extends KeyedLabeled>(
 
 export type { Keyed, ByKey, ByKeyRecursive, ByKeyRecursiveEntry, builder };
 export {
-    forceDataImport,
-    forceDataImportKeyS,
-    forceDataImportKeyLabel,
-    forceDataImportKeySRecursive,
+    forceDataLoad,
+    forceDataLoadKeyS,
+    forceDataLoadKeyLabel,
+    forceDataLoadKeySRecursive,
 };

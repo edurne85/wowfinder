@@ -1,5 +1,5 @@
 import { TFunction } from 'i18next';
-import { forceDataImportKeyS } from '../../../utils';
+import { forceDataLoadKeyS } from '../../../utils';
 import { fullParseSchool, School, SubSchool } from '../School';
 import { SpellBaseBuilder, SpellBase } from './base';
 import { SpellRank, SpellRankBuilder } from './Rank';
@@ -124,10 +124,10 @@ class Spell extends SpellBase implements SpellBuilder {
         return new Spell(raw);
     }
 
-    static #imported: Spells | null = null;
+    static #loaded: Spells | null = null;
 
-    static import(dir = window.Main.asset('Spells')): Spells {
-        return (this.#imported ||= forceDataImportKeyS<Spell>(dir, this.build));
+    static load(dir = window.Main.asset('Spells')): Spells {
+        return (this.#loaded ||= forceDataLoadKeyS<Spell>(dir, this.build));
     }
 }
 
