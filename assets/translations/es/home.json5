@@ -8,5 +8,6 @@
         races: 'Razas',
         items: 'Objetos',
         export: 'Exportar datos',
+        import: 'Importar datos',
     },
 }

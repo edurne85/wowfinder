@@ -25,7 +25,9 @@ abstract class CharacterBase {
         this.#featChoices = parseFeatChoices([...(builder.featChoices || [])]);
         this.#miscHP = builder.miscHP ?? 0;
         this.#baseStats = builder.baseStats;
-        this.#baseResistances = builder.baseResistances ?? Resistances.zero;
+        this.#baseResistances = builder.baseResistances
+            ? new Resistances(builder.baseResistances)
+            : Resistances.zero;
         if (builder.builderType === 'race') {
             const race = checkRace(builder.race);
             this.#size = race.size;
@@ -73,6 +75,7 @@ abstract class CharacterBase {
     }
 
     export(): CharacterBaseExport {
+        console.log('#baseResistances', this.#baseResistances);
         return {
             key: this.#key,
             featChoices: exportFeatchChoices(...this.#featChoices),
