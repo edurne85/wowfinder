@@ -9,4 +9,3 @@ export default function registerListeners(): void {
 }
 
 export type { dumpable } from './directories';
-export type { Archiver } from './zip';

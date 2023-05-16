@@ -1,12 +1,11 @@
 import * as archiver from 'archiver';
-import { dialog, ipcMain } from 'electron';
+import * as unzipper from 'unzipper';
+import { app, dialog, ipcMain } from 'electron';
 import * as fs from 'fs';
 import * as path from 'path';
 import { dumpable, dumpToDir } from './directories';
 
-type Archiver = archiver.Archiver;
-
-function zipDir(dirPath: string, filePath: string): Archiver {
+function zipDir(dirPath: string, filePath: string): void {
     console.log('zipDir', dirPath, filePath);
     const output = fs.createWriteStream(filePath);
     const archive = archiver.create('zip', { zlib: { level: 9 } });
@@ -30,8 +29,6 @@ function zipDir(dirPath: string, filePath: string): Archiver {
     addFileToArchive(dirPath, '');
 
     archive.finalize();
-
-    return archive;
 }
 
 const dumpToZip = (fullZipPath: string, data: dumpable): string => {
@@ -60,9 +57,41 @@ const saveToZip = (
         });
 };
 
+function unzipToDir(zipPath: string, dirPath: string): void {
+    const readStream = fs.createReadStream(zipPath);
+    const extractionStream = unzipper.Extract({ path: dirPath });
+
+    readStream.pipe(extractionStream);
+
+    extractionStream.on('close', () => undefined);
+
+    extractionStream.on('error', error => {
+        throw error;
+    });
+}
+
+const loadFromZip = (
+    targetDir: string = app.getPath('userData'),
+): Promise<boolean> => {
+    return dialog
+        .showOpenDialog({})
+        .then(({ canceled, filePaths }): boolean => {
+            if (canceled || !filePaths) {
+                return false;
+            }
+            unzipToDir(filePaths[0], targetDir);
+            console.info('loadFromFile', targetDir, filePaths);
+            return true;
+        })
+        .catch((err): boolean => {
+            console.error('loadFromFile', err);
+            return false;
+        });
+};
+
 function registerZipListeners(): void {
-    ipcMain.on('files:zipDir', (event, dirPath: string, filePath: string) => {
-        event.returnValue = zipDir(dirPath, filePath);
+    ipcMain.on('files:zipDir', (_, dirPath: string, filePath: string) => {
+        zipDir(dirPath, filePath);
     });
     ipcMain.on(
         'files:dumpToZip',
@@ -76,7 +105,15 @@ function registerZipListeners(): void {
             event.returnValue = await saveToZip(raw, defaultPath);
         },
     );
+    ipcMain.on(
+        'files:unzipToDir',
+        async (_, zipPath: string, dirPath: string) => {
+            unzipToDir(zipPath, dirPath);
+        },
+    );
+    ipcMain.on('files:loadFromZip', async (event, targetDir?: string) => {
+        event.returnValue = await loadFromZip(targetDir);
+    });
 }
 
-export type { Archiver };
 export { registerZipListeners };
