@@ -1,5 +1,5 @@
 import { AlignmentDescriptor } from '../../Character/Alignment';
-import { EnergyType } from '../../DamageType';
+import { EnergyType } from '../../Damage';
 
 enum ElementalDescriptor {
     air = 'air',

@@ -63,4 +63,5 @@ export {
     SpecialDamageType,
     HybridTypes,
     buildFullDamageTypes,
+    makeFullDamageTypes,
 };
