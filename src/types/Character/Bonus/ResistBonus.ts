@@ -1,5 +1,5 @@
 import { sum } from '../../../utils';
-import { DamageType } from '../../DamageType';
+import { DamageType } from '../../Damage';
 import type { ResistancePartialSet, ResistanceSet } from '../Resistances';
 
 function fill(data: ResistancePartialSet, filler = 0): ResistanceSet {
@@ -13,6 +13,7 @@ function fill(data: ResistancePartialSet, filler = 0): ResistanceSet {
         nature: data.nature || filler,
         shadow: data.shadow || filler,
         holy: data.holy || filler,
+        psychic: data.psychic || filler,
     };
 }
 

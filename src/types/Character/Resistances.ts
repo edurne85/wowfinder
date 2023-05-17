@@ -1,5 +1,5 @@
 import { JsonValue } from '../../utils';
-import { DamageType } from '../DamageType';
+import { DamageType } from '../Damage';
 
 enum ResistanceCategory {
     enhance = 'enhance',
