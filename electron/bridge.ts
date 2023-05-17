@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import type { Archiver, dumpable } from '../src/utils/files';
+import type { dumpable } from '../src/utils/files';
 
 export const api = {
     /**
@@ -37,7 +37,7 @@ export const files = {
         return ipcRenderer.sendSync('files:dump', rpath, data);
     },
     del: (fpath: string): void => {
-        return ipcRenderer.sendSync('files:del', fpath);
+        ipcRenderer.sendSync('files:del', fpath);
     },
     getFiles: (dpath: string, filterKey = 'any'): string[] => {
         return ipcRenderer.sendSync('files:getFiles', dpath, filterKey);
@@ -58,18 +58,20 @@ export const files = {
         return ipcRenderer.sendSync('files:getTempDir');
     },
     dumpToDir: (baseDirName: string, data: dumpable): void => {
-        console.warn('dumpToDir', baseDirName, data);
-        return ipcRenderer.sendSync('files:dumpToDir', baseDirName, data);
+        ipcRenderer.sendSync('files:dumpToDir', baseDirName, data);
     },
-    zipDir: (dirPath: string, filePath: string): Archiver => {
-        return ipcRenderer.sendSync('files:zipDir', dirPath, filePath);
+    zipDir: (dirPath: string, filePath: string): void => {
+        ipcRenderer.sendSync('files:zipDir', dirPath, filePath);
     },
     dumpToZip: (baseDirName: string, data: dumpable): string => {
         return ipcRenderer.sendSync('files:dumpToZip', baseDirName, data);
     },
     saveToZip: (raw: dumpable, defaultPath = 'export.zip'): boolean => {
         return ipcRenderer.sendSync('files:saveToZip', raw, defaultPath);
-    }
+    },
+    loadFromZip: (targetDir?: string): boolean => {
+        return ipcRenderer.sendSync('files:loadFromZip', targetDir);
+    },
 };
 
 contextBridge.exposeInMainWorld('Files', files);

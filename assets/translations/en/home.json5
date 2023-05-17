@@ -8,5 +8,6 @@
         races: 'Races',
         items: 'Items',
         export: 'Export data',
+        import: 'Import data',
     },
 }

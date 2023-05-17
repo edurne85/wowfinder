@@ -4,7 +4,7 @@ import { RouteObject } from 'react-router-dom';
 
 const routes: RouteObject[] = [];
 
-const data = FullData.import();
+const data = FullData.load();
 
 const defaultContext = {
     forceBlank: false,

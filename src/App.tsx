@@ -14,7 +14,7 @@ import { getRoutes } from './Routes';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { debug, debugOutput, exportByCharsAsJsonAssets } from './utils';
 
-const data = FullData.import();
+const data = FullData.load();
 
 function RewTable(): JSX.Element {
     return (

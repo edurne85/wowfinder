@@ -1,4 +1,4 @@
-import { ByKeyRecursive, forceDataImportKeySRecursive } from '../../../utils';
+import { ByKeyRecursive, forceDataLoadKeySRecursive } from '../../../utils';
 import {
     Bonus,
     BonusProvider,
@@ -86,13 +86,13 @@ export default class Gear extends Item implements BonusProvider {
         return new Gear(Gear.preBuild(raw));
     }
 
-    private static _imported: ByKeyRecursive<Gear> | null = null;
+    static #loaded: ByKeyRecursive<Gear> | null = null;
 
-    static import(
+    static load(
         dir = window.Main.asset('Items/gear'),
         builder: (raw: any) => Gear,
     ): ByKeyRecursive<Gear> {
-        return (this._imported ||= forceDataImportKeySRecursive<Gear>(
+        return (this.#loaded ||= forceDataLoadKeySRecursive<Gear>(
             dir,
             builder,
         ));
