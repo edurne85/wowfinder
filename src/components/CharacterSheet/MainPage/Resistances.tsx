@@ -47,7 +47,7 @@ function Row({ id, value }: RowArgs): JSX.Element {
     const idSuffix = capitalizeFirstLetter(id);
     return (
         <tr id={`trResist${idSuffix}`}>
-            <th title={t(`damageTypes.full.${id}`)}>
+            <th title={t(`damageTypes.full.${id}`) || undefined}>
                 {t(`damageTypes.abbr.${id}`)}
             </th>
             <InputCell id={`txtResistTotal${idSuffix}`} value={value?.total} />
@@ -100,6 +100,7 @@ export function Resistances({ char }: { char?: Character }): JSX.Element {
                 <Row id="nature" value={resists?.nature} />
                 <Row id="shadow" value={resists?.shadow} />
                 <Row id="holy" value={resists?.holy} />
+                <Row id="psychic" value={resists?.psychic} />
             </tbody>
         </StyledTable>
     );

@@ -13,7 +13,43 @@ enum EnergyType {
     holy = 'holy',
 }
 
-const DamageType = { ...PhysicalDamageType, ...EnergyType };
-type DamageType = PhysicalDamageType | EnergyType;
+enum SpecialDamageType {
+    psychic = 'psychic',
+}
 
-export { PhysicalDamageType, EnergyType, DamageType };
+const DamageType = {
+    ...PhysicalDamageType,
+    ...EnergyType,
+    ...SpecialDamageType,
+};
+type DamageType = PhysicalDamageType | EnergyType | SpecialDamageType;
+
+type DamageTypes = { [key in DamageType]?: boolean };
+type FullDamageTypes = { [key in DamageType]: boolean };
+
+function makeFullDamageTypes(...types: DamageType[]): FullDamageTypes {
+    const res: DamageTypes = {};
+    Object.keys(DamageType)
+        .map(t => t as DamageType)
+        .forEach(type => {
+            res[type] = types.includes(type);
+        });
+    return res as FullDamageTypes;
+}
+
+const HybridTypes = {
+    frostfire: makeFullDamageTypes(EnergyType.fire, EnergyType.cold),
+    void: makeFullDamageTypes(EnergyType.shadow, SpecialDamageType.psychic),
+};
+
+type HybridTypes = keyof typeof HybridTypes;
+
+export type { DamageTypes, FullDamageTypes };
+
+export {
+    PhysicalDamageType,
+    EnergyType,
+    DamageType,
+    SpecialDamageType,
+    HybridTypes,
+};
