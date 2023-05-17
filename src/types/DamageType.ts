@@ -44,6 +44,16 @@ const HybridTypes = {
 
 type HybridTypes = keyof typeof HybridTypes;
 
+function buildFullDamageTypes(builder: DamageTypes): FullDamageTypes {
+    const res: DamageTypes = {};
+    Object.keys(DamageType)
+        .map(t => t as DamageType)
+        .forEach(type => {
+            res[type] = builder[type] ?? false;
+        });
+    return res as FullDamageTypes;
+}
+
 export type { DamageTypes, FullDamageTypes };
 
 export {
@@ -52,4 +62,5 @@ export {
     DamageType,
     SpecialDamageType,
     HybridTypes,
+    buildFullDamageTypes,
 };
