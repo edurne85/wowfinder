@@ -2,7 +2,7 @@ import {
     DamageTypes,
     FullDamageTypes,
     buildFullDamageTypes,
-} from '../DamageType';
+} from './DamageType';
 
 interface DamageComponentBaseBuilder {
     types: DamageTypes;

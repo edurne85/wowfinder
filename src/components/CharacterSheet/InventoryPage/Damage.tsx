@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Damage as Dmg } from '../../../types/Damage';
-import { DamageType } from '../../../types/DamageType';
+import { Damage as Dmg } from '../../../types/Damage/Damage';
+import { DamageType } from '../../../types/Damage';
 import Dice from '../../../types/Dice';
 import { Join } from '../../helpers/Join';
 
