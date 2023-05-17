@@ -50,8 +50,6 @@ export function MainPage({
                         children: (
                             <>
                                 <StatBlock stats={char?.stats} />
-                                <Header>{t('charsheet.initiative.h')}</Header>
-                                <Initiative char={char} />
                                 <Header>{t('charsheet.speed.h')}</Header>
                                 <Speed speeds={char?.speeds} />
                                 <Header>{t('charsheet.armor.h')}</Header>
@@ -72,6 +70,8 @@ export function MainPage({
                             <>
                                 <Header>{t('charsheet.classes.h')}</Header>
                                 <Classes char={char} />
+                                <Header>{t('charsheet.initiative.h')}</Header>
+                                <Initiative char={char} />
                                 <Header>{t('charsheet.hitpoints.h')}</Header>
                                 {/* TODO: extra (misc) HP */}
                                 <HitPoints

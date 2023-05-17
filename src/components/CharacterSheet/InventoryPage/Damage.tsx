@@ -15,6 +15,7 @@ const typeColors = {
     [DamageType.nature]: '#393',
     [DamageType.shadow]: '#909',
     [DamageType.holy]: '#ff9',
+    [DamageType.psychic]: '#c6f',
 };
 
 function colorByType({ type }: { type: DamageType }): string {
@@ -37,8 +38,8 @@ function DamageComponent({
     return dice ? (
         <DamageComponentContainer
             type={type}
-            title={t(`damageTypes.full.${type}`)}>
-            {dice.toString() + ' ' + t(`damageTypes.abbr.${type}`)}
+            title={t(`damageTypes.full.${type}`) ?? undefined}>
+            {`${dice.toString()} ${t(`damageTypes.abbr.${type}`)}`}
         </DamageComponentContainer>
     ) : (
         <></>

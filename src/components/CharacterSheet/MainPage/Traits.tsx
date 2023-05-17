@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Character } from '../../../types/Character';
 import { mapLines } from '../../helpers/FillableLine';
 
-const maxLines = 32;
+const maxLines = 30;
 
 const TraitsContainer = styled.div`
     margin-top: 2.8ex;

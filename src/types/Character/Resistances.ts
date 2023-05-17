@@ -111,6 +111,10 @@ class ResistanceSetImpl implements ResistanceSet {
     get holy(): number {
         return this._data.holy;
     }
+
+    get psychic(): number {
+        return this._data.psychic;
+    }
 }
 
 type CategorizedResistancesBase = {
@@ -186,6 +190,7 @@ class Resistances implements FullResistances, ResistancesBuilder {
             [DamageType.nature]: data.nature || ResistanceBreakdownImpl.zero,
             [DamageType.shadow]: data.shadow || ResistanceBreakdownImpl.zero,
             [DamageType.holy]: data.holy || ResistanceBreakdownImpl.zero,
+            [DamageType.psychic]: data.psychic || ResistanceBreakdownImpl.zero,
         };
     }
 
@@ -241,6 +246,10 @@ class Resistances implements FullResistances, ResistancesBuilder {
 
     get holy(): ResistanceBreakdown {
         return this.byType(DamageType.holy);
+    }
+
+    get psychic(): ResistanceBreakdown {
+        return this.byType(DamageType.psychic);
     }
 
     get categorized(): CategorizedResistances {
