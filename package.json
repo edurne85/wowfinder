@@ -1,7 +1,7 @@
 {
     "name": "wowfinder-companion",
     "author": "Edurne Pascual <herenvardo@gmail.com>",
-    "version": "1.0.0-alpha.3",
+    "version": "1.0.0-alpha.4",
     "description": "Utility app for players and GMs of the WowFinder campaign",
     "main": "./.webpack/main",
     "scripts": {
@@ -28,7 +28,7 @@
         "react-dom": "^18.2.0",
         "react-hot-loader": "^4.13.1",
         "react-i18next": "^12.2.2",
-        "react-router-dom": "^6.11.1",
+        "react-router-dom": "^6.11.2",
         "styled-components": "^5.3.10",
         "unzipper": "^0.10.14"
     },
