@@ -7,5 +7,5 @@ export type {
     DamageComponentValueBuilder,
     DamageComponentSpecBuilder,
 } from './DamageComponent';
-export type { DamageTypes, FullDamageTypes } from '../DamageType';
-export { DamageType, buildFullDamageTypes } from '../DamageType';
+export type { DamageTypes, FullDamageTypes } from './DamageType';
+export { DamageType, buildFullDamageTypes } from './DamageType';
