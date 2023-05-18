@@ -22,7 +22,7 @@ function TravelFormView<TForm extends Shapeshift>({
     key: string;
     FormConstructor: new (args: { rank: number }) => TForm;
     children?: ReactNode;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t } = useTranslation();
     const rank = char.classFeaturesCondensed.count(`${key}Form`);
     useTransformation(char, new FormConstructor({ rank }));
@@ -36,19 +36,19 @@ function TravelFormView<TForm extends Shapeshift>({
     );
 }
 
-const CheetahFormView = ({ char }: { char: Character }): JSX.Element =>
+const CheetahFormView = ({ char }: { char: Character }): React.JSX.Element =>
     TravelFormView({ char, key: 'cheetah', FormConstructor: CheetahForm });
 
-const DolphinFormView = ({ char }: { char: Character }): JSX.Element =>
+const DolphinFormView = ({ char }: { char: Character }): React.JSX.Element =>
     TravelFormView({ char, key: 'dolphin', FormConstructor: DolphinForm });
 
-const CrowFormView = ({ char }: { char: Character }): JSX.Element =>
+const CrowFormView = ({ char }: { char: Character }): React.JSX.Element =>
     TravelFormView({ char, key: 'crow', FormConstructor: CrowForm });
 
-const StagFormView = ({ char }: { char: Character }): JSX.Element =>
+const StagFormView = ({ char }: { char: Character }): React.JSX.Element =>
     TravelFormView({ char, key: 'greatStag', FormConstructor: StagForm });
 
-const EagleFormView = ({ char }: { char: Character }): JSX.Element =>
+const EagleFormView = ({ char }: { char: Character }): React.JSX.Element =>
     TravelFormView({ char, key: 'eagle', FormConstructor: EagleForm });
 
 export {

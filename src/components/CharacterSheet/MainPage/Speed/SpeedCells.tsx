@@ -15,7 +15,7 @@ function InputSpeedCell({
     id: string;
     speed?: SpeedValue;
     targetUnit: TargetUnit;
-}): JSX.Element {
+}): React.JSX.Element {
     const value = speed != null ? Math.round(speed.as(targetUnit.unit)) : '';
     return (
         <InputSuffixedCell id={id} value={value} suffix={targetUnit.suffix} />
@@ -37,7 +37,7 @@ const targetUnits: { [key: string]: TargetUnit } = {
     },
 };
 
-function EmptySpeed({ heading }: { heading?: string }): JSX.Element {
+function EmptySpeed({ heading }: { heading?: string }): React.JSX.Element {
     return (
         <>
             {heading ? <th>{heading}</th> : null}
@@ -56,7 +56,7 @@ function SpeedCells({
     name: string;
     speed?: SpeedValue;
     heading?: string;
-}): JSX.Element {
+}): React.JSX.Element {
     return !speed || !speed.value ? (
         <EmptySpeed heading={heading} />
     ) : (

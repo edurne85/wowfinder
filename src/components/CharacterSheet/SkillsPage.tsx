@@ -64,7 +64,7 @@ function SkillRow({
     isClass,
     size,
     gear,
-}: SkillArgs): JSX.Element {
+}: SkillArgs): React.JSX.Element {
     const { t } = useTranslation();
     const skill = Skills[k as Skill];
     const hasTotal = statMods != null;
@@ -122,7 +122,7 @@ export function SkillsPage({
 }: {
     char?: Character;
     visible?: boolean;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t } = useTranslation();
     const sortedKeys = Object.keys(Skills).sort((k1, k2) =>
         t(`skills.${k1}`).localeCompare(t(`skills.${k2}`)),

@@ -21,7 +21,10 @@ function useTransformation(char: Character, t: Transformation): void {
     }, [char]);
 }
 
-const ShapeshiftViewContainer = ({ title, children }: Props): JSX.Element => {
+const ShapeshiftViewContainer = ({
+    title,
+    children,
+}: Props): React.JSX.Element => {
     return (
         <ShapeshiftViewContainerDiv>
             <Header>{title}</Header>

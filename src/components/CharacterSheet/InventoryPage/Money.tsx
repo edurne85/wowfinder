@@ -38,7 +38,7 @@ function Coins({
 }: {
     type: CoinType;
     ammount: number;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t } = useTranslation();
     const context = useContext(GlobalContext);
     return (
@@ -53,7 +53,11 @@ function Coins({
     );
 }
 
-export function Money({ ammount = 0 }: { ammount?: number }): JSX.Element {
+export function Money({
+    ammount = 0,
+}: {
+    ammount?: number;
+}): React.JSX.Element {
     const { t } = useTranslation();
     const breakdown = M.fromRaw(ammount).split;
     const context = useContext(GlobalContext);

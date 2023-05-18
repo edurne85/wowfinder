@@ -32,7 +32,7 @@ const NavigationContainer = styled.nav`
     }
 `;
 
-function Navigation(): JSX.Element {
+function Navigation(): React.JSX.Element {
     const canGoBack: boolean = window.history.length > 1;
     const canGoForward: boolean =
         window.history.state.idx < window.history.length - 1;
@@ -56,7 +56,7 @@ function WithNavigation({
     children,
 }: {
     children: React.ReactNode;
-}): JSX.Element {
+}): React.JSX.Element {
     return (
         <>
             <Navigation />

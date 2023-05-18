@@ -53,7 +53,7 @@ function Row({
     sizeMod,
     misc,
     temp,
-}: RowArgs): JSX.Element {
+}: RowArgs): React.JSX.Element {
     const total =
         bab != null ||
         gear != null ||
@@ -90,7 +90,7 @@ function Row({
     );
 }
 
-export function Attacks({ char }: { char?: Character }): JSX.Element {
+export function Attacks({ char }: { char?: Character }): React.JSX.Element {
     const { t } = useTranslation();
     const bab = char?.classBonuses.bab;
     const stats = char?.stats.totalMods;

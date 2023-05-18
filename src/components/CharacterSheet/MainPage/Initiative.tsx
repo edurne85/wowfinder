@@ -33,7 +33,7 @@ const StyledTable = styled.table`
     }
 `;
 
-const Initiative = ({ char }: { char?: Character }): JSX.Element => {
+const Initiative = ({ char }: { char?: Character }): React.JSX.Element => {
     const { t } = useTranslation();
     const dex = char?.stats?.totalMods?.DEX || 0;
     const total = dex;

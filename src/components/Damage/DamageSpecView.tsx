@@ -8,7 +8,7 @@ interface DamageSpecViewProps {
     spec: DamageSpec;
 }
 
-function DamageSpecView({ spec }: DamageSpecViewProps): JSX.Element {
+function DamageSpecView({ spec }: DamageSpecViewProps): React.JSX.Element {
     return (
         <DamageSpecContainer>
             {spec.components.map((component, index) => (

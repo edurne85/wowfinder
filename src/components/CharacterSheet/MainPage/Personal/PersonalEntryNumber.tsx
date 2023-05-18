@@ -12,7 +12,7 @@ const StyledInput = styled.input`
 `;
 
 class PersonalEntryNumber extends PersonalEntry<number> {
-    subRender({ id, value }: PersonalItemProps<number>): JSX.Element {
+    subRender({ id, value }: PersonalItemProps<number>): React.JSX.Element {
         const v = value != null ? value : '';
         return <StyledInput id={`txt${id}`} value={v} readOnly={true} />;
     }
@@ -21,7 +21,7 @@ class PersonalEntryNumber extends PersonalEntry<number> {
 const suffixes = ['', 'k', 'M', 'G'];
 
 class PersonalEntryBigNumber extends PersonalEntry<number> {
-    subRender({ id, value }: PersonalItemProps<number>): JSX.Element {
+    subRender({ id, value }: PersonalItemProps<number>): React.JSX.Element {
         let val = '';
         if (value != null) {
             const maxS = suffixes.length;

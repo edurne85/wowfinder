@@ -34,7 +34,7 @@ export function MainPage({
     char?: Character;
     xp: number;
     visible?: boolean;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t } = useTranslation();
     const bonuses = char?.classBonuses;
     return (

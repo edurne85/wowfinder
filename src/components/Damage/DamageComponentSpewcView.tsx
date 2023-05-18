@@ -15,7 +15,7 @@ interface DamageComponentSpecViewProps {
 
 function DamageComponentSpecView({
     spec,
-}: DamageComponentSpecViewProps): JSX.Element {
+}: DamageComponentSpecViewProps): React.JSX.Element {
     const { t } = useTranslation();
     const typeKeys = Object.keys(spec.types)
         .map(type => type as DamageType)

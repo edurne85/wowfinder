@@ -9,7 +9,7 @@ import Header from '../../helpers/Header';
 import { ShapeshiftViewContainer, useTransformation } from './base';
 import { Initiative } from '../MainPage/Initiative';
 
-function BearFormView({ char }: { char: Character }): JSX.Element {
+function BearFormView({ char }: { char: Character }): React.JSX.Element {
     const { t } = useTranslation();
     const bearRank = char.classFeaturesCondensed.count('bearForm');
     useTransformation(char, new BearForm({ rank: bearRank }));

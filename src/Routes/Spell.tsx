@@ -3,7 +3,7 @@ import { Spell } from '../components/Spells';
 import { FullData } from '../types/FullData';
 import { RouteProvider, WiP } from './base';
 
-function SpellWrapper({ data }: { data: FullData }): JSX.Element {
+function SpellWrapper({ data }: { data: FullData }): React.JSX.Element {
     let { spell } = useParams<'spell'>();
     if (!spell) throw new Error('No spell param');
     spell = spell.replace(/^:/, '');

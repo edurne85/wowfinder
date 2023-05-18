@@ -47,7 +47,7 @@ interface RowArgs {
     label: string;
     value?: SaveBreakdown;
 }
-function Row({ idSuffix, label, value }: RowArgs): JSX.Element {
+function Row({ idSuffix, label, value }: RowArgs): React.JSX.Element {
     return (
         <tr id={`tr${idSuffix}`}>
             <th>{label}</th>
@@ -78,7 +78,7 @@ function Row({ idSuffix, label, value }: RowArgs): JSX.Element {
     );
 }
 
-export function Saves({ char }: { char?: Character }): JSX.Element {
+export function Saves({ char }: { char?: Character }): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <StyledTable>

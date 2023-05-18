@@ -8,7 +8,7 @@ function Maneuverability({
     value,
 }: {
     value?: FlyManeuverability;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t: translate } = useTranslation();
     const t = (key: string): string =>
         translate(`charsheet.speed.maneuverability.${key}`);

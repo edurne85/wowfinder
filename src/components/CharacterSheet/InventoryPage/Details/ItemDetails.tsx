@@ -17,7 +17,7 @@ const ItemDetailsContainer = styled.div`
     padding: 0.1em;
 `;
 
-function GearDetails({ gear }: { gear: Gear }): JSX.Element {
+function GearDetails({ gear }: { gear: Gear }): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <>
@@ -33,11 +33,11 @@ function GearDetails({ gear }: { gear: Gear }): JSX.Element {
     );
 }
 
-function GearDetailsWrapped({ item }: { item: Item }): JSX.Element {
+function GearDetailsWrapped({ item }: { item: Item }): React.JSX.Element {
     return item instanceof Gear ? <GearDetails gear={item} /> : <></>;
 }
 
-function ItemDetails({ item }: { item: Item }): JSX.Element {
+function ItemDetails({ item }: { item: Item }): React.JSX.Element {
     // TODO Implement
     const { t } = useTranslation();
     return (

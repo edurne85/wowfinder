@@ -42,7 +42,7 @@ function SlashChunkLink({
     chunks,
     titleResolver,
     isLast = false,
-}: ChunkLinkProps): JSX.Element {
+}: ChunkLinkProps): React.JSX.Element {
     const path = `/${chunks.join('/')}`;
     const title = titleResolver(path);
     return (
@@ -51,7 +51,7 @@ function SlashChunkLink({
 }
 
 // TODO / WiP: suport i18n
-function Breadcrumbs(): JSX.Element {
+function Breadcrumbs(): React.JSX.Element {
     const context = useContext(GlobalContext);
     const { t } = useTranslation();
     const titleResolver = titlesResolver(t, getCustomTitle(context.data));

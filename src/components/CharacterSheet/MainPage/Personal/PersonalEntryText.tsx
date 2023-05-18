@@ -19,7 +19,7 @@ const StyledInputCentered = styled.input`
 `;
 
 class PersonalEntryText extends PersonalEntry<string> {
-    subRender({ id, value }: PersonalItemProps<string>): JSX.Element {
+    subRender({ id, value }: PersonalItemProps<string>): React.JSX.Element {
         return (
             <StyledInput id={`txt${id}`} value={value || ''} readOnly={true} />
         );
@@ -27,7 +27,7 @@ class PersonalEntryText extends PersonalEntry<string> {
 }
 
 class PersonalEntryTextCentered extends PersonalEntry<string> {
-    subRender({ id, value }: PersonalItemProps<string>): JSX.Element {
+    subRender({ id, value }: PersonalItemProps<string>): React.JSX.Element {
         return (
             <StyledInputCentered
                 id={`txt${id}`}

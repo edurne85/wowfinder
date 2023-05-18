@@ -24,7 +24,7 @@ function FeralForms({
 }: {
     char?: Character;
     visible?: boolean;
-}): JSX.Element {
+}): React.JSX.Element {
     // const { t } = useTranslation();
     return char ? (
         <Page key="ShapeshiftForms" id="ShapeshiftForms" visible={visible}>
