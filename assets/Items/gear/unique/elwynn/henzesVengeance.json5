@@ -22,7 +22,7 @@
         },
         {
             types: ['holy'],
-            baseRoll { sides: 6 },
+            baseRoll: { sides: 6 },
         },
     ],
     baseDamage: {
