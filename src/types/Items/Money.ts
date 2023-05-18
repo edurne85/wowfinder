@@ -1,3 +1,5 @@
+/* eslint-disable */
+/** @deprecated Use members in types/Item instead */
 interface MoneyBreakdown {
     _: number;
     c: number;
@@ -5,8 +7,10 @@ interface MoneyBreakdown {
     g: number;
 }
 
+/** @deprecated Use members in types/Item instead */
 type CoinType = 'c' | 's' | 'g';
 
+/** @deprecated Use members in types/Item instead */
 const displayCoinTypes: CoinType[] = ['g', 's', 'c'];
 
 const ratio = 100;
@@ -17,6 +21,7 @@ const ratios: MoneyBreakdown = {
     g: ratio ** 2,
 };
 
+/** @deprecated Use members in types/Item instead */
 export default class Money {
     private _raw = 0;
     static explode(raw: number): MoneyBreakdown {

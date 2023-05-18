@@ -1,11 +1,14 @@
+/* eslint-disable */
 import { buildGear, Gear } from './Gear';
 import Money from './Money';
 
+/** @deprecated Use members in types/Item instead */
 interface InventoryBuilder {
     money?: number;
     gear?: Gear[];
 }
 
+/** @deprecated Use members in types/Item instead */
 export default class Inventory {
     private _gear: Gear[];
     private _money: Money;

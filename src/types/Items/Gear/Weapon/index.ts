@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { DamageSpec, DamageType, makeFullDamageTypes } from '../../../Damage';
 import { Bonus, BonusType } from '../../../Character/Bonus';
 import Size from '../../../Character/Size';
@@ -41,9 +42,9 @@ function buildWeaponDamage(...specs: WeaponDamageBuilder[]): DamageSpec {
 }
 
 interface WeaponBuilder extends GearBuilder {
-    // @deprecated use damage instead
+    /** @deprecated use damage instead */
     baseDamage: Damage;
-    // @deprecated use damage instead
+    /** @deprecated use damage instead */
     bonusDamage?: Damage;
     damage?: WeaponDamageBuilder[];
     intrinsic?: number;
@@ -56,6 +57,7 @@ interface WeaponBuilder extends GearBuilder {
     range?: Range;
 }
 
+/** @deprecated Use members in types/Item instead */
 export default class Weapon extends Gear {
     private _baseDamage: Damage;
     private _bonusDamage: Damage;
@@ -75,9 +77,7 @@ export default class Weapon extends Gear {
         size = Size.medium,
         weight,
         bonuses = Bonus.zero(BonusType.gear),
-        // @deprecated
         baseDamage,
-        // @deprecated
         bonusDamage = {},
         damage,
         intrinsic = 0,
@@ -105,14 +105,17 @@ export default class Weapon extends Gear {
         this._range = asFeet(range);
     }
 
+    /** @deprecated use damage instead */
     get baseDamage(): Damage {
         return this._baseDamage;
     }
 
+    /** @deprecated use damage instead */
     get hasBonusDamage(): boolean {
         return Object.keys(this._bonusDamage).length > 0;
     }
 
+    /** @deprecated use damage instead */
     get bonusDamage(): Damage {
         return this._bonusDamage;
     }

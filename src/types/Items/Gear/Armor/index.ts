@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Bonus, BonusType, MultiBonus } from '../../../Character/Bonus';
 import Size from '../../../Character/Size';
 import Gear, { GearBuilder, Weight } from '../base';
@@ -5,6 +6,7 @@ import ArmorBonusType from './BonusType';
 import ArmorFlags from './Flags';
 import ArmorType from './Type';
 
+/** @deprecated Use members in types/Item instead */
 interface ArmorBuilder extends GearBuilder {
     type?: ArmorType;
     acBonus?: number;
@@ -16,6 +18,7 @@ interface ArmorBuilder extends GearBuilder {
     flags?: Set<ArmorFlags>;
 }
 
+/** @deprecated Use members in types/Item instead */
 export default class Armor extends Gear {
     private _type: ArmorType;
     private _acBonus: number;

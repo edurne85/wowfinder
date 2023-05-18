@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {
     Bonus,
     BonusProvider,
@@ -8,7 +9,10 @@ import Size from '../../Character/Size';
 import { Mass, MassUnit } from '../../Units';
 import { buildShape, explodeShape, Shape } from './Slot';
 
+/** @deprecated Use members in types/Item instead */
 type Weight = number | Mass;
+
+/** @deprecated Use members in types/Item instead */
 interface GearBuilder {
     label: string;
     shape: string[];
@@ -23,6 +27,7 @@ function asPounds(w: Weight): Mass {
         : new Mass({ value: w as number, unit: MassUnit.lb });
 }
 
+/** @deprecated Use members in types/Item instead */
 export default class Gear implements BonusProvider {
     protected _label: string;
     protected _shape: Shape;

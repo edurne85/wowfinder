@@ -1,3 +1,5 @@
+/* eslint-disable */
+/** @deprecated Use members in types/Item instead */
 enum WeaponFlags {
     brace = 'brace',
     disarm = 'disarm',
