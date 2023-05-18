@@ -3,6 +3,9 @@ import { Item, Weapon } from '../../../../types/Item';
 import { Damage } from '../Damage';
 import { DetailLine } from './base';
 
+/**
+ * @deprecated
+ */
 function WeaponBonusDamage({ weapon }: { weapon: Weapon }): JSX.Element {
     const { t } = useTranslation();
     const h = t('charsheet.inventory.gear.bonusDamage');
@@ -15,6 +18,9 @@ function WeaponBonusDamage({ weapon }: { weapon: Weapon }): JSX.Element {
     );
 }
 
+/**
+ * @deprecated
+ */
 function WeaponDamage({ weapon }: { weapon: Weapon }): JSX.Element {
     const { t } = useTranslation();
     const critRange =
@@ -22,7 +28,8 @@ function WeaponDamage({ weapon }: { weapon: Weapon }): JSX.Element {
     const hasCrit = weapon.criticalMultiplier > 1;
     return (
         <>
-            <DetailLine h={t('charsheet.inventory.gear.baseDamage')}>
+            <DetailLine
+                h={t('charsheet.inventory.gear.baseDamage') ?? undefined}>
                 <Damage damage={weapon.baseDamage} />
                 {hasCrit
                     ? `(${critRange} / ×${Math.floor(
@@ -35,6 +42,9 @@ function WeaponDamage({ weapon }: { weapon: Weapon }): JSX.Element {
     );
 }
 
+/**
+ * @deprecated
+ */
 function WeaponIntrinsicMod({ weapon }: { weapon: Weapon }): JSX.Element {
     const { t } = useTranslation();
     const i = weapon.intrinsic;
@@ -54,7 +64,7 @@ function WeaponGrouping({ weapon }: { weapon: Weapon }): JSX.Element {
     const { t } = useTranslation();
     const groups = Array.from(weapon.groups)
         .map(g => t(`gear.weapon.group.${g}`))
-        .join(t('gear.weapon.group.$separator'));
+        .join(t('gear.weapon.group.$separator') ?? undefined);
     const rank = `${weapon.rank}`; // TODO: localize
     const proficiency = `${weapon.proficiency}`; // TODO: localize
     return (
@@ -71,7 +81,7 @@ function WeaponDetails({ weapon }: { weapon: Weapon }): JSX.Element {
         : t('charsheet.inventory.gear.range.melee');
     return (
         <>
-            <DetailLine h={t('charsheet.inventory.gear.range.h')}>
+            <DetailLine h={t('charsheet.inventory.gear.range.h') ?? undefined}>
                 {range}
             </DetailLine>
             <WeaponDamage weapon={weapon} />
