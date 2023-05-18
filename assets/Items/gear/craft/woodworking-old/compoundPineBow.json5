@@ -9,6 +9,12 @@
     bonuses: {
         // TODO SR: 1 ??
     },
+    damage: [
+        {
+            types: ['piercing'],
+            baseRoll: { sides: 8 },
+        },
+    ],
     baseDamage: {
         piercing: { sides: 8 },
     },

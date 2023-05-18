@@ -1,12 +1,14 @@
+import { DamageSpec, DamageType, makeFullDamageTypes } from '../../../Damage';
 import { Bonus, BonusType } from '../../../Character/Bonus';
 import Size from '../../../Character/Size';
-import { buildDamage, Damage } from '../../../Damage';
+import { buildDamage, Damage } from '../../../Damage/Damage';
 import { Length, LengthUnit } from '../../../Units';
 import Gear, { GearBuilder, Weight } from '../base';
 import WeaponFlags from './Flags';
 import WeaponGroup from './Group';
 import WeaponProficiency from './Proficiency';
 import WeaponRank from './Rank';
+import { StatKey } from '../../../Character/Stats';
 
 type Range = number | Length;
 function asFeet(r: Range): Length {
@@ -16,9 +18,34 @@ function asFeet(r: Range): Length {
     );
 }
 
+interface WeaponDamageBuilder {
+    types: DamageType[];
+    baseRoll: {
+        sides: number;
+        count?: number;
+        fixedMod?: number;
+    };
+    modStat?: StatKey; // TODO: add support for variants like finesse
+}
+
+function buildWeaponDamage(...specs: WeaponDamageBuilder[]): DamageSpec {
+    return new DamageSpec({
+        components: specs.map(s => ({
+            types: makeFullDamageTypes(...s.types),
+            diceCount: s.baseRoll.count || 1,
+            diceSides: s.baseRoll.sides,
+            fixedMod: s.baseRoll.fixedMod || 0,
+            modStat: s.modStat,
+        })),
+    });
+}
+
 interface WeaponBuilder extends GearBuilder {
+    // @deprecated use damage instead
     baseDamage: Damage;
+    // @deprecated use damage instead
     bonusDamage?: Damage;
+    damage?: WeaponDamageBuilder[];
     intrinsic?: number;
     groups: Set<WeaponGroup>;
     rank: WeaponRank;
@@ -32,6 +59,7 @@ interface WeaponBuilder extends GearBuilder {
 export default class Weapon extends Gear {
     private _baseDamage: Damage;
     private _bonusDamage: Damage;
+    #damage?: DamageSpec;
     private _intrinsic: number;
     private _groups: Set<WeaponGroup>;
     private _rank: WeaponRank;
@@ -47,8 +75,11 @@ export default class Weapon extends Gear {
         size = Size.medium,
         weight,
         bonuses = Bonus.zero(BonusType.gear),
+        // @deprecated
         baseDamage,
+        // @deprecated
         bonusDamage = {},
+        damage,
         intrinsic = 0,
         groups,
         rank,
@@ -61,6 +92,9 @@ export default class Weapon extends Gear {
         super({ label, shape, size, weight, bonuses });
         this._baseDamage = baseDamage;
         this._bonusDamage = bonusDamage;
+        if (damage) {
+            this.#damage = buildWeaponDamage(...damage);
+        }
         this._intrinsic = intrinsic;
         this._groups = new Set(groups);
         this._rank = rank;
@@ -85,6 +119,10 @@ export default class Weapon extends Gear {
 
     get intrinsic(): number {
         return this._intrinsic;
+    }
+
+    get damage(): DamageSpec | undefined {
+        return this.#damage;
     }
 
     get groups(): Set<WeaponGroup> {
@@ -140,6 +178,7 @@ export default class Weapon extends Gear {
             bonuses: Bonus.build(raw.bonuses || {}),
             baseDamage: buildDamage(raw.baseDamage),
             bonusDamage: buildDamage(raw.bonusDamage || {}),
+            damage: raw.damage,
             intrinsic: (raw.intrinsic as number) || 0,
             groups: (raw.groups as Set<WeaponGroup>) || [],
             rank: (raw.rank as WeaponRank) || WeaponRank.simple,

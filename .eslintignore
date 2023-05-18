@@ -1,4 +1,7 @@
 */.js
+*.js*
+tests
+electron
 node_modules
 dist
 webpack/*.js

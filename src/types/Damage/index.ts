@@ -16,7 +16,5 @@ export {
     buildFullDamageTypes,
     makeFullDamageTypes,
 } from './DamageType';
-// @deperecated
 export type { Damage } from './Damage';
-// @deprecated
 export { buildDamage } from './Damage';

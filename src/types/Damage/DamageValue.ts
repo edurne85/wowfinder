@@ -16,6 +16,12 @@ class DamageValue implements DamageValueBuilder {
     get components(): DamageComponentValue[] {
         return [...this.#components];
     }
+
+    multiply(multiplier: number): DamageValue {
+        return new DamageValue({
+            components: this.components.map(c => c.multiply(multiplier)),
+        });
+    }
 }
 
 export type { DamageValueBuilder };

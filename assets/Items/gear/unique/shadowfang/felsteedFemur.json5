@@ -6,6 +6,16 @@
     size: 0,
     weight: 4,
     bonuses: {}, // TODO Bonus feat: twoWeaponFighting
+    damage: [
+        {
+            types: ['bludgeoning'],
+            baseRoll: {
+                sides: 8,
+                fixedMod: 1,
+            },
+            modStat: 'STR',
+        },
+    ],
     baseDamage: {
         bludgeoning: { sides: 8 },
     },
