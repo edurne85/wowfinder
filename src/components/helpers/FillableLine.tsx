@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { ReactContent } from './ReactContent';
 
 const FillableLine = styled.div`
     overflow: visible;
@@ -8,7 +7,7 @@ const FillableLine = styled.div`
     }
 `;
 
-function mapLines<T extends ReactContent>(
+function mapLines<T extends React.ReactNode>(
     lines: T[],
     keyPrefix: string,
 ): React.JSX.Element[] {

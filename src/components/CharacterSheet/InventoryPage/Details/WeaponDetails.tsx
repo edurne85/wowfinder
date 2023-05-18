@@ -1,23 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Item, Weapon } from '../../../../types/Item';
-import { Damage } from '../Damage';
 import { DetailLine } from './base';
 import { DamageSpecView } from '../../../Damage';
-
-/**
- * @deprecated
- */
-function WeaponBonusDamage({ weapon }: { weapon: Weapon }): React.JSX.Element {
-    const { t } = useTranslation();
-    const h = t('charsheet.inventory.gear.bonusDamage');
-    return weapon.hasBonusDamage ? (
-        <DetailLine h={h}>
-            <Damage damage={weapon.bonusDamage} />
-        </DetailLine>
-    ) : (
-        <></>
-    );
-}
 
 function WeaponDamage({ weapon }: { weapon: Weapon }): React.JSX.Element {
     const { t } = useTranslation();
@@ -27,18 +11,12 @@ function WeaponDamage({ weapon }: { weapon: Weapon }): React.JSX.Element {
     return (
         <DetailLine h={t('charsheet.inventory.gear.damage') ?? undefined}>
             <>
-                {weapon.damage ? (
-                    <DamageSpecView spec={weapon.damage} />
-                ) : (
-                    // TODO: remove this branch after cleaning deprecated elements
-                    <Damage damage={weapon.baseDamage} />
-                )}
+                <DamageSpecView spec={weapon.damage} />
                 {hasCrit
                     ? `(${critRange} / ×${Math.floor(
                           weapon.criticalMultiplier,
                       )})`
                     : ''}
-                {!weapon.damage && <WeaponBonusDamage weapon={weapon} />}
             </>
         </DetailLine>
     );
