@@ -28,39 +28,52 @@ function iterateDir(dir: string, action: (raw: any) => void): void {
             const obj = JSON5.parse(window.Files.slurp(file));
             action(obj);
         } catch (e) {
-            console.error(e);
+            console.error(`Error parsing ${file} within ${dir}: ${e}`);
         }
     }
 }
 
-function warnDuplicateKey(type: string, key: string | number): void {
-    console.warn(`Duplicate ${type} element with key ${key} found.`);
+function warnDuplicateKey(
+    type: string,
+    key: string | number,
+    context?: string,
+): void {
+    const contextSuffix = context ? ` in ${context}` : '';
+    console.warn(
+        `Duplicate ${type} element with key ${key} found${contextSuffix}.`,
+    );
 }
 function checkDuplicateKeyS<T extends Keyed<string>>(
     collection: ByKeyRecursive<T>,
     obj: T,
+    context?: string,
 ): void {
     if (collection[obj.key]) {
-        warnDuplicateKey(typeof obj, obj.key);
+        warnDuplicateKey(typeof obj, obj.key, context);
     }
 }
 
 function checkDuplicateKeyN<T extends Keyed<number>>(
     collection: { [key: number]: T },
     obj: T,
+    context?: string,
 ): void {
     if (collection[obj.key]) {
-        warnDuplicateKey(typeof obj, obj.key);
+        warnDuplicateKey(typeof obj, obj.key, context);
     }
 }
 
 function checkDuplicateLabel<T extends Labeled>(
     collection: ByLabel<T>,
     obj: T,
+    context?: string,
 ): void {
+    const contextSuffix = context ? ` in ${context}` : '';
     if (collection[obj.label]) {
         console.warn(
-            `Duplicate ${typeof obj} element with label ${obj.label} found.`,
+            `Duplicate ${typeof obj} element with label ${
+                obj.label
+            } found${contextSuffix}.`,
         );
     }
 }
@@ -80,7 +93,7 @@ function forceDataLoadKeyS<T extends Keyed<string>>(
     const byKey: ByKey<T> = {};
     iterateDir(dir, raw => {
         const obj = builder(raw);
-        checkDuplicateKeyS(byKey, obj);
+        checkDuplicateKeyS(byKey, obj, dir);
         byKey[obj.key] = obj;
     });
     return Object.freeze(byKey);
@@ -94,7 +107,7 @@ function forceDataLoadKeySRecursive<T extends Keyed<string>>(
         ...forceDataLoadKeyS<T>(dir, builder),
     };
     for (const subdir of window.Files.getDirectories(dir)) {
-        checkDuplicateKeyS(byKey, { key: subdir });
+        checkDuplicateKeyS(byKey, { key: subdir }, dir);
         const fullSubDirPath = window.Files.resolvePath(dir, subdir);
         byKey[subdir] = forceDataLoadKeySRecursive<T>(fullSubDirPath, builder);
     }
@@ -108,7 +121,7 @@ function forceDataLoadKeyLabel<T extends KeyedLabeled>(
     const byKeyLabel: ByKeyLabel<T> = { byKey: {}, byLabel: {} };
     iterateDir(dir, raw => {
         const obj = builder(raw);
-        checkDuplicateKeyN(byKeyLabel.byKey, obj);
+        checkDuplicateKeyN(byKeyLabel.byKey, obj, dir);
         checkDuplicateLabel(byKeyLabel.byLabel, obj);
         byKeyLabel.byKey[obj.key] = byKeyLabel.byLabel[obj.label] = obj;
     });
