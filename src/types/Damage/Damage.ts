@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import { DamageType } from './DamageType';
 import Dice from '../Dice';
 

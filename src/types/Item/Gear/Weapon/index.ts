@@ -1,4 +1,11 @@
-import { buildDamage, Damage } from '../../../Damage';
+import { StatKey } from '../../../Character/Stats';
+import {
+    buildDamage,
+    Damage,
+    DamageSpec,
+    DamageType,
+    makeFullDamageTypes,
+} from '../../../Damage';
 import { Length, LengthUnit } from '../../../Units';
 import { Gear, GearBuilder } from '../base';
 import WeaponFlags from './Flags';
@@ -13,9 +20,34 @@ function asFeet(r: Range): Length {
         : (r as Length);
 }
 
+interface WeaponDamageBuilder {
+    types: DamageType[];
+    baseRoll: {
+        sides: number;
+        count?: number;
+        fixedMod?: number;
+    };
+    modStat?: StatKey; // TODO: add support for variants like finesse
+}
+
+function buildWeaponDamage(...specs: WeaponDamageBuilder[]): DamageSpec {
+    return new DamageSpec({
+        components: specs.map(s => ({
+            types: makeFullDamageTypes(...s.types),
+            diceCount: s.baseRoll.count || 1,
+            diceSides: s.baseRoll.sides,
+            fixedMod: s.baseRoll.fixedMod || 0,
+            modStat: s.modStat,
+        })),
+    });
+}
+
 interface WeaponBuilder extends GearBuilder {
+    /** @deprecated use damage instead */
     baseDamage: Damage;
+    /** @deprecated use damage instead */
     bonusDamage?: Damage;
+    damage?: WeaponDamageBuilder[];
     intrinsic?: number;
     groups: Set<WeaponGroup>;
     rank: WeaponRank;
@@ -29,6 +61,7 @@ interface WeaponBuilder extends GearBuilder {
 class Weapon extends Gear {
     private _baseDamage: Damage;
     private _bonusDamage: Damage;
+    #damage?: DamageSpec;
     private _intrinsic: number;
     private _groups: Set<WeaponGroup>;
     private _rank: WeaponRank;
@@ -41,6 +74,7 @@ class Weapon extends Gear {
     constructor({
         baseDamage,
         bonusDamage = {},
+        damage,
         intrinsic = 0,
         groups,
         rank,
@@ -54,6 +88,9 @@ class Weapon extends Gear {
         super(args);
         this._baseDamage = baseDamage;
         this._bonusDamage = bonusDamage;
+        if (damage) {
+            this.#damage = buildWeaponDamage(...damage);
+        }
         this._intrinsic = intrinsic;
         this._groups = new Set(groups);
         this._rank = rank;
@@ -64,20 +101,27 @@ class Weapon extends Gear {
         this._range = asFeet(range);
     }
 
+    /** @deprecated use damage instead */
     get baseDamage(): Damage {
         return this._baseDamage;
     }
 
+    /** @deprecated use damage instead */
     get hasBonusDamage(): boolean {
         return Object.keys(this._bonusDamage).length > 0;
     }
 
+    /** @deprecated use damage instead */
     get bonusDamage(): Damage {
         return this._bonusDamage;
     }
 
     get intrinsic(): number {
         return this._intrinsic;
+    }
+
+    get damage(): DamageSpec | undefined {
+        return this.#damage;
     }
 
     get groups(): Set<WeaponGroup> {
@@ -130,6 +174,7 @@ class Weapon extends Gear {
             baseDamage: buildDamage(raw.baseDamage),
             bonusDamage: buildDamage(raw.bonusDamage || {}),
             intrinsic: (raw.intrinsic as number) || 0,
+            damage: raw.damage,
             groups: (raw.groups as Set<WeaponGroup>) || [],
             rank: (raw.rank as WeaponRank) || WeaponRank.simple,
             proficiency:

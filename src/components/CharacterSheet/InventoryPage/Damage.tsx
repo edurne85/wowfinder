@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { Damage as Dmg } from '../../../types/Damage/Damage';
@@ -48,6 +49,9 @@ function DamageComponent({
 
 const DamageContainer = styled.span``;
 
+/**
+ * @deprecated
+ */
 export function Damage({ damage }: { damage: Dmg }): React.JSX.Element {
     return (
         <DamageContainer>

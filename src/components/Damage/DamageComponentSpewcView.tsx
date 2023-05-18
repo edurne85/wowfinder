@@ -10,10 +10,12 @@ const DamageComponentSpecContainer = styled.span`
 `;
 
 interface DamageComponentSpecViewProps {
+    prefix?: string;
     spec: DamageComponentSpec;
 }
 
 function DamageComponentSpecView({
+    prefix,
     spec,
 }: DamageComponentSpecViewProps): React.JSX.Element {
     const { t } = useTranslation();
@@ -30,9 +32,12 @@ function DamageComponentSpecView({
         .filter(Boolean)
         .join(', ');
     return (
-        <DamageComponentSpecContainer title={title} types={spec.types}>
-            {`${spec.dice.toString()} ${types}`}
-        </DamageComponentSpecContainer>
+        <>
+            {prefix && `${prefix} `}
+            <DamageComponentSpecContainer title={title} types={spec.types}>
+                {`${spec.dice.toString()} ${types}`}
+            </DamageComponentSpecContainer>
+        </>
     );
 }
 
