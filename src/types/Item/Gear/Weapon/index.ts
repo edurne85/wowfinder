@@ -1,11 +1,5 @@
 import { StatKey } from '../../../Character/Stats';
-import {
-    buildDamage,
-    Damage,
-    DamageSpec,
-    DamageType,
-    makeFullDamageTypes,
-} from '../../../Damage';
+import { DamageSpec, DamageType, makeFullDamageTypes } from '../../../Damage';
 import { Length, LengthUnit } from '../../../Units';
 import { Gear, GearBuilder } from '../base';
 import WeaponFlags from './Flags';
@@ -43,11 +37,7 @@ function buildWeaponDamage(...specs: WeaponDamageBuilder[]): DamageSpec {
 }
 
 interface WeaponBuilder extends GearBuilder {
-    /** @deprecated use damage instead */
-    baseDamage: Damage;
-    /** @deprecated use damage instead */
-    bonusDamage?: Damage;
-    damage?: WeaponDamageBuilder[];
+    damage: WeaponDamageBuilder[];
     intrinsic?: number;
     groups: Set<WeaponGroup>;
     rank: WeaponRank;
@@ -59,9 +49,7 @@ interface WeaponBuilder extends GearBuilder {
 }
 
 class Weapon extends Gear {
-    private _baseDamage: Damage;
-    private _bonusDamage: Damage;
-    #damage?: DamageSpec;
+    #damage: DamageSpec;
     private _intrinsic: number;
     private _groups: Set<WeaponGroup>;
     private _rank: WeaponRank;
@@ -72,8 +60,6 @@ class Weapon extends Gear {
     private _range: Length;
 
     constructor({
-        baseDamage,
-        bonusDamage = {},
         damage,
         intrinsic = 0,
         groups,
@@ -86,11 +72,7 @@ class Weapon extends Gear {
         ...args
     }: WeaponBuilder) {
         super(args);
-        this._baseDamage = baseDamage;
-        this._bonusDamage = bonusDamage;
-        if (damage) {
-            this.#damage = buildWeaponDamage(...damage);
-        }
+        this.#damage = buildWeaponDamage(...damage);
         this._intrinsic = intrinsic;
         this._groups = new Set(groups);
         this._rank = rank;
@@ -101,26 +83,11 @@ class Weapon extends Gear {
         this._range = asFeet(range);
     }
 
-    /** @deprecated use damage instead */
-    get baseDamage(): Damage {
-        return this._baseDamage;
-    }
-
-    /** @deprecated use damage instead */
-    get hasBonusDamage(): boolean {
-        return Object.keys(this._bonusDamage).length > 0;
-    }
-
-    /** @deprecated use damage instead */
-    get bonusDamage(): Damage {
-        return this._bonusDamage;
-    }
-
     get intrinsic(): number {
         return this._intrinsic;
     }
 
-    get damage(): DamageSpec | undefined {
+    get damage(): DamageSpec {
         return this.#damage;
     }
 
@@ -171,8 +138,6 @@ class Weapon extends Gear {
     static preBuild(raw: any): WeaponBuilder {
         return {
             ...Gear.preBuild(raw),
-            baseDamage: buildDamage(raw.baseDamage),
-            bonusDamage: buildDamage(raw.bonusDamage || {}),
             intrinsic: (raw.intrinsic as number) || 0,
             damage: raw.damage,
             groups: (raw.groups as Set<WeaponGroup>) || [],

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Gear, Item } from '../../../types/Item';
 import { mapLines } from '../../helpers/FillableLine';
 import { debugOutline } from '../../helpers/mixins';
-import { ReactContent } from '../../helpers/ReactContent';
 import { ItemDetails } from './Details';
 import { Slots } from './Details/base';
 
@@ -68,7 +67,7 @@ function ItemsList({
     height,
     showSlots = false,
 }: ItemsListArguments): React.JSX.Element {
-    const lines: ReactContent[] = [];
+    const lines: React.ReactNode[] = [];
     lines.push(...items.map(g => <ListItem item={g} showSlots={showSlots} />));
     lines.splice(maxLines);
     lines.push(...Array(maxLines - lines.length).fill(''));
