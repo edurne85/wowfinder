@@ -19,6 +19,13 @@ class DamageComponentValue
     get total(): number {
         return this.#total;
     }
+
+    multiply(multiplier: number): DamageComponentValue {
+        return new DamageComponentValue({
+            types: this.types,
+            total: this.total * multiplier,
+        });
+    }
 }
 
 interface DamageComponentSpecBuilder extends DamageComponentBaseBuilder {

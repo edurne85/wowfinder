@@ -6,6 +6,12 @@
     size: 0,
     weight: 1,
     bonuses: {},
+    damage: [
+        {
+            types: ['slashing'],
+            baseRoll: { sides: 4 },
+        },
+    ],
     baseDamage: {
         slashing: { sides: 4 },
     },
