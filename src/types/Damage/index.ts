@@ -16,5 +16,7 @@ export {
     buildFullDamageTypes,
     makeFullDamageTypes,
 } from './DamageType';
+/* eslint-disable-next-line deprecation/deprecation */
 export type { Damage } from './Damage';
+/* eslint-disable-next-line deprecation/deprecation */
 export { buildDamage } from './Damage';

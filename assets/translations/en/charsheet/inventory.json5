@@ -16,7 +16,10 @@
             h: 'Range',
             melee: 'Melee',
         },
+        damage: 'Damage',
+        /** @deprecated */
         baseDamage: 'Base damage',
+        /** @deprecated */
         bonusDamage: 'Bonus damage',
         intrinsic: 'Intrinsic mod',
     },

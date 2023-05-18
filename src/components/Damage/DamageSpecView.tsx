@@ -12,10 +12,11 @@ function DamageSpecView({ spec }: DamageSpecViewProps): React.JSX.Element {
     return (
         <DamageSpecContainer>
             {spec.components.map((component, index) => (
-                <>
-                    {index > 0 && ' + '}
-                    <DamageComponentSpecView spec={component} key={index} />
-                </>
+                <DamageComponentSpecView
+                    spec={component}
+                    prefix={index > 0 ? ' + ' : ''}
+                    key={index}
+                />
             ))}
         </DamageSpecContainer>
     );

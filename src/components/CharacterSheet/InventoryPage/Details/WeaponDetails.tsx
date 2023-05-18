@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Item, Weapon } from '../../../../types/Item';
 import { Damage } from '../Damage';
 import { DetailLine } from './base';
+import { DamageSpecView } from '../../../Damage';
 
 /**
  * @deprecated
@@ -18,33 +19,31 @@ function WeaponBonusDamage({ weapon }: { weapon: Weapon }): React.JSX.Element {
     );
 }
 
-/**
- * @deprecated
- */
 function WeaponDamage({ weapon }: { weapon: Weapon }): React.JSX.Element {
     const { t } = useTranslation();
     const critRange =
         weapon.criticalRange >= 20 ? '20' : `${weapon.criticalRange} - 20`;
     const hasCrit = weapon.criticalMultiplier > 1;
     return (
-        <>
-            <DetailLine
-                h={t('charsheet.inventory.gear.baseDamage') ?? undefined}>
-                <Damage damage={weapon.baseDamage} />
+        <DetailLine h={t('charsheet.inventory.gear.damage') ?? undefined}>
+            <>
+                {weapon.damage ? (
+                    <DamageSpecView spec={weapon.damage} />
+                ) : (
+                    // TODO: remove this branch after cleaning deprecated elements
+                    <Damage damage={weapon.baseDamage} />
+                )}
                 {hasCrit
                     ? `(${critRange} / ×${Math.floor(
                           weapon.criticalMultiplier,
                       )})`
                     : ''}
-            </DetailLine>
-            <WeaponBonusDamage weapon={weapon} />
-        </>
+                {!weapon.damage && <WeaponBonusDamage weapon={weapon} />}
+            </>
+        </DetailLine>
     );
 }
 
-/**
- * @deprecated
- */
 function WeaponIntrinsicMod({ weapon }: { weapon: Weapon }): React.JSX.Element {
     const { t } = useTranslation();
     const i = weapon.intrinsic;
