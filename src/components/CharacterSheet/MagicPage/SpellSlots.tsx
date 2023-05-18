@@ -34,7 +34,7 @@ function SlotsRow({
     cls = 0,
     stat = 0,
     misc = 0,
-}: SlotsRowArgs): JSX.Element {
+}: SlotsRowArgs): React.JSX.Element {
     return (
         <tr>
             <th>{level}</th>
@@ -53,7 +53,7 @@ interface SpellSlotsArgs {
 const spellLevelMax = 15;
 const levels: number[] = [...Array(spellLevelMax + 1).keys()];
 
-export function SpellSlots({ char, mode }: SpellSlotsArgs): JSX.Element {
+export function SpellSlots({ char, mode }: SpellSlotsArgs): React.JSX.Element {
     const { t } = useTranslation();
     const clevel = levelByMode(
         char?.classBonuses?.efl || zeroCasterLevel,

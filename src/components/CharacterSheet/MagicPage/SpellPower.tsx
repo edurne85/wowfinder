@@ -33,7 +33,7 @@ interface SchoolArgs {
     data: FullComputedSchools;
 }
 
-function SchoolLine({ k, data }: SchoolArgs): JSX.Element {
+function SchoolLine({ k, data }: SchoolArgs): React.JSX.Element {
     const school = k as School;
     const { t } = useTranslation();
     const val = data[school];
@@ -63,7 +63,7 @@ export function SpellPower({
 }: {
     data: FullComputedSchools;
     mode: CastingMode;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <PowerContainer>

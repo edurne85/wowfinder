@@ -17,7 +17,7 @@ type TitlesProvider = (
     data: FullData,
 ) => TitleProvider[];
 
-function WiP(): JSX.Element {
+function WiP(): React.JSX.Element {
     const location = useLocation();
     reportWiP({ route: location.pathname });
     return <div>Work in progress</div>;

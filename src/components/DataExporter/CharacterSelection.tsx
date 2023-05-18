@@ -28,7 +28,7 @@ function getCharacterSelection(): string[] {
 function CharacterSelection({
     chars,
     onCharactersSelected,
-}: CharacterSelectionProps): JSX.Element {
+}: CharacterSelectionProps): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <CharacterSelectionContainer>

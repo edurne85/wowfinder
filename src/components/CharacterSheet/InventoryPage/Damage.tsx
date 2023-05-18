@@ -33,7 +33,7 @@ function DamageComponent({
 }: {
     dice?: Dice;
     type: DamageType;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t } = useTranslation();
     return dice ? (
         <DamageComponentContainer
@@ -48,7 +48,7 @@ function DamageComponent({
 
 const DamageContainer = styled.span``;
 
-export function Damage({ damage }: { damage: Dmg }): JSX.Element {
+export function Damage({ damage }: { damage: Dmg }): React.JSX.Element {
     return (
         <DamageContainer>
             <Join

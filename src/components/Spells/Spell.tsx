@@ -22,7 +22,7 @@ const SpellContainer = styled.div`
     }
 `;
 
-function SpellDescription({ desc }: { desc: string }): JSX.Element {
+function SpellDescription({ desc }: { desc: string }): React.JSX.Element {
     return (
         <div className="spell-description">
             {desc.split('\n').map((p, i) => (
@@ -40,7 +40,7 @@ function Heading({
     hRank: number;
     sub?: number;
     text: string;
-}): JSX.Element {
+}): React.JSX.Element {
     return React.createElement(`h${hRank + sub}`, {}, text);
 }
 
@@ -53,7 +53,11 @@ interface SpellHelperArgs {
     };
 }
 
-function SpellHelper({ texts, raw, hRank }: SpellHelperArgs): JSX.Element {
+function SpellHelper({
+    texts,
+    raw,
+    hRank,
+}: SpellHelperArgs): React.JSX.Element {
     return (
         <SpellContainer className="spell">
             <Heading hRank={hRank} text={texts.title} />
@@ -64,7 +68,7 @@ function SpellHelper({ texts, raw, hRank }: SpellHelperArgs): JSX.Element {
     );
 }
 
-function Rank({ parent, rank }: SpellRankArgs): JSX.Element {
+function Rank({ parent, rank }: SpellRankArgs): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <SpellHelper
@@ -78,7 +82,7 @@ function Rank({ parent, rank }: SpellRankArgs): JSX.Element {
     );
 }
 
-function Spell({ spell }: SpellArgs): JSX.Element {
+function Spell({ spell }: SpellArgs): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <>

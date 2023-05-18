@@ -7,7 +7,7 @@ interface RaceListProps {
     races: { [key: string]: Race };
 }
 
-function RaceList({ races }: RaceListProps): JSX.Element {
+function RaceList({ races }: RaceListProps): React.JSX.Element {
     const classKeys = Object.keys(races).sort();
     const { t } = useTranslation();
     return (

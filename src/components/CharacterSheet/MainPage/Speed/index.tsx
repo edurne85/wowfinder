@@ -13,7 +13,7 @@ function Cells({
     hkey: string;
     name: string;
     speed?: SpeedValue;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t } = useTranslation();
     const heading = t(`charsheet.speed.${hkey}`) || '';
     return (
@@ -23,7 +23,7 @@ function Cells({
     );
 }
 
-function Speed({ speeds }: { speeds?: Speeds }): JSX.Element {
+function Speed({ speeds }: { speeds?: Speeds }): React.JSX.Element {
     return (
         <StyledTable>
             <tbody>

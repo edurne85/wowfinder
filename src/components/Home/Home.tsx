@@ -10,7 +10,7 @@ const Navigation = styled.div`
     }
 `;
 
-function Home(): JSX.Element {
+function Home(): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <Navigation>

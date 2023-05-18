@@ -29,7 +29,7 @@ function InputH({
     value,
     hideZero = false,
     classes = [],
-}: CellArgs<CommonValue>): JSX.Element {
+}: CellArgs<CommonValue>): React.JSX.Element {
     const val = value != null ? value || (hideZero ? '' : 0) : '';
     const className = mkClassName(...classes);
     return (
@@ -44,7 +44,7 @@ function InputCell({
     value,
     hideZero = false,
     classes = [],
-}: CellArgs<CommonValue>): JSX.Element {
+}: CellArgs<CommonValue>): React.JSX.Element {
     const val = value != null ? value || (hideZero ? '' : 0) : '';
     const className = mkClassName(...classes);
     return (
@@ -57,7 +57,7 @@ function InputCell({
 function ReputationCell({
     value,
     classes = [],
-}: CellArgsStrict<number>): JSX.Element {
+}: CellArgsStrict<number>): React.JSX.Element {
     const className = mkClassName(...classes);
     const tier = reputationByScoreNullable(value);
     let bottom = '';
@@ -79,7 +79,7 @@ function CheckCell({
     id,
     value,
     classes = [],
-}: CellArgs<boolean>): JSX.Element {
+}: CellArgs<boolean>): React.JSX.Element {
     const className = [...classes, 'check-box'].join(' ');
     return (
         <td className={className}>
@@ -101,7 +101,7 @@ function InputSuffixedCell({
     id: string;
     value: number | string;
     suffix: string;
-}): JSX.Element {
+}): React.JSX.Element {
     return (
         <td>
             <input id={id} value={value} readOnly={true} />

@@ -20,7 +20,7 @@ interface CharacterListProps {
     chars: { [key: string]: Character };
 }
 
-function CharacterList({ chars }: CharacterListProps): JSX.Element {
+function CharacterList({ chars }: CharacterListProps): React.JSX.Element {
     const activeCharKeys = Object.keys(chars)
         .filter(k => chars[k].active)
         .sort();

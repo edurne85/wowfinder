@@ -42,7 +42,7 @@ interface RowArgs {
     id: string;
     value?: ResistanceBreakdown;
 }
-function Row({ id, value }: RowArgs): JSX.Element {
+function Row({ id, value }: RowArgs): React.JSX.Element {
     const { t } = useTranslation();
     const idSuffix = capitalizeFirstLetter(id);
     return (
@@ -75,7 +75,7 @@ function Row({ id, value }: RowArgs): JSX.Element {
     );
 }
 
-export function Resistances({ char }: { char?: Character }): JSX.Element {
+export function Resistances({ char }: { char?: Character }): React.JSX.Element {
     const { t } = useTranslation();
     const resists = char?.resistances;
     return (

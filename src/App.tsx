@@ -16,7 +16,7 @@ import { debug, debugOutput, exportByCharsAsJsonAssets } from './utils';
 
 const data = FullData.load();
 
-function RewTable(): JSX.Element {
+function RewTable(): React.JSX.Element {
     return (
         <RewardsTable
             chars={data.chars}
@@ -25,10 +25,10 @@ function RewTable(): JSX.Element {
         />
     );
 }
-function CharList(): JSX.Element {
+function CharList(): React.JSX.Element {
     return <CharacterList chars={data.chars} /* rewards={data.rewards} */ />;
 }
-function TestCharSheet({ charName }: { charName: string }): JSX.Element {
+function TestCharSheet({ charName }: { charName: string }): React.JSX.Element {
     return (
         <CharacterSheet
             char={data.chars[charName]}
@@ -37,11 +37,11 @@ function TestCharSheet({ charName }: { charName: string }): JSX.Element {
     );
 }
 
-function TestSpell({ spellKey }: { spellKey: string }): JSX.Element {
+function TestSpell({ spellKey }: { spellKey: string }): React.JSX.Element {
     return <Spell spell={data.spells[spellKey]} />;
 }
 
-function PrintCharSheet(): JSX.Element {
+function PrintCharSheet(): React.JSX.Element {
     const context = useContext(GlobalContext);
     context.forceBlank = true;
     context.forcePages.magic = true;
@@ -75,7 +75,7 @@ if (debug) {
 const routes = getRoutes(data);
 const router = createHashRouter(routes);
 
-export function App(): JSX.Element {
+export function App(): React.JSX.Element {
     const context = useContext(GlobalContext);
     context.routes = routes;
     return (

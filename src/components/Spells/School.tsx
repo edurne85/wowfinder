@@ -6,7 +6,7 @@ interface SchoolArgs {
     sch: S | SubSchool;
 }
 
-function School({ sch }: SchoolArgs): JSX.Element {
+function School({ sch }: SchoolArgs): React.JSX.Element {
     const { t } = useTranslation();
     const key = S[sch as S]
         ? `magic.schools.${sch}`
@@ -18,11 +18,11 @@ function School({ sch }: SchoolArgs): JSX.Element {
     );
 }
 
-function SchoolIfNeededSpell({ spell }: { spell: Spell }): JSX.Element {
+function SchoolIfNeededSpell({ spell }: { spell: Spell }): React.JSX.Element {
     return spell.sch ? <School sch={spell.sch} /> : <></>;
 }
 
-function SchoolIfNeededRaw({ raw }: { raw: SpellBase }): JSX.Element {
+function SchoolIfNeededRaw({ raw }: { raw: SpellBase }): React.JSX.Element {
     return raw instanceof Spell ? <SchoolIfNeededSpell spell={raw} /> : <></>;
 }
 

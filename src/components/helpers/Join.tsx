@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
-type Wrapper = (props: { children: ReactNode }) => JSX.Element;
+type Wrapper = (props: { children: ReactNode }) => React.JSX.Element;
 const DefaultWrapper: Wrapper = ({ children }: { children: ReactNode }) => (
     <span>{children}</span>
 );
@@ -13,11 +13,11 @@ export function Join({
     InnerWrapper = DefaultWrapper,
     OuterWrapper = DefaultWrapper,
 }: {
-    separator: JSX.Element | string;
-    items: JSX.Element[];
+    separator: React.JSX.Element | string;
+    items: React.JSX.Element[];
     InnerWrapper?: Wrapper;
     OuterWrapper?: Wrapper;
-}): JSX.Element {
+}): React.JSX.Element {
     const key = `join-${callCounter++}`;
     return (
         <OuterWrapper>

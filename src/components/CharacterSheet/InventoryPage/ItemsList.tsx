@@ -36,7 +36,7 @@ function ListItem({
 }: {
     item: Item;
     showSlots: boolean;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <ListItemContainer>
@@ -67,7 +67,7 @@ function ItemsList({
     maxLines,
     height,
     showSlots = false,
-}: ItemsListArguments): JSX.Element {
+}: ItemsListArguments): React.JSX.Element {
     const lines: ReactContent[] = [];
     lines.push(...items.map(g => <ListItem item={g} showSlots={showSlots} />));
     lines.splice(maxLines);

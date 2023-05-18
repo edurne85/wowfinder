@@ -33,7 +33,7 @@ function MagicColumn({
 }: {
     char?: Character;
     mode: CastingMode;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t } = useTranslation();
     const clevel = levelByMode(
         char?.classBonuses?.efl || zeroCasterLevel,
@@ -56,7 +56,7 @@ export function MagicPage({
 }: {
     char?: Character;
     visible?: boolean;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <Page key="Magic" id="Magic" visible={visible}>

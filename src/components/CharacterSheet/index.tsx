@@ -10,7 +10,7 @@ function ConditionalTypedPage({
     char,
     xp,
     availables,
-}: TypedPageArgs & { availables: FullPageSelection }): JSX.Element {
+}: TypedPageArgs & { availables: FullPageSelection }): React.JSX.Element {
     return availables[type] ? <TypedPage {...{ type, char, xp }} /> : <></>;
 }
 
@@ -60,7 +60,7 @@ export function CharacterSheet({
 }: {
     char?: Character;
     xp?: number;
-}): JSX.Element {
+}): React.JSX.Element {
     const forcePages = useContext(GlobalContext).forcePages;
     const availables: FullPageSelection = {
         [PageType.main]: true,

@@ -3,7 +3,11 @@ import { Character } from '../../types/Character';
 import { Faction } from '../../types/Faction';
 import { ReputationCell } from '../helpers/InputCell';
 
-function rewardCell(char: string, faction: string, value: number): JSX.Element {
+function rewardCell(
+    char: string,
+    faction: string,
+    value: number,
+): React.JSX.Element {
     const id = `rep-${char}-${faction}`;
     return faction === 'XP' ? (
         <td>{value || ''}</td>
@@ -17,7 +21,7 @@ function RewardRow(
     active: boolean,
     factionLabels: string[],
     data: Reward,
-): JSX.Element {
+): React.JSX.Element {
     const cells = [
         <th>{char}</th>,
         ...factionLabels.map(k => rewardCell(char, k, data[k])),
@@ -36,7 +40,7 @@ export function RewardsTable({
     chars,
     factions,
     data,
-}: RewardsTableArgs): JSX.Element {
+}: RewardsTableArgs): React.JSX.Element {
     const factionLabels = factions.map(f => f.label);
     return (
         <table className="rewards-table">

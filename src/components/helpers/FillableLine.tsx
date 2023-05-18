@@ -11,7 +11,7 @@ const FillableLine = styled.div`
 function mapLines<T extends ReactContent>(
     lines: T[],
     keyPrefix: string,
-): JSX.Element[] {
+): React.JSX.Element[] {
     let lineCount = 0;
     return lines.map((value: T) => {
         const args = {

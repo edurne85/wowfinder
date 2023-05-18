@@ -2,7 +2,7 @@ import { RewardsTable } from '../components';
 import { FullData } from '../types/FullData';
 import { RouteProvider } from './base';
 
-function RewTable({ data }: { data: FullData }): JSX.Element {
+function RewTable({ data }: { data: FullData }): React.JSX.Element {
     return (
         <RewardsTable
             chars={data.chars}

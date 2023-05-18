@@ -6,7 +6,7 @@ import { DetailLine } from './base';
 /**
  * @deprecated
  */
-function WeaponBonusDamage({ weapon }: { weapon: Weapon }): JSX.Element {
+function WeaponBonusDamage({ weapon }: { weapon: Weapon }): React.JSX.Element {
     const { t } = useTranslation();
     const h = t('charsheet.inventory.gear.bonusDamage');
     return weapon.hasBonusDamage ? (
@@ -21,7 +21,7 @@ function WeaponBonusDamage({ weapon }: { weapon: Weapon }): JSX.Element {
 /**
  * @deprecated
  */
-function WeaponDamage({ weapon }: { weapon: Weapon }): JSX.Element {
+function WeaponDamage({ weapon }: { weapon: Weapon }): React.JSX.Element {
     const { t } = useTranslation();
     const critRange =
         weapon.criticalRange >= 20 ? '20' : `${weapon.criticalRange} - 20`;
@@ -45,7 +45,7 @@ function WeaponDamage({ weapon }: { weapon: Weapon }): JSX.Element {
 /**
  * @deprecated
  */
-function WeaponIntrinsicMod({ weapon }: { weapon: Weapon }): JSX.Element {
+function WeaponIntrinsicMod({ weapon }: { weapon: Weapon }): React.JSX.Element {
     const { t } = useTranslation();
     const i = weapon.intrinsic;
     const prefix = i > 0 ? '+' : '';
@@ -60,7 +60,7 @@ function WeaponIntrinsicMod({ weapon }: { weapon: Weapon }): JSX.Element {
     );
 }
 
-function WeaponGrouping({ weapon }: { weapon: Weapon }): JSX.Element {
+function WeaponGrouping({ weapon }: { weapon: Weapon }): React.JSX.Element {
     const { t } = useTranslation();
     const groups = Array.from(weapon.groups)
         .map(g => t(`gear.weapon.group.${g}`))
@@ -74,7 +74,7 @@ function WeaponGrouping({ weapon }: { weapon: Weapon }): JSX.Element {
     );
 }
 
-function WeaponDetails({ weapon }: { weapon: Weapon }): JSX.Element {
+function WeaponDetails({ weapon }: { weapon: Weapon }): React.JSX.Element {
     const { t } = useTranslation();
     const range: string = weapon.ranged
         ? weapon.range.fullDisplay
@@ -91,7 +91,7 @@ function WeaponDetails({ weapon }: { weapon: Weapon }): JSX.Element {
     );
 }
 
-function WeaponDetailsWrapped({ item }: { item: Item }): JSX.Element {
+function WeaponDetailsWrapped({ item }: { item: Item }): React.JSX.Element {
     return item instanceof Weapon ? <WeaponDetails weapon={item} /> : <></>;
 }
 

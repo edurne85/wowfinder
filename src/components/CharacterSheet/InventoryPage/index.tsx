@@ -20,7 +20,7 @@ export function InventoryPage({
 }: {
     char?: Character;
     visible?: boolean;
-}): JSX.Element {
+}): React.JSX.Element {
     const inventory = char?.inventory || new Inventory({});
     const carryCapacity = pounds((char?.stats || new Stats({})).carry);
     const { t } = useTranslation();

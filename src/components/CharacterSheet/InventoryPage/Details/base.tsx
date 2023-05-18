@@ -18,7 +18,7 @@ const ItemLine = styled.p`
     ${lineStyle}
 `;
 
-function Slots({ shape }: { shape: Shape }): JSX.Element {
+function Slots({ shape }: { shape: Shape }): React.JSX.Element {
     const { t } = useTranslation();
     const sep = t('gear.slot.$separator');
     return (
@@ -34,7 +34,7 @@ const DetailLine: React.FC<{ h?: string; children: ReactChildren }> = ({
     h,
     children,
 }) => {
-    const H = (): JSX.Element =>
+    const H = (): React.JSX.Element =>
         h ? (
             <>
                 <b>{h}</b>:{' '}
@@ -57,7 +57,7 @@ const ToDoLine = styled.p`
     }
 `;
 
-function ToDo({ text }: { text: string }): JSX.Element {
+function ToDo({ text }: { text: string }): React.JSX.Element {
     return (
         <ToDoLine>
             <b>To Do</b>: {text}

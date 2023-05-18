@@ -50,7 +50,7 @@ interface ArmorRowArgs {
     skipEvasive?: boolean;
 }
 
-const EmptyTd = (): JSX.Element => <td></td>;
+const EmptyTd = (): React.JSX.Element => <td></td>;
 
 function ArmorRow({
     label,
@@ -58,7 +58,7 @@ function ArmorRow({
     values,
     skipPhysical = false,
     skipEvasive = false,
-}: ArmorRowArgs): JSX.Element {
+}: ArmorRowArgs): React.JSX.Element {
     return (
         <tr>
             <th>{label}</th>
@@ -117,7 +117,7 @@ function ArmorRow({
     );
 }
 
-export function Defenses({ char }: { char?: Character }): JSX.Element {
+export function Defenses({ char }: { char?: Character }): React.JSX.Element {
     const { t } = useTranslation();
     const armor = char?.armor;
     return (

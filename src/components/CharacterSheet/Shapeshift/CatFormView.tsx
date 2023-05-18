@@ -9,7 +9,7 @@ import Header from '../../helpers/Header';
 import { ShapeshiftViewContainer, useTransformation } from './base';
 import { Initiative } from '../MainPage/Initiative';
 
-function CatFormView({ char }: { char: Character }): JSX.Element {
+function CatFormView({ char }: { char: Character }): React.JSX.Element {
     const { t } = useTranslation();
     const catRank = char.classFeaturesCondensed.count('catForm');
     useTransformation(char, new CatForm({ rank: catRank }));

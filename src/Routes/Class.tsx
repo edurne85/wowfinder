@@ -7,7 +7,7 @@ interface ClassListProps {
     classes: { [key: string]: Class };
 }
 
-function ClassList({ classes }: ClassListProps): JSX.Element {
+function ClassList({ classes }: ClassListProps): React.JSX.Element {
     const classKeys = Object.keys(classes).sort();
     const { t } = useTranslation();
     return (

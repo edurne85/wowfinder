@@ -21,7 +21,11 @@ function classFeatureStrings(
     );
 }
 
-export default function Traits({ char }: { char?: Character }): JSX.Element {
+export default function Traits({
+    char,
+}: {
+    char?: Character;
+}): React.JSX.Element {
     const { t } = useTranslation();
     const lines: string[] = [];
     // TODO Racial traits

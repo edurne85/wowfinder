@@ -23,7 +23,7 @@ export function SpellRange({
 }: {
     efl: number;
     mode: CastingMode;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <RangeContainer>

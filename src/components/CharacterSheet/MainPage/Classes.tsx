@@ -39,7 +39,7 @@ function ClassPicker({
     selectedKey = null,
 }: {
     selectedKey?: string | null;
-}): JSX.Element {
+}): React.JSX.Element {
     const allClasses = Class.load();
     const { t } = useTranslation();
     const cKeys = Object.keys(allClasses);
@@ -66,7 +66,7 @@ function ClassEntry({
     cKey,
     level,
     first = false,
-}: ClassEntryArgs): JSX.Element {
+}: ClassEntryArgs): React.JSX.Element {
     const firstClass = first ? ' first-class' : '';
     return (
         <>
@@ -82,7 +82,11 @@ function ClassEntry({
 
 const maxClassCount = 12;
 
-export default function Classes({ char }: { char?: Character }): JSX.Element {
+export default function Classes({
+    char,
+}: {
+    char?: Character;
+}): React.JSX.Element {
     const pairs: { key: string; level: number }[] =
         char != null
             ? char.classes.map(c => ({ key: c.cls.key, level: c.level }))

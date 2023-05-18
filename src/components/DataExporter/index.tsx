@@ -8,7 +8,7 @@ interface ExportByCharacterSelectionProps {
 
 function ExportByCharacterSelection({
     data,
-}: ExportByCharacterSelectionProps): JSX.Element {
+}: ExportByCharacterSelectionProps): React.JSX.Element {
     return (
         <CharacterSelection
             chars={Object.values(data.chars)}

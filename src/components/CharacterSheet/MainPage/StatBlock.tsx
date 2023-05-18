@@ -63,7 +63,7 @@ const StyledTable = styled.table`
     border-spacing: 0;
 `;
 
-function StatHead(): JSX.Element {
+function StatHead(): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <tr id="trStatsTitles">
@@ -88,7 +88,7 @@ function StatRow({
     gear,
     misc,
     temp,
-}: StatRowBuilder): JSX.Element {
+}: StatRowBuilder): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <tr id={`tr${id}`}>
@@ -122,7 +122,7 @@ function StatRow({
     );
 }
 
-function StatBlock({ stats }: { stats?: Stats }): JSX.Element {
+function StatBlock({ stats }: { stats?: Stats }): React.JSX.Element {
     return (
         <StyledTable id="tblStats">
             <thead>
@@ -154,7 +154,11 @@ interface SimpleStatRowBuilder {
     mod: number;
 }
 
-function SimpleStatRow({ id, value, mod }: SimpleStatRowBuilder): JSX.Element {
+function SimpleStatRow({
+    id,
+    value,
+    mod,
+}: SimpleStatRowBuilder): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <tr id={`tr${id}`}>
@@ -169,7 +173,7 @@ function SimpleStatRow({ id, value, mod }: SimpleStatRowBuilder): JSX.Element {
     );
 }
 
-function SimpleStatBlock({ stats }: { stats: StatSet }): JSX.Element {
+function SimpleStatBlock({ stats }: { stats: StatSet }): React.JSX.Element {
     return (
         <StyledTable id="tblStats">
             <tbody>

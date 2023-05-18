@@ -4,7 +4,7 @@ interface DescriptorsArgs {
     descriptors: Iterable<SpellDescriptor>;
 }
 
-function Descriptors({ descriptors }: DescriptorsArgs): JSX.Element {
+function Descriptors({ descriptors }: DescriptorsArgs): React.JSX.Element {
     const uniqueDescriptors = [...new Set(descriptors)];
     // TODO: Add translations
     return (
@@ -18,7 +18,9 @@ function Descriptors({ descriptors }: DescriptorsArgs): JSX.Element {
     );
 }
 
-function DescriptorsIfNeeded({ descriptors }: DescriptorsArgs): JSX.Element {
+function DescriptorsIfNeeded({
+    descriptors,
+}: DescriptorsArgs): React.JSX.Element {
     return [...descriptors].length > 0 ? (
         <Descriptors descriptors={descriptors} />
     ) : (
@@ -26,7 +28,11 @@ function DescriptorsIfNeeded({ descriptors }: DescriptorsArgs): JSX.Element {
     );
 }
 
-function DescriptorsIfNeededRaw({ raw }: { raw: SpellBase }): JSX.Element {
+function DescriptorsIfNeededRaw({
+    raw,
+}: {
+    raw: SpellBase;
+}): React.JSX.Element {
     return raw.descriptors ? (
         <DescriptorsIfNeeded descriptors={raw.descriptors} />
     ) : (
