@@ -1,3 +1,5 @@
+/* eslint-disable */
+/** @deprecated Use members in types/Item instead */
 enum GearSlot {
     mhand = 'mhand',
     ohand = 'ohand',
@@ -15,6 +17,7 @@ enum GearSlot {
     ring = 'ring', // Each
 }
 
+/** @deprecated Use members in types/Item instead */
 type Shape = { slot: GearSlot; qtty: number }[];
 
 function compactShape(shape: Shape): Shape {
@@ -50,6 +53,7 @@ const heads = (count = 1, earsPerHead = 2): Shape => [
     { slot: GearSlot.ear, qtty: count * earsPerHead },
 ];
 
+/** @deprecated Use members in types/Item instead */
 const Shapes = {
     Humanoid: compactShape([
         ...heads(),
@@ -62,6 +66,7 @@ const Shapes = {
     ]),
 };
 
+/** @deprecated Use members in types/Item instead */
 function buildShape(slots: string[]): Shape {
     const slotCounts: { [s: string]: number } = {};
     for (const s of slots) {
@@ -81,6 +86,7 @@ function gt0(qtty: number): boolean {
     return Math.floor(qtty) > 0;
 }
 
+/** @deprecated Use members in types/Item instead */
 function explodeShape(shape: Shape): string[] {
     const res: string[] = [];
     for (const elem of shape.filter(shape => gt0(shape.qtty))) {

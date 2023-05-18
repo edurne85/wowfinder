@@ -1,7 +1,9 @@
+/* eslint-disable */
 import Armor from './Armor';
 import Gear from './base';
 import Weapon from './Weapon';
 
+/** @deprecated Use members in types/Item instead */
 function buildGear(raw: any): Gear {
     if (raw instanceof Gear) {
         return raw;
