@@ -17,10 +17,6 @@
             melee: 'CaC',
         },
         damage: 'Daño',
-        /** @deprecated */
-        baseDamage: 'Daño base',
-        /** @deprecated */
-        bonusDamage: 'Daño adicional',
         intrinsic: 'Modificador',
     },
     load: {
