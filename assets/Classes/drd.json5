@@ -1,5 +1,7 @@
 {
     key: 'drd',
+    tier: 'base',
+    maxLevel: 20,
     hd: 8,
     bab: 0.75,
     skl: 4,
