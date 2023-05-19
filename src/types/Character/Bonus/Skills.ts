@@ -1,4 +1,4 @@
-import { Skill, SkillSet } from '../Skills';
+import { Skill, SkillSet } from '../Skill';
 import { sum } from '../../../utils';
 
 export default class SkillsBonus {

@@ -1,6 +1,6 @@
 import { forceDataLoadKeyS } from '../../../utils';
 import { Money } from '../../Item';
-import { Skill } from '../Skills';
+import { Skill } from '../Skill';
 import { StatSet } from '../Stats';
 import { Aura, AurasList } from './Aura';
 import { ClassBonuses } from './ClassBonuses';

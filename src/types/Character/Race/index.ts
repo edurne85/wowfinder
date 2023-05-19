@@ -2,7 +2,7 @@ import { forceDataLoadKeyS } from '../../../utils';
 import Language, { defaultLang } from '../../Language';
 import Alignment, { playableAlignments } from '../Alignment';
 import Size from '../Size';
-import { SkillSet } from '../Skills';
+import { SkillSet } from '../Skill';
 import { SpeedBuilder, Speeds } from '../Speeds';
 import { StatSet, zeroDefault as statsZero } from '../Stats';
 
