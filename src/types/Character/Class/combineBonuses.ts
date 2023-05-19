@@ -1,8 +1,7 @@
-import { Skill } from '../Skills';
+import { Skill } from '../Skill';
 import { StatSet, statMod } from '../Stats';
-import { ClassLevels } from './base';
 import { ClassBonuses } from './ClassBonuses';
-import { hdFirst, hdAverage } from './helpers';
+import { hdFirst, hdAverage, ClassLevels } from './helpers';
 
 function combineClassBonuses(
     classLevels: ClassLevels,

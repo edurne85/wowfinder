@@ -1,4 +1,4 @@
-import { Skill } from '../Skills';
+import { Skill } from '../Skill';
 import { ClassFeature } from './Features';
 
 interface ClassBonuses {

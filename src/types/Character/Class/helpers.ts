@@ -1,4 +1,4 @@
-import { Skill } from '../Skills';
+import { Skill } from '../Skill';
 import { Aura, AurasList } from './Aura';
 import { ClassFeature, FeaturesList } from './Features';
 import type { Class } from './index';
