@@ -21,6 +21,7 @@ import {
 class Class {
     #key: string;
     #tier: ClassTier;
+    #maxLevel: number;
     #hd: number;
     #bab: number;
     #saves: SavesProgression;
@@ -34,6 +35,7 @@ class Class {
     constructor(rawArgs: ClassBuilder) {
         const args = applyClassDefaults(rawArgs);
         this.#key = args.key;
+        this.#maxLevel = args.maxLevel;
         this.#tier = args.tier;
         this.#hd = args.hd;
         this.#bab = args.bab;
@@ -60,6 +62,10 @@ class Class {
 
     get tier(): ClassTier {
         return this.#tier;
+    }
+
+    get maxLevel(): number {
+        return this.#maxLevel;
     }
 
     get hitDie(): number {

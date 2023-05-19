@@ -7,6 +7,7 @@ type RawFeaturesEntry = ClassFeatureEntry | AuraEntry;
 interface ClassBuilder {
     key: string;
     tier?: ClassTier;
+    maxLevel?: number;
     hd: number;
     bab: number;
     fort?: boolean;
@@ -36,7 +37,10 @@ const classBuilderDefaults = {
 } satisfies Partial<ClassBuilder>;
 
 function applyClassDefaults(builder: ClassBuilder): Required<ClassBuilder> {
-    return { ...classBuilderDefaults, ...builder };
+    const res = { ...classBuilderDefaults, ...builder };
+    const maxLevel =
+        res.maxLevel ?? (res.tier === ClassTier.prestige ? 10 : 20);
+    return { ...res, maxLevel };
 }
 
 function preBuild(raw: any): Required<ClassBuilder> {
