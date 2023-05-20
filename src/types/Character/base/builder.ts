@@ -67,7 +67,6 @@ interface CharacterExport extends CharacterPersonalExport {
     classes: { cls: string; level: number }[];
     active: boolean;
     skillRanks: SkillRanks;
-    resistances: ResistancesExport;
     inventory: InventoryExport;
 }
 
