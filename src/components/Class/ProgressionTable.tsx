@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Class } from '../../types/Character/Class';
+import { Class, baseHitPoints } from '../../types/Character/Class';
 import { useTranslation } from 'react-i18next';
 
 const ProgresstionTableWrapper = styled.table`
@@ -30,9 +30,12 @@ function ProgressionRow({
     cls,
 }: ProgressionRowProps): React.JSX.Element {
     const { t } = useTranslation();
+    const [base, extra] = baseHitPoints(cls.hitDie);
+    const hp = `${base * level} (${base * level + extra})`;
     return (
         <tr>
             <td>{level}</td>
+            <td>{hp}</td>
             <td>+{Math.floor(cls.baseAttack * level)}</td>
             <td>{saveAtLevel(cls.saves.fortitude, level)}</td>
             <td>{saveAtLevel(cls.saves.reflexes, level)}</td>
@@ -59,6 +62,7 @@ function ProgressionTable({ cls }: ProgressionTableProps): React.JSX.Element {
             <thead>
                 <tr>
                     <th>{t('class.ui.level')}</th>
+                    <th>{t('class.ui.hp')}</th>
                     <th>{t('class.ui.bab')}</th>
                     <th>{t('class.ui.fort')}</th>
                     <th>{t('class.ui.refl')}</th>

@@ -18,6 +18,11 @@ import {
     mapFeatures,
 } from './helpers';
 
+function baseHitPoints(hd: number): [number, number] {
+    const base = Math.ceil((hd + 1) / 2);
+    const extra = hd - base;
+    return [base, extra];
+}
 class Class {
     #key: string;
     #tier: ClassTier;
@@ -133,4 +138,4 @@ class Class {
 }
 
 export type { Classes, ClassLevels, ClassBonuses };
-export { ClassFeature, Class };
+export { ClassFeature, Class, baseHitPoints };

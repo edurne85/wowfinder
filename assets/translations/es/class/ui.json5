@@ -1,8 +1,15 @@
 {
     level: 'Nivel',
     bab: 'AB',
+    hp: 'PG',
     fort: 'Fort',
     refl: 'Refl',
     will: 'Vol',
     features: 'Rasgos y habilidades',
+    hd: 'Dado de golpe',
+    skillRanks: 'Rangos de habilidad',
+    perLevel: 'por nivel',
+    classSkills: 'Habilidades de clase',
+    maxLevel: 'Nivel máximo',
+    initialWealth: 'Riqueza inicial',
 }
