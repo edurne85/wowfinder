@@ -75,7 +75,6 @@ abstract class CharacterBase {
     }
 
     export(): CharacterBaseExport {
-        console.log('#baseResistances', this.#baseResistances);
         return {
             key: this.#key,
             featChoices: exportFeatchChoices(...this.#featChoices),

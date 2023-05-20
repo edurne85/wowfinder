@@ -275,7 +275,6 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
             })),
             active: this.#active,
             skillRanks: this.#skillRanks,
-            resistances: this.#resistances.export(),
             inventory: this.#inventory.export(),
         };
     }
