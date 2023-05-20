@@ -12,4 +12,5 @@
     classSkills: 'Class skills',
     maxLevel: 'Max level',
     initialWealth: 'Initial wealth',
+    progression: 'Progression',
 }

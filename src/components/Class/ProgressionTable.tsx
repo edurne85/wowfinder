@@ -37,9 +37,9 @@ function ProgressionRow({
             <td>{level}</td>
             <td>{hp}</td>
             <td>+{Math.floor(cls.baseAttack * level)}</td>
-            <td>{saveAtLevel(cls.saves.fortitude, level)}</td>
-            <td>{saveAtLevel(cls.saves.reflexes, level)}</td>
-            <td>{saveAtLevel(cls.saves.will, level)}</td>
+            <td>+{saveAtLevel(cls.saves.fortitude, level)}</td>
+            <td>+{saveAtLevel(cls.saves.reflexes, level)}</td>
+            <td>+{saveAtLevel(cls.saves.will, level)}</td>
             <td className="classFeatures">
                 {cls
                     .featuresAt(level)
