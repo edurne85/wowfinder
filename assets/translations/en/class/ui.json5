@@ -1,0 +1,8 @@
+{
+    level: 'level',
+    bab: 'BaB',
+    fort: 'Fort',
+    refl: 'Refl',
+    will: 'Will',
+    features: 'Features and abilities',
+}

@@ -1,0 +1,8 @@
+{
+    level: 'Nivel',
+    bab: 'AB',
+    fort: 'Fort',
+    refl: 'Refl',
+    will: 'Vol',
+    features: 'Rasgos y habilidades',
+}

@@ -96,6 +96,12 @@ class Class {
         return [...this.#features];
     }
 
+    featuresAt(level: number): ClassFeature[] {
+        return this.#features
+            .filter(f => f.level === level)
+            .map(f => f.feature);
+    }
+
     features(level: number): ClassFeature[] {
         return this.#features.filter(f => f.level <= level).map(f => f.feature);
     }

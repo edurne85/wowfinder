@@ -1,8 +1,21 @@
-import { RouteProvider, TitlesProvider, WiP } from './base';
-import { Link } from 'react-router-dom';
+import { RouteProvider, TitlesProvider } from './base';
+import { Link, useParams } from 'react-router-dom';
 import { Class } from '../types/Character/Class';
 import { useTranslation } from 'react-i18next';
+import { FullData } from '../types/FullData';
+import { ClassView } from '../components/Class/ClassView';
 
+function ClassViewWrapper({ data }: { data: FullData }): React.JSX.Element {
+    let { class: cls } = useParams<'class'>();
+    if (!cls) {
+        throw new Error('No class param');
+    }
+    cls = cls.replace(/^:/, '');
+    if (!data.classes[cls]) {
+        throw new Error(`No class ${cls}`);
+    }
+    return <ClassView cls={data.classes[cls]} />;
+}
 interface ClassListProps {
     classes: { [key: string]: Class };
 }
@@ -29,7 +42,7 @@ const classRoutes: RouteProvider = data => {
         },
         {
             path: '/classes/:class',
-            element: <WiP />,
+            element: <ClassViewWrapper data={data} />,
         },
     ];
 };
