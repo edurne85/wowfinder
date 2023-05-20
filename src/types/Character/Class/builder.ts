@@ -44,7 +44,7 @@ function applyClassDefaults(builder: ClassBuilder): Required<ClassBuilder> {
 }
 
 function preBuild(raw: any): Required<ClassBuilder> {
-    // TODO validate input
+    // TODO #446: validate input
     return applyClassDefaults(raw as ClassBuilder);
 }
 

@@ -9,15 +9,15 @@ const combatBaseFeats: { [key in CombatBaseFeat]: FeatSpec } = {
     agileManeuvers: build.combat(Feat.agileManeuvers),
     arcaneArmorTraining: feat(
         Feat.arcaneArmorTraining,
-        allOf(req.level.caster(3)), // TODO Add requirement: Proficiency w/ light armor
+        allOf(req.level.caster(3)), // TODO #441: Add requirement: Proficiency w/ light armor
         [FeatFlag.combat, FeatFlag.magic],
     ),
     arcaneArmorMastery: feat(
         Feat.arcaneArmorMastery,
-        allOf(...req.feats(Feat.arcaneArmorTraining), req.level.caster(7)), // TODO medium armor
+        allOf(...req.feats(Feat.arcaneArmorTraining), req.level.caster(7)), // TODO #441: medium armor
         [FeatFlag.combat, FeatFlag.magic],
     ),
-    // TODO Add requirement: arcane casting
+    // TODO #442: Add requirement: arcane casting
     arcaneStrike: feat(Feat.arcaneStrike, undefined, [
         FeatFlag.combat,
         FeatFlag.magic,

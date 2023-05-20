@@ -9,7 +9,7 @@ enum ElementalDescriptor {
 }
 
 enum BaseDescriptor {}
-// TODO: Add the rest of the descriptors
+// TODO #428: Add the rest of the descriptors
 
 const SpellDescriptor = {
     ...AlignmentDescriptor,

@@ -20,7 +20,7 @@
         fly: 40,
         maneuverability: 'average',
     },
-    /* TODO
+    /* TODO #463
         Darkvision: 60'
         +2 saving throws against disease and mind-affecting effects
         Resistance to energy drain

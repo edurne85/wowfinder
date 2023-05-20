@@ -79,7 +79,7 @@ for (const w of allWeapons) {
 
 Object.freeze(partialWeaponFeats);
 
-// TODO Add unit test to ensure completeness
+// TODO #444: Add unit test to ensure completeness
 const weaponFeats = partialWeaponFeats as WeaponFeatSpecs;
 
 export { weaponFeats };

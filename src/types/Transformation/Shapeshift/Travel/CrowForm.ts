@@ -23,7 +23,7 @@ class CrowForm extends Shapeshift {
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),
-            /* TODO:
+            /* TODO: #427 (epic)
                 Rules for this form are still WiP
                 Natural attacks: weak bite (1d4)
              */

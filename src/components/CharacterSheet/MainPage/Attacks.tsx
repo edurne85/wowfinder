@@ -94,7 +94,7 @@ export function Attacks({ char }: { char?: Character }): React.JSX.Element {
     const { t } = useTranslation();
     const bab = char?.classBonuses.bab;
     const stats = char?.stats.totalMods;
-    // TODO Add actual support for sizeMod gear, misc, temp modifiers
+    // TODO #458: Add actual support for sizeMod gear, misc, temp modifiers
     return (
         <StyledTable>
             <thead>

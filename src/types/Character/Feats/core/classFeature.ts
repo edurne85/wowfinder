@@ -1,6 +1,6 @@
 const ClassFeatureFeat = {
     extraKi: 'extraKi',
-    // TODO Define corresponding class features to enable these feats:
+    // TODO #438: Define corresponding class features to enable these feats:
     // extraLayOnHands: 'extraLayOnHands',
     // extraMercy: 'extraMercy',
     // extraPerform: 'extraPerform',

@@ -21,7 +21,7 @@ function GearDetails({ gear }: { gear: Gear }): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <>
-            <DetailLine h={t('charsheet.inventory.gear.slot')}>
+            <DetailLine h={t('charsheet.inventory.gear.slot') || undefined}>
                 <Slots shape={gear.shape} />
             </DetailLine>
             <WeaponDetailsWrapped item={gear} />
@@ -38,7 +38,7 @@ function GearDetailsWrapped({ item }: { item: Item }): React.JSX.Element {
 }
 
 function ItemDetails({ item }: { item: Item }): React.JSX.Element {
-    // TODO Implement
+    // TODO #276, #277, #278, #278 Implement
     const { t } = useTranslation();
     return (
         <ItemDetailsContainer className="details">
@@ -46,7 +46,7 @@ function ItemDetails({ item }: { item: Item }): React.JSX.Element {
                 {t(`labels.items.gear.${item.label}`)}
             </ItemTitle>
             <GearDetailsWrapped item={item} />
-            <DetailLine h={t('charsheet.inventory.weight.h')}>
+            <DetailLine h={t('charsheet.inventory.weight.h') || undefined}>
                 {item.weight.toString()}
             </DetailLine>
         </ItemDetailsContainer>

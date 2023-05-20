@@ -29,7 +29,7 @@ function computeSkillTotal({
     const statBonus: number =
         secondary == null ? primary : Math.max(primary, secondary);
 
-    // TODO: Racial, Gear, Misc, Temp
+    // TODO #434: Racial, Gear, Misc, Temp
     return (
         statBonus +
         tRanks +

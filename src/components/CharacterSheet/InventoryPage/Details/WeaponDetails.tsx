@@ -42,8 +42,8 @@ function WeaponGrouping({ weapon }: { weapon: Weapon }): React.JSX.Element {
     const groups = Array.from(weapon.groups)
         .map(g => t(`gear.weapon.group.${g}`))
         .join(t('gear.weapon.group.$separator') ?? undefined);
-    const rank = `${weapon.rank}`; // TODO: localize
-    const proficiency = `${weapon.proficiency}`; // TODO: localize
+    const rank = `${weapon.rank}`; // TODO #461: localize
+    const proficiency = `${weapon.proficiency}`; // TODO #461: localize
     return (
         <DetailLine>
             {rank}: {proficiency} ({groups})

@@ -73,7 +73,7 @@ export function MainPage({
                                 <Header>{t('charsheet.initiative.h')}</Header>
                                 <Initiative char={char} />
                                 <Header>{t('charsheet.hitpoints.h')}</Header>
-                                {/* TODO: extra (misc) HP */}
+                                {/* TODO #456: extra (misc) HP */}
                                 <HitPoints
                                     bonuses={bonuses}
                                     misc={char?.miscHP}

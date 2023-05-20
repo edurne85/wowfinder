@@ -10,7 +10,7 @@ class FeatRequirement implements Requirement<Iterable<FeatSpec>> {
     }
 
     test(/* value: Iterable<Feat> */): boolean {
-        // TODO Implement
+        // TODO #435: Implement
         // Depends on actually supporting feats on characters
         return true;
     }
@@ -23,7 +23,7 @@ class CharacterFeatRequirement implements Requirement<Character> {
     }
 
     test(/* value: Character */): boolean {
-        // TODO: see parent
+        // TODO #435: see parent
         return true;
     }
 }

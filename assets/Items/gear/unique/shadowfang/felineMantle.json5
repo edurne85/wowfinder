@@ -12,12 +12,12 @@
         skills: {
             stealth: +4,
         },
-        // TODO Grant feat: Weapon finesse
+        // TODO #464: Grant feat: Weapon finesse
     },
     type: 'light',
     acBonus: +2,
     bonusType: 'dodge',
     asf: 0.2,
     flags: [],
-    // TODO Cat form bonuses
+    // TODO #464: Cat form bonuses
 }

@@ -44,7 +44,7 @@ export default class Gear extends Item implements BonusProvider {
             shape: explodeShape(gear.#shape),
             size: gear.#size,
             weight: gear.#weight,
-            bonuses: gear.#bonuses, // TODO make copy
+            bonuses: gear.#bonuses, // TODO #430: make copy
         });
     }
 
