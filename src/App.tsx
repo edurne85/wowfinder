@@ -14,6 +14,8 @@ import { getRoutes } from './Routes';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { debug, debugOutput, exportByCharsAsJsonAssets } from './utils';
 
+debugOutput('App', { debug, NODE_ENV: process.env.NODE_ENV });
+
 initTranslations();
 
 const data = FullData.load();
@@ -54,25 +56,23 @@ function PrintCharSheet(): React.JSX.Element {
     );
 }
 
-if (debug) {
-    console.log('Imported data', data);
-    console.log('Test components', {
-        Reputations,
-        RewTable,
-        CharList,
-        TestCharSheet,
-        PrintCharSheet,
-        TestSpell,
-    });
-    debugOutput('Players', {
-        naia: exportByCharsAsJsonAssets(data, 'garet', 'benel'),
-        andrea: exportByCharsAsJsonAssets(data, 'keina'),
-        estanis: exportByCharsAsJsonAssets(data, 'mythea'),
-        alex: exportByCharsAsJsonAssets(data, 'dael'),
-        txema: exportByCharsAsJsonAssets(data, 'bhuldirm'),
-        joana: exportByCharsAsJsonAssets(data, 'arianna', 'kaliri'),
-    });
-}
+debugOutput('Imported data', data);
+debugOutput('Test components', {
+    Reputations,
+    RewTable,
+    CharList,
+    TestCharSheet,
+    PrintCharSheet,
+    TestSpell,
+});
+debugOutput('Players', {
+    naia: exportByCharsAsJsonAssets(data, 'garet', 'benel'),
+    andrea: exportByCharsAsJsonAssets(data, 'keina'),
+    estanis: exportByCharsAsJsonAssets(data, 'mythea'),
+    alex: exportByCharsAsJsonAssets(data, 'dael'),
+    txema: exportByCharsAsJsonAssets(data, 'bhuldirm'),
+    joana: exportByCharsAsJsonAssets(data, 'arianna', 'kaliri'),
+});
 
 const routes = getRoutes(data);
 const router = createHashRouter(routes);

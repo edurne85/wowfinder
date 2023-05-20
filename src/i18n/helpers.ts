@@ -8,7 +8,7 @@ function baseName(path: string): string {
 
 function filesAndDirs(basePath: string): string[] {
     return [
-        ...window.Files.getFiles(basePath, 'json5'),
+        ...window.Files.getFiles(basePath, 'i18n'),
         ...window.Files.getDirectories(basePath),
     ];
 }
