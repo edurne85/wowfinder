@@ -66,7 +66,7 @@ export function InventoryPage({
                         id: 'GearRight',
                         children: (
                             <>
-                                <Money ammount={inventory.money.raw}></Money>
+                                <Money money={inventory.money}></Money>
                                 <Header>
                                     {t('charsheet.inventory.possessions')}
                                 </Header>
