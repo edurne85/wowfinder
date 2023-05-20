@@ -17,7 +17,7 @@ function classFeatureStrings(
     t: (key: string) => string,
 ): string[] {
     return char.classFeaturesCondensed.list.map(({ feature, count }) =>
-        classFeatureString(t(`classFeatures.${feature}`), count),
+        classFeatureString(t(`class.features.${feature}`), count),
     );
 }
 
