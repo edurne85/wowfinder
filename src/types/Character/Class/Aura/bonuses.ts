@@ -35,44 +35,6 @@ const auraBonuses: { [key in Aura]: AuraBonus } = {
             }),
             resistances: new ResistBonus(fillResistBonus({}, rank * 1)),
         }),
-    [Aura.bear]: (rank: number) =>
-        new Bonus({
-            type: BonusType.aura,
-            stats: new StatsBonus({
-                STR: rank * 6,
-                CON: rank * 6,
-            }),
-        }),
-    [Aura.cat]: (rank: number) =>
-        new Bonus({
-            type: BonusType.aura,
-            stats: new StatsBonus({
-                DEX: rank * 6,
-            }),
-            // TODO: + (15 * rank)' base speed
-        }),
-    [Aura.moon]: (rank: number) =>
-        new Bonus({
-            // TODO Pending testing & review!
-            type: BonusType.aura,
-            stats: new StatsBonus({
-                CHA: rank * 6,
-            }),
-            // TODO + (6 * rank) hit (touch)
-        }),
-    [Aura.root]: (rank: number) =>
-        new Bonus({
-            // TODO Pending testing & review!
-            type: BonusType.aura,
-            stats: new StatsBonus({
-                WIS: rank * 6,
-            }),
-            resistances: new ResistBonus({
-                bludgeoning: rank * 4,
-                slashing: rank * 4,
-                piercing: rank * 4,
-            }),
-        }),
     [Aura.mysterious]: (rank: number) =>
         new Bonus({
             // Misterious Fortitude (ora)

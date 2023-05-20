@@ -25,8 +25,8 @@
     speeds: {
         base: 30,
     },
-    /* TODO
-        Ancient Foe: 
+    /* TODO #463
+        Ancient Foe: Demons
         Defensive training: Demons
         Eternal Hope
         Lightbringer

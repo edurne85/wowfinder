@@ -28,10 +28,9 @@ export default function Traits({
 }): React.JSX.Element {
     const { t } = useTranslation();
     const lines: string[] = [];
-    // TODO Racial traits
+    // TODO #457: Racial traits
     lines.push(...(char ? classFeatureStrings(char, t) : []));
     lines.push(...(char?.validFeats || []));
-    // TODO: feats
     lines.splice(maxLines);
     lines.push(...Array(maxLines - lines.length));
     return <TraitsContainer>{mapLines(lines, 'TraitsLine-')}</TraitsContainer>;

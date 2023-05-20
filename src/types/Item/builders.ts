@@ -5,7 +5,7 @@ import { Ore } from './Good';
 
 const builderByTypeKey: { [key: string]: builder<Item> } = {
     Gear: Gear.build,
-    Accessory: Gear.build, // TODO Review: specific class & builder needed?
+    Accessory: Gear.build, // TODO #429: Review: specific class & builder needed?
     Weapon: Weapon.build,
     Armor: Armor.build,
     Ore: Ore.build,

@@ -19,7 +19,7 @@ class StagForm extends Shapeshift {
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),
-            /* TODO:
+            /* TODO: #427 (epic)
                 Rules for this form are still WiP
                 Bonus: running endurance
                 Bonus: enhanced carrying capacity (up to 2 passengers)

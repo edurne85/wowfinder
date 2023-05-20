@@ -45,7 +45,7 @@ interface BonusBuilder {
     vitalNeeds?: VitalNeeds;
     senses?: Senses;
     spellPower?: SpellPowerBonus;
-    // TODO Speed
+    // TODO #448: Speed
 }
 
 class Bonus {

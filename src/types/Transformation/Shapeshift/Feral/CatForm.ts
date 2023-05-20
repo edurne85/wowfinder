@@ -17,7 +17,7 @@ class CatForm extends Shapeshift {
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),
-            /* TODO:
+            /* TODO: #427 (epic)
                 Stealth: +8 +4 * rank
                 Natural attacks: 2 sharp claws (1d6) and weak bite (1d4)
                 Threat multiplier: x½

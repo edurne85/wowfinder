@@ -10,7 +10,7 @@ const FighterClassFeature = {
 type FighterClassFeature = keyof typeof FighterClassFeature;
 
 const fighter = {
-    // TODO: Review (updated since fighter class revamp?)
+    // TODO #447: Review (updated since fighter class revamp?)
     weaponTrainingBonuses: function (eLevel: number): number[] {
         const result: number[] = [];
         let count = 0;

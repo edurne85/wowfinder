@@ -12,5 +12,5 @@
     acp: 1,
     asf: 0.1,
     flags: ['metal'],
-    // TODO: Weapon stats
+    // TODO #464: Weapon stats
 }

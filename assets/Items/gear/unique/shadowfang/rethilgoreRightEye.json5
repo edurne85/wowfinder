@@ -11,8 +11,7 @@
             divine: +2,
             spontaneous: +2,
         },
-        // TODO Max sanity: -2
-        // TODO 1/enc: restore up to 2 levels worth of arcane slots
-    }
-
+        // TODO #464: Max sanity: -2
+        // TODO #464: 1/enc: restore up to 2 levels worth of arcane slots
+    },
 }

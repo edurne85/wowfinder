@@ -47,12 +47,12 @@ interface SkillArgs {
     statMods?: StatSet;
     ranks: number;
     isClass: boolean;
-    // TODO Racial bonus
+    // TODO #454: Racial bonus
     size: Size;
     gear: number;
-    // TODO Misc bonuses
-    // TODO ACP
-    // TODO Temp bonuses
+    // TODO #454: Misc bonuses
+    // TODO #454: ACP
+    // TODO #454: Temp bonuses
 }
 
 const trainedClassSkillBonus = 3;

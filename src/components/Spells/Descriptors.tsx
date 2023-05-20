@@ -6,7 +6,7 @@ interface DescriptorsArgs {
 
 function Descriptors({ descriptors }: DescriptorsArgs): React.JSX.Element {
     const uniqueDescriptors = [...new Set(descriptors)];
-    // TODO: Add translations
+    // TODO: #425: i18n
     return (
         <div className="spell-descriptors">
             {uniqueDescriptors.map((descriptor, index) => (

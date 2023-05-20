@@ -9,9 +9,9 @@
         stats: {
             INT: +4,
         },
-        /* TODO Trigger: creature in Short range fails sanity test:
+        /* TODO #464: Trigger: creature in Short range fails sanity test:
             May attempt: absorb mental energy
             https://docs.google.com/document/d/13Vrlk8UHMLDSjLbU58NWEy3joKJOw95U3EDIW6Ta74U/edit
          */
-    }
+    },
 }

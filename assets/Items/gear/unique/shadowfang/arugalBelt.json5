@@ -15,8 +15,8 @@
             WIS: +2,
             CHA: +2,
         },
-        // TODO: extra shapeshift per turn
-        // TODO: cursed wolf form
+        // TODO #464: extra shapeshift per turn
+        // TODO #464: cursed wolf form
     },
     type: 'misc',
 }

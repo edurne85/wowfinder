@@ -29,13 +29,13 @@ enum PageType {
 const pageTypes: { [keys in PageType]: React.FC<PageArgs> } = {
     [PageType.main]: MainPage,
     [PageType.skills]: SkillsPage,
-    /* TODO / WIP */ [PageType.inventory]: InventoryPage,
-    /* TODO / WIP */ [PageType.magic]: MagicPage,
-    /* TODO */ [PageType.spells]: () => <></>,
-    /* TODO / WIP */ [PageType.feral]: FeralForms,
-    /* TODO */ [PageType.travel]: () => <></>,
-    /* TODO */ [PageType.moonkin]: () => <></>,
-    /* TODO */ [PageType.tree]: () => <></>,
+    /* TODO #449 (epic) (WIP) */ [PageType.inventory]: InventoryPage,
+    /* TODO #450 (epic) (WIP) */ [PageType.magic]: MagicPage,
+    /* TODO #451 (epic) */ [PageType.spells]: () => <></>,
+    [PageType.feral]: FeralForms,
+    /* TODO #357 */ [PageType.travel]: () => <></>,
+    /* TODO #452 (epic) */ [PageType.moonkin]: () => <></>,
+    /* TODO #453 (epic) */ [PageType.tree]: () => <></>,
 };
 
 type TypedPageArgs = TypedPageBaseArgs & { type: PageType };

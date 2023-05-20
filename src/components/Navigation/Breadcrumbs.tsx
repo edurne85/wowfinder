@@ -50,7 +50,6 @@ function SlashChunkLink({
     );
 }
 
-// TODO / WiP: suport i18n
 function Breadcrumbs(): React.JSX.Element {
     const context = useContext(GlobalContext);
     const { t } = useTranslation();
@@ -61,11 +60,6 @@ function Breadcrumbs(): React.JSX.Element {
         .map(s => s.replace(/^:/, ''))
         .filter(s => s);
     const lastSlashIndex = slashChunks.length - 1;
-    // console.log({ path, slashChunks, lastSlashIndex });
-    /* const lastSlashChunk = slashChunks.length
-        ? slashChunks[lastSlashIndex]
-        : '';
-    // const dotChunks = lastSlashChunk.split('.'); */ // TODO
     return (
         <BreadcrumbsContainer>
             <span className="title">{t('navigation.address')}:</span>

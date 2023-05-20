@@ -68,7 +68,7 @@ class Adventure implements Exportable<AdventureExport> {
     }
 
     static build(raw: any): Adventure {
-        // TODO Validate props
+        // TODO #426: Validate props
         return new Adventure(raw);
     }
 

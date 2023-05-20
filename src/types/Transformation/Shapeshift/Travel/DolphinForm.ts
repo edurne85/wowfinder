@@ -19,7 +19,7 @@ class DolphinForm extends Shapeshift {
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),
-            /* TODO:
+            /* TODO: #427 (epic)
                 Special bonus: Hold breath (5 * CON rounds)
                 Special bonus: Ignore water pressure: 100'
                 Natural attacks: weak bite (1d4)

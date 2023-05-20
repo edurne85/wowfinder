@@ -18,7 +18,7 @@
     speeds: {
         base: 20,
     },
-    /* TODO
+    /* TODO #463
         Darkvision: 60'
         Defensive training: Lesser giants
         Greed

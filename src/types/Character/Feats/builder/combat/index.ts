@@ -11,25 +11,25 @@ const combatFeats: { [key in CombatFeat]: FeatSpec } = {
     ...combatBaseFeats,
     ...{
         // Combat expertise feats
-        // TODO
+        // TODO #443
     },
     ...{
         // Critical feats
-        // TODO
+        // TODO #443
     },
     ...combatMobilityFeats,
     ...{
         // Unarmed combat feats
-        // TODO
+        // TODO #443
     },
     ...{
         // Shooting feats
-        // TODO
+        // TODO #443
     },
     ...combatPowerFeats,
     ...{
         // Mounted combat feats
-        // TODO
+        // TODO #443
     },
     ...combatShieldFeats,
     ...combatDualWieldFeats,

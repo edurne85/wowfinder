@@ -5,7 +5,7 @@
     shape: ['mhand', 'ohand'],
     size: 0,
     weight: 4,
-    bonuses: {}, // TODO Bonus feat: twoWeaponFighting
+    bonuses: {}, // TODO #464: Bonus feat: twoWeaponFighting
     damage: [
         {
             types: ['bludgeoning'],
@@ -26,6 +26,6 @@
     flags: [],
     criticalRange: 20,
     criticalMultiplier: 2,
-    // TODO Shapeshifted bonuses!
-    // TODO Shillelagh bonuses
+    // TODO #464: Shapeshifted bonuses!
+    // TODO #464: Shillelagh bonuses
 }

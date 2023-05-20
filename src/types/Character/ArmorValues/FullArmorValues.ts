@@ -78,7 +78,7 @@ class FullArmorValues extends ArmorValues {
             shield: this.shield,
             dodge: 0,
             nat: this.nat,
-            defl: this.defl, // TODO Verify!
+            defl: this.defl,
             misc: this.misc + this.miscP,
             miscP: 0,
             miscE: 0,

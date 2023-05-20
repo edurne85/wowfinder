@@ -10,7 +10,7 @@ const build = {
     feature: (key: Feat, feature: ClassFeature, ...reqs: Reqs): FeatSpec =>
         feat(key, allOf(...reqs, ...req.features(feature)), [FeatFlag.class]),
     channelEnh: (key: Feat, ...reqs: Reqs): FeatSpec =>
-        // TODO Include sub-feature for granted channel abilities
+        // TODO #440 Include sub-feature for granted channel abilities
         feat(
             key,
             allOf(...reqs, either(...req.features(ClassFeature.channel))),
@@ -25,7 +25,7 @@ const build = {
 
 const classFeatureFeats: { [key in ClassFeatureFeat]: FeatSpec } = {
     // Class features (+ channel)
-    // TODO Include class feature requirements!
+    // TODO #439: Include class feature requirements!
     extraKi: build.feature(Feat.extraKi, ClassFeature.kiPool),
     extraRage: build.feature(Feat.extraRage, ClassFeature.rage),
     channelAlignment: build.channelType(Feat.channelAlignment),

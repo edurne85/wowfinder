@@ -23,7 +23,7 @@ class EagleForm extends Shapeshift {
             },
             featChoices: [],
             size: Shapeshift.defaultSize(rank),
-            /* TODO:
+            /* TODO: #427 (epic)
                 Rules for this form are still WiP
                 Natural attacks: 2 sharp claws (1d6) and weak bite (1d4)
              */

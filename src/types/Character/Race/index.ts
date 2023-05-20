@@ -58,7 +58,7 @@ export default class Race {
         Object.freeze((this._additional = [...additionalLangs]));
         Object.freeze((this._aligns = [...commonAligns]));
         Object.freeze(
-            // TODO Add speed data in race definitions!
+            // TODO #436: Add speed data in race definitions!
             (this._speeds = speeds ? new Speeds(speeds) : Speeds.default),
         );
         this._naturalArmor = naturalArmor || 0;
@@ -114,7 +114,7 @@ export default class Race {
     }
 
     static build(raw: any): Race {
-        // TODO Validate props
+        // TODO #437: Validate props
         return new Race(raw);
     }
 

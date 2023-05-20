@@ -9,7 +9,7 @@
         spellPower: {
             spontaneous: +2,
         },
-        // TODO: Advantage: Perception
-        // TODO: Spell mods (+1/d heal, -2/d damage to Heal Wounds, Inflict Wounds, and Channel)
-    }
+        // TODO #464: Advantage: Perception
+        // TODO #464: Spell mods (+1/d heal, -2/d damage to Heal Wounds, Inflict Wounds, and Channel)
+    },
 }

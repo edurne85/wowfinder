@@ -75,7 +75,6 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
         this.#resistances = Resistances.fromCategorized({
             misc: auras.resistances.values,
         });
-        // TODO Refine inventory / gear
         this.#inventory = new Inventory(inventory);
 
         this.#forceResetCache();
@@ -142,10 +141,10 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
         return new Saves({
             stats: this.stats,
             base: new SimpleSaves(this.classBonuses.saves),
-            enhance: SimpleSaves.zero, // TODO
+            enhance: SimpleSaves.zero, // TODO #432
             gear: new SimpleSaves(this.gearBonuses.saves),
-            misc: SimpleSaves.zero, // TODO
-            temp: SimpleSaves.zero, // TODO
+            misc: SimpleSaves.zero, // TODO #432
+            temp: SimpleSaves.zero, // TODO #432
         });
     }
 
@@ -280,7 +279,7 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
     }
 
     static build(raw: any): Character {
-        // TODO Validate props (https://github.com/edurne85/wowfinder/issues/281)
+        // TODO #281: Validate props
         return new Character(raw);
     }
 

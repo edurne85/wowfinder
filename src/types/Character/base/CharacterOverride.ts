@@ -5,10 +5,12 @@ import { CharacterBase } from './base';
 import type { CharacterOverrideBuilder } from './builder';
 
 class CharacterOverride extends CharacterBase {
-    // TODO: Support natural attacks
-    // TODO: Support natural armor
-    // TODO: Support special abilities
-    // TODO: Support skill bonuses
+    /* TODO: #433
+        Support natural attacks
+        Support natural armor
+        Support special abilities
+        Support skill bonuses
+     */
 
     constructor({ ...rest }: CharacterOverrideBuilder) {
         super({ ...rest, builderType: 'full' });

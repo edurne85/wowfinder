@@ -12,7 +12,7 @@
         resistances: {
             shadow: +2,
         },
-        // TODO: Cast: Light, rank 1; Ef.L: 1; at will; target: self (item)
+        // TODO #464: Cast: Light, rank 1; Ef.L: 1; at will; target: self (item)
     },
     damage: [
         {
