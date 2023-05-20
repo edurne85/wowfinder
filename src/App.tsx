@@ -9,10 +9,12 @@ import {
 } from './components';
 import { GlobalContext } from './components/helpers/GlobalContext';
 import { Spell } from './components/Spells';
-import './i18n';
+import { initTranslations } from './i18n';
 import { getRoutes } from './Routes';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { debug, debugOutput, exportByCharsAsJsonAssets } from './utils';
+
+initTranslations();
 
 const data = FullData.load();
 
