@@ -16,6 +16,8 @@ export const api = {
 
     asset: (asset: string): string => ipcRenderer.sendSync('asset', asset),
 
+    translationsPath: (): string => ipcRenderer.sendSync('translationsPath'),
+
     /**
      * Provide an easier way to listen to events
      */
