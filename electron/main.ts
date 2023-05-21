@@ -42,6 +42,9 @@ async function registerListeners(): Promise<void> {
     ipcMain.on('asset', (event, asset: string) => {
         event.returnValue = path.join(app.getPath('userData'), 'assets', asset);
     });
+    ipcMain.on('translationsPath', event => {
+        event.returnValue = path.join(sourceAssetsPath, 'translations');
+    });
     registerFilesListeners();
 }
 

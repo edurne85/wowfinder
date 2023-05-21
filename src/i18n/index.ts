@@ -9,7 +9,7 @@ type TranslationProvider = UseTranslationResponse<
 >['t'];
 
 function initTranslations(): void {
-    const translationsPath = window.Main.asset('translations');
+    const translationsPath = window.Main.translationsPath();
 
     const resources: Resource = {};
     function loadLang(lang: string): void {
