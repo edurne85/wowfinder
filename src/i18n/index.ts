@@ -2,6 +2,7 @@ import i18n, { Resource, TypeOptions } from 'i18next';
 import { initReactI18next, UseTranslationResponse } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { slurpRecursive } from './slurp';
+import { debug } from '../utils/debug';
 
 type TranslationProvider = UseTranslationResponse<
     TypeOptions['defaultNS']
@@ -26,7 +27,7 @@ function initTranslations(): void {
         .init({
             resources,
             fallbackLng: 'en',
-            debug: true,
+            debug,
             interpolation: {
                 escapeValue: false,
             },

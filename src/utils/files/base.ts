@@ -9,7 +9,11 @@ const filters: { [key: string]: fileFilter } = {
     any: () => true,
     json: s => /\.json$/i.test(s),
     json5: s => /\.json5?$/i.test(s),
-    i18n: s => /\.json5?$/i.test(s) || /\.txt$/i.test(s) || /\.html$/i.test(s),
+    i18n: s =>
+        /\.json5?$/i.test(s) ||
+        /\.txt$/i.test(s) ||
+        /\.md$/i.test(s) ||
+        /\.html$/i.test(s),
 };
 
 const prepareDir = (target: string): void => {
