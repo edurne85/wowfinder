@@ -23,6 +23,10 @@ function debugOutput(title: string, data?: any): void {
     debugCall({ func: console.log, title, data });
 }
 
+function debugError(title: string, data?: any): void {
+    debugCall({ func: console.error, title, data });
+}
+
 function debugTrace(title: string, data?: any): void {
     debugCall({ func: console.trace, title, data });
 }
@@ -42,4 +46,21 @@ function reportNotImplemented(key: string): void {
     });
 }
 
-export { debug, debugOutput, debugTrace, reportWiP, reportNotImplemented };
+function tryOrFallback<T>(action: () => T, fallback: T): T {
+    try {
+        return action();
+    } catch (ex: any) {
+        debugError(`Error: ${ex}`);
+        return fallback;
+    }
+}
+
+export {
+    debug,
+    debugOutput,
+    debugError,
+    debugTrace,
+    reportWiP,
+    reportNotImplemented,
+    tryOrFallback,
+};
