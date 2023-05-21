@@ -17,24 +17,4 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     ${screenZoom(1.6)}
   }
-  .rewards-table th {
-    font-weight: normal;
-    padding: 0.25em 0.5em;
-  }
-  .rewards-table tbody th {
-    text-align: left;
-  }
-  .rewards-table tbody td {
-    text-align: right;
-    font-family: Courier, mono;
-  }
-  .rewards-table tbody tr:hover {
-    background-color: #ff9;
-  }
-  .rewards-table tbody tr.inactive {
-    color: #A8A8AB;
-  }
-  .rewards-table tbody tr.inactive:hover {
-    background-color: #ccc;
-  }
 `;
