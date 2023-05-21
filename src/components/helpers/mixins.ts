@@ -22,16 +22,13 @@ const linkColors = `
 `;
 
 const screenZoomDefault = 1.6;
-const screenZoomMinWidthDefault = 900;
 
-const screenZoom = (
-    factor = screenZoomDefault,
-    minWidth = screenZoomMinWidthDefault,
-): string => `
-    @media screen and (min-width: ${minWidth}px) {
-        zoom: ${factor};
-    }
-`;
+function screenZoom(factor = screenZoomDefault, minWidth?: number): string {
+    const widthCondition = minWidth ? `and (min-width: ${minWidth}px)` : '';
+    return `@media screen ${widthCondition} {
+            zoom: ${factor};
+        }`;
+}
 
 const mainColor = `
     color: ${colors.black};

@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    ${screenZoom(1.6, 1225)}
+    ${screenZoom(1.6)}
   }
   .rewards-table th {
     font-weight: normal;
