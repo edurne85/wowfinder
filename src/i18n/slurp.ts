@@ -46,21 +46,25 @@ function slurpByExtension(fspath: string): Resource | string | null {
     return null;
 }
 
-function slurpRecursive(fspath: string): DeepRecord {
+function slurpRecursive(fspath: string): DeepRecord | string {
     const res: DeepRecord = {};
     if (window.Files.isDirectory(fspath)) {
         for (const subPath of filesAndDirs(fspath)) {
             const base = baseName(subPath);
             const fullPath = window.Files.resolvePath(fspath, subPath);
             Object.assign(res, { [base]: {} }, res);
-            Object.assign(res[base], slurpRecursive(fullPath));
+            const slurped = slurpRecursive(fullPath);
+            if (typeof slurped === 'string') {
+                res[base] = slurped;
+            } else {
+                Object.assign(res[base], slurped);
+            }
         }
     }
     const slurped = slurpByExtension(fspath);
     if (slurped) {
         if (typeof slurped === 'string') {
-            const base = baseName(fspath);
-            Object.assign(res, { [base]: slurped });
+            return slurped;
         } else {
             Object.assign(res, slurped, res);
         }
