@@ -35,12 +35,15 @@ function slurpByExtension(fspath: string): Resource | string | null {
         } else {
             debugError(`No file found at ${fspath}; ${extension} expected.`);
         }
-    } else {
-        for (const ext of defaultExtensions) {
-            const suffixedPath = `${fspath}.${ext}`;
-            if (window.Files.isFile(suffixedPath)) {
-                return getSlurper(ext)(suffixedPath);
-            }
+    }
+    return null;
+}
+
+function slurpByDefaultExtensions(fspath: string): Resource | string | null {
+    for (const ext of defaultExtensions) {
+        const suffixedPath = `${fspath}.${ext}`;
+        if (window.Files.isFile(suffixedPath)) {
+            return getSlurper(ext)(suffixedPath);
         }
     }
     return null;
@@ -61,7 +64,9 @@ function slurpRecursive(fspath: string): DeepRecord | string {
             }
         }
     }
-    const slurped = slurpByExtension(fspath);
+    const slurped = window.Files.isFile(fspath)
+        ? slurpByExtension(fspath)
+        : slurpByDefaultExtensions(fspath);
     if (slurped) {
         if (typeof slurped === 'string') {
             return slurped;
