@@ -14,9 +14,13 @@ module.exports = {
                     config: './webpack/renderer.webpack.js',
                     entryPoints: [
                         {
-                            html: './src/index.html',
-                            js: './src/renderer.tsx',
+                            main: '.webpack/main',
+                            html: './public/index.html',
+                            js: './src/index.tsx',
                             name: 'main_window',
+                            preload: {
+                                js: './electron/bridge.ts',
+                            },
                         },
                     ],
                 },
@@ -32,7 +36,6 @@ module.exports = {
         },
         {
             name: '@electron-forge/maker-zip',
-            platforms: ['darwin'],
         },
         {
             name: '@electron-forge/maker-deb',
@@ -41,6 +44,9 @@ module.exports = {
         {
             name: '@electron-forge/maker-rpm',
             config: {},
+        },
+        {
+            name: '@electron-forge/maker-dmg',
         },
     ],
 };
