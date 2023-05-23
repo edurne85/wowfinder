@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 import { FullData } from './types/FullData';
 import {
@@ -7,12 +7,22 @@ import {
     Reputations,
     RewardsTable,
 } from './components';
-import { GlobalContext } from './components/helpers/GlobalContext';
+import {
+    GlobalContext,
+    GlobalContextType,
+} from './components/helpers/GlobalContext';
 import { Spell } from './components/Spells';
 import { initTranslations } from './i18n';
 import { getRoutes } from './Routes';
 import { GlobalStyle } from './styles/GlobalStyle';
-import { debug, debugOutput, exportByCharsAsJsonAssets } from './utils';
+import {
+    assertDefined,
+    assertNonNull,
+    debug,
+    debugOutput,
+    exportByCharsAsJsonAssets,
+} from './utils';
+import { LoadingStages, SplashWrapper } from './components/Splash';
 
 debugOutput('App', { debug, NODE_ENV: process.env.NODE_ENV });
 
@@ -74,17 +84,43 @@ debugOutput('Players', {
     joana: exportByCharsAsJsonAssets(data, 'arianna', 'kaliri'),
 });
 
-const routes = getRoutes(data);
-const router = createHashRouter(routes);
+type SetStage = (stage: LoadingStages) => void;
+
+let loadStarted = false;
+function preLoad(context: GlobalContextType, setStage: SetStage): void {
+    if (loadStarted) return;
+    loadStarted = true;
+    setTimeout(() => {
+        setStage(LoadingStages.loading);
+        context.data = FullData.load();
+        assertDefined(context.data);
+        context.routes = getRoutes(context.data);
+        context.router = createHashRouter(context.routes);
+        setStage(LoadingStages.done);
+    }, 0);
+}
 
 export function App(): React.JSX.Element {
     const context = useContext(GlobalContext);
-    context.routes = routes;
+    const [stage, setStage] = useState<LoadingStages | null>(null);
+    preLoad(context, setStage);
+    // context.routes = routes;
     return (
-        <GlobalContext.Provider value={context}>
+        <>
             <GlobalStyle />
-            {/* <TestSpell spellKey='enlargePerson' /> */}
-            <RouterProvider router={router} />
-        </GlobalContext.Provider>
+            <SplashWrapper
+                stage={stage}
+                finalStage={LoadingStages.done}
+                FollowUp={() => {
+                    assertNonNull(context.router);
+                    return (
+                        <>
+                            {/* <TestSpell spellKey='enlargePerson' /> */}
+                            <RouterProvider router={context.router} />
+                        </>
+                    );
+                }}
+            />
+        </>
     );
 }

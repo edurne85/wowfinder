@@ -24,7 +24,7 @@ const LogoImg = styled.img`
     aspect-ratio: auto 481 / 178;
 `;
 
-const logoSrc = window.Main.asset('charsheet-logo.png');
+const logoSrc = window.Main.builtin('logo.png');
 
 export function MainPage({
     char,

@@ -1,0 +1,6 @@
+{
+    title: 'WowFinder',
+    stages: {
+        loading: 'Cargando...',
+    },
+}

@@ -1,6 +1,6 @@
 export type Validator<T> = (value: T) => boolean;
 
-export { assertDefined } from './assertions';
+export { assertDefined, assertNonNull } from './assertions';
 export {
     forceDataLoad,
     forceDataLoadKeyLabel,

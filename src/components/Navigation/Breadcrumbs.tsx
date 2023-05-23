@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { getCustomTitle } from '../../Routes';
 import { useTranslation } from 'react-i18next';
 import { TranslationProvider } from '../../i18n';
+import { assertDefined } from '../../utils';
 
 const BreadcrumbsContainer = styled.div`
     display: inline-block;
@@ -53,6 +54,7 @@ function SlashChunkLink({
 function Breadcrumbs(): React.JSX.Element {
     const context = useContext(GlobalContext);
     const { t } = useTranslation();
+    assertDefined(context.data);
     const titleResolver = titlesResolver(t, getCustomTitle(context.data));
     const path = window.location.hash.replace(/^#\//, '');
     const slashChunks = path
