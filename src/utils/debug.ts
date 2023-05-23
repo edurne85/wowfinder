@@ -27,6 +27,14 @@ function debugError(title: string, data?: any): void {
     debugCall({ func: console.error, title, data });
 }
 
+function debugGroup(title: string, data?: any): void {
+    debugCall({ func: console.groupCollapsed, title, data });
+}
+
+function debugGroupEnd(): void {
+    debugCall({ func: console.groupEnd, title: '' });
+}
+
 function debugTrace(title: string, data?: any): void {
     debugCall({ func: console.trace, title, data });
 }
@@ -59,6 +67,8 @@ export {
     debug,
     debugOutput,
     debugError,
+    debugGroup,
+    debugGroupEnd,
     debugTrace,
     reportWiP,
     reportNotImplemented,

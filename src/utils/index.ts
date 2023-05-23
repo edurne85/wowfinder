@@ -28,4 +28,4 @@ export type { JSerializable, JsonValue, Exportable } from './json';
 export { fThousands, sum, toRoman } from './numbers';
 export { capitalizeFirstLetter, parseIfNeeded } from './strings';
 export type { Parser, TryParser } from './strings';
-export type { Optional, ReactChildren } from './types';
+export type { Optional } from './types';
