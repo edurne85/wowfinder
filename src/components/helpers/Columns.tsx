@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { ReactChildren } from '../../utils';
+// import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 const ColumnsContainer = styled.div`
@@ -32,7 +32,7 @@ const ColumnDiv = styled.div`
 const Column: React.FC<{
     key: string;
     id: string;
-    children: ReactChildren;
+    children: ReactNode;
 }> = ({ id, children }) => (
     <ColumnDiv id={`column-${id}`}>{children}</ColumnDiv>
 );
@@ -42,11 +42,11 @@ interface ColumnDefs {
     columns: {
         key: string;
         id: string;
-        children?: ReactNode | undefined;
+        children?: React.ReactNode;
     }[];
 }
 
-const Columns: React.FC<ColumnDefs> = (props: ColumnDefs) => {
+function Columns(props: ColumnDefs): React.JSX.Element {
     const attrs: { id?: string } = props.id ? { id: props.id } : {};
     return (
         <ColumnsContainer {...attrs}>
@@ -57,7 +57,7 @@ const Columns: React.FC<ColumnDefs> = (props: ColumnDefs) => {
             ))}
         </ColumnsContainer>
     );
-};
+}
 
 export default Columns;
 

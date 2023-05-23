@@ -1,12 +1,23 @@
 import { FullData } from '../../types/FullData';
 import React from 'react';
-import { RouteObject } from 'react-router-dom';
+import { RouteObject, createHashRouter } from 'react-router-dom';
 
-const routes: RouteObject[] = [];
+type GlobalContextType = {
+    forceBlank: boolean;
+    forcePages: {
+        magic: boolean;
+        spells: boolean;
+        feral: boolean;
+        moonkin: boolean;
+        tree: boolean;
+        travel: boolean;
+    };
+    data?: FullData;
+    routes: RouteObject[];
+    router: ReturnType<typeof createHashRouter> | null;
+};
 
-const data = FullData.load();
-
-const defaultContext = {
+const defaultContext: GlobalContextType = {
     forceBlank: false,
     forcePages: {
         magic: false,
@@ -16,8 +27,10 @@ const defaultContext = {
         tree: false,
         travel: false,
     },
-    data,
-    routes,
+    routes: [],
+    router: null,
 };
 
-export const GlobalContext = React.createContext(defaultContext);
+const GlobalContext = React.createContext(defaultContext);
+
+export { GlobalContext, GlobalContextType };

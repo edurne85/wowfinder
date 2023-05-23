@@ -7,4 +7,10 @@ function assertDefined<T>(
     }
 }
 
-export { assertDefined };
+function assertNonNull<T>(val: T | null, message?: string): asserts val is T {
+    if (val === null) {
+        throw new Error(message || 'Failed assertion: Value is null');
+    }
+}
+
+export { assertDefined, assertNonNull };

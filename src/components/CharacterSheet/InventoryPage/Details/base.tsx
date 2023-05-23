@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Shape, explodeShape } from '../../../../types/Item/Gear/Slot';
 import styled from 'styled-components';
-import { ReactChildren } from '../../../../utils';
+import { ReactNode } from 'react';
 
 const ItemTitle = styled.p`
     font-weight: bold;
@@ -30,7 +30,7 @@ function Slots({ shape }: { shape: Shape }): React.JSX.Element {
     );
 }
 
-const DetailLine: React.FC<{ h?: string; children: ReactChildren }> = ({
+const DetailLine: React.FC<{ h?: string; children: ReactNode }> = ({
     h,
     children,
 }) => {

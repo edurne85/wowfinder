@@ -16,6 +16,8 @@ export const api = {
 
     asset: (asset: string): string => ipcRenderer.sendSync('asset', asset),
 
+    builtin: (asset: string): string => ipcRenderer.sendSync('builtin', asset),
+
     translationsPath: (): string => ipcRenderer.sendSync('translationsPath'),
 
     /**
