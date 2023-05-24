@@ -1,6 +1,7 @@
 import { FullData } from '../../types/FullData';
 import React from 'react';
 import { RouteObject, createHashRouter } from 'react-router-dom';
+import { assertDefined } from '../../utils';
 
 type GlobalContextType = {
     forceBlank: boolean;
@@ -33,4 +34,10 @@ const defaultContext: GlobalContextType = {
 
 const GlobalContext = React.createContext(defaultContext);
 
-export { GlobalContext, GlobalContextType };
+function useData(): FullData {
+    const context = React.useContext(GlobalContext);
+    assertDefined(context.data);
+    return context.data;
+}
+
+export { GlobalContext, GlobalContextType, useData };

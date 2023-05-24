@@ -64,6 +64,9 @@ export const files = {
     dumpToDir: (baseDirName: string, data: dumpable): void => {
         ipcRenderer.sendSync('files:dumpToDir', baseDirName, data);
     },
+    assetDump: (): void => {
+        ipcRenderer.sendSync('files:assetDump');
+    },
     zipDir: (dirPath: string, filePath: string): void => {
         ipcRenderer.sendSync('files:zipDir', dirPath, filePath);
     },
