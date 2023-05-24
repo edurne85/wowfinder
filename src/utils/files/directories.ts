@@ -90,7 +90,13 @@ function copyDir(source: string, destination: string): void {
     }
 }
 
-// copyDir(sourcePath, destinationPath);
+function assetDump(): void {
+    const sourceAssetsPath =
+        process.env.NODE_ENV === 'production'
+            ? process.resourcesPath
+            : app.getAppPath();
+    copyDir(path.join(sourceAssetsPath, 'assets'), app.getPath('userData'));
+}
 
 function registerDirectoryListeners(): void {
     ipcMain.on('files:getFiles', (event, dpath: string, filterKey = 'any') => {
@@ -114,6 +120,9 @@ function registerDirectoryListeners(): void {
             event.returnValue = dumpToDir(baseDirName, data);
         },
     );
+    ipcMain.on('files:assetDump', () => {
+        assetDump();
+    });
 }
 
 export type { dumpable };

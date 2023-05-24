@@ -1,7 +1,7 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 import registerFilesListeners from '../src/utils/files';
-import { copyDir } from '../src/utils/files/directories';
+import { debug } from '../src/utils';
 
 let mainWindow: BrowserWindow | null;
 
@@ -13,24 +13,41 @@ const sourceAssetsPath =
         ? process.resourcesPath
         : app.getAppPath();
 
-function createWindow(): void {
-    mainWindow = new BrowserWindow({
-        // icon: path.join(assetsPath, 'assets', 'icon.png'),
+interface WindowArguments {
+    preload?: string;
+    url: string;
+    show?: boolean;
+    openDevTools?: boolean;
+}
+
+function createWindow({
+    preload,
+    url,
+    show = true,
+    openDevTools,
+}: WindowArguments): BrowserWindow {
+    const devTools = typeof openDevTools === 'boolean' ? openDevTools : debug;
+    const window = new BrowserWindow({
+        show,
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
-            preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+            preload,
         },
     });
-
-    mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-
-    mainWindow.on('closed', () => {
-        mainWindow = null;
-    });
+    window.loadURL(url);
+    if (show && devTools) {
+        window.webContents.openDevTools();
+    }
+    return window;
 }
 
-copyDir(path.join(sourceAssetsPath, 'assets'), app.getPath('userData'));
+function createWindows(): void {
+    mainWindow = createWindow({
+        preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+        url: MAIN_WINDOW_WEBPACK_ENTRY,
+    });
+}
 
 async function registerListeners(): Promise<void> {
     /**
@@ -51,7 +68,7 @@ async function registerListeners(): Promise<void> {
     registerFilesListeners();
 }
 
-app.on('ready', createWindow)
+app.on('ready', createWindows)
     .whenReady()
     .then(registerListeners)
     .catch(e => console.error(e));
@@ -64,6 +81,6 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-        createWindow();
+        createWindows();
     }
 });

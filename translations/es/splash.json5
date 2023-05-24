@@ -1,6 +1,8 @@
 {
     title: 'WowFinder',
     stages: {
-        loading: 'Cargando...',
+        assetDump: 'Volcado de activos',
+        loading: 'Cargando datos',
+        routes: 'Configurando rutas',
     },
 }
