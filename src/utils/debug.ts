@@ -15,7 +15,7 @@ type debugFunction = (title: string, style?: string, data?: any) => any;
 function debugCall({
     func,
     title,
-    color = debugStyleColors.log,
+    color,
     data,
 }: {
     func: debugFunction;
