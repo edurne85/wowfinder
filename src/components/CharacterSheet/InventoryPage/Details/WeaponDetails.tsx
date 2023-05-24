@@ -1,45 +1,32 @@
 import { useTranslation } from 'react-i18next';
-import { Item, Weapon } from '../../../../@types/Item';
-import { Damage } from '../Damage';
+import { Item, Weapon } from '../../../../types/Item';
 import { DetailLine } from './base';
+import { DamageSpecView } from '../../../Damage';
 
-function WeaponBonusDamage({ weapon }: { weapon: Weapon }): JSX.Element {
-    const { t } = useTranslation();
-    const h = t('ui.inventory.gear.bonusDamage');
-    return weapon.hasBonusDamage ? (
-        <DetailLine h={h}>
-            <Damage damage={weapon.bonusDamage} />
-        </DetailLine>
-    ) : (
-        <></>
-    );
-}
-
-function WeaponDamage({ weapon }: { weapon: Weapon }): JSX.Element {
+function WeaponDamage({ weapon }: { weapon: Weapon }): React.JSX.Element {
     const { t } = useTranslation();
     const critRange =
         weapon.criticalRange >= 20 ? '20' : `${weapon.criticalRange} - 20`;
     const hasCrit = weapon.criticalMultiplier > 1;
     return (
-        <>
-            <DetailLine h={t('ui.inventory.gear.baseDamage')}>
-                <Damage damage={weapon.baseDamage} />
+        <DetailLine h={t('charsheet.inventory.gear.damage') ?? undefined}>
+            <>
+                <DamageSpecView spec={weapon.damage} />
                 {hasCrit
                     ? `(${critRange} / ×${Math.floor(
-                          weapon.criticalMultiplier
+                          weapon.criticalMultiplier,
                       )})`
                     : ''}
-            </DetailLine>
-            <WeaponBonusDamage weapon={weapon} />
-        </>
+            </>
+        </DetailLine>
     );
 }
 
-function WeaponIntrinsicMod({ weapon }: { weapon: Weapon }): JSX.Element {
+function WeaponIntrinsicMod({ weapon }: { weapon: Weapon }): React.JSX.Element {
     const { t } = useTranslation();
     const i = weapon.intrinsic;
     const prefix = i > 0 ? '+' : '';
-    const h = t('ui.inventory.gear.intrinsic');
+    const h = t('charsheet.inventory.gear.intrinsic');
     return i === 0 ? (
         <></>
     ) : (
@@ -50,13 +37,13 @@ function WeaponIntrinsicMod({ weapon }: { weapon: Weapon }): JSX.Element {
     );
 }
 
-function WeaponGrouping({ weapon }: { weapon: Weapon }): JSX.Element {
+function WeaponGrouping({ weapon }: { weapon: Weapon }): React.JSX.Element {
     const { t } = useTranslation();
     const groups = Array.from(weapon.groups)
         .map(g => t(`gear.weapon.group.${g}`))
-        .join(t('gear.weapon.group.$separator'));
-    const rank = `${weapon.rank}`; // TODO: localize
-    const proficiency = `${weapon.proficiency}`; // TODO: localize
+        .join(t('gear.weapon.group.$separator') ?? undefined);
+    const rank = `${weapon.rank}`; // TODO #461: localize
+    const proficiency = `${weapon.proficiency}`; // TODO #461: localize
     return (
         <DetailLine>
             {rank}: {proficiency} ({groups})
@@ -64,14 +51,16 @@ function WeaponGrouping({ weapon }: { weapon: Weapon }): JSX.Element {
     );
 }
 
-function WeaponDetails({ weapon }: { weapon: Weapon }): JSX.Element {
+function WeaponDetails({ weapon }: { weapon: Weapon }): React.JSX.Element {
     const { t } = useTranslation();
     const range: string = weapon.ranged
         ? weapon.range.fullDisplay
-        : t('ui.inventory.gear.range.melee');
+        : t('charsheet.inventory.gear.range.melee');
     return (
         <>
-            <DetailLine h={t('ui.inventory.gear.range.h')}>{range}</DetailLine>
+            <DetailLine h={t('charsheet.inventory.gear.range.h') ?? undefined}>
+                {range}
+            </DetailLine>
             <WeaponDamage weapon={weapon} />
             <WeaponIntrinsicMod weapon={weapon} />
             <WeaponGrouping weapon={weapon} />
@@ -79,10 +68,8 @@ function WeaponDetails({ weapon }: { weapon: Weapon }): JSX.Element {
     );
 }
 
-function WeaponDetailsWrapped({ item }: { item: Item }): JSX.Element {
+function WeaponDetailsWrapped({ item }: { item: Item }): React.JSX.Element {
     return item instanceof Weapon ? <WeaponDetails weapon={item} /> : <></>;
 }
 
-export {
-    WeaponDetailsWrapped,
-};
+export { WeaponDetailsWrapped };

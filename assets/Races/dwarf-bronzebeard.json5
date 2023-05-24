@@ -12,22 +12,13 @@
     skillMods: {
         perception: 2,
     },
-    initialLangs: [
-        'common', 'dwarven',
-    ],
-    additionalLangs: [
-        'thalassian',
-        'darnassian',
-        'gnomish',
-        'ursine',
-    ],
-    commonAligns: [
-        'LG',
-    ],
-    speed: {
+    initialLangs: ['common', 'dwarven'],
+    additionalLangs: ['thalassian', 'darnassian', 'gnomish', 'ursine'],
+    commonAligns: ['LG'],
+    speeds: {
         base: 20,
     },
-    /* TODO
+    /* TODO #463
         Darkvision: 60'
         Defensive training: Lesser giants
         Greed

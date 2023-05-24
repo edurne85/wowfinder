@@ -1,0 +1,15 @@
+{
+    h: 'Defense Scores',
+    total: 'Total',
+    armor: 'Armor',
+    shield: 'Shield',
+    dodge: 'Dodge',
+    nat: 'Nat',
+    defl: 'Defl',
+    misc: 'Misc',
+    temp: 'Temp',
+    AC: 'AC',
+    touch: 'T',
+    flatf: 'FF',
+    cmd: 'CMD',
+}

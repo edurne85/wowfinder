@@ -1,6 +1,12 @@
-import { ReactChildren } from '../../utils';
 import styled from 'styled-components';
-import { baseFont, borderless, printableBottomBorder, mainColor, debugOutline } from './mixins';
+import {
+    baseFont,
+    borderless,
+    printableBottomBorder,
+    mainColor,
+    debugOutline,
+} from './mixins';
+import { ReactNode } from 'react';
 
 interface PageStyledProps {
     visible: boolean;
@@ -14,7 +20,7 @@ const PageStyled = styled.section`
     padding: 0;
     ${mainColor}
     ${borderless}
-    display: ${ (props: PageStyledProps) => props.visible ? 'block' : 'none'};
+    display: ${(props: PageStyledProps) => (props.visible ? 'block' : 'none')};
     ${printableBottomBorder('input, select')}
     @media print {
         -webkit-print-color-adjust: exact;
@@ -25,6 +31,7 @@ const PageStyled = styled.section`
         }
         select {
             -webkit-appearance: none;
+            appearance: none;
         }
     }
     ${debugOutline({})}
@@ -34,11 +41,15 @@ interface PageProps {
     key: string;
     id: string;
     visible?: boolean;
-    children: ReactChildren;
+    children: ReactNode;
 }
 
-const Page: React.FC<PageProps> = ({id, children, visible = true}) => {
-    return <PageStyled visible={visible} id={`page${id}`}>{children}</PageStyled>;
-};
+function Page({ id, children, visible = true }: PageProps): React.JSX.Element {
+    return (
+        <PageStyled visible={visible} id={`page${id}`}>
+            {children}
+        </PageStyled>
+    );
+}
 
 export default Page;

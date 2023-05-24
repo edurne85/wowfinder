@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { ReactContent } from './ReactContent';
 
 const FillableLine = styled.div`
     overflow: visible;
@@ -8,17 +7,18 @@ const FillableLine = styled.div`
     }
 `;
 
-function mapLines<T extends ReactContent> (lines: T[], keyPrefix: string): JSX.Element[] {
+function mapLines<T extends React.ReactNode>(
+    lines: T[],
+    keyPrefix: string,
+): React.JSX.Element[] {
     let lineCount = 0;
     return lines.map((value: T) => {
         const args = {
             key: `${keyPrefix}${++lineCount}`,
-            ...(value ? {} : {className: 'empty' }),
+            ...(value ? {} : { className: 'empty' }),
         };
         return <FillableLine {...args}>{value || '\xa0'}</FillableLine>;
     });
 }
 
-export {
-    mapLines,
-};
+export { mapLines };

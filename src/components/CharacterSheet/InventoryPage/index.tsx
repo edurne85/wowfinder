@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { Character } from '../../../@types/Character';
-import Stats from '../../../@types/Character/Stats';
-import { Inventory } from '../../../@types/Item/Inventory';
-import { convertMass, Mass, MassUnit } from '../../../@types/Units';
+import { Character } from '../../../types/Character';
+import Stats from '../../../types/Character/Stats';
+import { Inventory } from '../../../types/Item/Inventory';
+import { convertMass, Mass, MassUnit } from '../../../types/Units';
 import Columns from '../../helpers/Columns';
 import Header from '../../helpers/Header';
 import Page from '../../helpers/Page';
@@ -20,13 +20,13 @@ export function InventoryPage({
 }: {
     char?: Character;
     visible?: boolean;
-}): JSX.Element {
+}): React.JSX.Element {
     const inventory = char?.inventory || new Inventory({});
     const carryCapacity = pounds((char?.stats || new Stats({})).carry);
     const { t } = useTranslation();
     return (
         <Page key="Gear" id="Gear" visible={visible}>
-            <Header>{t('ui.inventory.h')}</Header>
+            <Header>{t('charsheet.inventory.h')}</Header>
             <Columns
                 columns={[
                     {
@@ -34,11 +34,26 @@ export function InventoryPage({
                         id: 'GearLeft',
                         children: (
                             <>
-                                <Header>{t('ui.inventory.gear.h')}</Header>
-                                <ItemsList items={inventory.gear} maxLines={18} height={105} showSlots={true} />
-                                <Header>{t('ui.inventory.load.h')}</Header>
-                                <ItemsList items={inventory.carried} maxLines={23} height={133} />
-                                <Header>{t('ui.inventory.weight.h')}</Header>
+                                <Header>
+                                    {t('charsheet.inventory.gear.h')}
+                                </Header>
+                                <ItemsList
+                                    items={inventory.gear}
+                                    maxLines={18}
+                                    height={105}
+                                    showSlots={true}
+                                />
+                                <Header>
+                                    {t('charsheet.inventory.load.h')}
+                                </Header>
+                                <ItemsList
+                                    items={inventory.carried}
+                                    maxLines={23}
+                                    height={133}
+                                />
+                                <Header>
+                                    {t('charsheet.inventory.weight.h')}
+                                </Header>
                                 <Weight
                                     load={inventory.load}
                                     capacity={carryCapacity}
@@ -51,9 +66,15 @@ export function InventoryPage({
                         id: 'GearRight',
                         children: (
                             <>
-                                <Money ammount={inventory.money.raw}></Money>
-                                <Header>{t('ui.inventory.possessions')}</Header>
-                                <ItemsList items={inventory.carried} maxLines={44} height={257} />
+                                <Money money={inventory.money}></Money>
+                                <Header>
+                                    {t('charsheet.inventory.possessions')}
+                                </Header>
+                                <ItemsList
+                                    items={inventory.carried}
+                                    maxLines={44}
+                                    height={257}
+                                />
                             </>
                         ),
                     },

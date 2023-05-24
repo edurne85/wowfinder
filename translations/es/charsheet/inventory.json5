@@ -1,0 +1,39 @@
+{
+    h: 'Inventario',
+    weight: {
+        h: 'Peso',
+        light: 'Ligera',
+        medium: 'Media',
+        heavy: 'Pesada',
+        lift: 'Levantar',
+        drag: 'Arrastrar',
+        excess: 'Exceso',
+    },
+    gear: {
+        h: 'Equipo',
+        slot: 'Posición',
+        range: {
+            h: 'Alcance',
+            melee: 'CaC',
+        },
+        damage: 'Daño',
+        intrinsic: 'Modificador',
+    },
+    load: {
+        h: 'Carga',
+    },
+    money: {
+        h: 'Dinero',
+        abbr: {
+            g: 'o',
+            s: 'p',
+            c: 'c',
+        },
+        full: {
+            g: 'moneda(s) de oro',
+            s: 'moneda(s) de plata',
+            c: 'moneda(s) de cobre',
+        },
+    },
+    possessions: 'Posesiones',
+}

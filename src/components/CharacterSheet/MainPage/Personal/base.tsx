@@ -17,7 +17,7 @@ const Below = styled.span`
 `;
 
 abstract class PersonalEntry<T> extends React.Component<PersonalItemProps<T>> {
-    render(): JSX.Element {
+    render(): React.JSX.Element {
         const Label = styled.label`
             display: inline-block;
             width: ${this.props.width}mm;
@@ -31,10 +31,7 @@ abstract class PersonalEntry<T> extends React.Component<PersonalItemProps<T>> {
         );
     }
 
-    abstract subRender(props: PersonalItemProps<T>): JSX.Element;
+    abstract subRender(props: PersonalItemProps<T>): React.JSX.Element;
 }
 
-export {
-    PersonalItemProps,
-    PersonalEntry,
-};
+export { PersonalItemProps, PersonalEntry };

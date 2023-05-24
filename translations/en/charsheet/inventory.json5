@@ -1,0 +1,39 @@
+{
+    h: 'Inventory',
+    weight: {
+        h: 'Weight',
+        light: 'Light',
+        medium: 'Medium',
+        heavy: 'Heavy',
+        lift: 'Lift',
+        drag: 'Drag',
+        excess: 'Excess',
+    },
+    gear: {
+        h: 'Gear',
+        slot: 'Slot',
+        range: {
+            h: 'Range',
+            melee: 'Melee',
+        },
+        damage: 'Damage',
+        intrinsic: 'Intrinsic mod',
+    },
+    load: {
+        h: 'Load',
+    },
+    money: {
+        h: 'Money',
+        abbr: {
+            g: 'g',
+            s: 's',
+            c: 'c',
+        },
+        full: {
+            g: 'gold coin(s)',
+            s: 'silver coin(s)',
+            c: 'copper coin(s)',
+        },
+    },
+    possessions: 'Possessions',
+}

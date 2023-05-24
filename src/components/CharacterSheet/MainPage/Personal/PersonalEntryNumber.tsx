@@ -12,24 +12,16 @@ const StyledInput = styled.input`
 `;
 
 class PersonalEntryNumber extends PersonalEntry<number> {
-    subRender({
-        id,
-        value,
-    }: PersonalItemProps<number>): JSX.Element {
+    subRender({ id, value }: PersonalItemProps<number>): React.JSX.Element {
         const v = value != null ? value : '';
-        return (<StyledInput id={`txt${id}`} value={v} readOnly={true} />);
+        return <StyledInput id={`txt${id}`} value={v} readOnly={true} />;
     }
 }
 
-const suffixes = [
-    '', 'k', 'M', 'G',
-];
+const suffixes = ['', 'k', 'M', 'G'];
 
 class PersonalEntryBigNumber extends PersonalEntry<number> {
-    subRender({
-        id,
-        value,
-    }: PersonalItemProps<number>): JSX.Element {
+    subRender({ id, value }: PersonalItemProps<number>): React.JSX.Element {
         let val = '';
         if (value != null) {
             const maxS = suffixes.length;
@@ -43,13 +35,10 @@ class PersonalEntryBigNumber extends PersonalEntry<number> {
             val = `${fThousands(v)}${suffixes[s]}`;
         }
 
-        return (<StyledInput id={`txt${id}`} value={val} readOnly={true} />);
+        return <StyledInput id={`txt${id}`} value={val} readOnly={true} />;
     }
 }
 
 export default PersonalEntryNumber;
 
-export {
-    PersonalEntryNumber,
-    PersonalEntryBigNumber
-};
+export { PersonalEntryNumber, PersonalEntryBigNumber };

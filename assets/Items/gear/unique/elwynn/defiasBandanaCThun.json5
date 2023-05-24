@@ -17,6 +17,6 @@
             shadow: 1,
             holy: 1,
         },
-        // TODO: Max sanity: -4
-    }
+        // TODO #464: Max sanity: -4
+    },
 }

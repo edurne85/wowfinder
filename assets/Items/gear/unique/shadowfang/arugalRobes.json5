@@ -13,8 +13,8 @@
         spellPower: {
             void: +4,
         },
-        // TODO -4 max sanity
-        /* TODO Aura: "Insanity": 
+        // TODO #464: -4 max sanity
+        /* TODO #464: Aura: "Insanity": 
             Range: Short
             Effect: disadvantage on sanity rolls
          */
@@ -23,5 +23,5 @@
     acBonus: +5,
     bonusType: 'armor',
     maxDex: 3,
-    acp: 0, // TODO Review for balance
+    acp: 0, // TODO #464: Review for balance
 }

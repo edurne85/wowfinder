@@ -1,70 +1,71 @@
-import { useContext } from 'react';
-import { CharacterList, CharacterSheet, Reputations, RewardsTable } from './components';
-import { GlobalContext } from './components/helpers/GlobalContext';
-import { FullData } from './FullData';
-import './i18n';
+import { useContext, useState } from 'react';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
+import { FullData } from './types/FullData';
+import {
+    GlobalContext,
+    GlobalContextType,
+} from './components/helpers/GlobalContext';
+import { initTranslations } from './i18n';
+import { getRoutes } from './Routes';
 import { GlobalStyle } from './styles/GlobalStyle';
-import { debug } from './utils';
+import { assertNonNull } from './utils';
+import { LoadingStages, SplashWrapper } from './components/Splash';
+import {
+    debugTime,
+    debugTimeEnd,
+    debugTimeLog,
+    skipAssetDump,
+} from './utils/debug';
 
-import { Spell } from './components/Spells';
+initTranslations();
 
-const data = FullData.import();
+type SetStage = (stage: LoadingStages) => void;
 
-function RewTable(): JSX.Element {
-    return (
-        <RewardsTable
-            chars={data.chars}
-            factions={Object.values(data.factions.byKey)}
-            data={data.rewards}
-        />
-    );
+let loadStarted = false;
+function preLoad(context: GlobalContextType, setStage: SetStage): void {
+    if (loadStarted) return;
+    loadStarted = true;
+    setTimeout(() => {
+        debugTime('preLoad');
+        debugTimeLog('preLoad', 'preLoad started');
+        if (skipAssetDump) {
+            debugTimeLog('preLoad', 'preLoad assetDump skipped');
+        } else {
+            setStage(LoadingStages.assetDump);
+            window.Files.assetDump();
+            console.timeLog('preLoad', 'preLoad assetDump done');
+        }
+        setStage(LoadingStages.loading);
+        context.data = FullData.load();
+        debugTimeLog('preLoad', 'preLoad data loaded');
+        context.routes = getRoutes(context.data);
+        context.router = createHashRouter(context.routes);
+        debugTimeLog('preLoad', 'preLoad router created');
+        setStage(LoadingStages.done);
+        debugTimeEnd('preLoad');
+    }, 0);
 }
-function CharList(): JSX.Element {
-    return <CharacterList chars={data.chars} rewards={data.rewards} />;
-}
-function TestCharSheet({ charName }: { charName: string }): JSX.Element {
-    return (
-        <CharacterSheet
-            char={data.chars[charName]}
-            xp={data.rewards[charName]?.XP || 0}
-        />
-    );
-}
 
-function TestSpell({spellKey}: {spellKey: string}): JSX.Element {
-    return <Spell spell={data.spells[spellKey]} />;
-}
-
-function PrintCharSheet(): JSX.Element {
+export function App(): React.JSX.Element {
     const context = useContext(GlobalContext);
-    context.forceBlank = true;
-    context.forcePages.magic = true;
+    const [stage, setStage] = useState<LoadingStages | null>(null);
+    preLoad(context, setStage);
     return (
-        <GlobalContext.Provider value={context}>
-            <CharacterSheet />
-        </GlobalContext.Provider>
-    );
-}
-
-if (debug) {
-    console.log('Imported data', data);
-    console.log('Test components', {
-        Reputations,
-        RewTable,
-        CharList,
-        TestCharSheet,
-        PrintCharSheet,
-        TestSpell,
-    });
-}
-
-export function App(): JSX.Element {
-    const context = useContext(GlobalContext);
-    return (
-        <GlobalContext.Provider value={context}>
+        <>
             <GlobalStyle />
-            { /* <TestSpell spellKey='enlargePerson' /> */}
-            <TestCharSheet charName="garet" />
-        </GlobalContext.Provider>
+            <SplashWrapper
+                stage={stage}
+                finalStage={LoadingStages.done}
+                FollowUp={() => {
+                    assertNonNull(context.router);
+                    return (
+                        <>
+                            {/* <TestSpell spellKey='enlargePerson' /> */}
+                            <RouterProvider router={context.router} />
+                        </>
+                    );
+                }}
+            />
+        </>
     );
 }

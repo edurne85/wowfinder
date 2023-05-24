@@ -1,12 +1,12 @@
-import { SpellBase, SpellDescriptor } from '../../@types/Magic/Spell';
+import { SpellBase, SpellDescriptor } from '../../types/Magic/Spell';
 
 interface DescriptorsArgs {
     descriptors: Iterable<SpellDescriptor>;
 }
 
-function Descriptors({ descriptors }: DescriptorsArgs): JSX.Element {
+function Descriptors({ descriptors }: DescriptorsArgs): React.JSX.Element {
     const uniqueDescriptors = [...new Set(descriptors)];
-    // TODO: Add translations
+    // TODO: #425: i18n
     return (
         <div className="spell-descriptors">
             {uniqueDescriptors.map((descriptor, index) => (
@@ -18,15 +18,26 @@ function Descriptors({ descriptors }: DescriptorsArgs): JSX.Element {
     );
 }
 
-function DescriptorsIfNeeded({ descriptors }: DescriptorsArgs): JSX.Element {
-    return [...descriptors].length > 0 ? <Descriptors descriptors={descriptors} /> : <></>;
+function DescriptorsIfNeeded({
+    descriptors,
+}: DescriptorsArgs): React.JSX.Element {
+    return [...descriptors].length > 0 ? (
+        <Descriptors descriptors={descriptors} />
+    ) : (
+        <></>
+    );
 }
 
-function DescriptorsIfNeededRaw({ raw }: { raw: SpellBase }): JSX.Element {
-    return raw.descriptors ? <DescriptorsIfNeeded descriptors={raw.descriptors} /> : <></>;
+function DescriptorsIfNeededRaw({
+    raw,
+}: {
+    raw: SpellBase;
+}): React.JSX.Element {
+    return raw.descriptors ? (
+        <DescriptorsIfNeeded descriptors={raw.descriptors} />
+    ) : (
+        <></>
+    );
 }
 
-
-export {
-    DescriptorsIfNeededRaw as Descriptors,
-};
+export { DescriptorsIfNeededRaw as Descriptors };

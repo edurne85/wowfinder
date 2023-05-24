@@ -1,0 +1,18 @@
+{
+    h: 'Velocidad',
+    base: 'Base',
+    reduced: 'Reduc.',
+    fly: 'Vuelo',
+    swim: 'Nadar',
+    climb: 'Trepar',
+    burrow: 'Cavar',
+    misc: 'Misc',
+    maneuverability: {
+        h: 'Maniobrabilidad',
+        perfect: 'Perfecta',
+        good: 'Buena',
+        average: 'Media',
+        poor: 'Mala',
+        clumsy: 'Torpe',
+    },
+}

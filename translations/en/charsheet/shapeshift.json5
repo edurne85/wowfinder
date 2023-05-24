@@ -1,0 +1,11 @@
+{
+    bear: 'Bear form',
+    cat: 'Cat form',
+    moonkin: 'Moonkin form',
+    treeLife: 'Tree of Life form',
+    cheetah: 'Fast Travel (Cheetah) form',
+    dolphin: 'Aquatic (Dolphin) form',
+    crow: 'Flight (Crow) form',
+    greatStag: 'Long Travel (Great Stag) form',
+    eagle: 'Fast Flight (Eagle) form',
+}

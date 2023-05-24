@@ -1,0 +1,8 @@
+{
+    h: 'Puntos de golpe',
+    curr: 'Actuales',
+    total: 'Totales',
+    base: 'Base',
+    misc: 'Misc',
+    temp: 'Temp',
+}

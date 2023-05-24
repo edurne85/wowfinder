@@ -1,5 +1,7 @@
 {
     key: 'mag',
+    tier: 'base',
+    maxLevel: 20,
     hd: 6,
     bab: 0.5,
     skl: 2,

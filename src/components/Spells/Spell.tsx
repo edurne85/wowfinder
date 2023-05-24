@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Spell as S, SpellRank, SpellBase } from '../../@types/Magic/Spell';
-import React from 'react';
+import { Spell as S, SpellRank, SpellBase } from '../../types/Magic/Spell';
+import React, { useEffect } from 'react';
 import { Descriptors } from './Descriptors';
 import { toRoman } from '../../utils';
 import { School } from './School';
+import { useRemark } from 'react-remark';
 
 interface SpellArgs {
     spell: S;
@@ -22,14 +23,14 @@ const SpellContainer = styled.div`
     }
 `;
 
-function SpellDescription({ desc }: { desc: string }): JSX.Element {
-    return (
-        <div className="spell-description">
-            {desc.split('\n').map((p, i) => (
-                <p key={i}>{p}</p>
-            ))}
-        </div>
-    );
+function SpellDescription({ desc }: { desc: string }): React.JSX.Element {
+    const [reactContent, setMarkdownSource] = useRemark();
+
+    useEffect(() => {
+        setMarkdownSource(desc);
+    }, [desc]);
+
+    return <div className="spell-description">{reactContent}</div>;
 }
 
 function Heading({
@@ -40,7 +41,7 @@ function Heading({
     hRank: number;
     sub?: number;
     text: string;
-}): JSX.Element {
+}): React.JSX.Element {
     return React.createElement(`h${hRank + sub}`, {}, text);
 }
 
@@ -53,7 +54,11 @@ interface SpellHelperArgs {
     };
 }
 
-function SpellHelper ({ texts, raw, hRank }: SpellHelperArgs): JSX.Element {
+function SpellHelper({
+    texts,
+    raw,
+    hRank,
+}: SpellHelperArgs): React.JSX.Element {
     return (
         <SpellContainer className="spell">
             <Heading hRank={hRank} text={texts.title} />
@@ -64,21 +69,21 @@ function SpellHelper ({ texts, raw, hRank }: SpellHelperArgs): JSX.Element {
     );
 }
 
-function Rank({ parent, rank }: SpellRankArgs): JSX.Element {
+function Rank({ parent, rank }: SpellRankArgs): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <SpellHelper
             raw={rank}
             hRank={3}
             texts={{
-                title: `${t('ui.magic.rank')} ${toRoman(rank.rank)}`,
+                title: `${t('charsheet.magic.rank')} ${toRoman(rank.rank)}`,
                 description: t(`spells.${parent.key}.${rank.rank}`),
             }}
         />
     );
 }
 
-function Spell({ spell }: SpellArgs): JSX.Element {
+function Spell({ spell }: SpellArgs): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <>

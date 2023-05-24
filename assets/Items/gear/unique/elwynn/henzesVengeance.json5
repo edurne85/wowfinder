@@ -12,8 +12,19 @@
         resistances: {
             shadow: +2,
         },
-        // TODO: Cast: Light, rank 1; Ef.L: 1; at will; target: self (item)
+        // TODO #464: Cast: Light, rank 1; Ef.L: 1; at will; target: self (item)
     },
+    damage: [
+        {
+            types: ['bludgeoning'],
+            baseRoll: { sides: 8 },
+            modStat: 'STR',
+        },
+        {
+            types: ['holy'],
+            baseRoll: { sides: 6 },
+        },
+    ],
     baseDamage: {
         bludgeoning: { sides: 8 },
     },

@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Gear, Item } from '../../../@types/Item';
+import { Gear, Item } from '../../../types/Item';
 import { mapLines } from '../../helpers/FillableLine';
 import { debugOutline } from '../../helpers/mixins';
-import { ReactContent } from '../../helpers/ReactContent';
 import { ItemDetails } from './Details';
 import { Slots } from './Details/base';
 
@@ -36,14 +35,18 @@ function ListItem({
 }: {
     item: Item;
     showSlots: boolean;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <ListItemContainer>
             <ListItemHeading>
-                {showSlots && item instanceof Gear ?
-                     <>[<Slots shape={item.shape} />] {' '}</>
-                    : ''}
+                {showSlots && item instanceof Gear ? (
+                    <>
+                        [<Slots shape={item.shape} />]{' '}
+                    </>
+                ) : (
+                    ''
+                )}
                 {t(`labels.items.gear.${item.label}`)}
             </ListItemHeading>
             <ItemDetails item={item} />
@@ -63,13 +66,15 @@ function ItemsList({
     maxLines,
     height,
     showSlots = false,
-}: ItemsListArguments): JSX.Element {
-    const lines: ReactContent[] = [];
+}: ItemsListArguments): React.JSX.Element {
+    const lines: React.ReactNode[] = [];
     lines.push(...items.map(g => <ListItem item={g} showSlots={showSlots} />));
     lines.splice(maxLines);
     lines.push(...Array(maxLines - lines.length).fill(''));
     return (
-        <ItemsListContainer style={{height: `${height}mm`}}>{mapLines(lines, 'gear-item-')}</ItemsListContainer>
+        <ItemsListContainer style={{ height: `${height}mm` }}>
+            {mapLines(lines, 'gear-item-')}
+        </ItemsListContainer>
     );
 }
 

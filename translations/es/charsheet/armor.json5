@@ -1,0 +1,15 @@
+{
+    h: 'Puntuaciones defensivas',
+    total: 'Total',
+    armor: 'Arm',
+    shield: 'Esc',
+    dodge: 'Esq',
+    nat: 'Nat',
+    defl: 'Desv',
+    misc: 'Misc',
+    temp: 'Temp',
+    AC: 'CA',
+    touch: 'T',
+    flatf: 'Des',
+    cmd: 'DMC',
+}

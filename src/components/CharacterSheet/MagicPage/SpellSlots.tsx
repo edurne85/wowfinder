@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { GlobalContext } from '../../helpers/GlobalContext';
 import styled from 'styled-components';
-import { Character } from '../../../@types/Character';
+import { Character } from '../../../types/Character';
 import {
     CastingMode,
     zeroCasterLevel,
@@ -10,7 +10,7 @@ import {
     slotsByLevel,
     slotsByStat,
     castingStats,
-} from '../../../@types/Magic';
+} from '../../../types/Magic';
 import { InputCell } from '../../helpers/InputCell';
 
 const SlotsContainer = styled.table`
@@ -34,7 +34,7 @@ function SlotsRow({
     cls = 0,
     stat = 0,
     misc = 0,
-}: SlotsRowArgs): JSX.Element {
+}: SlotsRowArgs): React.JSX.Element {
     return (
         <tr>
             <th>{level}</th>
@@ -53,29 +53,32 @@ interface SpellSlotsArgs {
 const spellLevelMax = 15;
 const levels: number[] = [...Array(spellLevelMax + 1).keys()];
 
-export function SpellSlots({ char, mode }: SpellSlotsArgs): JSX.Element {
+export function SpellSlots({ char, mode }: SpellSlotsArgs): React.JSX.Element {
     const { t } = useTranslation();
     const clevel = levelByMode(
         char?.classBonuses?.efl || zeroCasterLevel,
-        mode
+        mode,
     );
     const statKey = castingStats[mode];
     const stat = char?.stats?.totals[statKey] || 0;
     const context = useContext(GlobalContext);
-    const v:(n: number) => number = (n: number) =>
+    const v: (n: number) => number = (n: number) =>
         context.forceBlank ? 0 : n;
     return (
         <SlotsContainer>
             <thead>
                 <tr>
-                    <th colSpan={5}>{t('ui.magic.slots')} ({t(`magic.modes.abbr.${mode}`)})</th>
+                    <th colSpan={5}>
+                        {t('charsheet.magic.slots')} (
+                        {t(`magic.modes.abbr.${mode}`)})
+                    </th>
                 </tr>
                 <tr>
-                <th>{t('ui.magic.level')}</th>
-                <th>{t('ui.common.total')}</th>
-                <th>{t('ui.magic.class')}</th>
-                <th>{t(`stats.abbr.${statKey}`)}</th>
-                <th>{t('ui.common.misc')}</th>
+                    <th>{t('charsheet.magic.level')}</th>
+                    <th>{t('charsheet.common.total')}</th>
+                    <th>{t('charsheet.magic.class')}</th>
+                    <th>{t(`stats.abbr.${statKey}`)}</th>
+                    <th>{t('charsheet.common.misc')}</th>
                 </tr>
             </thead>
             <tbody>

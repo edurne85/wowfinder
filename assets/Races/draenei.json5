@@ -12,9 +12,7 @@
     skillMods: {
         perception: 2,
     },
-    initialLangs: [
-        'common', 'draenic',
-    ],
+    initialLangs: ['common', 'draenic'],
     additionalLangs: [
         'orcish',
         'darnassian',
@@ -23,14 +21,12 @@
         'arakkoa',
         'ursine',
     ],
-    commonAligns: [
-        'LG',
-    ],
-    speed: {
-        base: 20,
+    commonAligns: ['LG'],
+    speeds: {
+        base: 30,
     },
-    /* TODO
-        Ancient Foe: 
+    /* TODO #463
+        Ancient Foe: Demons
         Defensive training: Demons
         Eternal Hope
         Lightbringer

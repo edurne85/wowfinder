@@ -11,6 +11,22 @@
             intimidate: +2,
         },
     },
+    damage: [
+        {
+            types: ['slashing'],
+            baseRoll: {
+                sides: 8,
+                fixedMod: 2,
+            },
+            modStat: 'STR',
+        },
+        {
+            types: ['holy'],
+            baseRoll: {
+                sides: 6,
+            },
+        },
+    ],
     baseDamage: {
         slashing: { sides: 8 },
     },

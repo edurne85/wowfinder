@@ -12,22 +12,23 @@ function fThousands(value: number, sep = ' '): string {
         blocks.push(value % factor);
         value = Math.floor(value / factor);
     } while (value > 0);
-    return blocks
+    const res = blocks
         .reverse()
         .map(num => num.toString().padStart(3, '0'))
         .join(sep)
         .replace(/^0+/, '');
+    return res || '0';
 }
 
 function toRoman(val: number): string {
-    if (val < 0) {
+    if (val <= -1) {
         return '-' + toRoman(-val);
     }
-    if (val === 0) {
+    if (val < 1) {
         return '0';
     }
     const roman = [];
-    while (val > 0) {
+    while (val >= 1) {
         if (val >= 1000) {
             roman.push('M');
             val -= 1000;

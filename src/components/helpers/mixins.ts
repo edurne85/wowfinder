@@ -6,6 +6,8 @@ const colors = {
     gray6: '#666',
     gray3: '#333',
     black: '#000',
+    link: '#00f',
+    linkBackground: '#ccf',
 };
 Object.freeze(colors);
 
@@ -14,14 +16,19 @@ const reverseColors = `
         background-color: ${colors.black};
 `;
 
-const screenZoomDefault = 1.6;
-const screenZoomMinWidthDefault = 900;
-
-const screenZoom = (factor = screenZoomDefault, minWidth = screenZoomMinWidthDefault): string => `
-    @media screen and (min-width: ${minWidth}px) {
-        zoom: ${factor};
-    }
+const linkColors = `
+        color: ${colors.link};
+        background-color: ${colors.linkBackground};
 `;
+
+const screenZoomDefault = 1.6;
+
+function screenZoom(factor = screenZoomDefault, minWidth?: number): string {
+    const widthCondition = minWidth ? `and (min-width: ${minWidth}px)` : '';
+    return `@media screen ${widthCondition} {
+            zoom: ${factor};
+        }`;
+}
 
 const mainColor = `
     color: ${colors.black};
@@ -56,21 +63,23 @@ const printableBottomBorder = (selector: string): string => `
 
 interface DebugOutlineArgs {
     selector?: string;
-    width?: string,
-    style?: string,
-    color?: string,
+    width?: string;
+    style?: string;
+    color?: string;
 }
 const debugOutline = ({
     selector = '&',
     width = '1px',
     style = 'dashed',
     color = '#ccc',
-}: DebugOutlineArgs): string => (
-    debug ? `@media screen {
+}: DebugOutlineArgs): string =>
+    debug
+        ? `@media screen {
         ${selector} {
             outline: ${width} ${style} ${color};
         }
-    }`: '');
+    }`
+        : '';
 
 enum FontFamily {
     priori = 'Priori Serif OT',
@@ -81,9 +90,9 @@ interface fontArgs {
     size?: number; // pt units
 }
 
-const font = ({family, size}: fontArgs): string => {
+const font = ({ family, size }: fontArgs): string => {
     const props: string[] = [];
-    if (family)  {
+    if (family) {
         props.push(`font-family: "${family}";`);
     }
     if (size) {
@@ -99,10 +108,10 @@ const baseFont = font({
 
 const scrollable = 'overflow: auto;';
 
-
 export {
     colors,
     reverseColors,
+    linkColors,
     screenZoom,
     mainColor,
     smallText,

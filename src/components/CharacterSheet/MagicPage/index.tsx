@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Character } from '../../../@types/Character';
+import { Character } from '../../../types/Character';
 import {
     CastingMode,
     zeroSpellPower,
     zeroCasterLevel,
     levelByMode,
-} from '../../../@types/Magic';
+} from '../../../types/Magic';
 import Columns from '../../helpers/Columns';
 import Header from '../../helpers/Header';
 import { reverseColors, debugOutline } from '../../helpers/mixins';
@@ -33,11 +33,11 @@ function MagicColumn({
 }: {
     char?: Character;
     mode: CastingMode;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t } = useTranslation();
     const clevel = levelByMode(
         char?.classBonuses?.efl || zeroCasterLevel,
-        mode
+        mode,
     );
     const spellPower = (char?.fullSpellPower || zeroSpellPower)[mode];
     return (
@@ -56,11 +56,11 @@ export function MagicPage({
 }: {
     char?: Character;
     visible?: boolean;
-}): JSX.Element {
+}): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <Page key="Magic" id="Magic" visible={visible}>
-            <Header>{t('ui.magic.h')}</Header>
+            <Header>{t('charsheet.magic.h')}</Header>
             <Columns
                 columns={[
                     {

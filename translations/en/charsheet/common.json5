@@ -1,0 +1,13 @@
+{
+    total: 'Total',
+    mod: 'Mod',
+    stat: 'Ability',
+    statMod: 'Mod',
+    racial: 'Racial',
+    size: 'Size',
+    base: 'Base',
+    enhancement: 'Enh',
+    gear: 'Gear',
+    misc: 'Misc',
+    temp: 'Temp',
+}

@@ -1,0 +1,11 @@
+{
+    h: 'Tiradas de salvación',
+    abbr: {
+        fort: 'Fort',
+        refl: 'Refl',
+        will: 'Vol',
+    },
+    fort: 'Fortaleza',
+    refl: 'Reflejos',
+    will: 'Voluntad',
+}

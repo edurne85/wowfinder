@@ -1,0 +1,16 @@
+{
+    level: 'level',
+    bab: 'BaB',
+    hp: 'HP',
+    fort: 'Fort',
+    refl: 'Refl',
+    will: 'Will',
+    features: 'Features and abilities',
+    hd: 'Hit die',
+    skillRanks: 'Skill ranks',
+    perLevel: 'per level',
+    classSkills: 'Class skills',
+    maxLevel: 'Max level',
+    initialWealth: 'Initial wealth',
+    progression: 'Progression',
+}

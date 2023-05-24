@@ -7,8 +7,14 @@
     size: 0,
     weight: 3,
     bonuses: {
-        // TODO SR: 1 ??
+        // TODO #464: SR: 1 ??
     },
+    damage: [
+        {
+            types: ['piercing'],
+            baseRoll: { sides: 8 },
+        },
+    ],
     baseDamage: {
         piercing: { sides: 8 },
     },

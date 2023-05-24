@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { ReactChildren } from '../../utils';
+// import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 const ColumnsContainer = styled.div`
@@ -17,7 +17,8 @@ const ColumnDiv = styled.div`
     flex-grow: 1;
     flex: 1;
     max-width: 50%;
-    & > *, & > h1 {
+    & > *,
+    & > h1 {
         margin-top: 5mm;
     }
     & > h1 {
@@ -28,12 +29,12 @@ const ColumnDiv = styled.div`
     }
 `;
 
-const Column: React.FC<{key: string, id: string, children: ReactChildren}> = ({
-    id, children
-}) => (
-    <ColumnDiv id={`column-${id}`}>
-        {children}
-    </ColumnDiv>
+const Column: React.FC<{
+    key: string;
+    id: string;
+    children: ReactNode;
+}> = ({ id, children }) => (
+    <ColumnDiv id={`column-${id}`}>{children}</ColumnDiv>
 );
 
 interface ColumnDefs {
@@ -41,19 +42,23 @@ interface ColumnDefs {
     columns: {
         key: string;
         id: string;
-        children?: ReactNode | undefined;
-    }[]
+        children?: React.ReactNode;
+    }[];
 }
 
-const Columns: React.FC<ColumnDefs> = (props: ColumnDefs) => {
-    const attrs: {id?: string} = props.id ? { id: props.id } : {};
-    return (<ColumnsContainer {...attrs}>
-        {props.columns.map(c => <Column key={c.key} id={c.id}>{c.children}</Column>)}
-    </ColumnsContainer>);
-};
+function Columns(props: ColumnDefs): React.JSX.Element {
+    const attrs: { id?: string } = props.id ? { id: props.id } : {};
+    return (
+        <ColumnsContainer {...attrs}>
+            {props.columns.map(c => (
+                <Column key={c.key} id={c.id}>
+                    {c.children}
+                </Column>
+            ))}
+        </ColumnsContainer>
+    );
+}
 
 export default Columns;
 
-export {
-    ColumnDefs,
-};
+export { ColumnDefs };

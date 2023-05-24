@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import {
-    Gear, Item, rarityColorsLight
-} from '../../../../@types/Item';
+import { Gear, Item, rarityColorsLight } from '../../../../types/Item';
 import { ArmorDetailsWrapped } from './ArmorDetails';
 import { DetailLine, ItemTitle, Slots, ToDo } from './base';
 import { WeaponDetailsWrapped } from './WeaponDetails';
@@ -19,11 +17,11 @@ const ItemDetailsContainer = styled.div`
     padding: 0.1em;
 `;
 
-function GearDetails({ gear }: { gear: Gear }): JSX.Element {
+function GearDetails({ gear }: { gear: Gear }): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <>
-            <DetailLine h={t('ui.inventory.gear.slot')}>
+            <DetailLine h={t('charsheet.inventory.gear.slot') || undefined}>
                 <Slots shape={gear.shape} />
             </DetailLine>
             <WeaponDetailsWrapped item={gear} />
@@ -35,12 +33,12 @@ function GearDetails({ gear }: { gear: Gear }): JSX.Element {
     );
 }
 
-function GearDetailsWrapped({ item }: { item: Item }): JSX.Element {
+function GearDetailsWrapped({ item }: { item: Item }): React.JSX.Element {
     return item instanceof Gear ? <GearDetails gear={item} /> : <></>;
 }
 
-function ItemDetails({ item }: { item: Item }): JSX.Element {
-    // TODO Implement
+function ItemDetails({ item }: { item: Item }): React.JSX.Element {
+    // TODO #276, #277, #278, #278 Implement
     const { t } = useTranslation();
     return (
         <ItemDetailsContainer className="details">
@@ -48,7 +46,7 @@ function ItemDetails({ item }: { item: Item }): JSX.Element {
                 {t(`labels.items.gear.${item.label}`)}
             </ItemTitle>
             <GearDetailsWrapped item={item} />
-            <DetailLine h={t('ui.inventory.weight.h')}>
+            <DetailLine h={t('charsheet.inventory.weight.h') || undefined}>
                 {item.weight.toString()}
             </DetailLine>
         </ItemDetailsContainer>
@@ -56,4 +54,3 @@ function ItemDetails({ item }: { item: Item }): JSX.Element {
 }
 
 export { ItemDetails };
-

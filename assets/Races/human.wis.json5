@@ -12,9 +12,7 @@
     skillMods: {},
     bonusSkillRanks: 1,
     bonusStartingFeats: 1,
-    initialLangs: [
-        'common',
-    ],
+    initialLangs: ['common'],
     additionalLangs: [
         'darnassian',
         'draconic',
@@ -37,12 +35,8 @@
         'worgen',
         'zandali',
     ],
-    commonAligns: [
-        'LG', 'LN', 'LE',
-        'NG', 'NN', 'NE',
-        'CG', 'CN', 'CE',
-    ],
-    speed: {
+    commonAligns: ['LG', 'LN', 'LE', 'NG', 'NN', 'NE', 'CG', 'CN', 'CE'],
+    speeds: {
         base: 30,
     },
 }

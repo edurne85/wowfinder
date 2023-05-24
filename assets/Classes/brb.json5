@@ -1,5 +1,7 @@
 {
     key: 'brb',
+    tier: 'base',
+    maxLevel: 20,
     hd: 12,
     bab: 1,
     skl: 4,

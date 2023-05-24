@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { Shape, explodeShape } from '../../../../@types/Item/Gear/Slot';
+import { Shape, explodeShape } from '../../../../types/Item/Gear/Slot';
 import styled from 'styled-components';
-import { ReactChildren } from '../../../../utils';
+import { ReactNode } from 'react';
 
 const ItemTitle = styled.p`
     font-weight: bold;
@@ -18,20 +18,36 @@ const ItemLine = styled.p`
     ${lineStyle}
 `;
 
-function Slots({ shape }: { shape: Shape }): JSX.Element {
+function Slots({ shape }: { shape: Shape }): React.JSX.Element {
     const { t } = useTranslation();
     const sep = t('gear.slot.$separator');
-    return (<>{
-        explodeShape(shape).map(s => t(`gear.slot.${s}`)).join(sep)
-    }</>);
+    return (
+        <>
+            {explodeShape(shape)
+                .map(s => t(`gear.slot.${s}`))
+                .join(sep)}
+        </>
+    );
 }
 
-const DetailLine: React.FC<{ h?: string, children: ReactChildren }> = ({ h, children }) => {
-    const H = (): JSX.Element => h ? (<><b>{h}</b>: {' '}</>) : (<></>);
-    return (<ItemLine>
-        <H />
-        {children}
-    </ItemLine>);
+const DetailLine: React.FC<{ h?: string; children: ReactNode }> = ({
+    h,
+    children,
+}) => {
+    const H = (): React.JSX.Element =>
+        h ? (
+            <>
+                <b>{h}</b>:{' '}
+            </>
+        ) : (
+            <></>
+        );
+    return (
+        <ItemLine>
+            <H />
+            {children}
+        </ItemLine>
+    );
 };
 
 const ToDoLine = styled.p`
@@ -41,13 +57,12 @@ const ToDoLine = styled.p`
     }
 `;
 
-function ToDo({ text }: { text: string }): JSX.Element {
-    return(<ToDoLine><b>To Do</b>: {text}</ToDoLine>);
+function ToDo({ text }: { text: string }): React.JSX.Element {
+    return (
+        <ToDoLine>
+            <b>To Do</b>: {text}
+        </ToDoLine>
+    );
 }
 
-export {
-    DetailLine,
-    ItemTitle,
-    ToDo,
-    Slots,
-};
+export { DetailLine, ItemTitle, ToDo, Slots };

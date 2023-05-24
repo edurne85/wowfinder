@@ -1,0 +1,7 @@
+{
+    h: 'Puntuaciones de ataque',
+    bab: 'AB',
+    melee: 'CaC',
+    ranged: 'Dist',
+    cmb: 'BMC',
+}

@@ -1,9 +1,9 @@
-import { TFunction, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Character } from '../../../@types/Character';
+import { Character } from '../../../types/Character';
 import { mapLines } from '../../helpers/FillableLine';
 
-const maxLines = 32;
+const maxLines = 30;
 
 const TraitsContainer = styled.div`
     margin-top: 2.8ex;
@@ -12,20 +12,26 @@ const TraitsContainer = styled.div`
 function classFeatureString(translated: string, count: number): string {
     return count > 1 ? `${translated} (${count})` : translated;
 }
-function classFeatureStrings(char: Character, t: TFunction<'translation'>): string[] {
-    return char.classFeaturesCondensed.map(({feature, count}) => classFeatureString(t(`classFeatures.${feature}`), count));
+function classFeatureStrings(
+    char: Character,
+    t: (key: string) => string,
+): string[] {
+    return char.classFeaturesCondensed.list.map(({ feature, count }) =>
+        classFeatureString(t(`class.features.${feature}`), count),
+    );
 }
 
-export default function Traits({char}: {char?: Character}): JSX.Element {
+export default function Traits({
+    char,
+}: {
+    char?: Character;
+}): React.JSX.Element {
     const { t } = useTranslation();
     const lines: string[] = [];
-    // TODO Racial traits
+    // TODO #457: Racial traits
     lines.push(...(char ? classFeatureStrings(char, t) : []));
     lines.push(...(char?.validFeats || []));
-    // TODO: feats
     lines.splice(maxLines);
     lines.push(...Array(maxLines - lines.length));
-    return (<TraitsContainer>
-        {mapLines(lines, 'TraitsLine-')}
-    </TraitsContainer>);
+    return <TraitsContainer>{mapLines(lines, 'TraitsLine-')}</TraitsContainer>;
 }

@@ -5,3 +5,5 @@ packages
 out
 /.vs
 wowfinder-companion-*.tgz
+curated
+coverage

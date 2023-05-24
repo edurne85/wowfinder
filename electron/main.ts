@@ -1,60 +1,86 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
-import registerFilesListeners from '../src/utils/files';
 import * as path from 'path';
+import registerFilesListeners from '../src/utils/files';
+import { debug } from '../src/utils';
 
 let mainWindow: BrowserWindow | null;
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
-const assetsPath =
-  process.env.NODE_ENV === 'production'
-    ? process.resourcesPath
-    : app.getAppPath();
+const sourceAssetsPath =
+    process.env.NODE_ENV === 'production'
+        ? process.resourcesPath
+        : app.getAppPath();
 
-function createWindow (): void {
-  mainWindow = new BrowserWindow({
-    // icon: path.join(assetsPath, 'assets', 'icon.png'),
-    webPreferences: {
-      nodeIntegration: false,
-      contextIsolation: true,
-      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY
+interface WindowArguments {
+    preload?: string;
+    url: string;
+    show?: boolean;
+    openDevTools?: boolean;
+}
+
+function createWindow({
+    preload,
+    url,
+    show = true,
+    openDevTools,
+}: WindowArguments): BrowserWindow {
+    const devTools = typeof openDevTools === 'boolean' ? openDevTools : debug;
+    const window = new BrowserWindow({
+        show,
+        webPreferences: {
+            nodeIntegration: false,
+            contextIsolation: true,
+            preload,
+        },
+    });
+    window.loadURL(url);
+    if (show && devTools) {
+        window.webContents.openDevTools();
     }
-  });
-
-  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-
-  mainWindow.on('closed', () => {
-    mainWindow = null;
-  });
+    return window;
 }
 
-async function registerListeners (): Promise<void> {
-  /**
-   * This comes from bridge integration, check bridge.ts
-   */
-  ipcMain.on('message', (_, message) => {
-    console.log(message);
-  });
-  ipcMain.on('asset', (event, asset: string) => {
-    event.returnValue = path.join(assetsPath, 'assets', asset);
-  });
-  registerFilesListeners();
+function createWindows(): void {
+    mainWindow = createWindow({
+        preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+        url: MAIN_WINDOW_WEBPACK_ENTRY,
+    });
 }
 
-app.on('ready', createWindow)
-  .whenReady()
-  .then(registerListeners)
-  .catch(e => console.error(e));
+async function registerListeners(): Promise<void> {
+    /**
+     * This comes from bridge integration, check bridge.ts
+     */
+    ipcMain.on('message', (_, message) => {
+        console.log(message);
+    });
+    ipcMain.on('asset', (event, asset: string) => {
+        event.returnValue = path.join(app.getPath('userData'), 'assets', asset);
+    });
+    ipcMain.on('builtin', (event, asset: string) => {
+        event.returnValue = path.join(sourceAssetsPath, 'assets', asset);
+    });
+    ipcMain.on('translationsPath', event => {
+        event.returnValue = path.join(sourceAssetsPath, 'translations');
+    });
+    registerFilesListeners();
+}
+
+app.on('ready', createWindows)
+    .whenReady()
+    .then(registerListeners)
+    .catch(e => console.error(e));
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
 });
 
 app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
+    if (BrowserWindow.getAllWindows().length === 0) {
+        createWindows();
+    }
 });
