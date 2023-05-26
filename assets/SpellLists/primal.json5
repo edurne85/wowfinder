@@ -2,6 +2,7 @@
     key: 'primal',
     spells: {
         '0': [
+            { spell: 'light', rank: 1 },
             { spell: 'resistance', rank: 1 },
         ],
         '1': [],

@@ -1,0 +1,13 @@
+{
+    key: 'light',
+    ranks: [
+        {
+            rank: 1,
+            range: 'touch',
+            duration: '10 min/level',
+        },
+    ],
+    sch: 'evo',
+    castingTime: 'standard',
+    components: ['V', 'S', 'M'],
+}

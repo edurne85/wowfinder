@@ -1,0 +1,1 @@
+Disparas un pequeño orbe de ácido a un objetivo. Debes tener éxito en un ataque de toque a distancia para impactar a tu objetivo. El orbe hace daño por ácido (Nt). Este ácido desaparece tras 1 asalto.
