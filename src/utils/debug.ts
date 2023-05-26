@@ -1,4 +1,4 @@
-const debug = true;
+const debug = false;
 const debugStyleColors = {
     log: '#cfc',
     warn: '#ffc',
@@ -8,7 +8,7 @@ const debugStyleColors = {
     wip: '#fa4',
 } as const;
 
-const skipAssetDump = true;
+const skipAssetDump = false;
 
 type debugFunction = (title: string, style?: string, data?: any) => any;
 

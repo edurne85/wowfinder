@@ -9,7 +9,7 @@ import { factionRoutes } from './Faction';
 import { homeRoutes } from './Home';
 import { itemRoutes } from './Item';
 import { raceNames, raceRoutes } from './Race';
-import { spellRoutes } from './Spell';
+import { spellRoutes, spellsTitles } from './Spell';
 import { ExportByCharacterSelection } from '../components/DataExporter';
 
 function addNavigation(...routes: RouteObject[]): RouteObject[] {
@@ -47,6 +47,7 @@ function customTitles(t: TranslationProvider, data: FullData): TitleProvider[] {
         ...characterNames(t, data),
         ...classNames(t, data),
         ...raceNames(t, data),
+        ...spellsTitles(t, data),
     ];
 }
 

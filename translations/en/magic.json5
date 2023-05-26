@@ -17,6 +17,7 @@
         medium: 'Medium',
         long: 'Long',
     },
+    level: 'Level',
     schools: {
         abj: 'Abjuration',
         con: 'Conjuration',

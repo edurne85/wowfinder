@@ -68,7 +68,7 @@ class SpellList implements SpellListBuilder {
         return this.#key;
     }
 
-    get spells(): SpellListLevelsBuilder {
+    get spells(): SpellListLevels {
         const res: SpellListLevels = {};
         for (const [level, entries] of Object.entries(this.#spells)) {
             const l = Number(level);
@@ -91,5 +91,5 @@ class SpellList implements SpellListBuilder {
     }
 }
 
-export type { SpellListBuilder, SpellLists };
+export type { SpellListBuilder, SpellLists, SpellListEntry };
 export { SpellList };

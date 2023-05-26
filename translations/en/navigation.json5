@@ -6,6 +6,7 @@
     factions: 'Factions',
     chars: 'Characters',
     spells: 'Spells',
+    spell: 'Spell',
     classes: 'Classes',
     races: 'Races',
     items: 'Items',
