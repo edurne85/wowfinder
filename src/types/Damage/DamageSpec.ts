@@ -1,8 +1,8 @@
-import { StatSet } from '../Character/Stats';
 import {
     DamageComponentSpec,
     DamageComponentSpecBuilder,
 } from './DamageComponent';
+import { DamageRollArguments } from './DamageRollArguments';
 import { DamageValue } from './DamageValue';
 
 interface DamageSpecBuilder {
@@ -19,9 +19,9 @@ class DamageSpec implements DamageSpecBuilder {
         return [...this.#components];
     }
 
-    roll(stats: StatSet): DamageValue {
+    roll(args: DamageRollArguments): DamageValue {
         return new DamageValue({
-            components: this.#components.map(c => c.roll(stats)),
+            components: this.#components.map(c => c.roll(args)),
         });
     }
 }

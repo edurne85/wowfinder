@@ -4,7 +4,7 @@ import { Length, LengthUnit } from '../../Units';
 enum StandardRange {
     self = 'self',
     touch = 'touch',
-    short = 'short',
+    close = 'close',
     medium = 'medium',
     long = 'long',
 }
@@ -15,7 +15,7 @@ function rangeInFeet(range: StandardRange, size: Size, efl: number): number {
             return 0;
         case StandardRange.touch:
             return Math.max(0, 5 * (1 + size));
-        case StandardRange.short:
+        case StandardRange.close:
             return 25 + Math.floor(efl / 2) * 5;
         case StandardRange.medium:
             return 100 + 10 * efl;

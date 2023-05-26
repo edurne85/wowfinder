@@ -13,7 +13,7 @@
     },
     range: {
         touch: 'Toque',
-        short: 'Corto',
+        close: 'Corto',
         medium: 'Medio',
         long: 'Largo',
     },
