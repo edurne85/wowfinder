@@ -1,7 +1,7 @@
 import { AssetJsonBundle, AssetType } from '../types/Assets';
 import type { AssetBundle } from '../types/Assets';
 import { FullData } from '../types/FullData';
-import { Rewards } from '../types/Rewards';
+import { RewardsByCharacter } from '../types/Rewards';
 import { JsonValue } from './json';
 import { CharacterExport } from '../types/Character/base';
 import { AdventureExport } from '../types/Adventure';
@@ -16,7 +16,7 @@ function exportByChars(source: FullData, ...charKeys: string[]): AssetBundle {
     const adventures: { [k: string]: AdventureExport } = {};
     for (const k of Object.keys(source.adventures)) {
         const adventure = source.adventures[k].export();
-        const rewardsFiltered: Rewards = {};
+        const rewardsFiltered: RewardsByCharacter = {};
         for (const char of charKeys) {
             if (adventure.rewards[char]) {
                 rewardsFiltered[char] = adventure.rewards[char];

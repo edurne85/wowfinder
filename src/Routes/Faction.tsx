@@ -7,7 +7,7 @@ function RewTable({ data }: { data: FullData }): React.JSX.Element {
         <RewardsTable
             chars={data.chars}
             factions={Object.values(data.factions.byKey)}
-            data={data.rewards}
+            data={data.rewardsByFaction}
         />
     );
 }

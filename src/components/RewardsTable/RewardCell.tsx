@@ -1,10 +1,16 @@
 import { ReputationCell } from '../helpers/InputCell';
 
-function RewardCell(
-    char: string,
-    faction: string,
-    value: number,
-): React.JSX.Element {
+interface RewardCellArgs {
+    char: string;
+    faction: string;
+    value: number;
+}
+
+function RewardCell({
+    char,
+    faction,
+    value,
+}: RewardCellArgs): React.JSX.Element {
     const id = `rep-${char}-${faction}`;
     return faction === 'XP' ? (
         <td>{value || ''}</td>

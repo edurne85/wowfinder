@@ -1,41 +1,44 @@
-import type { Rewards } from '../../types/Rewards';
+/* eslint-disable deprecation/deprecation */
+import type { RewardsByFaction } from '../../types/Rewards';
 import { Character } from '../../types/Character';
 import { Faction } from '../../types/Faction';
 import { RewardsTableWrapper } from './styles';
-import { RewardRow } from './RewardRow';
+import { RewardRowConditional } from './RewardRow';
 
 interface RewardsTableArgs {
     chars: { [key: string]: Character };
     factions: Faction[];
-    data: Rewards;
+    data: RewardsByFaction;
 }
 
-export function RewardsTable({
+function RewardsTable({
     chars,
     factions,
     data,
 }: RewardsTableArgs): React.JSX.Element {
-    const factionLabels = factions.map(f => f.label);
+    const charsRaw = Object.values(chars);
     return (
         <RewardsTableWrapper>
             <thead>
                 <tr>
                     <th></th>
-                    {factions.map(f => (
-                        <th>{f.name}</th>
+                    {charsRaw.map(c => (
+                        <th key={c.key}>{c.fullName}</th>
                     ))}
                 </tr>
             </thead>
             <tbody>
-                {Object.keys(chars).map(k =>
-                    RewardRow(
-                        chars[k].fullName,
-                        chars[k].active,
-                        factionLabels,
-                        data[k] || {},
-                    ),
-                )}
+                {factions.map(f => (
+                    <RewardRowConditional
+                        key={f.key}
+                        factionLabel={f.label}
+                        chars={charsRaw}
+                        data={data[f.label] || {}}
+                    />
+                ))}
             </tbody>
         </RewardsTableWrapper>
     );
 }
+
+export { RewardsTable };
