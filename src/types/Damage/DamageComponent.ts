@@ -1,5 +1,7 @@
-import { StatKey, StatSet } from '../Character/Stats';
+import { StatKey } from '../Character/Stats';
 import Dice from '../Dice';
+import { DamageModifier, computeModifier } from './DamageModifier';
+import { DamageRollArguments } from './DamageRollArguments';
 import { DamageComponentBaseBuilder, DamageComponentBase } from './base';
 
 interface DamageComponentValueBuilder extends DamageComponentBaseBuilder {
@@ -40,7 +42,7 @@ class DamageComponentSpec
     implements DamageComponentSpecBuilder
 {
     #dice: Dice;
-    #modStat?: StatKey;
+    #mod?: DamageModifier;
 
     constructor({
         types,
@@ -55,7 +57,7 @@ class DamageComponentSpec
             sides: diceSides,
             fixedMod,
         });
-        this.#modStat = modStat;
+        this.#mod = modStat;
     }
 
     get diceCount(): number {
@@ -70,16 +72,16 @@ class DamageComponentSpec
         return this.#dice.fixedMod;
     }
 
-    get modStat(): StatKey | undefined {
-        return this.#modStat;
+    get mod(): DamageModifier | undefined {
+        return this.#mod;
     }
 
     get dice(): Dice {
         return this.#dice;
     }
 
-    roll(stats: StatSet): DamageComponentValue {
-        const mod = this.#modStat ? stats[this.#modStat] : 0;
+    roll(args: DamageRollArguments): DamageComponentValue {
+        const mod = this.#mod ? computeModifier(this.#mod, args) : 0;
         return new DamageComponentValue({
             types: this.types,
             total: this.#dice.roll(mod),

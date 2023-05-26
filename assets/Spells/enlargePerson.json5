@@ -21,7 +21,7 @@
     sch: 'tra',
     castingTime: 'full',
     components: ['V', 'S', 'M'],
-    range: 'short',
+    range: 'close',
     save: 'fort',
     flags: ['spellResistance'],
 }

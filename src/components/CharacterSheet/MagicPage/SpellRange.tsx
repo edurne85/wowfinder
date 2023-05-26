@@ -35,8 +35,8 @@ export function SpellRange({
                     </th>
                 </tr>
                 <tr>
-                    <th>{t('magic.range.short')}</th>
-                    <td>{rangeFormatted(StandardRange.short, efl)}</td>
+                    <th>{t('magic.range.close')}</th>
+                    <td>{rangeFormatted(StandardRange.close, efl)}</td>
                 </tr>
                 <tr>
                     <th>{t('magic.range.medium')}</th>
