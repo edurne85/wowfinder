@@ -1,12 +1,12 @@
 import { Exportable, forceDataLoadKeyS, JsonValue } from '../utils';
-import type { Rewards } from './Rewards';
+import type { RewardsByCharacter } from './Rewards';
 
 function jclone<T>(obj: T): T {
     return JSON.parse(JSON.stringify(obj));
 }
 
-function combineRewards(rewards: Rewards[]): Rewards {
-    const result: Rewards = {};
+function combineRewards(rewards: RewardsByCharacter[]): RewardsByCharacter {
+    const result: RewardsByCharacter = {};
     for (const r of rewards) {
         for (const c of Object.keys(r)) {
             if (result[c]) {
@@ -28,7 +28,7 @@ type AdventureBuilder = {
     key: string;
     title: string;
     date: string;
-    rewards: Rewards;
+    rewards: RewardsByCharacter;
 };
 
 type AdventureExport = AdventureBuilder & { [key: string]: JsonValue };
@@ -37,7 +37,7 @@ class Adventure implements Exportable<AdventureExport> {
     private _key: string;
     private _title: string;
     private _date: string;
-    private _rewards: Rewards;
+    private _rewards: RewardsByCharacter;
 
     constructor({ key, title, date, rewards }: AdventureBuilder) {
         this._key = key;
@@ -58,7 +58,7 @@ class Adventure implements Exportable<AdventureExport> {
         return this._date;
     }
 
-    get rewards(): Rewards {
+    get rewards(): RewardsByCharacter {
         return this._rewards;
     }
 
@@ -78,7 +78,7 @@ class Adventure implements Exportable<AdventureExport> {
         return (this.#loaded ||= forceDataLoadKeyS<Adventure>(dir, this.build));
     }
 
-    static combined(adventures: Adventures): Rewards {
+    static combined(adventures: Adventures): RewardsByCharacter {
         return combineRewards(
             Object.keys(adventures).map(k => adventures[k].rewards),
         );

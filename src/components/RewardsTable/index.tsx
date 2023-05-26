@@ -1,1 +1,2 @@
-export { RewardsTable } from './RewardsTable';
+/* eslint-disable deprecation/deprecation */
+export * from './RewardsTable';

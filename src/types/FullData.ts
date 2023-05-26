@@ -5,15 +5,15 @@ import { Faction, Factions } from './Faction';
 import { buildItem, Item } from './Item';
 import { SpellList, SpellLists } from './Magic';
 import { Spell, Spells } from './Magic/Spell';
-import { Rewards } from './Rewards';
-import { ByKeyRecursive } from '../utils';
+import { RewardsByCharacter, RewardsByFaction } from './Rewards';
+import { ByKeyRecursive, debugOutput } from '../utils';
 import { Race, Races } from './Character/Race';
 
 class FullData {
     #factions: Factions;
     #chars: Characters;
     #adventures: Adventures;
-    #rewards: Rewards;
+    #rewards: RewardsByCharacter;
     #classes: Classes;
     #races: Races;
     #items: ByKeyRecursive<Item>;
@@ -43,8 +43,21 @@ class FullData {
         return this.#adventures;
     }
 
-    get rewards(): Rewards {
+    get rewards(): RewardsByCharacter {
         return this.#rewards;
+    }
+
+    get rewardsByFaction(): RewardsByFaction {
+        const byChar = this.rewards;
+        const byFaction: RewardsByFaction = {};
+        for (const f in this.factions.byLabel) {
+            byFaction[f] = {};
+            for (const c in byChar) {
+                byFaction[f][c] = byChar[c][f];
+            }
+        }
+        debugOutput('rewardsByFaction', { byChar, byFaction });
+        return byFaction;
     }
 
     get classes(): Classes {

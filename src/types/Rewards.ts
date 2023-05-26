@@ -1,7 +1,22 @@
-export interface Reward {
+interface RewardByFaction {
     [factionLabel: string]: number;
 }
 
-export interface Rewards {
-    [characterKey: string]: Reward;
+interface RewardByCharacter {
+    [characterKey: string]: number;
 }
+
+interface RewardsByCharacter {
+    [characterKey: string]: RewardByFaction;
+}
+
+interface RewardsByFaction {
+    [factionLabel: string]: RewardByCharacter;
+}
+
+export {
+    RewardByFaction,
+    RewardsByCharacter,
+    RewardsByFaction,
+    RewardByCharacter,
+};
