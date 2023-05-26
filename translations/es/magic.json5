@@ -17,6 +17,7 @@
         medium: 'Medio',
         long: 'Largo',
     },
+    level: 'Nivel',
     schools: {
         abj: 'Abjuración',
         con: 'Conjuración',

@@ -35,6 +35,7 @@ const NavigationContainer = styled.nav`
 function Navigation(): React.JSX.Element {
     const canGoBack: boolean = window.history.length > 1;
     const canGoForward: boolean =
+        window?.history?.state &&
         window.history.state.idx < window.history.length - 1;
     const { t } = useTranslation();
     return (

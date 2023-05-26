@@ -1,8 +1,8 @@
 {
-	"folders": [
-		{
-			"path": "assets\\translations"
-		}
-	],
-	"settings": {}
+    "folders": [
+        {
+            "path": "translations"
+        }
+    ],
+    "settings": {}
 }
