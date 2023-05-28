@@ -1,0 +1,33 @@
+{
+    key: 'mindRay',
+    ranks: [
+        {
+            rank: 1,
+            damage: [
+                {
+                    types: ['shadow', 'psychic'],
+                    baseRoll: { sides: 3 },
+                    modStat: 'spellPower',
+                    modMultiplier: 0.5,
+                },
+            ],
+        },
+        {
+            rank: 2,
+            damage: [
+                {
+                    types: ['shadow', 'psychic'],
+                    baseRoll: { sides: 4 },
+                    modStat: 'spellPower',
+                    rollMultiplier: 'TotalLevel',
+                },
+            ],
+        },
+    ],
+    sch: 'void',
+    castingTime: 'standard',
+    components: ['V', 'S'],
+    range: 'close',
+    duration: 'instantaneous',
+    flags: ['spellResistance'],
+}
