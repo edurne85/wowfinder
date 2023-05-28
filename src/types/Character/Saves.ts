@@ -1,5 +1,11 @@
 import Stats from './Stats';
 
+enum SaveType {
+    fort = 'fort',
+    refl = 'refl',
+    will = 'will',
+}
+
 interface SaveBreakdownBuilder {
     base: number;
     stat: number;
@@ -192,6 +198,6 @@ class Saves {
     }
 }
 
-export type { SimpleSavesBuilder };
+export type { SimpleSavesBuilder, SaveType };
 
 export { Saves, SimpleSaves, SaveBreakdown };

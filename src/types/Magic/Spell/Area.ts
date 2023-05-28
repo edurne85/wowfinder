@@ -62,7 +62,7 @@ function stringify(value: SpellArea, t: TFunction<'translation'>): string {
 }
 
 function tryParseArea(input: string): SpellArea | undefined {
-    const matches = /^([a-z]+)(\(.*\))?$/.exec(input.toLowerCase());
+    const matches = /^([a-z.]+)(\(.*\))?$/.exec(input.toLowerCase());
     if (!matches) {
         return undefined;
     }
