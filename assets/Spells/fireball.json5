@@ -1,0 +1,50 @@
+{
+    key: 'fireball',
+    ranks: [
+        {
+            rank: 1,
+            area: 'sphere.point(20 foot)',
+            damage: {
+                types: ['fire'],
+                baseRoll: {
+                    sides: 6,
+                },
+                rollMultiplier: 'TotalLevel',
+            },
+        },
+        {
+            rank: 2,
+            area: 'sphere.point(40 foot)',
+            damage: {
+                types: ['fire'],
+                baseRoll: {
+                    sides: 6,
+                    qtty: 2,
+                },
+                rollMultiplier: 'TotalLevel',
+            },
+        },
+        {
+            rank: 1,
+            area: 'sphere.point(60 foot)',
+            damage: {
+                types: ['fire'],
+                baseRoll: {
+                    sides: 6,
+                    qtty: 3,
+                },
+                rollMultiplier: 'TotalLevel',
+            },
+        },
+    ],
+    sch: 'evo',
+    castingTime: 'standard',
+    components: ['V', 'S', 'M'],
+    range: 'long',
+    duration: 'instantaneous',
+    save: {
+        save: 'reflex',
+        effect: 'half',
+    },
+    flags: ['spellResistance'],
+}
