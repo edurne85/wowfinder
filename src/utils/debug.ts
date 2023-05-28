@@ -66,7 +66,9 @@ function debugTime(title: string): void {
 }
 
 function debugTimeLog(title: string, ...data: any[]): void {
-    console.timeLog(title, ...data);
+    if (debug) {
+        console.timeLog(title, ...data);
+    }
 }
 
 function debugTimeEnd(title: string): void {

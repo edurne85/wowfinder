@@ -2,5 +2,10 @@
     key: 'arts',
     spells: {
         '0': [],
+        '1': [{ spell: 'summonMonster', rank: 1 }],
+        '2': [{ spell: 'summonMonster', rank: 2 }],
+        '3': [{ spell: 'summonMonster', rank: 3 }],
+        '4': [{ spell: 'summonMonster', rank: 4 }],
+        '5': [{ spell: 'summonMonster', rank: 5 }],
     },
 }
