@@ -22,6 +22,9 @@
     castingTime: 'standard',
     components: ['V', 'S', 'M'],
     range: 'touch',
-    save: 'will',
+    save: {
+        save: 'will',
+        effect: 'negates',
+    },
     flags: ['spellResistance'],
 }
