@@ -1,0 +1,7 @@
+Este conjuro convoca a una criatura natural (típicamente un animal, un hada, una bestia mágica, un ajeno del subtipo elemental, o un gigante), que aparece en el lugar que designas, y actúa inmediatamente, durante tu turno, atacando a tus oponentes al máximo de sus capacidades. Si puedes comunicarte con la criatura, puedes indicarle que no ataque, que ataque a enemigos concretos o que lleve a cabo otras acciones.
+
+Un monstruo convocado no puede convocar ni conjurar de ningún otro modo a otras criaturas, ni puede utilizar ninguna aptitud de teletransporte o viaje planario. Las criaturas no pueden ser convocadas a un entorno en el que no sean funcionales. Las criaturas convocadas mediante este conjuro no pueden utilizar conjuros o aptitudes sortílegas que dupliquen otros con componentes materiales caros (como deseo).
+
+El conjuro convoca a una o más criaturas de las listas proporcionadas para los distintos rangos. Tú eliges qué criatura convocar, y puedes cambiar la elección cada vez que lo lanzas. A menos que se indique otra cosa, todas las criaturas que aparecen en la tabla son neutrales.
+
+Cuando usas un conjuro de convocación para traer a una criatura con alineamiento, o del subtipo elemental, el conjuro pertenece a ese tipo. Todas las criaturas sin subtipo de alineamiento convocadas mediante este conjuro tienen un alineamiento que coincide con el tuyo, sea cual sea su alineamiento habitual. Convocarlas hace que el tipo de conjuro de convocación coincida con tu alineamiento.
