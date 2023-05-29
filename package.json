@@ -39,7 +39,7 @@
         "@babel/core": "^7.22.1",
         "@babel/plugin-transform-runtime": "^7.22.2",
         "@babel/preset-env": "^7.21.5",
-        "@babel/preset-react": "^7.22.0",
+        "@babel/preset-react": "^7.22.3",
         "@babel/preset-typescript": "^7.21.5",
         "@electron-forge/cli": "^6.1.1",
         "@electron-forge/maker-deb": "^6.1.1",
