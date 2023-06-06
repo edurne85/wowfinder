@@ -13,7 +13,7 @@
     sch: 'nec',
     range: 'close',
     castingTime: 'standard',
-    duration: 'instantaneous', // TODO: Remove (requires support for rolls in duration)
+    duration: 'instantaneous', // TODO: Remove (requires support for rolls in duration) (see #523)
     save: 'will',
     components: ['V', 'S'],
     flags: ['spellResistance'],
