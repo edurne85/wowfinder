@@ -3,7 +3,7 @@
     ranks: [{ rank: 1 }, { rank: 2 }, { rank: 3 }, { rank: 4 }],
     sch: 'create',
     range: 'touch',
-    duration: '1 h/level',
+    duration: '1 hour/level',
     castingTime: 'standard',
     components: ['V', 'S', 'M'],
     save: 'will',
