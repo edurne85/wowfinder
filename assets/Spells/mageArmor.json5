@@ -1,0 +1,11 @@
+{
+    key: 'mageArmor',
+    ranks: [{ rank: 1 }, { rank: 2 }, { rank: 3 }, { rank: 4 }],
+    sch: 'create',
+    range: 'touch',
+    duration: '1 h/level',
+    castingTime: 'standard',
+    components: ['V', 'S', 'M'],
+    save: 'will',
+    flags: ['spellResistance'],
+}
