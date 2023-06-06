@@ -2,10 +2,16 @@
     key: 'arts',
     spells: {
         '0': [{ spell: 'daze', rank: 1 }],
-        '1': [{ spell: 'summonMonster', rank: 1 }],
+        '1': [
+            { spell: 'summonMonster', rank: 1 },
+            { spell: 'causeFear', rank: 1 },
+        ],
         '2': [{ spell: 'summonMonster', rank: 2 }],
         '3': [{ spell: 'summonMonster', rank: 3 }],
-        '4': [{ spell: 'summonMonster', rank: 4 }],
+        '4': [
+            { spell: 'summonMonster', rank: 4 },
+            { spell: 'causeFear', rank: 2 },
+        ],
         '5': [{ spell: 'summonMonster', rank: 5 }],
     },
 }

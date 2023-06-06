@@ -5,12 +5,16 @@
             { spell: 'light', rank: 1 },
             { spell: 'resistance', rank: 1 },
         ],
-        '1': [{ spell: 'summonMonster', rank: 1 }],
+        '1': [
+            { spell: 'summonMonster', rank: 1 },
+            { spell: 'causeFear', rank: 1 },
+        ],
         '2': [{ spell: 'summonMonster', rank: 2 }],
         '3': [{ spell: 'summonMonster', rank: 3 }],
         '4': [
             { spell: 'summonMonster', rank: 4 },
             { spell: 'magicWeapon', rank: 2 },
+            { spell: 'causeFear', rank: 2 },
         ],
         '5': [{ spell: 'summonMonster', rank: 5 }],
         '6': [],

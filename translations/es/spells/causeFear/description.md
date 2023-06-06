@@ -1,0 +1,1 @@
+La criatura afectada queda asustada. Si el sujeto tiene éxito en la tirada de salvación de Voluntad, queda estremecida. Las criaturas con suficientes dados de golpe son inmunes a este efecto. Causar miedo contrarresta y disipa el conjuro quitar el miedo.

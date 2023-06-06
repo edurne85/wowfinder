@@ -32,6 +32,7 @@
             { spell: 'summonMonster', rank: 1 },
             { spell: 'magicWeapon', rank: 1 },
             { spell: 'mageArmor', rank: 1 },
+            { spell: 'causeFear', rank: 1 },
         ],
         '2': [
             { spell: 'summonMonster', rank: 2 },
@@ -47,6 +48,7 @@
             { spell: 'enlargePerson', rank: 2 },
             { spell: 'summonMonster', rank: 4 },
             { spell: 'foxsCunning', rank: 2 },
+            { spell: 'causeFear', rank: 2 },
         ],
         '5': [{ spell: 'summonMonster', rank: 5 }],
         '6': [

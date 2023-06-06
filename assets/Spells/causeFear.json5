@@ -1,0 +1,19 @@
+{
+    key: 'causeFear',
+    ranks: [
+        {
+            rank: 1,
+            // duration: '1d4 turns',
+        },
+        {
+            rank: 2,
+            // duration: '1d6 turns',
+        },
+    ],
+    sch: 'nec',
+    range: 'close',
+    castingTime: 'standard',
+    save: 'will',
+    components: ['V', 'S'],
+    flags: ['spellResistance'],
+}
