@@ -6,21 +6,19 @@ import Race from './Race';
 import Stats, { StatSet } from './Stats';
 
 const defaultRace = 'human.cha';
-const Races = Race.load();
 function checkRace(raceName: string | Race): Race {
     if (raceName instanceof Race) {
         return raceName;
     }
-    const r = Races[raceName || defaultRace];
+    const r = Race.load()[raceName || defaultRace];
     if (!r) {
         throw new Error(`Unknown race key: ${raceName}`);
     }
     return r;
 }
 
-const Classes = Class.load();
 function checkClass(className: string): Class {
-    const c = Classes[className];
+    const c = Class.load()[className];
     if (!c) {
         throw new Error(`Unknown class key: ${className}`);
     }
@@ -45,7 +43,7 @@ function parseFeatChoice(raw: any): FeatChoice | null {
     if (res.class) {
         if (!(res.class instanceof Class)) {
             const k = res.class;
-            res.class = Classes[k];
+            res.class = Class.load()[k];
             if (!res.class) {
                 console.warn(`Unknown class key: ${k}`);
                 return null;
