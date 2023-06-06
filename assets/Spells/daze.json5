@@ -1,0 +1,16 @@
+{
+    key: 'daze',
+    ranks: [
+        {
+            rank: 1,
+            // target: one creature hd <= 4
+            range: 'close',
+            duration: '1 turn',
+        },
+    ],
+    sch: 'compel',
+    castingTime: 'standard',
+    save: 'will',
+    components: ['V', 'S', 'M'],
+    flags: ['spellResistance'],
+}

@@ -3,15 +3,15 @@
     spells: {
         '0': [
             { spell: 'resistance', rank: 1 },
-            { spell: 'acidSplash' },
-            { spell: 'light' },
-            { spell: 'rayOfFrost' },
-            { spell: 'fireBolt' },
+            { spell: 'acidSplash', rank: 1 },
+            { spell: 'light', rank: 1 },
+            { spell: 'rayOfFrost', rank: 1 },
+            { spell: 'fireBolt', rank: 1 },
+            { spell: 'daze', rank: 1 },
             /*
             { spell: 'detectMagic' },
             { spell: 'detectPoison' },
             { spell: 'readMagic' },
-            { spell: 'daze' },
             { spell: 'flare' },
             { spell: 'dancingLights' },
             { spell: 'ghostSound' },
