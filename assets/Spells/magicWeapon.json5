@@ -1,0 +1,18 @@
+{
+    key: 'magicWeapon',
+    ranks: [
+        {
+            rank: 1,
+            range: 'touch',
+            duration: '1 min/level',
+        },
+        {
+            rank: 2,
+            range: 'close',
+            duration: '1 h/level',
+        },
+    ],
+    sch: 'tra',
+    castingTime: 'standard',
+    components: ['V', 'S', 'F'],
+}

@@ -30,18 +30,25 @@
         '1': [
             { spell: 'enlargePerson', rank: 1 },
             { spell: 'summonMonster', rank: 1 },
+            { spell: 'magicWeapon', rank: 1 },
+            { spell: 'mageArmor', rank: 1 },
         ],
         '2': [{ spell: 'summonMonster', rank: 2 }],
         '3': [
             { spell: 'fireball', rank: 1 },
             { spell: 'summonMonster', rank: 3 },
+            { spell: 'magicWeapon', rank: 2 },
+            { spell: 'mageArmor', rank: 2 },
         ],
         '4': [
             { spell: 'enlargePerson', rank: 2 },
             { spell: 'summonMonster', rank: 4 },
         ],
         '5': [{ spell: 'summonMonster', rank: 5 }],
-        '6': [{ spell: 'summonMonster', rank: 6 }],
+        '6': [
+            { spell: 'summonMonster', rank: 6 },
+            { spell: 'mageArmor', rank: 3 },
+        ],
         '7': [
             { spell: 'fireball', rank: 2 },
             { spell: 'summonMonster', rank: 7 },
@@ -51,7 +58,7 @@
             { spell: 'summonMonster', rank: 8 },
         ],
         '9': [{ spell: 'summonMonster', rank: 9 }],
-        '10': [],
+        '10': [{ spell: 'mageArmor', rank: 4 }],
         '11': [{ spell: 'fireball', rank: 3 }],
         '12': [],
         '13': [{ spell: 'enlargePerson', rank: 4 }],

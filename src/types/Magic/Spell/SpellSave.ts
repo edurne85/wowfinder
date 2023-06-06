@@ -1,4 +1,4 @@
-import { SaveType } from "../../Character/Saves";
+import { SaveType } from '../../Character/Saves';
 
 enum SpellSaveEffect {
     negate = 'negate',
@@ -29,4 +29,4 @@ class SpellSave implements SpellSaveBuilder {
     }
 }
 
-export { SpellSaveEffect, SpellSave } 
+export { SpellSaveEffect, SpellSave };
