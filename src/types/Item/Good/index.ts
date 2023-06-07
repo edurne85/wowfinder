@@ -6,3 +6,4 @@ export * from './Gem';
 export * from './Enchanting';
 export * from './Herb';
 export * from './Pigment';
+export * from './CommonGood';

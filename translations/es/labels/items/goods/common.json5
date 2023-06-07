@@ -1,0 +1,38 @@
+{
+    thread: {
+        coarse: 'Hilo burdo',
+        fine: 'Hilo fino',
+        silk: 'Hilo de seda',
+        heavy: 'Hilo de seda pesada',
+        rune: 'Hilo rúnico',
+    },
+    die: {
+        bleach: 'Lejía',
+        blue: 'Tinte azul',
+        green: 'Tinte verde',
+        red: 'Tinte rojo',
+    },
+    flux: {
+        weak: 'Flujo débil',
+        strong: 'Flujo fuerte',
+    },
+    vial: {
+        empty: 'Vial vacío',
+        leaded: 'Vial con plomo',
+        crystal: 'Vial de cristal',
+        imbued: 'Vial imbuido',
+    },
+    glue: {
+        natural: 'Cola natural',
+    },
+    oil: {
+        common: 'Aceite común',
+        refined: 'Aceite refinado',
+    },
+    spice: {
+        mild: 'Especias suaves',
+        intense: 'Especias intensas',
+        hot: 'Especias picantes',
+        exotic: 'Especias exóticas',
+    },
+}
