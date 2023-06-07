@@ -1,7 +1,6 @@
-import { Money, asMoney } from './Money';
-import { Item, ItemBuilder } from './base';
-import { Rarity, rarityMultipliers } from './Rarity';
-import { Mass } from '../Units';
+import { Money, asMoney } from '../Money';
+import { Item, ItemBuilder } from '../base';
+import { Rarity, rarityMultipliers } from '../Rarity';
 
 interface GoodBuilder extends ItemBuilder {
     label: string;
@@ -51,18 +50,4 @@ abstract class Good extends Item {
     }
 }
 
-class Ore extends Good {
-    get valueMultiplier(): number {
-        return 10;
-    }
-
-    get weight(): Mass {
-        return Mass.asPounds(2);
-    }
-
-    static build(raw: any): Ore {
-        return new Ore(Good.generate('ore', raw));
-    }
-}
-
-export { Good, Ore };
+export { Good, GoodBuilder, RawGoodBuilder };
