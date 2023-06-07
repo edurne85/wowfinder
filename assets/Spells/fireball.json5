@@ -25,7 +25,7 @@
             },
         },
         {
-            rank: 1,
+            rank: 3,
             area: 'sphere.point(60 foot)',
             damage: {
                 types: ['fire'],
