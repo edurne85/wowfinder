@@ -1,0 +1,6 @@
+{
+    $type: 'Pigment',
+    key: 'emerald',
+    iLevel: 30,
+    rarity: 'common',
+}

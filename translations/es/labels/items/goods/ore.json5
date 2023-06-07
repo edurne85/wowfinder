@@ -4,4 +4,8 @@
     silver: 'Mineral de plata',
     iron: 'Mineral de hierro',
     gold: 'Mineral de oro',
+    mithril: 'Mineral de mithril',
+    truesilver: 'Mineral de veraplata',
+    thorium: 'Mineral de torio',
+    darkiron: 'Mineral de hierronegro',
 }

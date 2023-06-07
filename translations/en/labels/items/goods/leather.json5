@@ -1,0 +1,7 @@
+{
+    light: 'Light Leather',
+    medium: 'Medium Leather',
+    heavy: 'Heavy Leather',
+    thick: 'Thick Leather',
+    rugged: 'Rugged Leather',
+}

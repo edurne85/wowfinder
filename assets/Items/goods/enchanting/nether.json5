@@ -1,0 +1,6 @@
+{
+    $type: 'Enchanting',
+    key: 'nether',
+    iLevel: 50,
+    rarity: 'uncommon',
+}

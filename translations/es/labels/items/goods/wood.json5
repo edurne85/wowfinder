@@ -1,0 +1,16 @@
+{
+    pine: 'Madera pinácea',
+    light: 'Madera ligera',
+    medium: 'Madera media',
+    heavy: 'Madera pesada',
+    plague: 'Madera de plaga',
+    fel: 'Madera vil',
+    chill: 'Madera gélida',
+    stony: 'Madera pétrea',
+    mystic: 'Madera mística',
+    draenic: 'Madera draénica',
+    demonic: 'Madera demoníaca',
+    marine: 'Madera marina',
+    shadow: 'Madera sombría',
+    draconic: 'Madera dracónica',
+}

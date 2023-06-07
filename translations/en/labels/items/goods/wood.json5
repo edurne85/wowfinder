@@ -1,0 +1,16 @@
+{
+    pine: 'Pine Wood',
+    light: 'Light Wood',
+    medium: 'Medium Wood',
+    heavy: 'Heavy Wood',
+    plague: 'Plague Wood',
+    fel: 'Fel Wood',
+    chill: 'Chill Wood',
+    stony: 'Stony Wood',
+    mystic: 'Mystic Wood',
+    draenic: 'Draenic Wood',
+    demonic: 'Demonic Wood',
+    marine: 'Marine Wood',
+    shadow: 'Shadow Wood',
+    draconic: 'Draconic Wood',
+}

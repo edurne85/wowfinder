@@ -1,0 +1,7 @@
+{
+    light: 'Cuero ligero',
+    medium: 'Cuero medio',
+    heavy: 'Cuero pesado',
+    thick: 'Cuero grueso',
+    rugged: 'Cuero basto',
+}

@@ -1,0 +1,58 @@
+{
+    // Dust
+    strange: 'Strange Dust',
+    soul: 'Soul Dust',
+    vision: 'Vision Dust',
+    dream: 'Dream Dust',
+    illusion: 'Illusion Dust',
+    arcane: 'Arcane Dust',
+    infinite: 'Infinite Dust',
+    hypnotic: 'Hypnotic Dust',
+    spirit: 'Spirit Dust',
+    draenic: 'Draenic Dust',
+    arkhana: 'Arkhana',
+    gloom: 'Gloom Dust',
+    anima: 'Anima Dust',
+    chromatic: 'Chromatic Dust',
+    // Essence
+    magic: 'Magic Essence',
+    astral: 'Astral Essence',
+    mystic: 'Mystic Essence',
+    nether: 'Nether Essence',
+    eternal: 'Eternal Essence',
+    planar: 'Planar Essence',
+    cosmic: 'Cosmic Essence',
+    celestial: 'Celestial Essence',
+    mysterious: 'Mysterious Essence',
+    /* ? WoD essence */
+    /* ? Legion essence */
+    /* ? BfA essence */
+    /* ? SL essence */
+    /* ? Dragonflight essence */
+    // Shard
+    glimmering: 'Glimmering Shard',
+    glowing: 'Glowing Shard',
+    radiant: 'Radiant Shard',
+    /* ? tier 4 shard */
+    brilliant: 'Brilliant Shard',
+    prismatic: 'Prismatic Shard',
+    dream: 'Dream Shard',
+    heavenly: 'Heavenly Shard',
+    ethereal: 'Ethereal Shard',
+    luminous: 'Luminous Shard',
+    leylight: 'Leylight Shard',
+    umbra: 'Umbra Shard',
+    veil: 'Veil Shard',
+    vibrant: 'Vibrant Shard',
+    // Crystal
+    nexus: 'Nexus Crystal',
+    void: 'Void Crystal',
+    abbys: 'Abyss Crystal',
+    maelstrom: 'Maelstrom Crystal',
+    sha: 'Sha Crystal',
+    time: 'Timeless Crystal',
+    chaos: 'Chaos Crystal',
+    veiled: 'Veiled Crystal',
+    eternity: 'Eternity Crystal',
+    resonant: 'Resonant Crystal',
+}

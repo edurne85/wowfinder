@@ -1,0 +1,6 @@
+{
+    $type: 'Herb',
+    key: 'ghostMushroom',
+    iLevel: 47,
+    rarity: 'common',
+}

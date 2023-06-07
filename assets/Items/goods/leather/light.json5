@@ -1,0 +1,6 @@
+{
+    $type: 'Leather',
+    key: 'light',
+    iLevel: 2,
+    rarity: 'common',
+}

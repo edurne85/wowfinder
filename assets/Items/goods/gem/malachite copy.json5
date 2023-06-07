@@ -1,0 +1,6 @@
+{
+    $type: 'Gem',
+    key: 'malachite',
+    iLevel: 7,
+    rarity: 'uncommon',
+}

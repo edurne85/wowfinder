@@ -1,0 +1,6 @@
+{
+    $type: 'Herb',
+    key: 'fadeleaf',
+    iLevel: 32,
+    rarity: 'common',
+}

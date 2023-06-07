@@ -1,0 +1,6 @@
+{
+    $type: 'Ore',
+    key: 'thorium',
+    iLevel: 50,
+    rarity: 'common',
+}

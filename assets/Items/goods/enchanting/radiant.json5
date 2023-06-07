@@ -1,0 +1,6 @@
+{
+    $type: 'Enchanting',
+    key: 'radiant',
+    iLevel: 40,
+    rarity: 'rare',
+}

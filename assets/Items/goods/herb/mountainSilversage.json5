@@ -1,0 +1,6 @@
+{
+    $type: 'Herb',
+    key: 'mountainSilversage',
+    iLevel: 56,
+    rarity: 'common',
+}

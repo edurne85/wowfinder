@@ -1,0 +1,6 @@
+{
+    $type: 'Gem',
+    key: 'starRuby',
+    iLevel: 50,
+    rarity: 'uncommon',
+}

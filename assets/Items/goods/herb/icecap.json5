@@ -1,0 +1,6 @@
+{
+    $type: 'Herb',
+    key: 'icecap',
+    iLevel: 58,
+    rarity: 'common',
+}

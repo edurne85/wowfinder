@@ -1,0 +1,6 @@
+{
+    $type: 'Pigment',
+    key: 'verdant',
+    iLevel: 12,
+    rarity: 'uncommon',
+}
