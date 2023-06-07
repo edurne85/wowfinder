@@ -1,14 +1,22 @@
 import { builder, ByKeyRecursive, ByKeyRecursiveEntry } from '../../utils';
 import { Item } from './base';
 import { Armor, Gear, Weapon } from './Gear';
-import { Ore } from './Good';
+import * as Goods from './Good';
 
 const builderByTypeKey: { [key: string]: builder<Item> } = {
     Gear: Gear.build,
     Accessory: Gear.build, // TODO #429: Review: specific class & builder needed?
     Weapon: Weapon.build,
     Armor: Armor.build,
-    Ore: Ore.build,
+    Ore: Goods.Ore.build,
+    Metal: Goods.MetalBar.build,
+    Stone: Goods.Stone.build,
+    Cloth: Goods.Cloth.build,
+    Leather: Goods.Leather.build,
+    Gem: Goods.Gem.build,
+    Enchanting: Goods.EnchantingReagent.build,
+    Herb: Goods.Herb.build,
+    Pigment: Goods.Pigment.build,
 };
 
 const builderKeys = Object.keys(builderByTypeKey);
