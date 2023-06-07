@@ -1,0 +1,38 @@
+{
+    thread: {
+        coarse: 'Coarse thread',
+        fine: 'Fine thread',
+        silk: 'Silken thread',
+        heavy: 'Heavy silken thread',
+        rune: 'Rune thread',
+    },
+    die: {
+        bleach: 'Bleach',
+        blue: 'Blue dye',
+        green: 'Green dye',
+        red: 'Red dye',
+    },
+    flux: {
+        weak: 'Weak flux',
+        strong: 'Strong flux',
+    },
+    vial: {
+        empty: 'Empty vial',
+        leaded: 'Leaded vial',
+        crystal: 'Crystal vial',
+        imbued: 'Imbued vial',
+    },
+    glue: {
+        natural: 'Natural glue',
+    },
+    oil: {
+        common: 'Common oil',
+        refined: 'Refined oil',
+    },
+    spice: {
+        mild: 'Mild spices',
+        intense: 'Intense spices',
+        hot: 'Hot spices',
+        exotic: 'Exotic spices',
+    },
+}
