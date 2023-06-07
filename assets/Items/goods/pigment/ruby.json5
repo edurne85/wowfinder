@@ -1,0 +1,6 @@
+{
+    $type: 'Pigment',
+    key: 'ruby',
+    iLevel: 45,
+    rarity: 'uncommon',
+}

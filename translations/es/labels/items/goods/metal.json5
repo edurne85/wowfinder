@@ -1,0 +1,14 @@
+{
+    copper: 'Lingote de cobre',
+    tin: 'Lingote de estaño',
+    bronze: 'Lingote de bronce',
+    silver: 'Lingote de plata',
+    iron: 'Lingote de hierro',
+    steel: 'Lingote de acero',
+    gold: 'Lingote de oro',
+    mithril: 'Lingote de mithril',
+    truesilver: 'Lingote de veraplata',
+    thorium: 'Lingote de torio',
+    darkiron: 'Lingote de hierronegro',
+    arcanite: 'Lingote de arcanita',
+}

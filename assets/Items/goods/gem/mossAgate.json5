@@ -1,0 +1,6 @@
+{
+    $type: 'Gem',
+    key: 'mossAgate',
+    iLevel: 25,
+    rarity: 'uncommon',
+}

@@ -1,0 +1,6 @@
+{
+    $type: 'Cloth',
+    key: 'mooncloth',
+    iLevel: 58,
+    rarity: 'uncommon',
+}

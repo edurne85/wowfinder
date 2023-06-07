@@ -1,0 +1,16 @@
+{
+    rough: 'Piedra férrea',
+    coarse: 'Piedra burda',
+    heavy: 'Piedra pesada',
+    solid: 'Piedra sólida',
+    dense: 'Piedra densa',
+    fel: 'Piedra vil',
+    crystal: 'Piedra cristalina',
+    volatile: 'Piedra volátil',
+    ghost: 'Piedra fantasmal',
+    draenic: 'Piedra draénica',
+    demonic: 'Piedra demoníaca',
+    marine: 'Piedra salvaje',
+    shadow: 'Piedra sombría',
+    draconic: 'Piedra draconiana',
+}

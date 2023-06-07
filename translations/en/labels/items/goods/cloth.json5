@@ -1,0 +1,9 @@
+{
+    linen: 'Linen Cloth',
+    wool: 'Wool Cloth',
+    silk: 'Silk Cloth',
+    mageweave: 'Mageweave Cloth',
+    runecloth: 'Runecloth',
+    felcloth: 'Felcloth',
+    mooncloth: 'Mooncloth',
+}

@@ -1,0 +1,6 @@
+{
+    $type: 'Cloth',
+    key: 'felcloth',
+    iLevel: 55,
+    rarity: 'uncommon',
+}

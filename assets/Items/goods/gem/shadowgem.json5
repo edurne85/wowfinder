@@ -1,0 +1,6 @@
+{
+    $type: 'Gem',
+    key: 'shadowgem',
+    iLevel: 20,
+    rarity: 'uncommon',
+}

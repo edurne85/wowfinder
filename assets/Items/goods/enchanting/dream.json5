@@ -1,0 +1,6 @@
+{
+    $type: 'Enchanting',
+    key: 'dream',
+    iLevel: 45,
+    rarity: 'common',
+}

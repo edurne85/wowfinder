@@ -4,4 +4,8 @@
     silver: 'Silver ore',
     iron: 'Iron ore',
     gold: 'Gold ore',
+    mithril: 'Mithril ore',
+    truesilver: 'Truesilver ore',
+    thorium: 'Thorium ore',
+    darkiron: 'Dark Iron ore',
 }

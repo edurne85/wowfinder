@@ -1,0 +1,16 @@
+{
+    rough: 'Rough Stone',
+    coarse: 'Coarse Stone',
+    heavy: 'Heavy Stone',
+    solid: 'Solid Stone',
+    dense: 'Dense Stone',
+    fel: 'Fel Stone',
+    crystal: 'Crystaline Stone',
+    volatile: 'Volatile Stone',
+    ghost: 'Ghost Stone',
+    draenic: 'Draenic Stone',
+    demonic: 'Demonic Stone',
+    marine: 'Marine Stone',
+    shadow: 'Shadow Stone',
+    draconic: 'Draconic Stone',
+}

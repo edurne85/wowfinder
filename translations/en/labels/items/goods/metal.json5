@@ -1,0 +1,14 @@
+{
+    copper: 'Copper bar',
+    tin: 'Tin bar',
+    bronze: 'Bronze bar',
+    silver: 'Silver bar',
+    iron: 'Iron bar',
+    steel: 'Steel bar',
+    gold: 'Gold bar',
+    mithril: 'Mithril bar',
+    truesilver: 'Truesilver bar',
+    thorium: 'Thorium bar',
+    darkiron: 'Dark Iron bar',
+    arcanite: 'Arcanite bar',
+}

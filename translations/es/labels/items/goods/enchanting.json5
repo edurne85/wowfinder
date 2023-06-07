@@ -1,0 +1,58 @@
+{
+    // Dust
+    strange: 'Polvo extraño',
+    soul: 'Polvo de alma',
+    vision: 'Polvo de visión',
+    dream: 'Polvo de sueño',
+    illusion: 'Polvo de ilusión',
+    arcane: 'Polvo arcano',
+    infinite: 'Polvo infinito',
+    hypnotic: 'Polvo hipnótico',
+    spirit: 'Polvo de espíritu',
+    draenic: 'Polvo draénico',
+    arkhana: 'Arkhana',
+    gloom: 'Polvo lúgubre',
+    anima: 'Polvo de ánima',
+    chromatic: 'Polvo cromático',
+    // Essence
+    magic: 'Esencia mágica',
+    astral: 'Esencia astral',
+    mystic: 'Esencia mística',
+    nether: 'Esencia abisal',
+    eternal: 'Esencia eterna',
+    planar: 'Esencia planar',
+    cosmic: 'Esencia cósmica',
+    celestial: 'Esencia celestial',
+    mysterious: 'Esencia misteriosa',
+    /* ? WoD essence */
+    /* ? Legion essence */
+    /* ? BfA essence */
+    /* ? SL essence */
+    /* ? Dragonflight essence */
+    // Shard
+    glimmering: 'Fragmento de luz trémula',
+    glowing: 'Fragment resplandeciente',
+    radiant: 'Fragmento radiante',
+    /* ? tier 4 shard */
+    brilliant: 'Fragmento brillante',
+    prismatic: 'Fragmento prismático',
+    dream: 'Fragmento de sueño',
+    heavenly: 'Fragmento celestial',
+    ethereal: 'Fragmento etéreo',
+    luminous: 'Fragmento luminoso',
+    leylight: 'Fragmento de luz Ley',
+    umbra: 'Fragmento de umbra',
+    veil: 'Fragmento del velo',
+    vibrant: 'Fragmento vibrante',
+    // Crystal
+    nexus: 'Cristal Nexus',
+    void: 'Cristal de vacío',
+    abbys: 'Cristal abisal',
+    maelstrom: 'Cristal de La Vorágine',
+    sha: 'Cristal de sha',
+    time: 'Cristal temporal',
+    chaos: 'Cristal del caos',
+    veiled: 'Cristal velado',
+    eternity: 'Cristal de eternidad',
+    resonant: 'Cristal resonante',
+}

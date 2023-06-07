@@ -1,0 +1,6 @@
+{
+    $type: 'Herb',
+    key: 'dreamfoil',
+    iLevel: 54,
+    rarity: 'common',
+}

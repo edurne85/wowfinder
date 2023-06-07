@@ -1,0 +1,6 @@
+{
+    $type: 'Metal',
+    key: 'silver',
+    iLevel: 18,
+    rarity: 'uncommon',
+}

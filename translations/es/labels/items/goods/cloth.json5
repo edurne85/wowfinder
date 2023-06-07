@@ -1,0 +1,9 @@
+{
+    linen: 'Paño de lino',
+    wool: 'Paño de lana',
+    silk: 'Paño de seda',
+    mageweave: 'Paño de tejido mágico',
+    runecloth: 'Paño rúnico',
+    felcloth: 'Tela vil',
+    mooncloth: 'Tela lunar',
+}

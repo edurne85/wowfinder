@@ -1,0 +1,6 @@
+{
+    $type: 'Stone',
+    key: 'heavy',
+    iLevel: 22,
+    rarity: 'common',
+}
