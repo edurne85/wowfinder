@@ -1,5 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron';
 import type { dumpable } from '../src/utils/files';
+import { DebugTimer } from '../src/utils';
 
 export const api = {
     /**
@@ -65,7 +66,9 @@ export const files = {
         ipcRenderer.sendSync('files:dumpToDir', baseDirName, data);
     },
     assetDump: (): void => {
+        const timer = new DebugTimer('bridge.ts: assetDump');
         ipcRenderer.sendSync('files:assetDump');
+        timer.finish();
     },
     zipDir: (dirPath: string, filePath: string): void => {
         ipcRenderer.sendSync('files:zipDir', dirPath, filePath);
