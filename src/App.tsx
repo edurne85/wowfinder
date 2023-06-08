@@ -8,14 +8,8 @@ import {
 import { initTranslations } from './i18n';
 import { getRoutes } from './Routes';
 import { GlobalStyle } from './styles/GlobalStyle';
-import { assertNonNull } from './utils';
+import { assertNonNull, DebugTimer, skipAssetDump } from './utils';
 import { LoadingStages, SplashWrapper } from './components/Splash';
-import {
-    debugTime,
-    debugTimeEnd,
-    debugTimeLog,
-    skipAssetDump,
-} from './utils/debug';
 
 initTranslations();
 
@@ -25,25 +19,23 @@ let loadStarted = false;
 function preLoad(context: GlobalContextType, setStage: SetStage): void {
     if (loadStarted) return;
     loadStarted = true;
-    setTimeout(() => {
-        debugTime('preLoad');
-        debugTimeLog('preLoad', 'preLoad started');
+    DebugTimer.execute('preLoad', log => {
+        log('started');
         if (skipAssetDump) {
-            debugTimeLog('preLoad', 'preLoad assetDump skipped');
+            log('assetDump skipped');
         } else {
             setStage(LoadingStages.assetDump);
             window.Files.assetDump();
-            console.timeLog('preLoad', 'preLoad assetDump done');
+            log('assetDump done');
         }
         setStage(LoadingStages.loading);
         context.data = FullData.load();
-        debugTimeLog('preLoad', 'preLoad data loaded');
+        log('data loaded');
         context.routes = getRoutes(context.data);
         context.router = createHashRouter(context.routes);
-        debugTimeLog('preLoad', 'preLoad router created');
+        log('router created');
         setStage(LoadingStages.done);
-        debugTimeEnd('preLoad');
-    }, 0);
+    });
 }
 
 export function App(): React.JSX.Element {

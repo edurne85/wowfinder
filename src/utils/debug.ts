@@ -1,4 +1,4 @@
-const debug = false;
+const debug = true;
 const debugStyleColors = {
     log: '#cfc',
     warn: '#ffc',
@@ -59,24 +59,6 @@ function debugGroupEnd(): void {
     });
 }
 
-function debugTime(title: string): void {
-    if (debug) {
-        console.time(title);
-    }
-}
-
-function debugTimeLog(title: string, ...data: any[]): void {
-    if (debug) {
-        console.timeLog(title, ...data);
-    }
-}
-
-function debugTimeEnd(title: string): void {
-    if (debug) {
-        console.timeEnd(title);
-    }
-}
-
 function debugTrace(title: string, data?: any): void {
     debugCall({
         func: console.trace,
@@ -84,6 +66,13 @@ function debugTrace(title: string, data?: any): void {
         data,
         color: debugStyleColors.trace,
     });
+}
+
+function debugBreakpoint(): void {
+    if (debug) {
+        // eslint-disable-next-line no-debugger
+        debugger;
+    }
 }
 
 function reportWiP(data?: any): void {
@@ -115,10 +104,8 @@ export {
     debugError,
     debugGroup,
     debugGroupEnd,
-    debugTime,
-    debugTimeLog,
-    debugTimeEnd,
     debugTrace,
+    debugBreakpoint,
     reportWiP,
     reportNotImplemented,
     tryOrFallback,

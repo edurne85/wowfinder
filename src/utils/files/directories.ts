@@ -2,6 +2,7 @@ import { app, ipcMain } from 'electron';
 import fs from 'fs';
 import path from 'path';
 import { filters, isFile } from './base';
+import { DebugTimer } from '../DebugTimer';
 
 const isDirectory = (path: string): boolean =>
     fs.existsSync(path) && fs.statSync(path).isDirectory();
@@ -58,13 +59,18 @@ function shouldCopy(
 }
 
 function copyDir(source: string, destination: string): void {
+    const dirTimer = new DebugTimer(`copyDir ${source} -> ${destination}`);
     const dirName = path.basename(source);
     const destinationDir = path.join(destination, dirName);
 
     try {
+        const existCheckTimer = new DebugTimer(
+            `check if exists ${destinationDir}`,
+        );
         if (!fs.existsSync(destinationDir)) {
             fs.mkdirSync(destinationDir);
         }
+        existCheckTimer.finish();
 
         const items = fs.readdirSync(source);
 
@@ -76,7 +82,6 @@ function copyDir(source: string, destination: string): void {
             const destinationStats = fs.existsSync(destinationPath)
                 ? fs.statSync(destinationPath)
                 : null;
-
             if (sourceStats.isFile()) {
                 if (shouldCopy(sourceStats, destinationStats)) {
                     fs.copyFileSync(sourcePath, destinationPath);
@@ -88,6 +93,7 @@ function copyDir(source: string, destination: string): void {
     } catch (err) {
         console.error(`Failed to copy dir: ${err}`);
     }
+    dirTimer.finish();
 }
 
 function assetDump(): void {
@@ -121,7 +127,9 @@ function registerDirectoryListeners(): void {
         },
     );
     ipcMain.on('files:assetDump', () => {
+        const timer = new DebugTimer('on(files:assetDump)');
         assetDump();
+        timer.finish();
     });
 }
 
