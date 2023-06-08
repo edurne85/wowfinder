@@ -8,7 +8,7 @@ import {
 import { initTranslations } from './i18n';
 import { getRoutes } from './Routes';
 import { GlobalStyle } from './styles/GlobalStyle';
-import { assertNonNull, DebugTimer, skipAssetDump } from './utils';
+import { assertNonNull, DebugTimer } from './utils';
 import { LoadingStages, SplashWrapper } from './components/Splash';
 
 initTranslations();
@@ -21,13 +21,6 @@ function preLoad(context: GlobalContextType, setStage: SetStage): void {
     loadStarted = true;
     DebugTimer.execute('preLoad', log => {
         log('started');
-        if (skipAssetDump) {
-            log('assetDump skipped');
-        } else {
-            setStage(LoadingStages.assetDump);
-            window.Files.assetDump();
-            log('assetDump done');
-        }
         setStage(LoadingStages.loading);
         context.data = FullData.load();
         log('data loaded');
