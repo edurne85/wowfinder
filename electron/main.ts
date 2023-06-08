@@ -1,12 +1,19 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 import registerFilesListeners from '../src/utils/files';
-import { debug } from '../src/utils';
+import { debug, DebugTimer, skipAssetDump } from '../src/utils';
+import { assetDump } from '../src/utils/files/directories';
 
 let mainWindow: BrowserWindow | null;
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
+
+if (!skipAssetDump) {
+    DebugTimer.execute('assetDump (in main process)', () => {
+        assetDump();
+    });
+}
 
 const sourceAssetsPath =
     process.env.NODE_ENV === 'production'
