@@ -1,0 +1,8 @@
+{
+    $type: 'Common',
+    key: 'glue.natural',
+    iLevel: 5,
+    rarity: 'common',
+    weight: 0.5,
+    value: 50,
+}

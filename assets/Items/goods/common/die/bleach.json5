@@ -1,0 +1,8 @@
+{
+    $type: 'Common',
+    key: 'die.bleach',
+    iLevel: 5,
+    rarity: 'common',
+    weight: 0.5,
+    value: 10,
+}

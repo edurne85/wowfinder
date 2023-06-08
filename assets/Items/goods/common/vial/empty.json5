@@ -1,0 +1,8 @@
+{
+    $type: 'Common',
+    key: 'vial.empty',
+    iLevel: 5,
+    rarity: 'common',
+    weight: 0.1,
+    value: 50,
+}

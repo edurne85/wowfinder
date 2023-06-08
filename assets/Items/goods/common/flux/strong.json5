@@ -1,0 +1,8 @@
+{
+    $type: 'Common',
+    key: 'flux.strong',
+    iLevel: 15,
+    rarity: 'common',
+    weight: 0.2,
+    value: 2000,
+}

@@ -1,0 +1,8 @@
+{
+    $type: 'Common',
+    key: 'vial.imbued',
+    iLevel: 45,
+    rarity: 'common',
+    weight: 0.1,
+    value: 5000,
+}

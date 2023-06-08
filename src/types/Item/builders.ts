@@ -17,6 +17,7 @@ const builderByTypeKey: { [key: string]: builder<Item> } = {
     Enchanting: Goods.EnchantingReagent.build,
     Herb: Goods.Herb.build,
     Pigment: Goods.Pigment.build,
+    Common: Goods.CommonGood.build,
 };
 
 const builderKeys = Object.keys(builderByTypeKey);

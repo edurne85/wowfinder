@@ -1,0 +1,8 @@
+{
+    $type: 'Common',
+    key: 'thread.coarse',
+    iLevel: 1,
+    rarity: 'common',
+    weight: 0.1,
+    value: 10,
+}

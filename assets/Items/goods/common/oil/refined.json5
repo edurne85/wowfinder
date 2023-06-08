@@ -1,0 +1,8 @@
+{
+    $type: 'Common',
+    key: 'oil.refined',
+    iLevel: 15,
+    rarity: 'common',
+    weight: 0.5,
+    value: 1000,
+}

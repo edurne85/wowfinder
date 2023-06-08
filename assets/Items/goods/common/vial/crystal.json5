@@ -1,0 +1,8 @@
+{
+    $type: 'Common',
+    key: 'vial.crystal',
+    iLevel: 35,
+    rarity: 'common',
+    weight: 0.1,
+    value: 2000,
+}

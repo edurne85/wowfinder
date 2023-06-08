@@ -5,7 +5,6 @@ import { Item, ItemBuilder } from '../base';
 interface CommonGoodBuilder extends ItemBuilder {
     weight: Mass | number;
     value: number;
-    label: string;
 }
 
 class CommonGood extends Item {
@@ -25,13 +24,13 @@ class CommonGood extends Item {
         return Money.fromRaw(this.#value);
     }
 
-    static build(raw: any): CommonGoodBuilder {
-        return {
+    static build(raw: any): CommonGood {
+        return new CommonGood({
             ...Item.preBuild(raw),
             weight: raw.weight || 0,
             value: raw.value || 0,
             label: `good.common.${raw.key || ''}`,
-        };
+        });
     }
 }
 
