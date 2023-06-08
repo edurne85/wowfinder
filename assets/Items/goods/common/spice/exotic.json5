@@ -1,0 +1,8 @@
+{
+    $type: 'Common',
+    key: 'spice.exotic',
+    iLevel: 45,
+    rarity: 'common',
+    weight: 0.1,
+    value: 5000,
+}
