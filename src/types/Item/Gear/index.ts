@@ -32,4 +32,7 @@ function buildGear(raw: any): Gear {
     }
 }
 
-export { Gear, Armor, Weapon, buildGear };
+export * from './Armor';
+export * from './base';
+export * from './Weapon';
+export { buildGear };
