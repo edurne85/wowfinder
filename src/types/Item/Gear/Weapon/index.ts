@@ -147,7 +147,7 @@ class Weapon extends Gear {
                 WeaponProficiency.unarmed,
             flags: (raw.flags as Set<WeaponFlags>) || [],
             criticalRange: (raw.criticalRange as number) || 20,
-            criticalMultiplier: parseFloat(raw.criticalMultiplier) ?? 2,
+            criticalMultiplier: raw.criticalMultiplier ?? 2,
             range: (raw.range as Range) || 0,
         };
     }
