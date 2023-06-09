@@ -1,7 +1,7 @@
 import { Mass } from '../../../Units';
 import { SpellContainer } from './base';
 
-class Scroll extends SpellContainer {
+class SpellScroll extends SpellContainer {
     get valueMultiplier(): number {
         return 2500;
     }
@@ -11,4 +11,4 @@ class Scroll extends SpellContainer {
     }
 }
 
-export { Scroll };
+export { SpellScroll };

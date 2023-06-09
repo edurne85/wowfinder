@@ -2,7 +2,7 @@ import { Mass } from '../../../Units';
 import { ActionLength, ActionTime } from '../../../Action';
 import { SpellContainer } from './base';
 
-class Potion extends SpellContainer {
+class SpellPotion extends SpellContainer {
     get useTime(): ActionTime {
         return ActionLength.standard;
     }
@@ -16,4 +16,4 @@ class Potion extends SpellContainer {
     }
 }
 
-export { Potion };
+export { SpellPotion };

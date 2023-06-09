@@ -1,4 +1,4 @@
 export * from './base';
-export * from './Potion';
-export * from './Scroll';
+export * from './SpellPotion';
+export * from './SpellScroll';
 export * from './Wand';
