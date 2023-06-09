@@ -1,6 +1,6 @@
 export { SpellBase } from './base';
 export type { SpellBaseBuilder } from './base';
-export { CastingTime } from './CastingTime';
+export { ActionTime as CastingTime } from '../../Action/ActionTime';
 export { parseSpellComponent, SpellCoreComponent } from './Components';
 export type { SpellComponent } from './Components';
 export {

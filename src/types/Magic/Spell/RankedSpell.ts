@@ -2,7 +2,7 @@ import { TFunction } from 'i18next';
 import { assertDefined, Optional, toRoman } from '../../../utils';
 import { fullParseSchool, School, SubSchool } from '../School';
 import { SpellBase, SpellBaseBuilder } from './base';
-import { CastingTime } from './CastingTime';
+import { ActionTime } from '../../Action/ActionTime';
 import { SpellDuration } from './Duration';
 import { SpellRange } from './Range';
 import { SpellBuilder } from './Spell';
@@ -38,7 +38,7 @@ class RankedSpell extends SpellBase implements RankedSpellBuilder {
         return this.#rank;
     }
 
-    get castingTime(): CastingTime {
+    get castingTime(): ActionTime {
         const res = super.castingTime;
         assertDefined(
             res,
