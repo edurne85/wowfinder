@@ -5,4 +5,13 @@ type Quantified<T> = {
     qtty: number;
 };
 
-export type { Optional, Quantified };
+type Counter = {
+    min: number;
+    max: number;
+    current: number;
+    initial: number;
+};
+
+type NonPrivate<T> = Pick<T, Exclude<keyof T, `#${string}`>>;
+
+export type { Optional, Quantified, Counter, NonPrivate };

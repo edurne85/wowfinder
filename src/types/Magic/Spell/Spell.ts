@@ -129,6 +129,16 @@ class Spell extends SpellBase implements SpellBuilder {
     static load(dir = window.Main.asset('Spells')): Spells {
         return (this.#loaded ||= forceDataLoadKeyS<Spell>(dir, this.build));
     }
+
+    static byKey(key: string): Spell;
+    static byKey(key: string, rank: number): RankedSpell;
+    static byKey(key: string, rank?: number): Spell | RankedSpell {
+        const spell = this.load()[key];
+        if (!spell) {
+            throw new Error(`Invalid spell key: ${key}`);
+        }
+        return rank === undefined ? spell : spell.getRank(rank);
+    }
 }
 
 export type { SpellBuilder, Spells };
