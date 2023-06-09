@@ -147,10 +147,7 @@ class Weapon extends Gear {
                 WeaponProficiency.unarmed,
             flags: (raw.flags as Set<WeaponFlags>) || [],
             criticalRange: (raw.criticalRange as number) || 20,
-            // If we are given a 0 multiplier, we don't want to override it!
-            criticalMultiplier: Object.keys(raw).includes('criticalMultiplier')
-                ? raw.criticalMultiplier
-                : 2,
+            criticalMultiplier: parseFloat(raw.criticalMultiplier) ?? 2,
             range: (raw.range as Range) || 0,
         };
     }
@@ -160,4 +157,11 @@ class Weapon extends Gear {
     }
 }
 
-export { WeaponGroup, WeaponRank, WeaponProficiency, WeaponFlags, Weapon };
+export {
+    WeaponGroup,
+    WeaponRank,
+    WeaponProficiency,
+    WeaponFlags,
+    Weapon,
+    WeaponBuilder,
+};

@@ -7,3 +7,4 @@ export * from './Enchanting';
 export * from './Herb';
 export * from './Pigment';
 export * from './CommonGood';
+export * from './builder';

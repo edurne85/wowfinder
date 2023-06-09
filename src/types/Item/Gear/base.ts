@@ -6,11 +6,10 @@ import {
     MultiBonus,
 } from '../../Character/Bonus';
 import Size from '../../Character/Size';
-import { Mass } from '../../Units';
+import { Mass, Weight } from '../../Units';
 import { Item, ItemBuilder } from '../base';
 import { buildShape, explodeShape, Shape } from './Slot';
 
-type Weight = number | Mass;
 interface GearBuilder extends ItemBuilder {
     shape: string[];
     size: Size;
@@ -18,7 +17,7 @@ interface GearBuilder extends ItemBuilder {
     weight: Weight;
 }
 
-export default class Gear extends Item implements BonusProvider {
+class Gear extends Item implements BonusProvider {
     #shape: Shape;
     #size: Size;
     #bonuses: Bonus;
