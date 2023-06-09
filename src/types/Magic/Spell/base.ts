@@ -1,6 +1,6 @@
 import { parseIfNeeded } from '../../../utils';
 import { parseArea, SpellArea } from './Area';
-import { CastingTime } from './CastingTime';
+import { ActionTime } from '../../Action/ActionTime';
 import { parseSpellComponent, SpellComponent } from './Components';
 import { parseValidSpellDescriptors, SpellDescriptor } from './Descriptor';
 import { SpellDuration, tryParseSpellDuration } from './Duration';
@@ -9,7 +9,7 @@ import { SpellRange } from './Range';
 
 interface SpellBaseBuilder {
     descriptors?: (SpellDescriptor | string)[];
-    castingTime?: CastingTime | string;
+    castingTime?: ActionTime | string;
     components?: (SpellComponent | string)[];
     range?: SpellRange | string;
     area?: SpellArea | string;
@@ -22,7 +22,7 @@ interface SpellBaseBuilder {
 
 abstract class SpellBase implements SpellBaseBuilder {
     #descriptors: Set<SpellDescriptor>;
-    #castingTime?: CastingTime;
+    #castingTime?: ActionTime;
     #components: SpellComponent[];
     #range?: SpellRange;
     #area?: SpellArea;
@@ -40,7 +40,7 @@ abstract class SpellBase implements SpellBaseBuilder {
         flags = [],
     }: SpellBaseBuilder) {
         this.#descriptors = new Set(parseValidSpellDescriptors(descriptors));
-        this.#castingTime = parseIfNeeded(castingTime, CastingTime.tryParse);
+        this.#castingTime = parseIfNeeded(castingTime, ActionTime.tryParse);
         this.#components = components.map(c =>
             parseIfNeeded(c, parseSpellComponent),
         );
@@ -56,7 +56,7 @@ abstract class SpellBase implements SpellBaseBuilder {
         return [...this.#descriptors];
     }
 
-    get castingTime(): CastingTime | undefined {
+    get castingTime(): ActionTime | undefined {
         return this.#castingTime;
     }
 
