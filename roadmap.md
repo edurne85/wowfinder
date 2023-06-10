@@ -12,7 +12,7 @@ This stage includes releases that offer some kind of useful functionality to pla
 
 This version is adding a lot of logic to load and manage common items in the game, such as trade goods and consumables.
 
-In addition to that, an issue that was causing delays of more than 20 - 25 seconds when loading the app has been addressed, which should drastically improve app startup times (see #549 and #551)
+In addition to that, an issue that was causing delays of more than 20 - 25 seconds when loading the app has been addressed, which should drastically improve app startup times (see [#549](https://github.com/edurne85/wowfinder/issues/549) and [#551](https://github.com/edurne85/wowfinder/pull/551))
 
 This is planned to get released around mid-June 2023
 
