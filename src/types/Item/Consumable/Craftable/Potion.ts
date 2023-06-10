@@ -5,7 +5,7 @@ import { Mass } from '../../../Units';
 import { ItemBuilder as CraftableConsumableBuilder } from '../../base';
 import { CraftableConsumable } from './base';
 
-interface PotionRestoreValues {
+interface RestoreValues {
     health: number;
     spells: number;
     sanity: number;
@@ -21,11 +21,16 @@ class Potion extends CraftableConsumable {
     #health: Dice;
     #spells: Dice;
     #sanity: Dice;
-    constructor({ health, spells, sanity, ...rest }: PotionBuilder) {
+    constructor({
+        health = 0,
+        spells = 0,
+        sanity = 0,
+        ...rest
+    }: PotionBuilder) {
         super(rest);
-        this.#health = Dice.make(health || 0);
-        this.#spells = Dice.make(spells || 0);
-        this.#sanity = Dice.make(sanity || 0);
+        this.#health = Dice.make(health);
+        this.#spells = Dice.make(spells);
+        this.#sanity = Dice.make(sanity);
     }
 
     get useTime(): ActionTime {
@@ -52,7 +57,7 @@ class Potion extends CraftableConsumable {
         return this.#sanity;
     }
 
-    roll(): PotionRestoreValues {
+    roll(): RestoreValues {
         return {
             health: this.#health.roll(),
             spells: this.#spells.roll(),
@@ -70,4 +75,4 @@ class Potion extends CraftableConsumable {
     }
 }
 
-export { Potion };
+export { Potion, RestoreValues, PotionBuilder };
