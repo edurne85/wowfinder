@@ -1,5 +1,5 @@
 import { StatKey } from '../Character/Stats';
-import Dice from '../Dice';
+import { Dice } from '../Dice';
 import { DamageModifier, computeModifier } from './DamageModifier';
 import { DamageRollArguments } from './DamageRollArguments';
 import { DamageComponentBaseBuilder, DamageComponentBase } from './base';
