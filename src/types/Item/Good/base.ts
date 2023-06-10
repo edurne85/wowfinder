@@ -7,7 +7,7 @@ interface GoodBuilder extends ItemBuilder {
     iLevel: number;
 }
 
-interface RawGoodBuilder {
+interface RawGoodBuilder extends Partial<Omit<ItemBuilder, 'rarity'>> {
     key?: string;
     iLevel?: number;
     rarity?: Rarity | string;

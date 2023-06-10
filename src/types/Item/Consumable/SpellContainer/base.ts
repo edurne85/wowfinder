@@ -1,34 +1,22 @@
-import { Counter } from '../../../../utils';
-import { ActionTime } from '../../../Action';
-import { RankedSpell } from '../../../Magic/Spell';
 import { Consumable } from '../base';
 import Money from '../../Money';
 import {
-    SpellContainerBase,
     SpellContainerBuilder,
+    SpellContainerRawBuilder,
     buildSpellContainer,
-} from './builder';
+    spellContainerPreBuild,
+} from './helpers';
+import { SpellContainerBaseBuilder } from './builder';
 
-abstract class SpellContainer extends Consumable implements SpellContainerBase {
-    #spell: RankedSpell;
-    #charges: Counter;
-    #spellLevel: number;
-    #casterLevel: number;
-
+abstract class SpellContainer extends SpellContainerBaseBuilder {
     constructor(args: SpellContainerBuilder) {
-        super(args);
-        const { spell, charges, spellLevel, casterLevel } =
-            buildSpellContainer(args);
-        this.#spell = spell;
-        this.#charges = charges;
-        this.#spellLevel = spellLevel;
-        this.#casterLevel = casterLevel;
+        super(buildSpellContainer(args));
     }
 
     abstract get valueMultiplier(): number;
 
     get value(): Money {
-        const chargeValue = Math.max(0.5, this.#charges.current);
+        const chargeValue = Math.max(0.5, this.charges.current);
         return Money.fromRaw(
             chargeValue *
                 this.valueMultiplier *
@@ -37,32 +25,14 @@ abstract class SpellContainer extends Consumable implements SpellContainerBase {
         );
     }
 
-    get useTime(): ActionTime {
-        return this.#spell.castingTime;
-    }
-
-    get spell(): RankedSpell {
-        return this.#spell;
-    }
-
-    get charges(): Counter {
-        return { ...this.#charges };
-    }
-
-    get spellLevel(): number {
-        return this.#spellLevel;
-    }
-
-    get casterLevel(): number {
-        return this.#casterLevel;
-    }
-
-    useCharge(): boolean {
-        if (this.#charges.current <= 0) {
-            return false;
-        }
-        this.#charges.current--;
-        return true;
+    protected static generate(
+        infix: string,
+        raw: SpellContainerRawBuilder,
+    ): SpellContainerBuilder {
+        return {
+            ...Consumable.generate(infix, raw),
+            ...spellContainerPreBuild(raw),
+        };
     }
 }
 
