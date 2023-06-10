@@ -1,4 +1,4 @@
-import { Mass } from '../../../Units';
+import { Mass, Time, TimeUnit } from '../../../Units';
 import { ItemBuilder as CraftableConsumableBuilder } from '../../base';
 import { CraftableConsumable } from './base';
 import { Bonus, BonusBuilder, BonusType } from '../../../Character/Bonus';
@@ -17,6 +17,10 @@ class GearEnchant extends CraftableConsumable {
         super(rest);
         this.#bonus = new Bonus({ ...bonus, type: BonusType.enchant });
         this.#slots = buildShape(slots);
+    }
+
+    get useTime(): Time {
+        return new Time({ value: 1, unit: TimeUnit.min });
     }
 
     get bonus(): Bonus {
