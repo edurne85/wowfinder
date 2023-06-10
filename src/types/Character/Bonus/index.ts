@@ -272,6 +272,7 @@ interface BonusProvider {
 export type { BonusProvider };
 
 export {
+    BonusBuilder,
     BonusType,
     Bonus,
     MultiBonus,
