@@ -1,9 +1,9 @@
-import { Dice, RollableValue } from '../../Dice';
-import { ActionLength, ActionTime } from '../../Action';
-import Money from '../Money';
-import { Consumable } from './base';
-import { Mass } from '../../Units';
-import { ItemBuilder } from '../base';
+import { Dice, RollableValue } from '../../../Dice';
+import { ActionLength, ActionTime } from '../../../Action';
+import { Consumable } from '../base';
+import { Mass } from '../../../Units';
+import { ItemBuilder as CraftableConsumableBuilder } from '../../base';
+import { CraftableConsumable } from './base';
 
 interface PotionRestoreValues {
     health: number;
@@ -11,13 +11,13 @@ interface PotionRestoreValues {
     sanity: number;
 }
 
-interface PotionBuilder extends ItemBuilder {
+interface PotionBuilder extends CraftableConsumableBuilder {
     health?: RollableValue;
     spells?: RollableValue;
     sanity?: RollableValue;
 }
 
-class Potion extends Consumable {
+class Potion extends CraftableConsumable {
     #health: Dice;
     #spells: Dice;
     #sanity: Dice;
@@ -32,13 +32,12 @@ class Potion extends Consumable {
         return ActionLength.move;
     }
 
-    get value(): Money {
-        // TODO
-        return Money.fromRaw(0);
-    }
-
     get weight(): Mass {
         return Mass.asPounds(1);
+    }
+
+    protected get skillValueMultiplier(): number {
+        return 20;
     }
 
     get health(): Dice {
