@@ -32,13 +32,14 @@ abstract class SpellContainer extends SpellContainerBaseBuilder {
     ): SpellContainerBuilder {
         assertDefined(raw.spell, 'SpellContainer requires a spell');
         const spell = Spell.load()[raw.spell];
+        assertDefined(raw.spell, 'SpellContainer requires a valid spell');
         const spellRank = raw.spellRank || 1;
         const spellLevel = raw.spellLevel || 0;
         const casterLevel = raw.casterLevel || 0;
         const affix = `spell.${infix}(${spell.key}[${spellRank}])@(${spellLevel})(${casterLevel})`;
         return {
             ...Consumable.generate(affix, raw),
-            spell: raw.spell || '',
+            spell: raw.spell,
             spellRank,
             spellLevel,
             casterLevel,
