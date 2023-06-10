@@ -1,6 +1,6 @@
 import { DiceBuilder, average, make, max, min } from './helpers';
 
-export default class Dice {
+class Dice {
     #sides: number;
     #qtty: number;
     #mod: number;
