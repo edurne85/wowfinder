@@ -19,6 +19,10 @@ class Wand extends SpellContainer {
     get weight(): Mass {
         return Mass.asPounds(1);
     }
+
+    static build(raw: any = {}): Wand {
+        return new Wand(SpellContainer.generate('wand', raw));
+    }
 }
 
 export { Wand };
