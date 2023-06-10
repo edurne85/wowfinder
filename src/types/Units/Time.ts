@@ -34,6 +34,14 @@ class Time extends Scalar<TimeUnit> {
         );
         return base ? new Time(base) : undefined;
     }
+
+    static parseTime(input: string): Time {
+        const parsed = Time.tryParseTime(input);
+        if (!parsed) {
+            throw new Error(`Unable to parse time from input: ${input}`);
+        }
+        return parsed;
+    }
 }
 
 export { TimeUnit, convertTime, Time };

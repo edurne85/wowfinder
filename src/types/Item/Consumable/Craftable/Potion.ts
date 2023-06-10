@@ -33,7 +33,7 @@ class Potion extends CraftableConsumable {
     }
 
     get weight(): Mass {
-        return Mass.asPounds(1);
+        return Mass.asPounds(0.5);
     }
 
     protected get skillValueMultiplier(): number {

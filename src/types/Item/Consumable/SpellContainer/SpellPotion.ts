@@ -12,7 +12,7 @@ class SpellPotion extends SpellContainer {
     }
 
     get weight(): Mass {
-        return Mass.asPounds(1);
+        return Mass.asPounds(0.5);
     }
 
     static build(raw: any = {}): SpellPotion {
