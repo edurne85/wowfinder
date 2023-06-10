@@ -9,6 +9,10 @@ class SpellScroll extends SpellContainer {
     get weight(): Mass {
         return Mass.asPounds(0.1);
     }
+
+    static build(raw: any = {}): SpellScroll {
+        return new SpellScroll(SpellContainer.generate('scroll', raw));
+    }
 }
 
 export { SpellScroll };

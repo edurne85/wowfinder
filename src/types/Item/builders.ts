@@ -1,11 +1,13 @@
 import { builder, ByKeyRecursive, ByKeyRecursiveEntry } from '../../utils';
 import { Item } from './base';
+import { consumableBuilderByTypeKey } from './Consumable';
 import { gearBuilderByTypeKey } from './Gear';
 import { goodBuilderByTypeKey } from './Good';
 
 const builderByTypeKey: { [key: string]: builder<Item> } = {
     ...gearBuilderByTypeKey,
     ...goodBuilderByTypeKey,
+    ...consumableBuilderByTypeKey,
 };
 
 const builderKeys = Object.keys(builderByTypeKey);

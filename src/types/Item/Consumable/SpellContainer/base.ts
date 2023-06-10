@@ -4,9 +4,10 @@ import {
     SpellContainerBuilder,
     SpellContainerRawBuilder,
     buildSpellContainer,
-    spellContainerPreBuild,
 } from './helpers';
 import { SpellContainerBaseBuilder } from './builder';
+import { assertDefined } from '../../../../utils';
+import { Spell } from '../../../Magic';
 
 abstract class SpellContainer extends SpellContainerBaseBuilder {
     constructor(args: SpellContainerBuilder) {
@@ -29,9 +30,18 @@ abstract class SpellContainer extends SpellContainerBaseBuilder {
         infix: string,
         raw: SpellContainerRawBuilder,
     ): SpellContainerBuilder {
+        assertDefined(raw.spell, 'SpellContainer requires a spell');
+        const spell = Spell.load()[raw.spell];
+        const spellRank = raw.spellRank || 1;
+        const spellLevel = raw.spellLevel || 0;
+        const casterLevel = raw.casterLevel || 0;
+        const affix = `spell.${infix}(${spell.key}[${spellRank}])@(${spellLevel})(${casterLevel})`;
         return {
-            ...Consumable.generate(infix, raw),
-            ...spellContainerPreBuild(raw),
+            ...Consumable.generate(affix, raw),
+            spell: raw.spell || '',
+            spellRank,
+            spellLevel,
+            casterLevel,
         };
     }
 }
