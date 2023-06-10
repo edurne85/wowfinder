@@ -16,14 +16,14 @@ interface ArmorBuilder extends GearBuilder {
 }
 
 class Armor extends Gear {
-    private _type: ArmorType;
-    private _acBonus: number;
-    private _bonusType: ArmorBonusType;
-    private _intrinsic: number;
-    private _maxDex: number;
-    private _acp: number;
-    private _asf: number;
-    private _flags: Set<ArmorFlags>;
+    #type: ArmorType;
+    #acBonus: number;
+    #bonusType: ArmorBonusType;
+    #intrinsic: number;
+    #maxDex: number;
+    #acp: number;
+    #asf: number;
+    #flags: Set<ArmorFlags>;
 
     constructor({
         type = ArmorType.misc,
@@ -37,34 +37,50 @@ class Armor extends Gear {
         ...args
     }: ArmorBuilder) {
         super(args);
-        this._type = type;
-        this._acBonus = acBonus;
-        this._bonusType = bonusType;
-        this._intrinsic = intrinsic;
-        this._maxDex = maxDex;
-        this._acp = acp;
-        this._asf = asf;
-        this._flags = new Set(flags);
+        this.#type = type;
+        this.#acBonus = acBonus;
+        this.#bonusType = bonusType;
+        this.#intrinsic = intrinsic;
+        this.#maxDex = maxDex;
+        this.#acp = acp;
+        this.#asf = asf;
+        this.#flags = new Set(flags);
+    }
+
+    get maxDex(): number {
+        return this.#maxDex;
+    }
+
+    get acp(): number {
+        return this.#acp;
+    }
+
+    get asf(): number {
+        return this.#asf;
+    }
+
+    get flags(): Set<ArmorFlags> {
+        return new Set(this.#flags);
     }
 
     get encumbering(): boolean {
         return (
-            this._type === ArmorType.heavy || this._type === ArmorType.medium
+            this.#type === ArmorType.heavy || this.#type === ArmorType.medium
         );
     }
 
     get fullBonus(): MultiBonus {
-        const total = this._acBonus + this._intrinsic;
+        const total = this.#acBonus + this.#intrinsic;
         return new MultiBonus({
             armor: new Bonus({
                 type: BonusType.armor,
                 armorClass:
-                    this._bonusType === ArmorBonusType.armor ? total : 0,
+                    this.#bonusType === ArmorBonusType.armor ? total : 0,
             }),
             shield: new Bonus({
                 type: BonusType.shield,
                 armorClass:
-                    this._bonusType === ArmorBonusType.shield ? total : 0,
+                    this.#bonusType === ArmorBonusType.shield ? total : 0,
             }),
             gear: this.bonuses,
         });
