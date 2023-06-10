@@ -1,6 +1,6 @@
 import { builder } from '../../../utils';
 import { Item } from '../base';
-import { Potion } from './Craftable';
+import { Elixir, Potion, SharpeningStone, WeightStone } from './Craftable';
 import { SpellPotion, SpellScroll, Wand } from './SpellContainer';
 
 const consumableBuilderByTypeKey: { [key: string]: builder<Item> } = {
@@ -8,6 +8,9 @@ const consumableBuilderByTypeKey: { [key: string]: builder<Item> } = {
     SpellScroll: SpellScroll.build,
     SpellWand: Wand.build,
     Potion: Potion.build,
+    Elixir: Elixir.build,
+    SharpeningStone: SharpeningStone.build,
+    WeightStone: WeightStone.build,
 };
 
 export { consumableBuilderByTypeKey };
