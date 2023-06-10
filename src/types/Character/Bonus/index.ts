@@ -19,12 +19,14 @@ enum BonusType {
     natural = 'natural',
     temporal = 'temporal',
     aura = 'aura',
+    enchant = 'enchant',
 }
 
 const stackables: BonusType[] = [
     BonusType.gear,
     BonusType.dodge,
     BonusType.temporal,
+    BonusType.enchant,
 ];
 
 function stackable(type: BonusType): boolean {
