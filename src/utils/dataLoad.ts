@@ -1,12 +1,5 @@
 import JSON5 from 'json5';
-
-interface Keyed<T> {
-    key: T;
-}
-
-interface Labeled {
-    label: string;
-}
+import { Keyed, Labeled } from './types';
 
 interface KeyedLabeled extends Keyed<number>, Labeled {}
 
