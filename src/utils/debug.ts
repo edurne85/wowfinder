@@ -1,4 +1,4 @@
-const debug = true;
+const debug = false;
 const debugStyleColors = {
     log: '#cfc',
     warn: '#ffc',
