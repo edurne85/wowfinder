@@ -1,4 +1,5 @@
-import { DiceBuilder, average, make, max, min } from './helpers';
+import type { DiceBuilder } from './helpers';
+import { average, make, max, min } from './helpers';
 
 class Dice {
     #sides: number;

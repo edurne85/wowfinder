@@ -11,4 +11,11 @@ describe('utils/index.ts', () => {
         expect(utils).toHaveProperty('assertNonNull');
         expect(utils).toHaveProperty('jClone');
     });
+
+    it('should have debug flags set to false', () => {
+        expect(utils).toHaveProperty('debug');
+        expect(utils).toHaveProperty('skipAssetDump');
+        expect(utils.debug).toBe(false);
+        expect(utils.skipAssetDump).toBe(false);
+    });
 });

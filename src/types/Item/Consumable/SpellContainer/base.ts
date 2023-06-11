@@ -1,10 +1,7 @@
 import { Consumable } from '../base';
 import Money from '../../Money';
-import {
-    SpellContainerBuilder,
-    SpellContainerRawBuilder,
-    buildSpellContainer,
-} from './helpers';
+import type { SpellContainerBuilder } from './helpers';
+import { SpellContainerRawBuilder, buildSpellContainer } from './helpers';
 import { SpellContainerBaseBuilder } from './builder';
 import { assertDefined } from '../../../../utils';
 import { Spell } from '../../../Magic';
