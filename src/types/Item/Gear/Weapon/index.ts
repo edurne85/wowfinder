@@ -50,14 +50,14 @@ interface WeaponBuilder extends GearBuilder {
 
 class Weapon extends Gear {
     #damage: DamageSpec;
-    private _intrinsic: number;
-    private _groups: Set<WeaponGroup>;
-    private _rank: WeaponRank;
-    private _proficiency: WeaponProficiency;
-    private _flags: Set<WeaponFlags>;
-    private _critRange: number;
-    private _critMult: number;
-    private _range: Length;
+    #intrinsic: number;
+    #groups: Set<WeaponGroup>;
+    #rank: WeaponRank;
+    #proficiency: WeaponProficiency;
+    #flags: Set<WeaponFlags>;
+    #critRange: number;
+    #critMult: number;
+    #range: Length;
 
     constructor({
         damage,
@@ -73,18 +73,18 @@ class Weapon extends Gear {
     }: WeaponBuilder) {
         super(args);
         this.#damage = buildWeaponDamage(...damage);
-        this._intrinsic = intrinsic;
-        this._groups = new Set(groups);
-        this._rank = rank;
-        this._proficiency = proficiency;
-        this._flags = new Set(flags);
-        this._critRange = criticalRange;
-        this._critMult = criticalMultiplier;
-        this._range = asFeet(range);
+        this.#intrinsic = intrinsic;
+        this.#groups = new Set(groups);
+        this.#rank = rank;
+        this.#proficiency = proficiency;
+        this.#flags = new Set(flags);
+        this.#critRange = criticalRange;
+        this.#critMult = criticalMultiplier;
+        this.#range = asFeet(range);
     }
 
     get intrinsic(): number {
-        return this._intrinsic;
+        return this.#intrinsic;
     }
 
     get damage(): DamageSpec {
@@ -92,43 +92,43 @@ class Weapon extends Gear {
     }
 
     get groups(): Set<WeaponGroup> {
-        return new Set(this._groups);
+        return new Set(this.#groups);
     }
 
     get rank(): WeaponRank {
-        return this._rank;
+        return this.#rank;
     }
 
     get proficiency(): WeaponProficiency {
-        return this._proficiency;
+        return this.#proficiency;
     }
 
     get flags(): Set<WeaponFlags> {
-        return new Set(this._flags);
+        return new Set(this.#flags);
     }
 
     get criticalRange(): number {
-        return this._critRange;
+        return this.#critRange;
     }
 
     get criticalMultiplier(): number {
-        return this._critMult;
+        return this.#critMult;
     }
 
     get ranged(): boolean {
-        return this._range.value > 0;
+        return this.#range.value > 0;
     }
 
     private get meleeRange(): Length {
         const s =
             (this.size as number) +
-            (this._flags.has(WeaponFlags.reach) ? 1 : 0);
+            (this.#flags.has(WeaponFlags.reach) ? 1 : 0);
         const value = Math.floor(5 * Math.pow(2, s));
         return new Length({ value, unit: LengthUnit.foot });
     }
 
     get range(): Length {
-        return this.ranged ? this._range : this.meleeRange;
+        return this.ranged ? this.#range : this.meleeRange;
     }
 
     get $type(): string {
