@@ -119,7 +119,7 @@ class Weapon extends Gear {
         return this.#range.value > 0;
     }
 
-    private get meleeRange(): Length {
+    get #meleeRange(): Length {
         const s =
             (this.size as number) +
             (this.#flags.has(WeaponFlags.reach) ? 1 : 0);
@@ -128,7 +128,7 @@ class Weapon extends Gear {
     }
 
     get range(): Length {
-        return this.ranged ? this.#range : this.meleeRange;
+        return this.ranged ? this.#range : this.#meleeRange;
     }
 
     get $type(): string {
