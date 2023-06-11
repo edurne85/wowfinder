@@ -8,139 +8,139 @@ import {
 } from '../../Magic/SpellPower';
 
 export default class SpellPowerBonus implements SpellPowerValues<number> {
-    private _data: SpellPowerValues<number>;
+    #data: SpellPowerValues<number>;
     constructor(data: SpellPowerValuesPartial<number>) {
-        this._data = fillSpellPowerValues<number>(data, 0);
+        this.#data = fillSpellPowerValues<number>(data, 0);
     }
 
     get arcane(): number {
-        return this._data.arcane;
+        return this.#data.arcane;
     }
 
     get divine(): number {
-        return this._data.divine;
+        return this.#data.divine;
     }
 
     get spontaneous(): number {
-        return this._data.spontaneous;
+        return this.#data.spontaneous;
     }
 
     get abj(): number {
-        return this._data.abj;
+        return this.#data.abj;
     }
 
     get con(): number {
-        return this._data.con;
+        return this.#data.con;
     }
 
     get div(): number {
-        return this._data.div;
+        return this.#data.div;
     }
 
     get enc(): number {
-        return this._data.enc;
+        return this.#data.enc;
     }
 
     get evo(): number {
-        return this._data.evo;
+        return this.#data.evo;
     }
 
     get ill(): number {
-        return this._data.ill;
+        return this.#data.ill;
     }
 
     get nec(): number {
-        return this._data.nec;
+        return this.#data.nec;
     }
 
     get tra(): number {
-        return this._data.tra;
+        return this.#data.tra;
     }
 
     get uni(): number {
-        return this._data.uni;
+        return this.#data.uni;
     }
 
     get void(): number {
-        return this._data.void;
+        return this.#data.void;
     }
 
     get banish(): number {
-        return this._data.banish;
+        return this.#data.banish;
     }
 
     get counter(): number {
-        return this._data.counter;
+        return this.#data.counter;
     }
 
     get call(): number {
-        return this._data.call;
+        return this.#data.call;
     }
 
     get create(): number {
-        return this._data.create;
+        return this.#data.create;
     }
 
     get heal(): number {
-        return this._data.heal;
+        return this.#data.heal;
     }
 
     get summon(): number {
-        return this._data.summon;
+        return this.#data.summon;
     }
 
     get teleport(): number {
-        return this._data.teleport;
+        return this.#data.teleport;
     }
 
     get scry(): number {
-        return this._data.scry;
+        return this.#data.scry;
     }
 
     get charm(): number {
-        return this._data.charm;
+        return this.#data.charm;
     }
 
     get compel(): number {
-        return this._data.compel;
+        return this.#data.compel;
     }
 
     get figment(): number {
-        return this._data.figment;
+        return this.#data.figment;
     }
 
     get glamer(): number {
-        return this._data.glamer;
+        return this.#data.glamer;
     }
 
     get phantom(): number {
-        return this._data.phantom;
+        return this.#data.phantom;
     }
 
     get shadow(): number {
-        return this._data.shadow;
+        return this.#data.shadow;
     }
 
     get enhancement(): number {
-        return this._data.enhancement;
+        return this.#data.enhancement;
     }
 
     get polymorph(): number {
-        return this._data.polymorph;
+        return this.#data.polymorph;
     }
 
     computed(mode: CastingMode, school: School | SubSchool): number {
         return computedSpellPower(this, mode, school);
     }
 
-    private static _allKeys: string[] = [
+    static #allKeys: string[] = [
         ...Object.keys(CastingMode),
         ...Object.keys(School),
         ...Object.keys(SubSchool),
     ];
 
     static get allKeys(): readonly string[] {
-        return Object.freeze(this._allKeys);
+        return Object.freeze(this.#allKeys);
     }
 
     static build(raw: any = {}): SpellPowerBonus {

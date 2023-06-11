@@ -51,16 +51,16 @@ interface BonusBuilder {
 }
 
 class Bonus {
-    private _type: BonusType;
-    private _hp: number;
-    private _stats: StatsBonus;
-    private _skills: SkillsBonus;
-    private _saves: SavesBonus;
-    private _resistances: ResistBonus;
-    private _armorClass: number;
-    private _vitalNeeds: VitalNeeds;
-    private _senses: Senses;
-    private _spellPower: SpellPowerBonus;
+    #type: BonusType;
+    #hp: number;
+    #stats: StatsBonus;
+    #skills: SkillsBonus;
+    #saves: SavesBonus;
+    #resistances: ResistBonus;
+    #armorClass: number;
+    #vitalNeeds: VitalNeeds;
+    #senses: Senses;
+    #spellPower: SpellPowerBonus;
 
     constructor({
         type,
@@ -74,57 +74,57 @@ class Bonus {
         senses = Senses.defaults,
         spellPower = SpellPowerBonus.zero,
     }: BonusBuilder) {
-        this._type = type;
-        this._hp = hp;
-        this._stats = StatsBonus.sum(stats);
-        this._skills = SkillsBonus.sum(skills);
-        this._saves = SavesBonus.sum(saves);
-        this._resistances = ResistBonus.sum(resistances);
-        this._armorClass = armorClass;
-        this._vitalNeeds = vitalNeeds;
-        this._senses = senses;
-        this._spellPower = spellPower;
+        this.#type = type;
+        this.#hp = hp;
+        this.#stats = StatsBonus.sum(stats);
+        this.#skills = SkillsBonus.sum(skills);
+        this.#saves = SavesBonus.sum(saves);
+        this.#resistances = ResistBonus.sum(resistances);
+        this.#armorClass = armorClass;
+        this.#vitalNeeds = vitalNeeds;
+        this.#senses = senses;
+        this.#spellPower = spellPower;
         Object.freeze(this);
     }
 
     get type(): BonusType {
-        return this._type;
+        return this.#type;
     }
 
     get hp(): number {
-        return this._hp;
+        return this.#hp;
     }
 
     get stats(): StatsBonus {
-        return StatsBonus.sum(this._stats);
+        return StatsBonus.sum(this.#stats);
     }
 
     get skills(): SkillsBonus {
-        return SkillsBonus.sum(this._skills);
+        return SkillsBonus.sum(this.#skills);
     }
 
     get saves(): SavesBonus {
-        return SavesBonus.sum(this._saves);
+        return SavesBonus.sum(this.#saves);
     }
 
     get resistances(): ResistBonus {
-        return ResistBonus.sum(this._resistances);
+        return ResistBonus.sum(this.#resistances);
     }
 
     get armorClass(): number {
-        return this._armorClass;
+        return this.#armorClass;
     }
 
     get vitalNeeds(): VitalNeeds {
-        return this._vitalNeeds;
+        return this.#vitalNeeds;
     }
 
     get senses(): Senses {
-        return this._senses;
+        return this.#senses;
     }
 
     get spellPower(): SpellPowerBonus {
-        return this._spellPower;
+        return this.#spellPower;
     }
 
     static zero(type: BonusType): Bonus {
@@ -145,30 +145,30 @@ class Bonus {
     static sum(type: BonusType, ...args: Bonus[]): Bonus {
         return new Bonus({
             type,
-            hp: sum(...args.map(a => a._hp)),
-            stats: StatsBonus.sum(...args.map(a => a._stats)),
-            skills: SkillsBonus.sum(...args.map(a => a._skills)),
-            saves: SavesBonus.sum(...args.map(a => a._saves)),
-            resistances: ResistBonus.sum(...args.map(a => a._resistances)),
-            armorClass: sum(...args.map(a => a._armorClass)),
-            vitalNeeds: VitalNeeds.combine(...args.map(a => a._vitalNeeds)),
-            senses: Senses.combine(...args.map(a => a._senses)),
-            spellPower: SpellPowerBonus.sum(...args.map(a => a._spellPower)),
+            hp: sum(...args.map(a => a.#hp)),
+            stats: StatsBonus.sum(...args.map(a => a.#stats)),
+            skills: SkillsBonus.sum(...args.map(a => a.#skills)),
+            saves: SavesBonus.sum(...args.map(a => a.#saves)),
+            resistances: ResistBonus.sum(...args.map(a => a.#resistances)),
+            armorClass: sum(...args.map(a => a.#armorClass)),
+            vitalNeeds: VitalNeeds.combine(...args.map(a => a.#vitalNeeds)),
+            senses: Senses.combine(...args.map(a => a.#senses)),
+            spellPower: SpellPowerBonus.sum(...args.map(a => a.#spellPower)),
         });
     }
 
     static max(type: BonusType, ...args: Bonus[]): Bonus {
         return new Bonus({
             type,
-            hp: Math.max(...args.map(a => a._hp)),
-            stats: StatsBonus.max(...args.map(a => a._stats)),
-            skills: SkillsBonus.max(...args.map(a => a._skills)),
-            saves: SavesBonus.max(...args.map(a => a._saves)),
-            resistances: ResistBonus.max(...args.map(a => a._resistances)),
-            armorClass: Math.max(...args.map(a => a._armorClass)),
-            vitalNeeds: VitalNeeds.combine(...args.map(a => a._vitalNeeds)),
-            senses: Senses.combine(...args.map(a => a._senses)),
-            spellPower: SpellPowerBonus.max(...args.map(a => a._spellPower)),
+            hp: Math.max(...args.map(a => a.#hp)),
+            stats: StatsBonus.max(...args.map(a => a.#stats)),
+            skills: SkillsBonus.max(...args.map(a => a.#skills)),
+            saves: SavesBonus.max(...args.map(a => a.#saves)),
+            resistances: ResistBonus.max(...args.map(a => a.#resistances)),
+            armorClass: Math.max(...args.map(a => a.#armorClass)),
+            vitalNeeds: VitalNeeds.combine(...args.map(a => a.#vitalNeeds)),
+            senses: Senses.combine(...args.map(a => a.#senses)),
+            spellPower: SpellPowerBonus.max(...args.map(a => a.#spellPower)),
         });
     }
 
@@ -230,10 +230,10 @@ class Bonus {
 }
 
 class MultiBonus {
-    private _bonuses: PartialBonuses;
+    #bonuses: PartialBonuses;
 
     constructor(bonuses: PartialBonuses) {
-        this._bonuses = Object.assign({}, bonuses);
+        this.#bonuses = Object.assign({}, bonuses);
     }
 
     static get zero(): FullBonuses {
@@ -246,10 +246,10 @@ class MultiBonus {
     }
 
     get bonuses(): FullBonuses {
-        return Object.assign(MultiBonus.zero, this._bonuses);
+        return Object.assign(MultiBonus.zero, this.#bonuses);
     }
 
-    private static _combine(...bonuses: PartialBonuses[]): FullBonuses {
+    static #combine(...bonuses: PartialBonuses[]): FullBonuses {
         return Bonus.combine(
             ...bonuses.reduce(
                 (acc: Bonus[], val) => acc.concat(Object.values(val)),
@@ -259,9 +259,9 @@ class MultiBonus {
     }
 
     static combine(...bonuses: MultiBonus[]): FullBonuses {
-        return MultiBonus._combine(
+        return MultiBonus.#combine(
             ...bonuses
-                .map(b => b._bonuses)
+                .map(b => b.#bonuses)
                 .reduce((acc: PartialBonuses[], val) => acc.concat(val), []),
         );
     }
