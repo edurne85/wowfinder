@@ -4,30 +4,30 @@ interface VitalNeedsBuilder {
     sleep?: boolean;
 }
 export default class VitalNeeds {
-    private _breathe: boolean;
-    private _eat: boolean;
-    private _sleep: boolean;
+    #breathe: boolean;
+    #eat: boolean;
+    #sleep: boolean;
 
     constructor({
         breathe = true,
         eat = true,
         sleep = true,
     }: VitalNeedsBuilder) {
-        this._breathe = breathe;
-        this._eat = eat;
-        this._sleep = sleep;
+        this.#breathe = breathe;
+        this.#eat = eat;
+        this.#sleep = sleep;
     }
 
     get breathe(): boolean {
-        return this._breathe;
+        return this.#breathe;
     }
 
     get eat(): boolean {
-        return this._eat;
+        return this.#eat;
     }
 
     get sleep(): boolean {
-        return this._sleep;
+        return this.#sleep;
     }
 
     static get defaults(): VitalNeeds {
@@ -36,9 +36,9 @@ export default class VitalNeeds {
 
     static combine(...args: VitalNeeds[]): VitalNeeds {
         return new VitalNeeds({
-            breathe: args.every(a => a._breathe),
-            eat: args.every(a => a._eat),
-            sleep: args.every(a => a._sleep),
+            breathe: args.every(a => a.#breathe),
+            eat: args.every(a => a.#eat),
+            sleep: args.every(a => a.#sleep),
         });
     }
 

@@ -18,14 +18,14 @@ function fill(data: ResistancePartialSet, filler = 0): ResistanceSet {
 }
 
 export default class ResistBonus {
-    private _values: ResistanceSet;
+    #values: ResistanceSet;
 
     constructor(data: ResistancePartialSet) {
-        this._values = fill(data);
+        this.#values = fill(data);
     }
 
     get values(): ResistanceSet {
-        return { ...this._values };
+        return { ...this.#values };
     }
 
     static get zero(): ResistBonus {
@@ -35,8 +35,8 @@ export default class ResistBonus {
     static sum(...args: ResistBonus[]): ResistBonus {
         const result = this.zero;
         for (const type of Object.keys(DamageType)) {
-            result._values[type as DamageType] = sum(
-                ...args.map(r => r._values[type as DamageType]),
+            result.#values[type as DamageType] = sum(
+                ...args.map(r => r.#values[type as DamageType]),
             );
         }
         return result;
@@ -45,15 +45,15 @@ export default class ResistBonus {
     static max(...args: ResistBonus[]): ResistBonus {
         const result = this.zero;
         for (const type of Object.keys(DamageType)) {
-            result._values[type as DamageType] = Math.max(
-                ...args.map(r => r._values[type as DamageType]),
+            result.#values[type as DamageType] = Math.max(
+                ...args.map(r => r.#values[type as DamageType]),
             );
         }
         return result;
     }
 
     static build(raw: any = {}): ResistBonus {
-        return new ResistBonus(Object.assign({}, this.zero._values, raw));
+        return new ResistBonus(Object.assign({}, this.zero.#values, raw));
     }
 }
 

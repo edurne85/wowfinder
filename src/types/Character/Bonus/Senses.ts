@@ -5,30 +5,30 @@ interface SensesBuilder {
 }
 
 export default class Senses {
-    private _darkVision: number;
-    private _lowLightVision: boolean;
-    private _smell: boolean;
+    #darkVision: number;
+    #lowLightVision: boolean;
+    #smell: boolean;
 
     constructor({
         darkVision = 0,
         lowLightVision = false,
         smell = false,
     }: SensesBuilder) {
-        this._darkVision = darkVision;
-        this._lowLightVision = lowLightVision;
-        this._smell = smell;
+        this.#darkVision = darkVision;
+        this.#lowLightVision = lowLightVision;
+        this.#smell = smell;
     }
 
     get darkVision(): number {
-        return this._darkVision;
+        return this.#darkVision;
     }
 
     get lowLightVision(): boolean {
-        return this._lowLightVision;
+        return this.#lowLightVision;
     }
 
     get smell(): boolean {
-        return this._smell;
+        return this.#smell;
     }
 
     static get defaults(): Senses {
@@ -38,11 +38,11 @@ export default class Senses {
     static combine(...args: Senses[]): Senses {
         return new Senses({
             darkVision: args.reduce(
-                (prev, curr): number => Math.max(prev, curr._darkVision),
+                (prev, curr): number => Math.max(prev, curr.#darkVision),
                 0,
             ),
-            lowLightVision: args.some(s => s._lowLightVision),
-            smell: args.some(s => s._smell),
+            lowLightVision: args.some(s => s.#lowLightVision),
+            smell: args.some(s => s.#smell),
         });
     }
 

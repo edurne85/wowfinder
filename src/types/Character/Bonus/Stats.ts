@@ -2,21 +2,21 @@ import { sum } from '../../../utils';
 import { PartialStatSet, StatKey, StatSet, zeroDefault } from '../Stats';
 
 export default class StatsBonus {
-    private _values: StatSet;
+    #values: StatSet;
 
     constructor(values: PartialStatSet) {
-        this._values = Object.assign({}, zeroDefault, values);
+        this.#values = Object.assign({}, zeroDefault, values);
         for (const stat of Object.keys(StatKey)) {
             Object.defineProperty(this, stat, {
                 enumerable: true,
                 configurable: false,
-                get: () => this._values[stat as StatKey] || 0,
+                get: () => this.#values[stat as StatKey] || 0,
             });
         }
     }
 
     get values(): StatSet {
-        return { ...this._values };
+        return { ...this.#values };
     }
 
     static get zero(): StatsBonus {
@@ -26,8 +26,8 @@ export default class StatsBonus {
     static sum(...args: StatsBonus[]): StatsBonus {
         const result = this.zero;
         for (const stat of Object.keys(StatKey)) {
-            result._values[stat as StatKey] = sum(
-                ...args.map(s => s._values[stat as StatKey]),
+            result.#values[stat as StatKey] = sum(
+                ...args.map(s => s.#values[stat as StatKey]),
             );
         }
         return result;
@@ -36,8 +36,8 @@ export default class StatsBonus {
     static max(...args: StatsBonus[]): StatsBonus {
         const result = this.zero;
         for (const stat of Object.keys(StatKey)) {
-            result._values[stat as StatKey] = Math.max(
-                ...args.map(s => s._values[stat as StatKey]),
+            result.#values[stat as StatKey] = Math.max(
+                ...args.map(s => s.#values[stat as StatKey]),
             );
         }
         return result;
