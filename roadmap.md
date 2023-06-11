@@ -4,9 +4,7 @@ This document summarizes the short- and mid- term development plans for the app.
 
 The project is currently following an alternating pattern during the early alpha stage, with odd versions focused on technical improvmenents and implementing the rules into the app, and even versions providing user-facing features.
 
-## Initial Alpha stage
-
-This stage includes releases that offer some kind of useful functionality to players, but are clearly not a complete application.
+## Latest release
 
 ### [Alpha 7: Updates to item modelling](https://github.com/edurne85/wowfinder/milestone/11)
 
@@ -14,7 +12,11 @@ This version is adding a lot of logic to load and manage common items in the gam
 
 In addition to that, an issue that was causing delays of more than 20 - 25 seconds when loading the app has been addressed, which should drastically improve app startup times (see [#549](https://github.com/edurne85/wowfinder/issues/549) and [#551](https://github.com/edurne85/wowfinder/pull/551))
 
-This is planned to get released around mid-June 2023
+[Download Alpha 7](https://github.com/edurne85/wowfinder/releases/tag/v1.0.0-alpha-7)
+
+## Initial Alpha stage
+
+This stage includes releases that offer some kind of useful functionality to players, but are clearly not a complete application.
 
 ### [Alpha 8: Gear and item rendering](https://github.com/edurne85/wowfinder/milestone/4)
 

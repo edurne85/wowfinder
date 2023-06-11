@@ -1,7 +1,7 @@
 {
     "name": "wowfinder-companion",
     "author": "Edurne Pascual <herenvardo@gmail.com>",
-    "version": "1.0.0-alpha.7",
+    "version": "1.0.0-alpha.8",
     "description": "Utility app for players and GMs of the WowFinder campaign",
     "main": "./.webpack/main",
     "scripts": {
