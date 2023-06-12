@@ -1,14 +1,24 @@
 import { sum } from '../../utils';
 import { Mass, MassUnit } from '../Units';
 
-enum StatKey {
+enum StatPhysical {
     STR = 'STR',
     DEX = 'DEX',
     CON = 'CON',
+}
+
+enum StatMental {
     INT = 'INT',
     WIS = 'WIS',
     CHA = 'CHA',
 }
+
+const StatKey = {
+    ...StatPhysical,
+    ...StatMental,
+} as const;
+
+type StatKey = (typeof StatKey)[keyof typeof StatKey];
 
 const StatKeys: StatKey[] = [
     StatKey.STR,
@@ -24,15 +34,13 @@ enum StatGroup {
     mental = 'mental',
 }
 
-type StatPhysical = StatKey.STR | StatKey.DEX | StatKey.CON;
-
-type StatMental = StatKey.INT | StatKey.WIS | StatKey.CHA;
+const statGroups = {
+    [StatGroup.physical]: Object.keys(StatPhysical),
+    [StatGroup.mental]: Object.keys(StatMental),
+};
 
 function inGroup(stat: StatKey, group: StatGroup): boolean {
-    return (
-        ((stat as StatPhysical) && group === StatGroup.physical) ||
-        ((stat as StatMental) && group === StatGroup.mental)
-    );
+    return statGroups[group].includes(stat);
 }
 
 const statMod = (value: number): number => Math.floor(value / 2 - 5);
@@ -98,12 +106,12 @@ function carry(str: number): Mass {
 }
 
 export default class Stats {
-    private _base: StatSet;
-    private _racial: StatSet;
-    private _enhance: StatSet;
-    private _gear: StatSet;
-    private _misc: StatSet;
-    private _temp: StatSet;
+    #base: StatSet;
+    #racial: StatSet;
+    #enhance: StatSet;
+    #gear: StatSet;
+    #misc: StatSet;
+    #temp: StatSet;
 
     constructor({
         base = baseDefault,
@@ -113,27 +121,27 @@ export default class Stats {
         misc = zeroDefault,
         temp = zeroDefault,
     }: PartialStatBlock) {
-        this._base = base;
-        this._racial = racial;
-        this._enhance = enhance;
-        this._gear = gear;
-        this._misc = misc;
-        this._temp = temp;
+        this.#base = base;
+        this.#racial = racial;
+        this.#enhance = enhance;
+        this.#gear = gear;
+        this.#misc = misc;
+        this.#temp = temp;
     }
 
     get totals(): StatSet {
         return addStatSets(
-            this._base,
-            this._racial,
-            this._enhance,
-            this._gear,
-            this._misc,
-            this._temp,
+            this.#base,
+            this.#racial,
+            this.#enhance,
+            this.#gear,
+            this.#misc,
+            this.#temp,
         );
     }
 
     get active(): StatSet {
-        return addStatSets(this._base, this._racial, this._enhance);
+        return addStatSets(this.#base, this.#racial, this.#enhance);
     }
 
     get totalMods(): StatSet {
@@ -149,27 +157,27 @@ export default class Stats {
     }
 
     get base(): StatSet {
-        return Object.assign({}, this._base);
+        return Object.assign({}, this.#base);
     }
 
     get racial(): StatSet {
-        return Object.assign({}, this._racial);
+        return Object.assign({}, this.#racial);
     }
 
     get enhance(): StatSet {
-        return Object.assign({}, this._enhance);
+        return Object.assign({}, this.#enhance);
     }
 
     get gear(): StatSet {
-        return Object.assign({}, this._gear);
+        return Object.assign({}, this.#gear);
     }
 
     get misc(): StatSet {
-        return Object.assign({}, this._misc);
+        return Object.assign({}, this.#misc);
     }
 
     get temp(): StatSet {
-        return Object.assign({}, this._temp);
+        return Object.assign({}, this.#temp);
     }
 
     get carry(): Mass {
