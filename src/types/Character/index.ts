@@ -36,7 +36,7 @@ import Race from './Race';
 import { Resistances } from './Resistances';
 import { Saves, SimpleSaves } from './Saves';
 import Size from './Size';
-import Stats from './Stats';
+import { Stats } from './Stats';
 
 type Characters = { [key: string]: Character };
 

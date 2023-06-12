@@ -1,5 +1,5 @@
 import Size from '../Size';
-import Stats from '../Stats';
+import { Stats } from '../Stats';
 
 interface ArmorValuesBuilder {
     armor?: number;

@@ -3,7 +3,7 @@ import { Bonus } from './Bonus';
 import { Class } from './Class';
 import { Feat } from './Feats';
 import Race from './Race';
-import Stats, { StatSet } from './Stats';
+import { Stats, StatSet } from './Stats';
 
 const defaultRace = 'human.cha';
 function checkRace(raceName: string | Race): Race {

@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import Stats, {
+import {
+    Stats,
     StatKeys,
     StatSet,
     statMod,

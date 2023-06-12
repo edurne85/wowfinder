@@ -4,7 +4,7 @@ import {
     levelByMode,
 } from './EffectiveCasterLevels';
 import type { Expanded } from '../../utils';
-import Stats, { StatSet, zeroDefault } from '../Character/Stats';
+import { Stats, StatSet, zeroDefault } from '../Character/Stats';
 import {
     CastingMode,
     CastingModeValues,
