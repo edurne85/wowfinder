@@ -19,6 +19,10 @@ export default class StatsBonus {
         return { ...this.#values };
     }
 
+    get isZero(): boolean {
+        return Object.values(this.#values).every(v => v === 0);
+    }
+
     static get zero(): StatsBonus {
         return new StatsBonus(zeroDefault);
     }
