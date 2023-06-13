@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { BonusViewArgs } from '../helpers';
 import { ConditionalStatsBonusSummaryView } from './StatsBonusSummaryView';
+import { ConditionalResistBonusSummaryView } from './ResistBonusSummaryView';
 
 const BonusSummaryContainer = styled.div``;
 
@@ -8,6 +9,9 @@ function BonusSummaryView({ bonus }: BonusViewArgs): React.JSX.Element {
     return (
         <BonusSummaryContainer>
             <ConditionalStatsBonusSummaryView statsBonus={bonus.stats} />
+            <ConditionalResistBonusSummaryView
+                resistBonus={bonus.resistances}
+            />
         </BonusSummaryContainer>
     );
 }

@@ -28,6 +28,10 @@ export default class ResistBonus {
         return { ...this.#values };
     }
 
+    get isZero(): boolean {
+        return Object.values(this.#values).every(v => v === 0);
+    }
+
     static get zero(): ResistBonus {
         return new ResistBonus({});
     }
