@@ -81,19 +81,37 @@ const debugOutline = ({
     }`
         : '';
 
-enum FontFamily {
-    priori = 'Priori Serif OT',
-}
+const FontFamily = {
+    priori: [
+        debug ? '' : 'Priori Serif OT',
+        'Quattrocento',
+        'Sinistre S† Caroline',
+        'Medieval Sharp',
+        debug ? 'Priori Serif OT' : '',
+        'serif',
+    ],
+} as const;
+
+type FontFamily = (typeof FontFamily)[keyof typeof FontFamily];
 
 interface fontArgs {
     family?: FontFamily;
     size?: number; // pt units
 }
 
+function asArray<T>(value: T | T[]): T[] {
+    return Array.isArray(value) ? value : [value];
+}
+
 const font = ({ family, size }: fontArgs): string => {
     const props: string[] = [];
     if (family) {
-        props.push(`font-family: "${family}";`);
+        props.push(
+            `font-family: ${asArray(family)
+                .filter(f => f)
+                .map(f => (/[-a-zA-Z0-9]+/.test(`${f}`) ? f : `"${f}"`))
+                .join(', ')};`,
+        );
     }
     if (size) {
         props.push(`font-size: ${size}pt;`);
@@ -103,7 +121,7 @@ const font = ({ family, size }: fontArgs): string => {
 
 const baseFont = font({
     family: FontFamily.priori,
-    size: 12,
+    size: 11,
 });
 
 const scrollable = 'overflow: auto;';
