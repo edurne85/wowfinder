@@ -2,7 +2,7 @@ enum SimpleWeaponProficiency {
     unarmed = 'unarmed',
     gauntlet = 'gauntlet',
     dagger = 'dagger',
-    daggerPunching = 'dagger Punching',
+    daggerPunching = 'daggerPunching',
     gauntletSpiked = 'gauntledSpiked',
     maceLight = 'maceLight',
     sickle = 'sickle',
@@ -87,7 +87,7 @@ const WeaponProficiency = {
     ...ExoticWeaponProficiency,
 };
 
-type WeaponProficiency = typeof WeaponProficiency;
+type WeaponProficiency = keyof typeof WeaponProficiency;
 
 export default WeaponProficiency;
 
