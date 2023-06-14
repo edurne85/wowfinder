@@ -1,14 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import type { ResistBonusViewArgs } from '../helpers';
 import { DamageType } from '../../../types/Damage';
+import { useNumberFormatters } from '../../../hooks';
 
 function ResistBonusSummaryView({
     resistBonus,
 }: ResistBonusViewArgs): React.JSX.Element {
-    const { t, i18n } = useTranslation();
-    const format = Intl.NumberFormat(i18n.languages[0], {
-        signDisplay: 'exceptZero',
-    }).format;
+    const { t } = useTranslation();
+    const { signedNonZero: format } = useNumberFormatters();
     const v = resistBonus.values;
     return (
         <p>
