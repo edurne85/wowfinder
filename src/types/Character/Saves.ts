@@ -103,6 +103,18 @@ class SimpleSaves {
         return this._will;
     }
 
+    get indexed(): Record<SaveType, number> {
+        return {
+            fort: this._fort,
+            refl: this._refl,
+            will: this._will,
+        };
+    }
+
+    get isZero(): boolean {
+        return this._fort === 0 && this._refl === 0 && this._will === 0;
+    }
+
     static get zero(): SimpleSaves {
         return new SimpleSaves({
             fort: 0,

@@ -3,7 +3,8 @@ import {
     StatsBonus,
     ResistBonus,
     SkillsBonus,
-} from '../../types/Character/Bonus';
+    SavesBonus,
+} from '@model/Character/Bonus';
 
 interface BonusViewArgs {
     bonus: Bonus;
@@ -21,9 +22,14 @@ interface SkillsBonusViewArgs {
     skillBonus: SkillsBonus;
 }
 
+interface SavesBonusViewArgs {
+    savesBonus: SavesBonus;
+}
+
 export {
     BonusViewArgs,
     StatsBonusViewArgs,
     ResistBonusViewArgs,
     SkillsBonusViewArgs,
+    SavesBonusViewArgs,
 };
