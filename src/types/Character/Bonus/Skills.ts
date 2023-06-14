@@ -19,6 +19,14 @@ export default class SkillsBonus {
         return this.#values[skill] || 0;
     }
 
+    get values(): SkillSet {
+        return { ...this.#values };
+    }
+
+    get isZero(): boolean {
+        return Object.values(this.#values).every(v => v === 0);
+    }
+
     static get zero(): SkillsBonus {
         return new SkillsBonus({});
     }
