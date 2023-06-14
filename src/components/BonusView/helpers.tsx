@@ -1,4 +1,9 @@
-import { Bonus, StatsBonus, ResistBonus } from '../../types/Character/Bonus';
+import {
+    Bonus,
+    StatsBonus,
+    ResistBonus,
+    SkillsBonus,
+} from '../../types/Character/Bonus';
 
 interface BonusViewArgs {
     bonus: Bonus;
@@ -12,4 +17,13 @@ interface ResistBonusViewArgs {
     resistBonus: ResistBonus;
 }
 
-export { BonusViewArgs, StatsBonusViewArgs, ResistBonusViewArgs };
+interface SkillsBonusViewArgs {
+    skillBonus: SkillsBonus;
+}
+
+export {
+    BonusViewArgs,
+    StatsBonusViewArgs,
+    ResistBonusViewArgs,
+    SkillsBonusViewArgs,
+};
