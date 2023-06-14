@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import type { StatsBonusViewArgs } from '../helpers';
-import { StatKeys } from '../../../types/Character/Stats';
-import { useNumberFormatters } from '../../../hooks';
+import { StatKeys } from '@model/Character/Stats';
+import { useNumberFormatters } from '@hooks';
 
 function StatsBonusSummaryView({
     statsBonus,
