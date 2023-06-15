@@ -11,7 +11,7 @@ function ResistBonusSummaryView({
     const v = resistBonus.values;
     return (
         <p>
-            {t('charsheet.resist.h')}:{' '}
+            <b>{t('charsheet.resist.h')}: </b>
             {Object.values(DamageType)
                 .filter(key => v[key] !== 0)
                 .map(

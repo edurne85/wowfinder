@@ -4,6 +4,7 @@ import { ConditionalStatsBonusSummaryView as Stats } from './StatsBonusSummaryVi
 import { ConditionalResistBonusSummaryView as Resist } from './ResistBonusSummaryView';
 import { ConditionalSkillsBonusSummaryView as Skills } from './SkillsBonusSummaryView';
 import { ConditionalSavesBonusSummaryView as Saves } from './SavesBonusSummaryView';
+import { ConditionalSpellPowerBonusSummaryView as SpellPower } from './SpellPowerBonusSummaryView';
 import { useTranslation } from 'react-i18next';
 import { useNumberFormatters } from '@hooks';
 
@@ -14,15 +15,16 @@ function BonusSummaryView({ bonus }: BonusViewArgs): React.JSX.Element {
     const { signedNonZero: format } = useNumberFormatters();
     return (
         <BonusSummaryContainer>
-            {bonus.hp && (
+            {bonus.hp ? (
                 <p>
                     {t('charsheet.hitpoints.h')}: {format(bonus.hp)}
                 </p>
-            )}
+            ) : null}
             <Stats statsBonus={bonus.stats} />
             <Skills skillBonus={bonus.skills} />
             <Saves savesBonus={bonus.saves} />
             <Resist resistBonus={bonus.resistances} />
+            <SpellPower spellPowerBonus={bonus.spellPower} />
         </BonusSummaryContainer>
     );
 }

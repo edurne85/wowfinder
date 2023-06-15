@@ -11,7 +11,7 @@ function SkillsBonusSummaryView({
     const v = skillBonus.values;
     return (
         <p>
-            {t('charsheet.skills.h')}:{' '}
+            <b>{t('charsheet.skills.h')}: </b>
             {Object.values(Skill)
                 .filter(key => !!v[key])
                 .map(key => `${t(`skills.${key}`)}: ${format(v[key] || 0)}`)

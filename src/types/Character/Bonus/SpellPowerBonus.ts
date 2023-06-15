@@ -129,6 +129,10 @@ export default class SpellPowerBonus implements SpellPowerValues<number> {
         return this.#data.polymorph;
     }
 
+    get isZero(): boolean {
+        return Object.values(this.#data).every(v => v === 0);
+    }
+
     computed(mode: CastingMode, school: School | SubSchool): number {
         return computedSpellPower(this, mode, school);
     }
