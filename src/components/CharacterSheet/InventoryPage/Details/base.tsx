@@ -57,6 +57,7 @@ const ToDoLine = styled.p`
     }
 `;
 
+/** @deprecated */
 function ToDo({ text }: { text: string }): React.JSX.Element {
     return (
         <ToDoLine>
@@ -65,4 +66,5 @@ function ToDo({ text }: { text: string }): React.JSX.Element {
     );
 }
 
+/* eslint-disable-next-line deprecation/deprecation */
 export { DetailLine, ItemTitle, ToDo, Slots };
