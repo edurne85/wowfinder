@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import type { ResistBonusViewArgs } from '../helpers';
-import { DamageType } from '../../../types/Damage';
-import { useNumberFormatters } from '../../../hooks';
+import { DamageType } from '@model/Damage';
+import { useNumberFormatters } from '@hooks';
 
 function ResistBonusSummaryView({
     resistBonus,
