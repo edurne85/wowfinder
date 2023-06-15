@@ -11,7 +11,7 @@ function SavesBonusSummaryView({
     const values = savesBonus.indexed;
     return (
         <p>
-            {t('charsheet.saves.h')}:{' '}
+            <b>{t('charsheet.saves.h')}: </b>
             {['fort', 'refl', 'will']
                 .map(k => k as SaveType)
                 .filter(k => values[k])

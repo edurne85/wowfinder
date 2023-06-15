@@ -4,6 +4,7 @@ import {
     ResistBonus,
     SkillsBonus,
     SavesBonus,
+    SpellPowerBonus,
 } from '@model/Character/Bonus';
 
 interface BonusViewArgs {
@@ -26,10 +27,15 @@ interface SavesBonusViewArgs {
     savesBonus: SavesBonus;
 }
 
+interface SpellPowerBonusViewArgs {
+    spellPowerBonus: SpellPowerBonus;
+}
+
 export {
     BonusViewArgs,
     StatsBonusViewArgs,
     ResistBonusViewArgs,
     SkillsBonusViewArgs,
     SavesBonusViewArgs,
+    SpellPowerBonusViewArgs,
 };

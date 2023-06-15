@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import type { ResistBonusViewArgs } from '../helpers';
-import { DamageType } from '../../../types/Damage';
-import { useNumberFormatters } from '../../../hooks';
+import { DamageType } from '@model/Damage';
+import { useNumberFormatters } from '@hooks';
 
 function ResistBonusSummaryView({
     resistBonus,
@@ -11,7 +11,7 @@ function ResistBonusSummaryView({
     const v = resistBonus.values;
     return (
         <p>
-            {t('charsheet.resist.h')}:{' '}
+            <b>{t('charsheet.resist.h')}: </b>
             {Object.values(DamageType)
                 .filter(key => v[key] !== 0)
                 .map(
