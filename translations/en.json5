@@ -89,4 +89,16 @@
             psychic: 'Ps',
         },
     },
+    size: {
+        h: 'Size',
+        '-4': 'Fine',
+        '-3': 'Diminutive',
+        '-2': 'Tiny',
+        '-1': 'Small',
+        '0': 'Medium',
+        '1': 'Large',
+        '2': 'Huge',
+        '3': 'Gargantuan',
+        '4': 'Colossal',
+    },
 }

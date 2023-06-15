@@ -2,9 +2,10 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { Gear, Item, rarityColorsLight } from '../../../../types/Item';
 import { ArmorDetailsWrapped } from './ArmorDetails';
-import { DetailLine, ItemTitle, Slots, ToDo } from './base';
+import { DetailLine, ItemTitle, Slots } from './base';
 import { WeaponDetailsWrapped } from './WeaponDetails';
 import { BonusSummaryView } from '../../../BonusView';
+import { GearSizeView } from './GearSize';
 
 const ItemDetailsContainer = styled.div`
     position: absolute;
@@ -25,9 +26,9 @@ function GearDetails({ gear }: { gear: Gear }): React.JSX.Element {
             <DetailLine h={t('charsheet.inventory.gear.slot') || undefined}>
                 <Slots shape={gear.shape} />
             </DetailLine>
+            <GearSizeView size={gear.size} />
             <WeaponDetailsWrapped item={gear} />
             <ArmorDetailsWrapped item={gear} />
-            <ToDo text="Item size category" />
             <BonusSummaryView bonus={gear.bonuses} />
             Detailed item view under construction!
         </>

@@ -21,7 +21,7 @@
             $separator: ', ',
             axe: 'hachas',
             bladeHeavy: 'filos pesados',
-            'bladeLight ': 'filos ligeros',
+            bladeLight: 'filos ligeros',
             bow: 'arcos',
             close: 'corto alcance',
             crossbow: 'ballestas',
