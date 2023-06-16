@@ -4,16 +4,44 @@
         '0': [
             { spell: 'light', rank: 1 },
             { spell: 'resistance', rank: 1 },
+            { spell: 'cureWounds', rank: 0 },
         ],
-        '1': [{ spell: 'summonNaturesAlly', rank: 1 }],
+        '1': [
+            { spell: 'summonNaturesAlly', rank: 1 },
+            { spell: 'cureWounds', rank: 1 },
+            { spell: 'magicFang', rank: 1 },
+        ],
         '2': [{ spell: 'summonNaturesAlly', rank: 2 }],
-        '3': [{ spell: 'summonNaturesAlly', rank: 3 }],
-        '4': [{ spell: 'summonNaturesAlly', rank: 4 }],
-        '5': [{ spell: 'summonNaturesAlly', rank: 5 }],
-        '6': [{ spell: 'summonNaturesAlly', rank: 6 }],
-        '7': [{ spell: 'summonNaturesAlly', rank: 7 }],
-        '8': [{ spell: 'summonNaturesAlly', rank: 8 }],
-        '9': [{ spell: 'summonNaturesAlly', rank: 9 }],
+        '3': [
+            { spell: 'summonNaturesAlly', rank: 3 },
+            { spell: 'cureWounds', rank: 2 },
+            { spell: 'magicFang', rank: 2 },
+        ],
+        '4': [
+            { spell: 'summonNaturesAlly', rank: 4 },
+            { spell: 'cureWounds', rank: 3 },
+        ],
+        '5': [
+            { spell: 'summonNaturesAlly', rank: 5 },
+            { spell: 'cureWounds', rank: 4 },
+            { spell: 'magicFang', rank: 3 },
+        ],
+        '6': [
+            { spell: 'summonNaturesAlly', rank: 6 },
+            { spell: 'cureWoundsMass', rank: 1 },
+        ],
+        '7': [
+            { spell: 'summonNaturesAlly', rank: 7 },
+            { spell: 'cureWoundsMass', rank: 2 },
+        ],
+        '8': [
+            { spell: 'summonNaturesAlly', rank: 8 },
+            { spell: 'cureWoundsMass', rank: 3 },
+        ],
+        '9': [
+            { spell: 'summonNaturesAlly', rank: 9 },
+            { spell: 'cureWoundsMass', rank: 4 },
+        ],
         '10': [],
         '11': [],
         '12': [],

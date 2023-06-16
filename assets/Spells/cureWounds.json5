@@ -1,0 +1,75 @@
+{
+    key: 'cureWounds',
+    ranks: [
+        {
+            rank: 0,
+            heal: [
+                {
+                    types: ['nature', 'holy'],
+                    baseRoll: { sides: 4 },
+                    modStat: 'spellPower',
+                    modMultiplier: 0.5,
+                },
+            ],
+        },
+        {
+            rank: 1,
+            heal: [
+                {
+                    types: ['nature', 'holy'],
+                    baseRoll: { sides: 6 },
+                    modStat: 'spellPower',
+                    modMultiplier: 1,
+                },
+            ],
+        },
+        {
+            rank: 2,
+            heal: [
+                {
+                    types: ['nature', 'holy'],
+                    baseRoll: {
+                        sides: 8,
+                        qtty: 2,
+                    },
+                    modStat: 'spellPower',
+                    modMultiplier: 1.5,
+                },
+            ],
+        },
+        {
+            rank: 3,
+            heal: [
+                {
+                    types: ['nature', 'holy'],
+                    baseRoll: {
+                        sides: 10,
+                        qtty: 3,
+                    },
+                    modStat: 'spellPower',
+                    modMultiplier: 2,
+                },
+            ],
+        },
+        {
+            rank: 4,
+            heal: [
+                {
+                    types: ['nature', 'holy'],
+                    baseRoll: {
+                        sides: 6,
+                        qtty: 8,
+                    },
+                    modStat: 'spellPower',
+                    modMultiplier: 3,
+                },
+            ],
+        },
+    ],
+    sch: 'heal',
+    castingTime: 'standard',
+    components: ['V', 'S'],
+    range: 'close',
+    duration: 'instantaneous',
+    flags: ['spellResistance'],
+}

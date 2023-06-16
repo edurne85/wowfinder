@@ -1,0 +1,20 @@
+{
+    key: 'commandUndead',
+    ranks: [
+        {
+            rank: 1,
+            // target: 1 undead creature
+            duration: '1 hour/level',
+        },
+        {
+            // rank: 2,
+            // WiP
+        },
+    ],
+    sch: 'nec',
+    castingTime: 'standard',
+    components: ['V', 'S', 'M'],
+    range: 'close',
+    save: 'will',
+    flags: ['spellResistance'],
+}
