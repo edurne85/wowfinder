@@ -30,7 +30,6 @@ function GearDetails({ gear }: { gear: Gear }): React.JSX.Element {
             <WeaponDetailsWrapped item={gear} />
             <ArmorDetailsWrapped item={gear} />
             <BonusSummaryView bonus={gear.bonuses} />
-            Detailed item view under construction!
         </>
     );
 }
@@ -40,7 +39,7 @@ function GearDetailsWrapped({ item }: { item: Item }): React.JSX.Element {
 }
 
 function ItemDetails({ item }: { item: Item }): React.JSX.Element {
-    // TODO #276, #277, #278, #278 Implement
+    // TODO #278 Implement
     const { t } = useTranslation();
     return (
         <ItemDetailsContainer className="details">
