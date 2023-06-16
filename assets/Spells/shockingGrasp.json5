@@ -1,0 +1,52 @@
+{
+    key: 'schockingGrasp',
+    ranks: [
+        {
+            rank: 1,
+            damage: [
+                {
+                    types: ['nature'],
+                    baseRoll: {
+                        sides: 6,
+                    },
+                    modStat: 'spellPower',
+                    rollMultiplier: 'TotalLevel',
+                },
+            ],
+        },
+        {
+            rank: 2,
+            damage: [
+                {
+                    types: ['nature'],
+                    baseRoll: {
+                        sides: 6,
+                        qtty: 2,
+                    },
+                    modStat: 'spellPower',
+                    rollMultiplier: 'TotalLevel',
+                },
+            ],
+        },
+        {
+            rank: 3,
+            damage: [
+                {
+                    types: ['nature'],
+                    baseRoll: {
+                        sides: 6,
+                        qtty: 3,
+                    },
+                    modStat: 'spellPower',
+                    rollMultiplier: 'TotalLevel',
+                },
+            ],
+        },
+    ],
+    sch: 'evo',
+    castingTime: 'standard',
+    components: ['V', 'S'],
+    range: 'touch',
+    duration: 'instantaneous',
+    flags: ['spellResistance'],
+}
