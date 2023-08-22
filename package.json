@@ -41,7 +41,7 @@
         "@babel/preset-env": "^7.22.5",
         "@babel/preset-react": "^7.22.5",
         "@babel/preset-typescript": "^7.22.5",
-        "@electron-forge/cli": "^6.1.1",
+        "@electron-forge/cli": "^6.4.1",
         "@electron-forge/maker-deb": "^6.1.1",
         "@electron-forge/maker-dmg": "^6.1.1",
         "@electron-forge/maker-rpm": "^6.1.1",
