@@ -4,6 +4,8 @@ This document summarizes the short- and mid- term development plans for the app.
 
 The project is currently following an alternating pattern during the early alpha stage, with odd versions focused on technical improvmenents and implementing the rules into the app, and even versions providing user-facing features.
 
+**Update**: Due to personal circumstances, progress has been slowed down (almost completely halted) over the last few months. The current version of this roadmap includes updated timeframes taking this into account.
+
 ## Latest release
 
 ### [Alpha 7: Updates to item modelling](https://github.com/edurne85/wowfinder/milestone/11)
@@ -24,11 +26,11 @@ This release will include more complete rendering of gear and items found in the
 
 Note that, just like it's being done with spells, the actual data files for the items in the game will be added progressively; although at the moment of writing this the files for many trade goods (covering mostly the "classic" or "vanilla" tiers of crafting) are already created.
 
-This is planned to get released between late June and early July 2023.
+This is planned to get released ~~between late June and early July 2023~~ around mid October 2023.
 
 ### [Alpha 9](https://github.com/edurne85/wowfinder/milestone/13)
 
-This will be another _improvement_ release, focused on technical tasks and rules implementations. The exact contents are still to be decided; and will probably target a date of mid to late July 2023.
+This will be another _improvement_ release, focused on technical tasks and rules implementations. The exact contents are still to be decided; and will probably target a date of ~~mid to late July 2023~~ late October to early November 2023.
 
 ### [TBD: Mob generation and views](https://github.com/edurne85/wowfinder/milestone/12)
 
