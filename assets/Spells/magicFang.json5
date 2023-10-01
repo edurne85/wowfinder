@@ -5,7 +5,7 @@
             rank: 1,
             range: 'touch',
             // target: 1 living creature
-            duration: '1 minute/level',
+            duration: '1 min/level',
         },
         {
             rank: 2,

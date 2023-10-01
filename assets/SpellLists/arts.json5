@@ -6,6 +6,7 @@
             { spell: 'summonMonster', rank: 1 },
             { spell: 'causeFear', rank: 1 },
             { spell: 'cureWounds', rank: 1 },
+            { spell: 'detectMagic', rank: 2 },
         ],
         '2': [
             { spell: 'summonMonster', rank: 2 },

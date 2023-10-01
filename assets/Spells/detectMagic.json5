@@ -1,0 +1,17 @@
+{
+    key: 'detectMagic',
+    ranks: [
+        {
+            rank: 1,
+            duration: 'concentration',
+        },
+        {
+            rank: 2,
+            duration: '3 turn/level',
+        },
+    ],
+    sch: 'div',
+    castingTime: 'standard',
+    components: ['V', 'S'],
+    range: 'close',
+}

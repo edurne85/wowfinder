@@ -8,8 +8,8 @@
             { spell: 'rayOfFrost', rank: 1 },
             { spell: 'fireBolt', rank: 1 },
             { spell: 'daze', rank: 1 },
+            { spell: 'detectMagic', rank: 1 },
             /*
-            { spell: 'detectMagic' },
             { spell: 'detectPoison' },
             { spell: 'readMagic' },
             { spell: 'flare' },
@@ -34,6 +34,7 @@
             { spell: 'mageArmor', rank: 1 },
             { spell: 'causeFear', rank: 1 },
             { spell: 'shockingGrasp', rank: 1 },
+            { spell: 'detectMagic', rank: 2 },
         ],
         '2': [
             { spell: 'summonMonster', rank: 2 },

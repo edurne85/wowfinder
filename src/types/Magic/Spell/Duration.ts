@@ -14,6 +14,7 @@ type PerLevelSpellDuration = {
 type SpellDuration =
     | 'instantaneous'
     | 'permanent'
+    | 'concentration'
     | FixedSpellDuration
     | PerLevelSpellDuration;
 
@@ -22,6 +23,8 @@ function stringify(value: SpellDuration, t: TFunction<'translation'>): string {
         return t('magic.duration.instantaneous');
     } else if (value === 'permanent') {
         return t('magic.duration.permanent');
+    } else if (value === 'concentration') {
+        return t('magic.duration.concentration');
     } else if (value.durationType === 'fixed') {
         return t('magic.duration.fixed', { duration: value.duration });
     } else if (value.durationType === 'perLevel') {
@@ -37,6 +40,8 @@ function tryParseSpellDuration(input: string): SpellDuration | undefined {
         return 'instantaneous';
     } else if (input === 'permanent') {
         return 'permanent';
+    } else if (input === 'concentration') {
+        return 'concentration';
     }
     const levelMatches = /^(.*)\/level$/.exec(input);
     if (levelMatches) {

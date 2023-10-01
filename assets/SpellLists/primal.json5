@@ -5,6 +5,7 @@
             { spell: 'light', rank: 1 },
             { spell: 'resistance', rank: 1 },
             { spell: 'cureWounds', rank: 0 },
+            { spell: 'detectMagic', rank: 1 },
         ],
         '1': [
             { spell: 'summonNaturesAlly', rank: 1 },
