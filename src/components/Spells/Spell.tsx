@@ -18,8 +18,14 @@ interface SpellRankArgs {
 
 const SpellContainer = styled.div`
     margin: 0.3em 0.8em;
-    div.spell-description p {
-        margin: 0.6em 0;
+    div.spell-description {
+        p {
+            margin: 0.6em 0;
+        }
+        li,
+        ul {
+            margin-left: 0.6em;
+        }
     }
 `;
 

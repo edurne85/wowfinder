@@ -5,6 +5,7 @@ import { slurpRecursive } from './slurp';
 import { debug } from '../utils/debug';
 
 type TranslationProvider = UseTranslationResponse<
+    TypeOptions['defaultNS'],
     TypeOptions['defaultNS']
 >['t'];
 
