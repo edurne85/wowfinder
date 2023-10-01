@@ -7,8 +7,9 @@
             duration: '1 hour/level',
         },
         {
-            // rank: 2,
+            rank: 2,
             // WiP
+            duration: '1 hour/level',
         },
     ],
     sch: 'nec',
