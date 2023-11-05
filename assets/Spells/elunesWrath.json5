@@ -54,6 +54,6 @@
     castingTime: 'standard',
     duration: 'instantaneous',
     components: ['S'],
-    range: 'close',
+    range: 'medium',
     flags: ['lunar'],
 }
