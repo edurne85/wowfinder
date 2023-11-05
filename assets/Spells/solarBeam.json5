@@ -51,11 +51,15 @@
     range: 'close',
     area: 'line',
     duration: 'instantaneous',
-    save: {
-        // TODO #699
-        // support multiple / mixed saves
-        save: 'reflex',
-        effect: 'half',
-    },
+    save: [
+        {
+            save: 'will',
+            effect: 'special',
+        },
+        {
+            save: 'reflex',
+            effect: 'half',
+        },
+    ],
     flags: ['solar', 'spellResistance'],
 }
