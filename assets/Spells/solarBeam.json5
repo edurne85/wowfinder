@@ -45,10 +45,8 @@
         },
     ],
     sch: 'celestial',
-    // TODO #700
-    // Support reaction times in src\types\Action\ActionLength.ts
-    // castingTime: 'reaction',
-    castingTime: 'special',
+    castingTime: 'reaction',
+    trigger: '[[WIP]] enemy spellcast in range',
     components: ['S'],
     range: 'close',
     area: 'line',
