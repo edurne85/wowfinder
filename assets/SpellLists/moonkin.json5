@@ -8,14 +8,24 @@
         '1': [
             { spell: 'moonfire', rank: 2 },
             { spell: 'starfire', rank: 2 },
+            { spell: 'elunesWrath', rank: 1 },
+            { spell: 'solarBeam', rank: 1 },
         ],
         '3': [
             { spell: 'moonfire', rank: 3 },
             { spell: 'starfire', rank: 3 },
         ],
+        '4': [
+            { spell: 'elunesWrath', rank: 2 },
+            { spell: 'solarBeam', rank: 2 },
+        ],
         '6': [
             { spell: 'moonfire', rank: 4 },
             { spell: 'starfire', rank: 4 },
+        ],
+        '8': [
+            { spell: 'elunesWrath', rank: 3 },
+            { spell: 'solarBeam', rank: 3 },
         ],
         '10': [
             { spell: 'moonfire', rank: 5 },
