@@ -1,7 +1,8 @@
 {
-    arcane: "Arcane",
-    divine: "Divine",
-    arts: "Arts",
-    occult: "Occult",
-    primal: "Primal",
+    arcane: 'Arcane',
+    divine: 'Divine',
+    arts: 'Arts',
+    occult: 'Occult',
+    primal: 'Primal',
+    moonkin: 'Moonkin form Celestial spells',
 }
