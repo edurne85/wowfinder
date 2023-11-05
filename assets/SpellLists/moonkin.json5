@@ -1,0 +1,25 @@
+{
+    key: 'moonkin',
+    spells: {
+        '0': [
+            { spell: 'moonfire', rank: 1 },
+            { spell: 'starfire', rank: 1 },
+        ],
+        '1': [
+            { spell: 'moonfire', rank: 2 },
+            { spell: 'starfire', rank: 2 },
+        ],
+        '3': [
+            { spell: 'moonfire', rank: 3 },
+            { spell: 'starfire', rank: 3 },
+        ],
+        '6': [
+            { spell: 'moonfire', rank: 4 },
+            { spell: 'starfire', rank: 4 },
+        ],
+        '10': [
+            { spell: 'moonfire', rank: 5 },
+            { spell: 'starfire', rank: 5 },
+        ],
+    },
+}
