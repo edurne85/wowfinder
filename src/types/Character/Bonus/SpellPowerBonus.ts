@@ -77,6 +77,10 @@ export default class SpellPowerBonus implements SpellPowerValues<number> {
         return this.#data.call;
     }
 
+    get celestial(): number {
+        return this.#data.celestial;
+    }
+
     get create(): number {
         return this.#data.create;
     }

@@ -33,6 +33,7 @@
             banish: 'Exorcismo',
             counter: 'Contraconjuro',
             call: 'Llamada',
+            celestial: 'Celestial',
             create: 'Creación',
             heal: 'Curación',
             summon: 'Invocación',

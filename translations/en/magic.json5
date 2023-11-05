@@ -33,6 +33,7 @@
             banish: 'Banishment',
             counter: 'Counterspell',
             call: 'Calling',
+            celestial: 'Celestial',
             create: 'Creation',
             heal: 'Healing',
             summon: 'Summoning',
