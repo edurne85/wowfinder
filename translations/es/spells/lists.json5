@@ -1,7 +1,8 @@
 {
-    arcane: "Arcano",
-    divine: "Divino",
-    arts: "Artes",
-    occult: "Oculto",
-    primal: "Primal",
+    arcane: 'Arcano',
+    divine: 'Divino',
+    arts: 'Artes',
+    occult: 'Oculto',
+    primal: 'Primal',
+    moonkin: 'Conjuros celestiales de Lechúcico lunar',
 }
