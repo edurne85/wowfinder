@@ -20,17 +20,21 @@ In addition to that, an issue that was causing delays of more than 20 - 25 secon
 
 This stage includes releases that offer some kind of useful functionality to players, but are clearly not a complete application.
 
-### [Alpha 8: Gear and item rendering](https://github.com/edurne85/wowfinder/milestone/4)
+### [Alpha 8: Moonkin form](https://github.com/edurne85/wowfinder/milestone/14)
+
+Basic support in the app for the druid's Moonkin form. This has become a recent priority due to some player(s) in the campaign unlocking this form or getting very close to it. This is targetting a release date for early or mid November 2023.
+
+### [Alpha 9](https://github.com/edurne85/wowfinder/milestone/13)
+
+This will be another _improvement_ release, focused on technical tasks and rules implementations. The exact contents are still to be decided; and will probably target a date of mid to late November 2023.
+
+### [Alpha 10: Gear and item rendering](https://github.com/edurne85/wowfinder/milestone/4)
 
 This release will include more complete rendering of gear and items found in the Character Sheets' inventories, as well as the initial ability to browse through the details of many common items.
 
 Note that, just like it's being done with spells, the actual data files for the items in the game will be added progressively; although at the moment of writing this the files for many trade goods (covering mostly the "classic" or "vanilla" tiers of crafting) are already created.
 
-This is planned to get released ~~between late June and early July 2023~~ around mid October 2023.
-
-### [Alpha 9](https://github.com/edurne85/wowfinder/milestone/13)
-
-This will be another _improvement_ release, focused on technical tasks and rules implementations. The exact contents are still to be decided; and will probably target a date of ~~mid to late July 2023~~ late October to early November 2023.
+This is planned to get released around late November or early December 2023.
 
 ### [TBD: Mob generation and views](https://github.com/edurne85/wowfinder/milestone/12)
 
