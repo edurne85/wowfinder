@@ -1,0 +1,1 @@
+El druida concentra el brillo de las estrellas sobre el objetivo seleccionado, causando daño contínuo durante un tiempo prolongado. El efecto termina de forma prematura si el druida lanza este conjuro (en cualquier rango) de nuevo, si abandona la forma de lechúcico lunar, o si queda fuera de alcance.
