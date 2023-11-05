@@ -22,13 +22,13 @@
             damage: [
                 {
                     types: ['shadow', 'arcane'],
-                    baseRoll: { sides: 8, quantity: 2 },
+                    baseRoll: { sides: 8, qtty: 2 },
                     modStat: 'spellPower',
                     modMultiplier: 2,
                 },
                 {
                     types: ['shadow', 'arcane'],
-                    baseRoll: { sides: 8, quantity: 2 },
+                    baseRoll: { sides: 8, qtty: 2 },
                     rollMultiplier: 'eclipse',
                 },
             ],
@@ -38,13 +38,13 @@
             damage: [
                 {
                     types: ['shadow', 'arcane'],
-                    baseRoll: { sides: 6, quantity: 4 },
+                    baseRoll: { sides: 6, qtty: 4 },
                     modStat: 'spellPower',
                     modMultiplier: 3,
                 },
                 {
                     types: ['shadow', 'arcane'],
-                    baseRoll: { sides: 6, quantity: 4 },
+                    baseRoll: { sides: 6, qtty: 4 },
                     rollMultiplier: 'eclipse',
                 },
             ],

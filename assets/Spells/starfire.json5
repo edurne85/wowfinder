@@ -49,13 +49,13 @@
             damage: [
                 {
                     types: ['holy', 'fire'],
-                    baseRoll: { sides: 6, quantity: 2 },
+                    baseRoll: { sides: 6, qtty: 2 },
                     modStat: 'spellPower',
                     modMultiplier: 1,
                 },
                 {
                     types: ['holy', 'fire'],
-                    baseRoll: { sides: 6, quantity: 2 },
+                    baseRoll: { sides: 6, qtty: 2 },
                     rollMultiplier: 'eclipse',
                 },
             ],
@@ -65,13 +65,13 @@
             damage: [
                 {
                     types: ['holy', 'fire'],
-                    baseRoll: { sides: 8, quantity: 3 },
+                    baseRoll: { sides: 8, qtty: 3 },
                     modStat: 'spellPower',
                     modMultiplier: 1,
                 },
                 {
                     types: ['holy', 'fire'],
-                    baseRoll: { sides: 8, quantity: 3 },
+                    baseRoll: { sides: 8, qtty: 3 },
                     rollMultiplier: 'eclipse',
                 },
             ],

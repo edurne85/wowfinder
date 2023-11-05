@@ -7,11 +7,11 @@
             damage: [
                 {
                     types: ['shadow', 'arcane'],
-                    baseRoll: { sides: 8, quantity: 2 },
+                    baseRoll: { sides: 8, qtty: 2 },
                 },
                 {
                     types: ['shadow', 'arcane'],
-                    baseRoll: { sides: 8, quantity: 1 },
+                    baseRoll: { sides: 8, qtty: 1 },
                     rollMultiplier: 'eclipse',
                 },
             ],
@@ -22,11 +22,11 @@
             damage: [
                 {
                     types: ['shadow', 'arcane'],
-                    baseRoll: { sides: 6, quantity: 6 },
+                    baseRoll: { sides: 6, qtty: 6 },
                 },
                 {
                     types: ['shadow', 'arcane'],
-                    baseRoll: { sides: 6, quantity: 3 },
+                    baseRoll: { sides: 6, qtty: 3 },
                     rollMultiplier: 'eclipse',
                 },
             ],
@@ -37,11 +37,11 @@
             damage: [
                 {
                     types: ['shadow', 'arcane'],
-                    baseRoll: { sides: 8, quantity: 8 },
+                    baseRoll: { sides: 8, qtty: 8 },
                 },
                 {
                     types: ['shadow', 'arcane'],
-                    baseRoll: { sides: 8, quantity: 4 },
+                    baseRoll: { sides: 8, qtty: 4 },
                     rollMultiplier: 'eclipse',
                 },
             ],
@@ -52,11 +52,11 @@
             damage: [
                 {
                     types: ['shadow', 'arcane'],
-                    baseRoll: { sides: 12, quantity: 10 },
+                    baseRoll: { sides: 12, qtty: 10 },
                 },
                 {
                     types: ['shadow', 'arcane'],
-                    baseRoll: { sides: 12, quantity: 5 },
+                    baseRoll: { sides: 12, qtty: 5 },
                     rollMultiplier: 'eclipse',
                 },
             ],

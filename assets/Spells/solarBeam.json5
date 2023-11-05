@@ -20,11 +20,11 @@
             damage: [
                 {
                     types: ['holy', 'fire'],
-                    baseRoll: { sides: 8, quantity: 2 },
+                    baseRoll: { sides: 8, qtty: 2 },
                 },
                 {
                     types: ['holy', 'fire'],
-                    baseRoll: { sides: 8, quantity: 2 },
+                    baseRoll: { sides: 8, qtty: 2 },
                     rollMultiplier: 'eclipse',
                 },
             ],
@@ -34,11 +34,11 @@
             damage: [
                 {
                     types: ['holy', 'fire'],
-                    baseRoll: { sides: 6, quantity: 6 },
+                    baseRoll: { sides: 6, qtty: 6 },
                 },
                 {
                     types: ['holy', 'fire'],
-                    baseRoll: { sides: 6, quantity: 6 },
+                    baseRoll: { sides: 6, qtty: 6 },
                     rollMultiplier: 'eclipse',
                 },
             ],
