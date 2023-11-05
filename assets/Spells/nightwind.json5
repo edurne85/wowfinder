@@ -1,0 +1,96 @@
+{
+    key: 'nightwind',
+    ranks: [
+        {
+            rank: 1,
+            area: 'cone(15 feet)',
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6, qtty: 3 },
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 8, qtty: 1 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 2,
+            area: 'cone(20 feet)',
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6, qtty: 4 },
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6, qtty: 2 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 3,
+            area: 'cone(25 feet)',
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6, qtty: 5 },
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 8, qtty: 2 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 4,
+            area: 'cone(40 feet)',
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6, qtty: 9 },
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 8, qtty: 4 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 5,
+            area: 'cone(65 feet)',
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6, qtty: 12 },
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6, qtty: 6 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+    ],
+    sch: 'celestial',
+    castingTime: 'standard',
+    range: 'special',
+    // area: cone (by rank)
+    duration: '0.5 turn/level',
+    save: [
+        {
+            save: 'fortitude',
+            effect: 'special',
+        },
+        {
+            save: 'reflex',
+            effect: 'half',
+        },
+    ],
+    flags: ['lunar', 'concentration', 'spellResistance'],
+}

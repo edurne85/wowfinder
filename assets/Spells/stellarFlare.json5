@@ -1,0 +1,94 @@
+{
+    key: 'stellarFlare',
+    ranks: [
+        {
+            rank: 1,
+            duration: '1 turn/level',
+            damage: [
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 8, qtty: 1 },
+                    modStat: 'spellPower',
+                    modMultiplier: 0.25,
+                },
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 8, qtty: 1 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 2,
+            duration: '1 turn/level',
+            damage: [
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 6, qtty: 2 },
+                    modStat: 'spellPower',
+                    modMultiplier: 0.5,
+                },
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 6, qtty: 2 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 3,
+            duration: '2 turn/level',
+            damage: [
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 8, qtty: 3 },
+                    modStat: 'spellPower',
+                    modMultiplier: 1,
+                },
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 8, qtty: 3 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 4,
+            duration: '2 turn/level',
+            damage: [
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 6, qtty: 8 },
+                    modStat: 'spellPower',
+                    modMultiplier: 1.5,
+                },
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 6, qtty: 8 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 5,
+            duration: '2 turn/level',
+            damage: [
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 6, qtty: 12 },
+                    modStat: 'spellPower',
+                    modMultiplier: 2,
+                },
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 6, qtty: 12 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+    ],
+    sch: 'celestial',
+    castingTime: 'standard',
+    range: 'medium',
+    flags: ['solar'],
+}

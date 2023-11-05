@@ -20,14 +20,20 @@
         '3': [
             { spell: 'moonfire', rank: 3 },
             { spell: 'starfire', rank: 3 },
+            { spell: 'nightwind', rank: 1 },
+            { spell: 'stellarFlare', rank: 1 },
         ],
         '4': [
             { spell: 'elunesWrath', rank: 2 },
             { spell: 'solarBeam', rank: 2 },
+            { spell: 'nightwind', rank: 2 },
+            { spell: 'stellarFlare', rank: 2 },
         ],
         '5': [
             { spell: 'moonblast', rank: 2 },
             { spell: 'sunfire', rank: 2 },
+            { spell: 'nightwind', rank: 3 },
+            { spell: 'stellarFlare', rank: 3 },
         ],
         '6': [
             { spell: 'moonfire', rank: 4 },
@@ -46,6 +52,8 @@
         '9': [
             { spell: 'astralSurge', rank: 3 },
             { spell: 'starfall', rank: 3 },
+            { spell: 'nightwind', rank: 4 },
+            { spell: 'stellarFlare', rank: 4 },
         ],
         '10': [
             { spell: 'moonfire', rank: 5 },
@@ -58,6 +66,8 @@
         '12': [
             { spell: 'astralSurge', rank: 4 },
             { spell: 'starfall', rank: 4 },
+            { spell: 'nightwind', rank: 5 },
+            { spell: 'stellarFlare', rank: 5 },
         ],
     },
 }
