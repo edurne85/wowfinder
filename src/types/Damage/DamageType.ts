@@ -40,6 +40,13 @@ function makeFullDamageTypes(...types: DamageType[]): FullDamageTypes {
 const HybridTypes = {
     frostfire: makeFullDamageTypes(EnergyType.fire, EnergyType.cold),
     void: makeFullDamageTypes(EnergyType.shadow, SpecialDamageType.psychic),
+    lunar: makeFullDamageTypes(EnergyType.shadow, EnergyType.arcane),
+    solar: makeFullDamageTypes(EnergyType.holy, EnergyType.fire),
+    astral: makeFullDamageTypes(
+        EnergyType.arcane,
+        EnergyType.fire,
+        EnergyType.nature,
+    ),
 };
 
 type HybridTypes = keyof typeof HybridTypes;
