@@ -43,6 +43,10 @@ class StatsBase {
         );
     }
 
+    get intrinsic(): StatSet {
+        return addStatSets(this.#base, this.#racial);
+    }
+
     get base(): StatSet {
         return Object.assign({}, this.#base);
     }
