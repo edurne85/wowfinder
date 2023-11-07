@@ -14,6 +14,6 @@ type BonusOnlyProps = {
     bonuses?: ClassBonuses;
 };
 
-type HitPointProps = BonusOnlyProps & { misc?: number; current?: number };
+type HitPointProps = Partial<CharProps> & { current?: number };
 
 export { CharProps, CharXpProps, BonusOnlyProps, HitPointProps };

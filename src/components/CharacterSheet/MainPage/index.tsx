@@ -36,7 +36,6 @@ export function MainPage({
     visible?: boolean;
 }): React.JSX.Element {
     const { t } = useTranslation();
-    const bonuses = char?.classBonuses;
     return (
         <Page key="Main" id="Main" visible={visible}>
             <div />
@@ -74,10 +73,7 @@ export function MainPage({
                                 <Initiative char={char} />
                                 <Header>{t('charsheet.hitpoints.h')}</Header>
                                 {/* TODO #456: extra (misc) HP */}
-                                <HitPoints
-                                    bonuses={bonuses}
-                                    misc={char?.miscHP}
-                                />
+                                <HitPoints char={char} />
                                 <Header>{t('charsheet.traits.h')}</Header>
                                 <Traits char={char} />
                             </>

@@ -33,10 +33,10 @@ const StyledTable = styled.table`
     }
 `;
 
-const HitPoints: React.FC<HitPointProps> = ({ bonuses, misc = 0, current }) => {
+const HitPoints: React.FC<HitPointProps> = ({ char, current }) => {
     const { t } = useTranslation();
-    const base = bonuses?.hp;
-    const total = base != null ? base + misc : undefined;
+    const base = char?.maxHitPoints;
+    const total = base ?? undefined;
     const curr = typeof current === 'undefined' ? total : current;
     return (
         <StyledTable id="tblHp">
@@ -47,8 +47,6 @@ const HitPoints: React.FC<HitPointProps> = ({ bonuses, misc = 0, current }) => {
                     <th>{t('charsheet.hitpoints.total')}</th>
                     <th></th>
                     <th>{t('charsheet.hitpoints.base')}</th>
-                    <th></th>
-                    <th>{t('charsheet.hitpoints.misc')}</th>
                     <th></th>
                     <th>{t('charsheet.hitpoints.temp')}</th>
                 </tr>
@@ -63,10 +61,6 @@ const HitPoints: React.FC<HitPointProps> = ({ bonuses, misc = 0, current }) => {
                     <td className="separator">=</td>
                     <td>
                         <input id="txtHpBase" defaultValue={base} />
-                    </td>
-                    <td className="separator">+</td>
-                    <td>
-                        <input id="txtHpMisc" defaultValue={misc || ''} />
                     </td>
                     <td className="separator">+</td>
                     <td>
