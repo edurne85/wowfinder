@@ -9,6 +9,11 @@ import {
 } from '../helpers';
 import Size, { parseSize } from '../Size';
 import { Speeds } from '../Speeds';
+import {
+    EffectiveCasterLevels,
+    buildCasterLevels,
+    zeroCasterLevel,
+} from '@model/Magic';
 
 abstract class CharacterBase {
     #key: string;
@@ -19,6 +24,7 @@ abstract class CharacterBase {
     #size: Size;
     #speeds: Speeds;
     #naturalArmor: number;
+    #casterLevelsBonus: EffectiveCasterLevels;
 
     constructor(builder: CharacterBaseBuilder) {
         this.#key = builder.key;
@@ -33,12 +39,16 @@ abstract class CharacterBase {
             this.#size = race.size;
             this.#speeds = race.speeds;
             this.#naturalArmor = race.naturalArmor;
+            this.#casterLevelsBonus = { ...zeroCasterLevel };
         } else {
             this.#size = parseSize(builder.size) || Size.medium;
             this.#speeds = builder.speeds
                 ? new Speeds(builder.speeds)
                 : Speeds.default;
             this.#naturalArmor = builder.naturalArmor ?? 0;
+            this.#casterLevelsBonus = buildCasterLevels(
+                builder.casterLevels ?? {},
+            );
         }
     }
 
@@ -72,6 +82,10 @@ abstract class CharacterBase {
 
     get naturalArmor(): number {
         return this.#naturalArmor;
+    }
+
+    get casterLevelsBonus(): EffectiveCasterLevels {
+        return { ...this.#casterLevelsBonus };
     }
 
     export(): CharacterBaseExport {

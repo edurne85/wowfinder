@@ -1,3 +1,4 @@
+import { EffectiveCasterLevels } from '@model/Magic';
 import { Resistances } from '../Resistances';
 import Size from '../Size';
 import { Speeds } from '../Speeds';
@@ -53,6 +54,10 @@ abstract class OverridableCharacterBase extends CharacterBase {
 
     get naturalArmor(): number {
         return this.#override?.naturalArmor ?? super.naturalArmor;
+    }
+
+    get casterLevelsBonus(): EffectiveCasterLevels {
+        return this.#override?.casterLevelsBonus ?? super.casterLevelsBonus;
     }
 
     setOverride(override: CharacterOverride): void {

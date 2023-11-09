@@ -12,6 +12,12 @@ const zeroCasterLevel: EffectiveCasterLevels = {
     esp: 0,
 };
 
+function buildCasterLevels(
+    args: Partial<EffectiveCasterLevels>,
+): EffectiveCasterLevels {
+    return Object.assign({}, zeroCasterLevel, args);
+}
+
 function levelByMode(efl: EffectiveCasterLevels, mode: CastingMode): number {
     switch (mode) {
         case CastingMode.arcane:
@@ -26,4 +32,4 @@ function levelByMode(efl: EffectiveCasterLevels, mode: CastingMode): number {
 }
 
 export type { EffectiveCasterLevels };
-export { zeroCasterLevel, levelByMode };
+export { zeroCasterLevel, buildCasterLevels, levelByMode };

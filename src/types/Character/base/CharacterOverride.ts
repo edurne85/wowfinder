@@ -6,10 +6,10 @@ import type { CharacterOverrideBuilder } from './builder';
 
 class CharacterOverride extends CharacterBase {
     /* TODO: #433
-        Support natural attacks
-        Support natural armor
+        Support natural attacks (see #706)
         Support special abilities
-        Support skill bonuses
+        Support skill bonuses (general + conditional)
+        Support deflection bonus to AC
      */
 
     constructor({ ...rest }: CharacterOverrideBuilder) {

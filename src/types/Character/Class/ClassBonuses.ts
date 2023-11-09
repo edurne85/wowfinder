@@ -1,3 +1,4 @@
+import { EffectiveCasterLevels } from '@model/Magic';
 import { Skill } from '../Skill';
 import { ClassFeature } from './Features';
 
@@ -9,11 +10,7 @@ interface ClassBonuses {
         refl: number;
         will: number;
     };
-    efl: {
-        arc: number;
-        div: number;
-        esp: number;
-    };
+    efl: EffectiveCasterLevels;
     skillRanks: number;
     classSkills: Set<Skill>;
     features: { [key in ClassFeature]?: number };
