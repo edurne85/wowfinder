@@ -1,3 +1,4 @@
+import { EffectiveCasterLevels } from '@model/Magic';
 import { JsonValue } from '../../../utils';
 import { InventoryBuilder, InventoryExport } from '../../Item/Inventory';
 import { FeatChoice, FeatChoiceExport } from '../helpers';
@@ -28,6 +29,7 @@ interface CharacterBaseFullBuilder extends CharacterBaseCoreBuilder {
     size: number;
     naturalArmor?: number;
     speeds?: SpeedBuilder;
+    casterLevels?: Partial<EffectiveCasterLevels>;
 }
 type CharacterBaseBuilder = CharacterBaseFullBuilder | CharacterBaseRaceBuilder;
 interface CharacterBuilder extends CharacterBaseCoreBuilder {

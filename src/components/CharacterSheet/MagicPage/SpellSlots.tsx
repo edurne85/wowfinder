@@ -55,10 +55,7 @@ const levels: number[] = [...Array(spellLevelMax + 1).keys()];
 
 export function SpellSlots({ char, mode }: SpellSlotsArgs): React.JSX.Element {
     const { t } = useTranslation();
-    const clevel = levelByMode(
-        char?.classBonuses?.efl || zeroCasterLevel,
-        mode,
-    );
+    const clevel = levelByMode(char?.casterLevels || zeroCasterLevel, mode);
     const statKey = castingStats[mode];
     const stat = char?.stats?.totals[statKey] || 0;
     const context = useContext(GlobalContext);

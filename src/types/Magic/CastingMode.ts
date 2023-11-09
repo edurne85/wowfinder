@@ -1,5 +1,6 @@
 import { StatKey } from '../Character/Stats';
 
+// TODO #708 Consolidate CastingMode and related types
 enum CastingMode {
     arcane = 'arcane',
     divine = 'divine',

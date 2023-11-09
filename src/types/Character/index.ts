@@ -4,6 +4,7 @@ import { Inventory } from '../Item/Inventory';
 import {
     CastingMode,
     computedSpellPower,
+    EffectiveCasterLevels,
     FullComputedSpellPower,
     fullComputedSpellPower,
     School,
@@ -155,6 +156,16 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
 
     get classBonuses(): ClassBonuses {
         return (this.#cachedClassBonuses ||= Class.multiclass(this.#classes));
+    }
+
+    get casterLevels(): EffectiveCasterLevels {
+        const efl = this.classBonuses.efl;
+        const bonus = this.casterLevelsBonus;
+        return {
+            arc: efl.arc + bonus.arc,
+            div: efl.div + bonus.div,
+            esp: efl.esp + bonus.esp,
+        };
     }
 
     get totalLevel(): number {
