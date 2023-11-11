@@ -12,6 +12,10 @@ const skipAssetDump = false;
 
 type debugFunction = (title: string, style?: string, data?: any) => any;
 
+function unreachable(_?: never): never {
+    throw new Error('Unreachable');
+}
+
 function debugCall({
     func,
     title,
@@ -109,4 +113,5 @@ export {
     reportWiP,
     reportNotImplemented,
     tryOrFallback,
+    unreachable,
 };
