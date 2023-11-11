@@ -3,7 +3,7 @@ import { assertDefined, assertNonNull } from '../assertions';
 describe('utils/assertions.ts', () => {
     describe('assertDefined', () => {
         it('should throw an error if the value is undefined', () => {
-            expect(() => assertDefined(undefined)).toThrowError(
+            expect(() => assertDefined(undefined)).toThrow(
                 'Value is undefined',
             );
         });
@@ -15,7 +15,7 @@ describe('utils/assertions.ts', () => {
 
     describe('assertNonNull', () => {
         it('should throw an error if the value is null', () => {
-            expect(() => assertNonNull(null)).toThrowError('Value is null');
+            expect(() => assertNonNull(null)).toThrow('Value is null');
         });
 
         it('should not throw an error if the value is defined', () => {
