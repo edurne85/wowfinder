@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { Spell as S, SpellRank, SpellBase } from '../../types/Magic/Spell';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Descriptors } from './Descriptors';
 import { toRoman } from '../../utils';
 import { School } from './School';
-import { useRemark } from 'react-remark';
+import { Markdown } from '@components/helpers/Markdown';
 
 interface SpellArgs {
     spell: S;
@@ -30,13 +30,11 @@ const SpellContainer = styled.div`
 `;
 
 function SpellDescription({ desc }: { desc: string }): React.JSX.Element {
-    const [reactContent, setMarkdownSource] = useRemark();
-
-    useEffect(() => {
-        setMarkdownSource(desc);
-    }, [desc]);
-
-    return <div className="spell-description">{reactContent}</div>;
+    return (
+        <div className="spell-description">
+            <Markdown>{desc}</Markdown>
+        </div>
+    );
 }
 
 function Heading({

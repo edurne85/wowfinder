@@ -12,7 +12,7 @@ interface PageStyledProps {
     visible: boolean;
 }
 
-const PageStyled = styled.section`
+const PageStyled = styled.section<PageStyledProps>`
     ${baseFont}
     width: 190mm;
     height: 277mm;
