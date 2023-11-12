@@ -1,7 +1,7 @@
 import { Breadcrumbs } from './Breadcrumbs';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { mainColor, font, linkColors } from '../helpers/mixins';
+import { mainColor, font, linkColors } from '../helpers/styles';
 
 const NavigationContainer = styled.nav`
     margin: 0.5em 0;

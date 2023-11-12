@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { screenZoom } from '../components/helpers/mixins';
+import { screenZoom } from '../components/helpers/styles';
 
 export const GlobalStyle = createGlobalStyle`
   * {

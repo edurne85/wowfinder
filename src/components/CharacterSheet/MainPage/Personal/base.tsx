@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { smallText } from '../../../helpers/mixins';
+import { smallText } from '../../../helpers/styles';
 
 interface PersonalItemProps<T> {
     id: string;

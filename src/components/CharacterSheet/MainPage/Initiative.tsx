@@ -4,7 +4,7 @@ import {
     borderless,
     printableBottomBorder,
     smallText,
-} from '../../helpers/mixins';
+} from '../../helpers/styles';
 import { Character } from '../../../types/Character';
 
 const StyledTable = styled.table`

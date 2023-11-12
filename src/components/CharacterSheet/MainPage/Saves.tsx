@@ -10,7 +10,7 @@ import {
     borderThin,
     borderThick,
     printableBottomBorder,
-} from '../../helpers/mixins';
+} from '../../helpers/styles';
 
 const StyledTable = styled.table`
     border-spacing: 0;
