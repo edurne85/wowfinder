@@ -2,9 +2,6 @@ enum SpellFlag {
     dismissable = 'dismissable',
     shapeable = 'shapeable',
     spellResistance = 'spellResistance',
-    solar = 'solar',
-    lunar = 'lunar',
-    astral = 'astral',
 }
 
 function tryParseFlag(flag: string): SpellFlag | undefined {

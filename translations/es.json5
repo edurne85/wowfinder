@@ -1,4 +1,11 @@
 {
+    alignment: {
+        good: 'Bueno',
+        neutral: 'Neutral',
+        evil: 'Malo',
+        lawful: 'Legal',
+        chaotic: 'Caótico',
+    },
     buttons: {
         ok: 'Aceptar',
         cancel: 'Cancelar',

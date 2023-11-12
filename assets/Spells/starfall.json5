@@ -71,10 +71,9 @@
     duration: 'instantaneous',
     components: ['S'],
     range: 'medium',
-    // area: sphere (by rank)
     save: {
         save: 'reflex',
         effect: 'half',
     },
-    flags: ['astral'],
+    descriptors: ['astral'],
 }

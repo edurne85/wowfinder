@@ -61,5 +61,6 @@
             effect: 'half',
         },
     ],
-    flags: ['solar', 'spellResistance'],
+    descriptors: ['solar'],
+    flags: ['spellResistance'],
 }

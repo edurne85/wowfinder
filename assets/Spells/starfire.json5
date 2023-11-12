@@ -82,5 +82,5 @@
     duration: 'instantaneous',
     components: ['S'],
     range: 'close',
-    flags: ['solar'],
+    descriptors: ['solar'],
 }

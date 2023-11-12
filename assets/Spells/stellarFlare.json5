@@ -90,5 +90,5 @@
     sch: 'celestial',
     castingTime: 'standard',
     range: 'medium',
-    flags: ['solar'],
+    descriptors: ['solar'],
 }

@@ -71,5 +71,6 @@
         save: 'reflex',
         effect: 'half',
     },
-    flags: ['lunar', 'spellResistance'],
+    descriptors: ['lunar'],
+    flags: ['spellResistance'],
 }

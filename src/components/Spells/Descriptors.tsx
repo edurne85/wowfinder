@@ -1,4 +1,6 @@
-import { SpellBase, SpellDescriptor } from '../../types/Magic/Spell';
+import { useTranslation } from 'react-i18next';
+import { SpellBase } from '@model/Magic/Spell';
+import { SpellDescriptor, stringify } from '@model/Magic/Spell/Descriptor';
 
 interface DescriptorsArgs {
     descriptors: Iterable<SpellDescriptor>;
@@ -6,14 +8,16 @@ interface DescriptorsArgs {
 
 function Descriptors({ descriptors }: DescriptorsArgs): React.JSX.Element {
     const uniqueDescriptors = [...new Set(descriptors)];
-    // TODO: #425: i18n
+    const { t } = useTranslation();
     return (
         <div className="spell-descriptors">
+            [
             {uniqueDescriptors.map((descriptor, index) => (
                 <span key={index} className="descriptor">
-                    {descriptor}
+                    {stringify(descriptor, t)}
                 </span>
             ))}
+            ]
         </div>
     );
 }

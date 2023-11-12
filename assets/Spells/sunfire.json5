@@ -74,4 +74,5 @@
     castingTime: 'standard',
     components: ['S'],
     range: 'close',
+    descriptors: ['solar'],
 }

@@ -55,5 +55,5 @@
     duration: 'instantaneous',
     components: ['S'],
     range: 'medium',
-    flags: ['lunar'],
+    descriptors: ['lunar'],
 }

@@ -75,5 +75,5 @@
     duration: 'instantaneous',
     components: ['S'],
     range: 'medium',
-    flags: ['astral'],
+    descriptors: ['astral'],
 }
