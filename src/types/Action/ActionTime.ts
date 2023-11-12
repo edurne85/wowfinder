@@ -1,7 +1,18 @@
 import { ActionLength } from './ActionLength';
 import { Time } from '../Units';
+import { Stringifier } from '@utils/strings';
 
 type ActionTime = ActionLength | Time | 'special';
+
+const stringify: Stringifier<ActionTime> = (value, t) => {
+    if (value === 'special') {
+        return t('magic.castingTime.special');
+    }
+    if (value instanceof Time) {
+        return value.toString();
+    }
+    return t(`action.${value}`);
+};
 
 const ActionTime = {
     tryParse(input: string): ActionTime | undefined {
@@ -36,6 +47,7 @@ const ActionTime = {
     ): ActionTime {
         return ActionTime.tryParse(input) ?? defaultValue;
     },
+    stringify,
 } as const;
 
 export { ActionTime };
