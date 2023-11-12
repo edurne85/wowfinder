@@ -1,4 +1,12 @@
 {
+    action: {
+        free: 'Acción gratuita',
+        swift: 'Acción rápida',
+        move: 'Acción de movimiento',
+        standard: 'Acción estándar',
+        full: 'Acción de turno completo',
+        reaction: 'Reacción',
+    },
     alignment: {
         good: 'Bueno',
         neutral: 'Neutral',

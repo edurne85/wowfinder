@@ -11,6 +11,10 @@
             spontaneous: 'Spontaneous',
         },
     },
+    castingTime: {
+        h: 'Casting Time',
+        special: 'Special (see text)',
+    },
     range: {
         h: 'Range',
         touch: 'Touch',

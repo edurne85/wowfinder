@@ -11,6 +11,10 @@
             spontaneous: 'Espontáeno',
         },
     },
+    castingTime: {
+        h: 'Tiempo de lanzamiento',
+        special: 'Especial (ver texto)',
+    },
     range: {
         h: 'Alcance',
         touch: 'Toque',
