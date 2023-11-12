@@ -11,7 +11,7 @@ import {
     printableBottomBorder,
     reverseColors,
     smallText,
-} from '../../helpers/mixins';
+} from '../../helpers/styles';
 
 const StyledTable = styled.table`
     & th,

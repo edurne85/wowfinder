@@ -5,7 +5,7 @@ import {
     printableBottomBorder,
     mainColor,
     debugOutline,
-} from './mixins';
+} from './styles';
 import { ReactNode } from 'react';
 
 interface PageStyledProps {

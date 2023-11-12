@@ -11,7 +11,7 @@ import {
 } from '../../../types/Magic';
 import Columns from '../../helpers/Columns';
 import Header from '../../helpers/Header';
-import { reverseColors, debugOutline } from '../../helpers/mixins';
+import { reverseColors, debugOutline } from '../../helpers/styles';
 import Page from '../../helpers/Page';
 import { SpellPower } from './SpellPower';
 import { SpellRange } from './SpellRange';

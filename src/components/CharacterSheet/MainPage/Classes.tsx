@@ -7,7 +7,7 @@ import {
     printableBottomBorder,
     font,
     FontFamily,
-} from '../../helpers/mixins';
+} from '../../helpers/styles';
 
 const StyledTable = styled.table`
     & td,

@@ -15,7 +15,7 @@ import {
     printableBottomBorder,
     reverseColors,
     smallText,
-} from '../helpers/mixins';
+} from '../helpers/styles';
 import Page from '../helpers/Page';
 import { sum } from '@utils/numbers';
 

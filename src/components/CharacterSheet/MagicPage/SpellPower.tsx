@@ -9,7 +9,7 @@ import {
     School,
     SubSchool,
 } from '../../../types/Magic';
-import { font } from '../../helpers/mixins';
+import { font } from '../../helpers/styles';
 
 const PowerContainer = styled.table`
     & th,
