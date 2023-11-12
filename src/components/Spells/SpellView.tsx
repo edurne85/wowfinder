@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Spell as S, SpellRank, SpellBase } from '../../types/Magic/Spell';
+import { Spell, SpellRank, SpellBase } from '../../types/Magic/Spell';
 import React from 'react';
 import { Descriptors } from './Descriptors';
 import { toRoman } from '../../utils';
@@ -9,11 +9,11 @@ import { Markdown } from '@components/helpers/Markdown';
 import { SpellDuration } from './SpellDuration';
 
 interface SpellArgs {
-    spell: S;
+    spell: Spell;
 }
 
 interface SpellRankArgs {
-    parent: S;
+    parent: Spell;
     rank: SpellRank;
 }
 
