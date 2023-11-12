@@ -1,5 +1,5 @@
 {
-    key: 'moonkin',
+    key: 'celestial',
     spells: {
         '0': [
             { spell: 'moonfire', rank: 1 },

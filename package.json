@@ -15,6 +15,7 @@
         "test": "jest",
         "coverage": "jest --coverage",
         "tsc": "tsc",
+        "pedantic": "npm-run-all -s lint-fix prettier tsc coverage cloc",
         "preci": "npm-run-all -s lint-fix prettier tsc",
         "prepush": "npm-run-all -s lint tsc test"
     },

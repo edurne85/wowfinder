@@ -1,0 +1,1 @@
+Spells that are linked to the inherent cycle of day and night and the forces of the heavens. These spells are almost exclusively used by druids in Moonkin form, as most mortal creatures lack the harmony with the celestial cycle necessary to access these forces.

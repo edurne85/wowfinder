@@ -1,5 +1,6 @@
 {
     key: 'primal',
+    core: true,
     spells: {
         '0': [
             { spell: 'light', rank: 1 },
