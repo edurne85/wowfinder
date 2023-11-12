@@ -1,5 +1,6 @@
 import { TFunction } from 'i18next';
 import { Length } from '../../Units';
+import { unreachable } from '@utils/debug';
 
 type SpellSelf = {
     spellAreaType: 'self';
@@ -55,8 +56,7 @@ function stringify(value: SpellArea, t: TFunction<'translation'>): string {
             return t(`magic.area.sphere.${suffix}`, { radius: value.radius });
         }
         default: {
-            const unreachable: never = value;
-            return unreachable;
+            return unreachable(value);
         }
     }
 }
