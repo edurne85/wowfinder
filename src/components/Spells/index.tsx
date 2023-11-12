@@ -1,1 +1,3 @@
-export { Spell } from './Spell';
+export { SpellView } from './SpellView';
+export { SpellListView } from './SpellListView';
+export { SpellListsView } from './SpellListsView';

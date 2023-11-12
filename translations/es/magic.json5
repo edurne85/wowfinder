@@ -17,6 +17,14 @@
         medium: 'Medio',
         long: 'Largo',
     },
+    duration: {
+        h: 'Duración',
+        instantaneous: 'Instantáneo',
+        permanent: 'Permanente',
+        concentration: 'Concentración',
+        fixed: '{{duration}}',
+        perLevel: '{{duration}}/nivel',
+    },
     level: 'Nivel',
     schools: {
         abj: 'Abjuración',
