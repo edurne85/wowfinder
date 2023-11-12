@@ -12,8 +12,8 @@ const skipAssetDump = false;
 
 type debugFunction = (title: string, style?: string, data?: any) => any;
 
-function unreachable(_?: never): never {
-    throw new Error('Unreachable');
+function unreachable(value?: never): never {
+    throw new Error(`Unreachable code reached: ${value}`);
 }
 
 function debugCall({
