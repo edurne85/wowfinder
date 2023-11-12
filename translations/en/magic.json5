@@ -12,10 +12,12 @@
         },
     },
     range: {
+        h: 'Range',
         touch: 'Touch',
         close: 'Close',
         medium: 'Medium',
         long: 'Long',
+        special: 'Special (see text)',
     },
     duration: {
         h: 'Duration',
@@ -24,6 +26,13 @@
         concentration: 'Concentration',
         fixed: '{{duration}}',
         perLevel: '{{duration}}/level',
+    },
+    components: {
+        h: 'Components',
+        V: 'Verbal',
+        S: 'Somatic',
+        M: 'Material',
+    },
     },
     level: 'Level',
     schools: {

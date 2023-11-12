@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 type Wrapper = (props: { children: ReactNode }) => React.JSX.Element;
 const DefaultWrapper: Wrapper = ({ children }: { children: ReactNode }) => (
-    <span>{children}</span>
+    <>{children}</>
 );
 
 let callCounter = 0;

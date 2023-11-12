@@ -4,9 +4,11 @@ import { Spell, SpellRank, SpellBase } from '../../types/Magic/Spell';
 import React from 'react';
 import { Descriptors } from './Descriptors';
 import { toRoman } from '../../utils';
-import { School } from './School';
+import { School } from './SpellSchoolView';
 import { Markdown } from '@components/helpers/Markdown';
 import { SpellDuration } from './SpellDuration';
+import { SpellRange } from './SpellRangeView';
+import { Components } from './SpellComponentsView';
 
 interface SpellArgs {
     spell: Spell;
@@ -69,7 +71,9 @@ function SpellHelper({
             <Heading hRank={hRank} text={texts.title} />
             <Descriptors raw={raw} />
             <School raw={raw} />
+            <Components components={raw.components} />
             <SpellDuration duration={raw.duration} />
+            <SpellRange range={raw.range} />
             <SpellDescription desc={texts.description} />
         </SpellContainer>
     );

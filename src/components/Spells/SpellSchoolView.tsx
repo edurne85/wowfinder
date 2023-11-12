@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { School as S, SubSchool } from '../../types/Magic';
+import { School, SubSchool } from '../../types/Magic';
 import { Spell, SpellBase } from '../../types/Magic/Spell';
 import { styled } from 'styled-components';
 
@@ -8,12 +8,12 @@ const SchoolContainer = styled.span`
 `;
 
 interface SpellSchoolViewArgs {
-    sch: S | SubSchool;
+    sch: School | SubSchool;
 }
 
 function SpellSchoolView({ sch }: SpellSchoolViewArgs): React.JSX.Element {
     const { t } = useTranslation();
-    const key = S[sch as S]
+    const key = School[sch as School]
         ? `magic.schools.${sch}`
         : `magic.schools.sub.${sch}`;
     return (
