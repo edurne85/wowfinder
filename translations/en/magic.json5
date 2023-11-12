@@ -11,6 +11,18 @@
             spontaneous: 'Spontaneous',
         },
     },
+    area: {
+        h: 'Area',
+        self: 'Caster',
+        point: 'Point',
+        cone: 'Cone ({{radius}} radius)',
+        cube: 'Cube ({{size}} on a side)',
+        line: 'Line ({{length}} long)',
+        sphere: {
+            self: 'Sphere ({{radius}} radius) centered on caster',
+            point: 'Sphere ({{radius}} radius) centered on point',
+        },
+    },
     castingTime: {
         h: 'Casting Time',
         special: 'Special (see text)',

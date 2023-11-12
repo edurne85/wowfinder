@@ -11,6 +11,18 @@
             spontaneous: 'Espontáeno',
         },
     },
+    area: {
+        h: 'Área',
+        self: 'Lanzador',
+        point: 'Punto',
+        cone: 'Cono ({{radius}} de radio)',
+        cube: 'Cubo ({{size}} de lado)',
+        line: 'Línea ({{length}} de largo)',
+        sphere: {
+            self: 'Esfera ({{radius}} de radio) centrada en el lanzador',
+            point: 'Esfera ({{radius}} de radio) centrada en un punto',
+        },
+    },
     castingTime: {
         h: 'Tiempo de lanzamiento',
         special: 'Especial (ver texto)',

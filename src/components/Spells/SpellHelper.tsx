@@ -8,6 +8,7 @@ import { SpellBase } from '../../types/Magic/Spell';
 import { Markdown } from '@components/helpers/Markdown';
 import { styled } from 'styled-components';
 import { CastingTime } from './SpellCastingTimeView';
+import { SpellArea } from './SpellAreaView';
 
 function SpellDescription({ desc }: { desc: string }): React.JSX.Element {
     return (
@@ -64,6 +65,7 @@ function SpellHelper({
             <CastingTime castingTime={raw.castingTime} />
             <SpellDuration duration={raw.duration} />
             <SpellRange range={raw.range} />
+            <SpellArea area={raw.area} />
             <SpellDescription desc={texts.description} />
         </SpellContainer>
     );
