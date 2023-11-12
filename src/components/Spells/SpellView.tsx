@@ -6,6 +6,7 @@ import { Descriptors } from './Descriptors';
 import { toRoman } from '../../utils';
 import { School } from './School';
 import { Markdown } from '@components/helpers/Markdown';
+import { SpellDuration } from './SpellDuration';
 
 interface SpellArgs {
     spell: S;
@@ -68,6 +69,7 @@ function SpellHelper({
             <Heading hRank={hRank} text={texts.title} />
             <Descriptors raw={raw} />
             <School raw={raw} />
+            <SpellDuration duration={raw.duration} />
             <SpellDescription desc={texts.description} />
         </SpellContainer>
     );
@@ -87,7 +89,7 @@ function Rank({ parent, rank }: SpellRankArgs): React.JSX.Element {
     );
 }
 
-function Spell({ spell }: SpellArgs): React.JSX.Element {
+function SpellView({ spell }: SpellArgs): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <>
@@ -106,4 +108,4 @@ function Spell({ spell }: SpellArgs): React.JSX.Element {
     );
 }
 
-export { Spell };
+export { SpellView };
