@@ -1,5 +1,6 @@
 {
     key: 'arcane',
+    core: true,
     spells: {
         '0': [
             { spell: 'resistance', rank: 1 },

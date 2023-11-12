@@ -49,7 +49,7 @@ const spellsTitles: TitlesProvider = t => [
         match: /^\/spells\/:?(.*)/,
         title: (fragments: RegExpMatchArray | null): string | null => {
             return fragments
-                ? t(`spells.lists.${fragments[1]}`) || fragments[1]
+                ? t(`spell-lists.${fragments[1]}.name`) || fragments[1]
                 : null;
         },
     },

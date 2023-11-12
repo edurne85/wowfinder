@@ -1,0 +1,1 @@
+Conjuros vinculados al ciclo inherente del Día y la Noche y las fuerzas del firmamento. Estos conjuros son utilizados casi exclusivamente por druidas en la forma de lechúcico lunar, ya que la mayoría de criaturas mortales carecen de la harmonía con el ciclo celestial necesaria para acceder a estas fuerzas.
