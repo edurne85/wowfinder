@@ -8,25 +8,19 @@ The project is currently following an alternating pattern during the early alpha
 
 ## Latest release
 
-### [Alpha 7: Updates to item modelling](https://github.com/edurne85/wowfinder/milestone/11)
+### [Alpha 8: Moonkin form](https://github.com/edurne85/wowfinder/milestone/14)
 
-This version is adding a lot of logic to load and manage common items in the game, such as trade goods and consumables.
+Basic support in the app for the druid's Moonkin form. This has become a recent priority due to some player(s) in the campaign unlocking this form or getting very close to it.
 
-In addition to that, an issue that was causing delays of more than 20 - 25 seconds when loading the app has been addressed, which should drastically improve app startup times (see [#549](https://github.com/edurne85/wowfinder/issues/549) and [#551](https://github.com/edurne85/wowfinder/pull/551))
-
-[Download Alpha 7](https://github.com/edurne85/wowfinder/releases/tag/v1.0.0-alpha-7)
+[Download Alpha 8](https://github.com/edurne85/wowfinder/releases/tag/v1.0.0-alpha-8)
 
 ## Initial Alpha stage
 
 This stage includes releases that offer some kind of useful functionality to players, but are clearly not a complete application.
 
-### [Alpha 8: Moonkin form](https://github.com/edurne85/wowfinder/milestone/14)
-
-Basic support in the app for the druid's Moonkin form. This has become a recent priority due to some player(s) in the campaign unlocking this form or getting very close to it. This is targetting a release date for early or mid November 2023.
-
 ### [Alpha 9](https://github.com/edurne85/wowfinder/milestone/13)
 
-This will be another _improvement_ release, focused on technical tasks and rules implementations. The exact contents are still to be decided; and will probably target a date of mid to late November 2023.
+This was planned be another _improvement_ release, focused on technical tasks and rules implementations, but it is incorporating several improvements on the presentation of spells and spell lists. Target date mid to late November 2023.
 
 ### [Alpha 10: Gear and item rendering](https://github.com/edurne85/wowfinder/milestone/4)
 
@@ -51,6 +45,10 @@ Once the app is considered to contain all the features considered essential, it 
 ## Previous releases and milestones
 
 For reference, here is a summary of the milestones already achieved / versions already released:
+
+### [Alpha 7: Updates to item modelling](https://github.com/edurne85/wowfinder/milestone/11)
+
+This version added a lot of logic to load and manage common items in the game, such as trade goods and consumables, and addressed some serious delays during app startup.
 
 ### [Alpha 6: Spell lists view](https://github.com/edurne85/wowfinder/milestone/7)
 
