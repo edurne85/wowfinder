@@ -4221,10 +4221,10 @@ electron-winstaller@^5.0.0:
     lodash.template "^4.2.2"
     temp "^0.9.0"
 
-electron@^26.2.1:
-  version "26.5.0"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-26.5.0.tgz#63e56b06f4c3675eb10dbd91dff19fb9cb0cd13d"
-  integrity sha512-j65/SMEqf+sKBUmAwYU0E5d/OKPmhRVyMntVulHKTNEazxF2TuRr/+GoEVxBq4l9jfLEXhheVOuOW0J5Tme1kA==
+electron@^27.0.4:
+  version "27.0.4"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-27.0.4.tgz#2666c61d0e14f470edb4d8ba7eb6c9171588e53a"
+  integrity sha512-ob29rN1mtiyAXzF8HsHd5jh8bYKd9OQDakfdOExi0F7epU97gXPHaj6JPjbBJ/vpki5d32SyKVePW4vxeNZk1A==
   dependencies:
     "@electron/get" "^2.0.0"
     "@types/node" "^18.11.18"
