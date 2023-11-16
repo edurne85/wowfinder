@@ -1,3 +1,4 @@
+import { TFunction } from 'i18next';
 import { sum, TryParser } from '../../utils';
 
 class Scalar<T> {
@@ -16,8 +17,13 @@ class Scalar<T> {
         return this._unit;
     }
 
-    toString(): string {
-        return `${this._value} ${this._unit}`;
+    toString(): string;
+
+    toString(t: TFunction<'translation'>): string;
+
+    toString(t?: TFunction<'translation'>): string {
+        const unit = t ? t(`units.${this._unit}`) : this._unit;
+        return `${this._value} ${unit}`;
     }
 
     static tryParse<T>(

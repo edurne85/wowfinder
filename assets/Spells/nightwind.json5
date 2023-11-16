@@ -3,7 +3,7 @@
     ranks: [
         {
             rank: 1,
-            area: 'cone(15 feet)',
+            area: 'cone(15 foot)',
             damage: [
                 {
                     types: ['shadow', 'arcane'],
@@ -18,7 +18,7 @@
         },
         {
             rank: 2,
-            area: 'cone(20 feet)',
+            area: 'cone(20 foot)',
             damage: [
                 {
                     types: ['shadow', 'arcane'],
@@ -33,7 +33,7 @@
         },
         {
             rank: 3,
-            area: 'cone(25 feet)',
+            area: 'cone(25 foot)',
             damage: [
                 {
                     types: ['shadow', 'arcane'],
@@ -48,7 +48,7 @@
         },
         {
             rank: 4,
-            area: 'cone(40 feet)',
+            area: 'cone(40 foot)',
             damage: [
                 {
                     types: ['shadow', 'arcane'],
@@ -63,7 +63,7 @@
         },
         {
             rank: 5,
-            area: 'cone(65 feet)',
+            area: 'cone(65 foot)',
             damage: [
                 {
                     types: ['shadow', 'arcane'],
