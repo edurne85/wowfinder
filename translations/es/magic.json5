@@ -53,6 +53,14 @@
         solar: 'Solar',
         astral: 'Astral',
     },
+    flags: {
+        $true: 'Sí',
+        $false: 'No',
+        dismissable: 'Cancelable',
+        shapeable: 'Moldeable',
+        spellResistance: 'Resistencia a conjuros',
+        concentration: 'Concentración',
+    },
     duration: {
         h: 'Duración',
         instantaneous: 'Instantáneo',

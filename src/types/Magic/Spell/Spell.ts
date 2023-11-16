@@ -39,9 +39,7 @@ class Spell extends SpellBase implements SpellBuilder {
             const rankAssert = (condition: boolean, message: string): void => {
                 if (!condition) {
                     throw new Error(
-                        `Invalid spell definition for ${this.#key}:${
-                            rank.rank
-                        }: ${message}`,
+                        `Invalid spell definition for ${this.#key}:${rank.rank}: ${message}`,
                     );
                 }
             };
