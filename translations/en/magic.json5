@@ -49,7 +49,6 @@
         S: 'Somatic',
         M: 'Material',
     },
-    },
     level: 'Level',
     schools: {
         abj: 'Abjuration',

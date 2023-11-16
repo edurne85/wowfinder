@@ -23,7 +23,7 @@ function preLoad(context: GlobalContextType, setStage: SetStage): void {
         log('started');
         setStage(LoadingStages.loading);
         context.data = FullData.load();
-        log('data loaded');
+        log('data loaded', context.data);
         context.routes = getRoutes(context.data);
         context.router = createHashRouter(context.routes);
         log('router created');
