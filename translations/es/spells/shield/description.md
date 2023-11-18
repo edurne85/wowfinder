@@ -1,0 +1,1 @@
+Este conjuro crea un disco de fuerza, móvil e invisible, que flota delante de ti negando el efecto de los proyectiles mágicos menos potentes dirigidos contra ti. El disco además proporciona un bonificador por escudo a la CA. El escudo no tiene penalizador de armadura, ni probabilidad de fallo de conjuro arcano.
