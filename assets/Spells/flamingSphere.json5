@@ -1,0 +1,55 @@
+{
+    key: 'flamingSphere',
+    ranks: [
+        {
+            rank: 1,
+            damage: {
+                types: ['fire'],
+                baseRoll: {
+                    sides: 6,
+                    qtty: 3,
+                },
+            },
+        },
+        {
+            rank: 2,
+            damage: {
+                types: ['fire'],
+                baseRoll: {
+                    sides: 6,
+                    qtty: 6,
+                },
+            },
+        },
+        {
+            rank: 3,
+            damage: {
+                types: ['fire'],
+                baseRoll: {
+                    sides: 6,
+                    qtty: 8,
+                },
+            },
+        },
+        {
+            rank: 4,
+            damage: {
+                types: ['fire'],
+                baseRoll: {
+                    sides: 6,
+                    qtty: 10,
+                },
+            },
+        },
+    ],
+    sch: 'evo',
+    castingTime: 'standard',
+    components: ['V', 'S', 'M'],
+    range: 'medium',
+    duration: '1 turn/level',
+    save: {
+        save: 'reflex',
+        effect: 'half',
+    },
+    flags: ['spellResistance'],
+}
