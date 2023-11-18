@@ -2,6 +2,7 @@ enum SpellFlag {
     dismissable = 'dismissable',
     shapeable = 'shapeable',
     spellResistance = 'spellResistance',
+    concentration = 'concentration',
 }
 
 function tryParseFlag(flag: string): SpellFlag | undefined {

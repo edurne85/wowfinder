@@ -9,6 +9,7 @@ import { Markdown } from '@components/helpers/Markdown';
 import { styled } from 'styled-components';
 import { CastingTime } from './SpellCastingTimeView';
 import { SpellArea } from './SpellAreaView';
+import { SpellFlags } from './SpellFlagsView';
 
 function SpellDescription({ desc }: { desc: string }): React.JSX.Element {
     return (
@@ -67,6 +68,7 @@ function SpellHelper({
             <SpellRange range={raw.range} />
             <SpellArea area={raw.area} />
             <SpellDescription desc={texts.description} />
+            <SpellFlags flags={raw.flags} />
         </SpellContainer>
     );
 }

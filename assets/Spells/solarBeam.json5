@@ -49,7 +49,7 @@
     trigger: '[[WIP]] enemy spellcast in range',
     components: ['S'],
     range: 'close',
-    area: 'line',
+    // area: 'line', // length required
     duration: 'instantaneous',
     save: [
         {
