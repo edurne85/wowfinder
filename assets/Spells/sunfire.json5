@@ -1,0 +1,78 @@
+{
+    key: 'sunfire',
+    ranks: [
+        {
+            rank: 1,
+            duration: '0.5 turn/level',
+            damage: [
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 8 },
+                    modStat: 'spellPower',
+                    modMultiplier: 0.25,
+                },
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 8 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 2,
+            duration: '0.5 turn/level',
+            damage: [
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 6, qtty: 2 },
+                    modStat: 'spellPower',
+                    modMultiplier: 0.5,
+                },
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 6, qtty: 2 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 3,
+            duration: '0.5 turn/level',
+            damage: [
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 8, qtty: 3 },
+                    modStat: 'spellPower',
+                    modMultiplier: 1,
+                },
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 8, qtty: 3 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 4,
+            duration: '1 turn/level',
+            damage: [
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 6, qtty: 8 },
+                    modStat: 'spellPower',
+                    modMultiplier: 1.5,
+                },
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 6, qtty: 8 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+    ],
+    sch: 'celestial',
+    castingTime: 'standard',
+    components: ['S'],
+    range: 'close',
+    descriptors: ['solar'],
+}

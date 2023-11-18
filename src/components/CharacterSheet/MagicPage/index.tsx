@@ -6,10 +6,12 @@ import {
     zeroSpellPower,
     zeroCasterLevel,
     levelByMode,
+    SubSchool,
+    School,
 } from '../../../types/Magic';
 import Columns from '../../helpers/Columns';
 import Header from '../../helpers/Header';
-import { reverseColors, debugOutline } from '../../helpers/mixins';
+import { reverseColors, debugOutline } from '../../helpers/styles';
 import Page from '../../helpers/Page';
 import { SpellPower } from './SpellPower';
 import { SpellRange } from './SpellRange';
@@ -27,25 +29,34 @@ const ColumnContainer = styled.div`
     }
 `;
 
-function MagicColumn({
+export function MagicColumn({
     char,
     mode,
+    showTitle = true,
+    schoolsFilter,
 }: {
     char?: Character;
     mode: CastingMode;
+    showTitle?: boolean;
+    schoolsFilter?: (School | SubSchool)[];
 }): React.JSX.Element {
     const { t } = useTranslation();
-    const clevel = levelByMode(
-        char?.classBonuses?.efl || zeroCasterLevel,
-        mode,
-    );
+    const clevel = levelByMode(char?.casterLevels || zeroCasterLevel, mode);
     const spellPower = (char?.fullSpellPower || zeroSpellPower)[mode];
     return (
         <ColumnContainer>
-            <Header>{t(`magic.modes.full.${mode}`)}</Header>
+            {showTitle ? (
+                <Header>{t(`magic.modes.full.${mode}`)}</Header>
+            ) : (
+                <></>
+            )}
             <SpellSlots char={char} mode={mode} />
             <SpellRange efl={clevel} mode={mode} />
-            <SpellPower data={spellPower} mode={mode} />
+            <SpellPower
+                data={spellPower}
+                mode={mode}
+                schoolsFilter={schoolsFilter}
+            />
         </ColumnContainer>
     );
 }

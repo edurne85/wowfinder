@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { fThousands } from '../../../../utils';
-import { borderless, bottomLine } from '../../../helpers/mixins';
+import { borderless, bottomLine } from '../../../helpers/styles';
 import { PersonalEntry, PersonalItemProps } from './base';
 
 const StyledInput = styled.input`

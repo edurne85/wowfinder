@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { borderless, bottomLine } from '../../../helpers/mixins';
+import { borderless, bottomLine } from '../../../helpers/styles';
 import { PersonalEntry, PersonalItemProps } from './base';
 
 const sharedStyle = `

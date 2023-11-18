@@ -9,7 +9,7 @@ import {
     School,
     SubSchool,
 } from '../../../types/Magic';
-import { font } from '../../helpers/mixins';
+import { font } from '../../helpers/styles';
 
 const PowerContainer = styled.table`
     & th,
@@ -60,11 +60,22 @@ function SchoolLine({ k, data }: SchoolArgs): React.JSX.Element {
 export function SpellPower({
     data,
     mode,
+    schoolsFilter,
 }: {
     data: FullComputedSchools;
     mode: CastingMode;
+    schoolsFilter?: (School | SubSchool)[];
 }): React.JSX.Element {
     const { t } = useTranslation();
+    let filteredSchools: Partial<typeof allSubSchoolsByParent> =
+        allSubSchoolsByParent;
+    if (schoolsFilter) {
+        filteredSchools = Object.fromEntries(
+            Object.entries(allSubSchoolsByParent).filter(([k]) =>
+                schoolsFilter.includes(k as School | SubSchool),
+            ),
+        );
+    }
     return (
         <PowerContainer>
             <thead>
@@ -79,7 +90,7 @@ export function SpellPower({
                 <tr>
                     <td>
                         <ul>
-                            {Object.keys(allSubSchoolsByParent).map(k => {
+                            {Object.keys(filteredSchools).map(k => {
                                 return (
                                     <SchoolLine
                                         k={k}

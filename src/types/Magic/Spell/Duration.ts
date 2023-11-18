@@ -1,5 +1,6 @@
 import { TFunction } from 'i18next';
 import { Time } from '../../../types/Units';
+import { unreachable } from '@utils/debug';
 
 type FixedSpellDuration = {
     durationType: 'fixed';
@@ -30,8 +31,7 @@ function stringify(value: SpellDuration, t: TFunction<'translation'>): string {
     } else if (value.durationType === 'perLevel') {
         return t('magic.duration.perLevel', { duration: value.duration });
     } else {
-        const unreachable: never = value;
-        return unreachable;
+        return unreachable(value);
     }
 }
 

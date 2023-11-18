@@ -1,0 +1,1 @@
+El druida invoca un viento gélido como la noche que daña y empuja a criaturas y objetos en un cono frente al lanzador al final de cada asalto. Una salvación exitosa de Reflejos reduce el daño a la mitad. Además, las criaturas hasta cierto tamaño (según rango) deberán superar una salvación por Fortaleza o serán empujadas por el viento hasta fuera del área de efecto.

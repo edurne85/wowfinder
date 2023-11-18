@@ -1,16 +1,14 @@
 import { Navigate, useParams } from 'react-router-dom';
-import { Spell } from '../components/Spells';
+import { SpellView, SpellListView, SpellListsView } from '../components/Spells';
 import { FullData } from '../types/FullData';
 import { RouteProvider, TitlesProvider } from './base';
-import { SpellListsView } from '../components/Spells/SpellListsView';
-import { SpellListView } from '../components/Spells/SpellListView';
 
 function SpellWrapper({ data }: { data: FullData }): React.JSX.Element {
     let { spell } = useParams<'spell'>();
     if (!spell) throw new Error('No spell param');
     spell = spell.replace(/^:/, '');
     if (!data.spells[spell]) throw new Error(`No spell ${spell}`);
-    return <Spell spell={data.spells[spell]} />;
+    return <SpellView spell={data.spells[spell]} />;
 }
 
 function SpellListsWrapper({ data }: { data: FullData }): React.JSX.Element {
@@ -51,7 +49,7 @@ const spellsTitles: TitlesProvider = t => [
         match: /^\/spells\/:?(.*)/,
         title: (fragments: RegExpMatchArray | null): string | null => {
             return fragments
-                ? t(`spells.lists.${fragments[1]}`) || fragments[1]
+                ? t(`spell-lists.${fragments[1]}.name`) || fragments[1]
                 : null;
         },
     },

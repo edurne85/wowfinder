@@ -1,0 +1,1 @@
+Conjuros que canalizan y manipulan las fuerzas de la naturaleza. A diferencia de la magia divina, las fuerzas que alimentan la magia primal carecen de una voluntad o intencionalidad explícita. Los druidas son los usuarios más comunes de conjuros primales.

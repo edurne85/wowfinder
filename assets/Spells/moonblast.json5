@@ -1,0 +1,76 @@
+{
+    key: 'moonblast',
+    ranks: [
+        {
+            rank: 1,
+            area: 'cone(15feet)',
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 8, qtty: 2 },
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 8, qtty: 1 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 2,
+            area: 'cone(25feet)',
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6, qtty: 6 },
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6, qtty: 3 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 3,
+            area: 'cone(35feet)',
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 8, qtty: 8 },
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 8, qtty: 4 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 4,
+            area: 'cone(45feet)',
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 12, qtty: 10 },
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 12, qtty: 5 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+    ],
+    sch: 'celestial',
+    castingTime: 'standard',
+    duration: 'instantaneous',
+    range: 'special',
+    components: ['S'],
+    save: {
+        save: 'reflex',
+        effect: 'half',
+    },
+    descriptors: ['lunar'],
+    flags: ['spellResistance'],
+}

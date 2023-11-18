@@ -1,0 +1,66 @@
+{
+    key: 'solarBeam',
+    ranks: [
+        {
+            rank: 1,
+            damage: [
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 6 },
+                },
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 6 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 2,
+            damage: [
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 8, qtty: 2 },
+                },
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 8, qtty: 2 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 3,
+            damage: [
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 6, qtty: 6 },
+                },
+                {
+                    types: ['holy', 'fire'],
+                    baseRoll: { sides: 6, qtty: 6 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+    ],
+    sch: 'celestial',
+    castingTime: 'reaction',
+    trigger: '[[WIP]] enemy spellcast in range',
+    components: ['S'],
+    range: 'close',
+    // area: 'line', // length required
+    duration: 'instantaneous',
+    save: [
+        {
+            save: 'will',
+            effect: 'special',
+        },
+        {
+            save: 'reflex',
+            effect: 'half',
+        },
+    ],
+    descriptors: ['solar'],
+    flags: ['spellResistance'],
+}

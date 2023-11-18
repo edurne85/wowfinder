@@ -13,7 +13,6 @@ function BearFormView({ char }: { char: Character }): React.JSX.Element {
     const { t } = useTranslation();
     const bearRank = char.classFeaturesCondensed.count('bearForm');
     useTransformation(char, new BearForm({ rank: bearRank }));
-    const classBonuses = char.classBonuses;
     return (
         <ShapeshiftViewContainer title={t('charsheet.shapeshift.bear')}>
             <Columns
@@ -35,10 +34,7 @@ function BearFormView({ char }: { char: Character }): React.JSX.Element {
                         children: (
                             <>
                                 <Header>{t('charsheet.hitpoints.h')}</Header>
-                                <HitPoints
-                                    bonuses={classBonuses}
-                                    misc={char?.miscHP}
-                                />
+                                <HitPoints char={char} />
                                 <Header>{t('charsheet.armor.h')}</Header>
                                 <Defenses char={char} />
                             </>

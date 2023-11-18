@@ -1,0 +1,1 @@
+El druida desata un estallido de energía lunar delante suyo, causando daño lunar (según rango) a todas las criaturas y objetos en el área. Este daño se reduce a la mitad con una salvación exitosa de Reflejos.

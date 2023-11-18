@@ -1,9 +1,13 @@
 import styled from 'styled-components';
-import { DamageComponentSpec, DamageType } from '../../types/Damage';
+import {
+    DamageComponentSpec,
+    DamageType,
+    FullDamageTypes,
+} from '../../types/Damage';
 import { colorByTypes } from './helpers';
 import { useTranslation } from 'react-i18next';
 
-const DamageComponentSpecContainer = styled.span`
+const DamageComponentSpecContainer = styled.span<{ types: FullDamageTypes }>`
     text-decoration: underline;
     text-decoration-color: ${colorByTypes};
     margin: 0 0.2em;

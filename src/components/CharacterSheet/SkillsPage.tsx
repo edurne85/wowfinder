@@ -13,9 +13,32 @@ import {
     font,
     FontFamily,
     printableBottomBorder,
+    reverseColors,
     smallText,
-} from '../helpers/mixins';
+} from '../helpers/styles';
 import Page from '../helpers/Page';
+import { sum } from '@utils/numbers';
+
+const SkillsPageContainer = styled.div`
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    width: 100%;
+    height: 100%;
+`;
+
+const Footer = styled.footer`
+    ${font({ family: FontFamily.priori })};
+    position: absolute;
+    bottom: 0;
+    & > strong {
+        ${reverseColors}
+        font-variant: small-caps;
+        padding: 0 0.25em;
+        margin-right: 0.5em;
+    }
+`;
 
 const StyledTable = styled.table`
     ${font({ family: FontFamily.priori })}
@@ -133,48 +156,55 @@ export function SkillsPage({
     const gearBonuses = char?.gearBonuses.skills || new SkillsBonus({});
     return (
         <Page key="Skills" id="Skills" visible={visible}>
-            <Header>{t('charsheet.skills.h')}</Header>
-            <StyledTable>
-                <thead>
-                    <tr>
-                        <th className="check-box">
-                            {t('charsheet.skills.untrained')}
-                        </th>
-                        <th className="check-box">
-                            {t('charsheet.skills.class')}
-                        </th>
-                        <th className="skill-name">
-                            {t('charsheet.skills.skill')}
-                        </th>
-                        <th>{t('charsheet.common.total')}</th>
-                        <th>{t('charsheet.common.stat')}</th>
-                        <th>{t('charsheet.common.statMod')}</th>
-                        <th>{t('charsheet.skills.ranks')}</th>
-                        <th>{t('charsheet.skills.trained')}</th>
-                        <th>{t('charsheet.common.racial')}</th>
-                        <th>{t('charsheet.common.size')}</th>
-                        <th>{t('charsheet.common.gear')}</th>
-                        <th>{t('charsheet.common.misc')}</th>
-                        <th>{t('charsheet.skills.acp')}</th>
-                        <th>{t('charsheet.common.temp')}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sortedKeys.map(k => (
-                        <SkillRow
-                            {...{
-                                key: k,
-                                k,
-                                statMods,
-                                isClass: classSkills.has(k as Skill),
-                                size,
-                                ranks: char?.skillRanks[k] || 0,
-                                gear: gearBonuses.value(k as Skill),
-                            }}
-                        />
-                    ))}
-                </tbody>
-            </StyledTable>
+            <SkillsPageContainer>
+                <Header>{t('charsheet.skills.h')}</Header>
+                <StyledTable>
+                    <thead>
+                        <tr>
+                            <th className="check-box">
+                                {t('charsheet.skills.untrained')}
+                            </th>
+                            <th className="check-box">
+                                {t('charsheet.skills.class')}
+                            </th>
+                            <th className="skill-name">
+                                {t('charsheet.skills.skill')}
+                            </th>
+                            <th>{t('charsheet.common.total')}</th>
+                            <th>{t('charsheet.common.stat')}</th>
+                            <th>{t('charsheet.common.statMod')}</th>
+                            <th>{t('charsheet.skills.ranks')}</th>
+                            <th>{t('charsheet.skills.trained')}</th>
+                            <th>{t('charsheet.common.racial')}</th>
+                            <th>{t('charsheet.common.size')}</th>
+                            <th>{t('charsheet.common.gear')}</th>
+                            <th>{t('charsheet.common.misc')}</th>
+                            <th>{t('charsheet.skills.acp')}</th>
+                            <th>{t('charsheet.common.temp')}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {sortedKeys.map(k => (
+                            <SkillRow
+                                {...{
+                                    key: k,
+                                    k,
+                                    statMods,
+                                    isClass: classSkills.has(k as Skill),
+                                    size,
+                                    ranks: char?.skillRanks[k] || 0,
+                                    gear: gearBonuses.value(k as Skill),
+                                }}
+                            />
+                        ))}
+                    </tbody>
+                </StyledTable>
+                <Footer>
+                    <strong>{t('charsheet.skills.ranks')}:</strong>
+                    {sum(...Object.values(char?.skillRanks || {}))} /{' '}
+                    {char?.maxSkillRanks || ''}
+                </Footer>
+            </SkillsPageContainer>
         </Page>
     );
 }

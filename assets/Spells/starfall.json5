@@ -1,0 +1,79 @@
+{
+    key: 'starfall',
+    ranks: [
+        {
+            rank: 1,
+            area: 'sphere.point(20 foot)',
+            damage: [
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 6, qtty: 1 },
+                    rollMultiplier: ['TotalLevel', 'astral'],
+                },
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 6, qtty: 1 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 2,
+            area: 'sphere.point(30 foot)',
+            damage: [
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 4, qtty: 2 },
+                    rollMultiplier: ['TotalLevel', 'astral'],
+                },
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 4, qtty: 2 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 3,
+            area: 'sphere.point(45 foot)',
+            damage: [
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 6, qtty: 2 },
+                    rollMultiplier: ['TotalLevel', 'astral'],
+                },
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 6, qtty: 2 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 4,
+            area: 'sphere.point(60 foot)',
+            damage: [
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 6, qtty: 3 },
+                    rollMultiplier: ['TotalLevel', 'astral'],
+                },
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 6, qtty: 3 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+    ],
+    sch: 'celestial',
+    castingTime: 'swift',
+    duration: 'instantaneous',
+    components: ['S'],
+    range: 'medium',
+    save: {
+        save: 'reflex',
+        effect: 'half',
+    },
+    descriptors: ['astral'],
+}

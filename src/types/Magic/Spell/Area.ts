@@ -1,5 +1,6 @@
 import { TFunction } from 'i18next';
 import { Length } from '../../Units';
+import { unreachable } from '@utils/debug';
 
 type SpellSelf = {
     spellAreaType: 'self';
@@ -45,28 +46,29 @@ function stringify(value: SpellArea, t: TFunction<'translation'>): string {
         case 'point':
             return t('magic.area.point');
         case 'cone':
-            return t('magic.area.cone', { radius: value.radius });
+            return t('magic.area.cone', { radius: value.radius.toString(t) });
         case 'cube':
-            return t('magic.area.cube', { size: value.size });
+            return t('magic.area.cube', { size: value.size.toString(t) });
         case 'line':
-            return t('magic.area.line', { length: value.length });
+            return t('magic.area.line', { length: value.length.toString(t) });
         case 'sphere': {
             const suffix = value.selfCentered ? 'self' : 'point';
-            return t(`magic.area.sphere.${suffix}`, { radius: value.radius });
+            return t(`magic.area.sphere.${suffix}`, {
+                radius: value.radius.toString(t),
+            });
         }
         default: {
-            const unreachable: never = value;
-            return unreachable;
+            return unreachable(value);
         }
     }
 }
 
 function tryParseArea(input: string): SpellArea | undefined {
-    const matches = /^([a-z.]+)(\(.*\))?$/.exec(input.toLowerCase());
+    const matches = /^([a-z.]+)\s*(\(.*\))?$/.exec(input.toLowerCase());
     if (!matches) {
         return undefined;
     }
-    const [areaType, param] = matches;
+    const [, areaType, param] = matches;
     const length = Length.tryParseLength(param);
     switch (areaType) {
         case 'self':

@@ -13,7 +13,6 @@ function CatFormView({ char }: { char: Character }): React.JSX.Element {
     const { t } = useTranslation();
     const catRank = char.classFeaturesCondensed.count('catForm');
     useTransformation(char, new CatForm({ rank: catRank }));
-    const classBonuses = char.classBonuses;
     return (
         <ShapeshiftViewContainer title={t('charsheet.shapeshift.cat')}>
             <Columns
@@ -35,10 +34,7 @@ function CatFormView({ char }: { char: Character }): React.JSX.Element {
                         children: (
                             <>
                                 <Header>{t('charsheet.hitpoints.h')}</Header>
-                                <HitPoints
-                                    bonuses={classBonuses}
-                                    misc={char?.miscHP}
-                                />
+                                <HitPoints char={char} />
                                 <Header>{t('charsheet.armor.h')}</Header>
                                 <Defenses char={char} />
                             </>

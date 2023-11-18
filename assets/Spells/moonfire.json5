@@ -1,0 +1,90 @@
+{
+    key: 'moonfire',
+    ranks: [
+        {
+            rank: 1,
+            duration: '0.5 turn/level',
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 4 },
+                    modStat: 'spellPower',
+                    modMultiplier: 0.25,
+                },
+            ],
+        },
+        {
+            rank: 2,
+            duration: '0.5 turn/level',
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6 },
+                    modStat: 'spellPower',
+                    modMultiplier: 0.5,
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 3,
+            duration: '1 turn/level',
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 8 },
+                    modStat: 'spellPower',
+                    modMultiplier: 0.5,
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 8 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 4,
+            duration: '1 turn/level',
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6, qtty: 2 },
+                    modStat: 'spellPower',
+                    modMultiplier: 1,
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6, qtty: 2 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 5,
+            duration: '1 turn/level',
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 8, qtty: 3 },
+                    modStat: 'spellPower',
+                    modMultiplier: 1,
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 8, qtty: 3 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+    ],
+    sch: 'celestial',
+    castingTime: 'standard',
+    components: ['S'],
+    range: 'close',
+    descriptors: ['lunar'],
+}

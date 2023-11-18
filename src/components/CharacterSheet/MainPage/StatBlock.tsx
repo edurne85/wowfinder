@@ -12,7 +12,7 @@ import {
     borderThin,
     reverseColors,
     smallText,
-} from '../../helpers/mixins';
+} from '../../helpers/styles';
 
 interface StatRowBuilder {
     key: string;

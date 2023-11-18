@@ -1,0 +1,79 @@
+{
+    key: 'astralSurge',
+    ranks: [
+        {
+            rank: 1,
+            damage: [
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 6, qtty: 3 },
+                    modStat: 'spellPower',
+                    modMultiplier: 1,
+                    rollMultiplier: 'astral',
+                },
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 6, qtty: 3 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 2,
+            damage: [
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 8, qtty: 5 },
+                    modStat: 'spellPower',
+                    modMultiplier: 1.5,
+                    rollMultiplier: 'astral',
+                },
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 8, qtty: 5 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 3,
+            damage: [
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 6, qtty: 12 },
+                    modStat: 'spellPower',
+                    modMultiplier: 2,
+                    rollMultiplier: 'astral',
+                },
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 6, qtty: 12 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 4,
+            damage: [
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 6, qtty: 20 },
+                    modStat: 'spellPower',
+                    modMultiplier: 3,
+                    rollMultiplier: 'astral',
+                },
+                {
+                    types: ['arcane', 'nature', 'fire'],
+                    baseRoll: { sides: 6, qtty: 20 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+    ],
+    sch: 'celestial',
+    castingTime: 'swift',
+    duration: 'instantaneous',
+    components: ['S'],
+    range: 'medium',
+    descriptors: ['astral'],
+}

@@ -4,6 +4,7 @@ import { Inventory } from '../Item/Inventory';
 import {
     CastingMode,
     computedSpellPower,
+    EffectiveCasterLevels,
     FullComputedSpellPower,
     fullComputedSpellPower,
     School,
@@ -36,7 +37,7 @@ import Race from './Race';
 import { Resistances } from './Resistances';
 import { Saves, SimpleSaves } from './Saves';
 import Size from './Size';
-import { Stats } from './Stats';
+import { statMod, Stats } from './Stats';
 
 type Characters = { [key: string]: Character };
 
@@ -96,11 +97,8 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
     }
 
     #forceResetCache(): void {
-        this.#cachedClassBonuses = Class.multiclass(
-            this.#classes,
-            this.stats.totals,
-        );
         this.#cachedGearBonuses = this.#combineGearBonuses();
+        this.#cachedClassBonuses = Class.multiclass(this.#classes);
     }
 
     get active(): boolean {
@@ -157,10 +155,35 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
     }
 
     get classBonuses(): ClassBonuses {
-        return (this.#cachedClassBonuses ||= Class.multiclass(
-            this.#classes,
-            this.stats.totals,
-        ));
+        return (this.#cachedClassBonuses ||= Class.multiclass(this.#classes));
+    }
+
+    get casterLevels(): EffectiveCasterLevels {
+        const efl = this.classBonuses.efl;
+        const bonus = this.casterLevelsBonus;
+        return {
+            arc: efl.arc + bonus.arc,
+            div: efl.div + bonus.div,
+            esp: efl.esp + bonus.esp,
+        };
+    }
+
+    get totalLevel(): number {
+        return sum(...this.classes.map(entry => entry.level));
+    }
+
+    get maxSkillRanks(): number {
+        return (
+            this.classBonuses.skillRanks +
+            statMod(this.stats.intrinsic.INT) * this.totalLevel
+        );
+    }
+
+    get maxHitPoints(): number {
+        return (
+            this.classBonuses.hp +
+            statMod(this.stats.totals.CON) * this.totalLevel
+        );
     }
 
     get allFeats(): Feat[] {

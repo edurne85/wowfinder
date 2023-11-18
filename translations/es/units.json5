@@ -1,0 +1,21 @@
+{
+    // Length
+    yard: 'yardas',
+    foot: 'pies',
+    inch: 'pulgadas',
+    meter: 'metros',
+    cm: 'centímetros',
+    square: 'casillas',
+    // Mass
+    lb: 'libras',
+    g: 'gramos',
+    kg: 'quilos',
+    oz: 'onzas',
+    // Time
+    sec: 'segundos',
+    turn: 'turnos',
+    min: 'minutos',
+    hour: 'horas',
+    day: 'días',
+    year: 'años',
+}

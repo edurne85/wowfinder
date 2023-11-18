@@ -1,0 +1,59 @@
+{
+    key: 'elunesWrath',
+    ranks: [
+        {
+            rank: 1,
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6 },
+                    modStat: 'spellPower',
+                    modMultiplier: 1,
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 2,
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 8, qtty: 2 },
+                    modStat: 'spellPower',
+                    modMultiplier: 2,
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 8, qtty: 2 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+        {
+            rank: 3,
+            damage: [
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6, qtty: 4 },
+                    modStat: 'spellPower',
+                    modMultiplier: 3,
+                },
+                {
+                    types: ['shadow', 'arcane'],
+                    baseRoll: { sides: 6, qtty: 4 },
+                    rollMultiplier: 'eclipse',
+                },
+            ],
+        },
+    ],
+    sch: 'celestial',
+    castingTime: 'standard',
+    duration: 'instantaneous',
+    components: ['S'],
+    range: 'medium',
+    descriptors: ['lunar'],
+}

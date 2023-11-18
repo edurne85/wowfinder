@@ -7,7 +7,7 @@ import {
     debugOutline,
     printableBottomBorder,
     smallText,
-} from '../../helpers/mixins';
+} from '../../helpers/styles';
 
 interface WeightProps {
     load?: number;

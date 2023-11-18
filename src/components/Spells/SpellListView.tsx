@@ -70,7 +70,8 @@ function SpellListView({ list }: SpellListViewProps): React.JSX.Element {
         .sort((a, b) => a - b);
     return (
         <SpellListViewContainer>
-            <h1>{t(`spells.lists.${list.key}`)}</h1>
+            <h1>{t(`spell-lists.${list.key}.name`)}</h1>
+            <p>{t(`spell-lists.${list.key}.description`)}</p>
             {levels.map(level => (
                 <SpellListLevelView
                     entries={spells[level]}

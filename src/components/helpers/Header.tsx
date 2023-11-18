@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { reverseColors } from './mixins';
+import { reverseColors } from './styles';
 
 const Header = styled.h1`
     text-align: center;

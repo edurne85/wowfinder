@@ -1,4 +1,19 @@
 {
+    action: {
+        free: 'Free action',
+        swift: 'Swift action',
+        move: 'Move action',
+        standard: 'Standard action',
+        full: 'Full-round action',
+        reaction: 'Reaction',
+    },
+    alignment: {
+        good: 'Good',
+        neutral: 'Neutral',
+        evil: 'Evil',
+        lawful: 'Lawful',
+        chaotic: 'Chaotic',
+    },
     buttons: {
         ok: 'OK',
         cancel: 'Cancel',

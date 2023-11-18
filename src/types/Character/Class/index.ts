@@ -1,7 +1,6 @@
 import { forceDataLoadKeyS } from '../../../utils';
 import { Money } from '../../Item';
 import { Skill } from '../Skill';
-import { StatSet } from '../Stats';
 import { Aura, AurasList } from './Aura';
 import { ClassBonuses } from './ClassBonuses';
 import { ClassTier } from './ClassTier';
@@ -123,8 +122,8 @@ class Class {
         return Money.fromRaw(this.#wealth);
     }
 
-    static multiclass(classLevels: ClassLevels, stats: StatSet): ClassBonuses {
-        return combineClassBonuses(classLevels, stats);
+    static multiclass(classLevels: ClassLevels): ClassBonuses {
+        return combineClassBonuses(classLevels);
     }
 
     static #loaded: Classes | null = null;

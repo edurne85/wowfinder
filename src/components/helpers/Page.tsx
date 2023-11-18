@@ -5,14 +5,14 @@ import {
     printableBottomBorder,
     mainColor,
     debugOutline,
-} from './mixins';
+} from './styles';
 import { ReactNode } from 'react';
 
 interface PageStyledProps {
     visible: boolean;
 }
 
-const PageStyled = styled.section`
+const PageStyled = styled.section<PageStyledProps>`
     ${baseFont}
     width: 190mm;
     height: 277mm;
