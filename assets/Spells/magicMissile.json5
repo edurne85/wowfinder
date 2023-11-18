@@ -1,0 +1,39 @@
+{
+    key: 'magicMissile',
+    ranks: [
+        {
+            rank: 1,
+            damage: {
+                types: ['arcane'],
+                baseRoll: { sides: 4, mod: 1 },
+            },
+        },
+        {
+            rank: 2,
+            damage: {
+                types: ['arcane'],
+                baseRoll: { sides: 4, mod: 2, qty: 2 },
+            },
+        },
+        {
+            rank: 3,
+            damage: {
+                types: ['arcane'],
+                baseRoll: { sides: 4, mod: 3, qty: 3 },
+            },
+        },
+        {
+            rank: 4,
+            damage: {
+                types: ['arcane'],
+                baseRoll: { sides: 4, mod: 4, qty: 4 },
+            },
+        },
+    ],
+    sch: 'evo',
+    castingTime: 'standard',
+    components: ['V', 'S'],
+    duration: 'instantaneous',
+    range: 'medium',
+    flags: ['spellResistance'],
+}
