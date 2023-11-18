@@ -29,6 +29,7 @@
     },
     range: {
         h: 'Range',
+        self: 'Self',
         touch: 'Touch',
         close: 'Close',
         medium: 'Medium',
