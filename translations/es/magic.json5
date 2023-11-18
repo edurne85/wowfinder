@@ -29,6 +29,7 @@
     },
     range: {
         h: 'Alcance',
+        self: 'Personal',
         touch: 'Toque',
         close: 'Corto',
         medium: 'Medio',
