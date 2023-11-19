@@ -1,0 +1,10 @@
+{
+    key: 'faerieFire',
+    ranks: [{ rank: 1 }],
+    sch: 'evo',
+    castingTime: 'standard',
+    range: 'long',
+    duration: '1 min/level',
+    components: ['V', 'S', 'M'],
+    flags: ['spellResistance'],
+}
