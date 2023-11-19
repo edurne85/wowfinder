@@ -3,7 +3,7 @@ interface VitalNeedsBuilder {
     eat?: boolean;
     sleep?: boolean;
 }
-export default class VitalNeeds {
+class VitalNeeds {
     #breathe: boolean;
     #eat: boolean;
     #sleep: boolean;
@@ -55,3 +55,5 @@ export default class VitalNeeds {
         );
     }
 }
+
+export { VitalNeeds };
