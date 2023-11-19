@@ -30,7 +30,11 @@ class VitalNeeds {
         return this.#sleep;
     }
 
-    static get defaults(): VitalNeeds {
+    get isZero(): boolean {
+        return this.#breathe && this.#eat && this.#sleep;
+    }
+
+    static get zero(): VitalNeeds {
         return new VitalNeeds({});
     }
 
