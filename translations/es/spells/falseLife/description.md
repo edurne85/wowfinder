@@ -1,0 +1,1 @@
+Empleas el poder de la no-vida para obtener una capacidad limitada para evitar la muerte. Mientras este hechizo esté en efecto, ganas puntos de golpe temporales (_vitalidad espectral_). No es acumulable con otros efectos de _vitalidad espectral_.
