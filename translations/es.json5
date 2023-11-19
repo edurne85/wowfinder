@@ -14,9 +14,11 @@
         lawful: 'Legal',
         chaotic: 'Caótico',
     },
-    buttons: {
+    keywords: {
         ok: 'Aceptar',
         cancel: 'Cancelar',
+        yes: 'Sí',
+        no: 'No',
     },
     classes: {
         brb: 'Bárbaro',

@@ -55,8 +55,6 @@
         astral: 'Astral',
     },
     flags: {
-        $true: 'Yes',
-        $false: 'No',
         dismissable: 'Dismissable',
         shapeable: 'Shapeable',
         spellResistance: 'Spell Resistance',
