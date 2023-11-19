@@ -43,6 +43,7 @@
         '2': [
             { spell: 'bullsStrength', rank: 1 },
             { spell: 'commandUndead', rank: 1 },
+            { spell: 'falseLife', rank: 1 },
             { spell: 'flamingSphere', rank: 1 },
             { spell: 'foxsCunning', rank: 1 },
             { spell: 'summonMonster', rank: 2 },
@@ -65,7 +66,10 @@
             { spell: 'shield', rank: 2 },
             { spell: 'summonMonster', rank: 4 },
         ],
-        '5': [{ spell: 'summonMonster', rank: 5 }],
+        '5': [
+            { spell: 'falseLife', rank: 2 },
+            { spell: 'summonMonster', rank: 5 },
+        ],
         '6': [
             { spell: 'disguise', rank: 2 },
             { spell: 'flamingSphere', rank: 3 },
@@ -83,6 +87,7 @@
         ],
         '8': [
             { spell: 'enlargePerson', rank: 3 },
+            { spell: 'falseLife', rank: 3 },
             { spell: 'flamingSphere', rank: 4 },
             { spell: 'summonMonster', rank: 8 },
         ],
