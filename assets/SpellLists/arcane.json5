@@ -41,6 +41,7 @@
             { spell: 'summonMonster', rank: 1 },
         ],
         '2': [
+            { spell: 'acidArrow', rank: 1 },
             { spell: 'bullsStrength', rank: 1 },
             { spell: 'commandUndead', rank: 1 },
             { spell: 'falseLife', rank: 1 },
@@ -67,6 +68,7 @@
             { spell: 'summonMonster', rank: 4 },
         ],
         '5': [
+            { spell: 'acidArrow', rank: 2 },
             { spell: 'falseLife', rank: 2 },
             { spell: 'summonMonster', rank: 5 },
         ],
@@ -86,6 +88,7 @@
             { spell: 'summonMonster', rank: 7 },
         ],
         '8': [
+            { spell: 'acidArrow', rank: 3 },
             { spell: 'enlargePerson', rank: 3 },
             { spell: 'falseLife', rank: 3 },
             { spell: 'flamingSphere', rank: 4 },

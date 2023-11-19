@@ -1,0 +1,56 @@
+{
+    key: 'acidArrow',
+    ranks: [
+        {
+            rank: 1,
+            damage: {
+                types: ['nature'],
+                baseRoll: { sides: 4, qtty: 2 },
+                modStat: 'spellPower',
+            },
+            dot: {
+                types: ['nature'],
+                baseRoll: { sides: 4, qtty: 2 },
+                modStat: 'spellPower',
+                modMultiplier: 0.5,
+                duration: 'efl/3',
+            },
+        },
+        {
+            rank: 2,
+            damage: {
+                types: ['nature'],
+                baseRoll: { sides: 6, qtty: 2 },
+                modStat: 'spellPower',
+                modMultiplier: 2,
+            },
+            dot: {
+                types: ['nature'],
+                baseRoll: { sides: 6, qtty: 2 },
+                modStat: 'spellPower',
+                duration: 'efl/2',
+            },
+        },
+        {
+            rank: 3,
+            damage: {
+                types: ['nature'],
+                baseRoll: { sides: 6, qtty: 3 },
+                modStat: 'spellPower',
+                modMultiplier: 3,
+            },
+            dot: {
+                types: ['nature'],
+                baseRoll: { sides: 6, qtty: 3 },
+                modStat: 'spellPower',
+                modMultiplier: 1.5,
+                duration: 'efl',
+            },
+        },
+    ],
+    sch: 'create',
+    castingTime: 'standard',
+    components: ['V', 'S'],
+    range: 'long',
+    duration: 'special',
+}
