@@ -10,6 +10,7 @@
         ],
         '1': [
             { spell: 'cureWounds', rank: 1 },
+            { spell: 'faerieFire', rank: 1 },
             { spell: 'magicFang', rank: 1 },
             { spell: 'summonNaturesAlly', rank: 1 },
         ],
