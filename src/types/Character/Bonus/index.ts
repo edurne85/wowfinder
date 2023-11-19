@@ -1,6 +1,6 @@
 import StatsBonus from './Stats';
 import SkillsBonus from './Skills';
-import VitalNeeds from './VitalNeeds';
+import { VitalNeeds } from './VitalNeeds';
 import Senses from './Senses';
 import { sum } from '../../../utils';
 import SavesBonus from './Saves';

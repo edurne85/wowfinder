@@ -14,9 +14,11 @@
         lawful: 'Lawful',
         chaotic: 'Chaotic',
     },
-    buttons: {
+    keywords: {
         ok: 'OK',
         cancel: 'Cancel',
+        yes: 'Yes',
+        no: 'No',
     },
     classes: {
         brb: 'Barbarian',

@@ -41,13 +41,13 @@ function CharacterSelection({
                 ))}
             </fieldset>
             <button onClick={() => onCharactersSelected(false, [])}>
-                {t('buttons.cancel')}
+                {t('keywords.cancel')}
             </button>
             <button
                 onClick={() =>
                     onCharactersSelected(true, getCharacterSelection())
                 }>
-                {t('buttons.ok')}
+                {t('keywords.ok')}
             </button>
         </CharacterSelectionContainer>
     );

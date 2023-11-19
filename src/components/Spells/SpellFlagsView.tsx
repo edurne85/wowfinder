@@ -8,9 +8,11 @@ interface SpellFlagArgs {
 
 function SpellFlagText({ flag, value }: SpellFlagArgs): React.JSX.Element {
     const { t } = useTranslation();
+    const flagLabel = t(`magic.flags.${flag}`);
+    const valueText = t(`keywords.${value ? 'yes' : 'no'}`);
     return (
         <div>
-            <b>{t(`magic.flags.${flag}`)}</b>: {t(`magic.flags.$${value}`)}
+            <b>{flagLabel}</b>: {valueText}
         </div>
     );
 }
