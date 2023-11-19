@@ -64,6 +64,7 @@
     },
     duration: {
         h: 'Duration',
+        special: 'Special (see text)',
         instantaneous: 'Instantaneous',
         permanent: 'Permanent',
         concentration: 'Concentration',
