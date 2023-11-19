@@ -1,0 +1,1 @@
+El receptor se vuelve más fuerte. El conjuro concede un bonificador de mejora a Fuerza, añadiendo los beneficios habituales a las tiradas de ataque cuerpo a cuerpo, tiradas de daño cuerpo a cuerpo y otros usos del modificador de Fuerza.
