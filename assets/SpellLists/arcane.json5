@@ -41,6 +41,7 @@
             { spell: 'summonMonster', rank: 1 },
         ],
         '2': [
+            { spell: 'bullsStrength', rank: 1 },
             { spell: 'commandUndead', rank: 1 },
             { spell: 'flamingSphere', rank: 1 },
             { spell: 'foxsCunning', rank: 1 },
@@ -54,6 +55,7 @@
             { spell: 'summonMonster', rank: 3 },
         ],
         '4': [
+            { spell: 'bullsStrength', rank: 2 },
             { spell: 'causeFear', rank: 2 },
             { spell: 'enlargePerson', rank: 2 },
             { spell: 'flamingSphere', rank: 2 },
@@ -71,6 +73,7 @@
             { spell: 'summonMonster', rank: 6 },
         ],
         '7': [
+            { spell: 'bullsStrength', rank: 3 },
             { spell: 'fireball', rank: 2 },
             { spell: 'foxsCunning', rank: 3 },
             { spell: 'magicMissile', rank: 3 },
@@ -85,6 +88,7 @@
         ],
         '9': [{ spell: 'summonMonster', rank: 9 }],
         '10': [
+            { spell: 'bullsStrength', rank: 4 },
             { spell: 'disguise', rank: 4 },
             { spell: 'foxsCunning', rank: 4 },
             { spell: 'mageArmor', rank: 4 },

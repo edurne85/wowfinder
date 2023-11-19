@@ -1,0 +1,34 @@
+{
+    key: 'eaglesSplendor',
+    ranks: [
+        {
+            rank: 1,
+            range: 'touch',
+            duration: '1 min/level',
+            // target: 'creature touched',
+        },
+        {
+            rank: 2,
+            duration: '1 min/level',
+            range: 'close',
+            // target: 'one creature in range'
+        },
+        {
+            rank: 3,
+            duration: '10 min/level',
+            range: 'close',
+            // target: 'up to one creature per 2 caster levels, no two of which can be more than 30 ft. apart'
+        },
+        {
+            rank: 4,
+            duration: '1 hour/level',
+            range: 'close',
+            // target: 'up to one creature per 2 caster levels, no two of which can be more than 30 ft. apart'
+        },
+    ],
+    sch: 'tra',
+    castingTime: 'standard',
+    components: ['V', 'S', 'M'],
+    save: 'will',
+    flags: ['spellResistance'],
+}
