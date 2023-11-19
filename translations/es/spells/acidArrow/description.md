@@ -1,0 +1,1 @@
+Una flecha de ácido surge de tu mano y se dirige hacia su objetivo. Debes tener éxito en un ataque de toque a distancia para impactar sobre tu objetivo. La flecha causa daño por ácido (Nt) sin daño de salpicadura. El ácido, a menos que sea neutralizado, dura varios asaltos, causando más daño en cada asalto; este daño adicional no genera _amenaza_.
