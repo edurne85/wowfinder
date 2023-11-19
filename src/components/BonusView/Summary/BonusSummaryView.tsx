@@ -5,6 +5,7 @@ import { ConditionalResistBonusSummaryView as Resist } from './ResistBonusSummar
 import { ConditionalSkillsBonusSummaryView as Skills } from './SkillsBonusSummaryView';
 import { ConditionalSavesBonusSummaryView as Saves } from './SavesBonusSummaryView';
 import { ConditionalSpellPowerBonusSummaryView as SpellPower } from './SpellPowerBonusSummaryView';
+import { ConditionalVitalNeedsBonusSummaryView as Vitals } from './VitalNeedsBonusSummaryView';
 import { useTranslation } from 'react-i18next';
 import { useNumberFormatters } from '@hooks';
 
@@ -25,6 +26,7 @@ function BonusSummaryView({ bonus }: BonusViewArgs): React.JSX.Element {
             <Saves savesBonus={bonus.saves} />
             <Resist resistBonus={bonus.resistances} />
             <SpellPower spellPowerBonus={bonus.spellPower} />
+            <Vitals vitalNeedsBonus={bonus.vitalNeeds} />
         </BonusSummaryContainer>
     );
 }

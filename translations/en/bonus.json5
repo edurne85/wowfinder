@@ -1,0 +1,7 @@
+{
+    vital: {
+        breathe: 'requires breathing',
+        eat: 'requires eating',
+        sleep: 'requires sleep',
+    },
+}

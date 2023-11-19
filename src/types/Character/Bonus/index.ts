@@ -70,7 +70,7 @@ class Bonus {
         saves = SavesBonus.zero,
         resistances = ResistBonus.zero,
         armorClass = 0,
-        vitalNeeds = VitalNeeds.defaults,
+        vitalNeeds = VitalNeeds.zero,
         senses = Senses.defaults,
         spellPower = SpellPowerBonus.zero,
     }: BonusBuilder) {
@@ -136,7 +136,7 @@ class Bonus {
             saves: SavesBonus.zero,
             resistances: ResistBonus.zero,
             armorClass: 0,
-            vitalNeeds: VitalNeeds.defaults,
+            vitalNeeds: VitalNeeds.zero,
             senses: Senses.defaults,
             spellPower: SpellPowerBonus.zero,
         });
