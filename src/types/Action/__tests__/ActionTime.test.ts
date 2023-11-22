@@ -69,5 +69,80 @@ describe('ActionTime', () => {
                 });
             });
         });
+        describe('should return undefined for invalid input', () => {
+            const invalidInputs = ['foo', 'bar', 'baz', 'qux'];
+            invalidInputs.forEach(invalidInput => {
+                it(`should return undefined for ${invalidInput}`, () => {
+                    expect(ActionTime.tryParse(invalidInput)).toBeUndefined();
+                });
+            });
+        });
+    });
+    describe('tryParseExtended', () => {
+        it('should return the input if it is an ActionTime', () => {
+            expect(ActionTime.tryParseExtended('special')).toBe('special');
+            expect(ActionTime.tryParseExtended(ActionLength.standard)).toBe(
+                ActionLength.standard,
+            );
+            const timeObject = new Time({ value: 1, unit: TimeUnit.day });
+            expect(ActionTime.tryParseExtended(timeObject)).toBe(timeObject);
+        });
+        describe('should defer to tryParse if the input is a string', () => {
+            const strings = ['special', '1 day', 'standard', 'foo'] as const;
+            strings.forEach(string => {
+                it(`should defer to tryParse for ${string}`, () => {
+                    const tryParseSpy = jest.spyOn(ActionTime, 'tryParse');
+                    ActionTime.tryParseExtended(string);
+                    expect(tryParseSpy).toHaveBeenCalledWith(string);
+                });
+            });
+        });
+    });
+    describe('parseExtended', () => {
+        describe('should defer to tryParseExtended if the input is a string', () => {
+            const values = [
+                ...Object.values(ActionLength),
+                'special',
+                '1 day',
+                'standard',
+            ] as const;
+            values.forEach(value => {
+                it(`should defer to tryParseExtended for ${value}`, () => {
+                    const tryParseSpy = jest.spyOn(ActionTime, 'tryParse');
+                    ActionTime.parseExtended(value);
+                    expect(tryParseSpy).toHaveBeenCalledWith(value);
+                });
+            });
+        });
+        describe('should throw an error if the input is invalid', () => {
+            const invalidInputs = ['foo', 'bar', 'baz', 'qux'];
+            invalidInputs.forEach(invalidInput => {
+                it(`should throw an error for ${invalidInput}`, () => {
+                    expect(() =>
+                        ActionTime.parseExtended(invalidInput),
+                    ).toThrow(`Invalid ActionTime: ${invalidInput}`);
+                });
+            });
+        });
+    });
+    describe('forceParse', () => {
+        describe('should defer to tryParse if the input is a string', () => {
+            const strings = ['special', '1 day', 'standard', 'foo'] as const;
+            strings.forEach(string => {
+                it(`should defer to tryParse for ${string}`, () => {
+                    const tryParseSpy = jest.spyOn(ActionTime, 'tryParse');
+                    ActionTime.forceParse(string);
+                    expect(tryParseSpy).toHaveBeenCalledWith(string);
+                });
+            });
+        });
+        describe('should return the default value if the input is invalid', () => {
+            const invalidInputs = ['foo', 'bar', 'baz', 'qux'];
+            invalidInputs.forEach(invalidInput => {
+                it(`should return the default value for ${invalidInput}`, () => {
+                    expect(ActionTime.forceParse(invalidInput)).toBe('special');
+                });
+            });
+        });
     });
 });
