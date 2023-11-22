@@ -8,7 +8,7 @@ NOCOLOR='\033[0m'
 
 fname="/tmp/cloc.$$.csv"
 
-cloc src/ --by-file --include-lang=TypeScript --csv | grep '^TypeScript' > $fname
+cloc src/ --by-file --include-lang=TypeScript --csv | grep '^TypeScript' | grep -v '/__tests__/' > $fname
 echo Overgrown files:
 overgrown=$(awk -F ',' "\$5 > $linesHigh {print \$5 \"\\t\" \$2}" $fname)
 echo -e "${RED}${overgrown}${NOCOLOR}"
