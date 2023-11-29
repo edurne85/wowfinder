@@ -72,4 +72,4 @@ class Dice {
     }
 }
 
-export { Dice, DiceBuilder };
+export { Dice };
