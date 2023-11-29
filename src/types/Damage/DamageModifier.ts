@@ -10,13 +10,13 @@ type DamageModifier = StatKey | SpecialDamageModifier;
 
 function computeModifier(
     modifier: DamageModifier,
-    { stats, casterLevel, feats = [] }: DamageRollArguments,
+    { stats, spellPower, feats = [] }: DamageRollArguments,
     multiplier = 1,
 ): number {
     let base: number;
     switch (modifier) {
         case SpecialDamageModifier.SpellPower:
-            base = casterLevel;
+            base = spellPower;
             break;
         case SpecialDamageModifier.Finesse:
             base = statMod(

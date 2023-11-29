@@ -7,7 +7,11 @@ interface DiceBuilder {
 }
 
 function average(sides: number, qtty: number, mod: number): number {
-    return mod + qtty * ((sides + 1) / 2) + (sides === 1 ? 0 : 0.5);
+    return mod + qtty * ((sides + 1) / 2);
+}
+
+function intAverage(sides: number, qtty: number, mod: number): number {
+    return Math.round(average(sides, qtty, mod));
 }
 
 function max(sides: number, qtty: number, mod: number): number {
@@ -25,4 +29,5 @@ function make(value: number | Dice | DiceBuilder): DiceBuilder {
 }
 type RollableValue = number | Dice | DiceBuilder;
 
-export { DiceBuilder, RollableValue, average, max, min, make };
+export type { DiceBuilder, RollableValue };
+export { average, intAverage, max, min, make };
