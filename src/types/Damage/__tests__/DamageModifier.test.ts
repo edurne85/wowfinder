@@ -44,6 +44,13 @@ describe('computeModifier', () => {
         );
         expect(result2).toBe(statMod(statsBadFinnesse.STR));
     });
+    it('should use STR when the Weapon Finesse feat is not present', () => {
+        const result = computeModifier(
+            SpecialDamageModifier.Finesse,
+            rollArgsSimple,
+        );
+        expect(result).toBe(statMod(stats.STR));
+    });
 
     it('should compute modifier with multiplier', () => {
         const modifier: DamageModifier = SpecialDamageModifier.Finesse;
