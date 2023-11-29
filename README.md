@@ -4,7 +4,7 @@ Based on Electron + TypeScript + React
 
 Utility package for the "Wowfinder" campaigh (TTRPG campaign based on the Pathfinder 1ed system and set on the Warcraft universe by Blizzard).
 
-See the [Roadmap](./roadmap.md) for a list of existing and planned features.
+See the [Roadmap](./docs/roadmap.md) for a list of existing and planned features.
 
 ## Installation
 
