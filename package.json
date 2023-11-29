@@ -62,7 +62,7 @@
         "@types/electron-devtools-installer": "^2.2.2",
         "@types/jest": "^29.5.10",
         "@types/path-browserify": "^1.0.0",
-        "@types/react": "^18.2.38",
+        "@types/react": "^18.2.39",
         "@types/react-dom": "^18.2.5",
         "@types/styled-components": "^5.1.32",
         "@types/unzipper": "^0.10.6",
