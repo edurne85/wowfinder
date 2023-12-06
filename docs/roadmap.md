@@ -8,43 +8,47 @@ The project is currently following an alternating pattern during the early alpha
 
 ## Latest release
 
-### [Alpha 8: Moonkin form](https://github.com/edurne85/wowfinder/milestone/14)
+### [Alpha 9: Spellcasting Bonanza](https://github.com/edurne85/wowfinder/milestone/13)
 
-Basic support in the app for the druid's Moonkin form. This has become a recent priority due to some player(s) in the campaign unlocking this form or getting very close to it.
+This was planned be another _improvement_ release, focused on technical tasks and rules implementations, but it is incorporating several improvements on the presentation of spells and spell lists.
 
-[Download Alpha 8](https://github.com/edurne85/wowfinder/releases/tag/v1.0.0-alpha-8)
+[Download Alpha 9](https://github.com/edurne85/wowfinder/releases/tag/v1.0.0-alpha-9)
 
 ## Initial Alpha stage
 
 This stage includes releases that offer some kind of useful functionality to players, but are clearly not a complete application.
 
-### [Alpha 9](https://github.com/edurne85/wowfinder/milestone/13)
+### [Alpha 10: Timbermaw unleashed!](https://github.com/edurne85/wowfinder/milestone/15)
 
-This was planned be another _improvement_ release, focused on technical tasks and rules implementations, but it is incorporating several improvements on the presentation of spells and spell lists. Target date mid to late November 2023.
+Squeezed into the roadmap to accommodate a new player joining the campaign, this release will include initial support for the Furbolg playable race and some mundate items from the core rulebook. Target date for this is on or before December 10th, 2023.
 
-### [Alpha 10: Gear and item rendering](https://github.com/edurne85/wowfinder/milestone/4)
+### [Alpha 11: Gear and item rendering](https://github.com/edurne85/wowfinder/milestone/4)
 
 This release will include more complete rendering of gear and items found in the Character Sheets' inventories, as well as the initial ability to browse through the details of many common items.
 
 Note that, just like it's being done with spells, the actual data files for the items in the game will be added progressively; although at the moment of writing this the files for many trade goods (covering mostly the "classic" or "vanilla" tiers of crafting) are already created.
 
-This is planned to get released around late November or early December 2023.
+This is planned to get released around mid or late December 2023.
 
-### [TBD: Mob generation and views](https://github.com/edurne85/wowfinder/milestone/12)
+### [Alpha 12: Mob generation and views](https://github.com/edurne85/wowfinder/milestone/12)
 
 While technically a user-facing feature, this is more aimed to assist the GM than players. Even so, players should be able to browse through information about mobs that have already been encountered in the campaign and partial loot tables (some items, such as Uniques, won't be spoiled and will only be included in the tables once the corresponding mob / boss has been defeated and looted in the campaigh); as well as simulating difficulty ratings and base experience rewards for encounters (note that these values are only a guideline and the actual rewards from any encounter are always up to the GM).
 
-### [TBD: Race detailed view](https://github.com/edurne85/wowfinder/milestone/6)
+### [Alpha 13: Race detailed view](https://github.com/edurne85/wowfinder/milestone/6)
 
 This feature will allow the players to browse through the playable races (and some npc-only ones) and see detailed bonuses and stats, similarly to how it was done previously for classes.
 
 ## Beta stage
 
-Once the app is considered to contain all the features considered essential, it will enter in the Beta stage, with the main focus moving towards refining existing functionality, fixing any bugs or issues, and improving the user experience.
+Once the app contains all the features considered essential, it will enter in the Beta stage, with the main focus moving towards refining existing functionality, fixing any bugs or issues, and improving the user experience.
 
 ## Previous releases and milestones
 
 For reference, here is a summary of the milestones already achieved / versions already released:
+
+### [Alpha 8: Moonkin form](https://github.com/edurne85/wowfinder/milestone/14)
+
+Basic support in the app for the druid's Moonkin form. This has become a recent priority due to some player(s) in the campaign unlocking this form or getting very close to it.
 
 ### [Alpha 7: Updates to item modelling](https://github.com/edurne85/wowfinder/milestone/11)
 
