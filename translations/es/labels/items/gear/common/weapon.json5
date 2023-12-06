@@ -1,0 +1,6 @@
+{
+    longBow: 'Arco largo',
+    longCompositeBow: 'Arco largo compuesto',
+    shortBow: 'Arco corto',
+    shortCompositeBow: 'Arco corto compuesto',
+}

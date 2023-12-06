@@ -1,0 +1,23 @@
+{
+    $type: 'Weapon',
+    rarity: 'vulgar',
+    label: 'common.weapon.longCompositeBow',
+    shape: ['mhand', 'ohand'],
+    range: 110,
+    size: 0,
+    weight: 3,
+    damage: [
+        {
+            types: ['piercing'],
+            baseRoll: {
+                sides: 8,
+            },
+            modStat: 'STR',
+        },
+    ],
+    groups: ['bows'],
+    proficiency: 'bowLongComposite',
+    flags: [],
+    criticalRange: 20,
+    criticalMultiplier: 3,
+}
