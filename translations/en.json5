@@ -37,8 +37,9 @@
     },
     races: {
         'dwarf-bronzebeard': 'Bronzebeard Dwarf',
-        human: 'Human',
+        furbolg: 'Furbolg',
         'high-elf': 'High Elf',
+        human: 'Human',
         'night-elf': 'Night Elf',
     },
     auras: {

@@ -37,8 +37,9 @@
     },
     races: {
         'dwarf-bronzebeard': 'Enano Barbabronce',
-        human: 'Humano',
+        furbolg: 'Fúrbolg',
         'high-elf': 'Alto Elfo',
+        human: 'Humano',
         'night-elf': 'Elfo Nocturno',
     },
     auras: {
