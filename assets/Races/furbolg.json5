@@ -1,0 +1,25 @@
+{
+    key: 'furbolg',
+    size: 0,
+    statMods: {
+        STR: 2,
+        DEX: 2,
+        CON: 2,
+        INT: 0,
+        WIS: 4,
+        CHA: -2,
+    },
+    initialLangs: ['ursine'],
+    additionalLangs: ['common', 'darnassian', 'eredun', 'orcish'],
+    commonAligns: ['NN'],
+    speeds: {
+        base: 30,
+    },
+    saves: {
+        fort: 2,
+        refl: 2,
+        will: 2,
+    },
+    /* TODO #463
+     */
+}
