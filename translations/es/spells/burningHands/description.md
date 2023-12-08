@@ -1,0 +1,1 @@
+Un cono de llamas abrasadoras sale de las puntas de tus dedos. Cualquier criatura en el área de las llamas recibe daño por fuego. Los materiales inflamablas arden cuando las llamas los tocan. Un personaje puede extinguir los objetos ardiendo como acción de asalto completo.
