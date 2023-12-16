@@ -1,0 +1,10 @@
+{
+    key: 'shillelagh',
+    ranks: [{ rank: 1 }, { rank: 2 }, { rank: 3 }, { rank: 4 }, { rank: 5 }],
+    sch: 'tra',
+    castingTime: 'standard',
+    range: 'touch',
+    duration: '1 min/level',
+    components: ['V', 'S', 'M'],
+    flags: ['spellResistance'],
+}
