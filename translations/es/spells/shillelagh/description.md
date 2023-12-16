@@ -1,4 +1,5 @@
 Otorga un bonificador de mejora a una clava o bastón de madera, acumulable con el bonificador intrínseco del arma (hasta cierto valor, según el rango), y hace que el arma cause daño como si fuese de categoría mayor.
+
 Nota: Las reglas para el ajuste del daño del arma se encuentran desperdigadas en distintas partes del manual y otros documentos. Paizo publicó un FAQ (en inglés) que cubre la mayoría de casos. Para la campaña, tenemos en construcción una utilidad de software que calculará los ajustes según las reglas de este FAQ de manera automática.
 
 Daño de armas comunes de distintos tamaños:
