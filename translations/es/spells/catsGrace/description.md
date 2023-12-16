@@ -1,0 +1,1 @@
+La criatura transmutada se vuelve más grácil, ágil y coordinada. El conjuro concede un bonificador de mejora a la Destreza, añadiendo los beneficios habituales a la CA, salvaciones de Reflejos y otros usos del modificador de Desteza.

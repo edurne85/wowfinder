@@ -13,30 +13,29 @@
             { spell: 'faerieFire', rank: 1 },
             { spell: 'magicFang', rank: 1 },
             { spell: 'summonNaturesAlly', rank: 1 },
-            { spell: 'shillelagh', rank: 1},
         ],
         '2': [
             { spell: 'bullsStrength', rank: 1 },
             { spell: 'flamingSphere', rank: 1 },
             { spell: 'summonNaturesAlly', rank: 2 },
+            { spell: 'catsGrace', rank: 1},
         ],
         '3': [
             { spell: 'cureWounds', rank: 2 },
             { spell: 'magicFang', rank: 2 },
             { spell: 'summonNaturesAlly', rank: 3 },
-            { spell: 'shillelagh', rank: 2},
         ],
         '4': [
             { spell: 'bullsStrength', rank: 2 },
             { spell: 'cureWounds', rank: 3 },
             { spell: 'flamingSphere', rank: 2 },
             { spell: 'summonNaturesAlly', rank: 4 },
+            { spell: 'catsGrace', rank:2},
         ],
         '5': [
             { spell: 'cureWounds', rank: 4 },
             { spell: 'magicFang', rank: 3 },
             { spell: 'summonNaturesAlly', rank: 5 },
-            { spell: 'shillelagh', rank: 3},
         ],
         '6': [
             { spell: 'cureWoundsMass', rank: 1 },
@@ -47,11 +46,11 @@
             { spell: 'cureWoundsMass', rank: 2 },
             { spell: 'flamingSphere', rank: 3 },
             { spell: 'summonNaturesAlly', rank: 7 },
+            { spell: 'catsGrace', rank: 3},
         ],
         '8': [
             { spell: 'cureWoundsMass', rank: 3 },
             { spell: 'summonNaturesAlly', rank: 8 },
-            { spell: 'shillelagh', rank: 4},
         ],
         '9': [
             { spell: 'cureWoundsMass', rank: 4 },
@@ -60,10 +59,9 @@
         '10': [
             { spell: 'bullsStrength', rank: 4 },
             { spell: 'flamingSphere', rank: 4 },
+            { spell: 'catsGrace', rank: 4       },
         ],
-        '11': [
-            { spell: 'shillelagh', rank: 5},
-        ],
+        '11': [],
         '12': [],
         '13': [],
         '14': [],
