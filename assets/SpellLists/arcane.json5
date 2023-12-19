@@ -66,6 +66,7 @@
             { spell: 'shockingGrasp', rank: 2 },
             { spell: 'shield', rank: 2 },
             { spell: 'summonMonster', rank: 4 },
+            { sppell: 'necroticInspiration', rank: 1},
         ],
         '5': [
             { spell: 'acidArrow', rank: 2 },
