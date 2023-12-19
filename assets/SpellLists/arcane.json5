@@ -28,7 +28,7 @@
             { spell: 'mindRay' },
         */
         ],
-        '1': [
+         '1': [
             { spell: 'causeFear', rank: 1 },
             { spell: 'detectMagic', rank: 2 },
             { spell: 'disguise', rank: 1 },
@@ -39,7 +39,8 @@
             { spell: 'shield', rank: 1 },
             { spell: 'shockingGrasp', rank: 1 },
             { spell: 'summonMonster', rank: 1 },
-        ],
+            { spell: 'image', rank: 1 },
+            ],
         '2': [
             { spell: 'acidArrow', rank: 1 },
             { spell: 'bullsStrength', rank: 1 },
@@ -48,6 +49,8 @@
             { spell: 'flamingSphere', rank: 1 },
             { spell: 'foxsCunning', rank: 1 },
             { spell: 'summonMonster', rank: 2 },
+            { spell: 'catsGrace', rank: 1},
+            { spell: 'image', rank: 1 },
         ],
         '3': [
             { spell: 'disguise', rank: 2 },
