@@ -39,6 +39,8 @@
             { spell: 'shield', rank: 1 },
             { spell: 'shockingGrasp', rank: 1 },
             { spell: 'summonMonster', rank: 1 },
+            { spell: 'trueStrike', rank: 1},
+
         ],
         '2': [
             { spell: 'acidArrow', rank: 1 },
@@ -66,6 +68,8 @@
             { spell: 'shockingGrasp', rank: 2 },
             { spell: 'shield', rank: 2 },
             { spell: 'summonMonster', rank: 4 },
+            { spell: 'trueStrike', rank: 2},
+
         ],
         '5': [
             { spell: 'acidArrow', rank: 2 },
@@ -102,6 +106,7 @@
             { spell: 'mageArmor', rank: 4 },
             { spell: 'magicMissile', rank: 4 },
             { spell: 'shield', rank: 4 },
+            { spell: 'trueStrike', rank: 3},
         ],
         '11': [{ spell: 'fireball', rank: 3 }],
         '12': [],
