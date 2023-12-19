@@ -39,6 +39,7 @@
             { spell: 'shield', rank: 1 },
             { spell: 'shockingGrasp', rank: 1 },
             { spell: 'summonMonster', rank: 1 },
+            { spell: ' burningHands', rank: 1},
         ],
         '2': [
             { spell: 'acidArrow', rank: 1 },
@@ -66,6 +67,7 @@
             { spell: 'shockingGrasp', rank: 2 },
             { spell: 'shield', rank: 2 },
             { spell: 'summonMonster', rank: 4 },
+            { spell: ' burningHands', rank: 2},
         ],
         '5': [
             { spell: 'acidArrow', rank: 2 },
@@ -86,6 +88,7 @@
             { spell: 'shield', rank: 3 },
             { spell: 'shockingGrasp', rank: 3 },
             { spell: 'summonMonster', rank: 7 },
+            { spell: ' burningHands', rank: 3},
         ],
         '8': [
             { spell: 'acidArrow', rank: 3 },
