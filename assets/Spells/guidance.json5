@@ -1,0 +1,10 @@
+{
+    key: 'guidance',
+    ranks: [{ 
+            rank: 1
+            range: 'touch',
+            duration: '1 minute', 
+        }],
+    sch: 'div',
+    components: ['V', 'S',]   
+}
