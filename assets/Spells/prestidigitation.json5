@@ -1,0 +1,14 @@
+{
+    key: 'prestidigitation',
+    ranks: [
+        {
+            rank: 1,
+            range: 'close',
+            duration: '1h',           
+        }
+    ],
+    ,
+    sch: 'uni',
+    castingTime: 'standard',
+    components: ['V', 'S']
+}

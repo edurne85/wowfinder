@@ -10,6 +10,7 @@
             { spell: 'fireBolt', rank: 1 },
             { spell: 'daze', rank: 1 },
             { spell: 'detectMagic', rank: 1 },
+            { spell: 'prestidigitation', rank:1 },
             /*
             { spell: 'detectPoison' },
             { spell: 'readMagic' },
@@ -24,7 +25,6 @@
             { spell: 'mageHand' },
             { spell: 'mending' },
             { spell: 'arcaneMark' },
-            { spell: 'prestidigitation' },
             { spell: 'mindRay' },
         */
         ],
