@@ -1,0 +1,12 @@
+{
+    key: 'disturbUndead',
+    ranks: [
+        {
+            rank: 1,
+            range: 'close',
+        }]
+    sch: 'neg',
+    castingTime: 'standard',
+    components: ['V', 'S'],
+    duration: 'instantaneous',
+}
