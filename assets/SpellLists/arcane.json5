@@ -39,6 +39,8 @@
             { spell: 'shield', rank: 1 },
             { spell: 'shockingGrasp', rank: 1 },
             { spell: 'summonMonster', rank: 1 },
+            { spell: 'protectionFromAlignment', rank:1 }
+
         ],
         '2': [
             { spell: 'acidArrow', rank: 1 },
@@ -55,6 +57,8 @@
             { spell: 'mageArmor', rank: 2 },
             { spell: 'magicWeapon', rank: 2 },
             { spell: 'summonMonster', rank: 3 },
+            { spell: 'protectionFromAlignment', rank:2 }
+
         ],
         '4': [
             { spell: 'bullsStrength', rank: 2 },
@@ -77,6 +81,9 @@
             { spell: 'flamingSphere', rank: 3 },
             { spell: 'mageArmor', rank: 3 },
             { spell: 'summonMonster', rank: 6 },
+            { spell: 'protectionFromAlignment', rank:3 }
+            { spell: 'protectionFromAlignment', rank:4 }
+
         ],
         '7': [
             { spell: 'bullsStrength', rank: 3 },
@@ -107,6 +114,6 @@
         '12': [],
         '13': [{ spell: 'enlargePerson', rank: 4 }],
         '14': [],
-        '15': [],
+        '15': [{ spell: 'protectionFromAlignment', rank:5}],
     },
 }
