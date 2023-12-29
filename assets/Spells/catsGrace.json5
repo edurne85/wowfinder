@@ -20,7 +20,7 @@
         },
     ],
     sch: 'tra',
-    duration: '1 standard action',
-    components: 'V, S, M (a pinch of cat fur)',
-    spellResistance: 'yes (harmless)',
+    castingTime: 'standard',
+    components: ['V', 'S', 'M'],
+    flags: ['spellResistance'],
 }
