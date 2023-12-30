@@ -2,7 +2,7 @@
     $type: 'Armor',
     rarity: 'common',
     label: 'craft.tailoring.reinforcedLinenBelt',
-    shape: ['wrists'],
+    shape: ['waist'],
     weight: 1.5,
     bonuses: {
         armorClass: +1,

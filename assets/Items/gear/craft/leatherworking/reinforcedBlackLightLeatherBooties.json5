@@ -1,0 +1,18 @@
+{
+    $type: 'Armor',
+    rarity: 'common',
+    label: 'craft.leatherworking.reinforcedBlackLightLeatherBooties',
+    shape: ['feet'],
+    weight: 4.5,
+    bonuses: {
+        armorClass: +4,
+        stats: {
+            STR: +1,
+            DEX: +1,
+            CON: +1,
+        },
+    },
+    type: 'misc',
+    maxDex: 4,
+    asf: 0.2,
+}
