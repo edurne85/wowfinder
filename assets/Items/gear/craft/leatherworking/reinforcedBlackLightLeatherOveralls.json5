@@ -1,0 +1,20 @@
+{
+    $type: 'Armor',
+    rarity: 'common',
+    label: 'craft.leatherworking.reinforcedBlackLightLeatherOveralls',
+    shape: ['torso'],
+    weight: 8,
+    bonuses: {
+        stats: {
+            STR: +1,
+            DEX: +1,
+            CON: +1,
+        },
+    },
+    acBonus: +5,
+    bonusType: 'armor',
+    type: 'misc',
+    maxDex: 4,
+    acp: 1,
+    asf: 0.2,
+}

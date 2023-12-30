@@ -1,0 +1,32 @@
+{
+    $type: 'Weapon',
+    rarity: 'common',
+    label: 'craft.woodworking.reinforcedPineShortbow',
+    shape: ['mhand', 'ohand'],
+    range: 60,
+    size: 0,
+    weight: 3,
+    bonuses: {
+        stats: {
+            DEX: +1,
+            CON: +1,
+        },
+    },
+    damage: [
+        {
+            types: ['piercing'],
+            baseRoll: { sides: 6 },
+            fixedMod: 2,
+        },
+    ],
+    baseDamage: {
+        piercing: { sides: 6 },
+    },
+    groups: ['bows'],
+    intrinsic: +2,
+    rank: 'martial',
+    proficiency: 'bow',
+    flags: [],
+    criticalRange: 20,
+    criticalMultiplier: 3,
+}

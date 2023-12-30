@@ -1,0 +1,31 @@
+{
+    $type: 'Weapon',
+    rarity: 'common',
+    label: 'craft.woodworking.reinforcedPineGreatclub',
+    shape: ['mhand', 'ohand'],
+    size: 0,
+    weight: 8,
+    bonuses: {
+        stats: {
+            STR: +1,
+            CON: +1,
+        },
+    },
+    damage: [
+        {
+            types: ['bludgeoning'],
+            baseRoll: { sides: 10 },
+            fixedMod: 2,
+        },
+    ],
+    baseDamage: {
+        bludgeoning: { sides: 10 },
+    },
+    groups: ['hammers'],
+    intrinsic: +2,
+    rank: 'martial',
+    proficiency: 'clubGreat',
+    flags: [],
+    criticalRange: 20,
+    criticalMultiplier: 2,
+}

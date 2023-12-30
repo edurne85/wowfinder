@@ -1,0 +1,13 @@
+{
+    $type: 'Armor',
+    rarity: 'common',
+    label: 'craft.leatherworking.reinforcedLightLeatherBelt',
+    shape: ['waist'],
+    weight: 2.25,
+    bonuses: {
+        armorClass: +2,
+    },
+    type: 'misc',
+    maxDex: 4,
+    asf: 0.2,
+}
