@@ -1,0 +1,26 @@
+{
+    key: 'catsGrace',
+    duration: '1 min/level',
+    ranks: [
+        {
+            rank: 1,
+            range: 'touch',
+        },
+        {
+            rank: 2,    
+            range: 'close',
+        },
+        {
+            rank: 3,
+            range: 'close',
+        },
+        {
+            rank: 4,
+            range: 'close',
+        },
+    ],
+    sch: 'tra',
+    castingTime: 'standard',
+    components: ['V', 'S', 'M'],
+    flags: ['spellResistance'],
+}
