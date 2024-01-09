@@ -10,7 +10,7 @@
             duration: 'concentration',
         },
     ],
-    sch: 'Ficcion',
+    sch: 'figment',
     castingTime: 'standard',
     components: ['V', 'S', 'M'],
     save: 'will',
