@@ -10,7 +10,7 @@
             duration: 'concentration',
         },
     ],
-    sch: 'ilusion',
+    sch: 'Ficcion',
     castingTime: 'standard',
     components: ['V', 'S', 'M'],
     save: 'will',
