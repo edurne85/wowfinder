@@ -8,6 +8,7 @@ enum Aura {
     wild = 'wild',
     mysterious = 'mysterious',
     fortitude = 'fortitude',
+    furious = 'furious',
 }
 
 export type { AuraBonus };
