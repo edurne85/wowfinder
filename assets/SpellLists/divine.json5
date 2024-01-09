@@ -8,6 +8,7 @@
             { spell: 'inflictWounds', rank: 0 },
             { spell: 'light', rank: 1 },
             { spell: 'resistance', rank: 1 },
+            { spell: 'guidance', rank: 1 },
         ],
         '1': [
             { spell: 'causeFear', rank: 1 },
