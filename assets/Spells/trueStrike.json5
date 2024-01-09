@@ -1,0 +1,20 @@
+{
+  key: 'trueStrike',
+  ranks: [
+    {
+      rank: 1, 
+      range: 'self',
+    }, 
+    { 
+    rank: 2,
+    range: 'touch', 
+    }, 
+    { 
+    rank: 3,
+    range: 'close', 
+    },
+  ],
+  sch:'div',
+  castingTime: 'standard',
+  components: ['V', 'F'],
+}

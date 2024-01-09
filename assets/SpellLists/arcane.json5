@@ -40,6 +40,7 @@
             { spell: 'shockingGrasp', rank: 1 },
             { spell: 'summonMonster', rank: 1 },
             { spell: 'image', rank: 1 },
+            { spell: 'true strike', rank: 1 },
         ],
         '2': [
             { spell: 'acidArrow', rank: 1 },
@@ -70,6 +71,7 @@
             { spell: 'shield', rank: 2 },
             { spell: 'summonMonster', rank: 4 },
             { spell: 'catsGrace', rank: 2 },
+            { spell: 'true strike', rank: 2 },
         ],
         '5': [
             { spell: 'acidArrow', rank: 2 },
@@ -108,6 +110,7 @@
             { spell: 'magicMissile', rank: 4 },
             { spell: 'shield', rank: 4 },
             { spell: 'catsGrace', rank: 4 },
+            { spell: 'true strike', rank: 3 },
         ],
         '11': [{ spell: 'fireball', rank: 3 }],
         '12': [],
