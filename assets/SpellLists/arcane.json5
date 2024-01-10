@@ -72,7 +72,7 @@
             { spell: 'summonMonster', rank: 4 },
             { spell: 'catsGrace', rank: 2 },
             { spell: 'trueStrike', rank: 2 },
-            { spell: 'necrotic inpiration', rank: 1 },
+            { spell: 'necroticInspiration', rank: 1 },
         ],
         '5': [
             { spell: 'acidArrow', rank: 2 },
