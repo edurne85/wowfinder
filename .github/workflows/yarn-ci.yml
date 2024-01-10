@@ -5,22 +5,22 @@ name: CI
 on: [push]
 
 jobs:
-  build:
-    name: Validation
-    runs-on: ubuntu-latest
+    build:
+        name: Validation
+        runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js 18
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
-    - name: Yarn install
-    - uses: Borales/actions-yarn@v4.2.0
-      with:
-        cmd: install
-    - name: Yarn prepush script
-    - uses: Borales/actions-yarn@v4.2.0
-      with:
-        cmd: prepush
+        steps:
+            - uses: actions/checkout@v3
+            - name: Use Node.js 18
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+            - name: Yarn install
+              uses: Borales/actions-yarn@v4.2.0
+              with:
+                  cmd: install
+            - name: Yarn prepush script
+              uses: Borales/actions-yarn@v4.2.0
+              with:
+                  cmd: prepush
 
