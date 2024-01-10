@@ -4,15 +4,13 @@
         {
             rank: 1,
             duration: 'concentration',
-            // target: 'creature touched',
         },
         {
             rank: 2,
             duration: 'concentration',
-            // target: 'one creature in range'
         },
     ],
-    sch: 'ilusion',
+    sch: 'figment',
     castingTime: 'standard',
     components: ['V', 'S', 'M'],
     save: 'will',
