@@ -1,3 +1,4 @@
+import { Validable, validateEnumValue } from '@model/Assets';
 import { converter, Scalar } from './base';
 import { convertLength, Length, LengthUnit } from './Length';
 import { convertTime, Time, TimeUnit } from './Time';
@@ -7,7 +8,7 @@ interface SpeedUnitBuilder {
     time: TimeUnit;
 }
 
-class SpeedUnit {
+class SpeedUnit implements Validable {
     private _length: LengthUnit;
     private _time: TimeUnit;
     constructor({ length, time }: SpeedUnitBuilder) {
@@ -21,6 +22,13 @@ class SpeedUnit {
 
     get time(): TimeUnit {
         return this._time;
+    }
+
+    validate(): boolean {
+        return (
+            validateEnumValue(this._length, LengthUnit) &&
+            validateEnumValue(this._time, TimeUnit)
+        );
     }
 }
 
@@ -45,6 +53,10 @@ class Speed extends Scalar<SpeedUnit> {
 
     as(unit: SpeedUnit): number {
         return this.convert(unit).value;
+    }
+
+    validate(): boolean {
+        return super.validate() && this.unit.validate();
     }
 }
 const convertSpeed: converter<SpeedUnit> = (magnitude, to) =>

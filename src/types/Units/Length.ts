@@ -1,3 +1,4 @@
+import { validateEnumValue } from '@model/Assets';
 import { converter, makeConverter, Scalar } from './base';
 
 enum LengthUnit {
@@ -62,6 +63,10 @@ class Length extends Scalar<LengthUnit> {
             (value: string) => LengthUnit[value as keyof typeof LengthUnit],
         );
         return base ? new Length(base) : undefined;
+    }
+
+    validate(): boolean {
+        return super.validate() && validateEnumValue(this.unit, LengthUnit);
     }
 }
 
