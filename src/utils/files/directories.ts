@@ -134,4 +134,4 @@ function registerDirectoryListeners(): void {
 }
 
 export type { dumpable };
-export { registerDirectoryListeners, dumpToDir, copyDir, assetDump };
+export { registerDirectoryListeners, getFiles, dumpToDir, copyDir, assetDump };

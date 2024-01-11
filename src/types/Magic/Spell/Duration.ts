@@ -60,4 +60,25 @@ function tryParseSpellDuration(input: string): SpellDuration | undefined {
     return undefined;
 }
 
-export { SpellDuration, stringify, tryParseSpellDuration };
+function validate(value: unknown): value is SpellDuration {
+    if (
+        value === 'special' ||
+        value === 'instantaneous' ||
+        value === 'permanent' ||
+        value === 'concentration'
+    ) {
+        return true;
+    }
+    if (typeof value === 'object') {
+        if (
+            (value as any)?.durationType === 'fixed' ||
+            (value as any)?.durationType === 'perLevel'
+        ) {
+            const duration = (value as any)?.duration;
+            return duration instanceof Time && duration.validate();
+        }
+    }
+    return false;
+}
+
+export { SpellDuration, stringify, tryParseSpellDuration, validate };

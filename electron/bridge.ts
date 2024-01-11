@@ -29,7 +29,7 @@ export const api = {
     },
 };
 
-contextBridge.exposeInMainWorld('Main', api);
+contextBridge?.exposeInMainWorld('Main', api);
 
 export const files = {
     slurp: (fpath: string): string => {
@@ -84,4 +84,4 @@ export const files = {
     },
 };
 
-contextBridge.exposeInMainWorld('Files', files);
+contextBridge?.exposeInMainWorld('Files', files);

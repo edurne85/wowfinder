@@ -1,3 +1,4 @@
+import { validateEnumValue } from '@model/Assets';
 import Size from '../../Character/Size';
 import { Length, LengthUnit } from '../../Units';
 
@@ -49,11 +50,20 @@ const SpellRange = {
         }
         return undefined;
     },
+
     forceParse(
         input: string,
         defaultValue: SpellRange = 'special',
     ): SpellRange {
         return SpellRange.tryParse(input) ?? defaultValue;
+    },
+
+    validate(value: unknown): value is SpellRange {
+        return (
+            value === 'special' ||
+            (value instanceof Length && value.validate()) ||
+            validateEnumValue(value, StandardRange)
+        );
     },
 } as const;
 

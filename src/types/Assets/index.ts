@@ -6,4 +6,8 @@ export type { AssetJsonBundle } from './AssetJsonBundle';
 type Asset = Validable & object;
 
 export type { Asset, Validable };
-export { validateEnumValue, getEnumValidator } from './Validable';
+export {
+    validateEnumValue,
+    getEnumValidator,
+    validateEnumValues,
+} from './Validable';

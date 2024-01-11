@@ -1,6 +1,7 @@
 import { ActionLength } from './ActionLength';
 import { Time } from '../Units';
 import { Stringifier } from '@utils/strings';
+import { validateEnumValue } from '@model/Assets';
 
 type ActionTime = ActionLength | Time | 'special';
 
@@ -47,6 +48,15 @@ const ActionTime = {
     ): ActionTime {
         return ActionTime.tryParse(input) ?? defaultValue;
     },
+
+    validate(value: unknown): value is ActionTime {
+        return (
+            value === 'special' ||
+            (value instanceof Time && value.validate()) ||
+            validateEnumValue(value, ActionLength)
+        );
+    },
+
     stringify,
 } as const;
 
