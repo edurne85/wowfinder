@@ -1,3 +1,5 @@
+import { validateEnumValue } from '@model/Assets';
+
 enum School {
     abj = 'abj',
     con = 'con',
@@ -135,6 +137,15 @@ function fullParseSchool(input: string): SchoolParseResult {
     return { school: subSchoolParents[subSchool], subSchool };
 }
 
+function validateSchool(school: unknown, subSchool: unknown): boolean {
+    return (
+        validateEnumValue(school, School) &&
+        (subSchool === undefined ||
+            (validateEnumValue(subSchool, SubSchool) &&
+                subSchoolParents[subSchool as SubSchool] === school))
+    );
+}
+
 export type {
     SchoolValues,
     SchoolValuesPartial,
@@ -151,4 +162,5 @@ export {
     allSubSchoolsByParent,
     tryParseSchool,
     fullParseSchool,
+    validateSchool,
 };

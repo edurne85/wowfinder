@@ -113,6 +113,26 @@ function parseArea(
     return tryParseArea(input) ?? defaultValue;
 }
 
+function validate(value: unknown): value is SpellArea {
+    const spellAreaType = (value as SpellArea)?.spellAreaType;
+    const { radius, size, length } = value as any;
+    switch (spellAreaType) {
+        case 'self':
+        case 'point':
+            return true;
+        case 'cone':
+            return radius instanceof Length && radius.validate();
+        case 'cube':
+            return size instanceof Length && size.validate();
+        case 'line':
+            return length instanceof Length && length.validate();
+        case 'sphere':
+            return radius instanceof Length && radius.validate();
+        default:
+            return false;
+    }
+}
+
 export type {
     SpellArea,
     SpellPoint,
@@ -121,4 +141,4 @@ export type {
     SpellLine,
     SpellSphere,
 };
-export { stringify, tryParseArea, parseArea };
+export { stringify, tryParseArea, parseArea, validate };

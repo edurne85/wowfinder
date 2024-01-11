@@ -15,5 +15,12 @@ function getEnumValidator<T>(enumObject: Record<string, T>): Validator<T> {
     return (value: T) => validateEnumValue(value, enumObject);
 }
 
+function validateEnumValues<T>(
+    values: Iterable<T>,
+    enumObject: Record<string, T>,
+): boolean {
+    return [...values].every(getEnumValidator(enumObject));
+}
+
 export type { Validable };
-export { validateEnumValue, getEnumValidator };
+export { validateEnumValue, getEnumValidator, validateEnumValues };
