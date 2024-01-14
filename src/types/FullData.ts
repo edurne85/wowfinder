@@ -19,7 +19,7 @@ class FullData {
     #items: ByKeyRecursive<Item>;
     #spells: Spells;
     #spellLists: SpellLists;
-    private constructor() {
+    private constructor(reThrowErrors = false) {
         this.#factions = Faction.load();
         this.#chars = Character.load();
         this.#adventures = Adventure.load();
@@ -27,7 +27,7 @@ class FullData {
         this.#classes = Class.load();
         this.#races = Race.load();
         this.#items = Item.load(undefined, buildItem);
-        this.#spells = Spell.load();
+        this.#spells = Spell.load(undefined, reThrowErrors);
         this.#spellLists = SpellList.load();
     }
 
@@ -81,8 +81,8 @@ class FullData {
     }
 
     static #loaded: FullData | null = null;
-    static load(): FullData {
-        return (this.#loaded ||= new FullData());
+    static load(reThrowErrors = false): FullData {
+        return (this.#loaded ||= new FullData(reThrowErrors));
     }
 }
 

@@ -1,4 +1,4 @@
-import { getFiles, slurp } from '@utils';
+import * as files from '@utils/files';
 import path from 'path';
 
 const assetsPathFragment = 'assets';
@@ -10,8 +10,7 @@ function globalSetup(): void {
             path.join(cwd, assetsPathFragment, asset),
     } as any;
     (window as any).Files = {
-        getFiles,
-        slurp,
+        ...files,
     } as any;
 }
 
