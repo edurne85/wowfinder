@@ -15,13 +15,21 @@ type ByKeyLabel<T extends KeyedLabeled> = {
 };
 type builder<T> = (raw: any) => T;
 
-function iterateDir(dir: string, action: (raw: any) => void): void {
+function iterateDir(
+    dir: string,
+    action: (raw: any) => void,
+    reThrowErrors = false,
+): void {
     for (const file of window.Files.getFiles(dir, 'json5')) {
         try {
             const obj = JSON5.parse(window.Files.slurp(file));
             action(obj);
         } catch (e) {
-            console.error(`Error parsing ${file} within ${dir}: ${e}`);
+            if (reThrowErrors) {
+                throw e;
+            } else {
+                console.error(`Error parsing ${file} within ${dir}: ${e}`);
+            }
         }
     }
 }
@@ -71,24 +79,37 @@ function checkDuplicateLabel<T extends Labeled>(
     }
 }
 
-function forceDataLoad<T>(dir: string, builder: builder<T>): readonly T[] {
+function forceDataLoad<T>(
+    dir: string,
+    builder: builder<T>,
+    reThrowErrors = false,
+): readonly T[] {
     const data: T[] = [];
-    iterateDir(dir, raw => {
-        data.push(builder(raw));
-    });
+    iterateDir(
+        dir,
+        raw => {
+            data.push(builder(raw));
+        },
+        reThrowErrors,
+    );
     return Object.freeze(data.sort());
 }
 
 function forceDataLoadKeyS<T extends Keyed<string>>(
     dir: string,
     builder: builder<T>,
+    reThrowErrors = false,
 ): ByKey<T> {
     const byKey: ByKey<T> = {};
-    iterateDir(dir, raw => {
-        const obj = builder(raw);
-        checkDuplicateKeyS(byKey, obj, dir);
-        byKey[obj.key] = obj;
-    });
+    iterateDir(
+        dir,
+        raw => {
+            const obj = builder(raw);
+            checkDuplicateKeyS(byKey, obj, dir);
+            byKey[obj.key] = obj;
+        },
+        reThrowErrors,
+    );
     return Object.freeze(byKey);
 }
 

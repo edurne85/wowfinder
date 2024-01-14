@@ -59,6 +59,7 @@ class Spell extends SpellBase implements SpellBuilder, Asset {
         }
         this.#school = schoolParsed.school;
         this.#subSchool = schoolParsed.subSchool;
+        this.validate();
     }
 
     get key(): string {
@@ -126,8 +127,15 @@ class Spell extends SpellBase implements SpellBuilder, Asset {
 
     static #loaded: Spells | null = null;
 
-    static load(dir = window.Main.asset('Spells')): Spells {
-        return (this.#loaded ||= forceDataLoadKeyS<Spell>(dir, this.build));
+    static load(
+        dir = window.Main.asset('Spells'),
+        reThrowErrors = false,
+    ): Spells {
+        return (this.#loaded ||= forceDataLoadKeyS<Spell>(
+            dir,
+            this.build,
+            reThrowErrors,
+        ));
     }
 
     static byKey(key: string): Spell;
@@ -140,8 +148,8 @@ class Spell extends SpellBase implements SpellBuilder, Asset {
         return rank === undefined ? spell : spell.getRank(rank);
     }
 
-    validate(): boolean {
-        return validateSpell(this);
+    validate(): void {
+        validateSpell(this);
     }
 }
 

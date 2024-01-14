@@ -28,8 +28,9 @@ class Mass extends Scalar<MassUnit> {
             : new Mass({ value: w as number, unit: MassUnit.lb });
     }
 
-    validate(): boolean {
-        return super.validate() && validateEnumValue(this.unit, MassUnit);
+    validate(): void {
+        super.validate();
+        validateEnumValue(this.unit, MassUnit);
     }
 }
 

@@ -1,6 +1,7 @@
 import { TFunction } from 'i18next';
 import { Time } from '../../../types/Units';
 import { unreachable } from '@utils/debug';
+import { ValidationError } from '@model/Validable';
 
 type FixedSpellDuration = {
     durationType: 'fixed';
@@ -60,25 +61,26 @@ function tryParseSpellDuration(input: string): SpellDuration | undefined {
     return undefined;
 }
 
-function validate(value: unknown): value is SpellDuration {
+function validate(value: unknown): asserts value is SpellDuration {
     if (
         value === 'special' ||
         value === 'instantaneous' ||
         value === 'permanent' ||
         value === 'concentration'
     ) {
-        return true;
+        return;
     }
     if (typeof value === 'object') {
-        if (
-            (value as any)?.durationType === 'fixed' ||
-            (value as any)?.durationType === 'perLevel'
-        ) {
+        const durationType = `${(value as any)?.durationType || ''}`;
+        if (durationType === 'fixed' || durationType === 'perLevel') {
             const duration = (value as any)?.duration;
-            return duration instanceof Time && duration.validate();
+            if (duration instanceof Time) {
+                duration.validate();
+            } else {
+                throw new ValidationError(value, 'Invalid duration');
+            }
         }
     }
-    return false;
 }
 
 export { SpellDuration, stringify, tryParseSpellDuration, validate };

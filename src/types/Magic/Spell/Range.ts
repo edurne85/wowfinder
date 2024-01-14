@@ -1,6 +1,7 @@
 import { validateEnumValue } from '@model/Assets';
 import Size from '../../Character/Size';
 import { Length, LengthUnit } from '../../Units';
+import { ValidatorContainer } from '@model/Validable';
 
 enum StandardRange {
     self = 'self',
@@ -34,7 +35,7 @@ function computeRange(range: StandardRange, size: Size, efl: number): Length {
 
 type SpellRange = StandardRange | Length | 'special';
 
-const SpellRange = {
+const SpellRange: ValidatorContainer<SpellRange> = {
     tryParse(input: string): SpellRange | undefined {
         if (input === 'special') {
             return 'special';
@@ -58,12 +59,15 @@ const SpellRange = {
         return SpellRange.tryParse(input) ?? defaultValue;
     },
 
-    validate(value: unknown): value is SpellRange {
-        return (
-            value === 'special' ||
-            (value instanceof Length && value.validate()) ||
-            validateEnumValue(value, StandardRange)
-        );
+    validate(value: unknown): asserts value is SpellRange {
+        if (value === 'special') {
+            return;
+        }
+        if (value instanceof Length) {
+            value.validate();
+            return;
+        }
+        validateEnumValue(value, StandardRange);
     },
 } as const;
 

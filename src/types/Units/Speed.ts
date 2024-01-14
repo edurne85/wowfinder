@@ -24,11 +24,9 @@ class SpeedUnit implements Validable {
         return this._time;
     }
 
-    validate(): boolean {
-        return (
-            validateEnumValue(this._length, LengthUnit) &&
-            validateEnumValue(this._time, TimeUnit)
-        );
+    validate(): void {
+        validateEnumValue(this._length, LengthUnit);
+        validateEnumValue(this._time, TimeUnit);
     }
 }
 
@@ -55,8 +53,9 @@ class Speed extends Scalar<SpeedUnit> {
         return this.convert(unit).value;
     }
 
-    validate(): boolean {
-        return super.validate() && this.unit.validate();
+    validate(): void {
+        super.validate();
+        this.unit.validate();
     }
 }
 const convertSpeed: converter<SpeedUnit> = (magnitude, to) =>

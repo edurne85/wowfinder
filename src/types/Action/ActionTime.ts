@@ -2,6 +2,7 @@ import { ActionLength } from './ActionLength';
 import { Time } from '../Units';
 import { Stringifier } from '@utils/strings';
 import { validateEnumValue } from '@model/Assets';
+import { CompoundValidationError, ValidatorContainer } from '@model/Validable';
 
 type ActionTime = ActionLength | Time | 'special';
 
@@ -15,7 +16,7 @@ const stringify: Stringifier<ActionTime> = (value, t) => {
     return t(`action.${value}`);
 };
 
-const ActionTime = {
+const ActionTime: ValidatorContainer<ActionTime> = {
     tryParse(input: string): ActionTime | undefined {
         if (input === 'special') {
             return 'special';
@@ -49,12 +50,23 @@ const ActionTime = {
         return ActionTime.tryParse(input) ?? defaultValue;
     },
 
-    validate(value: unknown): value is ActionTime {
-        return (
-            value === 'special' ||
-            (value instanceof Time && value.validate()) ||
-            validateEnumValue(value, ActionLength)
-        );
+    validate(value: unknown): asserts value is ActionTime {
+        try {
+            if (value === 'special') {
+                return;
+            }
+            if (value instanceof Time) {
+                value.validate();
+            } else {
+                validateEnumValue(value, ActionLength);
+            }
+        } catch (error) {
+            throw new CompoundValidationError(
+                value,
+                'Invalid ActionTime',
+                error as Error,
+            );
+        }
     },
 
     stringify,
