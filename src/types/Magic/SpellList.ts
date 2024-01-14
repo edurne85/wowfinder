@@ -86,8 +86,11 @@ class SpellList implements SpellListBuilder {
 
     static #loaded: SpellLists | null = null;
 
-    static load(dir = window.Main.asset('SpellLists')): SpellLists {
-        return (this.#loaded ||= forceDataLoadKeyS<SpellList>(dir, this.build));
+    static load(): SpellLists {
+        return (this.#loaded ||= forceDataLoadKeyS<SpellList>(
+            window.Main.asset('SpellLists'),
+            this.build,
+        ));
     }
 }
 

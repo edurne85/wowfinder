@@ -127,12 +127,9 @@ class Spell extends SpellBase implements SpellBuilder, Asset {
 
     static #loaded: Spells | null = null;
 
-    static load(
-        dir = window.Main.asset('Spells'),
-        reThrowErrors = false,
-    ): Spells {
+    static load(reThrowErrors = false): Spells {
         return (this.#loaded ||= forceDataLoadKeyS<Spell>(
-            dir,
+            window.Main.asset('Spells'),
             this.build,
             reThrowErrors,
         ));
