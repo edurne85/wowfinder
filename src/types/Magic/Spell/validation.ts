@@ -10,93 +10,93 @@ import { SpellFlag } from './Flags';
 import type { Spell } from './Spell';
 import { validateSchool } from '../School';
 import { SpellRank } from './Rank';
+import { CompoundValidationError, ValidationError } from '@model/Validable';
 
 type SpellBaseValidableFields = 'castingTime' | 'range' | 'duration';
 
-function validateDescriptors(spell: SpellBase): boolean {
-    return validateEnumValues(spell.descriptors, SpellDescriptor);
-}
-
-function validateCastingTime(spell: SpellBase, optional = false): boolean {
-    if (optional && !spell.castingTime) {
-        return true;
+function validateCastingTime(spell: SpellBase, optional = false): void {
+    if (!spell.castingTime) {
+        if (optional) {
+            return;
+        }
+        throw new ValidationError(spell, 'Casting time is required');
     }
-    return !!spell.castingTime && ActionTime.validate(spell.castingTime);
+    ActionTime.validate(spell.castingTime as ActionTime);
 }
 
-function validateComponents(spell: SpellBase): boolean {
-    return validateEnumValues(spell.components, SpellCoreComponent);
-}
-
-function validateRange(spell: SpellBase, optional = false): boolean {
-    if (optional && !spell.range) {
-        return true;
+function validateRange(spell: SpellBase, optional = false): void {
+    if (!spell.range) {
+        if (optional) {
+            return;
+        }
+        throw new ValidationError(spell, 'Range is required');
     }
-    return !!spell.range && SpellRange.validate(spell.range);
+    SpellRange.validate(spell.range);
 }
 
-function validateArea(spell: SpellBase): boolean {
-    return !spell.area || validateSpellArea(spell.area);
-}
-
-function validateDuration(spell: SpellBase, optional = false): boolean {
-    return (
-        (optional && !spell.duration) || validateSpellDuration(spell.duration)
-    );
-}
-
-function validateFlags(spell: SpellBase): boolean {
-    return validateEnumValues(spell.flags, SpellFlag);
+function validateDuration(spell: SpellBase, optional = false): void {
+    if (!spell.duration) {
+        if (optional) {
+            return;
+        }
+        throw new ValidationError(spell, 'Duration is required');
+    }
+    validateSpellDuration(spell.duration);
 }
 
 function validateSpellBase(
     spell: SpellBase,
     optionalFields: Set<SpellBaseValidableFields> = new Set(),
-): boolean {
-    return (
-        validateDescriptors(spell) &&
-        validateCastingTime(spell, optionalFields.has('castingTime')) &&
-        validateComponents(spell) &&
-        validateRange(spell, optionalFields.has('range')) &&
-        validateArea(spell) &&
-        validateDuration(spell, optionalFields.has('duration')) &&
-        validateFlags(spell)
-    );
+): void {
+    validateEnumValues(spell.descriptors, SpellDescriptor);
+    validateCastingTime(spell, optionalFields.has('castingTime'));
+    validateEnumValues(spell.components, SpellCoreComponent);
+    validateRange(spell, optionalFields.has('range'));
+    if (spell.area) {
+        validateSpellArea(spell.area);
+    }
+    validateDuration(spell, optionalFields.has('duration'));
+    validateEnumValues(spell.flags, SpellFlag);
 }
 
-function validateSpell(spell: Spell): boolean {
-    const parentDefined = new Set<SpellBaseValidableFields>();
-    if (spell.castingTime) {
-        if (validateCastingTime(spell)) {
+function validateSpell(spell: Spell): void {
+    try {
+        const parentDefined = new Set<SpellBaseValidableFields>();
+        if (spell.castingTime) {
+            validateCastingTime(spell);
             parentDefined.add('castingTime');
-        } else {
-            return false;
         }
-    }
-    if (spell.range) {
-        if (validateRange(spell)) {
+        if (spell.range) {
+            validateRange(spell);
             parentDefined.add('range');
-        } else {
-            return false;
         }
-    }
-    if (spell.duration) {
-        if (validateDuration(spell)) {
+        if (spell.duration) {
+            validateDuration(spell);
             parentDefined.add('duration');
-        } else {
-            return false;
         }
+        validateSchool(spell.school, spell.subschool);
+        if (!spell.ranks?.length) {
+            throw new ValidationError(
+                spell,
+                'Spell must have at least one rank',
+            );
+        }
+        spell.ranks.forEach(rank => {
+            if (!(rank instanceof SpellRank)) {
+                throw new ValidationError(
+                    rank,
+                    'Spell rank must be a SpellRank',
+                );
+            }
+            validateSpellBase(rank, parentDefined);
+        });
+    } catch (error) {
+        throw new CompoundValidationError(
+            spell,
+            'Spell validation failed',
+            error as Error,
+        );
     }
-    if (!validateSchool(spell.school, spell.subschool)) {
-        return false;
-    }
-    if (!spell.ranks?.length) {
-        return false;
-    }
-    return spell.ranks.every(
-        rank =>
-            rank instanceof SpellRank && validateSpellBase(rank, parentDefined),
-    );
 }
 
 export { validateSpell };

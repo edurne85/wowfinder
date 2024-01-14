@@ -65,8 +65,9 @@ class Length extends Scalar<LengthUnit> {
         return base ? new Length(base) : undefined;
     }
 
-    validate(): boolean {
-        return super.validate() && validateEnumValue(this.unit, LengthUnit);
+    validate(): void {
+        super.validate();
+        validateEnumValue(this.unit, LengthUnit);
     }
 }
 

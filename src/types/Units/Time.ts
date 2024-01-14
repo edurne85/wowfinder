@@ -44,8 +44,9 @@ class Time extends Scalar<TimeUnit> {
         return parsed;
     }
 
-    validate(): boolean {
-        return super.validate() && validateEnumValue(this.unit, TimeUnit);
+    validate(): void {
+        super.validate();
+        validateEnumValue(this.unit, TimeUnit);
     }
 }
 

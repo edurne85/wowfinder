@@ -1,4 +1,4 @@
-import type { Validable } from './Validable';
+import type { Validable } from '../Validable';
 export { AssetType } from './AssetType';
 export type { AssetBundle } from './AssetBundle';
 export type { AssetJsonBundle } from './AssetJsonBundle';
@@ -10,4 +10,4 @@ export {
     validateEnumValue,
     getEnumValidator,
     validateEnumValues,
-} from './Validable';
+} from '../Validable';
