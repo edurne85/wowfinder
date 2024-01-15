@@ -106,9 +106,9 @@ class Faction {
 
     static #loaded: Factions | null = null;
 
-    static load(dir = window.Main.asset('Factions')): Factions {
+    static load(): Factions {
         return (this.#loaded ||= forceDataLoadKeyLabel<Faction>(
-            dir,
+            window.Main.asset('Factions'),
             this.build,
         ));
     }

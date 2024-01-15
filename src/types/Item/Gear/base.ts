@@ -87,12 +87,9 @@ class Gear extends Item implements BonusProvider {
 
     static #loaded: ByKeyRecursive<Gear> | null = null;
 
-    static load(
-        dir = window.Main.asset('Items/gear'),
-        builder: (raw: any) => Gear,
-    ): ByKeyRecursive<Gear> {
+    static load(builder: (raw: any) => Gear): ByKeyRecursive<Gear> {
         return (this.#loaded ||= forceDataLoadKeySRecursive<Gear>(
-            dir,
+            window.Main.asset('Items/gear'),
             builder,
         ));
     }

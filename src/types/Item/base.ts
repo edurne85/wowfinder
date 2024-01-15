@@ -42,11 +42,11 @@ abstract class Item {
 
     static #loaded: ByKeyRecursive<Item> | null = null;
 
-    static load(
-        dir = window.Main.asset('Items'),
-        build: builder<Item>,
-    ): ByKeyRecursive<Item> {
-        return (this.#loaded ||= forceDataLoadKeySRecursive<Item>(dir, build));
+    static load(build: builder<Item>): ByKeyRecursive<Item> {
+        return (this.#loaded ||= forceDataLoadKeySRecursive<Item>(
+            window.Main.asset('Items'),
+            build,
+        ));
     }
 }
 
