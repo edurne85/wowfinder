@@ -1,52 +1,7 @@
-import { forceDataLoadKeyS } from '../../utils';
-import { Spell } from './Spell';
-
-interface SpellListEntry {
-    spell: Spell;
-    rank: number;
-}
-
-interface SpellListEntryBuilder {
-    spell: string | Spell;
-    rank?: number; // default 1
-}
-
-function buildSpellListEntry({
-    spell: key,
-    rank,
-}: SpellListEntryBuilder): SpellListEntry {
-    let spell: Spell;
-    if (typeof key === 'string') {
-        spell = Spell.load()[key];
-        if (!spell) {
-            throw new Error(`Invalid spell key: ${key}`);
-        }
-    } else {
-        spell = key;
-    }
-    rank ||= 1;
-    return {
-        spell,
-        rank,
-    };
-}
-
-type SpellListLevel = SpellListEntry[];
-
-type SpellListLevelBuilder = SpellListEntryBuilder[];
-
-function buildSpellListLevel(entries: SpellListLevelBuilder): SpellListLevel {
-    return entries.map(buildSpellListEntry);
-}
-
-type SpellListLevels = { [key: number]: SpellListLevel };
-
-type SpellListLevelsBuilder = { [key: number]: SpellListLevelBuilder };
-
-interface SpellListBuilder {
-    key: string;
-    spells: SpellListLevelsBuilder;
-}
+import { forceDataLoadKeyS } from '@utils';
+import type { SpellListBuilder, SpellListLevels } from './helpers';
+import { ValidateSpellList } from './validations';
+import { buildSpellListLevel } from './builders';
 
 type SpellLists = { [key: string]: SpellList };
 
@@ -62,6 +17,7 @@ class SpellList implements SpellListBuilder {
                 buildSpellListLevel(entries),
             ]),
         );
+        this.validate();
     }
 
     get key(): string {
@@ -80,6 +36,10 @@ class SpellList implements SpellListBuilder {
         return res;
     }
 
+    validate(): asserts this is SpellList {
+        ValidateSpellList(this);
+    }
+
     static build(raw: any): SpellList {
         return new SpellList(raw);
     }
@@ -94,5 +54,5 @@ class SpellList implements SpellListBuilder {
     }
 }
 
-export type { SpellListBuilder, SpellLists, SpellListEntry };
+export type { SpellLists };
 export { SpellList };
