@@ -17,7 +17,7 @@
         "tsc": "tsc",
         "pedantic": "npm-run-all -s lint-fix prettier tsc coverage cloc",
         "preci": "npm-run-all -s lint-fix prettier tsc",
-        "prepush": "npm-run-all -s lint tsc test",
+        "prepush": "npm-run-all -s lint tsc test package",
         "english": "sh -c ./english.sh"
     },
     "keywords": [],
