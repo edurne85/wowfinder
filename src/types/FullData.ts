@@ -28,7 +28,7 @@ class FullData {
         this.#races = Race.load();
         this.#items = Item.load(buildItem);
         this.#spells = Spell.load(reThrowErrors);
-        this.#spellLists = SpellList.load();
+        this.#spellLists = SpellList.load(reThrowErrors);
     }
 
     get factions(): Factions {
