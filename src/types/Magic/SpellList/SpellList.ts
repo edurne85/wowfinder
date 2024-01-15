@@ -46,10 +46,11 @@ class SpellList implements SpellListBuilder {
 
     static #loaded: SpellLists | null = null;
 
-    static load(): SpellLists {
+    static load(reThrowErrors = false): SpellLists {
         return (this.#loaded ||= forceDataLoadKeyS<SpellList>(
             window.Main.asset('SpellLists'),
             this.build,
+            reThrowErrors,
         ));
     }
 }
