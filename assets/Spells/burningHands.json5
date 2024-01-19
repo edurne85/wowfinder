@@ -20,4 +20,5 @@
     duration: 'instantaneous',
     flags: ['spellResistance'],
     save: 'refl',
+    range: 'special',
 }
