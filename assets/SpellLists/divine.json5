@@ -38,7 +38,11 @@
             { spell: 'inflictWounds', rank: 4 },
             { spell: 'magicWeapon', rank: 2 },
             { spell: 'summonMonster', rank: 4 },
+<<<<<<< HEAD
             { spell: 'necrotic inpiration', rank: 1 },
+=======
+            { spell: 'necroticInpiration', rank: 1 },
+>>>>>>> 750-necrotic-inspiration-spell
         ],
         '5': [
             { spell: 'cureWoundsMass', rank: 1 },
