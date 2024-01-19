@@ -120,8 +120,11 @@ export default class Race {
 
     static #loaded: Races | null = null;
 
-    static load(dir = window.Main.asset('Races')): Races {
-        return (this.#loaded ||= forceDataLoadKeyS(dir, this.build));
+    static load(): Races {
+        return (this.#loaded ||= forceDataLoadKeyS(
+            window.Main.asset('Races'),
+            this.build,
+        ));
     }
 }
 

@@ -12,6 +12,15 @@ const auraBonuses: { [key in Aura]: AuraBonus } = {
             }),
             resistances: new ResistBonus(fillResistBonus({}, rank * 2)),
         }),
+    [Aura.furious]: (rank: number) =>
+        new Bonus({
+            // Furious Howl (brb)
+            type: BonusType.aura,
+            stats: new StatsBonus({
+                STR: rank * 4,
+            }),
+            resistances: new ResistBonus(fillResistBonus({}, rank * 4)),
+        }),
     [Aura.arcane]: (rank: number) =>
         new Bonus({
             // Arcane brillance (mag)

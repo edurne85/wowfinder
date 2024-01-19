@@ -74,8 +74,11 @@ class Adventure implements Exportable<AdventureExport> {
 
     static #loaded: Adventures | null = null;
 
-    static load(dir = window.Main.asset('Adventures')): Adventures {
-        return (this.#loaded ||= forceDataLoadKeyS<Adventure>(dir, this.build));
+    static load(): Adventures {
+        return (this.#loaded ||= forceDataLoadKeyS<Adventure>(
+            window.Main.asset('Adventures'),
+            this.build,
+        ));
     }
 
     static combined(adventures: Adventures): RewardsByCharacter {

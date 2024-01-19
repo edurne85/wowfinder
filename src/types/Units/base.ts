@@ -1,7 +1,9 @@
 import { TFunction } from 'i18next';
-import { sum, TryParser } from '../../utils';
+import { sum, TryParser } from '@utils';
+import { Validable } from '@model/Assets';
+import { ValidationError } from '@model/Validable';
 
-class Scalar<T> {
+class Scalar<T> implements Validable {
     private _value: number;
     private _unit: T;
     constructor({ value, unit }: { value: number; unit: T }) {
@@ -42,6 +44,15 @@ class Scalar<T> {
             value: +match[1],
             unit,
         });
+    }
+
+    validate(): void {
+        if (Number.isNaN(this._value)) {
+            throw new ValidationError(this, 'Invalid value');
+        }
+        if (!this._unit) {
+            throw new ValidationError(this, 'Invalid unit');
+        }
     }
 }
 
