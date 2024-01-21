@@ -40,11 +40,11 @@ The type of the item. This is used to determine which subtype of item is being d
     -   `Enchanting`: magical materials, such as dusts, essences, and shards, obtained from disenchanting magical items, used mainly for enchanting.
     -   `Common`: easily found materials, usually provided by NPCs (at a price), used as complementary materials for many crafts.
 
--   Consumables: these items are used to provide temporary effects to creatures, and are usually consumed in the process. ⚠️ **\*Note**: this category is pending a significant overhaul and refactor.\* 🚧
+-   Consumables: these items are used to provide temporary effects to creatures, and are usually consumed in the process. ⚠️ _**Note**: this category is pending a significant overhaul and refactor._\*\_ 🚧
 
     -   `SpellPotion`: liquids directly imbued with a spell, and can be drunk to trigger the spell on the imbiber. 🚧
     -   `SpellScroll`: scrolls directly imbued with a spell, which can be used to cast it without spending slots or other resources (at the cost of consuming the scroll). Spellbook users (primarily mages) may also attempt to study the spell and copy it to their spellbook. 🚧
-    -   `SpellWand`: wands that can be used to cast a spell without spending slots or other resources (at the cost of consuming charges). ⚠️ **\*Note**: this type needs to be reworked: wands share many properties with [`SpellContainer`](src\types\Item\Consumable\SpellContainer\base.ts) items, but at the same time they are weapons. 🚧
+    -   `SpellWand`: wands that can be used to cast a spell without spending slots or other resources (at the cost of consuming charges). ⚠️ **\*Note**: this type needs to be reworked: wands share many properties with [`SpellContainer`](/src/types/Item/Consumable/SpellContainer/base.ts) items, but at the same time they are weapons. 🚧
     -   `Potion`: alchemic concoctions that provide immediate restorative effects or short-tem benefits when consumed. 🚧
     -   `Elixir`: alchemic concoctions that provide long-term benefits when consumed. 🚧
     -   `SharpeningStone`: items that can be used to sharpen weapons, providing a temporary bonus to their slashing and/or piercing damage. 🚧
@@ -55,9 +55,9 @@ The type of the item. This is used to determine which subtype of item is being d
 
 ### `key` property
 
-⚠️ **\*Note (1)**: due to early (obsolete) development decisions, some items (mainly gear) use `label` instead of `key`. This needs to be refactored out. 🚧
+⚠️ **\*Note (1)**: due to early (obsolete) development decisions, some items (mainly gear) use `label` instead of `key`. This needs to be refactored out.\*🚧
 
-⚠️ **\*Note (2)**: the use of "qualified" keys comes from an early development decision and needs to be refactored out. Parser and builder functions must be able to define the fully qualified key string for any object based on directory structure alone. Once this is addressed, the description of this propery will be substantially simplified.🚧
+⚠️ **\*Note (2)**: the use of "qualified" keys comes from an early development decision and needs to be refactored out. Parser and builder functions must be able to define the fully qualified key string for any object based on directory structure alone. Once this is addressed, the description of this propery will be substantially simplified.\*🚧
 
 Currently, this is a _key_ value, with the final _chunk_ matching the basename of the file and the rest matching subdirectories in the file's path (the exact base used for the key varies between item types).
 
@@ -65,9 +65,9 @@ Currently, this is a _key_ value, with the final _chunk_ matching the basename o
 
 _Optional_. The overal power level of the item. This is used by many indirect calculations, and is mostly a tool for the GM. It can also be used by players to get a rough gauge of the item's potential. It **MUST** be a non-negative integer _number_.
 
-⚠️ **\*Note**: this property should be required, but there are many existing assets that don't provide it yet.\*
+⚠️ _**Note**: this property should be required, but there are many existing assets that don't provide it yet._
 
-⚠️ **\*Note**: it needs to be decided whether to rename this property to `itemLevel`, as per existing naming conventions in the project. It could be argued that "ilevel" has evolved, in the context of the Warcraft franchise, into its own concept rather than a combination of words.\*
+⚠️ _**Note**: it needs to be decided whether to rename this property to `itemLevel`, as per existing naming conventions in the project. It could be argued that "ilevel" has evolved, in the context of the Warcraft franchise, into its own concept rather than a combination of words._
 
 ### `rarity` property
 

@@ -1,6 +1,7 @@
 import { Money, asMoney } from '../Money';
 import { Item, ItemBuilder } from '../base';
 import { Rarity, rarityMultipliers } from '../Rarity';
+import { ValidationError } from '@model/Validable';
 
 interface GoodBuilder extends ItemBuilder {
     label: string;
@@ -19,6 +20,7 @@ abstract class Good extends Item {
     constructor(args: GoodBuilder) {
         super(args);
         this.#iLevel = args.iLevel;
+        this.validate();
     }
 
     get iLevel(): number {
@@ -32,6 +34,13 @@ abstract class Good extends Item {
                 rarityMultipliers[this.rarity] *
                 this.#iLevel ** 2,
         );
+    }
+
+    validate(): void {
+        super.validate();
+        if (Number.isNaN(this.#iLevel)) {
+            throw new ValidationError(this, 'Item level must be a number');
+        }
     }
 
     static preBuild(raw: any): GoodBuilder {
