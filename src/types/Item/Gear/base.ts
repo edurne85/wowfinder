@@ -7,6 +7,7 @@ import {
 } from '../../Character/Bonus';
 import Size from '../../Character/Size';
 import { Mass, Weight } from '../../Units';
+import Money from '../Money';
 import { Item, ItemBuilder } from '../base';
 import { buildShape, explodeShape, Shape } from './Slot';
 
@@ -57,6 +58,10 @@ class Gear extends Item implements BonusProvider {
 
     get bonuses(): Bonus {
         return this.#bonuses.asType(BonusType.gear);
+    }
+
+    get value(): Money {
+        return Money.zero;
     }
 
     get weight(): Mass {
