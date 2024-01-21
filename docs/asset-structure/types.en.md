@@ -8,6 +8,11 @@ This file defines a number of types that are used in different asset types.
 -   _key_: a _string_ formed by one or more _chunks_ in `camelCase` notation, separated by the dot (`.`) character.
 -   _number_: A JSON / JSON5 number. This may be an integer or a floating point number, in any format supported by JSON5.
 -   _ordinal_: A non-negative integer number, expressed in base ten.
+-
+
+## Item rarity types
+
+-   _rarity_: A _string_ that matches one of the values in the `Rarity` enum in [Rarity.ts](/src/types/Item/Rarity.ts).
 
 ## Time and duration types
 
