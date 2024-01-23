@@ -1,6 +1,7 @@
 import { TFunction } from 'i18next';
 import { Length } from '../../Units';
 import { unreachable } from '@utils/debug';
+import { ValidationError } from '@model/Validable';
 
 type SpellSelf = {
     spellAreaType: 'self';
@@ -113,6 +114,46 @@ function parseArea(
     return tryParseArea(input) ?? defaultValue;
 }
 
+function validate(value: unknown): asserts value is SpellArea {
+    const spellAreaType = (value as SpellArea)?.spellAreaType;
+    const { radius, size, length } = value as any;
+    switch (spellAreaType) {
+        case 'self':
+        case 'point':
+            return;
+        case 'sphere':
+        case 'cone':
+            if (!radius) {
+                throw new ValidationError(value, 'Missing radius');
+            }
+            if (!(radius instanceof Length)) {
+                throw new ValidationError(value, 'Invalid radius');
+            }
+            radius.validate();
+            return;
+        case 'cube':
+            if (!size) {
+                throw new ValidationError(value, 'Missing size');
+            }
+            if (!(size instanceof Length)) {
+                throw new ValidationError(value, 'Invalid size');
+            }
+            size.validate();
+            return;
+        case 'line':
+            if (!length) {
+                throw new ValidationError(value, 'Missing length');
+            }
+            if (!(length instanceof Length)) {
+                throw new ValidationError(value, 'Invalid length');
+            }
+            length.validate();
+            return;
+        default:
+            throw new ValidationError(value, 'Invalid spell area type');
+    }
+}
+
 export type {
     SpellArea,
     SpellPoint,
@@ -121,4 +162,4 @@ export type {
     SpellLine,
     SpellSphere,
 };
-export { stringify, tryParseArea, parseArea };
+export { stringify, tryParseArea, parseArea, validate };

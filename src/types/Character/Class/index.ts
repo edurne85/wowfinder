@@ -128,9 +128,9 @@ class Class {
 
     static #loaded: Classes | null = null;
 
-    static load(dir = window.Main.asset('Classes')): Classes {
+    static load(): Classes {
         return (this.#loaded ||= forceDataLoadKeyS(
-            dir,
+            window.Main.asset('Classes'),
             raw => new Class(preBuild(raw)),
         ));
     }

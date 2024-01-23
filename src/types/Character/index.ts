@@ -308,8 +308,11 @@ class Character extends PersonalCharacterBase implements Exportable<JsonValue> {
 
     static #loaded: Characters | null = null;
 
-    static load(dir = window.Main.asset('Characters')): Characters {
-        return (this.#loaded ||= forceDataLoadKeyS<Character>(dir, this.build));
+    static load(): Characters {
+        return (this.#loaded ||= forceDataLoadKeyS<Character>(
+            window.Main.asset('Characters'),
+            this.build,
+        ));
     }
 }
 

@@ -18,10 +18,10 @@
             "@components/*": ["components/*"],
             "@hooks": ["hooks"],
             "@model/*": ["types/*"],
-            "@utils/*": ["utils/*"],
-            "*": ["node_modules/*"]
+            "@utils": ["utils"],
+            "@utils/*": ["utils/*"]
         }
     },
     "include": ["src/**/*"],
-    "exclude": ["**/*.test.ts*"]
+    "exclude": []
 }
