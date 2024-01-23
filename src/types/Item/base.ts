@@ -1,3 +1,4 @@
+import { Asset, validateEnumValue } from '@model/Assets';
 import {
     builder,
     ByKeyRecursive,
@@ -5,13 +6,15 @@ import {
 } from '../../utils';
 import { Mass } from '../Units';
 import { Rarity } from './Rarity';
+import { ValidationError } from '@model/Validable';
+import Money from './Money';
 
 interface ItemBuilder {
     rarity?: Rarity;
     label: string;
 }
 
-abstract class Item {
+abstract class Item implements Asset {
     #label: string;
     #rarity: Rarity;
     constructor({ label, rarity = Rarity.common }: ItemBuilder) {
@@ -32,6 +35,23 @@ abstract class Item {
     }
 
     abstract get weight(): Mass;
+
+    abstract get value(): Money;
+
+    validate(): void {
+        validateEnumValue(this.#rarity, Rarity);
+        if (this.weight instanceof Mass) {
+            this.weight.validate();
+        } else {
+            throw new ValidationError(this, 'Weight is required');
+        }
+        const value = this.value;
+        if (value instanceof Money) {
+            value.validate();
+        } else {
+            throw new ValidationError(this, 'Value is required');
+        }
+    }
 
     static preBuild(raw: any): ItemBuilder {
         return {

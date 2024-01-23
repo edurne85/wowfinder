@@ -76,9 +76,12 @@
             { spell: 'shield', rank: 2 },
             { spell: 'summonMonster', rank: 4 },
             { spell: 'catsGrace', rank: 2 },
+<<<<<<< HEAD
             { spell: 'trueStrike', rank: 2 },
             { spell: 'necroticInspiration', rank: 1 },
             { spell: 'burningHands', rank: 2 },
+=======
+>>>>>>> origin/750-necrotic-inspiration-spell
             { spell: 'necroticInpiration', rank: 1 },
             { spell: 'trueStrike', rank: 2 },
         ],
