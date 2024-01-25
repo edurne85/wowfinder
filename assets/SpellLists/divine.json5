@@ -35,6 +35,7 @@
             { spell: 'inflictWounds', rank: 4 },
             { spell: 'magicWeapon', rank: 2 },
             { spell: 'summonMonster', rank: 4 },
+            { spell: 'necroticInpiration', rank: 1 },
         ],
         '5': [
             { spell: 'cureWoundsMass', rank: 1 },
