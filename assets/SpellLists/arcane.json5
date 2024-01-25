@@ -41,6 +41,7 @@
             { spell: 'summonMonster', rank: 1 },
             { spell: 'image', rank: 1 },
             { spell: 'trueStrike', rank: 1 },
+            { spell: 'burningHands', rank: 1 },
         ],
         '2': [
             { spell: 'acidArrow', rank: 1 },
@@ -72,6 +73,7 @@
             { spell: 'summonMonster', rank: 4 },
             { spell: 'catsGrace', rank: 2 },
             { spell: 'necroticInspiration', rank: 1 },
+            { spell: 'burningHands', rank: 2 },
         ],
         '5': [
             { spell: 'acidArrow', rank: 2 },
@@ -93,6 +95,7 @@
             { spell: 'shockingGrasp', rank: 3 },
             { spell: 'summonMonster', rank: 7 },
             { spell: 'catsGrace', rank: 3 },
+            { spell: 'burningHands', rank: 3 },
         ],
         '8': [
             { spell: 'acidArrow', rank: 3 },

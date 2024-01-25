@@ -1,0 +1,27 @@
+{
+    key: 'burningHands',
+    ranks: [
+        {
+            rank: 1,
+            area: 'cone (15ft)',
+        },
+        {
+            rank: 2,
+            area: 'cone (25ft)',
+        },
+        {
+            rank: 3,
+            area: 'cone (40ft)',
+        },
+    ],
+    sch: 'evo',
+    duration: 'instantaneous',
+    castingTime: 'standard',
+    components: ['V', 'S'],
+    range: 'special',
+    save: {
+        save: 'reflex',
+        effect: 'half',
+    },
+    flags: ['spellResistance'],
+}
