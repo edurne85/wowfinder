@@ -7,10 +7,12 @@
             { spell: 'causeFear', rank: 1 },
             { spell: 'cureWounds', rank: 1 },
             { spell: 'detectMagic', rank: 2 },
+            { spell: 'image', rank: 1 },
         ],
         '2': [
             { spell: 'summonMonster', rank: 2 },
             { spell: 'cureWounds', rank: 2 },
+            { spell: 'image', rank: 2 },
         ],
         '3': [
             { spell: 'summonMonster', rank: 3 },

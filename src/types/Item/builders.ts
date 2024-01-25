@@ -20,7 +20,7 @@ const errors = {
 
 function retrievePreloaded(fqkey: string): Item {
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
-    let data: ByKeyRecursiveEntry<Item> = Item.load(undefined, buildItem);
+    let data: ByKeyRecursiveEntry<Item> = Item.load(buildItem);
     for (const chunk of fqkey.split('.')) {
         if (Object.keys(data).includes(chunk)) {
             data = (data as ByKeyRecursive<Item>)[chunk];

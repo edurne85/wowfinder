@@ -133,5 +133,15 @@ function registerDirectoryListeners(): void {
     });
 }
 
+const resolvePath = path.resolve;
+
 export type { dumpable };
-export { registerDirectoryListeners, dumpToDir, copyDir, assetDump };
+export {
+    registerDirectoryListeners,
+    getDirectories,
+    getFiles,
+    dumpToDir,
+    copyDir,
+    assetDump,
+    resolvePath,
+};

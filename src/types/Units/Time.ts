@@ -1,3 +1,4 @@
+import { validateEnumValue } from '@model/Assets';
 import { converter, makeConverter, Scalar } from './base';
 
 enum TimeUnit {
@@ -41,6 +42,11 @@ class Time extends Scalar<TimeUnit> {
             throw new Error(`Unable to parse time from input: ${input}`);
         }
         return parsed;
+    }
+
+    validate(): void {
+        super.validate();
+        validateEnumValue(this.unit, TimeUnit);
     }
 }
 

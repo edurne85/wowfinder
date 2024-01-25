@@ -1,0 +1,18 @@
+{
+    key: 'image',
+    ranks: [
+        {
+            rank: 1,
+            duration: 'concentration',
+        },
+        {
+            rank: 2,
+            duration: 'concentration',
+        },
+    ],
+    sch: 'figment',
+    castingTime: 'standard',
+    components: ['V', 'S', 'M'],
+    save: 'will',
+    range: 'long',
+}

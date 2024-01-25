@@ -1,3 +1,5 @@
+import { ValidationError } from '@model/Validable';
+
 interface MoneyBreakdown {
     _: number;
     c: number;
@@ -18,7 +20,7 @@ const ratios: MoneyBreakdown = {
 };
 
 export default class Money {
-    private _raw = 0;
+    #raw = 0;
     static explode(raw: number): MoneyBreakdown {
         const g = Math.floor(raw / ratios.g);
         raw %= ratios.g;
@@ -39,7 +41,7 @@ export default class Money {
     }
 
     private constructor(raw: number) {
-        this._raw = raw;
+        this.#raw = raw;
     }
 
     static fromRaw(raw: number): Money {
@@ -54,25 +56,38 @@ export default class Money {
         return new Money(money.raw);
     }
 
+    static get zero(): Money {
+        return new Money(0);
+    }
+
     add(args: MoneyBreakdown): void {
-        this._raw += Money.condense(args);
+        this.#raw += Money.condense(args);
     }
 
     substract(args: MoneyBreakdown): void {
-        this._raw -= Money.condense(args);
+        this.#raw -= Money.condense(args);
     }
 
     get raw(): number {
-        return this._raw;
+        return this.#raw;
     }
 
     get split(): MoneyBreakdown {
-        return Money.explode(this._raw);
+        return Money.explode(this.#raw);
     }
 
     toString(): string {
         const breakdown = this.split;
         return displayCoinTypes.map(t => `${breakdown[t]}${t}`).join();
+    }
+
+    validate(): void {
+        if (Number.isNaN(this.#raw)) {
+            throw new ValidationError(
+                this,
+                'Money value must be a real number',
+            );
+        }
     }
 }
 
