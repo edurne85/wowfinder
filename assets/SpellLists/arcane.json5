@@ -72,6 +72,7 @@
             { spell: 'shield', rank: 2 },
             { spell: 'summonMonster', rank: 4 },
             { spell: 'catsGrace', rank: 2 },
+            {spell: 'trueStrike', rank: 2 },
             { spell: 'necroticInspiration', rank: 1 },
             { spell: 'burningHands', rank: 2 },
         ],
