@@ -4,7 +4,12 @@
         {
             rank: 1,
             range: 'touch',
-            duration: '10 min/level',
+            duration: '1 min',
+        },
+        {
+            rank: 12
+            range: 'touch',
+            duration: '1 min',
         },
     ],
     sch: 'div',
