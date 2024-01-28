@@ -7,7 +7,7 @@
             duration: '1 min',
         },
         {
-            rank: 12
+            rank: 2,
             range: 'touch',
             duration: '1 min',
         },
