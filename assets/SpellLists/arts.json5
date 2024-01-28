@@ -1,7 +1,10 @@
 {
     key: 'arts',
     spells: {
-        '0': [{ spell: 'daze', rank: 1 }],
+        '0': [
+            { spell: 'daze', rank: 1 },
+            { spell: 'prestidigitation', rank: 1 },
+        ],
         '1': [
             { spell: 'summonMonster', rank: 1 },
             { spell: 'causeFear', rank: 1 },
