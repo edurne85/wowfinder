@@ -1,0 +1,13 @@
+{
+    key: 'guidance',
+    ranks: [
+        {
+            rank: 1,
+            range: 'touch',
+            duration: '10 min/level',
+        },
+    ],
+    sch: 'div',
+    castingTime: 'standard',
+    components: ['V', 'S'],
+}
