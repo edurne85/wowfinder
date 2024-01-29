@@ -11,6 +11,7 @@
             { spell: 'daze', rank: 1 },
             { spell: 'detectMagic', rank: 1 },
             { spell: 'disturbUndead', rank: 1 },
+            { spell: 'prestidigitation', rank: 1 },
             /*
             { spell: 'detectPoison' },
             { spell: 'readMagic' },
