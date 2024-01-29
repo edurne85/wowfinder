@@ -1,0 +1,15 @@
+{
+    key: 'disturbUndead',
+    ranks: [
+        {
+            rank: 1,
+            range: 'close',
+        },
+    ],
+    sch: 'nec',
+    castingTime: 'standard',
+    components: ['V','S'],
+    duration: 'instantaneous',
+    save: 'will',
+    flags: ['spellResistance'],
+}
