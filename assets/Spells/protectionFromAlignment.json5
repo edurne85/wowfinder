@@ -1,0 +1,34 @@
+{
+    key: 'protectionFromAlignment',
+    ranks: [
+        {
+            rank: 1,
+            range: 'touch',
+            duration: '1 min/level',
+        },
+        {
+            rank: 2,
+            range: 'close',
+            duration: '1 min/level',
+        },
+        {
+            rank: 3,
+            range: 'close',
+            duration: '1 min/level',
+        },
+        {
+            rank: 4,
+            range: 'close',
+            duration: '10 min/level',
+        },
+        {
+            rank: 5,
+            range: 'close',
+            duration: '1 h/level',
+        },
+    ],
+    sch:'abj',
+    castingTime: 'standard',
+    components: ['V', 'S'],
+    save: 'will',
+}
