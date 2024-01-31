@@ -1,0 +1,30 @@
+{
+    key: 'rayOfEnfeeblement',
+    ranks: [
+        {
+            rank: 1,
+            duration: '1 turn/level'
+        },
+        {
+            rank: 2,
+            duration: '1 min/level'
+        },
+        {
+            rank: 3,
+            duration: '1 min/level'
+        },
+        {
+            rank: 4,
+            duration: '10 min/level'
+        },
+    ],
+    sch: 'nec',
+    castingTime: 'standard',
+    components: ['V', 'S'],
+    range: 'close',
+    save: {
+        save:'fort',
+        effect: 'half',
+    },
+    flags: ['spellResistance'],
+}
