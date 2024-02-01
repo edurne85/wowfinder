@@ -1,0 +1,16 @@
+{
+    key: 'mending',
+    ranks: [
+        {
+            rank: 1,
+            castingTime: '10 min',
+            range: '10ft',
+        },
+    ],
+    range: 'special',
+    sch: 'tra',
+    components: ['V', 'S'],
+    duration: 'instantaneous',
+    save: 'will',
+    flags: ['spellResistance'],
+}
