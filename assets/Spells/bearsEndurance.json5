@@ -1,0 +1,30 @@
+{
+    key: 'bearsEndurance',
+    ranks: [
+        {
+            rank: 1,
+            range: 'touch',
+            duration: '1 min/level',
+        },
+        {
+            rank: 2,
+            range: 'close',
+            duration: '1 min/level',
+        },
+        {
+            rank: 3,
+            range: 'close',
+            duration: '1 min/level',
+        },
+        {
+            rank: 4,
+            range: 'close',
+            duration: '1 hour/level',
+        },
+    ],
+    sch: 'tra',
+    castingTime: 'standard',
+    components: ['V', 'S', 'M'],
+    save: 'will',
+    flags: ['spellResistance'],
+}
