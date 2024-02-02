@@ -4,6 +4,7 @@
         '0': [
             { spell: 'daze', rank: 1 },
             { spell: 'prestidigitation', rank: 1 },
+            { spell: 'mending', rank: 1 },
         ],
         '1': [
             { spell: 'summonMonster', rank: 1 },
