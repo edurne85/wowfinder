@@ -59,6 +59,7 @@
             { spell: 'catsGrace', rank: 1 },
             { spell: 'image', rank: 2 },
             { spell: 'bearsEndurance', rank: 1 },
+            { spell: 'resistEnergy', rank: 1 }
         ],
         '3': [
             { spell: 'disguise', rank: 2 },
@@ -89,6 +90,7 @@
             { spell: 'acidArrow', rank: 2 },
             { spell: 'falseLife', rank: 2 },
             { spell: 'summonMonster', rank: 5 },
+            { spell: 'resistEnergy', rank: 2 }
         ],
         '6': [
             { spell: 'disguise', rank: 2 },

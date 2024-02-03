@@ -1,0 +1,3 @@
+Esta abjuración concede a una criatura protección limitada contra el daño de uno cualquiera de los seis tipos de energía que selecciones:arcano, fuego, frío, naturaleza, sagrado, o sombras. El objetivo gana resistencia a la energía contra el tipo de energía escogido. El conjuro también protege el equipo del destinatario.
+Resistir energía sólo absorbe daño. El objetivo todavía puede sufrir efectos secundarios desafortunados.
+Resistir energía se solapa (y no se apila con) protección contra la energía . Si un personaje está protegido con protección contra la energía y resistir energía , el conjuro de protección absorbe daño hasta que se agote su poder.
