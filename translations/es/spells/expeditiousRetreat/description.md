@@ -1,0 +1,1 @@
+Este conjuro aumenta tu velocidad terrestre (bonificador de mejora) y, en rangos superiores, otros tipos de habilidad. Este aumento de velocidad afecta de forma normal a la distancia que puedes saltar.
