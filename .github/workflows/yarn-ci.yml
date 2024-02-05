@@ -16,11 +16,11 @@ jobs:
               with:
                   node-version: 18
             - name: Yarn install
-              uses: Borales/actions-yarn@v4.2.0
+              uses: Borales/actions-yarn@v5.0.0
               with:
                   cmd: install
             - name: Yarn prepush script
-              uses: Borales/actions-yarn@v4.2.0
+              uses: Borales/actions-yarn@v5.0.0
               with:
                   cmd: prepush
 
