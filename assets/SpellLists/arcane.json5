@@ -47,6 +47,7 @@
             { spell: 'burningHands', rank: 1 },
             { spell: 'protectionFromAlignment', rank: 1 },
             { spell: 'rayOfEnfeeblement', rank: 1 },
+            { spell: 'expeditiousRetreat', rank: 1 },
         ],
         '2': [
             { spell: 'acidArrow', rank: 1 },
@@ -68,6 +69,7 @@
             { spell: 'magicWeapon', rank: 2 },
             { spell: 'summonMonster', rank: 3 },
             { spell: 'protectionFromAlignment', rank: 2 },
+            { spell: 'expeditiousRetreat', rank: 2 },
         ],
         '4': [
             { spell: 'bullsStrength', rank: 2 },
@@ -98,6 +100,7 @@
             { spell: 'mageArmor', rank: 3 },
             { spell: 'summonMonster', rank: 6 },
             { spell: 'protectionFromAlignment', rank: 3 },
+            { spell: 'expeditiousRetreat', rank: 3 },
         ],
         '7': [
             { spell: 'bullsStrength', rank: 3 },
@@ -133,6 +136,7 @@
             { spell: 'trueStrike', rank: 3 },
             { spell: 'protectionFromAlignment', rank: 4 },
             { spell: 'bearsEndurance', rank: 4 },
+            { spell: 'expeditiousRetreat', rank: 4 },
         ],
         '11': [{ spell: 'fireball', rank: 3 }],
         '12': [],
