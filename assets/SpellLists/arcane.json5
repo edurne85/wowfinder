@@ -60,7 +60,8 @@
             { spell: 'catsGrace', rank: 1 },
             { spell: 'image', rank: 2 },
             { spell: 'bearsEndurance', rank: 1 },
-            { spell: 'resistEnergy', rank: 1 }
+            { spell: 'resistEnergy', rank: 1 },
+            { spell: 'owlsWisdom', rank: 1 },
         ],
         '3': [
             { spell: 'disguise', rank: 2 },
@@ -87,6 +88,7 @@
             { spell: 'burningHands', rank: 2 },
             { spell: 'rayOfEnfeeblement', rank: 2 },
             { spell: 'bearsEndurance', rank: 2 },
+            { spell: 'owlsWisdom', rank: 1 },
         ],
         '5': [
             { spell: 'acidArrow', rank: 2 },
@@ -113,6 +115,7 @@
             { spell: 'catsGrace', rank: 3 },
             { spell: 'burningHands', rank: 3 },
             { spell: 'bearsEndurance', rank: 3 },
+            { spell: 'owlsWisdom', rank: 3 },
         ],
         '8': [
             { spell: 'acidArrow', rank: 3 },
@@ -137,6 +140,7 @@
             { spell: 'protectionFromAlignment', rank: 4 },
             { spell: 'bearsEndurance', rank: 4 },
             { spell: 'expeditiousRetreat', rank: 4 },
+            { spell: 'owlsWisdom', rank: 4 },
         ],
         '11': [{ spell: 'fireball', rank: 3 }],
         '12': [],

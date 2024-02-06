@@ -25,7 +25,8 @@
             { spell: 'inflictWounds', rank: 2 },
             { spell: 'summonMonster', rank: 2 },
             { spell: 'bearsEndurance', rank: 1 },
-            { spell: 'resistEnergy', rank: 1 }
+            { spell: 'resistEnergy', rank: 1 },
+            { spell: 'owlsWisdom', rank: 1 },
         ],
         '3': [
             { spell: 'cureWounds', rank: 3 },
@@ -43,6 +44,7 @@
             { spell: 'summonMonster', rank: 4 },
             { spell: 'necroticInspiration', rank: 1 },
             { spell: 'bearsEndurance', rank: 2 },
+            { spell: 'owlsWisdom', rank: 2 },
         ],
         '5': [
             { spell: 'cureWoundsMass', rank: 1 },
@@ -61,6 +63,7 @@
             { spell: 'eaglesSplendor', rank: 3 },
             { spell: 'inflictWoundsMass', rank: 3 },
             { spell: 'bearsEndurance', rank: 3 },
+            { spell: 'owlsWisdom', rank: 3 },
         ],
         '8': [],
         '9': [
@@ -72,6 +75,7 @@
             { spell: 'eaglesSplendor', rank: 4 },
             { spell: 'protectionFromAlignment', rank: 4 },
             { spell: 'bearsEndurance', rank: 4 },
+            { spell: 'owlsWisdom', rank: 4 },
         ],
         '11': [],
         '12': [],
