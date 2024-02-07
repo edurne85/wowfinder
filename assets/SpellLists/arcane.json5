@@ -48,6 +48,7 @@
             { spell: 'protectionFromAlignment', rank: 1 },
             { spell: 'rayOfEnfeeblement', rank: 1 },
             { spell: 'expeditiousRetreat', rank: 1 },
+            { spell: 'chillTouch', rank: 1 },
         ],
         '2': [
             { spell: 'acidArrow', rank: 1 },
@@ -71,6 +72,7 @@
             { spell: 'summonMonster', rank: 3 },
             { spell: 'protectionFromAlignment', rank: 2 },
             { spell: 'expeditiousRetreat', rank: 2 },
+            { spell: 'chillTouch', rank: 2 },
         ],
         '4': [
             { spell: 'bullsStrength', rank: 2 },
