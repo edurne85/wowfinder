@@ -1,0 +1,18 @@
+{
+    key: 'vampiricTouch',
+    ranks: [
+        {
+            rank: 1,
+        },
+        {
+            rank: 2,
+        },
+    ],
+    sch: 'nec',
+    castingTime: 'standard',
+    components: ['V', 'S'],
+    range: 'touch',
+    duration: 'instantaneous',
+    save: 'will',
+    flags: ['spellResistance'],
+}

@@ -73,6 +73,7 @@
             { spell: 'protectionFromAlignment', rank: 2 },
             { spell: 'expeditiousRetreat', rank: 2 },
             { spell: 'chillTouch', rank: 2 },
+            { spell: 'vampiricTouch', rank: 1 },
         ],
         '4': [
             { spell: 'bullsStrength', rank: 2 },
@@ -118,6 +119,7 @@
             { spell: 'burningHands', rank: 3 },
             { spell: 'bearsEndurance', rank: 3 },
             { spell: 'owlsWisdom', rank: 3 },
+            { spell: 'vampiricTouch', rank: 2 },
         ],
         '8': [
             { spell: 'acidArrow', rank: 3 },
