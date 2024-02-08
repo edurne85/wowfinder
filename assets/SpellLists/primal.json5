@@ -17,6 +17,7 @@
             { spell: 'magicFang', rank: 1 },
             { spell: 'summonNaturesAlly', rank: 1 },
             { spell: 'shillelagh', rank: 1},
+            { spell: 'longstrider', rank: 1 },
         ],
         '2': [
             { spell: 'bullsStrength', rank: 1 },
@@ -32,6 +33,7 @@
             { spell: 'magicFang', rank: 2 },
             { spell: 'summonNaturesAlly', rank: 3 },
             { spell: 'shillelagh', rank: 2},
+            { spell: 'longstrider', rank: 2 },
         ],
         '4': [
             { spell: 'bullsStrength', rank: 2 },
@@ -47,7 +49,8 @@
             { spell: 'magicFang', rank: 3 },
             { spell: 'summonNaturesAlly', rank: 5 },
             { spell: 'shillelagh', rank: 3},
-            { spell: 'resistEnergy', rank: 2 }
+            { spell: 'resistEnergy', rank: 2 },
+            { spell: 'longstrider', rank: 3 },
         ],
         '6': [
             { spell: 'cureWoundsMass', rank: 1 },

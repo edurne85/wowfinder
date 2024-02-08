@@ -1,0 +1,22 @@
+{
+    key: 'longstrider',
+    ranks: [
+        {
+            rank: 1,
+        },
+        {
+            rank: 2,
+        },
+        {
+            rank: 3,
+        },
+        {
+            rank: 4,
+        },
+    ],
+    sch: 'tra',
+    castingTime: 'standard',
+    components: ['V', 'S'],
+    range: 'self',
+    duration: '1 hour/level',
+}
