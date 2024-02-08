@@ -1,0 +1,15 @@
+{
+    key: 'virtue',
+    ranks: [
+        {
+            rank: 1,
+            range: 'touch',
+            duration: '1 min',
+        },
+    ],
+    sch: 'tra',
+    castingTime: 'standard',
+    components: ['V', 'S'],
+    save: 'will',
+    flags: ['spellResistance'],
+}

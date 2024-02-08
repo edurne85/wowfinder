@@ -9,6 +9,7 @@
             { spell: 'resistance', rank: 1 },
             { spell: 'guidance', rank: 1 },
             { spell: 'mending', rank: 1 },
+            { spell: 'virtue', rank: 1 },
         ],
         '1': [
             { spell: 'cureWounds', rank: 1 },
