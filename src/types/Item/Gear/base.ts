@@ -10,6 +10,7 @@ import { Mass, Weight } from '../../Units';
 import Money from '../Money';
 import { Item, ItemBuilder } from '../base';
 import { buildShape, explodeShape, Shape } from './Slot';
+import { validateGear } from './validation';
 
 interface GearBuilder extends ItemBuilder {
     shape: string[];
@@ -74,6 +75,11 @@ class Gear extends Item implements BonusProvider {
 
     get $type(): string {
         return '';
+    }
+
+    validate(): void {
+        super.validate();
+        validateGear(this);
     }
 
     static preBuild(raw: any): GearBuilder {

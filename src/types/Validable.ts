@@ -61,6 +61,19 @@ function validateEnumValues<T>(
     [...values].forEach(validate);
 }
 
+function validateNumber(value: any): asserts value is number {
+    if (typeof value !== 'number' || Number.isNaN(value)) {
+        throw new ValidationError(value, 'Must be a number');
+    }
+}
+
+function validateNonNegativeNumber(value: any): asserts value is number {
+    validateNumber(value);
+    if (value < 0) {
+        throw new ValidationError(value, 'Must be non-negative');
+    }
+}
+
 type ValidatorContainer<T> = {
     [key: string]: any;
     validate: Validator<T>;
@@ -75,4 +88,6 @@ export {
     validateEnumValue,
     getEnumValidator,
     validateEnumValues,
+    validateNumber,
+    validateNonNegativeNumber,
 };
