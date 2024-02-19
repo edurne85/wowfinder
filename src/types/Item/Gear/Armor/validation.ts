@@ -8,7 +8,7 @@ import ArmorType from './Type';
 import ArmorBonusType from './BonusType';
 import ArmorFlags from './Flags';
 
-function validateArmor(armor: Armor): void {
+function validateArmor(armor: any): asserts armor is Armor {
     validateEnumValue(armor.type, ArmorType);
     validateNumber(armor.acBonus);
     validateEnumValue(armor.bonusType, ArmorBonusType);

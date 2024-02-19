@@ -10,6 +10,17 @@ type StatSet = { [key in StatKey]: number };
 
 type PartialStatSet = { [key in StatKey]?: number };
 
+function fillStatSet(base: PartialStatSet, defaultValue: number = 0): StatSet {
+    return {
+        STR: base.STR ?? defaultValue,
+        DEX: base.DEX ?? defaultValue,
+        CON: base.CON ?? defaultValue,
+        INT: base.INT ?? defaultValue,
+        WIS: base.WIS ?? defaultValue,
+        CHA: base.CHA ?? defaultValue,
+    };
+}
+
 function addStatSets(...args: StatSet[]): StatSet {
     return {
         STR: sum(...args.map(s => s.STR)),
@@ -18,6 +29,17 @@ function addStatSets(...args: StatSet[]): StatSet {
         INT: sum(...args.map(s => s.INT)),
         WIS: sum(...args.map(s => s.WIS)),
         CHA: sum(...args.map(s => s.CHA)),
+    };
+}
+
+function scaleStatSet(stats: StatSet, factor: number): StatSet {
+    return {
+        STR: Math.floor(stats.STR * factor),
+        DEX: Math.floor(stats.DEX * factor),
+        CON: Math.floor(stats.CON * factor),
+        INT: Math.floor(stats.INT * factor),
+        WIS: Math.floor(stats.WIS * factor),
+        CHA: Math.floor(stats.CHA * factor),
     };
 }
 
@@ -70,8 +92,10 @@ function carry(str: number): Mass {
 export {
     StatSet,
     PartialStatSet,
+    fillStatSet,
     PartialStatBlock,
     addStatSets,
+    scaleStatSet,
     baseDefault,
     zeroDefault,
     statMod,
