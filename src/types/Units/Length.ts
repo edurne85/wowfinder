@@ -1,5 +1,6 @@
 import { validateEnumValue } from '@model/Assets';
 import { converter, makeConverter, Scalar } from './base';
+import { ValidationError } from '@model/Validable';
 
 enum LengthUnit {
     yard = 'yard',
@@ -68,6 +69,13 @@ class Length extends Scalar<LengthUnit> {
     validate(): void {
         super.validate();
         validateEnumValue(this.unit, LengthUnit);
+    }
+
+    static validate(value: any): asserts value is Length {
+        if (!(value instanceof Length)) {
+            throw new ValidationError(value, 'Invalid Length');
+        }
+        value.validate();
     }
 }
 

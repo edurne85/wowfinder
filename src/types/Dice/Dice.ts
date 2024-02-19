@@ -1,7 +1,8 @@
+import { Validable } from '@model/Validable';
 import type { DiceBuilder } from './helpers';
 import { average, make, max, min } from './helpers';
 
-class Dice {
+class Dice implements Validable {
     #sides: number;
     #qtty: number;
     #mod: number;
@@ -53,6 +54,18 @@ class Dice {
 
     get min(): number {
         return min(this.#qtty, this.#mod);
+    }
+
+    validate(): void {
+        if (this.#sides < 1) {
+            throw new Error('Dice sides must be greater than 0');
+        }
+        if (this.#qtty < 1) {
+            throw new Error('Dice quantity must be greater than 0');
+        }
+        if (Number.isNaN(this.#mod)) {
+            throw new Error('Dice modifier must be a number');
+        }
     }
 
     static build(raw: any): Dice {

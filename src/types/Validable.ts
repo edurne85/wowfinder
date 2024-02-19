@@ -56,9 +56,40 @@ function getEnumValidator<T>(enumObject: Record<string, T>): Validator<T> {
 function validateEnumValues<T>(
     values: Iterable<T>,
     enumObject: Record<string, T>,
-): void {
+): asserts values is Iterable<T> {
     const validate = getEnumValidator(enumObject);
     [...values].forEach(validate);
+}
+
+function validateCollection<T>(
+    values: Iterable<T>,
+    validate: Validator<T>,
+): asserts values is Iterable<T> {
+    const errors: Error[] = [];
+    for (const value of values) {
+        try {
+            validate(value);
+        } catch (e: any) {
+            errors.push(e);
+        }
+    }
+    if (errors.length > 0) {
+        throw new CompoundValidationError(
+            values,
+            'Array validation failed',
+            ...errors,
+        );
+    }
+}
+
+function validateArray<T>(
+    values: T[],
+    validate: Validator<T>,
+): asserts values is T[] {
+    if (!Array.isArray(values)) {
+        throw new ValidationError(values, 'Must be an array');
+    }
+    validateCollection(values, validate);
 }
 
 function validateNumber(value: any): asserts value is number {
@@ -88,6 +119,8 @@ export {
     validateEnumValue,
     getEnumValidator,
     validateEnumValues,
+    validateCollection,
+    validateArray,
     validateNumber,
     validateNonNegativeNumber,
 };

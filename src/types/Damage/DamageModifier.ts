@@ -7,6 +7,7 @@ enum SpecialDamageModifier {
 }
 
 type DamageModifier = StatKey | SpecialDamageModifier;
+const DamageModifier = { ...StatKey, ...SpecialDamageModifier };
 
 function computeModifier(
     modifier: DamageModifier,
