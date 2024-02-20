@@ -26,7 +26,7 @@ class FullData {
         this.#rewards = Adventure.combined(this.#adventures);
         this.#classes = Class.load();
         this.#races = Race.load();
-        this.#items = Item.load(buildItem);
+        this.#items = Item.load(buildItem, reThrowErrors);
         this.#spells = Spell.load(reThrowErrors);
         this.#spellLists = SpellList.load(reThrowErrors);
     }

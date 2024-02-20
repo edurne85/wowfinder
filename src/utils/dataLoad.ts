@@ -116,14 +116,19 @@ function forceDataLoadKeyS<T extends Keyed<string>>(
 function forceDataLoadKeySRecursive<T extends Keyed<string>>(
     dir: string,
     builder: builder<T>,
+    rethrowErrors = false,
 ): ByKeyRecursive<T> {
     const byKey: ByKeyRecursive<T> = {
-        ...forceDataLoadKeyS<T>(dir, builder),
+        ...forceDataLoadKeyS<T>(dir, builder, rethrowErrors),
     };
     for (const subdir of window.Files.getDirectories(dir)) {
         checkDuplicateKeyS(byKey, { key: subdir }, dir);
         const fullSubDirPath = window.Files.resolvePath(dir, subdir);
-        byKey[subdir] = forceDataLoadKeySRecursive<T>(fullSubDirPath, builder);
+        byKey[subdir] = forceDataLoadKeySRecursive<T>(
+            fullSubDirPath,
+            builder,
+            rethrowErrors,
+        );
     }
     return byKey;
 }
@@ -131,14 +136,19 @@ function forceDataLoadKeySRecursive<T extends Keyed<string>>(
 function forceDataLoadKeyLabel<T extends KeyedLabeled>(
     dir: string,
     builder: builder<T>,
+    rethrowErrors = false,
 ): ByKeyLabel<T> {
     const byKeyLabel: ByKeyLabel<T> = { byKey: {}, byLabel: {} };
-    iterateDir(dir, raw => {
-        const obj = builder(raw);
-        checkDuplicateKeyN(byKeyLabel.byKey, obj, dir);
-        checkDuplicateLabel(byKeyLabel.byLabel, obj);
-        byKeyLabel.byKey[obj.key] = byKeyLabel.byLabel[obj.label] = obj;
-    });
+    iterateDir(
+        dir,
+        raw => {
+            const obj = builder(raw);
+            checkDuplicateKeyN(byKeyLabel.byKey, obj, dir);
+            checkDuplicateLabel(byKeyLabel.byLabel, obj);
+            byKeyLabel.byKey[obj.key] = byKeyLabel.byLabel[obj.label] = obj;
+        },
+        rethrowErrors,
+    );
     [byKeyLabel, byKeyLabel.byKey, byKeyLabel.byLabel].map(Object.freeze);
     return byKeyLabel;
 }
