@@ -62,10 +62,14 @@ abstract class Item implements Asset {
 
     static #loaded: ByKeyRecursive<Item> | null = null;
 
-    static load(build: builder<Item>): ByKeyRecursive<Item> {
+    static load(
+        build: builder<Item>,
+        reThrowErrors = false,
+    ): ByKeyRecursive<Item> {
         return (this.#loaded ||= forceDataLoadKeySRecursive<Item>(
             window.Main.asset('Items'),
             build,
+            reThrowErrors,
         ));
     }
 }
