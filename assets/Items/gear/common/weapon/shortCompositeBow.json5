@@ -15,7 +15,7 @@
             modStat: 'STR',
         },
     ],
-    groups: ['bows'],
+    groups: ['bow'],
     proficiency: 'bowShortComposite',
     flags: [],
     criticalRange: 20,

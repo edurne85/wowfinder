@@ -22,10 +22,10 @@
     baseDamage: {
         piercing: { sides: 6 },
     },
-    groups: ['bows'],
+    groups: ['bow'],
     intrinsic: +2,
     rank: 'martial',
-    proficiency: 'bow',
+    proficiency: 'bowShort',
     flags: [],
     criticalRange: 20,
     criticalMultiplier: 3,
