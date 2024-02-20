@@ -1,11 +1,12 @@
+import { Validable, validateNumber } from '@model/Validable';
 import { sum } from '../../../utils';
 import { PartialStatSet, StatKey, StatSet, zeroDefault } from '../Stats';
 
-export default class StatsBonus {
+export default class StatsBonus implements Validable {
     #values: StatSet;
 
     constructor(values: PartialStatSet) {
-        this.#values = Object.assign({}, zeroDefault, values);
+        this.#values = { ...zeroDefault, ...values };
         for (const stat of Object.keys(StatKey)) {
             Object.defineProperty(this, stat, {
                 enumerable: true,
@@ -21,6 +22,16 @@ export default class StatsBonus {
 
     get isZero(): boolean {
         return Object.values(this.#values).every(v => v === 0);
+    }
+
+    validate(): void {
+        for (const stat of Object.keys(StatKey)) {
+            validateNumber(this.#values[stat as StatKey]);
+        }
+    }
+
+    static validate(bonus: StatsBonus): void {
+        bonus.validate();
     }
 
     static get zero(): StatsBonus {
@@ -43,6 +54,15 @@ export default class StatsBonus {
             result.#values[stat as StatKey] = Math.max(
                 ...args.map(s => s.#values[stat as StatKey]),
             );
+        }
+        return result;
+    }
+
+    static multiply(bonus: StatsBonus, factor: number): StatsBonus {
+        const result = this.zero;
+        for (const stat of Object.keys(StatKey)) {
+            result.#values[stat as StatKey] =
+                bonus.#values[stat as StatKey] * factor;
         }
         return result;
     }
