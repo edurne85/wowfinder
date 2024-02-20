@@ -17,7 +17,7 @@
     },
     groups: ['close', 'natural'],
     rank: 'exotic',
-    proficiency: 'natural',
+    proficiency: 'unarmed',
     flags: [],
     criticalRange: 20,
     criticalMultiplier: 2,

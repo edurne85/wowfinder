@@ -21,7 +21,7 @@
     baseDamage: {
         bludgeoning: { sides: 10 },
     },
-    groups: ['hammers'],
+    groups: ['hammer'],
     intrinsic: +2,
     rank: 'martial',
     proficiency: 'clubGreat',

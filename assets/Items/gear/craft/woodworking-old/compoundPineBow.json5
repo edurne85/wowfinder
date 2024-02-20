@@ -18,9 +18,9 @@
     baseDamage: {
         piercing: { sides: 8 },
     },
-    groups: ['bows'],
+    groups: ['bow'],
     rank: 'martial',
-    proficiency: 'bow',
+    proficiency: 'bowShortComposite',
     flags: [],
     criticalRange: 20,
     criticalMultiplier: 3,

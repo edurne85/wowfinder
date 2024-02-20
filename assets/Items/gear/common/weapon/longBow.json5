@@ -14,7 +14,7 @@
             },
         },
     ],
-    groups: ['bows'],
+    groups: ['bow'],
     proficiency: 'bowLong',
     flags: [],
     criticalRange: 20,
