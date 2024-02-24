@@ -3,7 +3,7 @@ name: Coverage
 on: [push]
 
 jobs:
-    build:
+    coverage-report:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -15,12 +15,12 @@ jobs:
               uses: Borales/actions-yarn@v5.0.0
               with:
                   cmd: install
-            - name: Set up Java 21 zulu
-              uses: actions/setup-java@v4
-              with:
-                  distribution: 'zulu'
-                  java-version: '21'
             - name: Yarn test (with coverage)
               uses: Borales/actions-yarn@v5.0.0
               with:
-                  cmd: coverage
+                  cmd: jest-coverage
+            - name: Run codacy-coverage-reporter
+              uses: codacy/codacy-coverage-reporter-action@v1
+              with:
+                  project-token: ${{ secrets.CODACY_API_TOKEN }}
+                  coverage-reports: ./coverage/lcov.info
