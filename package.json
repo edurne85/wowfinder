@@ -18,9 +18,7 @@
         "preci": "npm-run-all -s lint-fix prettier tsc",
         "prepush": "npm-run-all -s lint tsc test package",
         "english": "sh -c ./english.sh",
-        "jest-coverage": "jest --coverage",
-        "codacy-coverage": "sh -c ./codacy-coverage.sh",
-        "coverage": "npm-run-all -s jest-coverage codacy-coverage"
+        "jest-coverage": "jest --coverage"
     },
     "keywords": [],
     "license": "MIT",
