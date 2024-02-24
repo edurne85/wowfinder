@@ -14,7 +14,7 @@
         "cloc": "sh -c ./cloc.sh",
         "test": "jest",
         "tsc": "tsc",
-        "pedantic": "npm-run-all -s lint-fix prettier tsc coverage cloc",
+        "pedantic": "npm-run-all -s lint-fix prettier tsc jest-coverage cloc",
         "preci": "npm-run-all -s lint-fix prettier tsc",
         "prepush": "npm-run-all -s lint tsc test package",
         "english": "sh -c ./english.sh",
