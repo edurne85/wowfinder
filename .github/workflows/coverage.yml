@@ -1,19 +1,16 @@
 name: Coverage
 
-on:
-    push:
-        branches:
-            - main
+on: [push]
 
 jobs:
-    build:
+    coverage-report:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-            - name: Use Node.js 18
+            - name: Use Node.js 20
               uses: actions/setup-node@v4
               with:
-                  node-version: 18
+                  node-version: 20
             - name: Yarn install
               uses: Borales/actions-yarn@v5.0.0
               with:
@@ -21,8 +18,9 @@ jobs:
             - name: Yarn test (with coverage)
               uses: Borales/actions-yarn@v5.0.0
               with:
-                  cmd: coverage
-            - uses: actions/upload-artifact@v4
+                  cmd: jest-coverage
+            - name: Run codacy-coverage-reporter
+              uses: codacy/codacy-coverage-reporter-action@v1
               with:
-                  name: coverage
-                  path: coverage
+                  project-token: ${{ secrets.CODACY_API_TOKEN }}
+                  coverage-reports: ./coverage/lcov.info

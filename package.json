@@ -13,12 +13,12 @@
         "lint-fix": "eslint . --fix --ext js,ts,tsx",
         "cloc": "sh -c ./cloc.sh",
         "test": "jest",
-        "coverage": "jest --coverage",
         "tsc": "tsc",
-        "pedantic": "npm-run-all -s lint-fix prettier tsc coverage cloc",
+        "pedantic": "npm-run-all -s lint-fix prettier tsc jest-coverage cloc",
         "preci": "npm-run-all -s lint-fix prettier tsc",
         "prepush": "npm-run-all -s lint tsc test package",
-        "english": "sh -c ./english.sh"
+        "english": "sh -c ./english.sh",
+        "jest-coverage": "jest --coverage"
     },
     "keywords": [],
     "license": "MIT",
