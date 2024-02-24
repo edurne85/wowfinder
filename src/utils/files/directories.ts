@@ -7,7 +7,9 @@ import { DebugTimer } from '../DebugTimer';
 const isDirectory = (path: string): boolean =>
     fs.existsSync(path) && fs.statSync(path).isDirectory();
 
-const getFiles = (dpath: string, filterKey = 'any'): string[] =>
+type FilterKey = keyof typeof filters;
+
+const getFiles = (dpath: string, filterKey: FilterKey = 'any'): string[] =>
     fs
         .readdirSync(dpath)
         .filter(filters[filterKey] || filters.any)
