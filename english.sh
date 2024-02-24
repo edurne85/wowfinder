@@ -1,3 +1,4 @@
+#!/bin/bash
 cd translations/en
 OUTPUT=`grep -rl 'English description not available' .`
 echo "$OUTPUT"

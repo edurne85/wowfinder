@@ -18,7 +18,7 @@ const ItemLine = styled.p`
     ${lineStyle}
 `;
 
-function Slots({ shape }: { shape: Shape }): React.JSX.Element {
+function Slots({ shape }: Readonly<{ shape: Shape }>): React.JSX.Element {
     const { t } = useTranslation();
     const sep = t('gear.slot.$separator');
     return (
@@ -30,21 +30,21 @@ function Slots({ shape }: { shape: Shape }): React.JSX.Element {
     );
 }
 
+const H: React.FC<{ h: string }> = ({ h }) => (
+    <>
+        <b>{h}</b>:{' '}
+    </>
+);
+
+const Heading: React.FC<{ h?: string }> = ({ h }) => (h ? <H h={h} /> : <></>);
+
 const DetailLine: React.FC<{ h?: string; children: ReactNode }> = ({
     h,
     children,
 }) => {
-    const H = (): React.JSX.Element =>
-        h ? (
-            <>
-                <b>{h}</b>:{' '}
-            </>
-        ) : (
-            <></>
-        );
     return (
         <ItemLine>
-            <H />
+            <Heading h={h} />
             {children}
         </ItemLine>
     );
@@ -57,8 +57,7 @@ const ToDoLine = styled.p`
     }
 `;
 
-/** @deprecated */
-function ToDo({ text }: { text: string }): React.JSX.Element {
+function ToDo({ text }: Readonly<{ text: string }>): React.JSX.Element {
     return (
         <ToDoLine>
             <b>To Do</b>: {text}
@@ -66,5 +65,4 @@ function ToDo({ text }: { text: string }): React.JSX.Element {
     );
 }
 
-/* eslint-disable-next-line deprecation/deprecation */
 export { DetailLine, ItemTitle, ToDo, Slots };
