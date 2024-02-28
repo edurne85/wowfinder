@@ -1188,20 +1188,13 @@
     fs-extra "^10.0.0"
     got "^11.8.5"
 
-"@electron-forge/plugin-auto-unpack-natives@^7.2.0":
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/@electron-forge/plugin-auto-unpack-natives/-/plugin-auto-unpack-natives-7.2.0.tgz#177372de7913a710352341e5323f34e1f6eb7dba"
-  integrity sha512-5BI2t/Qt9wP188PHoS1qv/0CqIhByyacWRVeAgQ9kP6iMsPyyc4kn3kWGDQF2MyFqMmusRzcdM+SljDGR9aIeg==
+"@electron-forge/plugin-auto-unpack-natives@^7.3.0":
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/@electron-forge/plugin-auto-unpack-natives/-/plugin-auto-unpack-natives-7.3.0.tgz#277772dc8275143e93cb5955decef1dc2354366c"
+  integrity sha512-cWcor6pEplaAo2OSr+khth4282xoLUtESdSLtGtRYE1Q8sNM5BbPKcwyr3tP8FFgWnj2TAYbpubwScLyb5BXZA==
   dependencies:
-    "@electron-forge/plugin-base" "7.2.0"
-    "@electron-forge/shared-types" "7.2.0"
-
-"@electron-forge/plugin-base@7.2.0":
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/@electron-forge/plugin-base/-/plugin-base-7.2.0.tgz#1d7f3cb6ededc68139b3556ccae5bbce6cbac7ff"
-  integrity sha512-c/pQK36BMBMKiemO68g1ZQOCXBA93x/aeX3lIXwK5bKVuaGt16Unfmby5Q7iIvY+/KsBuLYGkAder8HDN+4Nbw==
-  dependencies:
-    "@electron-forge/shared-types" "7.2.0"
+    "@electron-forge/plugin-base" "7.3.0"
+    "@electron-forge/shared-types" "7.3.0"
 
 "@electron-forge/plugin-base@7.3.0":
   version "7.3.0"
