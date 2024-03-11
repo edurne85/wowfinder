@@ -23,7 +23,7 @@
     "keywords": [],
     "license": "MIT",
     "dependencies": {
-        "archiver": "^6.0.1",
+        "archiver": "^7.0.1",
         "hast-util-to-jsx-runtime": "^2.3.0",
         "i18next": "^23.10.0",
         "i18next-browser-languagedetector": "^7.1.0",
