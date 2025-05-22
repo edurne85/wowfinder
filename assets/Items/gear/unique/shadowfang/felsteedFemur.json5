@@ -20,7 +20,7 @@
         bludgeoning: { sides: 8 },
     },
     intrinsic: +1,
-    groups: ['double', 'natural'],
+    groups: ['double', 'pole'],
     rank: 'simple',
     proficiency: 'quarterstaff',
     flags: [],

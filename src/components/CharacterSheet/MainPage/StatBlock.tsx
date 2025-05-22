@@ -89,7 +89,7 @@ function StatRow({
     gear,
     misc,
     temp,
-}: StatRowBuilder): React.JSX.Element {
+}: Readonly<StatRowBuilder>): React.JSX.Element {
     const { t } = useTranslation();
     return (
         <tr id={`tr${id}`}>
@@ -106,24 +106,24 @@ function StatRow({
             <StyledTd>
                 <input
                     id={`txtEnhance${id}`}
-                    value={enhance || ''}
+                    value={enhance ?? ''}
                     readOnly={true}
                 />
             </StyledTd>
             <StyledTd>
-                <input id={`txtGear${id}`} value={gear || ''} readOnly={true} />
+                <input id={`txtGear${id}`} value={gear ?? ''} readOnly={true} />
             </StyledTd>
             <StyledTd>
-                <input id={`txtMisc${id}`} value={misc || ''} readOnly={true} />
+                <input id={`txtMisc${id}`} value={misc ?? ''} readOnly={true} />
             </StyledTd>
             <StyledTd>
-                <input id={`txtTemp${id}`} value={temp || ''} readOnly={true} />
+                <input id={`txtTemp${id}`} value={temp ?? ''} readOnly={true} />
             </StyledTd>
         </tr>
     );
 }
 
-function StatBlock({ stats }: { stats?: Stats }): React.JSX.Element {
+function StatBlock({ stats }: { readonly stats?: Stats }): React.JSX.Element {
     return (
         <StyledTable id="tblStats">
             <thead>
@@ -149,10 +149,9 @@ function StatBlock({ stats }: { stats?: Stats }): React.JSX.Element {
 }
 
 interface SimpleStatRowBuilder {
-    key: string;
-    id: string;
-    value: number;
-    mod: number;
+    readonly id: string;
+    readonly value: number;
+    readonly mod: number;
 }
 
 function SimpleStatRow({
@@ -174,7 +173,11 @@ function SimpleStatRow({
     );
 }
 
-function SimpleStatBlock({ stats }: { stats: StatSet }): React.JSX.Element {
+function SimpleStatBlock({
+    stats,
+}: {
+    readonly stats: StatSet;
+}): React.JSX.Element {
     return (
         <StyledTable id="tblStats">
             <tbody>

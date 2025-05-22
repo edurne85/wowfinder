@@ -14,7 +14,7 @@ function baseName(path: string): string {
 
 function extname(fspath: string): string {
     let ext = path.extname(fspath);
-    if (ext && /^\./.test(ext)) {
+    if (ext?.startsWith('.')) {
         ext = ext.slice(1);
     }
     return ext;
