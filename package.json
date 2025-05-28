@@ -24,7 +24,7 @@
     "license": "MIT",
     "dependencies": {
         "archiver": "^7.0.1",
-        "hast-util-to-jsx-runtime": "^2.3.0",
+        "hast-util-to-jsx-runtime": "^2.3.6",
         "i18next": "^23.10.0",
         "i18next-browser-languagedetector": "^7.1.0",
         "json5": "^2.2.3",
