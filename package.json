@@ -57,7 +57,7 @@
         "@electron-forge/plugin-auto-unpack-natives": "^7.3.0",
         "@electron-forge/plugin-webpack": "^7.3.0",
         "@testing-library/jest-dom": "^6.4.2",
-        "@testing-library/react": "^14.2.1",
+        "@testing-library/react": "^15.0.7",
         "@types/archiver": "^6.0.2",
         "@types/electron-devtools-installer": "^2.2.2",
         "@types/jest": "^29.5.12",
