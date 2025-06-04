@@ -33,7 +33,7 @@
         "react-dom": "^18.2.0",
         "react-hot-loader": "^4.13.1",
         "react-i18next": "^14.0.5",
-        "react-router-dom": "^6.23.1",
+        "react-router-dom": "^7.6.2",
         "rehype": "^13.0.1",
         "rehype-react": "^8.0.0",
         "remark-gfm": "^4.0.0",
